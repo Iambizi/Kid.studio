@@ -1,0 +1,10 @@
+@import "../_variables";
+.navigation{
+    display: flex;
+    
+    font-size: 0.8em;
+    @media screen and (max-width:$l){
+        justify-content: space-between;
+    }
+}
+
