@@ -1,10 +1,38 @@
 @import "../_variables";
 .navigation{
     display: flex;
-    
-    font-size: 0.8em;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 0.6250em;
+    margin-top: 25px;
+    @media screen and (min-width:$m){
+        font-size: 0.8em;
+    }
+    .logo{
+        display: flex;
+        justify-content: center;
+        a{
+            img{
+                width: 100px;
+                height: 45.6px;
+                @media screen and (min-width:$m){
+                    width:  85px;
+                    height: 46.3px;
+                }
+            }
+        }
+    }
+    .navLinks{
+        text-align: center;
+        letter-spacing: 0.1em;
+        padding: 0 11px;
+        z-index: 565656;
+        margin: 10px 0px 15px 0px;
+        .navLink{
+            margin: 0px 26px;
+        }
+    }
     @media screen and (max-width:$l){
-        justify-content: space-between;
     }
 }
 

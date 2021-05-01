@@ -8,12 +8,12 @@ export default function navigation():JSX.Element{
             <header>
                 <nav className={styles.navigation}>
                     <Logo />
-                    <ul>
+                    <ul className={styles.navLinks}>
                         <Link href={"/work"}>
-                            <a>WORK</a>
+                            <a className={styles.navLink}>WORK</a>
                         </Link>
                         <Link href={"/info"}>
-                            <a>INFO</a>
+                            <a className={styles.navLink}>INFO</a>
                         </Link>
                     </ul>
                 </nav>

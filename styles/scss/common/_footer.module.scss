@@ -1,13 +1,16 @@
 @import "../_variables.scss";
 .footer{
     text-align: center;
-    font-size: 0.8em;
-    @media screen and (max-width:$l){
-        
+    font-size:0.625em;
+    position: fixed;
+    bottom: 0;
+    @media screen and (min-width:$l){
+        font-size: 0.8em;
     }
     .footerLinks{
+        margin: 28px 0;
         .footerLink{
-
+            padding: 2px 7px;
         }
     }
 }

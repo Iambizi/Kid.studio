@@ -6,15 +6,17 @@ export default function logo():JSX.Element{
     return(
         <>
             <div className={styles.logo}>
+                
                 <Link href={"/index"}>
-
                     <a>
-                        <Image 
+                        {/* <Image 
                         src="/assets/images/kid.png"
                         alt="Kid Studio logo"
                         width={85}
                         height={46.3}
-                        />
+                        /> */}
+                        <img src="https://kidstudio.co/assets/images/kid.png" alt="Kid Studio logo" width={85}
+                        height={46.3} />
                     </a>
                 </Link>
             </div>
