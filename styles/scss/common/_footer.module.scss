@@ -4,13 +4,27 @@
     font-size:0.625em;
     position: fixed;
     bottom: 0;
-    @media screen and (min-width:$l){
+    left: 0;
+    right: 0;
+    width: 100%;
+    letter-spacing: 0.1em;
+    @media screen and (min-width:$m){
         font-size: 0.8em;
     }
     .footerLinks{
         margin: 28px 0;
+        // @media screen and (min-width:$s){
+        //     margin: 25px 0;
+        // }
+        @media screen and (min-width:$m){
+            margin: 51px 0;
+        }
+        padding-left: 0px;
         .footerLink{
-            padding: 2px 7px;
+            padding: 2px 15px;
+            @media screen and (min-width:$m){
+                padding: 2px 41px;
+            }
         }
     }
 }

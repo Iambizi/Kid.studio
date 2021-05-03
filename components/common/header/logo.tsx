@@ -7,7 +7,7 @@ export default function logo():JSX.Element{
         <>
             <div className={styles.logo}>
                 
-                <Link href={"/index"}>
+                <Link href={"/"}>
                     <a>
                         {/* <Image 
                         src="/assets/images/kid.png"
