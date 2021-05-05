@@ -1,11 +1,35 @@
 @import "../variables";
+.carouselTitle{
+    font-size: 1em;
+    font-family: 'Helvetica', Helvetica;
+    font-weight: 600;
+    position: fixed;
+    left:15%;
+    top: 32%;
+    @media screen and (min-width:$s){
+        top: 27%;
+        font-size: 4em;
+    }    
+    &::before{
+        content: "";
+        width: 10%;
+        height: 0.3%;
+        position: fixed;
+        left:15%;
+        top: 30%;
+        color: #000;
+    }
+}
 .homeContentSection{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-top: 195px;
+    margin-top: 295px;
+    @media screen and (min-width:$s){
+        margin-top: 280px;
+    }
     @media screen and (min-width:$m){
-        margin-top: 295px;
+        margin-top: 460px;
     }
     .previousButton,.nextButton{
         font-size: 0.625em;
