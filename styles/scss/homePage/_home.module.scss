@@ -30,7 +30,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-top: 295px;
+    margin-top: 215px;
     @media screen and (min-width:$s){
         // margin-top: 280px;
         margin-top: 400px;
@@ -41,23 +41,30 @@
     @media screen and (min-width:$l){
         margin-top: 360px;
     }  
-    .previousButton,.nextButton{
-        font-size: 0.625em;
-        letter-spacing: 0.1em;
-        z-index: 565656;
-        @media screen and (min-width:$m){
-            font-size: 0.9em;
-        }
+    canvas{
+        margin: auto auto;
     }
-    .previousButton{
-        margin: 0;
-        left: 5px;
-        transform: rotate(270deg);
-        cursor: url(https://kidstudio.co/assets/css/../images/left.png) 25 15, auto;
+}
+.previousButton,.nextButton{
+    font-size: 0.625em;
+    letter-spacing: 0.1em;
+    z-index: 565656;
+    position: fixed;
+    top: 49%;
+    left: -10px;
+    @media screen and (min-width:$m){
+        font-size: 0.9em;
     }
-    .nextButton{
-        right: -5px;
-        transform: rotate(90deg);
-        cursor: url(https://kidstudio.co/assets/css/../images/right.png) 25 15, auto;
-    }
+}
+.previousButton{
+    margin: 0;
+    left: -10px;
+    transform: rotate(270deg);
+    cursor: url(https://kidstudio.co/assets/css/../images/left.png) 25 15, auto;
+}
+.nextButton{
+    top: 50%;
+    right: 5px;
+    transform: rotate(90deg);
+    cursor: url(https://kidstudio.co/assets/css/../images/right.png) 25 15, auto;
 }
