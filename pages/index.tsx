@@ -4,7 +4,7 @@ import Layout from '../components/layout';
 import Meta  from '../components/common/meta';
 import Navigation from '../components/common/header/navigation';
 import Footer from '../components/common/footer';
-import Carousel from '../components/homeContent/carousel'
+import Carousel from '../components/homeContent/content'
 
 export default function home({page}):JSX.Element {
   return (

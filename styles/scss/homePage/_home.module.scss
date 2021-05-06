@@ -6,6 +6,7 @@
     position: fixed;
     left:15%;
     top: 31%;
+    z-index: 565656;
     @media screen and (min-width:$s){
         top: 28%;
         font-size: 4em;
@@ -28,9 +29,11 @@
 }
 .homeContentSection{
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-top: 215px;
+    margin-top: 110px;
+    @media screen and (min-width:$xs){
+        // margin-top: 280px;
+        margin-top: 215px;
+    }
     @media screen and (min-width:$s){
         // margin-top: 280px;
         margin-top: 400px;
@@ -42,7 +45,7 @@
         margin-top: 360px;
     }  
     canvas{
-        margin: auto auto;
+        margin: 0 auto;
     }
 }
 .previousButton,.nextButton{
@@ -51,14 +54,13 @@
     z-index: 565656;
     position: fixed;
     top: 49%;
-    left: -10px;
     @media screen and (min-width:$m){
         font-size: 0.9em;
     }
 }
 .previousButton{
     margin: 0;
-    left: -10px;
+    left: -5px;
     transform: rotate(270deg);
     cursor: url(https://kidstudio.co/assets/css/../images/left.png) 25 15, auto;
 }
@@ -68,3 +70,18 @@
     transform: rotate(90deg);
     cursor: url(https://kidstudio.co/assets/css/../images/right.png) 25 15, auto;
 }
+
+.counter{
+    position: fixed;
+    top: 68%;
+    left: 79%;
+    font-family: 'Helvetica', Helvetica;
+    font-size: 1em;
+    color: #060606;
+    font-weight: 600;
+}
+
+.gallery {
+    position: relative;
+    margin: auto;
+  }
