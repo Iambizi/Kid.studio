@@ -1,4 +1,5 @@
 @import "../variables";
+
 .carouselTitle{
     font-size: 1em;
     font-family: 'Helvetica', Helvetica;
@@ -29,7 +30,7 @@
 }
 .homeContentSection{
     display: flex;
-    margin-top: 110px;
+    margin-top: 210px;
     @media screen and (min-width:$xs){
         // margin-top: 280px;
         margin-top: 215px;

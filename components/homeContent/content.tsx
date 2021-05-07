@@ -1,6 +1,7 @@
 import styles from "../../styles/scss/homePage/_home.module.scss";
 import WarpedImage from "./warpedImage";
 import Carousel from "./carousel";
+import React, {useState} from "react";
 export default function content():JSX.Element{
     
     
@@ -20,17 +21,17 @@ export default function content():JSX.Element{
             count: 3
         }
     ];
+    const [count, setCount] = useState(1);
     return(
         <>
             <h1 className={styles.carouselTitle}>{projects[0].video}</h1>
-            {/* <WarpedImage /> */}
             <section className={styles.homeContentSection}>
             {/* <WarpedImage /> */}
             <Carousel />
             </section>
-            <p className={styles.nextButton}>NEXT</p>
-            <p className={styles.previousButton}>PREVIOUS</p>
-            <p className ={styles.counter}>{projects[0].count}&nbsp;/&nbsp;3</p>
+            <p className={styles.nextButton} onClick={()=> count > 2 ? setCount(0) : setCount(count + 1)}>NEXT</p>
+            <p className={styles.previousButton} onClick={()=> count < 1 ? setCount(0) : setCount(count - 1)}>PREVIOUS</p>
+            <p className ={styles.counter}>{count}&nbsp;/&nbsp;3</p>
         </>
     )
 }

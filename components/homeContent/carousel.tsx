@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import styles from "../../styles/scss/homePage/_home.module.scss";
+import styles from "../../styles/scss/homePage/_carousel.module.scss";
 
 export default function carousel(): JSX.Element{
 
