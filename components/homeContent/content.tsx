@@ -29,8 +29,8 @@ export default function content():JSX.Element{
             {/* <WarpedImage /> */}
             <Carousel />
             </section>
-            <p className={styles.nextButton} onClick={()=> count > 2 ? setCount(0) : setCount(count + 1)}>NEXT</p>
-            <p className={styles.previousButton} onClick={()=> count < 1 ? setCount(0) : setCount(count - 1)}>PREVIOUS</p>
+            <p className={styles.nextButton} onClick={()=> count > 2 ? setCount(1) : setCount(count + 1)}>NEXT</p>
+            <p className={styles.previousButton} onClick={()=> count < 2 ? setCount(1) : setCount(count - 1)}>PREVIOUS</p>
             <p className ={styles.counter}>{count}&nbsp;/&nbsp;3</p>
         </>
     )
