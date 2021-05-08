@@ -1,19 +1,11 @@
 import {useState} from 'react';
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
 
-export default function carousel(): JSX.Element{
+export default function carousel({count}): JSX.Element{
 
-        const [index, setIndex] = useState(0);
-      
-        const handleSelect = (selectedIndex, e): void => {
-          setIndex(selectedIndex);
-        }
-        const handleNext = ():void =>{
-            
-        }
-        const handlePrevious  = ():void =>{
-
-        }
+interface Type{
+    projects: any;
+}
         
         const projects = [
             {
@@ -31,21 +23,20 @@ export default function carousel(): JSX.Element{
                 count: 3
             }
         ];
+
+        // onChange add classname to add transition changing styles
     return(
-        //activeIndex={index} onSelect={handleSelect}
         <>
             <div className={styles.gallery}>
-                {projects.map((project,i)=>(
-                    <div className={styles.carousel} key={i}>
+                <div className={styles.carousel}>
                         <img
                             className={styles.carouselImage}
-                            src={"https://kidstudio.co/content/2-home" + `${projects[i].path}`}
+                            src={"https://kidstudio.co/content/2-home" + `${projects[count].path}`}
                             alt={"Video Project screenshot"}
                             height={200}
                             width={330}
                         />
                     </div>
-                ))}
             </div>
         </>
     )
