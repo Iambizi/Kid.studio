@@ -1,30 +1,11 @@
-import {useState} from 'react';
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
-
-export default function carousel({count}): JSX.Element{
 
 interface Type{
     projects: any;
 }
-        
-        const projects = [
-            {
-                video:"Bryson Tiller 'Always Forever'",
-                path:"/1-alwaysforever-2.gif",
-                count: 1
-            },
-            {   video:"Disclosure 'Energy",
-                path:"/2-energy.gif",
-                count: 2
-            },
-            {
-                video:"Big Sean 'Wolves' ft. Post Malone",
-                path:"/3-wolves.gif",
-                count: 3
-            }
-        ];
-
+export default function carousel({count, projects}): JSX.Element{
         // onChange add classname to add transition changing styles
+        console.log(projects[0].path);
     return(
         <>
             <div className={styles.gallery}>
