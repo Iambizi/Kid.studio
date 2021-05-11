@@ -1,13 +1,13 @@
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
+import React, {useEffect} from 'react';
 
 interface Type{
     projects: any;
 }
 export default function carousel({count, projects}): JSX.Element{
-        // onChange add classname to add transition changing styles
-        console.log(projects[0].path);
     return(
         <>
+        {/* onChange add classname to add transition changing styles */}
             <div className={styles.gallery}>
                 <div className={styles.carousel}>
                         <img
