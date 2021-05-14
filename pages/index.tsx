@@ -6,13 +6,13 @@ import Navigation from '../components/common/header/navigation';
 import Footer from '../components/common/footer';
 import Carousel from '../components/homeContent/content'
 
-export default function home({page}):JSX.Element {
+export default function home():JSX.Element {
   return (
     <>
         <Meta page={"Home"} />
-        <Layout>
-          <Carousel />
-        </Layout>
+          <Layout>
+            <Carousel />
+          </Layout>
     </>
   )
 }

@@ -1,5 +1,4 @@
 @import "../variables";
-
 .carouselTitle{
     font-size: 1em;
     font-family: 'Helvetica', Helvetica;
@@ -46,6 +45,8 @@
         margin-top: 360px;
     }  
     canvas{
+        height: 100vh;
+        width: 100vw;
         margin: 0 auto;
     }
 }

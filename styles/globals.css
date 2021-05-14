@@ -14,7 +14,9 @@ a {
 * {
   box-sizing: border-box;
 } */
-
+body{
+  overflow:hidden;
+}
 canvas{
   margin: 0 auto;
 }
