@@ -1,83 +1,91 @@
 @import "../variables";
-.carouselTitle{
-    font-size: 1em;
-    font-family: 'Helvetica', Helvetica;
-    font-weight: 600;
+.noScroll{
+    height: 100vh;
+    width: 100vw;
     position: fixed;
-    left:15%;
-    top: 31%;
-    z-index: 565656;
-    @media screen and (min-width:$s){
-        top: 28%;
-        font-size: 4em;
-    }
-    &::before{
-        content: "";
-        width: 10%;
-        height: 0.3%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    .carouselTitle{
+        font-size: 1em;
+        font-family: 'Helvetica', Helvetica;
+        font-weight: 600;
         position: fixed;
         left:15%;
-        top: 30%;
-        background-color: #000;
+        top: 31%;
+        z-index: 565656;
         @media screen and (min-width:$s){
-            height: 0.5%;
+            top: 28%;
+            font-size: 4em;
+        }
+        &::before{
+            content: "";
+            width: 10%;
+            height: 0.3%;
+            position: fixed;
+            left:15%;
+            top: 30%;
+            background-color: #000;
+            @media screen and (min-width:$s){
+                height: 0.5%;
+            }
+            @media screen and (min-width:$s){
+                height: 1%;
+            }    
+        }
+    }
+    .homeContentSection{
+        display: flex;
+        margin-top: 210px;
+        @media screen and (min-width:$xs){
+            // margin-top: 280px;
+            margin-top: 215px;
         }
         @media screen and (min-width:$s){
-            height: 1%;
-        }    
+            // margin-top: 280px;
+            margin-top: 400px;
+        }
+        @media screen and (min-width:$m){
+            margin-top: 460px;
+        }
+        @media screen and (min-width:$l){
+            margin-top: 360px;
+        }  
+        canvas{
+            margin: 0 auto;
+            background-color: transparent;
+        }
     }
-}
-.homeContentSection{
-    display: flex;
-    margin-top: 210px;
-    @media screen and (min-width:$xs){
-        // margin-top: 280px;
-        margin-top: 215px;
+    .previousButton,.nextButton{
+        font-size: 0.625em;
+        letter-spacing: 0.1em;
+        z-index: 565656;
+        position: fixed;
+        top: 49%;
+        @media screen and (min-width:$m){
+            font-size: 0.9em;
+        }
     }
-    @media screen and (min-width:$s){
-        // margin-top: 280px;
-        margin-top: 400px;
+    .previousButton{
+        margin: 0;
+        left: -5px;
+        transform: rotate(270deg);
+        cursor: url(https://kidstudio.co/assets/css/../images/left.png) 25 15, auto;
     }
-    @media screen and (min-width:$m){
-        margin-top: 460px;
+    .nextButton{
+        top: 50%;
+        right: 5px;
+        transform: rotate(90deg);
+        cursor: url(https://kidstudio.co/assets/css/../images/right.png) 25 15, auto;
     }
-    @media screen and (min-width:$l){
-        margin-top: 360px;
-    }  
-    canvas{
-        margin: 0 auto;
-        background-color: transparent;
+    
+    .counter{
+        position: fixed;
+        top: 68%;
+        left: 79%;
+        font-family: 'Helvetica', Helvetica;
+        font-size: 1em;
+        color: #060606;
+        font-weight: 600;
     }
-}
-.previousButton,.nextButton{
-    font-size: 0.625em;
-    letter-spacing: 0.1em;
-    z-index: 565656;
-    position: fixed;
-    top: 49%;
-    @media screen and (min-width:$m){
-        font-size: 0.9em;
-    }
-}
-.previousButton{
-    margin: 0;
-    left: -5px;
-    transform: rotate(270deg);
-    cursor: url(https://kidstudio.co/assets/css/../images/left.png) 25 15, auto;
-}
-.nextButton{
-    top: 50%;
-    right: 5px;
-    transform: rotate(90deg);
-    cursor: url(https://kidstudio.co/assets/css/../images/right.png) 25 15, auto;
-}
-
-.counter{
-    position: fixed;
-    top: 68%;
-    left: 79%;
-    font-family: 'Helvetica', Helvetica;
-    font-size: 1em;
-    color: #060606;
-    font-weight: 600;
 }

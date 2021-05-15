@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import Layout from '../components/layout';
 import Meta  from '../components/common/meta';
 import Info from '../components/infoContent/infoWarpImg';

@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import Layout from '../components/layout';
 import Meta  from '../components/common/meta';
 import ProjectList from '../components/workContent/projectList';
