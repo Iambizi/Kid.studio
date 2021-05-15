@@ -12,6 +12,9 @@
         font-weight: 600;
         position: fixed;
         left:15%;
+        .slideLeft{
+            left:-85%;
+        }
         top: 31%;
         z-index: 565656;
         @media screen and (min-width:$s){
@@ -37,13 +40,15 @@
     .homeContentSection{
         display: flex;
         margin-top: 210px;
+        flex-direction: column;
+        justify-content: center;
         @media screen and (min-width:$xs){
             // margin-top: 280px;
             margin-top: 215px;
         }
         @media screen and (min-width:$s){
-            // margin-top: 280px;
-            margin-top: 400px;
+            margin-top: 280px;
+            // margin-top: 400px;
         }
         @media screen and (min-width:$m){
             margin-top: 460px;

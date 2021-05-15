@@ -25,10 +25,10 @@ export default function content():JSX.Element{
         <>
             <section className={styles.noScroll}>
                 <h1 className={styles.carouselTitle}>{projects[count].video}</h1>
-                <section className={styles.homeContentSection}>
+                <article className={styles.homeContentSection}>
                 {/* <WarpedImage /> */}
                 <Carousel count={count} projects={projects} />
-                </section>
+                </article>
                 <p className={styles.nextButton} onClick={()=> count > 1 ? setCount(0) : setCount(count + 1)}>NEXT</p>
                 <p className={styles.previousButton} onClick={()=> count < 1 ? setCount(2) : setCount(count - 1)}>PREVIOUS</p>
                 <p className ={styles.counter}>{count + 1}&nbsp;/&nbsp;3</p>

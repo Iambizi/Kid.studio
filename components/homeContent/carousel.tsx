@@ -14,7 +14,7 @@ export default function carousel({count, projects}:Type): JSX.Element{
                     <div className={styles.carousel} key={i}>
                         <img
                             className={styles.carouselImage}
-                            src={"https://kidstudio.co/content/2-home" + `${projects[count].path}`}
+                            src={"https://kidstudio.co/content/2-home" + `${projects[i].path}`}
                             alt={"Video Project screenshot"}
                             height={200}
                             width={330}
