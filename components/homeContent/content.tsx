@@ -23,10 +23,10 @@ export default function content():JSX.Element{
 
     return(
         <>
+            <WarpedImage />
             <section className={styles.noScroll}>
                 <h1 className={styles.carouselTitle}>{projects[count].video}</h1>
                 <article className={styles.homeContentSection}>
-                {/* <WarpedImage /> */}
                 <Carousel count={count} projects={projects} />
                 </article>
                 <p className={styles.nextButton} onClick={()=> count > 1 ? setCount(0) : setCount(count + 1)}>NEXT</p>

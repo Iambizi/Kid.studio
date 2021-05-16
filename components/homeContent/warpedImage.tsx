@@ -7,12 +7,12 @@ export default function warpedImage():JSX.Element{
 
         //Creat your scene, (your movie set)
         const scene = new THREE.Scene();
-        scene.background = new THREE.Color( 0xffffff );
+        scene.background = new THREE.Color( 0x000000 );
 
         const geometry = new THREE.PlaneGeometry( 5, 20, 32 );
         const material = new THREE.MeshBasicMaterial( {color: 0xfffffff, side: THREE.DoubleSide} );
-        const plane = new THREE.Mesh( geometry, material );
-        scene.add( plane );
+        const Mesh = new THREE.Mesh( geometry, material );
+        scene.add( Mesh );
 
         const sizes = {
             width: window.innerWidth,
@@ -34,9 +34,10 @@ export default function warpedImage():JSX.Element{
         // controls.autoRotateSpeed = 3;
 
         const renderer = new THREE.WebGLRenderer({
-            canvas: canvas
+            // canvas: canvas,
+            antialias: true
         })
-        renderer.setClearColor( 0xffffff );
+        renderer.setClearColor( 0xff0000 );
 
     },[]);
     return(
