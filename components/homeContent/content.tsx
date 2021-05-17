@@ -1,12 +1,14 @@
 import styles from "../../styles/scss/homePage/_home.module.scss";
 import WarpedImage from "./warpedImage";
 import Carousel from "./carousel";
+import Link from "next/link";
 import React, {useState} from "react";
+
 
 
 export default function content():JSX.Element{
     
-    const projects = [
+    const homeProjects = [
         {
             video:"Bryson Tiller 'Always Forever'",
             path:"/1-alwaysforever-2.gif"
@@ -25,9 +27,11 @@ export default function content():JSX.Element{
         <>
             <WarpedImage />
             <section className={styles.noScroll}>
-                <h1 className={styles.carouselTitle}>{projects[count].video}</h1>
+                <Link href={"/work/[project]"}>
+                    <h1 className={styles.carouselTitle}>{homeProjects[count].video}</h1>
+                </Link>
                 <article className={styles.homeContentSection}>
-                <Carousel count={count} projects={projects} />
+                <Carousel count={count} homeProjects={homeProjects} />
                 </article>
                 <p className={styles.nextButton} onClick={()=> count > 1 ? setCount(0) : setCount(count + 1)}>NEXT</p>
                 <p className={styles.previousButton} onClick={()=> count < 1 ? setCount(2) : setCount(count - 1)}>PREVIOUS</p>
