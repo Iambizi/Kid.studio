@@ -2,7 +2,7 @@ import styles from "../../styles/scss/homePage/_home.module.scss";
 import WarpedImage from "./warpedImage";
 import Carousel from "./carousel";
 import Link from "next/link";
-import React, {useState} from "react";
+import React, {useState, useRef} from "react";
 
 
 
@@ -22,6 +22,24 @@ export default function content():JSX.Element{
         }
     ];
     const [count, setCount] = useState(0);
+    // SET CAROUSEL DEFAULTS
+    let [currentPosition, setCurrentPosition] = useState(0); // Initial slide index value
+    let currentSlide = homeProjects[currentPosition]; // variable index value we can reference later
+
+    const goNext = () => {
+        // currentPosition !== homeProjects.length -1 ? // Check index length
+        // setCurrentPosition(currentPosition + 1) : setCurrentPosition(currentPosition = 0);
+        // currentSlide = homeProjects[currentPosition];
+        count > 1 ? setCount(0) : setCount(count + 1)
+    }
+
+    const goPrevious = () => {
+        count < 1 ? setCount(2) : setCount(count - 1);
+        // currentPosition !== 0 ? // Check index length
+        // setCurrentPosition(currentPosition - 1) : setCurrentPosition(currentPosition = homeProjects.length - 1);
+        // currentSlide = homeProjects[currentPosition];
+    }
+
 
     return(
         <>
@@ -31,10 +49,10 @@ export default function content():JSX.Element{
                     <h1 className={styles.carouselTitle}>{homeProjects[count].video}</h1>
                 </Link>
                 <article className={styles.homeContentSection}>
-                <Carousel count={count} homeProjects={homeProjects} />
+                <Carousel count={count} homeProjects={homeProjects} goNext={goNext} goPrevious={goPrevious} />
                 </article>
-                <p className={styles.nextButton} onClick={()=> count > 1 ? setCount(0) : setCount(count + 1)}>NEXT</p>
-                <p className={styles.previousButton} onClick={()=> count < 1 ? setCount(2) : setCount(count - 1)}>PREVIOUS</p>
+                <p className={styles.nextButton} onClick={goNext}>NEXT</p>
+                <p className={styles.previousButton} onClick={goPrevious}>PREVIOUS</p>
                 <p className ={styles.counter}>{count + 1}&nbsp;/&nbsp;3</p>
             </section>
         </>

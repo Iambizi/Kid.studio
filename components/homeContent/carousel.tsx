@@ -4,8 +4,10 @@ import React from 'react';
 interface Type{
     homeProjects: any;
     count: number;
+    goNext: any;
+    goPrevious: any;
 }
-export default function carousel({count, homeProjects}:Type): JSX.Element{
+export default function carousel({count, homeProjects, goNext, goPrevious}:Type): JSX.Element{
     return(
         <>
         {/* onChange add classname to add transition changing styles */}
