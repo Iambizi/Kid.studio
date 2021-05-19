@@ -1,0 +1,70 @@
+@import "../variables";
+
+@keyframes slideNext {
+    from { left: 0; }
+    to {
+      left: -203%;
+      transform: translateX(-100%);
+    }
+}
+@keyframes slidePrevious {
+    from { left: 0; }
+    to {
+      left: 100%;
+      transform: translateX(-100%);
+    }
+}
+.slider {
+    margin: auto;
+    display: flex;
+    overflow-x: hidden;
+    position:fixed;
+    left: -0%;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    &.slide{
+        animation: 3s linear 0s slide infinite;
+    }
+    .carousel{
+        overflow-x: hidden;
+        flex-direction: row;
+        // margin-top: 90px;
+        scroll-snap-align: start;
+        @media screen and (min-width:$s){
+                // margin: 0 180px 0 50px;
+            }
+            // @media screen and (min-width:$m){
+            //     margin: 0px 20px 0 50px;
+            // }
+            // @media screen and (min-width:$l){
+            //     margin: 0 100px 0 50px;
+            // }    
+        img{
+            margin: 0 25px 0 25px;
+            height: 200px;
+            width: 330px;
+            @media screen and (min-width:$s){
+                margin: 0 180px 0 50px;
+                height: 400px;
+                width: 630px;
+            }
+            @media screen and (min-width:$m){
+                margin: 0 280px 0 150px;
+                // height: 800px;
+                // width: 1030px;
+            }
+            @media screen and (min-width:$l){
+                // height: 1200px;
+                // width: 1430px;
+            }
+        }
+    }
+    .carousel:nth-child(1){
+    }
+    .carousel:nth-child(2){
+    }
+    .carousel:nth-child(3){
+    }
+  }
+
+
