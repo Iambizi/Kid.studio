@@ -25,16 +25,20 @@ export default function content():JSX.Element{
     // SET CAROUSEL DEFAULTS
     let [currentPosition, setCurrentPosition] = useState(0); // Initial slide index value
     let currentSlide = homeProjects[currentPosition]; // variable index value we can reference later
-
+    const [ x, setX ] = useState(0);
     const goNext = () => {
         // currentPosition !== homeProjects.length -1 ? // Check index length
         // setCurrentPosition(currentPosition + 1) : setCurrentPosition(currentPosition = 0);
         // currentSlide = homeProjects[currentPosition];
-        count > 1 ? setCount(0) : setCount(count + 1)
+        count > 1 ? setCount(0) : setCount(count + 1);
+        currentSlide = homeProjects[currentPosition];
+        setX(x + 100);
     }
 
     const goPrevious = () => {
         count < 1 ? setCount(2) : setCount(count - 1);
+        currentSlide = homeProjects[currentPosition];
+        setX(x - 100);
         // currentPosition !== 0 ? // Check index length
         // setCurrentPosition(currentPosition - 1) : setCurrentPosition(currentPosition = homeProjects.length - 1);
         // currentSlide = homeProjects[currentPosition];
@@ -49,7 +53,7 @@ export default function content():JSX.Element{
                     <h1 className={styles.carouselTitle}>{homeProjects[count].video}</h1>
                 </Link>
                 <article className={styles.homeContentSection}>
-                <Carousel count={count} homeProjects={homeProjects} goNext={goNext} goPrevious={goPrevious} />
+                <Carousel count={count} homeProjects={homeProjects} goNext={goNext} goPrevious={goPrevious} x={x}/>
                 </article>
                 <p className={styles.nextButton} onClick={goNext}>NEXT</p>
                 <p className={styles.previousButton} onClick={goPrevious}>PREVIOUS</p>
