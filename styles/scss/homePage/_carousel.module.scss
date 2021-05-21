@@ -1,17 +1,33 @@
 @import "../variables";
 
-@keyframes slideNext {
-    from { left: 0; }
-    to {
-      left: -203%;
-      transform: translateX(-100%);
+.carouselTitle{
+    font-size: 1em;
+    font-family: 'Helvetica', Helvetica;
+    font-weight: 600;
+    position: fixed;
+    left:15.0005%;
+    top: 30%;
+    z-index: 565656;
+
+    @media screen and (min-width:$s){
+        top: 28%;
+        font-size: 4em;
     }
-}
-@keyframes slidePrevious {
-    from { left: 0; }
-    to {
-      left: 100%;
-      transform: translateX(-100%);
+
+    &::before{
+        content: "";
+        width: 10%;
+        height: 0.3%;
+        position: fixed;
+        left:15%;
+        top: 30%;
+        background-color: #000;
+        @media screen and (min-width:$s){
+            height: 0.5%;
+        }
+        @media screen and (min-width:$s){
+            height: 1%;
+        }    
     }
 }
 .slider {
@@ -21,8 +37,7 @@
     position:fixed;
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
-    transition: 1s;
-    animation: 3s linear 0s slide infinite;
+    transition: 1.5s;
 
     .carousel{
         overflow-x: hidden;
@@ -57,12 +72,6 @@
                 // width: 1430px;
             }
         }
-    }
-    .carousel:nth-child(1){
-    }
-    .carousel:nth-child(2){
-    }
-    .carousel:nth-child(3){
     }
   }
 

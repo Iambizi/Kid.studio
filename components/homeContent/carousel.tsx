@@ -1,16 +1,18 @@
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
 import React from 'react';
+import Link from "next/link";
 
 interface Type{
     homeProjects: any;
     count: number;
-    goNext: any;
-    goPrevious: any;
     x: number;
 }
-export default function carousel({count, homeProjects, goNext, goPrevious, x}:Type): JSX.Element{
+export default function carousel({count, homeProjects, x}:Type): JSX.Element{
     return(
         <>
+        <Link href={"/work/[project]"}>
+            <h1 className={styles.carouselTitle}>{homeProjects[count].video}</h1>
+        </Link>
         {/* onChange add classname to add transition changing styles */}
             <div className={styles.slider} style={{left: `${-x}%`}}>
                 {homeProjects.map((p,i)=>

@@ -12,37 +12,7 @@
 .noScroll{
     @include fullviewPort();
     overflow: hidden;
-    .carouselTitle{
-        font-size: 1em;
-        font-family: 'Helvetica', Helvetica;
-        font-weight: 600;
-        position: fixed;
-        left:15%;
-        .slideLeft{
-            left:-85%;
-        }
-        top: 31%;
-        z-index: 565656;
-        @media screen and (min-width:$s){
-            top: 28%;
-            font-size: 4em;
-        }
-        &::before{
-            content: "";
-            width: 10%;
-            height: 0.3%;
-            position: fixed;
-            left:15%;
-            top: 30%;
-            background-color: #000;
-            @media screen and (min-width:$s){
-                height: 0.5%;
-            }
-            @media screen and (min-width:$s){
-                height: 1%;
-            }    
-        }
-    }
+
     .homeContentSection{
         // display: flex;
         position: fixed;

@@ -50,11 +50,8 @@ export default function content():JSX.Element{
         <>
             <WarpedImage />
             <section className={styles.noScroll}>
-                <Link href={"/work/[project]"}>
-                    <h1 className={styles.carouselTitle}>{homeProjects[count].video}</h1>
-                </Link>
                 <article className={styles.homeContentSection}>
-                <Carousel count={count} homeProjects={homeProjects} goNext={goNext} goPrevious={goPrevious} x={x}/>
+                <Carousel count={count} homeProjects={homeProjects} x={x}/>
                 </article>
                 <p className={styles.nextButton} onClick={goNext}>NEXT</p>
                 <p className={styles.previousButton} onClick={goPrevious}>PREVIOUS</p>
