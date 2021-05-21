@@ -25,20 +25,21 @@ export default function content():JSX.Element{
     // SET CAROUSEL DEFAULTS
     let [currentPosition, setCurrentPosition] = useState(0); // Initial slide index value
     let currentSlide = homeProjects[currentPosition]; // variable index value we can reference later
-    const [ x, setX ] = useState(0);
+    let [ x, setX ] = useState(0);
     const goNext = () => {
         // currentPosition !== homeProjects.length -1 ? // Check index length
         // setCurrentPosition(currentPosition + 1) : setCurrentPosition(currentPosition = 0);
         // currentSlide = homeProjects[currentPosition];
         count > 1 ? setCount(0) : setCount(count + 1);
         currentSlide = homeProjects[currentPosition];
-        setX(x + 100);
+        x < 200 ? setX(x + 100) : setX(0);
     }
 
     const goPrevious = () => {
         count < 1 ? setCount(2) : setCount(count - 1);
         currentSlide = homeProjects[currentPosition];
-        setX(x - 100);
+         x < 100 ? setX(200) : setX(x - 100);
+        // setX(x - 100);
         // currentPosition !== 0 ? // Check index length
         // setCurrentPosition(currentPosition - 1) : setCurrentPosition(currentPosition = homeProjects.length - 1);
         // currentSlide = homeProjects[currentPosition];
