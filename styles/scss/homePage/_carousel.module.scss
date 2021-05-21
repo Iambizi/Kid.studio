@@ -19,12 +19,11 @@
     display: flex;
     overflow-x: hidden;
     position:fixed;
-    // left: -0%;
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
-    &.slide{
-        animation: 3s linear 0s slide infinite;
-    }
+    transition: 1s;
+    animation: 3s linear 0s slide infinite;
+
     .carousel{
         overflow-x: hidden;
         flex-direction: row;

@@ -1,18 +1,16 @@
 @import "../variables";
-.scene{
-    // margin: 0 auto;
+@mixin fullviewPort(){
     height: 100vh;
     width: 100vw;
     position: fixed;
     top: 0;
     left: 0;
 }
+.scene{
+    @include fullviewPort();
+}
 .noScroll{
-    height: 100vh;
-    width: 100vw;
-    position: fixed;
-    top: 0;
-    left: 0;
+    @include fullviewPort();
     overflow: hidden;
     .carouselTitle{
         font-size: 1em;

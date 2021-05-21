@@ -11,11 +11,10 @@ interface Type{
 export default function carousel({count, homeProjects, goNext, goPrevious, x}:Type): JSX.Element{
     return(
         <>
-        {/**/}
         {/* onChange add classname to add transition changing styles */}
             <div className={styles.slider} style={{left: `${-x}%`}}>
                 {homeProjects.map((p,i)=>
-                    <div className={`${styles.carousel}`} key={i} style={{left: `${x}`}}>
+                    <div className={`${styles.carousel}`} key={i}>
                         <img
                             className={styles.carouselImage}
                             src={"https://kidstudio.co/content/2-home" + `${homeProjects[i].path}`}
