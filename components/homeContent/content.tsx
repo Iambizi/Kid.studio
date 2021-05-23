@@ -24,24 +24,33 @@ export default function content():JSX.Element{
     // SET CAROUSEL DEFAULTS
     let [currentPosition, setCurrentPosition] = useState(0); // Initial slide index value
     let currentSlide = homeProjects[currentPosition]; // variable index value we can reference later
-    let [ x, setX ] = useState(0);
+    // State for carousel position on slide
+    let [ carouselX , setCarouselX ] = useState(0);
+    // State for title position on slide
+    let [ titleX , setTitleX ] = useState(0);
+
     const goNext = () => {
         // currentPosition !== homeProjects.length -1 ? // Check index length
         // setCurrentPosition(currentPosition + 1) : setCurrentPosition(currentPosition = 0);
         // currentSlide = homeProjects[currentPosition];
         count > 1 ? setCount(0) : setCount(count + 1);
         currentSlide = homeProjects[currentPosition];
-        x < 200 ? setX(x + 100) : setX(0);
+        // if you reach end of slides go back to 1st position
+        carouselX  < 200 ? setCarouselX(carouselX + 100) : setCarouselX(0);
+
+        // titleX <  ? setTitleX( titleX + 200 ) : setTitleX(0);
     }
 
     const goPrevious = () => {
         count < 1 ? setCount(2) : setCount(count - 1);
         currentSlide = homeProjects[currentPosition];
-         x < 100 ? setX(200) : setX(x - 100);
-        // setX(x - 100);
+        // if you at 1st position and hit previous go back to last slide
+        carouselX  < 100 ? setCarouselX(200) : setCarouselX(carouselX  - 100);
         // currentPosition !== 0 ? // Check index length
         // setCurrentPosition(currentPosition - 1) : setCurrentPosition(currentPosition = homeProjects.length - 1);
         // currentSlide = homeProjects[currentPosition];
+
+        setTitleX( titleX - 200 );
     }
 
     return(
@@ -49,7 +58,7 @@ export default function content():JSX.Element{
             <WarpedImage />
             <section className={styles.noScroll}>
                 <article className={styles.homeContentSection}>
-                <Carousel count={count} homeProjects={homeProjects} x={x}/>
+                <Carousel count={count} homeProjects={homeProjects} carouselX={ carouselX } titleX={titleX}/>
                 </article>
                 <p className={styles.nextButton} onClick={goNext}>NEXT</p>
                 <p className={styles.previousButton} onClick={goPrevious}>PREVIOUS</p>
