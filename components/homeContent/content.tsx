@@ -1,7 +1,6 @@
 import styles from "../../styles/scss/homePage/_home.module.scss";
 import WarpedImage from "./warpedImage";
 import Carousel from "./carousel";
-import Link from "next/link";
 import React, {useState, useRef} from "react";
 
 
@@ -44,7 +43,6 @@ export default function content():JSX.Element{
         // setCurrentPosition(currentPosition - 1) : setCurrentPosition(currentPosition = homeProjects.length - 1);
         // currentSlide = homeProjects[currentPosition];
     }
-
 
     return(
         <>

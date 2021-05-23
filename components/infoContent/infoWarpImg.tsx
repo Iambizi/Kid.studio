@@ -1,7 +1,10 @@
+import styles from '../../styles/scss/info/_info.module.scss';
+
 export default function inforWarpImg():JSX.Element{
     return(
         <>
-            <h1> Warpeeeeed IMage</h1>
+            <canvas className={"scene"}>
+            </canvas>
         </>
     )
 }
