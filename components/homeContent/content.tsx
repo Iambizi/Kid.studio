@@ -39,6 +39,7 @@ export default function content():JSX.Element{
         carouselX  < 200 ? setCarouselX(carouselX + 100) : setCarouselX(0);
 
         // titleX <  ? setTitleX( titleX + 200 ) : setTitleX(0);
+        setTitleX( titleX + 200 )
     }
 
     const goPrevious = () => {

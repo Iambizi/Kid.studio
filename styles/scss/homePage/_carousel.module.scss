@@ -1,36 +1,6 @@
 @import "../variables";
 
-.carouselTitle{
-    font-size: 1em;
-    font-family: 'Helvetica', Helvetica;
-    font-weight: 600;
-    position: fixed;
-    left:15.0005%;
-    top: 30%;
-    z-index: 565656;
-    transition: 1.5s;
-
-    @media screen and (min-width:$s){
-        top: 28%;
-        font-size: 4em;
-    }
-
-    &::before{
-        content: "";
-        width: 10%;
-        height: 0.3%;
-        position: fixed;
-        left:15%;
-        top: 30%;
-        background-color: #000;
-        @media screen and (min-width:$s){
-            height: 0.5%;
-        }
-        @media screen and (min-width:$s){
-            height: 1%;
-        }    
-    }
-}
+    
 .slider {
     margin: auto;
     display: flex;
@@ -39,6 +9,45 @@
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
     transition: 1.5s;
+
+    .carouselTitle{
+        font-size: 1em;
+        font-family: 'Helvetica', Helvetica;
+        font-weight: 600;
+        position: fixed;
+        left: 15.0005%;
+        top: 30%;
+        z-index: 565656;
+        transition: 1.5s;
+        
+        &:nth-of-type(1){
+            left: 115.0004%;
+        }
+        &:nth-of-type(2){
+            left: 215.004%;
+        }
+    
+        @media screen and (min-width:$s){
+            top: 28%;
+            font-size: 4em;
+        }
+    
+        &::before{
+            content: "";
+            width: 10%;
+            height: 0.3%;
+            position: fixed;
+            left:15%;
+            top: 30%;
+            background-color: #000;
+            @media screen and (min-width:$s){
+                height: 0.5%;
+            }
+            @media screen and (min-width:$s){
+                height: 1%;
+            }    
+        }
+    }
 
     .carousel{
         overflow-x: hidden;
@@ -57,7 +66,7 @@
         img{
             margin: 0 25px 0 25px;
             height: 200px;
-            width: 330px;
+            // width: 330px;
             @media screen and (min-width:$s){
                 margin: 0 180px 0 50px;
                 height: 400px;
