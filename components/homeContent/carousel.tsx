@@ -4,34 +4,32 @@ import Link from "next/link";
 
 interface Type{
     homeProjects: any;
-    count: number;
     carouselX : number;
     titleX : number;
 }
-export default function carousel({count, homeProjects, carouselX, titleX }:Type): JSX.Element{
-    console.log(count);
+export default function carousel({ homeProjects, carouselX, titleX  }:Type): JSX.Element{
+    
     return(
         //style={{ transform: `translateX(${-titleX}%)`}}
         //style={{left: `${-titleX }%`}}
         <>
-        
         {/* onChange add classname to add transition changing styles */}
             <div className={styles.slider} style={{left: `${ -carouselX }%`}}>
                 {homeProjects.map((p,i)=>
-                    <>
+                    <div key={i}>
                         <Link href={"/work/[project]"}>
-                            <h1 className={styles.carouselTitle} >{homeProjects[count].video}</h1>
+                            <h2 className={styles.videoTitle}>{homeProjects[i].videoTitle}</h2>
                         </Link>
-                        <div className={`${styles.carousel}`} key={i}>
-                        <img
-                            className={styles.carouselImage}
-                            src={"https://kidstudio.co/content/2-home" + `${homeProjects[i].path}`}
-                            alt={"Video Project screenshot"}
-                            height={200}
-                            width={330}
-                        />
+                        <div className={`${styles.carousel}`}>
+                            <img
+                                className={styles.carouselImage}
+                                src={"https://kidstudio.co/content/2-home" + `${homeProjects[i].path}`}
+                                alt={"Video Project screenshot"}
+                                height={200}
+                                width={330}
+                            />
+                        </div>
                     </div>
-                    </>
                 )}
             </div>
         </>

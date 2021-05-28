@@ -8,7 +8,7 @@ export default function footer():JSX.Element{
                 <ul className={styles.footerLinks}>
                     <a className={styles.footerLink} href={"http://instagram.com/kidstudio_"}>INSTAGRAM</a>
                     /
-                    <Link href={"work/reel"}>
+                    <Link href={"/work/reel"}>
                         <a className={styles.footerLink}>REEL</a>
                     </Link>
                     /

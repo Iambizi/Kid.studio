@@ -9,14 +9,15 @@ export default function content():JSX.Element{
     
     const homeProjects = [
         {
-            video:"Bryson Tiller 'Always Forever'",
+            videoTitle:"Bryson Tiller 'Always Forever'",
             path:"/1-alwaysforever-2.gif"
+
         },
-        {   video:"Disclosure 'Energy",
+        {   videoTitle:"Disclosure 'Energy",
             path:"/2-energy.gif"
         },
         {
-            video:"Big Sean 'Wolves' ft. Post Malone",
+            videoTitle:"Big Sean 'Wolves' ft. Post Malone",
             path:"/3-wolves.gif"
         }
     ];
@@ -37,9 +38,8 @@ export default function content():JSX.Element{
         currentSlide = homeProjects[currentPosition];
         // if you reach end of slides go back to 1st position
         carouselX  < 200 ? setCarouselX(carouselX + 100) : setCarouselX(0);
-
         // titleX <  ? setTitleX( titleX + 200 ) : setTitleX(0);
-        setTitleX( titleX + 200 )
+        // setTitleX( titleX + 200 )
     }
 
     const goPrevious = () => {
@@ -50,7 +50,6 @@ export default function content():JSX.Element{
         // currentPosition !== 0 ? // Check index length
         // setCurrentPosition(currentPosition - 1) : setCurrentPosition(currentPosition = homeProjects.length - 1);
         // currentSlide = homeProjects[currentPosition];
-
         setTitleX( titleX - 200 );
     }
 
@@ -59,7 +58,7 @@ export default function content():JSX.Element{
             <WarpedImage />
             <section className={styles.noScroll}>
                 <article className={styles.homeContentSection}>
-                <Carousel count={count} homeProjects={homeProjects} carouselX={ carouselX } titleX={titleX}/>
+                <Carousel homeProjects={homeProjects} carouselX={ carouselX } titleX={titleX}/>
                 </article>
                 <p className={styles.nextButton} onClick={goNext}>NEXT</p>
                 <p className={styles.previousButton} onClick={goPrevious}>PREVIOUS</p>
