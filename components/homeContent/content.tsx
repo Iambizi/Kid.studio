@@ -10,15 +10,18 @@ export default function content():JSX.Element{
     const homeProjects = [
         {
             videoTitle:"Bryson Tiller 'Always Forever'",
-            path:"/1-alwaysforever-2.gif"
+            path:"/1-alwaysforever-2.gif",
+            className: "videoTitle1"
 
         },
         {   videoTitle:"Disclosure 'Energy",
-            path:"/2-energy.gif"
+            path:"/2-energy.gif",
+            className: "videoTitle2"
         },
         {
             videoTitle:"Big Sean 'Wolves' ft. Post Malone",
-            path:"/3-wolves.gif"
+            path:"/3-wolves.gif",
+            className: "videoTitle3"
         }
     ];
     const [count, setCount] = useState(0);
@@ -39,7 +42,7 @@ export default function content():JSX.Element{
         // if you reach end of slides go back to 1st position
         carouselX  < 200 ? setCarouselX(carouselX + 100) : setCarouselX(0);
         // titleX <  ? setTitleX( titleX + 200 ) : setTitleX(0);
-        // setTitleX( titleX + 200 )
+        setTitleX( titleX + 200 )
     }
 
     const goPrevious = () => {

@@ -18,7 +18,7 @@ export default function carousel({ homeProjects, carouselX, titleX  }:Type): JSX
                 {homeProjects.map((p,i)=>
                     <div key={i}>
                         <Link href={"/work/[project]"}>
-                            <h2 className={styles.videoTitle}>{homeProjects[i].videoTitle}</h2>
+                            <h2 className={`${styles[homeProjects[i].className]}`}>{homeProjects[i].videoTitle}</h2>
                         </Link>
                         <div className={`${styles.carousel}`}>
                             <img
