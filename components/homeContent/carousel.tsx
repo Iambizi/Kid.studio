@@ -1,5 +1,4 @@
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
-import React from 'react';
 import Link from "next/link";
 
 interface Type{
@@ -9,15 +8,16 @@ interface Type{
 }
 export default function carousel({ homeProjects, carouselX, titleX  }:Type): JSX.Element{
     
+    
     return(
         //style={{ transform: `translateX(${-titleX}%)`}}
-        //style={{left: `${-titleX }%`}}
+        //style={{left: `${15-titleX }%`}}
         <>
         {/* onChange add classname to add transition changing styles */}
             <div className={styles.slider} style={{left: `${ -carouselX }%`}}>
                 {homeProjects.map((p,i)=>
                     <div key={i}>
-                        <Link href={"/work/[project]"}>
+                        <Link href={"/work/[project]"} key={i}>
                             <h2 className={`${styles[homeProjects[i].className]}`}>{homeProjects[i].videoTitle}</h2>
                         </Link>
                         <div className={`${styles.carousel}`}>

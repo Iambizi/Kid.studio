@@ -1,14 +1,12 @@
 @import "../variables";
 
-    
 .slider {
     margin: auto;
     display: flex;
     overflow-x: hidden;
     position:fixed;
-    scroll-behavior: smooth;
-    scroll-snap-type: x mandatory;
     transition: 1.5s;
+
     .videoTitle1, .videoTitle2, .videoTitle3{
         font-size: 1em;
         font-family: 'Helvetica', Helvetica;
@@ -40,13 +38,26 @@
     }
     .videoTitle1{
         left: 15.0004%;
+        // slide original left by -100
+        &.slideNext{
+            transition: 1.5s;
+            left: -84%;
+        }
     }
     .videoTitle2{
-        left: 115.0004%;
+        // left: 115.0004%;
+        &.slideNext{
+            transition: 1.5s;
+            left: -15%;
+        }
     }
     .videoTitle3{
-        left: 215.004%;
-    }
+        // left: 215.004%;
+        &.slideNext{
+            transition: 1.5s;
+            left: -15%;
+        }
+    }  
     
     .carousel{
         overflow-x: hidden;
