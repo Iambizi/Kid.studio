@@ -6,7 +6,8 @@
     overflow-x: hidden;
     position:fixed;
     transition: 1.5s;
-
+    .sliderWrapper{
+        width: 100vw;
     .videoTitle1, .videoTitle2, .videoTitle3{
         font-size: 1em;
         font-family: 'Helvetica', Helvetica;
@@ -94,6 +95,7 @@
             }
         }
     }
+}
   }
 
 
