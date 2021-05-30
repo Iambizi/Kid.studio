@@ -1,5 +1,55 @@
 @import "../variables";
 
+.titles{
+    display: flex;
+    overflow-x: hidden;
+    position:fixed;
+    transition: .9s ease-in-out;
+    .titleWrapper{
+        width: 100vw;
+        .videoTitle1, .videoTitle2, .videoTitle3{
+            flex-direction: row;
+            font-size: 1em;
+            font-family: 'Helvetica', Helvetica;
+            font-weight: 600;
+            position: fixed;
+            top: 30%;
+            z-index: 565656;
+            margin-left: 14.7vw;
+            word-break: keep-all;
+            @media screen and (min-width:$s){
+                top: 28%;
+                font-size: 4em;
+            }
+            &::before{
+                content: "";
+                width: 10%;
+                height: 0.3%;
+                position: fixed;
+                left:15%;
+                top: 30%;
+                background-color: #000;
+                @media screen and (min-width:$s){
+                    height: 0.5%;
+                }
+                @media screen and (min-width:$s){
+                    height: 1%;
+                }    
+            }
+        }
+        // .videoTitle1{
+        //     left: 15.0004%;
+        //     // slide original left by -100
+        // }
+        // .videoTitle2{
+        //     left: 115.0004%;
+        // }
+        // .videoTitle3{
+        //     left: 215.004%;  
+        // }
+    }
+}
+
 .slider {
     margin: auto;
     display: flex;
@@ -8,95 +58,41 @@
     transition: 1.5s;
     .sliderWrapper{
         width: 100vw;
-    .videoTitle1, .videoTitle2, .videoTitle3{
-        font-size: 1em;
-        font-family: 'Helvetica', Helvetica;
-        font-weight: 600;
-        position: fixed;
-        top: 30%;
-        z-index: 565656;
-        transition: 1.5s;
-        margin-left: 14.70vw;
-        word-break: keep-all;
-        
-        @media screen and (min-width:$s){
-            top: 28%;
-            font-size: 4em;
-        }
-        &::before{
-            content: "";
-            width: 10%;
-            height: 0.3%;
-            position: fixed;
-            left:15%;
-            top: 30%;
-            background-color: #000;
+        .carousel{
+            overflow-x: hidden;
+            flex-direction: row;
+            // margin-top: 90px;
+            scroll-snap-align: start;
             @media screen and (min-width:$s){
-                height: 0.5%;
-            }
-            @media screen and (min-width:$s){
-                height: 1%;
-            }    
-        }
-    }
-    .videoTitle1{
-        // left: 15.0004%;
-        // slide original left by -100
-        &.slideNext{
-            transition: 1.5s;
-            left: -84%;
-        }
-    }
-    .videoTitle2{
-        // left: 115.0004%;
-        &.slideNext{
-            transition: 1.5s;
-            left: -15%;
-        }
-    }
-    .videoTitle3{
-        // left: 215.004%;
-        &.slideNext{
-            transition: 1.5s;
-            left: -15%;
-        }
-    }  
-    
-    .carousel{
-        overflow-x: hidden;
-        flex-direction: row;
-        // margin-top: 90px;
-        scroll-snap-align: start;
-        @media screen and (min-width:$s){
-                // margin: 0 180px 0 50px;
-            }
-            // @media screen and (min-width:$m){
-            //     margin: 0px 20px 0 50px;
-            // }
-            // @media screen and (min-width:$l){
-            //     margin: 0 100px 0 50px;
-            // }    
-        img{
-            margin: 0 25px 0 25px;
-            height: 200px;
-            // width: 330px;
-            @media screen and (min-width:$s){
-                margin: 0 180px 0 50px;
-                height: 400px;
-                width: 630px;
-            }
-            @media screen and (min-width:$m){
-                margin: 0 280px 0 150px;
-                // height: 800px;
-                // width: 1030px;
-            }
-            @media screen and (min-width:$l){
-                // height: 1200px;
-                // width: 1430px;
+                    // margin: 0 180px 0 50px;
+                }
+                // @media screen and (min-width:$m){
+                //     margin: 0px 20px 0 50px;
+                // }
+                // @media screen and (min-width:$l){
+                //     margin: 0 100px 0 50px;
+                // }    
+            img{
+                margin: 0 25px 0 25px;
+                height: 200px;
+                // width: 330px;
+                @media screen and (min-width:$s){
+                    margin: 0 180px 0 50px;
+                    height: 400px;
+                    width: 630px;
+                }
+                @media screen and (min-width:$m){
+                    margin: 0 280px 0 150px;
+                    // height: 800px;
+                    // width: 1030px;
+                }
+                @media screen and (min-width:$l){
+                    // height: 1200px;
+                    // width: 1430px;
+                }
             }
         }
     }
 }
-  }
 
 
