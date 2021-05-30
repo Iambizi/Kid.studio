@@ -14,7 +14,7 @@ export default function content():JSX.Element{
             className: "videoTitle1"
 
         },
-        {   videoTitle:"Disclosure 'Energy",
+        {   videoTitle:"Disclosure 'Energy'",
             path:"/2-energy.gif",
             className: "videoTitle2"
         },
