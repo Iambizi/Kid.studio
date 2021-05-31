@@ -5,6 +5,7 @@
     overflow-x: hidden;
     position:fixed;
     transition: .9s ease-in-out;
+    z-index: 5656565656;
     .titleWrapper{
         width: 100vw;
         .videoTitle1, .videoTitle2, .videoTitle3{
@@ -49,20 +50,33 @@
         // }
     }
 }
-
+@keyframes slideNext {
+    from {
+        transform : translateX(1000%);
+    }
+    to {
+        transform : translateX(0%);
+    }
+}
+@keyframes slidePrevious {
+    from {
+        transform : translateX(-1000%);
+    }
+    to {
+        transform : translateX(0%);
+    }
+}
 .slider {
     margin: auto;
     display: flex;
     overflow-x: hidden;
     position:fixed;
-    transition: 1.5s;
+    // transition: 1.5s;
     .sliderWrapper{
         width: 100vw;
         .carousel{
             overflow-x: hidden;
             flex-direction: row;
-            // margin-top: 90px;
-            scroll-snap-align: start;
             @media screen and (min-width:$s){
                     // margin: 0 180px 0 50px;
                 }
@@ -76,6 +90,12 @@
                 margin: 0 25px 0 25px;
                 height: 200px;
                 // width: 330px;
+                &.slideNext{
+                    animation: slideNext 1.2s;
+                }
+                &.slidePrevious{
+                    animation: slidePrevious 1.2s;
+                }
                 @media screen and (min-width:$s){
                     margin: 0 180px 0 50px;
                     height: 400px;

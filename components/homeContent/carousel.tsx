@@ -1,16 +1,16 @@
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
 import Link from "next/link";
+import React, { useState, useEffect } from "react";
 
 interface Type{
     homeProjects: any;
     carouselX : number;
-    titleX : number;
+    slideNext: boolean;
+    slidePrevious: boolean;
 }
-export default function carousel({ homeProjects, carouselX, titleX  }:Type): JSX.Element{
-    
+export default function carousel({ homeProjects, carouselX, slideNext, slidePrevious }:Type): JSX.Element{
+
     return(
-        //style={{ transform: `translateX(${-titleX}%)`}}
-        //style={{left: `${15-titleX }%`}}
         <>
             <div className={styles.titles} style={{left: `${ -carouselX }%`}}>
                 {homeProjects.map((p,i)=>
@@ -26,7 +26,7 @@ export default function carousel({ homeProjects, carouselX, titleX  }:Type): JSX
                     <div className={styles.sliderWrapper} key={i}>
                         <div className={`${styles.carousel}`}>
                             <img
-                                className={styles.carouselImage}
+                                className={slideNext ? `${styles.carouselImage} ${styles.slideNext}` : `${styles.carouselImage}`}
                                 src={"https://kidstudio.co/content/2-home" + `${homeProjects[i].path}`}
                                 alt={"Video Project screenshot"}
                                 height={200}
