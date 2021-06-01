@@ -35,21 +35,23 @@ export default function content():JSX.Element{
     let [ carouselX , setCarouselX ] = useState(0);
 
     //State for adding slideNext class name for image slide animations
-    const [ slideNext, setSlideNext ] = useState(0);
-    
+    const [ slideNext, setSlideNext ] = useState(false);
+
     // state for adding SlidePrevious class name for image slide animations
-    const [ slidePrevious, setSlidePrevious ] = useState(0);
+    const [ slidePrevious, setSlidePrevious ] = useState(false);
 
     const goNext = () => {
         count > 1 ? setCount(0) : setCount(count + 1);
         carouselX  < 200 ? setCarouselX(carouselX + 100) : setCarouselX(0);
-        setSlideNext(1);
+        setSlideNext(true);
+        setTimeout(() => setSlideNext(false), 600);
     }
 
     const goPrevious = () => {
         count < 1 ? setCount(2) : setCount(count - 1);
         carouselX  < 100 ? setCarouselX(200) : setCarouselX(carouselX  - 100);
-        setSlidePrevious(1);
+        setSlidePrevious(true);
+        setTimeout(() => setSlidePrevious(false), 600);
     }
 
     return(

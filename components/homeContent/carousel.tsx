@@ -5,8 +5,8 @@ import React from "react";
 interface Type{
     homeProjects: any;
     carouselX : number;
-    slideNext: number;
-    slidePrevious: number;
+    slideNext: boolean;
+    slidePrevious: boolean;
 }
 export default function carousel({ homeProjects, carouselX, slideNext, slidePrevious }:Type): JSX.Element{
 
@@ -26,7 +26,7 @@ export default function carousel({ homeProjects, carouselX, slideNext, slidePrev
                     <div className={styles.sliderWrapper} key={i}>
                         <div className={`${styles.carousel}`}>
                             <img
-                                className={slideNext ? `${styles[homeProjects[i].imageClassName]} ${styles.slideNext}` : `${styles[homeProjects[i].imageClassName]} ${styles.slideNext}`}
+                                className={slideNext ? `${styles[homeProjects[i].imageClassName]} ${styles.slideNext}` : `${styles[homeProjects[i].imageClassName]}`}
                                 src={"https://kidstudio.co/content/2-home" + `${homeProjects[i].path}`}
                                 alt={"Video Project screenshot"}
                                 height={200}
