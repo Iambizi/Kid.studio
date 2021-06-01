@@ -11,17 +11,20 @@ export default function content():JSX.Element{
         {
             videoTitle:"Bryson Tiller 'Always Forever'",
             path:"/1-alwaysforever-2.gif",
-            className: "videoTitle1"
+            titleClassName: "videoTitle1",
+            imageClassName: "carouselImage1"
 
         },
         {   videoTitle:"Disclosure 'Energy'",
             path:"/2-energy.gif",
-            className: "videoTitle2"
+            titleClassName: "videoTitle2",
+            imageClassName: "carouselImage2"
         },
         {
             videoTitle:"Big Sean 'Wolves' ft. Post Malone",
             path:"/3-wolves.gif",
-            className: "videoTitle3"
+            titleClassName: "videoTitle3",
+            imageClassName: "carouselImage3"
         }
     ];
 
@@ -32,20 +35,21 @@ export default function content():JSX.Element{
     let [ carouselX , setCarouselX ] = useState(0);
 
     //State for adding slideNext class name for image slide animations
-    const [ slideNext, setSlideNext ] = useState(false);
+    const [ slideNext, setSlideNext ] = useState(0);
+    
     // state for adding SlidePrevious class name for image slide animations
-    const [ slidePrevious, setSlidePrevious ] = useState(false);
+    const [ slidePrevious, setSlidePrevious ] = useState(0);
 
     const goNext = () => {
         count > 1 ? setCount(0) : setCount(count + 1);
         carouselX  < 200 ? setCarouselX(carouselX + 100) : setCarouselX(0);
-        setSlideNext(true);
+        setSlideNext(1);
     }
 
     const goPrevious = () => {
         count < 1 ? setCount(2) : setCount(count - 1);
         carouselX  < 100 ? setCarouselX(200) : setCarouselX(carouselX  - 100);
-        setSlidePrevious(true);
+        setSlidePrevious(1);
     }
 
     return(

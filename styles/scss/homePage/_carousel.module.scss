@@ -86,16 +86,11 @@
                 // @media screen and (min-width:$l){
                 //     margin: 0 100px 0 50px;
                 // }    
-            img{
+                .carouselImage1, .carouselImage2, .carouselImage3{
                 margin: 0 25px 0 25px;
                 height: 200px;
                 // width: 330px;
-                &.slideNext{
-                    animation: slideNext 1.2s;
-                }
-                &.slidePrevious{
-                    animation: slidePrevious 1.2s;
-                }
+                
                 @media screen and (min-width:$s){
                     margin: 0 180px 0 50px;
                     height: 400px;
@@ -111,8 +106,31 @@
                     // width: 1430px;
                 }
             }
-        }
+            .carouselImage1{
+                &.slideNext[slideNext='1']{
+                    animation: slideNext 1.2s;
+                }
+                &.slidePrevious[slidePrevious='1']{
+                    animation: slidePrevious 1.2s;
+                }
+            }
+            .carouselImage2{
+                &.slideNext[slideNext='1']{
+                    animation: slideNext 1.2s;
+                }
+                &.slidePrevious[ slidePrevious='1' ]{
+                    animation: slidePrevious 1.2s;
+                }
+            }
+            .carouselImage3{
+                &.slideNext[slideNext='1']{
+                    animation: slideNext 1.2s;
+                }
+                &.slidePrevious[slidePrevious='1']{
+                    animation: slidePrevious 1.2s;
+                }
+            }
     }
 }
-
+}
 

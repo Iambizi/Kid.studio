@@ -1,12 +1,12 @@
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
 import Link from "next/link";
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 interface Type{
     homeProjects: any;
     carouselX : number;
-    slideNext: boolean;
-    slidePrevious: boolean;
+    slideNext: number;
+    slidePrevious: number;
 }
 export default function carousel({ homeProjects, carouselX, slideNext, slidePrevious }:Type): JSX.Element{
 
@@ -16,7 +16,7 @@ export default function carousel({ homeProjects, carouselX, slideNext, slidePrev
                 {homeProjects.map((p,i)=>
                      <div className={styles.titleWrapper} key={i}>
                         <Link href={"/work/[project]"}>
-                            <h2 className={`${styles[homeProjects[i].className]}`}>{homeProjects[i].videoTitle}</h2>
+                            <h2 className={`${styles[homeProjects[i].titleClassName]}`}>{homeProjects[i].videoTitle}</h2>
                         </Link>
                      </div>
                 )}
@@ -26,11 +26,12 @@ export default function carousel({ homeProjects, carouselX, slideNext, slidePrev
                     <div className={styles.sliderWrapper} key={i}>
                         <div className={`${styles.carousel}`}>
                             <img
-                                className={slideNext ? `${styles.carouselImage} ${styles.slideNext}` : `${styles.carouselImage}`}
+                                className={slideNext ? `${styles[homeProjects[i].imageClassName]} ${styles.slideNext}` : `${styles[homeProjects[i].imageClassName]} ${styles.slideNext}`}
                                 src={"https://kidstudio.co/content/2-home" + `${homeProjects[i].path}`}
                                 alt={"Video Project screenshot"}
                                 height={200}
                                 width={330}
+                                slideNext={slideNext}
                             />
                         </div>
                     </div>
