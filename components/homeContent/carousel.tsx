@@ -31,7 +31,6 @@ export default function carousel({ homeProjects, carouselX, slideNext, slidePrev
                                 alt={"Video Project screenshot"}
                                 height={200}
                                 width={330}
-                                slideNext={slideNext}
                             />
                         </div>
                     </div>
