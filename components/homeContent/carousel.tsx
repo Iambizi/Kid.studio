@@ -36,8 +36,6 @@ export default function carousel({ homeProjects, carouselX, slideNext, slidePrev
                                     `${styles[homeProjects[i].imageClassName]} ${styles.slideNext}` : 
                                     (slidePrevious) ?
                                     `${styles[homeProjects[i].imageClassName]} ${styles.slidePrevious}` :
-                                    (!slideNext || !slidePrevious) ?
-                                    `${styles[homeProjects[i].imageClassName]}`:
                                     `${styles[homeProjects[i].imageClassName]}`
                                 }
                                 src={"https://kidstudio.co/content/2-home" + `${homeProjects[i].path}`}

@@ -80,6 +80,13 @@
                 margin: 0 25px 0 25px;
                 height: 200px;
                 // width: 330px;
+
+                &.slideNext{
+                    animation: slideNext 1.2s ease-out;
+                }
+                &.slidePrevious{
+                    animation: slidePrevious 1.2s ease-out;
+                }
                 
                 @media screen and (min-width:$s){
                     margin: 0 180px 0 50px;
@@ -94,30 +101,6 @@
                 @media screen and (min-width:$l){
                     // height: 1200px;
                     // width: 1430px;
-                }
-            }
-            .carouselImage1{
-                &.slideNext{
-                    animation: slideNext 1.2s;
-                }
-                &.slidePrevious{
-                    animation: slidePrevious 1.2s;
-                }
-            }
-            .carouselImage2{
-                &.slideNext{
-                    animation: slideNext 1.2s;
-                }
-                &.slidePrevious{
-                    animation: slidePrevious 1.2s;
-                }
-            }
-            .carouselImage3{
-                &.slideNext{
-                    animation: slideNext 1.2s;
-                }
-                &.slidePrevious{
-                    animation: slidePrevious 1.2s;
                 }
             }
     }
