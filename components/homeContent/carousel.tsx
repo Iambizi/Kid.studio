@@ -9,12 +9,9 @@ interface Type{
     slidePrevious: boolean;
 }
 export default function carousel({ homeProjects, carouselX, slideNext, slidePrevious }:Type): JSX.Element{
-    // slideNext ? 
-    // `${styles[homeProjects[i].imageClassName]} ${styles.slideNext}` : 
-    // slidePrevious ?
-    // `${styles[homeProjects[i].imageClassName]} ${styles.slidePrevious}` :
-    // !slideNext || !slidePrevious ?
-    // `${styles[homeProjects[i].imageClassName]}`
+    {
+        carouselX  < 200 ?  `${styles.sliderWrapper} ${styles.slidePrevious}` : carouselX > 200 ? `${styles.sliderWrapper} ${styles.slideNext}` : `${styles.sliderWrapper}`
+    }
     return(
         <>
             <div className={styles.titles} style={{left: `${ -carouselX }%`}}>
@@ -28,7 +25,7 @@ export default function carousel({ homeProjects, carouselX, slideNext, slidePrev
             </div>
             <div className={styles.slider} style={{left: `${ -carouselX }%`}}>
                 {homeProjects.map((p,i)=>
-                    <div className={styles.sliderWrapper} key={i}>
+                    <div className={carouselX  < 200 ?  `${styles.sliderWrapper} ${styles.slidePrevious}` : carouselX > 200 ? `${styles.sliderWrapper} ${styles.slideNext}` : `${styles.sliderWrapper}`} key={i}>
                         <div className={`${styles.carousel}`}>
                             <img
                                 className={

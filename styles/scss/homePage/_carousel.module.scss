@@ -64,6 +64,9 @@
     // transition: 1.5s;
     .sliderWrapper{
         width: 100vw;
+        &.slidePrevious{
+            animation: slidePrevious 1.2s ease-out;
+        }
         .carousel{
             overflow-x: hidden;
             flex-direction: row;
