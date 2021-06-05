@@ -1,16 +1,24 @@
-import styles from "../../styles/scss/homePage/_home.module.scss";
+import styles from "../../styles/scss/homePage/_carousel.module.scss";
+
 import React, {useEffect} from 'react';
 import * as THREE from 'three';
 
-export default function warpedImage():JSX.Element{
+interface Type{
+    homeProjects: any;
+    carouselX : number;
+    slideNext: boolean;
+    slidePrevious: boolean;
+}
+
+export default function warpedImage({slideNext, slidePrevious, homeProjects, carouselX}:Type):JSX.Element{
     useEffect(()=>{
 
         //Creat your scene, (your movie set)
         const scene = new THREE.Scene();
         // scene.background = new THREE.Color( 0x000000 );
 
-        const geometry = new THREE.PlaneGeometry( 5, 20, 32 );
-        const material = new THREE.MeshBasicMaterial( {color: 0xfffffff, side: THREE.DoubleSide} );
+        const geometry = new THREE.PlaneGeometry( 1,1 );
+        const material = new THREE.MeshBasicMaterial( {color: 0x808080, side: THREE.DoubleSide} );
         const Mesh = new THREE.Mesh( geometry, material );
         scene.add( Mesh );
 
@@ -19,11 +27,16 @@ export default function warpedImage():JSX.Element{
             height: window.innerHeight
         }
          //camera
-        const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100);
+        const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 1000);
+
+        
 
         //Renderer
         const canvas = document.querySelector('.scene');
 
+        camera.position.z = 3
+
+        camera.lookAt(Mesh.position);
         // Control
         // const controls = new OrbitControls(camera, canvas)
         
@@ -35,7 +48,7 @@ export default function warpedImage():JSX.Element{
 
         const renderer = new THREE.WebGLRenderer({
             canvas: canvas,
-            // antialias: true
+            antialias: true,
             alpha: true
         })
         renderer.setClearColor( 0x000000, 0 );
@@ -44,6 +57,27 @@ export default function warpedImage():JSX.Element{
     return(
         <>
             <canvas className={"scene"}>
+                <div className={styles.slider} style={{left: `${ -carouselX }%`}}>
+                    {homeProjects.map((p,i)=>
+                        <div className={`${styles.sliderWrapper}`} key={i}>
+                            <div className={`${styles.carousel}`}>
+                                <img
+                                    className={
+                                        (slideNext) ? 
+                                        `${styles[homeProjects[i].imageClassName]} ${styles.slideNext}` : 
+                                        (slidePrevious) ?
+                                        `${styles[homeProjects[i].imageClassName]} ${styles.slidePrevious}` :
+                                        `${styles[homeProjects[i].imageClassName]}`
+                                    }
+                                    src={"https://kidstudio.co/content/2-home" + `${homeProjects[i].path}`}
+                                    alt={"Video Project screenshot"}
+                                    height={200}
+                                    width={330}
+                                />
+                            </div>
+                        </div>
+                    )}
+                </div>
             </canvas>
         </>
     )

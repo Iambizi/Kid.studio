@@ -21,17 +21,17 @@ export default function carousel({ homeProjects, carouselX, slideNext, slidePrev
             <div className={styles.titles} style={{left: `${ -carouselX }%`}}>
                 {homeProjects.map((p,i)=>
                      <div className={styles.titleWrapper} key={i}>
-                        <Link href={"/work/[project]"}>
+                        <Link href={"/work/"}>
                             <h2 className={`${styles[homeProjects[i].titleClassName]}`}>{homeProjects[i].videoTitle}</h2>
                         </Link>
                      </div>
                 )}
             </div>
-            <div className={styles.slider} style={{left: `${ -carouselX }%`}}>
+            {/* <div className={styles.slider} style={{left: `${ -carouselX }%`}}>
                 {homeProjects.map((p,i)=>
                     <div className={`${styles.sliderWrapper}`} key={i}>
                         <div className={`${styles.carousel}`}>
-                            {/* <img
+                            <img
                                 className={
                                     (slideNext) ? 
                                     `${styles[homeProjects[i].imageClassName]} ${styles.slideNext}` : 
@@ -43,12 +43,12 @@ export default function carousel({ homeProjects, carouselX, slideNext, slidePrev
                                 alt={"Video Project screenshot"}
                                 height={200}
                                 width={330}
-                            /> */}
-                            <WarpedIMG />
+                            />
                         </div>
                     </div>
                 )}
-            </div>
+            </div> */}
+            <WarpedIMG slideNext={slidePrevious} slidePrevious={slidePrevious} homeProjects={homeProjects} carouselX={carouselX} />
         </>
     )
 }
