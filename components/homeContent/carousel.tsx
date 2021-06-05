@@ -1,6 +1,7 @@
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
 import Link from "next/link";
 import React from "react";
+import WarpedIMG from "./warpedImage";
 
 interface Type{
     homeProjects: any;
@@ -8,10 +9,13 @@ interface Type{
     slideNext: boolean;
     slidePrevious: boolean;
 }
+
 export default function carousel({ homeProjects, carouselX, slideNext, slidePrevious }:Type): JSX.Element{
+
     {
-        carouselX  < 200 ?  `${styles.sliderWrapper} ${styles.slidePrevious}` : carouselX > 200 ? `${styles.sliderWrapper} ${styles.slideNext}` : `${styles.sliderWrapper}`
+        carouselX  < -200 ?  `${styles.sliderWrapper} ${styles.slidePrevious}` : carouselX < -100 ? `${styles.sliderWrapper} ${styles.slideNext}` : `${styles.sliderWrapper}`
     }
+    //carouselX === -100 * (homeProjects.length - 1) ?
     return(
         <>
             <div className={styles.titles} style={{left: `${ -carouselX }%`}}>
@@ -25,9 +29,9 @@ export default function carousel({ homeProjects, carouselX, slideNext, slidePrev
             </div>
             <div className={styles.slider} style={{left: `${ -carouselX }%`}}>
                 {homeProjects.map((p,i)=>
-                    <div className={carouselX  < 200 ?  `${styles.sliderWrapper} ${styles.slidePrevious}` : carouselX > 200 ? `${styles.sliderWrapper} ${styles.slideNext}` : `${styles.sliderWrapper}`} key={i}>
+                    <div className={`${styles.sliderWrapper}`} key={i}>
                         <div className={`${styles.carousel}`}>
-                            <img
+                            {/* <img
                                 className={
                                     (slideNext) ? 
                                     `${styles[homeProjects[i].imageClassName]} ${styles.slideNext}` : 
@@ -39,7 +43,8 @@ export default function carousel({ homeProjects, carouselX, slideNext, slidePrev
                                 alt={"Video Project screenshot"}
                                 height={200}
                                 width={330}
-                            />
+                            /> */}
+                            <WarpedIMG />
                         </div>
                     </div>
                 )}

@@ -1,5 +1,4 @@
 import styles from "../../styles/scss/homePage/_home.module.scss";
-import WarpedImage from "./warpedImage";
 import Carousel from "./carousel";
 import React, { useState } from "react";
 
@@ -56,7 +55,6 @@ export default function content():JSX.Element{
 
     return(
         <>
-            <WarpedImage />
             <section className={styles.noScroll}>
                 <article className={styles.homeContentSection}>
                 <Carousel homeProjects={homeProjects} carouselX={ carouselX } slideNext={slideNext} slidePrevious={slidePrevious}/>
