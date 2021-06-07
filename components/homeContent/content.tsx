@@ -1,4 +1,5 @@
 import styles from "../../styles/scss/homePage/_home.module.scss";
+import WarpedImage from "./warpedImage";
 import Carousel from "./carousel";
 import React, { useState } from "react";
 
