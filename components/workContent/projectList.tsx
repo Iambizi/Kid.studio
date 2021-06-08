@@ -1,7 +1,14 @@
 import Link from "next/link";
 import styles from "../../styles/scss/workPage/_work.module.scss";
-
+import React, { useRef, useEffect } from 'react';
 export default function work(){
+
+    const LinkRef = useRef(null);
+
+    const refNodeLink = LinkRef.current;
+
+    
+    
     
 
     const projectList = [
@@ -96,14 +103,26 @@ export default function work(){
             hoverImage: "/pique/pique-bmp.gif"
         }
     ]
+
+    // okHover mouse over functionality
+    const handleMouseOver = (e) => {
+        const element = e.target.style;
+        const okGif= e.target.getAttribute('data-okimage');
+        
+        // e.mousemove(function(e){
+        //     element.css('backgroundPosition', e.pageX + 'px ' + e.pageY + 'px');
+        //   });
+
+          console.log(element);
+    }
     return(
         <>
             <section className={styles.projectListSection}>
                 <div className={styles.projectLinks}>
                     {projectList.map((item, i)=>(
-                            <Link href={ "http://kidstudio.co/work" + item.projectPath } key={i}>
-                                <a data-okimage={ "http://kidstudio.co/work" + item.hoverImage } className={styles.projectLink}>{item.projectTitle}</a>
-                            </Link>
+                        <Link href={ "http://kidstudio.co/work" + item.projectPath } key={i}>
+                            <a ref={LinkRef} data-okimage={ "http://kidstudio.co/work" + item.hoverImage } className={`${styles.projectLink}`} onMouseOver={handleMouseOver}>{item.projectTitle}</a>
+                        </Link>
                     ))}
                 </div>
             </section>
