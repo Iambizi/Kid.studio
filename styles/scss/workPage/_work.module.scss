@@ -1,6 +1,8 @@
 @import "../variables";
 
 .projectListSection{
+    width: 100%;
+    height: 100%;
     .projectLinks{
         display: flex;
         flex-direction: column;

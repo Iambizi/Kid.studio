@@ -1,15 +1,12 @@
 import Link from "next/link";
 import styles from "../../styles/scss/workPage/_work.module.scss";
-import React, { useRef, useEffect, useState } from 'react';
-export default function work(){
 
-    const LinkRef = useRef(null);
+interface Type{
+    bgImg: boolean;
+    setbgImg: any;
+}
 
-    const refNodeLink = LinkRef.current;
-
-    const [bgImg, setbgImg] = useState(false);
-    
-    
+export default function work( {bgImg, setbgImg}:Type ){
 
     const projectList = [
         {
@@ -103,25 +100,41 @@ export default function work(){
             hoverImage: "/pique/pique-bmp.gif"
         }
     ]
-
+    // const this.el = document.createElement('div');
+    // this.el.style.display = 'contents';
     // okHover mouse over functionality
     const handleMouseOver = (e) => {
         const element = e.target;
         const bg = document.body;
         const okGif= e.target.getAttribute('data-okimage');
-        
 
-        
         const link = document.getElementsByClassName("Link");
 
         setbgImg(true)
+        
         bg.style.backgroundImage = `url(${okGif})`;
 
+        {
+            /*
+                for loop for function on mousemove event
+                adds: 
+            */
+       }
+        for(var i = 0; i < link.length; i++) {
+            ((index)=> {
+              link[index].addEventListener("mousemove", ()=> {
+                bg.style.backgroundPosition = `${e.pageX}px ${e.pageY}px`;
+                bg.style.zIndex = "420";
+                console.log(e.pageX, e.pageY)
+               })
+            })(i);
+          }
+
+        // for loop for mouseOut event  
         for(var i = 0; i < link.length; i++) {
             ((index)=> {
               link[index].addEventListener("mouseout", ()=> {
-                bg.style.backgroundPosition = `${e.pageX} + px + ${e.pageY} + px`;
-                bg.style.backgroundImage = `url('')`;
+                bg.removeAttribute("style");
                })
             })(i);
           }
@@ -132,7 +145,7 @@ export default function work(){
                 <div className={styles.projectLinks}>
                     {projectList.map((item, i)=>(
                         <Link href={ "http://kidstudio.co/work" + item.projectPath } key={i}>
-                            <a ref={LinkRef} data-okimage={ "http://kidstudio.co/work" + item.hoverImage } className={`${styles.projectLink} Link`} onMouseOver={handleMouseOver}>{item.projectTitle}</a>
+                            <a data-okimage={ "http://kidstudio.co/work" + item.hoverImage } className={ bgImg ? `${styles.projectLink} ${styles.hoverColor } Link`: `${styles.projectLink} Link` } onMouseMove={handleMouseOver}>{item.projectTitle}</a>
                         </Link>
                     ))}
                 </div>
