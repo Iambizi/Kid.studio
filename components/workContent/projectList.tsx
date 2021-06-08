@@ -101,8 +101,8 @@ export default function work(){
             <section className={styles.projectListSection}>
                 <div className={styles.projectLinks}>
                     {projectList.map((item, i)=>(
-                            <Link href={"http://kidstudio.co/work" + item.projectPath} key={i}>
-                                <a className={styles.projectLink}>{item.projectTitle}</a>
+                            <Link href={ "http://kidstudio.co/work" + item.projectPath } key={i}>
+                                <a data-okimage={ "http://kidstudio.co/work" + item.hoverImage } className={styles.projectLink}>{item.projectTitle}</a>
                             </Link>
                     ))}
                 </div>

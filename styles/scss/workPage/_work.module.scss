@@ -9,6 +9,7 @@
         letter-spacing: 0.1em;
         padding-bottom: 5%;
         margin-top: 15%;
+        align-items: center;
         @media screen and (min-width:$s){
             margin-top: 5%;
             font-size: .77em;
@@ -24,6 +25,11 @@
         .projectLink{
             padding: 2px 6px;
             margin-bottom: 5px;
+            &:hover{
+                color: #fff;
+                // padding: 2px 10px;
+                background-color: #000;
+            }
         }
     }
 }
