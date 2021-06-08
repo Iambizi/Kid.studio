@@ -13,7 +13,7 @@ export default function layout({ children, bgImg, setbgImg }:Type):JSX.Element{
         <>
             <Navigation bgImg={bgImg} setbgImg={setbgImg} />
                 {children}
-            <Footer />
+            <Footer bgImg={bgImg} setbgImg={setbgImg} />
         </>
     );
 }
