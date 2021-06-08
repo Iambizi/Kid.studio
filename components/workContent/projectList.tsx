@@ -1,13 +1,13 @@
 import Link from "next/link";
 import styles from "../../styles/scss/workPage/_work.module.scss";
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 export default function work(){
 
     const LinkRef = useRef(null);
 
     const refNodeLink = LinkRef.current;
 
-    
+    const [bgImg, setbgImg] = useState(false);
     
     
 
@@ -106,14 +106,25 @@ export default function work(){
 
     // okHover mouse over functionality
     const handleMouseOver = (e) => {
-        const element = e.target.style;
+        const element = e.target;
+        const bg = document.body;
         const okGif= e.target.getAttribute('data-okimage');
         
-        // e.mousemove(function(e){
-        //     element.css('backgroundPosition', e.pageX + 'px ' + e.pageY + 'px');
-        //   });
 
-          console.log(element);
+        
+        const link = document.getElementsByClassName("Link");
+
+        setbgImg(true)
+        bg.style.backgroundImage = `url(${okGif})`;
+
+        for(var i = 0; i < link.length; i++) {
+            ((index)=> {
+              link[index].addEventListener("mouseout", ()=> {
+                bg.style.backgroundPosition = `${e.pageX} + px + ${e.pageY} + px`;
+                bg.style.backgroundImage = `url('')`;
+               })
+            })(i);
+          }
     }
     return(
         <>
@@ -121,7 +132,7 @@ export default function work(){
                 <div className={styles.projectLinks}>
                     {projectList.map((item, i)=>(
                         <Link href={ "http://kidstudio.co/work" + item.projectPath } key={i}>
-                            <a ref={LinkRef} data-okimage={ "http://kidstudio.co/work" + item.hoverImage } className={`${styles.projectLink}`} onMouseOver={handleMouseOver}>{item.projectTitle}</a>
+                            <a ref={LinkRef} data-okimage={ "http://kidstudio.co/work" + item.hoverImage } className={`${styles.projectLink} Link`} onMouseOver={handleMouseOver}>{item.projectTitle}</a>
                         </Link>
                     ))}
                 </div>
