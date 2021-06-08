@@ -50,6 +50,9 @@
                 // padding: 2px 10px;
                 background-color: #000;
             }
+            &.hoverColor{
+                color: #fff;
+            }
         }
     }
     @media screen and (max-width:$l){

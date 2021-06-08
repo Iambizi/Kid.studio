@@ -100,9 +100,8 @@ export default function work( {bgImg, setbgImg}:Type ){
             hoverImage: "/pique/pique-bmp.gif"
         }
     ]
-    // const this.el = document.createElement('div');
-    // this.el.style.display = 'contents';
-    // okHover mouse over functionality
+    
+    // rewrote the okHover mouse over functionality
     const handleMouseOver = (e) => {
         const element = e.target;
         const bg = document.body;
@@ -114,10 +113,12 @@ export default function work( {bgImg, setbgImg}:Type ){
         
         bg.style.backgroundImage = `url(${okGif})`;
 
+        // Because link constant returns htmlCollection, we need to iterate through using a for loop to make changes
         {
             /*
                 for loop for function on mousemove event
-                adds: 
+                adds: backgroundPosition
+                z-index
             */
        }
         for(var i = 0; i < link.length; i++) {
@@ -125,16 +126,16 @@ export default function work( {bgImg, setbgImg}:Type ){
               link[index].addEventListener("mousemove", ()=> {
                 bg.style.backgroundPosition = `${e.pageX}px ${e.pageY}px`;
                 bg.style.zIndex = "420";
-                console.log(e.pageX, e.pageY)
                })
             })(i);
           }
 
-        // for loop for mouseOut event  
+        // for mouseOut event: removes all styles 
         for(var i = 0; i < link.length; i++) {
             ((index)=> {
               link[index].addEventListener("mouseout", ()=> {
                 bg.removeAttribute("style");
+                setbgImg(false)
                })
             })(i);
           }

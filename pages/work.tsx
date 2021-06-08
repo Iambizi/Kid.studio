@@ -9,8 +9,8 @@ export default function work():JSX.Element{
      return(
          <>
             <Meta page={"Work"} />
-            <Layout>
-                <ProjectList bgImg={bgImg} setbgImg={setbgImg} />
+            <Layout bgImg={bgImg} setbgImg={setbgImg}>
+                <ProjectList bgImg={bgImg} setbgImg={setbgImg}  />
             </Layout>
          </>
      )

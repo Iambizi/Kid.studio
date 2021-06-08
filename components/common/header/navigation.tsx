@@ -2,7 +2,12 @@ import styles from '../../../styles/scss/common/_navigation.module.scss';
 import Link from 'next/link';
 import Logo from './logo';
 
-export default function navigation():JSX.Element{
+interface Type {
+    bgImg?: boolean;
+    setbgImg?: any;
+}
+
+export default function navigation({ bgImg, setbgImg }:Type):JSX.Element{
     return(
         <>
             <header>
@@ -10,10 +15,10 @@ export default function navigation():JSX.Element{
                     <Logo />
                     <ul className={styles.navLinks}>
                         <Link href={"/work"}>
-                            <a className={styles.navLink}>WORK</a>
+                            <a className={ bgImg ? `${styles.navLink} ${styles.hoverColor}` : `${styles.navLink}` }>WORK</a>
                         </Link>
                         <Link href={"/info"}>
-                            <a className={styles.navLink}>INFO</a>
+                            <a className={ bgImg ? `${styles.navLink} ${styles.hoverColor}` : `${styles.navLink}` }>INFO</a>
                         </Link>
                     </ul>
                 </nav>
