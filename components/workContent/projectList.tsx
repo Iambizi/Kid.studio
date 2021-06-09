@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useEffect } from "react";
 import styles from "../../styles/scss/workPage/_work.module.scss";
 
 interface Type{
@@ -140,6 +141,10 @@ export default function work( {bgImg, setbgImg}:Type ){
             })(i);
           }
     }
+
+    useEffect(()=>{
+        handleMouseOver;
+    },[])
     return(
         <>
             <section className={styles.projectListSection}>
