@@ -11,9 +11,9 @@ interface Type {
 export default function layout({ children, bgImg, setbgImg }:Type):JSX.Element{
     return(
         <>
-            <Navigation bgImg={bgImg} setbgImg={setbgImg} />
+            <Navigation bgImg={bgImg} />
                 {children}
-            <Footer bgImg={bgImg} setbgImg={setbgImg} />
+            <Footer bgImg={bgImg} />
         </>
     );
 }

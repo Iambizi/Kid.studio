@@ -4,15 +4,14 @@ import Logo from './logo';
 
 interface Type {
     bgImg?: boolean;
-    setbgImg?: any;
 }
 
-export default function navigation({ bgImg, setbgImg }:Type):JSX.Element{
+export default function navigation( { bgImg }:Type ):JSX.Element{
     return(
         <>
             <header>
                 <nav className={styles.navigation}>
-                    <Logo />
+                    <Logo bgImg={bgImg} />
                     <ul className={styles.navLinks}>
                         <Link href={"/work"}>
                             <a className={ bgImg ? `${styles.navLink} ${styles.hoverColor}` : `${styles.navLink}` }>WORK</a>
