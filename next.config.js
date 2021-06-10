@@ -17,6 +17,12 @@
 // process.env.SENTRY_DSN = SENTRY_DSN;
 //Part of Sentry end
 module.exports = {
+    webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+        config.node = {
+            fs: 'empty', // This is required
+        }
+        return config
+    },
     images: {
         domains: ['https://kidstudio.co']
     },

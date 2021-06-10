@@ -12,15 +12,3 @@ export default function projectPages(){
         </>
     )
 }
-// export const getStaticPaths: GetStaticPaths = async () =>{
-//     return {
-//         paths: [{params: {project:'ya'}}],
-//         fallback: 'blocking'
-//     };
-// }
-
-// export const getStaticProps: GetStaticProps = async ({params})=>{
-//     return {
-
-//     }
-// }
