@@ -9,12 +9,11 @@ interface Type{
 }
 
 export default function projectPages({projects}: Type){
-    console.log(projects);
     return(
         <>
             <Meta page={"Reel"} />
             <Layout>
-                <h1>{projects.title}</h1>
+                <h1>{projects[0].title}</h1>
             </Layout>
         </>
     )
@@ -39,30 +38,9 @@ export const getStaticProps: GetStaticProps = async (context)=>{
 export const getStaticPaths: GetStaticPaths = async () =>{
     return {
         paths: [
-            {params: {projects:'ya'}}
+            { params: { project: 'project' }}
         ],
         fallback: 'blocking'
     };
 }
-
-// export const getStaticProps: GetStaticProps = async ({params})=>{
-//     return {
-//         props: {
-//             work: [
-//                 {
-//                     // title: "BRYSON TILLER 'ALWAYS FOREVER'",
-//                     path: "/bryson-tiller-always-forever"
-//                 },
-//                 {
-//                     // title: "BIG SEAN 'WOLVES' FT. POST MALONE",
-//                     path: "/wolves"
-//                 },
-//                 {
-//                     // title: "MUSTAFA 'AIR FROCES'",
-//                     path: "/mustafa-air-forces"
-//                 }
-//             ]
-//         }
-//     }
-// }
 

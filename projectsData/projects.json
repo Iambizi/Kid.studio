@@ -2,75 +2,93 @@
     "projects": [
         {
             "title": "BRYSON TILLER 'ALWAYS FOREVER'",
-            "path": "/bryson-tiller-always-forever"
+            "path": "/bryson-tiller-always-forever",
+            "hoverImage": "/bryson-tiller-always-forever/alwaysforever.gif"
         },
         {
             "title": "BIG SEAN 'WOLVES' FT. POST MALONE",
-            "path": "/wolves"
+            "path": "/wolves",
+            "hoverImage": "/wolves/wolves.gif"
         },
         {
             "title": "MUSTAFA 'AIR FROCES'",
-            "path": "/mustafa-air-forces"
+            "path": "/mustafa-air-forces",
+            "hoverImage": "/mustafa-air-forces/airforces.gif"
         },
         {
             "title": "DISCLOSURE 'ENERGY'",
-            "path": "/disclosure-energy"
+            "path": "/disclosure-energy",
+            "hoverImage": "/disclosure-energy/energy.gif"
         },
         {
             "title": "DISCLOSURE 'BIRTHDAY' FT.KEHLANI & SYD",
-            "path": "/disclosure-birthday"
+            "path": "/disclosure-birthday",
+            "hoverImage": "/disclosure-birthday/birthday.gif"
         },
         {
             "title": "DISCLOSURE WATCH YOUR STEP FT. KELIS",
-            "path": "/disclosure-wys"
+            "path": "/disclosure-wys",
+            "hoverImage": "/disclosure-wys/wys.gif"
         },
         {
             "title": "THE WEEKEND 'KING OF THE FALL",
-            "path": "/king-of-the-fall"
+            "path": "/king-of-the-fall",
+            "hoverImage": "/king-of-the-fall/featured1.png"
         },
         {
             "title": "THE WEEKEND 'REMINDER'",
-            "path": "/reminder"
+            "path": "/reminder",
+            "hoverImage": "/reminder/reminder.gif"
         },
         {
             "title": "FRENCH MONTANA FT. DRAKE 'NO STYLIST'",
-            "path": "/no-stylist"
+            "path": "/no-stylist",
+            "hoverImage": "/no-stylist/stylist.gif"
         },
         {
             "title": "BIG SEAN 'BOUNCE BACK'",
-            "path": "/bounce-back"
+            "path": "/bounce-back",
+            "hoverImage": "/bounce-back/bb.gif"
         },
         {
             "title": "FUTURE FT. THE WEEKEND 'COMIN OUT STRONG'",
-            "path": "/cos"
+            "path": "/cos",
+            "hoverImage": "/cos/cos.gif"
         },
         {
             "title": "HARD TO KILL 'SLIME'",
-            "path": "/slime"
+            "path": "/slime",
+            "hoverImage": "/slime/htk.gif"
         },
         {
             "title": "NIKE REACT HYPERDUNK (CAMPAIGN DIRECTION)",
-            "path": "/nikereact"
+            "path": "/nikereact",
+            "hoverImage": "/nikereact/nike.gif"
         },
         {
             "title": "CYBER69 X NOWNESS (SHORT)",
-            "path": "/cyber69"
+            "path": "/cyber69",
+            "hoverImage": "/cyber69/cyber.gif"
         },
         {
             "title": "NIKE AF1 X SAINTWOODS",
-            "path": "/nike-af1-x-saintwoods"
+            "path": "/nike-af1-x-saintwoods",
+            "hoverImage": "/nike-af1-x-saintwoods/hover-img.png"
         },
         {
             "title": "RIFF CANABIS (SHORT)",
-            "path": "/riff"
+            "path": "/riff",
+            "hoverImage": "/riff/hover.gif"
         },
         {
             "title": "GOD BLESS TORONTO (COMPILATION)",
-            "path": "/god-bless-toronto"
+            "path": "/god-bless-toronto",
+            "hoverImage": "/god-bless-toronto/gbt-bmp.jpg"
         },
         {
             "title": "PIQUE",
-            "path": "/pique"
+            "path": "/pique",
+            "hoverImage": "/pique/pique-bmp.gif"
         }
     ]
 }
