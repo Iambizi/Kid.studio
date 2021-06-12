@@ -11,12 +11,14 @@ export default function navigation( { bgImg }:Type ):JSX.Element{
         <>
             <header>
                 <nav className={styles.navigation}>
-                    <Logo bgImg={bgImg} />
+                    <Link href={process.env.NEXT_PUBLIC_APP_DOMAIN + "/"}>
+                        <Logo bgImg={bgImg} />
+                    </Link>
                     <ul className={styles.navLinks}>
-                        <Link href={"/work"}>
+                        <Link href={process.env.NEXT_PUBLIC_APP_DOMAIN + "/work"}>
                             <a className={ bgImg ? `${styles.navLink} ${styles.hoverColor}` : `${styles.navLink}` }>WORK</a>
                         </Link>
-                        <Link href={"/info"}>
+                        <Link href={process.env.NEXT_PUBLIC_APP_DOMAIN + "/info"}>
                             <a className={ bgImg ? `${styles.navLink} ${styles.hoverColor}` : `${styles.navLink}` }>INFO</a>
                         </Link>
                     </ul>

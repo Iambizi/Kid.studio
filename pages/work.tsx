@@ -1,9 +1,9 @@
-import Layout from '../components/layout';
-import React, { useState } from 'react';
-import Meta  from '../components/common/meta';
 import fs from 'fs'
 import path from 'path'
 import { GetStaticProps } from 'next';
+import React, { useState } from 'react';
+import Layout from '../components/layout';
+import Meta  from '../components/common/meta';
 import ProjectList from '../components/workContent/projectList';
 
 interface Type {
@@ -24,7 +24,7 @@ export default function work({projects}:Type):JSX.Element{
 export const getStaticProps: GetStaticProps = async (context)=>{
     const  { params } = context;
     
-    const fileToRead = path.join(process.cwd(),'./projectsData/projects.json');
+    const fileToRead = path.join(process.cwd(),'./backEndData/projectsList.json');
     const data = JSON.parse(await fs.readFileSync(fileToRead).toString());
     // const project = data.projects.find(project => project.path === projectPath)
     const projects = data.projects.map((item, i)=>(data.projects[i]))
@@ -33,6 +33,7 @@ export const getStaticProps: GetStaticProps = async (context)=>{
     return {
         props: {
             projects: projects
-        }
+        },
+        revalidate: 300
     }
 }

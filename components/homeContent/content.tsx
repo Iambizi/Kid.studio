@@ -3,31 +3,12 @@ import WarpedImage from "./warpedImage";
 import Carousel from "./carousel";
 import React, { useState } from "react";
 
+interface Type{
+    homeProjects: any;
+}
 
-
-export default function content():JSX.Element{
+export default function content({ homeProjects }: Type):JSX.Element{
     
-    const homeProjects = [
-        {
-            videoTitle:"Bryson Tiller 'Always Forever'",
-            path:"/1-alwaysforever-2.gif",
-            titleClassName: "videoTitle1",
-            imageClassName: "carouselImage1"
-
-        },
-        {   videoTitle:"Disclosure 'Energy'",
-            path:"/2-energy.gif",
-            titleClassName: "videoTitle2",
-            imageClassName: "carouselImage2"
-        },
-        {
-            videoTitle:"Big Sean 'Wolves' ft. Post Malone",
-            path:"/3-wolves.gif",
-            titleClassName: "videoTitle3",
-            imageClassName: "carouselImage3"
-        }
-    ];
-
     // State for counter
     const [count, setCount] = useState(0);
     
@@ -40,13 +21,15 @@ export default function content():JSX.Element{
     // state for adding SlidePrevious class name for image slide animations
     const [ slidePrevious, setSlidePrevious ] = useState(false);
 
+    // handles next button functionality and logic for state used in carousel
     const goNext = () => {
         count > 1 ? setCount(0) : setCount(count + 1);
         carouselX  < 200 ? setCarouselX(carouselX + 100) : setCarouselX(0);
         setSlideNext(true);
         setTimeout(() => setSlideNext(false), 1000);
     }
-
+    
+    // handles previous button functionality and logic for state used in carousel
     const goPrevious = () => {
         count < 1 ? setCount(2) : setCount(count - 1);
         carouselX  < 100 ? setCarouselX(200) : setCarouselX(carouselX  - 100);

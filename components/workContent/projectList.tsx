@@ -62,8 +62,7 @@ export default function work( {bgImg, setbgImg, projects}:Type ){
             <section className={styles.projectListSection}>
                 <div className={styles.projectLinks}>
                     {projects.map((item, i)=>(
-                        // <Link href={ "http://localhost:3000/work" + item.path } key={i}>
-                        <Link href={ process.env.NEXT_PUBLIC_APP_DOMAIN + item.path } key={i}>
+                        <Link href={ process.env.NEXT_PUBLIC_APP_DOMAIN + "/work" + item.path } key={i}>
                             <a data-okimage={ "http://kidstudio.co/work" + item.hoverImage } className={ bgImg ? `${styles.projectLink} ${styles.hoverColor } Link`: `${styles.projectLink} Link` } onMouseMove={handleMouseOver}>{item.title}</a>
                         </Link>
                     ))}

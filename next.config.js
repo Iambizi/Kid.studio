@@ -25,6 +25,10 @@ module.exports = {
     async rewrites() {
         let rewrite_url = [
             {
+                source: '/',
+                destination: '/'
+            },
+            {
                 source: "/:project",
                 destination: "/work/:project"
             }

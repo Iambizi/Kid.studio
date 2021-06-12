@@ -11,25 +11,24 @@ interface Type{
 }
 
 export default function carousel({ homeProjects, carouselX, slideNext, slidePrevious }:Type): JSX.Element{
-
     {
         carouselX  < -200 ?  `${styles.sliderWrapper} ${styles.slidePrevious}` : carouselX < -100 ? `${styles.sliderWrapper} ${styles.slideNext}` : `${styles.sliderWrapper}`
     }
-    //carouselX === -100 * (homeProjects.length - 1) ?
     return(
         <>
             <div className={styles.titles} style={{left: `${ -carouselX }%`}}>
-                {homeProjects.map((p,i)=>
-                     <div className={styles.titleWrapper} key={i}>
-                        <Link href={"/work/bryson-tiller-always-forever"}>
-                            <h2 className={`${styles[homeProjects[i].titleClassName]}`}>{homeProjects[i].videoTitle}</h2>
+                {homeProjects && homeProjects.length > 0 ? homeProjects.map((item, i)=>(
+                    <div className={styles.titleWrapper} key={i}>
+                        <Link href={ process.env.NEXT_PUBLIC_APP_DOMAIN + "/work" + homeProjects[i].path }>
+                            <h2 className={`${styles[homeProjects[i].titleClassName]}`}>{ homeProjects[i].videoTitle}</h2>
                         </Link>
-                     </div>
-                )}
+                    </div>
+                )) : ""}
             </div>
             <div className={styles.slider} style={{left: `${ -carouselX }%`}}>
                 {homeProjects.map((p,i)=>
-                    <div className={`${styles.sliderWrapper}`} key={i}>
+                    (
+                        <div className={`${styles.sliderWrapper}`} key={i}>
                         <div className={`${styles.carousel}`}>
                             <img
                                 className={
@@ -46,6 +45,7 @@ export default function carousel({ homeProjects, carouselX, slideNext, slidePrev
                             />
                         </div>
                     </div>
+                    )
                 )}
             </div>
             {/* <WarpedIMG slideNext={slidePrevious} slidePrevious={slidePrevious} homeProjects={homeProjects} carouselX={carouselX} /> */}
