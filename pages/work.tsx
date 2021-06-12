@@ -3,10 +3,10 @@ import React, { useState } from 'react';
 import Meta  from '../components/common/meta';
 import fs from 'fs'
 import path from 'path'
-import { GetStaticProps} from 'next';
+import { GetStaticProps } from 'next';
 import ProjectList from '../components/workContent/projectList';
 
-interface Type{
+interface Type {
     projects: any;
 }
 export default function work({projects}:Type):JSX.Element{

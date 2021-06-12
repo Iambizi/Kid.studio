@@ -1,8 +1,10 @@
-import Layout from '../../components/layout';
-import Meta  from '../../components/common/meta';
 import { GetStaticPaths, GetStaticProps} from 'next';
 import fs from 'fs'
 import path from 'path'
+import Layout from '../../components/layout';
+import Meta  from '../../components/common/meta';
+import MainInfo from '../../components/workContent/projectPages/mainInfoSection'
+
 
 interface Type{
     projects: any;
@@ -13,7 +15,8 @@ export default function projectPages({projects}: Type){
         <>
             <Meta page={"Reel"} />
             <Layout>
-                <h1>{projects[0].title}</h1>
+                {/* <h1>{projects[0].title}</h1> */}
+                <MainInfo projects={projects} />
             </Layout>
         </>
     )
