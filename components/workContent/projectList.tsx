@@ -8,14 +8,10 @@ interface Type{
 }
 
 export default function work( {bgImg, setbgImg, projects}:Type ){
-    console.log(process.env.NEXT_PUBLIC_APP_DOMAIN )
-
-    // rewrote the okHover mouse over functionality
+    // rewrote okHover plugin mouse over functionality
     const handleMouseOver = (e) => {
-        const element = e.target;
         const bg = document.body;
         const okGif= e.target.getAttribute('data-okimage');
-
         const link = document.getElementsByClassName("Link");
 
         setbgImg(true)
@@ -26,10 +22,12 @@ export default function work( {bgImg, setbgImg, projects}:Type ){
         {
             /*
                 for loop for function on mousemove event
-                adds: backgroundPosition
+                adds: 
+                backgroundPosition
                 z-index
             */
        }
+       
         for(var i = 0; i < link.length; i++) {
             ((index)=> {
               link[index].addEventListener("mousemove", ()=> {
@@ -39,23 +37,33 @@ export default function work( {bgImg, setbgImg, projects}:Type ){
             })(i);
           }
 
-        // for mouseOut event: removes all styles 
+        //function that removes styles on mouseout and click
+          const removeStyles = () => {
+            bg.removeAttribute("style");
+            setbgImg(false)
+        }
+
+        // on mouseOut event: removes all styles 
         for(var i = 0; i < link.length; i++) {
             ((index)=> {
-              link[index].addEventListener("mouseout", ()=> {
-                bg.removeAttribute("style");
-                setbgImg(false)
-               })
+              link[index].addEventListener("mouseout", removeStyles, false);
+            })(i);
+          }
+
+        // on click event: removes all styles
+          for(var i = 0; i < link.length; i++) {
+            ((index)=> {
+              link[index].addEventListener("click", removeStyles, false);
             })(i);
           }
     }
-
     return(
         <>
             <section className={styles.projectListSection}>
                 <div className={styles.projectLinks}>
                     {projects.map((item, i)=>(
-                        <Link href={ process.env.NEXT_PUBLIC_APP_DOMAIN + "/work" + item.path } key={i}>
+                        // <Link href={ "http://localhost:3000/work" + item.path } key={i}>
+                        <Link href={ "http://localhost:3000/work" + item.path } key={i}>
                             <a data-okimage={ "http://kidstudio.co/work" + item.hoverImage } className={ bgImg ? `${styles.projectLink} ${styles.hoverColor } Link`: `${styles.projectLink} Link` } onMouseMove={handleMouseOver}>{item.title}</a>
                         </Link>
                     ))}
