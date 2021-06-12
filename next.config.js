@@ -29,5 +29,6 @@ module.exports = {
             }
         ];
         return rewrite_url;
-    }
+    },
+    trailingSlash: false
 };
