@@ -6,18 +6,18 @@ interface Type {
     setbgImg?: any;
 }
 
-export default function footer({ bgImg, setbgImg }:Type):JSX.Element{
+export default function footer({ bgImg }:Type):JSX.Element{
     return(
         <>
             <footer className={styles.footer}>
-                <ul className={styles.footerLinks}>
-                    <a className={ bgImg ? `${styles.footerLink} ${styles.hoverColor}` : `${styles.footerLink}` } href={"http://instagram.com/kidstudio_"}>INSTAGRAM</a>
+                <ul className={ bgImg ? `${styles.footerLinks} ${styles.hoverColor}` : `${styles.footerLinks}` }>
+                    <a className={styles.footerLink} href={"http://instagram.com/kidstudio_"}>INSTAGRAM</a>
                     /
                     <Link href={"/work/reel"}>
-                        <a className={ bgImg ? `${styles.footerLink} ${styles.hoverColor}` : `${styles.footerLink}` }>REEL</a>
+                        <a className={styles.footerLink}>REEL</a>
                     </Link>
                     /
-                    <a className={ bgImg ? `${styles.footerLink} ${styles.hoverColor}` : `${styles.footerLink}` } href={""}>EMAIL@KIDSTUDIO.CO</a>
+                    <a className={styles.footerLink} href={""}>EMAIL@KIDSTUDIO.CO</a>
                 </ul>
             </footer>
         </>

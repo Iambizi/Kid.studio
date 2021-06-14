@@ -13,7 +13,7 @@ interface Type{
 export default function projectPages( {projects}: Type){
     return(
         <>
-            <Meta page={"Reel"} />
+            <Meta page={projects.title} />
             <Layout>
                 {/* <h1>{projects[0].title}</h1> */}
                 <MainInfo projects={projects} />
@@ -28,8 +28,8 @@ export const getStaticProps: GetStaticProps = async (context)=>{
     const projectPath = params.project;
     const fileToRead = path.join(process.cwd(),'./backEndData/projectsList.json');
     const data = JSON.parse(await fs.readFileSync(fileToRead).toString());
-    // const project = data.projects.find( item => item.path);
-    const projects = data.projects.map((item, i)=>(data.projects[i])).find(item => item.id );
+    const projects = data.projects.find( item => item.path);
+    // const projects = data.projects.map((item, i)=>(data.projects[i])).find(item => item.id );
     // const projects = projectPath;
     console.log(projects);
     // return posts.map(post => {
