@@ -11,7 +11,7 @@ export default function navigation( { bgImg }:Type ):JSX.Element{
         <>
             <header>
                 <nav className={styles.navigation}>
-                    <Link href={process.env.NEXT_PUBLIC_APP_DOMAIN + "/"}>
+                    <Link href={process.env.NEXT_PUBLIC_APP_DOMAIN + "/index"}>
                         <Logo bgImg={bgImg} />
                     </Link>
                     <ul className={styles.navLinks}>

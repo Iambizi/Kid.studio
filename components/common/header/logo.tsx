@@ -10,7 +10,7 @@ export default function logo( { bgImg }:Type ):JSX.Element{
     return(
         <>
             <div className={styles.logo}>
-                <Link href={"/"}>
+                <Link href={process.env.NEXT_PUBLIC_APP_DOMAIN + "/"}>
                     <a>
                         {/* <Image 
                         src="/assets/images/kid.png"

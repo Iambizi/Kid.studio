@@ -25,7 +25,7 @@ module.exports = {
     async rewrites() {
         let rewrite_url = [
             {
-                source: '/',
+                source: '/index',
                 destination: '/'
             },
             {

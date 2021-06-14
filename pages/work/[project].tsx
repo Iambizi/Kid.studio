@@ -32,6 +32,13 @@ export const getStaticProps: GetStaticProps = async (context)=>{
     const projects = data.projects.map((item, i)=>(data.projects[i])).find(item => item.id );
     // const projects = projectPath;
     console.log(projects);
+    // return posts.map(post => {
+    //     return {
+    //       params: {
+    //         id: post.id
+    //       }
+    //     }
+    //   })
     return {
         props: {
             projects: projects

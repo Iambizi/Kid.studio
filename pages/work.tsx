@@ -27,9 +27,8 @@ export const getStaticProps: GetStaticProps = async (context)=>{
     const fileToRead = path.join(process.cwd(),'./backEndData/projectsList.json');
     const data = JSON.parse(await fs.readFileSync(fileToRead).toString());
     // const project = data.projects.find(project => project.path === projectPath)
-    const projects = data.projects.map((item, i)=>(data.projects[i]))
+    const projects = data.projects.map((item, i)=>(item[i]))
     // console.log(data.projects[0].path)
-    console.log(projects);
     return {
         props: {
             projects: projects
