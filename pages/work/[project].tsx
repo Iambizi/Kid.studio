@@ -28,10 +28,10 @@ export const getStaticProps: GetStaticProps = async (context)=>{
     const projectPath = params.project;
     const fileToRead = path.join(process.cwd(),'./backEndData/projectsList.json');
     const data = JSON.parse(await fs.readFileSync(fileToRead).toString());
-    const projects = data.projects.find( item => item.path);
+    const project = data.projects.find( item => item.path);
     // const projects = data.projects.map((item, i)=>(data.projects[i])).find(item => item.id );
     // const projects = projectPath;
-    console.log(projects);
+    console.log(project);
     // return posts.map(post => {
     //     return {
     //       params: {
@@ -41,7 +41,7 @@ export const getStaticProps: GetStaticProps = async (context)=>{
     //   })
     return {
         props: {
-            projects: projects
+            projects: project
         }
     }
 }

@@ -7,15 +7,15 @@ import Meta  from '../components/common/meta';
 import ProjectList from '../components/workContent/projectList';
 
 interface Type {
-    projects: any;
+    workPageData: any;
 }
-export default function work({projects}:Type):JSX.Element{
+export default function work({workPageData}:Type):JSX.Element{
     const [bgImg, setbgImg] = useState(false);
      return(
          <>
             <Meta page={"Work"} />
             <Layout bgImg={bgImg} setbgImg={setbgImg}>
-                <ProjectList bgImg={bgImg} setbgImg={setbgImg} projects={projects}  />
+                <ProjectList bgImg={bgImg} setbgImg={setbgImg} projects={ workPageData.projects }  />
             </Layout>
          </>
      )
@@ -27,11 +27,15 @@ export const getStaticProps: GetStaticProps = async (context)=>{
     const fileToRead = path.join(process.cwd(),'./backEndData/projectsList.json');
     const data = JSON.parse(await fs.readFileSync(fileToRead).toString());
     // const project = data.projects.find(project => project.path === projectPath)
-    const projects = data.projects.map((item, i)=>(item[i]))
-    // console.log(data.projects[0].path)
+    // const projects = data.projects.map((item, i)=>(item[i]))
+    if (!data) {
+        return {
+            notFound: true
+        };
+    }
     return {
         props: {
-            projects: projects
+            workPageData: data
         },
         revalidate: 300
     }
