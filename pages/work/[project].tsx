@@ -7,46 +7,39 @@ import MainInfo from '../../components/workContent/projectPages/mainInfoSection'
 
 
 interface Type{
-    projects: any;
+    projectsPageData: any;
 }
 
-export default function projectPages( {projects}: Type){
+export default function projectPages( {projectsPageData}: Type){
     return(
         <>
-            <Meta page={projects.title} />
+            <Meta page={projectsPageData.title} />
             <Layout>
-                {/* <h1>{projects[0].title}</h1> */}
-                <MainInfo projects={projects} />
+                <MainInfo projects={projectsPageData} />
             </Layout>
         </>
     )
 }
 
 export const getStaticProps: GetStaticProps = async (context)=>{
+
     const { params } = context;
-    // console.log({ params });
     const projectPath = params.project;
     const fileToRead = path.join(process.cwd(),'./backEndData/projectsList.json');
     const data = JSON.parse(await fs.readFileSync(fileToRead).toString());
-    const project = data.projects.find( item => item.path);
-    // const projects = data.projects.map((item, i)=>(data.projects[i])).find(item => item.id );
-    // const projects = projectPath;
-    console.log(project);
-    // return posts.map(post => {
-    //     return {
-    //       params: {
-    //         id: post.id
-    //       }
-    //     }
-    //   })
+    
+    // using page specific data return data according to the params (specific project being selected)
+    // Once I start creating api endpoints this will no longer be necessary
+    const pageSpecificData = data.projects.map((item, i)=>(data.projects[i])).find(item => item.path.includes(projectPath));
+    
     return {
         props: {
-            projects: project
+            projectsPageData: pageSpecificData
         }
     }
 }
 
-export const getStaticPaths: GetStaticPaths = async () =>{
+export const getStaticPaths: GetStaticPaths = async (context) =>{
     return {
         paths: [
             { params: { project: 'project' }}
