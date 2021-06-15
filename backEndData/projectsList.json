@@ -2,109 +2,109 @@
     "projects": [
         {
             "id": "1",
-            "title": "BRYSON TILLER 'ALWAYS FOREVER'",
+            "title": "Bryson Tiller 'Always Forever'",
             "path": "/bryson-tiller-always-forever",
             "hoverImage": "/bryson-tiller-always-forever/alwaysforever.gif"
         },
         {
             "id": "2",
-            "title": "BIG SEAN 'WOLVES' FT. POST MALONE",
+            "title": "Big Sean 'Wolves' ft. Post Malone",
             "path": "/wolves",
             "hoverImage": "/wolves/wolves.gif"
         },
         {
             "id": "3",
-            "title": "MUSTAFA 'AIR FROCES'",
+            "title": "Mustafa 'Air Forces'",
             "path": "/mustafa-air-forces",
             "hoverImage": "/mustafa-air-forces/airforces.gif"
         },
         {
             "id": "4",
-            "title": "DISCLOSURE 'ENERGY'",
+            "title": "Disclosure 'Energy'",
             "path": "/disclosure-energy",
             "hoverImage": "/disclosure-energy/energy.gif"
         },
         {
             "id": "5",
-            "title": "DISCLOSURE 'BIRTHDAY' FT.KEHLANI & SYD",
+            "title": "Disclosure 'Birthday' ft.Kehlani & Syd",
             "path": "/disclosure-birthday",
             "hoverImage": "/disclosure-birthday/birthday.gif"
         },
         {
             "id": "6",
-            "title": "DISCLOSURE WATCH YOUR STEP FT. KELIS",
+            "title": "Disclosure Watch Your Step ft. Kelis",
             "path": "/disclosure-wys",
             "hoverImage": "/disclosure-wys/wys.gif"
         },
         {
             "id": "7",
-            "title": "THE WEEKEND 'KING OF THE FALL",
+            "title": "The Weekend 'King of The Fall",
             "path": "/king-of-the-fall",
             "hoverImage": "/king-of-the-fall/featured1.png"
         },
         {
             "id": "8",
-            "title": "THE WEEKEND 'REMINDER'",
+            "title": "The Weekend 'Reminder'",
             "path": "/reminder",
             "hoverImage": "/reminder/reminder.gif"
         },
         {
             "id": "9",
-            "title": "FRENCH MONTANA FT. DRAKE 'NO STYLIST'",
+            "title": "French Motana ft. Drake 'No Stylist'",
             "path": "/no-stylist",
             "hoverImage": "/no-stylist/stylist.gif"
         },
         {
             "id": "10",
-            "title": "BIG SEAN 'BOUNCE BACK'",
+            "title": "Big Sean 'Bounce Back'",
             "path": "/bounce-back",
             "hoverImage": "/bounce-back/bb.gif"
         },
         {
             "id": "11",
-            "title": "FUTURE FT. THE WEEKEND 'COMIN OUT STRONG'",
+            "title": "Future ft. The Weekend 'Comin out Strong'",
             "path": "/cos",
             "hoverImage": "/cos/cos.gif"
         },
         {
             "id": "12",
-            "title": "HARD TO KILL 'SLIME'",
+            "title": "Hard To Kill 'Slime'",
             "path": "/slime",
             "hoverImage": "/slime/htk.gif"
         },
         {
             "id": "13",
-            "title": "NIKE REACT HYPERDUNK (CAMPAIGN DIRECTION)",
+            "title": "Nike React Hyperdunk (Campaign Direction)",
             "path": "/nikereact",
             "hoverImage": "/nikereact/nike.gif"
         },
         {
             "id": "14",
-            "title": "CYBER69 X NOWNESS (SHORT)",
+            "title": "Cyber69 X Nowness (Short)",
             "path": "/cyber69",
             "hoverImage": "/cyber69/cyber.gif"
         },
         {
             "id": "15",
-            "title": "NIKE AF1 X SAINTWOODS",
+            "title": "Nike AF1 x Saintwoods",
             "path": "/nike-af1-x-saintwoods",
             "hoverImage": "/nike-af1-x-saintwoods/hover-img.png"
         },
         {
             "id": "16",
-            "title": "RIFF CANABIS (SHORT)",
+            "title": "RIFF Cannabis (Short)",
             "path": "/riff",
             "hoverImage": "/riff/hover.gif"
         },
         {
             "id": "17",
-            "title": "GOD BLESS TORONTO (COMPILATION)",
+            "title": "God Bless Toronto (Compilation)",
             "path": "/god-bless-toronto",
             "hoverImage": "/god-bless-toronto/gbt-bmp.jpg"
         },
         {
             "id": "18",
-            "title": "PIQUE",
+            "title": "Pique",
             "path": "/pique",
             "hoverImage": "/pique/pique-bmp.gif"
         }
