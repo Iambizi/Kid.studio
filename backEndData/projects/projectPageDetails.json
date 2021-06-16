@@ -256,7 +256,14 @@
             "title": "The Weekend 'Reminder'",
             "path": "/reminder",
             "hoverImage": "/reminder/reminder.gif",
-            "projectInfo": [],
+            "projectInfo": [
+                "Directed by Kid. Studio\nCinematographer: Kelly Jeffrey\n",
+                "2nd Unit DP: Ali Khurshid\n",
+                "Producers: Vince Tran", 
+                "Ryan Hahn, Julian Nieva\n",
+                "Production Company: HPLA & Kid. Studio\n",
+                "Nominated 4x MTV VMA including Best Video of The Year"
+            ],
             "videoCover": "/work/reminder/v/reminder.gif",
             "stills": [
                 "/thumbs/1-308926d29a3907417dd59e195695d998.png",
@@ -279,7 +286,12 @@
             "title": "French Motana ft. Drake 'No Stylist'",
             "path": "/no-stylist",
             "hoverImage": "/no-stylist/stylist.gif",
-            "projectInfo": [],
+            "projectInfo": [
+                "Directed by Kid. Studio\n",
+                "Producers: Ryan Hahn & Vince Tran\n",
+                "Cinematographer: Kelly Jeffrey\n",
+                "Production Company: HPLA"
+            ],
             "videoCover": "/work/no-stylist/v/stylist.gif",
             "stills": [
                 "/work/no-stylist/v/stylist.gif",
@@ -299,7 +311,14 @@
             "title": "Big Sean 'Bounce Back'",
             "path": "/bounce-back",
             "hoverImage": "/bounce-back/bb.gif",
-            "projectInfo": [],
+            "projectInfo": [
+                "Big Sean - Bounce Back\n",
+                "Director - Glenn Michael + Christo Anesti\n",
+                "DP - Kelly Jeffrey\n",
+                "2nd Unit DP - Ali Khurshid\n",
+                "Producers - Vince Tran, Julian Nieva, Ryan Hahn\n",
+                "Nominated for BET Awards Best Video of The Year"
+            ],
             "videoCover": "/work/bounce-back/vid/bb.gif",
             "stills": [
                 "/thumbs/1-15f5ba78c9cd7a42d1df86d4ff387224.png",
@@ -323,7 +342,13 @@
             "title": "Future ft. The Weekend 'Comin out Strong'",
             "path": "/cos",
             "hoverImage": "/cos/cos.gif",
-            "projectInfo": [],
+            "projectInfo": [
+                "Future — Comin' Out Strong ft. The Weeknd\n",
+                "Directed by Kid. Studio\n",
+                "Producer: Vince Tran & Julian Nieva\n",
+                "Cinematographer: Kelly Jeffrey\n",
+                "Production Company: Kid. Studio"
+            ],
             "videoCover": "/work/cos/vd/cos.gif",
             "stills": [
                 "/thumbs/screen-shot-2019-01-21-at-5.15.55-pm-2d91e55128903c1055382c71d87013c7.png",
@@ -337,7 +362,13 @@
             "title": "Hard To Kill 'Slime'",
             "path": "/slime",
             "hoverImage": "/slime/htk.gif",
-            "projectInfo": [],
+            "projectInfo": [
+                "Hard to Kill — Slime\n\n",
+                "Directed by Kid. Studio\n",
+                "Cinematographer: Ali Khurshid\n",
+                "Producer: Julian Nieva & Vince Tran\n",
+                "Production Company: Kid. Studio"
+            ],
             "videoCover": "/work/slime/v/htk.gif",
             "stills": [
                 "/thumbs/screen-shot-2019-01-21-at-5.43.09-pm-6f1a58926ff3f09f20bb453159124c2d.png",
@@ -356,7 +387,11 @@
             "title": "Nike React Hyperdunk (Campaign Direction)",
             "path": "/nikereact",
             "hoverImage": "/nikereact/nike.gif",
-            "projectInfo": [],
+            "projectInfo": [
+                "Creative Direction & Video by Kid. Studio\n",
+                "Photographer: Ryan Hahn (@ryan.hahn / @hp.la)\n",
+                "Production Company: Kid. Studio & HPLA"
+            ],
             "videoCover": "/work/nikereact/v/nike.gif",
             "stills": [
                 "/thumbs/nike-react-1-55c09e7ed8e384ae48a658c415230a25.jpg",
@@ -375,7 +410,12 @@
             "title": "Cyber69 X Nowness (Short)",
             "path": "/cyber69",
             "hoverImage": "/cyber69/cyber.gif",
-            "projectInfo": [],
+            "projectInfo": [
+                "Cyber69 is one of the most young influential DJ’s in Toronto. The first time he performed, Drake and Kanye West were in attendance. He’s developed close relationships with some of the culture's most influential people including Off-White’s, Virgil Abloh and Been Trill’s, Heron Preston.\n\n",
+                "In his short and blooming career, his eccentric style choices and peculiar personality has penetrated the internet culture and landed him features with Hypebeast and Complex Magazine.\n\n",
+                "This video profiles how he has garnered the notoriety as one of Toronto’s most sought out DJ’s.\n\n\n",
+                "Premiered on Nowness.com"
+            ],
             "videoCover": "/work/cyber69/video/cyber.gif",
             "stills": [
                 "/thumbs/screen-shot-2016-03-08-at-4.00.33-pm-570fca3c8f32f1635d8e6f706c408249.png",
@@ -394,7 +434,12 @@
             "title": "Nike AF1 x Saintwoods",
             "path": "/nike-af1-x-saintwoods",
             "hoverImage": "/nike-af1-x-saintwoods/hover-img.png",
-            "projectInfo": [],
+            "projectInfo": [
+                "Saintwoods x Nike AF1\n\n",
+                "Directed by Kid. Studio\n",
+                "Producers: Vince Tran & Julian Nieva\n",
+                "Production Company: Kid. Studio"
+            ],
             "videoCover": "/work/nike-af1-x-saintwoods/vide/thumb.png",
             "stills": [
                 "/work/nike-af1-x-saintwoods/video/1.png",
@@ -407,7 +452,12 @@
             "title": "RIFF Cannabis (Short)",
             "path": "/riff",
             "hoverImage": "/riff/hover.gif",
-            "projectInfo": [],
+            "projectInfo": [
+                "Short film for RIFF, a cannabis brand.\n",
+                "Directed by Kid. Studio\n",
+                "Producers: Vince Tran & Julian Nieva\n",
+                "Production Company: Kid. Studio\n"
+            ],
             "videoCover": "/work/riff/vide/1.png",
             "stills": [
                 "/thumbs/2-50783adac2d968382c7a1cb00b7e7de8.png",
@@ -423,7 +473,12 @@
             "title": "God Bless Toronto (Compilation)",
             "path": "/god-bless-toronto",
             "hoverImage": "/god-bless-toronto/gbt-bmp.jpg",
-            "projectInfo": [],
+            "projectInfo": [
+                "— Branding + Website + Sound\n\n",
+                "God Bless Toronto is a project that represents the nocturnal underground life of the city. When it's so late that it's early, inside of a basement or a loft that you have to enter through an exit... Toronto's creatives, hustlers, artists, tastemakers, users, insomniacs gather, give thanks and indulge in music, habits and hugs. It's these peculiar moments in unexpected locations at ungodly hours where inspiration is indirectly conceived. It is the obligation of the like-minded to protect and nurture these moments.\n\n",
+                "The first compilation consists of some of the city's most talented upcoming producers and musicians who are beginning to develop and shape Toronto's underground culture and sound.\n\n",
+                "Listen & Download 'God Bless Toronto'"
+            ],
             "videoCover":"",
             "stills": [
                 "/thumbs/gbt1-4bb50410eb93e5687013db267b9dba51.jpg",
@@ -437,7 +492,10 @@
             "title": "Pique",
             "path": "/pique",
             "hoverImage": "/pique/pique-bmp.gif",
-            "projectInfo": [],
+            "projectInfo": [
+                "Directed by Kid. Studio\n",
+                "Series of original content to answer 13 interview questions from the team at Pique."
+            ],
             "videoCover": "",
             "stills": [
                 "/work/pique/1/1-pk.png",
