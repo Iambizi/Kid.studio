@@ -8,6 +8,7 @@ module.exports = {
     },
     images: {
         domains: ['https://kidstudio.co']
+        //domains: ['localhost']
     },
     async headers() {
         return [

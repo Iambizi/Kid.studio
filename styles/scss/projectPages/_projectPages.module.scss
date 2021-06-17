@@ -10,6 +10,7 @@
 // }
 .projectPageSection{
     margin: 30px 32px 0px 32px;
+    overflow: visible;
     .projectTitle{
         font-size: 28px;
         font-weight: 700;
@@ -28,15 +29,25 @@
         background-image: url(https://kidstudio.co/assets/images/play.png);
         position: relative;
         display: block;
-        z-index: 5656565656;
         height: 100%;
         width: 100%;
         background-size: cover;
         background-position: center center;
         background-repeat: no-repeat;
-        display: inline-block;
         .videoCover{
             position: absolute;
+            top: 0;
+            z-index: 565656565656;
+            background-size: cover;
+            background-position: center center;
+        }
+    }
+    .projectStills{
+        height: 100%;
+        width: 100%;
+        .stills{
+            height: 100%;
+            width: 100%;
         }
     }
 }
