@@ -12,10 +12,10 @@ export default function mainInfoSection( {projects} ):JSX.Element{
                 <p className={styles.projectDetails}>
                     {projects.projectInfo}
                 </p>
-                <div className={styles.videoOverlay} style={{backgroundImage: `url("/assets/images/play.png")`}}>
-                    <img src="https://kidstudio.co/work/bryson-tiller-always-forever/vid/alwaysforever.gif" width="256px" height="144px"/>
+                <div className={styles.videoOverlay}>
+                    <img className={styles.videoCover} src={ 'https://kidstudio.co' +`${projects.videoCover}` } width="256px" height="144px"/>
                 </div>
-                <iframe className={styles.video} id="vimeo1aolzk8" src="http://player.vimeo.com/video/470421376?color=eef1f3" frameborder="0" allowfullscreen=""></iframe>
+                {/* <iframe className={styles.video} id="vimeo1aolzk8" src="http://player.vimeo.com/video/470421376?color=eef1f3" frameBorder="0" allowFullScreen=""></iframe> */}
             </section>
         </>
     )

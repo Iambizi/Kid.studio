@@ -24,7 +24,19 @@
         line-height: 1.5em;
         word-break: initial;
     }
-    .video{
-        background-image: "";
+    .videoOverlay{
+        background-image: url(https://kidstudio.co/assets/images/play.png);
+        position: relative;
+        display: block;
+        z-index: 5656565656;
+        height: 100%;
+        width: 100%;
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        display: inline-block;
+        .videoCover{
+            position: absolute;
+        }
     }
 }
