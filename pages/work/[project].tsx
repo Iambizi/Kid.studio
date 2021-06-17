@@ -4,6 +4,7 @@ import path from 'path'
 import Layout from '../../components/layout';
 import Meta  from '../../components/common/meta';
 import MainInfo from '../../components/workContent/projectPages/mainInfoSection';
+import Stills from '../../components/workContent/projectPages/stills';
 import Navigation from "../../components/common/header/navigation";
 import Footer from "../../components/common/footer";
 
@@ -18,9 +19,11 @@ export default function projectPages( {projectsPageData}: Type){
             <Meta page={projectsPageData.title} />
             <Navigation />
                 <MainInfo projects={projectsPageData} />
+                <Stills projects={projectsPageData} />
             <Footer />
             {/* <Layout>
                 <MainInfo projects={projectsPageData} />
+                <Stills projects={projectsPageData} />
             </Layout> */}
         </>
     )
