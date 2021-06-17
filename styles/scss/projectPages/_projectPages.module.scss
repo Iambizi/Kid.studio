@@ -15,5 +15,16 @@
         font-weight: 700;
         font-family: "Helvetica-Neue-Bold", "Helvetica Neue Bold", "HelveticaNeueBold", Helvetica-Neue, HelveticaNeue, "Helvetica", Helvetica, "Arial", Arial, sans-serif;
         text-align: left;
+        line-height: 1;
+    }
+    .projectDetails{
+        white-space: pre-wrap;
+        font-family: "Avenir", Avenir, sans-serif;
+        font-size: 0.8em;
+        line-height: 1.5em;
+        word-break: initial;
+    }
+    .video{
+        background-image: "";
     }
 }
