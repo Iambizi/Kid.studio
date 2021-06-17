@@ -4,12 +4,13 @@ import Link from 'next/link';
 interface Type {
     bgImg?: boolean;
     setbgImg?: any;
+    specificStyles?: string; 
 }
 
-export default function footer({ bgImg }:Type):JSX.Element{
+export default function footer({ bgImg, specificStyles }:Type):JSX.Element{
     return(
         <>
-            <footer className={styles.footer}>
+            <footer className={`${styles.footer} ${specificStyles}`}>
                 <ul className={ bgImg ? `${styles.footerLinks} ${styles.hoverColor}` : `${styles.footerLinks}` }>
                     <a className={styles.footerLink} href={"http://instagram.com/kidstudio_"}>INSTAGRAM</a>
                     /

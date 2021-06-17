@@ -17,14 +17,14 @@ export default function projectPages( {projectsPageData}: Type){
     return(
         <>
             <Meta page={projectsPageData.title} />
-            <Navigation />
+            {/* <Navigation />
                 <MainInfo projects={projectsPageData} />
                 <Stills projects={projectsPageData} />
-            <Footer />
-            {/* <Layout>
+            <Footer /> */}
+            <Layout specificStyles={"projectPages"}>
                 <MainInfo projects={projectsPageData} />
                 <Stills projects={projectsPageData} />
-            </Layout> */}
+            </Layout>
         </>
     )
 }

@@ -19,6 +19,7 @@
         line-height: 1;
     }
     .projectDetailsWrapper{
+        margin-bottom: 25px;
         .projectDetails{
             white-space: pre-wrap;
             font-family: "Avenir", Avenir, sans-serif;
@@ -27,6 +28,7 @@
             word-break: initial;
             z-index: 10000;
             background-color: #f0f0f0;
+            margin: 0px;
         }
     }
     .videoOverlay{
