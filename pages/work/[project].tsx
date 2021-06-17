@@ -3,7 +3,9 @@ import fs from 'fs'
 import path from 'path'
 import Layout from '../../components/layout';
 import Meta  from '../../components/common/meta';
-import MainInfo from '../../components/workContent/projectPages/mainInfoSection'
+import MainInfo from '../../components/workContent/projectPages/mainInfoSection';
+import Navigation from "../../components/common/header/navigation";
+import Footer from "../../components/common/footer";
 
 
 interface Type{
@@ -14,9 +16,12 @@ export default function projectPages( {projectsPageData}: Type){
     return(
         <>
             <Meta page={projectsPageData.title} />
-            <Layout>
+            <Navigation />
                 <MainInfo projects={projectsPageData} />
-            </Layout>
+            <Footer />
+            {/* <Layout>
+                <MainInfo projects={projectsPageData} />
+            </Layout> */}
         </>
     )
 }
