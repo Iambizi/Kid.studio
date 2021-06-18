@@ -15,7 +15,10 @@ a {
   box-sizing: border-box;
 } */
 body{
-  overflow: auto;
+  overflow: hidden;
+}
+body.needsScroll{
+  overflow-Y: auto;
 }
 canvas{
   margin: 0 auto;

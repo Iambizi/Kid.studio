@@ -7,7 +7,7 @@ interface Type{
     projects: any;
 }
 
-export default function work( {bgImg, setbgImg, projects}:Type ){
+export default function work( { bgImg, setbgImg, projects }:Type ){
     // rewrote okHover plugin mouse over functionality
     const handleMouseOver = (e) => {
         const bg = document.body;

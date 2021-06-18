@@ -7,6 +7,8 @@ import MainInfo from '../../components/workContent/projectPages/mainInfoSection'
 import Stills from '../../components/workContent/projectPages/stills';
 // import Navigation from "../../components/common/header/navigation";
 // import Footer from "../../components/common/footer";
+import React, { useState, useEffect } from "react";
+import { useRouter } from 'next/router'
 
 
 interface Type{
@@ -14,6 +16,20 @@ interface Type{
 }
 
 export default function projectPages( {projectsPageData}: Type){
+    const router = useRouter();
+    const pathName = router.pathname;
+    const comparison = pathName === "/work/[project]";
+    const [compare, doComparison] = useState(comparison);
+
+    console.log(compare);
+    useEffect(()=>{
+
+        const bg = document.body;
+        pathName === "/work/[project]" ? (
+        bg.classList.add("needsScroll")) : bg.classList.remove("needsScroll");
+
+    },[compare]);
+
     return(
         <>
             <Meta page={projectsPageData.title} />
