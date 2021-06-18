@@ -5,8 +5,8 @@ import Layout from '../../components/layout';
 import Meta  from '../../components/common/meta';
 import MainInfo from '../../components/workContent/projectPages/mainInfoSection';
 import Stills from '../../components/workContent/projectPages/stills';
-import Navigation from "../../components/common/header/navigation";
-import Footer from "../../components/common/footer";
+// import Navigation from "../../components/common/header/navigation";
+// import Footer from "../../components/common/footer";
 
 
 interface Type{

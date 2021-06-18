@@ -4,6 +4,7 @@ interface Type{
     projects: any;
 }
 export default function mainInfoSection( {projects}: Type ):JSX.Element{
+    
     return(
         <>
             <section className={styles.projectPageSection}>
@@ -20,7 +21,7 @@ export default function mainInfoSection( {projects}: Type ):JSX.Element{
                         <Image
                         unoptimized
                         className={styles.videoCover}
-                        src={ projects.videoCover !="" ? `https://kidstudio.co${projects.videoCover}` : `https://kidstudio.co${projects.stills[0]}` }
+                        src={ `https://kidstudio.co${projects.videoCover}` }
                         alt="Main video/image still"
                         width={256}
                         height={144}
