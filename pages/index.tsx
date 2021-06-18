@@ -4,6 +4,7 @@ import { GetStaticProps } from 'next';
 import Layout from '../components/layout';
 import Meta  from '../components/common/meta';
 import Content from '../components/homeContent/content';
+import React, { useEffect } from "react";
 import { useRouter } from 'next/router';
 
 interface Type{
@@ -11,10 +12,12 @@ interface Type{
 }
 
 export default function home({homeProjects}: Type):JSX.Element {
-  const router = useRouter();
-    const pathName = router.pathname;
-    console.log(pathName);
-    console.log(pathName === "/work/[project]")
+  // removes needsScroll class set in project pages from vertical scroll
+  // projectPage useEffect hook needs refactoring to avoid calling it again here.
+    useEffect(()=>{
+        const bg = document.body;
+        bg.classList.remove("needsScroll");
+    },[]);
     
   return (
     <>

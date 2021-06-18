@@ -1,5 +1,6 @@
 import Link from "next/link";
 import styles from "../../styles/scss/workPage/_work.module.scss";
+import { useRouter } from 'next/router'
 
 interface Type{
     bgImg: boolean;
@@ -8,15 +9,23 @@ interface Type{
 }
 
 export default function work( { bgImg, setbgImg, projects }:Type ){
+  const router = useRouter();
+
     // rewrote okHover plugin mouse over functionality
     const handleMouseOver = (e) => {
         const bg = document.body;
         const okGif= e.target.getAttribute('data-okimage');
         const link = document.getElementsByClassName("Link");
 
-        setbgImg(true)
+        const pathName = router.pathname;
+        const comparison = pathName === "/work/[project]";
+
+        setbgImg(true);
         
         bg.style.backgroundImage = `url(${okGif})`;
+
+        
+        
 
         // Because link constant returns htmlCollection, we need to iterate through using a for loop to make changes
         {
@@ -26,7 +35,7 @@ export default function work( { bgImg, setbgImg, projects }:Type ){
                 backgroundPosition
                 z-index
             */
-       }
+        }
 
         for(var i = 0; i < link.length; i++) {
             ((index)=> {
@@ -55,6 +64,11 @@ export default function work( { bgImg, setbgImg, projects }:Type ){
             ((index)=> {
               link[index].addEventListener("click", removeStyles, false);
             })(i);
+          }
+
+        // Ensures bg does not remain styled once once projectPages  
+          if(comparison){
+            removeStyles();
           }
     }
     return(
