@@ -28,10 +28,8 @@ export default function projectPages( {projectsPageData}: Type){
         
         if(pathName === "/work/[project]"){
             bg.classList.add("needsScroll");
-            setComparison(comparison)
-        }else{
+        }else if(comparison === false){
             bg.classList.remove("needsScroll");
-            setComparison(false)
         }
 
     },[compare]);
