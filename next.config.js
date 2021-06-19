@@ -1,6 +1,6 @@
 module.exports = {
     // config for using fs and path in getStaticProps to read backend files
-    webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+    webpack: (config) => {
         config.node = {
             fs: 'empty', // This is required
         }
