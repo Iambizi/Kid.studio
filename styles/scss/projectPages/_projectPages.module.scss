@@ -34,26 +34,29 @@
     .videoOverlay{
         position: relative;
         display: block;
-        // height: 60%;
-        // width: 60%;
         background-size: cover;
         background-position: center center;
         background-repeat: no-repeat;
         z-index: 1;
-        .videoCover{
-            position: absolute;
-            top: 0;
-            left: 0;
-            background-size: cover;
-            background-position: center center;
-            visibility: hidden;
-        }
+        // .playButton{
+            .videoCover{
+                // position: absolute;
+                // top: 0;
+                // left: 0;
+                background-size: cover;
+                background-position: center center;
+                visibility: hidden;
+                width: 256px;
+                height: 144px;
+            }
+        // }
     }
     .video{
         // position: absolute;
         // height: 100%;
         // top: 0;
         // left: 0;
+        
     }
     .projectStills{
         height: 100%;
