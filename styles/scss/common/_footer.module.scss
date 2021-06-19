@@ -12,7 +12,6 @@
         font-size: 0.8em;
     }
     &.projectPages{
-        position: static;
         @media screen and (max-width:$s){
             position: static;
         }
