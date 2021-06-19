@@ -11,15 +11,19 @@ export default function stills( {projects}: Type ):JSX.Element{
             <section className={styles.projectPageSection}>
                 <div className={styles.projectStills}>
                     {projects.stills.map((item, i)=>(
-                        <Image
-                            unoptimized
-                            className={styles.stills}
-                            src={`https://kidstudio.co${projects.stills[i]}`}
-                            alt="Project image stills"
-                            width={300}
-                            height={337.8}
-                            key={i}
-                        />
+                        // <Image
+                        //     unoptimized
+                        //     className={styles.stills}
+                        //     src={`https://kidstudio.co${projects.stills[i]}`}
+                        //     alt="Project image stills"
+                        //     width={300}
+                        //     height={337.8}
+                        //     key={i}
+                        // />
+                        <img className={styles.stills}
+                        src={`https://kidstudio.co${projects.stills[i]}`}
+                        alt="Project image stills"
+                        key={i}  />
                     ))}
                 </div>
             </section>
