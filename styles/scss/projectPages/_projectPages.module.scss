@@ -19,7 +19,7 @@
         line-height: 1;
     }
     .projectDetailsWrapper{
-        margin-bottom: 25px;
+        margin-bottom: 10%;
         .projectDetails{
             white-space: pre-wrap;
             font-family: "Avenir", Avenir, sans-serif;
@@ -28,16 +28,20 @@
             word-break: initial;
             z-index: 10000;
             background-color: #f0f0f0;
-            margin: 0px;
+            // margin: 0px;
         }
     }
     .videoOverlay{
         position: relative;
-        display: block;
+        display: inline-block;
         background-size: cover;
         background-position: center center;
         background-repeat: no-repeat;
         z-index: 1;
+        width: 100%;
+        height: inherit;
+        max-width: 550px;
+        max-height: 313.375px;
         // .playButton{
             .videoCover{
                 // position: absolute;
@@ -46,7 +50,7 @@
                 background-size: cover;
                 background-position: center center;
                 visibility: hidden;
-                width: 256px;
+                // width: 256px;
                 height: 144px;
             }
         // }
@@ -64,9 +68,12 @@
         margin-top: 25px;
         display: flex;
         flex-direction: column;
-        margin: 25px 0px 20px 0px;
+        // margin: 25px 0px 20px 0px;
+        // margin: 30px 10% 0px 10%;
         .stills{
-            margin-bottom: 25px !important;
+            margin-bottom: 10% !important;
+            max-width: 578px;
+            max-height: 650px;
         }
     }
 }
