@@ -1,5 +1,6 @@
 import Link from "next/link";
 import styles from "../../styles/scss/workPage/_work.module.scss";
+import React, { useEffect } from "react";
 import { useRouter } from 'next/router'
 
 interface Type{
@@ -9,6 +10,14 @@ interface Type{
 }
 
 export default function work( { bgImg, setbgImg, projects }:Type ){
+  
+  // removes needsScroll class set in project pages from vertical scroll
+  // projectPage useEffect hook needs refactoring to avoid calling it again here.
+  useEffect(()=>{
+    const bg = document.body;
+    bg.classList.remove("needsScroll");
+},[]);
+  
   const router = useRouter();
 
     // rewrote okHover plugin mouse over functionality

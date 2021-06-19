@@ -11,6 +11,7 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from 'next/router';
 
 
+
 interface Type{
     projectsPageData: any;
 }
@@ -19,9 +20,7 @@ export default function projectPages( {projectsPageData}: Type){
     const router = useRouter();
     const pathName = router.pathname;
     const comparison = pathName === "/work/[project]";
-    const [compare, setComparison] = useState(false);
 
-    console.log(compare);
     useEffect(()=>{
 
         const bg = document.body;
@@ -32,7 +31,7 @@ export default function projectPages( {projectsPageData}: Type){
             bg.classList.remove("needsScroll");
         }
 
-    },[compare]);
+    },[path]);
 
     return(
         <>
