@@ -9,7 +9,7 @@
 // @media screen and (min-width:$l){
 // }
 .projectPageSection{
-    margin: 30px 32px 0px 32px;
+    margin: 30px 10% 0px 10%;
     overflow: visible;
     .projectTitle{
         font-size: 28px;
@@ -32,7 +32,6 @@
         }
     }
     .videoOverlay{
-        // background-image: url(https://kidstudio.co/assets/images/play.png);
         position: relative;
         display: block;
         // height: 60%;
@@ -60,6 +59,9 @@
         height: 100%;
         width: 100%;
         margin-top: 25px;
+        display: flex;
+        flex-direction: column;
+        margin: 25px 0px 20px 0px;
         .stills{
             margin-bottom: 25px !important;
         }

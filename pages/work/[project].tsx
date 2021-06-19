@@ -10,8 +10,6 @@ import Stills from '../../components/workContent/projectPages/stills';
 import React, { useState, useEffect } from "react";
 import { useRouter } from 'next/router';
 
-
-
 interface Type{
     projectsPageData: any;
 }

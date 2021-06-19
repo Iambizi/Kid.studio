@@ -12,13 +12,13 @@ export default function stills( {projects}: Type ):JSX.Element{
                 <div className={styles.projectStills}>
                     {projects.stills.map((item, i)=>(
                         <Image
-                        unoptimized
-                        className={styles.stills}
-                        src={ `https://kidstudio.co${projects.stills[i]}` }
-                        alt="Project image stills"
-                        width={300}
-                        height={337.8}
-                        key={i}
+                            unoptimized
+                            className={styles.stills}
+                            src={`https://kidstudio.co${projects.stills[i]}`}
+                            alt="Project image stills"
+                            width={300}
+                            height={337.8}
+                            key={i}
                         />
                     ))}
                 </div>
