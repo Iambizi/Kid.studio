@@ -31,36 +31,38 @@
             // margin: 0px;
         }
     }
-    .videoOverlay{
+    .media{
         position: relative;
-        display: inline-block;
-        background-size: cover;
-        background-position: center center;
-        background-repeat: no-repeat;
-        z-index: 1;
-        width: 100%;
-        height: inherit;
-        max-width: 550px;
-        max-height: 313.375px;
-        // .playButton{
-            .videoCover{
-                // position: absolute;
-                // top: 0;
-                // left: 0;
-                background-size: cover;
-                background-position: center center;
-                visibility: hidden;
-                // width: 256px;
-                height: 144px;
-            }
-        // }
-    }
-    .video{
-        // position: absolute;
-        // height: 100%;
-        // top: 0;
-        // left: 0;
-        
+        .videoOverlay{
+            position: relative;
+            display: inline-block;
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            z-index: 1;
+            width: 100%;
+            height: inherit;
+            max-width: 550px;
+            max-height: 313.375px;
+            // .playButton{
+                .videoCover{
+                    // position: absolute;
+                    // top: 0;
+                    // left: 0;
+                    background-size: cover;
+                    background-position: center center;
+                    visibility: hidden;
+                    // width: 256px;
+                    height: 144px;
+                }
+            // }
+        }
+        .video{
+            position: absolute;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
     }
     .projectStills{
         height: 100%;

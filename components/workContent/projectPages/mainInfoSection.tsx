@@ -16,24 +16,26 @@ export default function mainInfoSection( {projects}: Type ):JSX.Element{
                         {projects.projectInfo}
                     </p>
                 </div>
-                <div className={styles.videoOverlay} style={{backgroundImage: `url(https://kidstudio.co${projects.videoCover})`}}>
-                    <div className={styles.videoOverlay} style={{backgroundImage: `url(https://kidstudio.co/assets/images/play.png)`}}>
-                        {/* <Image
-                        unoptimized
-                        className={styles.videoCover}
-                        src={ `https://kidstudio.co${projects.videoCover}` }
-                        alt="Main video/image still"
-                        width={256}
-                        height={144}
-                    /> */}
-                    <img 
-                        className={styles.videoCover}
-                        src={ `https://kidstudio.co${projects.videoCover}` }
-                        alt="Main video/image still" 
-                        />
-                    </div>  
+                <div className={styles.media}>
+                    <div className={styles.videoOverlay} style={{backgroundImage: `url(https://kidstudio.co${projects.videoCover})`}}>
+                        <div className={styles.videoOverlay} style={{backgroundImage: `url(https://kidstudio.co/assets/images/play.png)`}}>
+                            {/* <Image
+                            unoptimized
+                            className={styles.videoCover}
+                            src={ `https://kidstudio.co${projects.videoCover}` }
+                            alt="Main video/image still"
+                            width={256}
+                            height={144}
+                        /> */}
+                        <img 
+                            className={styles.videoCover}
+                            src={ `https://kidstudio.co${projects.videoCover}` }
+                            alt="Main video/image still" 
+                            />
+                        </div>  
+                    </div>
+                    <iframe className={styles.video} id="vimeo1aolzk8" src={`${projects.videoPath}`} frameBorder="0" allowFullScreen></iframe>
                 </div>
-                <iframe className={styles.video} id="vimeo1aolzk8" src={`${projects.videoPath}`} frameBorder="0" allowFullScreen></iframe>
             </section>
         </>
     )
