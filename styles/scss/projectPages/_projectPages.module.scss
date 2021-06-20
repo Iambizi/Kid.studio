@@ -10,7 +10,7 @@
 // }
 .projectPageSection{
     margin: 30px 10% 0px 10%;
-    overflow: visible;
+    
     .projectTitle{
         font-size: 28px;
         font-weight: 700;
@@ -28,11 +28,11 @@
             word-break: initial;
             z-index: 10000;
             background-color: #f0f0f0;
-            // margin: 0px;
         }
     }
     .projectVideo{
         position: relative;
+        height: auto;
         .videoOverlay{
             position: relative;
             display: inline-block;
@@ -41,21 +41,16 @@
             background-repeat: no-repeat;
             z-index: 1;
             width: 100%;
-            height: inherit;
+            height: 100%;
             max-width: 550px;
             max-height: 313.375px;
-            // .playButton{
                 .videoCover{
-                    // position: absolute;
-                    // top: 0;
-                    // left: 0;
-                    background-size: cover;
-                    background-position: center center;
+                    // background-size: cover;
+                    // background-position: center center;
                     visibility: hidden;
                     // width: 256px;
                     height: 144px;
                 }
-            // }
         }
         .video{
             position: absolute;
