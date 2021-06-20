@@ -34,7 +34,7 @@ export default function mainInfoSection( {projects}: Type ):JSX.Element{
                             />
                         </div>  
                     </div>
-                    <iframe className={styles.video} id="vimeo1aolzk8" src={`${projects.videoPath}`} frameBorder="0" allowFullScreen></iframe>
+                    {/* <iframe className={styles.video} id="vimeo1aolzk8" src={`${projects.videoPath}`} frameBorder="0" allowFullScreen></iframe> */}
                 </div>
             </section>
         </>
