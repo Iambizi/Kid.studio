@@ -33,7 +33,7 @@ export default function mainInfoSection( {projects}: Type ):JSX.Element{
                         />
                     </div>  
                 </div>
-                {/* <iframe className={styles.video} id="vimeo1aolzk8" src="http://player.vimeo.com/video/470421376?color=eef1f3" frameBorder="0" allowFullScreen></iframe> */}
+                <iframe className={styles.video} id="vimeo1aolzk8" src={`${projects.videoPath}`} frameBorder="0" allowFullScreen></iframe>
             </section>
         </>
     )
