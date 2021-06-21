@@ -10,7 +10,7 @@ interface Type{
 }
 
 export default function work( { bgImg, setbgImg, projects }:Type ){
-  
+
   // removes needsScroll class set in project pages from vertical scroll
   // projectPage useEffect hook needs refactoring to avoid calling it again here.
   useEffect(()=>{
@@ -33,18 +33,8 @@ export default function work( { bgImg, setbgImg, projects }:Type ){
         
         bg.style.backgroundImage = `url(${okGif})`;
 
-        
-        
-
         // Because link constant returns htmlCollection, we need to iterate through using a for loop to make changes
-        {
-            /*
-                for loop for function on mousemove event
-                adds: 
-                backgroundPosition
-                z-index
-            */
-        }
+        // for loop for function on mousemove event adds: backgroundPosition, z-index
 
         for(var i = 0; i < link.length; i++) {
             ((index)=> {

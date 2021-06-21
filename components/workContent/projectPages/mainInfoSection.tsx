@@ -6,11 +6,18 @@ interface Type{
 export default function mainInfoSection( {projects}: Type ):JSX.Element{
     const overlayPlay = ()=>{
 
-        const overlay = document.getElementById('overlay');
+        const overlay = document.getElementsByClassName('overlay');
 
         console.log("yoo");
+        console.log(overlay);
 
-        overlay.classList.add(`${styles.hideOverlay}`);
+        // overlay.classList.add(`${styles.hideOverlay}`);
+
+        for(var i = 0; i < overlay.length; i++) {
+            ((index)=> {
+              overlay[index].classList.add(`${styles.hideOverlay}`)
+            })(i);
+          }
     }
     return(
         <>
@@ -24,8 +31,8 @@ export default function mainInfoSection( {projects}: Type ):JSX.Element{
                     </p>
                 </div>
                 <div className={`${styles.projectVideo}`}>
-                    <div onClick={overlayPlay} id="overlay" className={styles.videoOverlay} style={{backgroundImage: `url(https://kidstudio.co${projects.videoCover})`}}>
-                        <div  className={styles.videoOverlay} style={{backgroundImage: `url(https://kidstudio.co/assets/images/play.png)`}}>
+                    <div onClick={overlayPlay} className={`${styles.videoOverlay} overlay`} style={{backgroundImage: `url(https://kidstudio.co${projects.videoCover})`}}>
+                        <div  className={`${styles.videoOverlay} overlay`} style={{backgroundImage: `url(https://kidstudio.co/assets/images/play.png)`}}>
                             {/* <Image
                             unoptimized
                             className={styles.videoCover}
