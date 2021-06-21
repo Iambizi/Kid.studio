@@ -4,7 +4,14 @@ interface Type{
     projects: any;
 }
 export default function mainInfoSection( {projects}: Type ):JSX.Element{
+    const overlayPlay = ()=>{
 
+        const overlay = document.getElementById('overlay');
+
+        console.log("yoo");
+
+        overlay.classList.add(`${styles.hideOverlay}`);
+    }
     return(
         <>
             <section className={styles.projectPageSection}>
@@ -16,9 +23,9 @@ export default function mainInfoSection( {projects}: Type ):JSX.Element{
                         {projects.projectInfo}
                     </p>
                 </div>
-                <div className={styles.projectVideo}>
-                    <div className={styles.videoOverlay} style={{backgroundImage: `url(https://kidstudio.co${projects.videoCover})`}}>
-                        <div className={styles.videoOverlay} style={{backgroundImage: `url(https://kidstudio.co/assets/images/play.png)`}}>
+                <div className={`${styles.projectVideo}`}>
+                    <div onClick={overlayPlay} id="overlay" className={styles.videoOverlay} style={{backgroundImage: `url(https://kidstudio.co${projects.videoCover})`}}>
+                        <div  className={styles.videoOverlay} style={{backgroundImage: `url(https://kidstudio.co/assets/images/play.png)`}}>
                             {/* <Image
                             unoptimized
                             className={styles.videoCover}

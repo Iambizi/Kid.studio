@@ -9,6 +9,8 @@ import Stills from '../../components/workContent/projectPages/stills';
 // import Footer from "../../components/common/footer";
 import React, { useState, useEffect } from "react";
 import { useRouter } from 'next/router';
+import styles from '../../styles/scss/common/_footer.module.scss';
+
 
 interface Type{
     projectsPageData: any;
@@ -34,7 +36,7 @@ export default function projectPages( {projectsPageData}: Type){
     return(
         <>
             <Meta page={projectsPageData.title} />
-            <Layout specificStyles={"projectPages"}>
+            <Layout specificStyles={`${styles.projectPages}`}>
                 <MainInfo projects={projectsPageData} />
                 <Stills projects={projectsPageData} />
             </Layout>
