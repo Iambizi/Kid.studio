@@ -1,11 +1,33 @@
 import Image from 'next/image';
 import styles from "../../../styles/scss/projectPages/_projectPages.module.scss";
+import React, { useState } from "react";
 
 interface Type{
     projects: any;
 }
 
 export default function mainInfoSection( {projects}: Type ):JSX.Element{
+    // hook for handling z-index state
+    const [toggleIndex, setToggleIndex] = useState(false);
+
+    const handleIndex = () => {
+        // const video = document.querySelector("video");
+        // console.log(video);
+
+        // setToggleIndex(true);
+        // console.log("yooo");
+
+        // function addClass(){
+        //     video.classList.add(`${styles.toggleIndex}`)
+        // }
+        // function removeClass(){
+        //     video.classList.remove(`${styles.toggleIndex}`)
+        // }
+        
+        // video.addEventListener("mouseenter", addClass, false);
+        // video.addEventListener("mouseout", removeClass, false);
+    }
+
     const overlayPlay = ()=>{
 
         const overlay = document.getElementsByClassName('overlay');
@@ -16,6 +38,9 @@ export default function mainInfoSection( {projects}: Type ):JSX.Element{
             })(i);
           }
     }
+
+    
+
     return(
         <>
             <section className={styles.projectPageSection}>
@@ -29,7 +54,7 @@ export default function mainInfoSection( {projects}: Type ):JSX.Element{
                         </p>
                     </div>
                 </div>
-                <div className={`${styles.projectVideo}`}>
+                <div className={ toggleIndex ? `${styles.projectVideo} ${styles.toggleIndex} video` : `${styles.projectVideo} video`}>
                     <div onClick={ overlayPlay } className={`${styles.videoOverlay} overlay`} style={{backgroundImage: `url(https://kidstudio.co${projects.videoCover})`}}>
                         <div  className={`${styles.videoOverlay} overlay`} style={{backgroundImage: `url(https://kidstudio.co/assets/images/play.png)`}}>
                             {/* <Image
@@ -47,7 +72,7 @@ export default function mainInfoSection( {projects}: Type ):JSX.Element{
                             />
                         </div>  
                     </div>
-                    <iframe className={styles.video} id="vimeo1aolzk8" src={`${projects.videoPath}`} frameBorder="0" allowFullScreen></iframe>
+                    <iframe onMouseMove={ handleIndex } onClick={ handleIndex } className={styles.video} id="vimeo1aolzk8" src={`${projects.videoPath}`} frameBorder="0" allowFullScreen></iframe>
                 </div>
             </section>
         </>

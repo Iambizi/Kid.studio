@@ -52,7 +52,7 @@
                     padding: 30px 30px 30px 40px;
                     margin-left: 0px;
                     width: 350px;
-                    z-index: 12000;
+                    z-index: 56565656;
                 }
                 @media screen and (min-width: $xl){
                     left: 34%;
@@ -64,7 +64,10 @@
     .projectVideo{
         display: block;
         position: relative;
-        z-index: 10000;
+        z-index: 5656;
+        &.toggleIndex{
+            z-index: 5656565656;
+        }
         margin-bottom: 10%;
         .videoOverlay{
             position: relative;
@@ -72,7 +75,7 @@
             background-size: cover;
             background-position: center center;
             background-repeat: no-repeat;
-            z-index: 10000000;
+            z-index: 5656565656;
             width: 100%;
             height: 100%;
             max-width: 560px;
