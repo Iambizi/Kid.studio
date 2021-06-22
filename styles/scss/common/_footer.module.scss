@@ -12,15 +12,10 @@
         font-size: 0.8em;
     }
     &.projectPages{
-        @media screen and (max-width:$s){
-            position: static;
-        }
+        position: static;
     }
-    
     .footerLinks{
         margin: 28px 0;
-        
-
         &.hoverColor{
             color: #f0f0f0;
         }
