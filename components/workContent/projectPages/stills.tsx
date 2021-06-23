@@ -22,19 +22,25 @@ export default function stills( {projects}: Type ):JSX.Element{
                 [ 50, 10, 30, 50, 10, 50, 10, 50, 10, 30 ] 
         ];
 
-        if(screenWidth >= 1200){
-            console.log("big screen");
-        }else{
-            console.log("small screen");
-        }
-        console.log(positions[0]);
-        console.log(stills);
-        for(var i = 0; i < stills.length; i++) {
+        const values = [
+            'left', 'left', 'left', 'left', 'left', 'left', 'left', 'left', 'left', 'left',
+        ]
+
+        // if(screenWidth >= 1200){
+        //     console.log("big screen");
+        // }else{
+        //     console.log("small screen");
+        // }
+        // console.log(positions[0]);
+        // console.log(stills);
+        for(var i = 0; i < positions.length; i++) {
             ((index)=> {
             //   stills[index].style.left = positions[0];
-            // stills.map((item, i)=>(
-            //     item[i].style.left = ""
-            // ));
+            values.map((item, i)=>(
+                console.log(`${values[i]}:${positions[i]}`)
+            ));
+            // console.log(positions[i]);
+            // console.log(`${values[i]}:${positions[i]}`);
             })(i);
           }
     },[]);

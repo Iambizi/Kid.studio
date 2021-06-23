@@ -37,6 +37,7 @@ export default function mainInfoSection( {projects}: Type ):JSX.Element{
               overlay[index].classList.add(`${styles.hideOverlay}`)
             })(i);
           }
+          
     }
 
     

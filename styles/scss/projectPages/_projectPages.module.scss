@@ -98,11 +98,12 @@
     .projectStills{
         height: 100%;
         width: 100%;
-        @media screen and (min-width: $l){
-            margin-top: 20%;
-        }
         display: flex;
         flex-direction: column;
+        @media screen and (min-width: $l){
+            margin-top: 20%;
+            position: absolute;
+        }
         .stills{
             margin-bottom: 10%;
             max-width: 600px;
