@@ -28,11 +28,10 @@
             @media screen and (min-width:$l){
                 text-align: center;
                 font-size: 4.7em;
-                margin-top: 90px;
+                margin-top: 6%;
             }
             @media screen and (min-width:1440px){
                 font-size: 5.6em;
-                margin-top: 90px;
             }
         }
         .projectCredsWrapper{
@@ -47,16 +46,16 @@
                 background-color: #f0f0f0;
                 @media screen and (min-width: $l){
                     position: absolute;
-                    left: 54%;
-                    top: 50%;
-                    padding: 30px 30px 30px 40px;
+                    left: 51%;
+                    top: 30%;
+                    padding: 30px 30px 30px 30px;
                     margin-left: 0px;
                     width: 350px;
                     z-index: 56565656;
                 }
                 @media screen and (min-width: $xl){
-                    left: 34%;
-                    top: 36%;
+                    left: 50%;
+                    top: 35%;
                 }
             }
         }
@@ -101,7 +100,7 @@
     .projectStills{
         height: 100%;
         width: 100%;
-        margin-top: 25px;
+        margin-top: 35%;
         display: flex;
         flex-direction: column;
         .stills{

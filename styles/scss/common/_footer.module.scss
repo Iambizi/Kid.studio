@@ -14,6 +14,11 @@
     &.projectPages{
         position: static;
     }
+    // @media screen and (max-width:$m){
+    //     &.projectPages{
+    //         position: static;
+    //     }
+    // }
     .footerLinks{
         margin: 28px 0;
         &.hoverColor{
