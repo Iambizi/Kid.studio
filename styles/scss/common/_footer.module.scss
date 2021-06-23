@@ -11,14 +11,14 @@
     @media screen and (min-width:$m){
         font-size: 0.8em;
     }
-    &.projectPages{
-        position: static;
-    }
-    // @media screen and (max-width:$m){
-    //     &.projectPages{
-    //         position: static;
-    //     }
+    // &.projectPages{
+    //     position: static;
     // }
+    @media screen and (max-width:$l){
+        &.projectPages{
+            position: static;
+        }
+    }
     .footerLinks{
         margin: 28px 0;
         &.hoverColor{

@@ -14,10 +14,6 @@
         margin: 30px 5% 0px 5%;
     }
     .projectDetailsWrapper{
-    //     @media screen and (min-width:$l){
-    //         display: flex;
-    //         flex-direction: column;
-    // }
         .projectTitle{
             font-size: 28px;
             font-weight: bold;
@@ -47,15 +43,17 @@
                 @media screen and (min-width: $l){
                     position: absolute;
                     left: 51%;
-                    top: 30%;
-                    padding: 30px 30px 30px 30px;
+                    // top: 30%;
+                    top: 350px;
+                    padding: 30px;
                     margin-left: 0px;
                     width: 350px;
                     z-index: 56565656;
                 }
                 @media screen and (min-width: $xl){
-                    left: 50%;
-                    top: 35%;
+                    left: 49%;
+                    // top: 35%;
+                    top: 350px;
                 }
             }
         }
@@ -78,7 +76,7 @@
             width: 100%;
             height: 100%;
             max-width: 560px;
-            max-height: 330px;
+            max-height: 450px;
             &.hideOverlay{
                 display: contents; 
             }
@@ -94,13 +92,15 @@
             top: 0;
             left: 0;
             max-width: 560px;
-            max-height: 330px;
+            max-height: 450px;
         }
     }
     .projectStills{
         height: 100%;
         width: 100%;
-        margin-top: 35%;
+        @media screen and (min-width: $l){
+            margin-top: 20%;
+        }
         display: flex;
         flex-direction: column;
         .stills{
