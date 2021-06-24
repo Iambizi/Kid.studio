@@ -38,7 +38,7 @@ export default function carousel({ homeProjects, carouselX, slideNext, slidePrev
                                         `${styles[homeProjects[i].imageClassName]} ${styles.slidePrevious}` :
                                         `${styles[homeProjects[i].imageClassName]}`
                                     }
-                                    src={"https://kidstudio.co/content/2-home" + `${homeProjects[i].path}`}
+                                    src={"https://kidstudio.co/content/2-home" + `${homeProjects[i].imgSrc}`}
                                     alt={"Video Project screenshot"}
                                     height={200}
                                     width={330}

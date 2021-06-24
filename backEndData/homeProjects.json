@@ -2,20 +2,23 @@
     "homeProjects": [
         {
             "videoTitle": "Bryson Tiller 'Always Forever'",
-            "path": "/1-alwaysforever-2.gif",
+            "imgSrc": "/1-alwaysforever-2.gif",
             "titleClassName": "videoTitle1",
-            "imageClassName": "carouselImage1"
+            "imageClassName": "carouselImage1",
+            "path": "/bryson-tiller-always-forever"
         },
         {   "videoTitle": "Disclosure 'Energy'",
-            "path": "/2-energy.gif",
+            "imgSrc": "/2-energy.gif",
             "titleClassName": "videoTitle2",
-            "imageClassName": "carouselImage2"
+            "imageClassName": "carouselImage2",
+            "path": "/wolves"
         },
         {
             "videoTitle": "Big Sean 'Wolves' ft. Post Malone",
-            "path": "/3-wolves.gif",
+            "imgSrc": "/3-wolves.gif",
             "titleClassName": "videoTitle3",
-            "imageClassName": "carouselImage3"
+            "imageClassName": "carouselImage3",
+            "path": "/mustafa-air-forces"
         }
     ]
 }
