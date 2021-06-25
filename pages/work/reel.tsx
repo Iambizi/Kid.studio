@@ -17,6 +17,8 @@ export default function reels({reelPageData}: Type):JSX.Element{
     const pathName = router.pathname;
     const comparison = pathName === "/work/reel";
 
+    console.log(reelPageData.stills);
+
     useEffect(()=>{
 
         const bg = document.body;
@@ -51,7 +53,7 @@ export const getStaticProps: GetStaticProps = async (context)=>{
     
     return {
         props: {
-            reelPageData: data.reel
+            reelPageData: data
         }
     }
 }
