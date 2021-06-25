@@ -5,24 +5,35 @@ import React, { useEffect } from "react";
 import fs from 'fs'
 import path from 'path'
 import styles from '../../styles/scss/common/_footer.module.scss';
-import MainInfo from '../../components/reelContent/reelInfoSection';
-import Stills from '../../components/reelContent/reelStills';
+import ReelInfo from '../../components/reelContent/reelInfoSection';
+import ReelStills from '../../components/reelContent/reelStills';
+import { useRouter } from 'next/router';
 
 interface Type{
     reelPageData: any;
 }
 export default function reels({reelPageData}: Type):JSX.Element{
+    const router = useRouter();
+    const pathName = router.pathname;
+    const comparison = pathName === "/work/reel";
+
     useEffect(()=>{
+
         const bg = document.body;
-        bg.classList.remove("needsScroll");
-    },[]);
-    console.log(reelPageData);
+        
+        if(pathName === "/work/reel"){
+            bg.classList.add("needsScroll");
+        }else if(comparison === false){
+            bg.classList.remove("needsScroll");
+        }
+
+    },[path]);
     return(
         <>
             <Meta page={reelPageData.title} />
             <Layout specificStyles={`${styles.projectPages}`}>
-                <MainInfo reels={reelPageData} />
-                <Stills reels={reelPageData} />
+                <ReelInfo reels={reelPageData} />
+                <ReelStills reels={reelPageData} />
             </Layout>
         </>
     )
@@ -32,7 +43,7 @@ export const getStaticProps: GetStaticProps = async (context)=>{
 
     const { params } = context;
     
-    const fileToRead = path.join(process.cwd(),'./backEndData/projects/reelsPage.json');
+    const fileToRead = path.join(process.cwd(),'./backEndData/projects/reelPage.json');
     const data = JSON.parse(await fs.readFileSync(fileToRead).toString());
     
     // using page specific data return data according to the params (specific project being selected)
@@ -40,7 +51,7 @@ export const getStaticProps: GetStaticProps = async (context)=>{
     
     return {
         props: {
-            reelPageData: data
+            reelPageData: data.reel
         }
     }
 }

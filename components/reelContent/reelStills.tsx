@@ -49,7 +49,7 @@ export default function stills( {reels}: Type ):JSX.Element{
     return(
         <>
             <section className={styles.projectPageSection}>
-                {/* <div className={styles.projectStills}>
+                <div className={styles.projectStills}>
                     {reels.stills.map((item, i)=>(
                         // <Image
                         //     unoptimized
@@ -61,11 +61,11 @@ export default function stills( {reels}: Type ):JSX.Element{
                         //     key={i}
                         // />
                         <img className={`${styles.stills} stills`}
-                        src={`https://kidstudio.co${projects.stills[i]}`}
+                        src={`${reels.stills[i]}`}
                         alt="Project image stills"
                         key={i}  />
                     ))}
-                </div> */}
+                </div>
             </section>
     </>
     )

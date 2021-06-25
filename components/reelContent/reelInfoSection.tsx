@@ -51,12 +51,12 @@ export default function mainInfoSection( { reels }: Type ):JSX.Element{
                     </h3>
                     <div className={styles.projectCredsWrapper}>
                         <p className={styles.projectCreds}>
-                            {reels.projectInfo}
+                            {reels.details}
                         </p>
                     </div>
                 </div>
                 <div className={ toggleIndex ? `${styles.projectVideo} ${styles.toggleIndex} video` : `${styles.projectVideo} video`}>
-                    <div onClick={ overlayPlay } className={`${styles.videoOverlay} overlay`} style={{backgroundImage: `url(https://kidstudio.co${reels.videoCover})`}}>
+                    <div onClick={ overlayPlay } className={`${styles.videoOverlay} overlay`} style={{backgroundImage: `url(${reels.videoCover})`}}>
                         <div  className={`${styles.videoOverlay} overlay`} style={{backgroundImage: `url(https://kidstudio.co/assets/images/play.png)`}}>
                             {/* <Image
                             unoptimized
@@ -68,7 +68,7 @@ export default function mainInfoSection( { reels }: Type ):JSX.Element{
                         /> */}
                         <img 
                             className={styles.videoCover}
-                            src={ `https://kidstudio.co${reels.videoCover}` }
+                            src={ `${reels.videoCover}` }
                             alt="Main video/image still" 
                             />
                         </div>  
