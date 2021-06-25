@@ -1,13 +1,15 @@
 import Image from 'next/image';
-import styles from "../../../styles/scss/projectPages/_projectPages.module.scss";
+// import styles from "../../../styles/scss/projectPages/_projectPages.module.scss";
+import styles from "../../styles/scss/projectPages/_projectPages.module.scss";
 
-import React, { useState, useEffect } from "react";
+
+import React, { useEffect } from "react";
 
 interface Type{
-    projects: any;
+    reels: any;
 }
 
-export default function stills( {projects}: Type ):JSX.Element{
+export default function stills( {reels}: Type ):JSX.Element{
     useEffect(()=>{
         const screenWidth = window.innerWidth;
         
@@ -47,8 +49,8 @@ export default function stills( {projects}: Type ):JSX.Element{
     return(
         <>
             <section className={styles.projectPageSection}>
-                <div className={styles.projectStills}>
-                    {projects.stills.map((item, i)=>(
+                {/* <div className={styles.projectStills}>
+                    {reels.stills.map((item, i)=>(
                         // <Image
                         //     unoptimized
                         //     className={styles.stills}
@@ -63,7 +65,7 @@ export default function stills( {projects}: Type ):JSX.Element{
                         alt="Project image stills"
                         key={i}  />
                     ))}
-                </div>
+                </div> */}
             </section>
     </>
     )

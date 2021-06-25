@@ -1,10 +1,10 @@
 {
-    "reels": [
+    "reel": [
         {
             "title": "Kid. Studio Reel",
             "details": "Select projects with The Weeknd, Big Sean, Hard to Kill, Nike, Short Films, Future, French Montana, Drake, 6LACK, Quavo and more.",
-            "projectStills": [
-                "https://kidstudio.co/work/reel/video/kid-reel-poster-vimeo2.jpg",
+            "videoCover": "https://kidstudio.co/work/reel/video/kid-reel-poster-vimeo2.jpg",
+            "stills": [
                 "https://kidstudio.co/thumbs/kid-still-1-4ec8403d4314014674890153e06a2746.png",
                 "https://kidstudio.co/thumbs/kid-still-2-6409d31da7a846834a4245bb69c6f83c.png",
                 "https://kidstudio.co/thumbs/kid-still-3-3172cd3bfe6edf9b445c4db3686516bf.png",

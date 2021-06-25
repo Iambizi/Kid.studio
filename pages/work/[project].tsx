@@ -14,7 +14,7 @@ interface Type{
     projectsPageData: any;
 }
 
-export default function projectPages( {projectsPageData}: Type){
+export default function projectPages( {projectsPageData}: Type):JSX.Element{
     const router = useRouter();
     const pathName = router.pathname;
     const comparison = pathName === "/work/[project]";
