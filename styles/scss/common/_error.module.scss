@@ -1,0 +1,20 @@
+@import "../_variables.scss";
+
+
+.error{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 11% auto;
+    h1{
+        font-family: 'Helvetica', Helvetica, Arial;
+        text-align: center;
+        margin-bottom: 0px;
+    }
+    img{
+        max-height: 293px;
+        max-width: 520px;
+        margin: 0 auto;
+    }
+}
