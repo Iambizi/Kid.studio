@@ -40,8 +40,6 @@ export default function mainInfoSection( { reels }: Type ):JSX.Element{
           
     }
 
-    
-
     return(
         <>
             <section className={styles.projectPageSection}>

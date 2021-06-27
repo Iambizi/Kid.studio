@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import styles from "../../../styles/scss/projectPages/_projectPages.module.scss";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 interface Type{
     projects: any;
@@ -10,8 +10,9 @@ export default function mainInfoSection( {projects}: Type ):JSX.Element{
     // hook for handling z-index state
     const [toggleIndex, setToggleIndex] = useState(false);
 
+    
+
     const handleIndex = () => {
-        // const video = document.querySelector("video");
         // console.log(video);
 
         // setToggleIndex(true);

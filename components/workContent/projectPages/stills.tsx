@@ -26,11 +26,16 @@ export default function stills( {projects}: Type ):JSX.Element{
             'left', 'left', 'left', 'left', 'left', 'left', 'left', 'left', 'left', 'left',
         ]
 
-        // if(screenWidth >= 1200){
-        //     console.log("big screen");
-        // }else{
-        //     console.log("small screen");
-        // }
+        if(screenWidth >= 1200){
+            console.log("big screen");
+            const stills = document.getElementsByClassName("stills");
+            console.log(stills[0]);
+            for(var i = 0; i < stills.length; i++) {
+                // console.log(stills[i].style);
+            }
+        }else{
+            console.log("small screen");
+        }
         // console.log(positions[0]);
         // console.log(stills);
         // for(var i = 0; i < positions.length; i++) {
