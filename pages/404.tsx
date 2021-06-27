@@ -1,13 +1,16 @@
 import Layout from '../components/layout';
 import Meta  from '../components/common/meta';
 import Content from '../components/homeContent/content';
+import styles from '../styles/scss/common/_error.module.scss';
 export default function Custom404() {
     return (
         <>
             <Meta page={"404"} />
             <Layout>
-                <h1>404 - Page Not Found</h1>
-                {/* <h1>{projects[0].title}</h1> */}
+                <div className={styles.error}>
+                <h1>404 NAH B.</h1>
+                    <img src="http://media.giphy.com/media/Kavm9lxU8Ljc4/giphy.gif"/>
+                </div>
             </Layout>
         </>
     )

@@ -17,8 +17,6 @@ export default function reels({reelPageData}: Type):JSX.Element{
     const pathName = router.pathname;
     const comparison = pathName === "/work/reel";
 
-    console.log(reelPageData.stills);
-
     useEffect(()=>{
 
         const bg = document.body;
@@ -30,6 +28,7 @@ export default function reels({reelPageData}: Type):JSX.Element{
         }
 
     },[path]);
+    
     return(
         <>
             <Meta page={reelPageData.title} />
