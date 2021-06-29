@@ -14,7 +14,6 @@ export default function stills( {projects}: Type ):JSX.Element{
         const stills = [document.getElementsByClassName('stills')];
 
         const positions = [
-            
                 [ 30, 10, 30, 10, 30, 10, 50, 30, 10, 30 ],
             
                 [ 50, 10, 30, 50, 30, 10, 30, 10, 30, 10 ],
@@ -22,22 +21,23 @@ export default function stills( {projects}: Type ):JSX.Element{
                 [ 50, 10, 30, 50, 10, 50, 10, 50, 10, 30 ] 
         ];
 
-        const values = [
-            'left', 'left', 'left', 'left', 'left', 'left', 'left', 'left', 'left', 'left',
-        ]
+        const position = [
+            30, 10, 30, 10, 30, 10, 50, 30, 10, 30 
+    ];
 
         if(screenWidth >= 1200){
             console.log("big screen");
-            const stills = document.getElementsByClassName("stills");
-            console.log(stills[0]);
+            const stills = Array.from(document.getElementsByClassName("stills") as HTMLCollectionOf<HTMLElement>);
+            // console.log(stills[0].style.marginLeft="50%");
+            console.log(position[i]);
             for(var i = 0; i < stills.length; i++) {
-                // console.log(stills[i].style);
+                stills[i].style.marginLeft = `${position[i]}%`;
             }
         }else{
             console.log("small screen");
         }
-        // console.log(positions[0]);
-        // console.log(stills);
+        console.log(positions[0]);
+        console.log(positions);
         // for(var i = 0; i < positions.length; i++) {
         //     ((index)=> {
         //     //   stills[index].style.left = positions[0];

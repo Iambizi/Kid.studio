@@ -100,14 +100,19 @@
         width: 100%;
         display: flex;
         flex-direction: column;
+        margin-bottom: 5%;
         @media screen and (min-width: $l){
             margin-top: 20%;
             // position: absolute;
         }
         .stills{
-            margin-bottom: 10%;
-            max-width: 600px;
-            max-height: 500px;
+            margin-bottom: 5%;
+            // max-width: 578px;
+            // max-height: 550px;
+            @media screen and (min-width: $l){
+                width: 50%;
+                height: 50%;
+            }
         }
     }
 }
