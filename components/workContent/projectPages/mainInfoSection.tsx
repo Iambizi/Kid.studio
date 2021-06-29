@@ -41,13 +41,23 @@ export default function mainInfoSection( {projects}: Type ):JSX.Element{
           
     }
 
-    
 
+    const titleScroll = () => {
+        
+        const screenWidth = window.innerWidth;
+        const title = document.getElementsByClassName("title");
+        if(screenWidth >= 1200){
+            console.log(title);
+        }
+    }
+    useEffect(()=>{
+        window.addEventListener('scroll', titleScroll);
+    },[])
     return(
         <>
             <section className={styles.projectPageSection}>
                 <div className={styles.projectDetailsWrapper}>
-                    <h3 className={styles.projectTitle}>
+                    <h3 className={`${styles.projectTitle} title`}>
                         {projects.title}
                     </h3>
                     <div className={styles.projectCredsWrapper}>
