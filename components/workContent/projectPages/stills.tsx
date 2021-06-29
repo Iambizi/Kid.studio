@@ -29,7 +29,8 @@ export default function stills( {projects}: Type ):JSX.Element{
         }
 
         const position = [
-            30, 50, 30, 10, 30, 10, 50, 30, 10, 30 
+            30, 50, 30, 10, 30, 10, 50, 30, 10, 30,
+            10, 30, 30, 50, 30, 30, 10, 30, 50, 10, 30  
         ];
         shuffle(position);
 
