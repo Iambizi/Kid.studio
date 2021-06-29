@@ -65,7 +65,7 @@ export default function work( { bgImg, setbgImg, projects }:Type ){
             })(i);
           }
 
-        // Ensures bg does not remain styled once once projectPages  
+        // Ensures bg does not remain styled once we click to projectPages  
           if(comparison){
             removeStyles();
           }
