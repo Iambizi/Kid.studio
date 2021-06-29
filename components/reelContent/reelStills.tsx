@@ -1,5 +1,4 @@
 import Image from 'next/image';
-// import styles from "../../../styles/scss/projectPages/_projectPages.module.scss";
 import styles from "../../styles/scss/projectPages/_projectPages.module.scss";
 
 
@@ -15,7 +14,6 @@ export default function stills( {reels}: Type ):JSX.Element{
         
         // Fisher-Yates (aka Knuth) Shuffle
         // function that shuffles values in positions array
-        
         const shuffle = (array)=>{
             var currentIndex = array.length,  randomIndex;
             // While there remain elements to shuffle...
@@ -37,7 +35,6 @@ export default function stills( {reels}: Type ):JSX.Element{
         shuffle(position);
 
         if(screenWidth >= 1200){
-            console.log("big screen");
             const stills = Array.from(document.getElementsByClassName("stills") as HTMLCollectionOf<HTMLElement>);
 
             for(var i = 0; i < stills.length; i++) {

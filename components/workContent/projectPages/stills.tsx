@@ -4,7 +4,7 @@ import styles from "../../../styles/scss/projectPages/_projectPages.module.scss"
 import React, { useState, useEffect } from "react";
 
 interface Type{
-    projects: any;
+    projects?: any;
 }
 
 export default function stills( {projects}: Type ):JSX.Element{
@@ -13,7 +13,6 @@ export default function stills( {projects}: Type ):JSX.Element{
         
         // Fisher-Yates (aka Knuth) Shuffle
         // function that shuffles values in positions array
-        
         const shuffle = (array)=>{
             var currentIndex = array.length,  randomIndex;
             // While there remain elements to shuffle...
