@@ -13,38 +13,37 @@ export default function stills( {reels}: Type ):JSX.Element{
     useEffect(()=>{
         const screenWidth = window.innerWidth;
         
-        const stills = [document.getElementsByClassName('stills')];
+        // Fisher-Yates (aka Knuth) Shuffle
+        // function that shuffles values in positions array
+        
+        const shuffle = (array)=>{
+            var currentIndex = array.length,  randomIndex;
+            // While there remain elements to shuffle...
+            while (0 !== currentIndex) {
+              // Pick a remaining element...
+              randomIndex = Math.floor(Math.random() * currentIndex);
+              currentIndex--;
+              // And swap it with the current element.
+              [array[currentIndex], array[randomIndex]] = [
+                array[randomIndex], array[currentIndex]];
+            }
+            return array;
+        }
 
-        const positions = [
-            
-                [ 30, 10, 30, 10, 30, 10, 50, 30, 10, 30 ],
-            
-                [ 50, 10, 30, 50, 30, 10, 30, 10, 30, 10 ],
-
-                [ 50, 10, 30, 50, 10, 50, 10, 50, 10, 30 ] 
+        const position = [
+            30, 50, 30, 10, 30, 10, 50, 30, 10, 30,
+            10, 30, 30, 50, 30, 30, 10, 30, 50, 10, 30  
         ];
+        shuffle(position);
 
-        const values = [
-            'left', 'left', 'left', 'left', 'left', 'left', 'left', 'left', 'left', 'left',
-        ]
+        if(screenWidth >= 1200){
+            console.log("big screen");
+            const stills = Array.from(document.getElementsByClassName("stills") as HTMLCollectionOf<HTMLElement>);
 
-        // if(screenWidth >= 1200){
-        //     console.log("big screen");
-        // }else{
-        //     console.log("small screen");
-        // }
-        // console.log(positions[0]);
-        // console.log(stills);
-        // for(var i = 0; i < positions.length; i++) {
-        //     ((index)=> {
-        //     //   stills[index].style.left = positions[0];
-        //     values.map((item, i)=>(
-        //         console.log(`${values[i]}:${positions[i]}`)
-        //     ));
-        //     // console.log(positions[i]);
-        //     // console.log(`${values[i]}:${positions[i]}`);
-        //     })(i);
-        //   }
+            for(var i = 0; i < stills.length; i++) {
+                stills[i].style.marginLeft = `${position[i]}%`;
+            }
+        }
     },[]);
     return(
         <>
