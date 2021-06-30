@@ -43,11 +43,17 @@ export default function mainInfoSection( {projects}: Type ):JSX.Element{
 
 
     const titleScroll = () => {
+        const pageY = window.pageYOffset;
+        // console.log(window.pageYOffset);
         
         const screenWidth = window.innerWidth;
-        const title = document.getElementsByClassName("title");
+        const title = document.querySelector(".title") as HTMLElement;
+
         if(screenWidth >= 1200){
             console.log(title);
+            console.log(title.style.transform = `translateY(-${pageY}px)`);
+            // console.log(title.style.transform = `translateY(-${pageY}px);`);
+            title.style.transform = `translateY(-${pageY}px);`
         }
     }
     useEffect(()=>{
