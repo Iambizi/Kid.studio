@@ -2,108 +2,114 @@
     "projects": [
         {
             "id": "1",
+            "title": "Vince Staples 'Law of Averages'",
+            "path": "/vs-loa",
+            "hoverImage": "/vs-loa/loa.gif"
+        },
+        {
+            "id": "2",
             "title": "Bryson Tiller 'Always Forever'",
             "path": "/bryson-tiller-always-forever",
             "hoverImage": "/bryson-tiller-always-forever/alwaysforever.gif"
         },
         {
-            "id": "2",
+            "id": "3",
             "title": "Big Sean 'Wolves' ft. Post Malone",
             "path": "/wolves",
             "hoverImage": "/wolves/wolves.gif"
         },
         {
-            "id": "3",
+            "id": "4",
             "title": "Mustafa 'Air Forces'",
             "path": "/mustafa-air-forces",
             "hoverImage": "/mustafa-air-forces/airforces.gif"
         },
         {
-            "id": "4",
+            "id": "5",
             "title": "Disclosure 'Energy'",
             "path": "/disclosure-energy",
             "hoverImage": "/disclosure-energy/energy.gif"
         },
         {
-            "id": "5",
+            "id": "6",
             "title": "Disclosure 'Birthday' ft. Kehlani & Syd",
             "path": "/disclosure-birthday",
             "hoverImage": "/disclosure-birthday/birthday.gif"
         },
         {
-            "id": "6",
+            "id": "7",
             "title": "Disclosure 'Watch Your Step' ft. Kelis",
             "path": "/disclosure-wys",
             "hoverImage": "/disclosure-wys/wys.gif"
         },
         {
-            "id": "7",
+            "id": "8",
             "title": "The Weekend 'King of The Fall'",
             "path": "/king-of-the-fall",
             "hoverImage": "/king-of-the-fall/featured1.png"
         },
         {
-            "id": "8",
+            "id": "9",
             "title": "The Weekend 'Reminder'",
             "path": "/reminder",
             "hoverImage": "/reminder/reminder.gif"
         },
         {
-            "id": "9",
+            "id": "10",
             "title": "French Motana ft. Drake 'No Stylist'",
             "path": "/no-stylist",
             "hoverImage": "/no-stylist/stylist.gif"
         },
         {
-            "id": "10",
+            "id": "11",
             "title": "Big Sean 'Bounce Back'",
             "path": "/bounce-back",
             "hoverImage": "/bounce-back/bb.gif"
         },
         {
-            "id": "11",
+            "id": "12",
             "title": "Future ft. The Weekend 'Comin out Strong'",
             "path": "/cos",
             "hoverImage": "/cos/cos.gif"
         },
         {
-            "id": "12",
+            "id": "13",
             "title": "Hard To Kill 'Slime'",
             "path": "/slime",
             "hoverImage": "/slime/htk.gif"
         },
         {
-            "id": "13",
+            "id": "14",
             "title": "Nike React Hyperdunk (Campaign Direction)",
             "path": "/nikereact",
             "hoverImage": "/nikereact/nike.gif"
         },
         {
-            "id": "14",
+            "id": "15",
             "title": "Cyber69 X Nowness (Short)",
             "path": "/cyber69",
             "hoverImage": "/cyber69/cyber.gif"
         },
         {
-            "id": "15",
+            "id": "16",
             "title": "Nike AF1 x Saintwoods",
             "path": "/nike-af1-x-saintwoods",
             "hoverImage": "/nike-af1-x-saintwoods/hover-img.png"
         },
         {
-            "id": "16",
+            "id": "17",
             "title": "RIFF Cannabis (Short)",
             "path": "/riff",
             "hoverImage": "/riff/hover.gif"
         },
         {
-            "id": "17",
+            "id": "18",
             "title": "God Bless Toronto (Compilation)",
             "path": "/god-bless-toronto",
             "hoverImage": "/god-bless-toronto/gbt-bmp.jpg"
         },
         {
-            "id": "18",
+            "id": "19",
             "title": "Pique",
             "path": "/pique",
             "hoverImage": "/pique/pique-bmp.gif"

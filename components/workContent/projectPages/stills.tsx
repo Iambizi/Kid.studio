@@ -34,9 +34,7 @@ export default function stills( {projects}: Type ):JSX.Element{
         shuffle(position);
 
         if(screenWidth >= 1200){
-            console.log("big screen");
             const stills = Array.from(document.getElementsByClassName("stills") as HTMLCollectionOf<HTMLElement>);
-
             for(var i = 0; i < stills.length; i++) {
                 stills[i].style.marginLeft = `${position[i]}%`;
             }
