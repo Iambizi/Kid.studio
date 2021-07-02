@@ -16,12 +16,12 @@ export default function warpedImage({slideNext, slidePrevious, homeProjects, car
         //Creat your scene, (your movie set)
         const scene = new THREE.Scene();
         // scene.background = new THREE.Color( 0x000000 );
-        const texture = new THREE.TextureLoader().load( "https://kidstudio.co/content/2-home" + `${homeProjects[0].path}` );
+        // const texture = new THREE.TextureLoader().load( process.env.NEXT_PUBLIC_APP_DOMAIN + `${homeProjects[0].path}` );
 
-        const img = new THREE.MeshBasicMaterial({ //CHANGED to MeshBasicMaterial
-            map:THREE.ImageUtils.loadTexture("https://kidstudio.co/content/2-home" + `${homeProjects[0].path}`)
-        });
-        img.map.needsUpdate = true; //ADDED
+        // const img = new THREE.MeshBasicMaterial({ //CHANGED to MeshBasicMaterial
+        //     map:THREE.ImageUtils.loadTexture(process.env.NEXT_PUBLIC_APP_DOMAIN + `${homeProjects[0].path}`)
+        // });
+        // img.map.needsUpdate = true; //ADDED
 
         const geometry = new THREE.PlaneGeometry(1,1);
         const material = new THREE.MeshBasicMaterial( {color: 0xffff00, side: THREE.DoubleSide} );
@@ -63,11 +63,11 @@ export default function warpedImage({slideNext, slidePrevious, homeProjects, car
     return(
         <>
             <canvas className={"scene"}>
-                <div className={styles.slider} style={{left: `${ -carouselX }%`}}>
+                {/* <div className={styles.slider} style={{left: `${ -carouselX }%`}}>
                     {homeProjects.map((p,i)=>
                         <div className={`${styles.sliderWrapper}`} key={i}>
                             <div className={`${styles.carousel}`}>
-                                <img
+                            <img
                                     className={
                                         (slideNext) ? 
                                         `${styles[homeProjects[i].imageClassName]} ${styles.slideNext}` : 
@@ -75,7 +75,7 @@ export default function warpedImage({slideNext, slidePrevious, homeProjects, car
                                         `${styles[homeProjects[i].imageClassName]} ${styles.slidePrevious}` :
                                         `${styles[homeProjects[i].imageClassName]}`
                                     }
-                                    src={"https://kidstudio.co/content/2-home" + `${homeProjects[i].path}`}
+                                    src={"https://kidstudio.co/content/2-home" + `${homeProjects[i].imgSrc}`}
                                     alt={"Video Project screenshot"}
                                     height={200}
                                     width={330}
@@ -83,7 +83,7 @@ export default function warpedImage({slideNext, slidePrevious, homeProjects, car
                             </div>
                         </div>
                     )}
-                </div>
+                </div> */}
             </canvas>
         </>
     )

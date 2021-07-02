@@ -30,7 +30,7 @@ export default function carousel({ homeProjects, carouselX, slideNext, slidePrev
                     (
                         <div className={`${styles.sliderWrapper}`} key={i}>
                             <div className={`${styles.carousel}`}>
-                                <img
+                                {/* <img
                                     className={
                                         (slideNext) ? 
                                         `${styles[homeProjects[i].imageClassName]} ${styles.slideNext}` : 
@@ -42,13 +42,14 @@ export default function carousel({ homeProjects, carouselX, slideNext, slidePrev
                                     alt={"Video Project screenshot"}
                                     height={200}
                                     width={330}
-                                />
+                                /> */}
+                            <WarpedIMG slideNext={slidePrevious} slidePrevious={slidePrevious} homeProjects={homeProjects} carouselX={carouselX} />
                             </div>
                         </div>
                     )
                 )}
             </div>
-            {/* <WarpedIMG slideNext={slidePrevious} slidePrevious={slidePrevious} homeProjects={homeProjects} carouselX={carouselX} /> */}
+            <WarpedIMG slideNext={slidePrevious} slidePrevious={slidePrevious} homeProjects={homeProjects} carouselX={carouselX} />
         </>
     )
 }

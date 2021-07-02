@@ -1,13 +1,5 @@
 @import "../variables";
 
-// @media screen and (min-width:$s){
-
-// }
-// @media screen and (min-width:$m){
-
-// }
-// @media screen and (min-width:$l){
-// }
 .projectPageSection{
     margin: 30px 10% 0px 10%;
     @media screen and (min-width:$l){
@@ -44,7 +36,6 @@
                 @media screen and (min-width: $l){
                     position: absolute;
                     left: 51%;
-                    // top: 30%;
                     top: 350px;
                     padding: 30px;
                     margin-left: 0px;
@@ -53,7 +44,6 @@
                 }
                 @media screen and (min-width: $xl){
                     left: 49%;
-                    // top: 35%;
                     top: 350px;
                 }
             }
@@ -104,15 +94,11 @@
         margin-bottom: 5%;
         @media screen and (min-width: $l){
             margin-top: 20%;
-            // position: absolute;
         }
         .stills{
             margin-bottom: 5%;
-            // max-width: 578px;
-            // max-height: 550px;
             @media screen and (min-width: $l){
                 width: 30%;
-                // height: 30%;
             }
         }
     }

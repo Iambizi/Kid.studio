@@ -11,9 +11,6 @@
     @media screen and (min-width:$m){
         font-size: 0.8em;
     }
-    // &.projectPages{
-    //     position: static;
-    // }
     @media screen and (max-width:$l){
         &.projectPages{
             position: static;
@@ -35,7 +32,6 @@
             }
             &:hover{
                 color: #f0f0f0;
-                // padding: 2px 10px;
                 background-color: #000;
             }
         }

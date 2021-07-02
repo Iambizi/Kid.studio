@@ -1,7 +1,7 @@
 @import "../variables";
 @mixin fullviewPort(){
-    height: 100vh;
-    width: 100vw;
+    // height: 100vh;
+    // width: 100vw;
     position: fixed;
     top: 0;
     left: 0;
@@ -45,13 +45,13 @@
     }
     .previousButton{
         margin: 0;
-        left: -5px;
+        left: 0px;
         transform: rotate(270deg);
         cursor: url(https://kidstudio.co/assets/css/../images/left.png) 25 15, auto;
     }
     .nextButton{
         top: 50%;
-        right: 5px;
+        right: 25px;
         transform: rotate(90deg);
         cursor: url(https://kidstudio.co/assets/css/../images/right.png) 25 15, auto;
     }

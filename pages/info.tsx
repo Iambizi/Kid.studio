@@ -1,6 +1,7 @@
 import Layout from '../components/layout';
 import Meta  from '../components/common/meta';
 import React, { useEffect } from "react";
+import InfoBox from '../components/infoContent/infoBox';
 
 export default function info():JSX.Element{
 // removes needsScroll class set in project pages from vertical scroll
@@ -13,7 +14,7 @@ export default function info():JSX.Element{
         <>
             <Meta page={"Info"} />
             <Layout>
-                <h1>Info Page OOO</h1>
+                <InfoBox />
             </Layout>
         </>
     )
