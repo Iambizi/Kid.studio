@@ -7,13 +7,14 @@
     left: 0;
 }
 .sceneInfo{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 60%;
-    text-align: center;
-    margin: 15% auto; 
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    // height: 100%;
+    // width: 60%;
+    // text-align: center;
+    // margin: 15% auto; 
+    @include fullviewPort();
 }
 .noScroll{
     @include fullviewPort();

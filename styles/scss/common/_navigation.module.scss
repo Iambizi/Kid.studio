@@ -14,6 +14,7 @@
     .logo{
         display: flex;
         justify-content: center;
+        z-index: 10000;
         @media screen and (min-width:$m){
             margin: 0px 0px 0px 75px;
         }

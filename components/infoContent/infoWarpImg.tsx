@@ -6,12 +6,23 @@ export default function inforWarpImg():JSX.Element{
     useEffect(()=>{
         const scene = new THREE.Scene();
         // scene.background = new THREE.Color( 0xFFA500 );
+        // this along with code on lines 42 & 43 sets scene color to transparent
         scene.background = null;
 
         // https://kidstudio.co/content/3-info/1.png
+        const image = new Image();
+        const texture = new THREE.Texture(image);
+
+        image.onload = () => 
+        {
+            texture.needsUpdate = true;
+        }
+
+        image.src = 'https://kidstudio.co/content/3-info/1.png';
 
         const geometry = new THREE.PlaneGeometry(1,1);
         const material = new THREE.MeshBasicMaterial( {color: 0xffa805, side: THREE.DoubleSide} );
+        // const material = new THREE.MeshBasicMaterial( { map: texture } );
         const Mesh = new THREE.Mesh( geometry, material );
         scene.add( Mesh );
 
@@ -26,9 +37,9 @@ export default function inforWarpImg():JSX.Element{
         const canvas = document.querySelector('.sceneInfo');
 
         camera.position.z = 3
-        Mesh.position.x += 1
-        Mesh.position.y += 1
-        Mesh.position.z += 1
+        // Mesh.position.x += 1
+        // Mesh.position.y += 1
+        // Mesh.position.z += 1
 
         camera.lookAt(Mesh.position);
 
