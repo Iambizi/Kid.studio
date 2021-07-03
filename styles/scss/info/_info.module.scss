@@ -6,7 +6,14 @@
     top: 0;
     left: 0;
 }
-.scene{
+.sceneInfo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 60%;
+    text-align: center;
+    margin: 15% auto; 
 }
 .noScroll{
     @include fullviewPort();
@@ -18,7 +25,6 @@
     top: 28%;
     right: 0;
     width: 38%;
-    height: 100%;
     p{
         color: #030303;
         line-height: 1.5em;

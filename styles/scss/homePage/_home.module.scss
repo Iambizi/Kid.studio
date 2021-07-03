@@ -7,10 +7,10 @@
     left: 0;
 }
 .scene{
-    @include fullviewPort();
+    // @include fullviewPort();
 }
 .noScroll{
-    @include fullviewPort();
+    // @include fullviewPort();
     overflow: hidden;
 
     .homeContentSection{
