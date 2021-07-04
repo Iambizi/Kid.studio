@@ -10,19 +10,18 @@ export default function inforWarpImg():JSX.Element{
         scene.background = null;
 
         // https://kidstudio.co/content/3-info/1.png
-        const image = new Image();
-        const texture = new THREE.Texture(image);
 
-        image.onload = () => 
-        {
-            texture.needsUpdate = true;
-        }
+        THREE.ImageUtils.crossOrigin = '';
+        const loader = new THREE.TextureLoader();
+        loader.setCrossOrigin("");
+        const texture = loader.load('https://kidstudio.co/content/3-info/1.png');
 
-        image.src = 'https://kidstudio.co/content/3-info/1.png';
+        console.log(texture);
+ 
 
         const geometry = new THREE.PlaneGeometry(1,1);
-        const material = new THREE.MeshBasicMaterial( {color: 0xffa805, side: THREE.DoubleSide} );
-        // const material = new THREE.MeshBasicMaterial( { map: texture } );
+        // const material = new THREE.MeshBasicMaterial( {color: 0xffa805, side: THREE.DoubleSide} );
+        const material = new THREE.MeshBasicMaterial({ map: texture });
         const Mesh = new THREE.Mesh( geometry, material );
         scene.add( Mesh );
 
