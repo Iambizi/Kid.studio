@@ -17,9 +17,9 @@ export default function inforWarpImg():JSX.Element{
 
         console.log(texture);
  
-        const geometry = new THREE.PlaneGeometry(1,1);
-        // const material = new THREE.MeshBasicMaterial( {color: 0xffa805, side: THREE.DoubleSide} );
-        const material = new THREE.MeshBasicMaterial({ map: texture });
+        const geometry = new THREE.PlaneGeometry(5.5,3);
+        const material = new THREE.MeshBasicMaterial( {color: 0xffa805, side: THREE.DoubleSide} );
+        // const material = new THREE.MeshBasicMaterial({ map: texture });
         const Mesh = new THREE.Mesh( geometry, material );
         scene.add( Mesh );
 
@@ -28,7 +28,7 @@ export default function inforWarpImg():JSX.Element{
             height: window.innerHeight
         }
          //camera
-        const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 1000);
+        const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100);
         
         //Renderer
         const canvas = document.querySelector('.sceneInfo');
@@ -46,8 +46,16 @@ export default function inforWarpImg():JSX.Element{
             alpha: true
         })
         renderer.setClearColor( 0x000000, 0 );
+        
+        renderer.setSize(sizes.width, sizes.height);
+        //pixel ratio: corresponds to how many physical pixels you have on the screen for one pixel unit on the software part.
+        // Device pixel ratio: allows us to adjust the pixel ratio of our scene to pixel ratio of our device
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio),2);
         renderer.render(scene, camera);
+
     },[])
+
+    
     return(
         <>
             <canvas className={`${styles.sceneInfo} sceneInfo`}>
