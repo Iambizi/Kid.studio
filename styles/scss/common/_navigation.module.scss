@@ -42,10 +42,10 @@
             margin: 8px 35px 0px 0px;
         }
         .navLink{
-            margin: 0px 24px;
-            padding: 2px 3px;
+            margin: 0px 20px;
+            padding: 2px 5px;
             @media screen and (min-width:$m){
-                margin: 20px 26px;
+                margin: 20px 22px;
             }
             &:hover{
                 color: #f0f0f0;
