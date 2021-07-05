@@ -11,7 +11,7 @@ export default function infoBox(){
                 <p>Inspired by our youth, influenced by our city.</p>
                 <p>→ Creative Direction + Music Videos + Commercials</p>
                 <p>email@kidstudio.co</p>
-            </div>
+        </div>
     </>
     )
 }
