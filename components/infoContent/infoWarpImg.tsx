@@ -3,22 +3,20 @@ import * as THREE from 'three';
 import React, { useEffect } from "react";
 
 export default function inforWarpImg():JSX.Element{
+    const cors = "https://cors-anywhere.herokuapp.com";
     useEffect(()=>{
         const scene = new THREE.Scene();
         // scene.background = new THREE.Color( 0xFFA500 );
         // this along with code on lines 42 & 43 sets scene color to transparent
         scene.background = null;
-
-        // https://kidstudio.co/content/3-info/1.png
-
-        THREE.ImageUtils.crossOrigin = '';
+        
         const loader = new THREE.TextureLoader();
-        loader.setCrossOrigin("");
-        const texture = loader.load('https://kidstudio.co/content/3-info/1.png');
+        // loader.setCrossOrigin("anonymous");
+        const texture = loader.load(`/content/3-info/1.png`);
+        // const texture = new THREE.TextureLoader().load( '../../images/infoKid.png' );
 
         console.log(texture);
  
-
         const geometry = new THREE.PlaneGeometry(1,1);
         // const material = new THREE.MeshBasicMaterial( {color: 0xffa805, side: THREE.DoubleSide} );
         const material = new THREE.MeshBasicMaterial({ map: texture });

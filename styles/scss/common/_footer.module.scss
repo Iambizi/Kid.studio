@@ -26,9 +26,15 @@
         }
         padding-left: 0px;
         .footerLink{
-            padding: 2px 15px;
+            // padding: 2px 15px;
+            // padding: 2px 4px;
+            margin: 2px 15px;
+            @media screen and (min-width:$xxs){
+                padding: 2px 4px;
+            }
             @media screen and (min-width:$m){
-                padding: 2px 41px;
+                // padding: 2px 41px;
+                margin: 2px 41px;
             }
             &:hover{
                 color: #f0f0f0;

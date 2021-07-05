@@ -32,7 +32,11 @@ module.exports = {
             {
                 source: "/:project",
                 destination: "/work/:project"
-            }
+            },
+            {
+                source: '/content/:slug*',
+                destination: 'https://kidstudio.co/:slug*',
+              }
         ];
         return rewrite_url;
     },
