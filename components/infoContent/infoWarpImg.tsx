@@ -76,13 +76,11 @@ export default function inforWarpImg():JSX.Element{
         // camera.position.z = Math.cos(cursor.x * Math.PI * 2) * 5
         // camera.position.y = cursor.y * 3
         // camera.lookAt(mesh.position)
-    // camera.lookAt(Mesh.position)
+    camera.lookAt(Mesh.position)
 
-        // When using damping you also need to make sure you are updating it on each frame
 
-        Mesh.rotation.x = elapsedTime / 6
-        // Mesh.rotation.z = elapsedTime
-        Mesh.rotation.y = elapsedTime / 2
+        Mesh.rotation.x = - elapsedTime / 10
+        Mesh.rotation.y = - elapsedTime / 10
         // Render
         renderer.render(scene, camera);
         window.requestAnimationFrame(tick);
