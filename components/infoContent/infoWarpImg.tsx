@@ -78,6 +78,9 @@ export default function inforWarpImg():JSX.Element{
         // camera.lookAt(mesh.position)
     camera.lookAt(Mesh.position)
 
+        let rotationX = Mesh.rotation.x
+
+        let rotationY = Mesh.rotation.y
 
         Mesh.rotation.x = - elapsedTime / 10
         Mesh.rotation.y = - elapsedTime / 10
