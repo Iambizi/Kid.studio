@@ -1,7 +1,6 @@
 import styles from '../../styles/scss/info/_info.module.scss';
 import * as THREE from 'three';
 import React, { useEffect } from "react";
-import { render } from '@react-three/fiber';
 
 export default function inforWarpImg():JSX.Element{
     const cors = "https://cors-anywhere.herokuapp.com";
@@ -74,11 +73,10 @@ export default function inforWarpImg():JSX.Element{
 
         let rotationY = Mesh.rotation.y
 
-        Mesh.rotation.x = - elapsedTime / 12
-        Mesh.rotation.y = - elapsedTime / 12
+        Mesh.rotation.x = - elapsedTime / 10
+        Mesh.rotation.y = - elapsedTime / 10
 
-        if(rotationX <= -0.31
-            ){
+        if(rotationX <= -0.31){
             Mesh.rotation.x = -0.31
             ;
             Mesh.rotation.y = -0.31
