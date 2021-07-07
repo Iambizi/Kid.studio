@@ -35,15 +35,6 @@ export default function inforWarpImg():JSX.Element{
 
         camera.position.z = 3
 
-        // const updatePosition = () =>{
-        //     Mesh.position.y += 1
-        //     Mesh.position.x -= 1.9
-        // }
-        // updatePosition();
-        // Mesh.position.x += 1
-        // Mesh.position.y += 1
-        // Mesh.position.z += 1
-
         camera.lookAt(Mesh.position);
 
         const renderer = new THREE.WebGLRenderer({
@@ -67,7 +58,7 @@ export default function inforWarpImg():JSX.Element{
     let clock = new THREE.Clock()
     
     // Animations loop function
-    const tick = () =>
+    const animationLoop = () =>
     {   
         const elapsedTime = clock.getElapsedTime();
 
@@ -76,19 +67,33 @@ export default function inforWarpImg():JSX.Element{
         // camera.position.z = Math.cos(cursor.x * Math.PI * 2) * 5
         // camera.position.y = cursor.y * 3
         // camera.lookAt(mesh.position)
-    camera.lookAt(Mesh.position)
+        // Math.clamp(rotationX, -0, -0.70)
+        camera.lookAt(Mesh.position)
 
         let rotationX = Mesh.rotation.x
 
         let rotationY = Mesh.rotation.y
 
-        Mesh.rotation.x = - elapsedTime / 10
-        Mesh.rotation.y = - elapsedTime / 10
+        Mesh.rotation.x = - elapsedTime / 12
+        Mesh.rotation.y = - elapsedTime / 12
+
+        if(rotationX <= -0.31
+            ){
+            Mesh.rotation.x = -0.31
+            ;
+            Mesh.rotation.y = -0.31
+            ;
+        }
+
+        // Mesh.rotation.x = new THREE.MathUtils.clamp(rotationX, 0, -0.70);
+        // Mesh.rotation.y = MathUtils.clamp(rotationY, 0, -0.70);
+        
+        console.log(Mesh.rotation.y);
         // Render
         renderer.render(scene, camera);
-        window.requestAnimationFrame(tick);
+        window.requestAnimationFrame(animationLoop);
     }
-    tick()
+    animationLoop()
 
     },[])
 
