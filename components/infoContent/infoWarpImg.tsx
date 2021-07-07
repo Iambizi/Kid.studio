@@ -5,6 +5,9 @@ import React, { useEffect } from "react";
 export default function inforWarpImg():JSX.Element{
     const cors = "https://cors-anywhere.herokuapp.com";
     useEffect(()=>{
+
+        const screenWidth = window.innerWidth;
+
         const scene = new THREE.Scene();
         // scene.background = new THREE.Color( 0xFFA500 );
         // this along with code on lines 42 & 43 sets scene color to transparent
@@ -16,8 +19,10 @@ export default function inforWarpImg():JSX.Element{
 
         console.log(texture);
  
+        const width = screenWidth >= 1200 ? 5.5 : 1.8;
+        const height = screenWidth >= 1200 ? 3 : 1;
         // const geometry = new THREE.PlaneGeometry(5.5,3);
-        const geometry = new THREE.PlaneGeometry(1.8,1);
+        const geometry = new THREE.PlaneGeometry(width, height);
         const material = new THREE.MeshBasicMaterial( {color: 0xffa805, side: THREE.DoubleSide} );
         // const material = new THREE.MeshBasicMaterial({ map: texture });
         const Mesh = new THREE.Mesh( geometry, material );
