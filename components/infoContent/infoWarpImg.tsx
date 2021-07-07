@@ -16,7 +16,8 @@ export default function inforWarpImg():JSX.Element{
 
         console.log(texture);
  
-        const geometry = new THREE.PlaneGeometry(5.5,3);
+        // const geometry = new THREE.PlaneGeometry(5.5,3);
+        const geometry = new THREE.PlaneGeometry(1.8,1);
         const material = new THREE.MeshBasicMaterial( {color: 0xffa805, side: THREE.DoubleSide} );
         // const material = new THREE.MeshBasicMaterial({ map: texture });
         const Mesh = new THREE.Mesh( geometry, material );
@@ -41,6 +42,18 @@ export default function inforWarpImg():JSX.Element{
             antialias: true,
             alpha: true
         })
+
+        function resizeRendererToDisplaySize(renderer) {
+            const canvas = renderer.domElement;
+            const width = canvas.clientWidth;
+            const height = canvas.clientHeight;
+            const needResize = canvas.width !== width || canvas.height !== height;
+            if (needResize) {
+              renderer.setSize(width, height, false);
+            }
+            return needResize;
+        }
+
         renderer.setClearColor( 0x000000, 0 );
         
         renderer.setSize(sizes.width, sizes.height);
@@ -59,6 +72,17 @@ export default function inforWarpImg():JSX.Element{
     // Animations loop function
     const animationLoop = () =>
     {   
+
+        if (resizeRendererToDisplaySize(renderer)) {
+            const canvas = renderer.domElement;
+            camera.aspect = canvas.clientWidth / canvas.clientHeight;
+            camera.updateProjectionMatrix();
+        }
+
+        const canvas = renderer.domElement;
+        camera.aspect = canvas.clientWidth / canvas.clientHeight;
+        camera.updateProjectionMatrix();
+
         const elapsedTime = clock.getElapsedTime();
 
         // Update camera
@@ -73,15 +97,15 @@ export default function inforWarpImg():JSX.Element{
 
         let rotationY = Mesh.rotation.y
 
-        Mesh.rotation.x = - elapsedTime / 10
-        Mesh.rotation.y = - elapsedTime / 10
+        // Mesh.rotation.x = - elapsedTime / 10
+        // Mesh.rotation.y = - elapsedTime / 10
 
-        if(rotationX <= -0.31){
-            Mesh.rotation.x = -0.31
-            ;
-            Mesh.rotation.y = -0.31
-            ;
-        }
+        // if(rotationX <= -0.31){
+        //     Mesh.rotation.x = -0.31
+        //     ;
+        //     Mesh.rotation.y = -0.31
+        //     ;
+        // }
 
         // Mesh.rotation.x = new THREE.MathUtils.clamp(rotationX, 0, -0.70);
         // Mesh.rotation.y = MathUtils.clamp(rotationY, 0, -0.70);
