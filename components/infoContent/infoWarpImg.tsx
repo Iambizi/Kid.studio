@@ -19,14 +19,14 @@ export default function inforWarpImg():JSX.Element{
 
         console.log(texture);
  
-        const width = screenWidth >= 1200 ? 5.5 : 1.8;
+        const width = screenWidth >= 1200 ? 5.5 : 1.6;
         const height = screenWidth >= 1200 ? 3 : 1;
         // const geometry = new THREE.PlaneGeometry(5.5,3);
         const geometry = new THREE.PlaneGeometry(width, height);
         const material = new THREE.MeshBasicMaterial( {color: 0xffa805, side: THREE.DoubleSide} );
         // const material = new THREE.MeshBasicMaterial({ map: texture });
-        const Mesh = new THREE.Mesh( geometry, material );
-        scene.add( Mesh );
+        const mesh = new THREE.Mesh( geometry, material );
+        scene.add( mesh );
 
         const sizes = {
             width: window.innerWidth,
@@ -40,7 +40,7 @@ export default function inforWarpImg():JSX.Element{
 
         camera.position.z = 3
 
-        camera.lookAt(Mesh.position);
+        camera.lookAt(mesh.position);
 
         const renderer = new THREE.WebGLRenderer({
             canvas: canvas,
@@ -72,55 +72,82 @@ export default function inforWarpImg():JSX.Element{
         renderer.render(scene, camera);
 
             // Clock
-    let clock = new THREE.Clock()
+        let clock = new THREE.Clock()
     
-    // Animations loop function
-    const animationLoop = () =>
-    {   
+        // Animations loop function
+        const animationLoop = () =>
+        {   
+            /** Makes canvas responsive canvas **/
 
-        if (resizeRendererToDisplaySize(renderer)) {
+            if (resizeRendererToDisplaySize(renderer)) {
+                const canvas = renderer.domElement;
+                camera.aspect = canvas.clientWidth / canvas.clientHeight;
+                camera.updateProjectionMatrix();
+            }
+
             const canvas = renderer.domElement;
             camera.aspect = canvas.clientWidth / canvas.clientHeight;
             camera.updateProjectionMatrix();
+            
+            /** End Makes canvas responsive canvas **/
+            
+
+            const elapsedTime = clock.getElapsedTime();
+
+            camera.lookAt(mesh.position)
+
+            let rotationX = mesh.rotation.x
+
+            let rotationY = mesh.rotation.y
+
+            // mesh.rotation.x = - elapsedTime / 10
+            // mesh.rotation.y = - elapsedTime / 10
+
+            let scaling = 1;
+            let widthIncrease = 1;
+            let heightIncrease = 1;
+            let prevHeight = window.innerHeight;
+            let prevWidth = window.innerWidth;
+            let hover_dist = 0.3;
+            let mouse, snapback, prevMouse, distMouse = { x: 0, y: 0 };
+            let i = 0;
+            // let prevMouse = { x: 0, y: 0 };
+            // let distMouse = { x: 0, y: 0 };
+            let timerx = 500;
+            let transitionFrames = 31;
+            let hovering, snapping, mouseDown = !1;
+
+            if(rotationX <= -0.31){
+                mesh.rotation.x = -0.31
+                ;
+                mesh.rotation.y = -0.31
+                ;
+            }
+            const dragMove = () => {
+                (distMouse.x = prevMouse.x - mouse.x), (distMouse.y = prevMouse.y - mouse.y);
+                (mesh.rotation.y -= 2 * distMouse.x), (mesh.rotation.x -= 2 * distMouse.y);
+            }
+            const hoverMove = () => {
+                for (var a = 0; a < mesh.length; a++)
+                    mouse.x > 0.5 ? mesh.rotation.y < hover_dist && (mesh.rotation.y += 0.002) : mouse.x < 0.5 && mesh.rotation.y > -hover_dist && (mesh.rotation.y -= 0.002),
+                        mouse.y > 0.5 ? mesh.rotation.x < hover_dist && (mesh.rotation.x += 0.002) : mouse.y < 0.5 && mesh.rotation.x > -hover_dist && (mesh.rotation.x -= 0.002);
+                (mesh.rotation.y > hover_dist || mesh.rotation.y < -hover_dist) && (mesh.rotation.x > hover_dist || mesh.rotation.x < -hover_dist) && (hovering = !0);
+            }
+            const snapBack = () => {
+                mesh.rotation.x < 0.002 && mesh.rotation.x > -0.002 && mesh.rotation.y < 0.002 && mesh.rotation.y > -0.002 && (snapping = !1);
+                (mesh.rotation.x -= snapback.x), (mesh.rotation.y -= snapback.y);
+            }
+            const hover = () => {
+                i == timerx && (i = 0);
+                timerx / 2 > i ? ((mesh.rotation.x += 3e-4), (mesh.rotation.y -= 3e-4)) : ((mesh.rotation.x -= 3e-4), (mesh.rotation.y += 3e-4));
+                i++;
+            }
+            mouseDown ? dragMove() : snapping ? snapBack() : hovering ? hover() : hoverMove()
+            // Render
+            renderer.render(scene, camera);
+            window.requestAnimationFrame(animationLoop);
         }
-
-        const canvas = renderer.domElement;
-        camera.aspect = canvas.clientWidth / canvas.clientHeight;
-        camera.updateProjectionMatrix();
-
-        const elapsedTime = clock.getElapsedTime();
-
-        // Update camera
-        // camera.position.x = Math.sin(cursor.x * Math.PI * 2) * 5
-        // camera.position.z = Math.cos(cursor.x * Math.PI * 2) * 5
-        // camera.position.y = cursor.y * 3
-        // camera.lookAt(mesh.position)
-        // Math.clamp(rotationX, -0, -0.70)
-        camera.lookAt(Mesh.position)
-
-        let rotationX = Mesh.rotation.x
-
-        let rotationY = Mesh.rotation.y
-
-        // Mesh.rotation.x = - elapsedTime / 10
-        // Mesh.rotation.y = - elapsedTime / 10
-
-        // if(rotationX <= -0.31){
-        //     Mesh.rotation.x = -0.31
-        //     ;
-        //     Mesh.rotation.y = -0.31
-        //     ;
-        // }
-
-        // Mesh.rotation.x = new THREE.MathUtils.clamp(rotationX, 0, -0.70);
-        // Mesh.rotation.y = MathUtils.clamp(rotationY, 0, -0.70);
-        
-        console.log(Mesh.rotation.y);
-        // Render
-        renderer.render(scene, camera);
-        window.requestAnimationFrame(animationLoop);
-    }
-    animationLoop()
+        animationLoop()
 
     },[])
 

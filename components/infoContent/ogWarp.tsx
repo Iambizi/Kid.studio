@@ -52,7 +52,7 @@ export default function ogWarp():JSX.Element{
                 renderer.render(scene, camera);
         }
         var scene = new THREE.Scene(),
-            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1e4),
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1e4), 
             renderer = new THREE.WebGLRenderer({ alpha: !0 }),
             mouse = { x: 0, y: 0 },
             prevMouse = { x: 0, y: 0 },
@@ -161,7 +161,7 @@ export default function ogWarp():JSX.Element{
                 });
         });
         var dimension = { x: window.innerWidth, y: window.innerHeight };
-        $(window).resize(resize);
+        window.resize(resize);
         var scaling = 1,
             widthIncrease = 1,
             heightIncrease = 1,
@@ -170,7 +170,7 @@ export default function ogWarp():JSX.Element{
             hover_dist = 0.3;
         render();
     })
-    
+
     return(
         <>
         </>
