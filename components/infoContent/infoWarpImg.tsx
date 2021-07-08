@@ -109,7 +109,10 @@ export default function inforWarpImg():JSX.Element{
             let prevHeight = window.innerHeight;
             let prevWidth = window.innerWidth;
             let hover_dist = 0.3;
-            let mouse, snapback, prevMouse, distMouse = { x: 0, y: 0 };
+            let mouse = { x: 0, y: 0 };
+            let snapback = { x: 0, y: 0 };
+            let prevMouse = { x: 0, y: 0 };
+            let distMouse = { x: 0, y: 0 };
             let i = 0;
             // let prevMouse = { x: 0, y: 0 };
             // let distMouse = { x: 0, y: 0 };
@@ -117,18 +120,26 @@ export default function inforWarpImg():JSX.Element{
             let transitionFrames = 31;
             let hovering, snapping, mouseDown = !1;
 
-            if(rotationX <= -0.31){
-                mesh.rotation.x = -0.31
-                ;
-                mesh.rotation.y = -0.31
-                ;
+            // if(rotationX <= -0.31){
+            //     mesh.rotation.x = -0.31
+            //     ;
+            //     mesh.rotation.y = -0.31
+            //     ;
+            // }
+            const onMouseDown = (a) => {
+                (mouseDown = !0), (prevMouse.x = mouse.x), (prevMouse.y = mouse.y);
+            }
+            const onMouseUp = () => {
+                (mouseDown = !1), (snapping = !0), (snapback.x = mesh.rotation.x / 60), (snapback.y = mesh.rotation.y / 60);
+            }
+            const onDocumentMouseMove = (a)=> {
+                (hovering = !1), (mouse.x = a.clientX / window.innerWidth), (mouse.y = a.clientY / window.innerHeight);
             }
             const dragMove = () => {
                 (distMouse.x = prevMouse.x - mouse.x), (distMouse.y = prevMouse.y - mouse.y);
                 (mesh.rotation.y -= 2 * distMouse.x), (mesh.rotation.x -= 2 * distMouse.y);
             }
             const hoverMove = () => {
-                for (var a = 0; a < mesh.length; a++)
                     mouse.x > 0.5 ? mesh.rotation.y < hover_dist && (mesh.rotation.y += 0.002) : mouse.x < 0.5 && mesh.rotation.y > -hover_dist && (mesh.rotation.y -= 0.002),
                         mouse.y > 0.5 ? mesh.rotation.x < hover_dist && (mesh.rotation.x += 0.002) : mouse.y < 0.5 && mesh.rotation.x > -hover_dist && (mesh.rotation.x -= 0.002);
                 (mesh.rotation.y > hover_dist || mesh.rotation.y < -hover_dist) && (mesh.rotation.x > hover_dist || mesh.rotation.x < -hover_dist) && (hovering = !0);
@@ -142,10 +153,14 @@ export default function inforWarpImg():JSX.Element{
                 timerx / 2 > i ? ((mesh.rotation.x += 3e-4), (mesh.rotation.y -= 3e-4)) : ((mesh.rotation.x -= 3e-4), (mesh.rotation.y += 3e-4));
                 i++;
             }
+            window.requestAnimationFrame(animationLoop);
             mouseDown ? dragMove() : snapping ? snapBack() : hovering ? hover() : hoverMove()
+            mouseDown && ((prevMouse.y = mouse.y), (prevMouse.x = mouse.x))
             // Render
             renderer.render(scene, camera);
-            window.requestAnimationFrame(animationLoop);
+            
+            // console.log(rotationX);
+            // console.log(rotationY)
         }
         animationLoop()
 
