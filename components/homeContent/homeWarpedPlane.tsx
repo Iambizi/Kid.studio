@@ -1,12 +1,18 @@
-import styles from '../../styles/scss/info/_info.module.scss';
+
+
+import React, {useEffect} from 'react';
 import * as THREE from 'three';
-import React, { useEffect } from "react";
+import styles from "../../styles/scss/homePage/_carousel.module.scss";
 
 interface Type{
-    infoData: any;
+    homeProjects: any;
+    carouselX : number;
+    slideNext: boolean;
+    slidePrevious: boolean;
+    index: number;
 }
-export default function inforWarpImg({infoData}: Type):JSX.Element{
-    console.log(infoData.imgSrc);
+
+export default function warpedImage({slideNext, slidePrevious, homeProjects, carouselX, index}:Type):JSX.Element{
     useEffect(()=>{
 
         const screenWidth = window.innerWidth;
@@ -34,13 +40,13 @@ export default function inforWarpImg({infoData}: Type):JSX.Element{
         
         const loader = new THREE.TextureLoader();
         // loader.setCrossOrigin("anonymous");
-        const texture = loader.load(`https://kidstudio.co/${infoData.imgSrc}`);
+        const texture = loader.load(`https://kidstudio.co/content/2-home/${homeProjects[i].imgSrc}`);
  
         const width = screenWidth >= 1200 ? 5.5 : 1.6;
         const height = screenWidth >= 1200 ? 3 : 1;
         const geometry = new THREE.PlaneGeometry(width, height);
         const material = new THREE.MeshBasicMaterial({ map: texture })
-        // const material = new THREE.MeshBasicMaterial( {color: 0xffa805, side: THREE.DoubleSide} );
+        // const material = new THREE.MeshBasicMaterial( {color: 0xC0C0C0, side: THREE.DoubleSide} );
         const mesh = new THREE.Mesh( geometry, material );
         scene.add( mesh );
 
@@ -52,7 +58,7 @@ export default function inforWarpImg({infoData}: Type):JSX.Element{
         const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100);
         
         //Renderer
-        const canvas = document.querySelector('.infoScene');
+        const canvas = document.querySelector('.homeScene');
 
         camera.position.z = 3
 
@@ -140,12 +146,10 @@ export default function inforWarpImg({infoData}: Type):JSX.Element{
             renderer.render(scene, camera);
         }
         animationLoop()
-
     },[])
-
     return(
         <>
-            <canvas className={`${styles.sceneInfo} infoScene`}>
+            <canvas className={"homeScene"}>
             </canvas>
         </>
     )
