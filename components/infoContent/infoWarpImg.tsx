@@ -8,6 +8,23 @@ export default function inforWarpImg():JSX.Element{
 
         const screenWidth = window.innerWidth;
 
+        let scaling = 1;
+        let widthIncrease = 1;
+        let heightIncrease = 1;
+        let prevHeight = window.innerHeight;
+        let prevWidth = window.innerWidth;
+        let hover_dist = 0.3;
+        let mouse = { x: 0, y: 0 };
+        let snapback = { x: 0, y: 0 };
+        let prevMouse = { x: 0, y: 0 };
+        let distMouse = { x: 0, y: 0 };
+        let i = 0;
+        let timerx = 500;
+        let transitionFrames = 31;
+        let hovering = !1;
+        let snapping = !1;
+        let mouseDown = !1;
+
         const scene = new THREE.Scene();
         // scene.background = new THREE.Color( 0xFFA500 );
         // this along with code on lines 42 & 43 sets scene color to transparent
@@ -103,22 +120,7 @@ export default function inforWarpImg():JSX.Element{
             // mesh.rotation.x = - elapsedTime / 10
             // mesh.rotation.y = - elapsedTime / 10
 
-            let scaling = 1;
-            let widthIncrease = 1;
-            let heightIncrease = 1;
-            let prevHeight = window.innerHeight;
-            let prevWidth = window.innerWidth;
-            let hover_dist = 0.3;
-            let mouse = { x: 0, y: 0 };
-            let snapback = { x: 0, y: 0 };
-            let prevMouse = { x: 0, y: 0 };
-            let distMouse = { x: 0, y: 0 };
-            let i = 0;
-            // let prevMouse = { x: 0, y: 0 };
-            // let distMouse = { x: 0, y: 0 };
-            let timerx = 500;
-            let transitionFrames = 31;
-            let hovering, snapping, mouseDown = !1;
+            
 
             // if(rotationX <= -0.31){
             //     mesh.rotation.x = -0.31
@@ -128,34 +130,50 @@ export default function inforWarpImg():JSX.Element{
             // }
             const onMouseDown = (a) => {
                 (mouseDown = !0), (prevMouse.x = mouse.x), (prevMouse.y = mouse.y);
+                console.log("onMouseDown");
             }
             const onMouseUp = () => {
                 (mouseDown = !1), (snapping = !0), (snapback.x = mesh.rotation.x / 60), (snapback.y = mesh.rotation.y / 60);
+                console.log("onMouseUp");
             }
             const onDocumentMouseMove = (a)=> {
                 (hovering = !1), (mouse.x = a.clientX / window.innerWidth), (mouse.y = a.clientY / window.innerHeight);
+                console.log("onDocumentMouseMove");
             }
             const dragMove = () => {
                 (distMouse.x = prevMouse.x - mouse.x), (distMouse.y = prevMouse.y - mouse.y);
                 (mesh.rotation.y -= 2 * distMouse.x), (mesh.rotation.x -= 2 * distMouse.y);
+                console.log("dragMove");
             }
             const hoverMove = () => {
                     mouse.x > 0.5 ? mesh.rotation.y < hover_dist && (mesh.rotation.y += 0.002) : mouse.x < 0.5 && mesh.rotation.y > -hover_dist && (mesh.rotation.y -= 0.002),
                         mouse.y > 0.5 ? mesh.rotation.x < hover_dist && (mesh.rotation.x += 0.002) : mouse.y < 0.5 && mesh.rotation.x > -hover_dist && (mesh.rotation.x -= 0.002);
                 (mesh.rotation.y > hover_dist || mesh.rotation.y < -hover_dist) && (mesh.rotation.x > hover_dist || mesh.rotation.x < -hover_dist) && (hovering = !0);
+                console.log("hoverMove");
             }
             const snapBack = () => {
                 mesh.rotation.x < 0.002 && mesh.rotation.x > -0.002 && mesh.rotation.y < 0.002 && mesh.rotation.y > -0.002 && (snapping = !1);
                 (mesh.rotation.x -= snapback.x), (mesh.rotation.y -= snapback.y);
+                console.log("snapBack");
             }
             const hover = () => {
                 i == timerx && (i = 0);
                 timerx / 2 > i ? ((mesh.rotation.x += 3e-4), (mesh.rotation.y -= 3e-4)) : ((mesh.rotation.x -= 3e-4), (mesh.rotation.y += 3e-4));
                 i++;
+                console.log("hover");
             }
             window.requestAnimationFrame(animationLoop);
+
             mouseDown ? dragMove() : snapping ? snapBack() : hovering ? hover() : hoverMove()
             mouseDown && ((prevMouse.y = mouse.y), (prevMouse.x = mouse.x))
+
+            document.addEventListener("mousemove", onDocumentMouseMove, !1),
+            document.addEventListener("mousedown", onMouseDown, !1),
+            document.addEventListener("mouseup", onMouseUp, !1)
+            document.addEventListener("mousemove", onDocumentMouseMove, !1)
+            document.addEventListener("mousedown", onMouseDown, !1)
+            document.addEventListener("mouseup", onMouseUp, !1)
+
             // Render
             renderer.render(scene, camera);
             
