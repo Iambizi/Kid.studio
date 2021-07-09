@@ -1,7 +1,7 @@
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
 import Link from "next/link";
 import React from "react";
-import WarpedIMG from "./warpedImage";
+import WarpedIMG from "./homeWarpedPlane";
 
 interface Type {
     homeProjects: any;
@@ -14,6 +14,15 @@ export default function carousel({ homeProjects, carouselX, slideNext, slidePrev
     {
         carouselX  < -200 ?  `${styles.sliderWrapper} ${styles.slidePrevious}` : carouselX < -100 ? `${styles.sliderWrapper} ${styles.slideNext}` : `${styles.sliderWrapper}`
     }
+    // className={
+    //     (slideNext) ? 
+    //     `${styles[homeProjects[i].imageClassName]} ${styles.slideNext}` : 
+    //     (slidePrevious) ?
+    //     `${styles[homeProjects[i].imageClassName]} ${styles.slidePrevious}` :
+    //     `${styles[homeProjects[i].imageClassName]}`
+    // }
+    // src={"https://kidstudio.co/content/2-home" + `${homeProjects[i].imgSrc}`}
+    // alt={"Video Project screenshot"}
     return(
         <>
             <div className={styles.titles} style={{left: `${ -carouselX }%`}}>
@@ -30,26 +39,12 @@ export default function carousel({ homeProjects, carouselX, slideNext, slidePrev
                     (
                         <div className={`${styles.sliderWrapper}`} key={i}>
                             <div className={`${styles.carousel}`}>
-                                {/* <img
-                                    className={
-                                        (slideNext) ? 
-                                        `${styles[homeProjects[i].imageClassName]} ${styles.slideNext}` : 
-                                        (slidePrevious) ?
-                                        `${styles[homeProjects[i].imageClassName]} ${styles.slidePrevious}` :
-                                        `${styles[homeProjects[i].imageClassName]}`
-                                    }
-                                    src={"https://kidstudio.co/content/2-home" + `${homeProjects[i].imgSrc}`}
-                                    alt={"Video Project screenshot"}
-                                    height={200}
-                                    width={330}
-                                /> */}
-                            <WarpedIMG slideNext={slidePrevious} slidePrevious={slidePrevious} homeProjects={homeProjects} carouselX={carouselX} />
+                            <WarpedIMG slideNext={slidePrevious} slidePrevious={slidePrevious} homeProjects={homeProjects} key={i} carouselX={carouselX} />
                             </div>
                         </div>
                     )
                 )}
             </div>
-            <WarpedIMG slideNext={slidePrevious} slidePrevious={slidePrevious} homeProjects={homeProjects} carouselX={carouselX} />
         </>
     )
 }

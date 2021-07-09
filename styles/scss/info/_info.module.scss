@@ -6,9 +6,8 @@
     top: 0;
     left: 0;
 }
-.sceneInfo{
+.infoScene{
     @include fullviewPort();
-    display: block;
 }
 .noScroll{
     @include fullviewPort();

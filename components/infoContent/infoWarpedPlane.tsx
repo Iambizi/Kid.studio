@@ -3,7 +3,6 @@ import * as THREE from 'three';
 import React, { useEffect } from "react";
 
 export default function inforWarpImg():JSX.Element{
-    const cors = "https://cors-anywhere.herokuapp.com";
     useEffect(()=>{
 
         const screenWidth = window.innerWidth;
@@ -36,6 +35,7 @@ export default function inforWarpImg():JSX.Element{
         const width = screenWidth >= 1200 ? 5.5 : 1.6;
         const height = screenWidth >= 1200 ? 3 : 1;
         const geometry = new THREE.PlaneGeometry(width, height);
+        // const material = new THREE.MeshBasicMaterial({ map: texture })
         const material = new THREE.MeshBasicMaterial( {color: 0xffa805, side: THREE.DoubleSide} );
         const mesh = new THREE.Mesh( geometry, material );
         scene.add( mesh );
@@ -48,7 +48,7 @@ export default function inforWarpImg():JSX.Element{
         const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100);
         
         //Renderer
-        const canvas = document.querySelector('.sceneInfo');
+        const canvas = document.querySelector('.infoScene');
 
         camera.position.z = 3
 
@@ -141,7 +141,7 @@ export default function inforWarpImg():JSX.Element{
 
     return(
         <>
-            <canvas className={`${styles.sceneInfo} sceneInfo`}>
+            <canvas className={`${styles.sceneInfo} infoScene`}>
             </canvas>
         </>
     )
