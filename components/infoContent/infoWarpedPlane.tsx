@@ -6,7 +6,6 @@ interface Type{
     infoData: any;
 }
 export default function inforWarpImg({infoData}: Type):JSX.Element{
-    console.log(infoData.imgSrc);
     useEffect(()=>{
 
         const screenWidth = window.innerWidth;
