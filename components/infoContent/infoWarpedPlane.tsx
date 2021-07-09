@@ -1,14 +1,12 @@
 import styles from '../../styles/scss/info/_info.module.scss';
 import * as THREE from 'three';
 import React, { useEffect } from "react";
-import { warpTiltFunctions } from "./warpTiltFunctions";
 
 export default function inforWarpImg():JSX.Element{
     const cors = "https://cors-anywhere.herokuapp.com";
     useEffect(()=>{
 
         const screenWidth = window.innerWidth;
-
         let scaling = 1;
         let widthIncrease = 1;
         let heightIncrease = 1;
@@ -54,8 +52,6 @@ export default function inforWarpImg():JSX.Element{
 
         camera.position.z = 3
 
-        camera.lookAt(mesh.position);
-
         const renderer = new THREE.WebGLRenderer({
             canvas: canvas,
             antialias: true,
@@ -79,20 +75,11 @@ export default function inforWarpImg():JSX.Element{
         //pixel ratio: corresponds to how many physical pixels you have on the screen for one pixel unit on the software part.
         // Device pixel ratio: allows us to adjust the pixel ratio of our scene to pixel ratio of our device
         renderer.setPixelRatio(Math.min(window.devicePixelRatio),2);
-
-        // const render = () =>{
-        //     renderer.render( scene, camera )
-        // }
-        renderer.render(scene, camera);
-
-            // Clock
-        let clock = new THREE.Clock()
     
         // Animations loop function
         const animationLoop = () =>
         {   
             /** Makes canvas responsive canvas **/
-
             if (resizeRendererToDisplaySize(renderer)) {
                 const canvas = renderer.domElement;
                 camera.aspect = canvas.clientWidth / canvas.clientHeight;
@@ -102,7 +89,6 @@ export default function inforWarpImg():JSX.Element{
             const canvas = renderer.domElement;
             camera.aspect = canvas.clientWidth / canvas.clientHeight;
             camera.updateProjectionMatrix();
-            
             /** End Makes canvas responsive canvas **/
             
             /** Warped tilt hover functionality **/
@@ -144,13 +130,11 @@ export default function inforWarpImg():JSX.Element{
             document.addEventListener("mousemove", onDocumentMouseMove, !1)
             document.addEventListener("mousedown", onMouseDown, !1)
             document.addEventListener("mouseup", onMouseUp, !1)
-
             /** End Warped tilt hover functionality **/
 
             // Render
             renderer.render(scene, camera);
         }
-        
         animationLoop()
 
     },[])

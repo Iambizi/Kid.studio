@@ -2,7 +2,7 @@ import Layout from '../components/layout';
 import Meta  from '../components/common/meta';
 import React, { useEffect } from "react";
 import InfoBox from '../components/infoContent/infoBox';
-import InfoWarpImg from '../components/infoContent/infoWarpImg';
+import InfoWarpImg from '../components/infoContent/infoWarpedPlane';
 
 export default function info():JSX.Element{
 // removes needsScroll class set in project pages from vertical scroll
