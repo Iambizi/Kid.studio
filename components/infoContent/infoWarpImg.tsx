@@ -1,6 +1,7 @@
 import styles from '../../styles/scss/info/_info.module.scss';
 import * as THREE from 'three';
 import React, { useEffect } from "react";
+import { warpTiltFunctions } from "./warpTiltFunctions";
 
 export default function inforWarpImg():JSX.Element{
     const cors = "https://cors-anywhere.herokuapp.com";
@@ -33,15 +34,11 @@ export default function inforWarpImg():JSX.Element{
         const loader = new THREE.TextureLoader();
         // loader.setCrossOrigin("anonymous");
         const texture = loader.load(`https://kidstudio.co/content/3-info/1.png`);
-
-        console.log(texture);
  
         const width = screenWidth >= 1200 ? 5.5 : 1.6;
         const height = screenWidth >= 1200 ? 3 : 1;
-        // const geometry = new THREE.PlaneGeometry(5.5,3);
         const geometry = new THREE.PlaneGeometry(width, height);
         const material = new THREE.MeshBasicMaterial( {color: 0xffa805, side: THREE.DoubleSide} );
-        // const material = new THREE.MeshBasicMaterial({ map: texture });
         const mesh = new THREE.Mesh( geometry, material );
         scene.add( mesh );
 
@@ -108,59 +105,33 @@ export default function inforWarpImg():JSX.Element{
             
             /** End Makes canvas responsive canvas **/
             
-
-            const elapsedTime = clock.getElapsedTime();
-
-            camera.lookAt(mesh.position)
-
-            let rotationX = mesh.rotation.x
-
-            let rotationY = mesh.rotation.y
-
-            // mesh.rotation.x = - elapsedTime / 10
-            // mesh.rotation.y = - elapsedTime / 10
-
-            
-
-            // if(rotationX <= -0.31){
-            //     mesh.rotation.x = -0.31
-            //     ;
-            //     mesh.rotation.y = -0.31
-            //     ;
-            // }
+            /** Warped tilt hover functionality **/
             const onMouseDown = (a) => {
                 (mouseDown = !0), (prevMouse.x = mouse.x), (prevMouse.y = mouse.y);
-                console.log("onMouseDown");
             }
             const onMouseUp = () => {
                 (mouseDown = !1), (snapping = !0), (snapback.x = mesh.rotation.x / 60), (snapback.y = mesh.rotation.y / 60);
-                console.log("onMouseUp");
             }
             const onDocumentMouseMove = (a)=> {
                 (hovering = !1), (mouse.x = a.clientX / window.innerWidth), (mouse.y = a.clientY / window.innerHeight);
-                console.log("onDocumentMouseMove");
             }
             const dragMove = () => {
                 (distMouse.x = prevMouse.x - mouse.x), (distMouse.y = prevMouse.y - mouse.y);
                 (mesh.rotation.y -= 2 * distMouse.x), (mesh.rotation.x -= 2 * distMouse.y);
-                console.log("dragMove");
             }
             const hoverMove = () => {
                     mouse.x > 0.5 ? mesh.rotation.y < hover_dist && (mesh.rotation.y += 0.002) : mouse.x < 0.5 && mesh.rotation.y > -hover_dist && (mesh.rotation.y -= 0.002),
                         mouse.y > 0.5 ? mesh.rotation.x < hover_dist && (mesh.rotation.x += 0.002) : mouse.y < 0.5 && mesh.rotation.x > -hover_dist && (mesh.rotation.x -= 0.002);
                 (mesh.rotation.y > hover_dist || mesh.rotation.y < -hover_dist) && (mesh.rotation.x > hover_dist || mesh.rotation.x < -hover_dist) && (hovering = !0);
-                console.log("hoverMove");
             }
             const snapBack = () => {
                 mesh.rotation.x < 0.002 && mesh.rotation.x > -0.002 && mesh.rotation.y < 0.002 && mesh.rotation.y > -0.002 && (snapping = !1);
                 (mesh.rotation.x -= snapback.x), (mesh.rotation.y -= snapback.y);
-                console.log("snapBack");
             }
             const hover = () => {
                 i == timerx && (i = 0);
                 timerx / 2 > i ? ((mesh.rotation.x += 3e-4), (mesh.rotation.y -= 3e-4)) : ((mesh.rotation.x -= 3e-4), (mesh.rotation.y += 3e-4));
                 i++;
-                console.log("hover");
             }
             window.requestAnimationFrame(animationLoop);
 
@@ -174,17 +145,16 @@ export default function inforWarpImg():JSX.Element{
             document.addEventListener("mousedown", onMouseDown, !1)
             document.addEventListener("mouseup", onMouseUp, !1)
 
+            /** End Warped tilt hover functionality **/
+
             // Render
             renderer.render(scene, camera);
-            
-            // console.log(rotationX);
-            // console.log(rotationY)
         }
+        
         animationLoop()
 
     },[])
 
-    
     return(
         <>
             <canvas className={`${styles.sceneInfo} sceneInfo`}>
