@@ -6,7 +6,7 @@
     display: flex;
     overflow-x: hidden;
     position:fixed;
-    transition: .8s ease-in-out;
+    transition: .5s ease-in-out;
     z-index: 5656565656;
     .titleWrapper{
         width: 100vw;
@@ -67,7 +67,7 @@
     display: flex;
     overflow-x: hidden;
     position:fixed;
-    transition: 1.5s ease-in-out;
+    // transition: 1.5s ease-in-out;
     .sliderWrapper{
         width: 100vw;
         // &.slidePrevious{
@@ -94,10 +94,10 @@
                     // height: 200px;
                     // // width: 330px;
                 &.slideNext{
-                    animation: slideNext 1.2s ease-out;
+                    animation: slideNext 0.8s ease-out;
                 }
                 &.slidePrevious{
-                    animation: slidePrevious 1.2s ease-out;
+                    animation: slidePrevious 0.8s ease-out;
                 }
                 @media screen and (min-width:$s){
                     margin: 0 180px 0 50px;

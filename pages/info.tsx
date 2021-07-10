@@ -23,8 +23,8 @@ export default function info({ infoPageData }:Type):JSX.Element{
         <>
             <Meta page={"Info"} />
             <Layout>
-                <InfoWarpImg infoData={infoPageData} />
-                <InfoBox />
+            <InfoBox />
+            <InfoWarpImg infoData={infoPageData} />
             </Layout>
         </>
     )

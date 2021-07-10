@@ -8,6 +8,13 @@
 }
 .infoScene{
     @include fullviewPort();
+        margin-top: 15%;
+    @media screen and (min-width:$xxxs){
+        margin-top: 2%;
+    }    
+    @media screen and (min-width:$s){
+        margin-top: unset;
+    }    
 }
 .noScroll{
     @include fullviewPort();
