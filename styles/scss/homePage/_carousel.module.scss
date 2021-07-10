@@ -20,6 +20,10 @@
             word-break: keep-all;
             @media screen and (min-width:$s){
                 top: 28%;
+                font-size: 2.5em;
+            }
+            @media screen and (min-width:$m){
+                top: 28%;
                 font-size: 4em;
             }
             &::before{
@@ -65,10 +69,10 @@
     .sliderWrapper{
         width: 100vw;
         &.slidePrevious{
-            animation: slidePrevious 1.2s ease-out;
+            animation: slidePrevious 1.2s;
         }
         &.slideNext{
-            animation: slideNext 1.2s ease-out;
+            animation: slideNext 1.2s;
         }
         .carousel{
             overflow-x: hidden;

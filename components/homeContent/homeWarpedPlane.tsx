@@ -42,8 +42,10 @@ export default function warpedImage({slideNext, slidePrevious, homeProjects, car
         // loader.setCrossOrigin("anonymous");
         const texture = loader.load(`https://kidstudio.co/content/2-home/${homeProjects[i].imgSrc}`);
  
-        const width = screenWidth >= 1200 ? 5.5 : 1.6;
+        const width = screenWidth >= 1200 ? 5.5 : 1.7;
         const height = screenWidth >= 1200 ? 3 : 1;
+        // const width = 5.5;
+        // const height = 3;
         const geometry = new THREE.PlaneGeometry(width, height);
         const material = new THREE.MeshBasicMaterial({ map: texture })
         // const material = new THREE.MeshBasicMaterial( {color: 0xC0C0C0, side: THREE.DoubleSide} );
@@ -69,6 +71,8 @@ export default function warpedImage({slideNext, slidePrevious, homeProjects, car
         })
 
         function resizeRendererToDisplaySize(renderer) {
+            // (widthIncrease = window.innerWidth / prevWidth), (heightIncrease = window.innerHeight / prevHeight), (scaling *= heightIncrease / widthIncrease);
+            // mesh.scale.x = scaling;
             const canvas = renderer.domElement;
             const width = canvas.clientWidth;
             const height = canvas.clientHeight;
@@ -93,12 +97,7 @@ export default function warpedImage({slideNext, slidePrevious, homeProjects, car
             if (resizeRendererToDisplaySize(renderer)) {
                 const canvas = renderer.domElement;
                 camera.aspect = canvas.clientWidth / canvas.clientHeight;
-                camera.updateProjectionMatrix();
             }
-
-            const canvas = renderer.domElement;
-            camera.aspect = canvas.clientWidth / canvas.clientHeight;
-            camera.updateProjectionMatrix();
             /** End Makes canvas responsive canvas **/
             
             /** Warped tilt hover functionality **/
