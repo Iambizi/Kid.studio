@@ -1,6 +1,5 @@
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
 import Link from "next/link";
-import React from "react";
 import WarpedIMG from "./homeWarpedPlane";
 
 interface Type {

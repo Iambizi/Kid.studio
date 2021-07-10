@@ -1,10 +1,12 @@
 @import "../variables";
+.homeScene{
 
+}
 .titles{
     display: flex;
     overflow-x: hidden;
     position:fixed;
-    transition: .9s ease-in-out;
+    transition: .8s ease-in-out;
     z-index: 5656565656;
     .titleWrapper{
         width: 100vw;
@@ -17,7 +19,7 @@
             top: 30%;
             z-index: 565656;
             margin-left: 14.7vw;
-            word-break: keep-all;
+            width: 100%;
             @media screen and (min-width:$s){
                 top: 28%;
                 font-size: 2.5em;
@@ -65,15 +67,15 @@
     display: flex;
     overflow-x: hidden;
     position:fixed;
-    // transition: 1.5s;
+    transition: 1.5s ease-in-out;
     .sliderWrapper{
         width: 100vw;
-        &.slidePrevious{
-            animation: slidePrevious 1.2s;
-        }
-        &.slideNext{
-            animation: slideNext 1.2s;
-        }
+        // &.slidePrevious{
+        //     animation: slidePrevious 1.2s;
+        // }
+        // &.slideNext{
+        //     animation: slideNext 1.2s;
+        // }
         .carousel{
             overflow-x: hidden;
             flex-direction: row;
@@ -87,17 +89,16 @@
                 //     margin: 0 100px 0 50px;
                 // }    
                 .carouselImage1, .carouselImage2, .carouselImage3{
-                margin: 0 25px 0 25px;
-                height: 200px;
-                // width: 330px;
-
+                    overflow-x: hidden;    
+                    // margin: 0 25px 0 25px;
+                    // height: 200px;
+                    // // width: 330px;
                 &.slideNext{
                     animation: slideNext 1.2s ease-out;
                 }
                 &.slidePrevious{
                     animation: slidePrevious 1.2s ease-out;
                 }
-                
                 @media screen and (min-width:$s){
                     margin: 0 180px 0 50px;
                     height: 400px;

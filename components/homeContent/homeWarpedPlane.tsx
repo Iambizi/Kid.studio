@@ -14,6 +14,7 @@ interface Type{
 
 export default function warpedImage({slideNext, slidePrevious, homeProjects, carouselX, index}:Type):JSX.Element{
     useEffect(()=>{
+        console.log(index)
 
         const screenWidth = window.innerWidth;
         let scaling = 1;
@@ -39,11 +40,11 @@ export default function warpedImage({slideNext, slidePrevious, homeProjects, car
         scene.background = null;
         
         const loader = new THREE.TextureLoader();
-        // loader.setCrossOrigin("anonymous");
         const texture = loader.load(`https://kidstudio.co/content/2-home/${homeProjects[i].imgSrc}`);
+        // console.log(texture);
  
-        const width = screenWidth >= 1200 ? 5.5 : 1.7;
-        const height = screenWidth >= 1200 ? 3 : 1;
+        const width = screenWidth >= 1200 ? 5.5 : 2.1;
+        const height = screenWidth >= 1200 ? 3 : 1.2;
         // const width = 5.5;
         // const height = 3;
         const geometry = new THREE.PlaneGeometry(width, height);
@@ -148,7 +149,7 @@ export default function warpedImage({slideNext, slidePrevious, homeProjects, car
     },[])
     return(
         <>
-            <canvas className={"homeScene"}>
+            <canvas className={`${styles.homeScene} homeScene`}>
             </canvas>
         </>
     )

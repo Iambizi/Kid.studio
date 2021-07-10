@@ -34,9 +34,10 @@ export default function inforWarpImg({infoData}: Type):JSX.Element{
         const loader = new THREE.TextureLoader();
         // loader.setCrossOrigin("anonymous");
         const texture = loader.load(`https://kidstudio.co/${infoData.imgSrc}`);
+        console.log(texture);
  
-        const width = screenWidth >= 1200 ? 5.5 : 1.6;
-        const height = screenWidth >= 1200 ? 3 : 1;
+        const width = screenWidth >= 1200 ? 5.5 : 2.1;
+        const height = screenWidth >= 1200 ? 3 : 1.2;
         const geometry = new THREE.PlaneGeometry(width, height);
         const material = new THREE.MeshBasicMaterial({ map: texture })
         // const material = new THREE.MeshBasicMaterial( {color: 0xffa805, side: THREE.DoubleSide} );
@@ -144,7 +145,7 @@ export default function inforWarpImg({infoData}: Type):JSX.Element{
 
     return(
         <>
-            <canvas className={`${styles.sceneInfo} infoScene`}>
+            <canvas className={`${styles.infoScene} infoScene`}>
             </canvas>
         </>
     )
