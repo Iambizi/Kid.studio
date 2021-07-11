@@ -37,7 +37,6 @@ export default function content({ homeProjects }: Type):JSX.Element{
         setTimeout(() => setSlidePrevious(false), 1000);
     }
 
-    console.log(count + " content");
     return(
         <>
             <section className={styles.noScroll}>

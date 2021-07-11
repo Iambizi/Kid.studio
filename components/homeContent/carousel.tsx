@@ -11,7 +11,6 @@ interface Type {
 }
 
 export default function carousel({ homeProjects, carouselX, slideNext, slidePrevious, count }:Type): JSX.Element{
-    console.log(count + " carousel");
     {
         carouselX  < -200 ?  `${styles.sliderWrapper} ${styles.slidePrevious}` : carouselX < -100 ? `${styles.sliderWrapper} ${styles.slideNext}` : `${styles.sliderWrapper}`
     }

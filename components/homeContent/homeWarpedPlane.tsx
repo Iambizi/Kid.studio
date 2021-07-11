@@ -41,7 +41,6 @@ export default function warpedImage({ slideNext, slidePrevious, homeProjects, ca
         
         const loader = new THREE.TextureLoader();
         const texture = loader.load(`https://kidstudio.co/content/2-home/${homeProjects[count].imgSrc}`);
-        console.log(texture);
  
         const width = screenWidth >= 1200 ? 5.5 : 2.1;
         const height = screenWidth >= 1200 ? 3 : 1.2;
