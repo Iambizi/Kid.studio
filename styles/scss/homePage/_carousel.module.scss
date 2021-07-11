@@ -1,6 +1,6 @@
 @import "../variables";
 .homeScene{
-
+    overflow: hidden;
 }
 .titles{
     display: flex;
@@ -18,7 +18,7 @@
             position: fixed;
             top: 30%;
             z-index: 565656;
-            margin-left: 14.7vw;
+            margin-left: 15vw;
             width: 100%;
             @media screen and (min-width:$s){
                 top: 28%;
@@ -70,48 +70,22 @@
     // transition: 1.5s ease-in-out;
     .sliderWrapper{
         width: 100vw;
-        // &.slidePrevious{
-        //     animation: slidePrevious 1.2s;
-        // }
-        // &.slideNext{
-        //     animation: slideNext 1.2s;
-        // }
+        &.slidePrevious{
+            animation: slidePrevious 1.2s;
+        }
+        &.slideNext{
+            animation: slideNext 1.2s;
+        }
         .carousel{
             overflow-x: hidden;
             flex-direction: row;
-            @media screen and (min-width:$s){
-                    // margin: 0 180px 0 50px;
-                }
-                // @media screen and (min-width:$m){
-                //     margin: 0px 20px 0 50px;
-                // }
-                // @media screen and (min-width:$l){
-                //     margin: 0 100px 0 50px;
-                // }    
                 .carouselImage1, .carouselImage2, .carouselImage3{
                     overflow-x: hidden;    
-                    // margin: 0 25px 0 25px;
-                    // height: 200px;
-                    // // width: 330px;
                 &.slideNext{
                     animation: slideNext 0.8s ease-out;
                 }
                 &.slidePrevious{
                     animation: slidePrevious 0.8s ease-out;
-                }
-                @media screen and (min-width:$s){
-                    margin: 0 180px 0 50px;
-                    height: 400px;
-                    width: 630px;
-                }
-                @media screen and (min-width:$m){
-                    margin: 0 280px 0 150px;
-                    // height: 800px;
-                    // width: 1030px;
-                }
-                @media screen and (min-width:$l){
-                    // height: 1200px;
-                    // width: 1430px;
                 }
             }
     }

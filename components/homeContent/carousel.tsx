@@ -7,9 +7,11 @@ interface Type {
     carouselX : number;
     slideNext: boolean;
     slidePrevious: boolean;
+    count: number;
 }
 
-export default function carousel({ homeProjects, carouselX, slideNext, slidePrevious }:Type): JSX.Element{
+export default function carousel({ homeProjects, carouselX, slideNext, slidePrevious, count }:Type): JSX.Element{
+    console.log(count + " carousel");
     {
         carouselX  < -200 ?  `${styles.sliderWrapper} ${styles.slidePrevious}` : carouselX < -100 ? `${styles.sliderWrapper} ${styles.slideNext}` : `${styles.sliderWrapper}`
     }
@@ -37,20 +39,21 @@ export default function carousel({ homeProjects, carouselX, slideNext, slidePrev
                 {homeProjects.map((p,i)=>
                     (
                         <div className={`${styles.sliderWrapper}`} key={i}>
-                            <div className={`${styles.carousel}`}>
-                                <div className={
+                            {/* <div className={`${styles.carousel}`}> */}
+                                {/* <div className={
                                     (slideNext) ? 
                                     `${styles[homeProjects[i].imageClassName]} ${styles.slideNext}` : 
                                     (slidePrevious) ?
                                     `${styles[homeProjects[i].imageClassName]} ${styles.slidePrevious}` :
                                     `${styles[homeProjects[i].imageClassName]}`
                                 }>
-                                    <WarpedIMG slideNext={slidePrevious} slidePrevious={slidePrevious} homeProjects={homeProjects} index={i} carouselX={carouselX} />
-                                </div>
-                            </div>
+                                </div> */}
+                                {/* <WarpedIMG count={count} slideNext={slidePrevious} slidePrevious={slidePrevious} homeProjects={homeProjects} carouselX={carouselX} /> */}
+                            {/* </div> */}
                         </div>
                     )
                 )}
+                <WarpedIMG count={count} slideNext={slidePrevious} slidePrevious={slidePrevious} homeProjects={homeProjects} carouselX={carouselX} />
             </div>
         </>
     )

@@ -9,13 +9,13 @@ interface Type{
     carouselX : number;
     slideNext: boolean;
     slidePrevious: boolean;
-    index: number;
+    count: number;
 }
 
-export default function warpedImage({slideNext, slidePrevious, homeProjects, carouselX, index}:Type):JSX.Element{
+export default function warpedImage({ slideNext, slidePrevious, homeProjects, carouselX, count }:Type):JSX.Element{
+    
+    
     useEffect(()=>{
-        console.log(index)
-
         const screenWidth = window.innerWidth;
         let scaling = 1;
         let widthIncrease = 1;
@@ -40,8 +40,8 @@ export default function warpedImage({slideNext, slidePrevious, homeProjects, car
         scene.background = null;
         
         const loader = new THREE.TextureLoader();
-        const texture = loader.load(`https://kidstudio.co/content/2-home/${homeProjects[i].imgSrc}`);
-        // console.log(texture);
+        const texture = loader.load(`https://kidstudio.co/content/2-home/${homeProjects[count].imgSrc}`);
+        console.log(texture);
  
         const width = screenWidth >= 1200 ? 5.5 : 2.1;
         const height = screenWidth >= 1200 ? 3 : 1.2;
@@ -98,6 +98,7 @@ export default function warpedImage({slideNext, slidePrevious, homeProjects, car
             if (resizeRendererToDisplaySize(renderer)) {
                 const canvas = renderer.domElement;
                 camera.aspect = canvas.clientWidth / canvas.clientHeight;
+                camera.updateProjectionMatrix();
             }
             /** End Makes canvas responsive canvas **/
             
@@ -146,10 +147,18 @@ export default function warpedImage({slideNext, slidePrevious, homeProjects, car
             renderer.render(scene, camera);
         }
         animationLoop()
-    },[])
+    },[count])
     return(
         <>
-            <canvas className={`${styles.homeScene} homeScene`}>
+            {/* <canvas className={`${styles.homeScene} homeScene`}>
+            </canvas> */}
+            <canvas className={ 
+                (slideNext) ? 
+                `${styles[homeProjects[count].imageClassName]} ${styles.slideNext} homeScene` : 
+                (slidePrevious) ?
+                `${styles[homeProjects[count].imageClassName]} ${styles.slidePrevious} homeScene` :
+                `${styles[homeProjects[count].imageClassName]} homeScene`
+            }>
             </canvas>
         </>
     )

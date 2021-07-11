@@ -37,11 +37,12 @@ export default function content({ homeProjects }: Type):JSX.Element{
         setTimeout(() => setSlidePrevious(false), 1000);
     }
 
+    console.log(count + " content");
     return(
         <>
             <section className={styles.noScroll}>
                 <article className={styles.homeContentSection}>
-                <Carousel homeProjects={homeProjects} carouselX={ carouselX } slideNext={slideNext} slidePrevious={slidePrevious}/>
+                <Carousel homeProjects={homeProjects} count={count} carouselX={ carouselX } slideNext={slideNext} slidePrevious={slidePrevious}/>
                 </article>
                 <p className={styles.nextButton} onClick={goNext}>NEXT</p>
                 <p className={styles.previousButton} onClick={goPrevious}>PREVIOUS</p>

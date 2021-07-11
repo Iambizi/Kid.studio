@@ -90,9 +90,9 @@ export default function inforWarpImg({infoData}: Type):JSX.Element{
                 camera.updateProjectionMatrix();
             }
 
-            const canvas = renderer.domElement;
-            camera.aspect = canvas.clientWidth / canvas.clientHeight;
-            camera.updateProjectionMatrix();
+            // const canvas = renderer.domElement;
+            // camera.aspect = canvas.clientWidth / canvas.clientHeight;
+            // camera.updateProjectionMatrix();
             /** End Makes canvas responsive canvas **/
             
             /** Warped tilt hover functionality **/
