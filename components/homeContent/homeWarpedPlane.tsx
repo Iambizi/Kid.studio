@@ -149,16 +149,16 @@ export default function warpedImage({ slideNext, slidePrevious, homeProjects, ca
     },[count])
     return(
         <>
-            {/* <canvas className={`${styles.homeScene} homeScene`}>
-            </canvas> */}
-            <canvas className={ 
+            <canvas className={`${styles.homeScene} homeScene`}>
+            </canvas>
+            {/* <canvas className={ 
                 (slideNext) ? 
                 `${styles[homeProjects[count].imageClassName]} ${styles.slideNext} homeScene` : 
                 (slidePrevious) ?
                 `${styles[homeProjects[count].imageClassName]} ${styles.slidePrevious} homeScene` :
                 `${styles[homeProjects[count].imageClassName]} homeScene`
             }>
-            </canvas>
+            </canvas> */}
         </>
     )
 }

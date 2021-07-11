@@ -23,36 +23,55 @@ export default function carousel({ homeProjects, carouselX, slideNext, slidePrev
     // }
     // src={"https://kidstudio.co/content/2-home" + `${homeProjects[i].imgSrc}`}
     // alt={"Video Project screenshot"}
+
+    {/* <img
+            className={
+                (slideNext) ? 
+                `${styles[homeProjects[i].imageClassName]} ${styles.slideNext}` : 
+                (slidePrevious) ?
+                `${styles[homeProjects[i].imageClassName]} ${styles.slidePrevious}` :
+                `${styles[homeProjects[i].imageClassName]}`
+            }
+            src={"https://kidstudio.co/content/2-home" + `${homeProjects[i].imgSrc}`}
+            alt={"Video Project screenshot"}
+            height={200}
+            width={330}
+        /> */}
     return(
         <>
             <div className={styles.titles} style={{left: `${ -carouselX }%`}}>
                 {homeProjects && homeProjects.length > 0 ? homeProjects.map((item, i)=>(
-                    <div className={styles.titleWrapper} key={i}>
+                    
+                    <>
+                        <div className={styles.titleWrapper} key={i}>
                         <Link href={ process.env.NEXT_PUBLIC_APP_DOMAIN + "/work" + homeProjects[i].path }>
                             <h2 className={`${styles[homeProjects[i].titleClassName]}`}>{ homeProjects[i].videoTitle}</h2>
                         </Link>
                     </div>
+                        {/* <WarpedIMG count={count} slideNext={slidePrevious} slidePrevious={slidePrevious} homeProjects={homeProjects} carouselX={carouselX} /> */}
+                    </>
                 )) : ""}
             </div>
             <div className={styles.slider} style={{left: `${ -carouselX }%`}}>
                 {homeProjects.map((p,i)=>
                     (
                         <div className={`${styles.sliderWrapper}`} key={i}>
-                            {/* <div className={`${styles.carousel}`}> */}
-                                {/* <div className={
+                            <div className={`${styles.carousel}`}>
+                                <div className={
                                     (slideNext) ? 
                                     `${styles[homeProjects[i].imageClassName]} ${styles.slideNext}` : 
                                     (slidePrevious) ?
                                     `${styles[homeProjects[i].imageClassName]} ${styles.slidePrevious}` :
                                     `${styles[homeProjects[i].imageClassName]}`
                                 }>
-                                </div> */}
+                                    <WarpedIMG count={count} slideNext={slidePrevious} slidePrevious={slidePrevious} homeProjects={homeProjects} carouselX={carouselX} />
+                                </div>
                                 {/* <WarpedIMG count={count} slideNext={slidePrevious} slidePrevious={slidePrevious} homeProjects={homeProjects} carouselX={carouselX} /> */}
-                            {/* </div> */}
+                            </div>
                         </div>
                     )
                 )}
-                <WarpedIMG count={count} slideNext={slidePrevious} slidePrevious={slidePrevious} homeProjects={homeProjects} carouselX={carouselX} />
+                {/* <WarpedIMG count={count} slideNext={slidePrevious} slidePrevious={slidePrevious} homeProjects={homeProjects} carouselX={carouselX} /> */}
             </div>
         </>
     )

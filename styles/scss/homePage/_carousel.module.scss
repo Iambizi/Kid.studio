@@ -1,12 +1,18 @@
 @import "../variables";
-.homeScene{
-    overflow: hidden;
+
+@mixin fullviewPort(){
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
 }
+
 .titles{
     display: flex;
     overflow-x: hidden;
     position:fixed;
-    transition: .5s ease-in-out;
+    transition: .55s linear;
     z-index: 5656565656;
     .titleWrapper{
         width: 100vw;
@@ -25,7 +31,7 @@
                 font-size: 2.5em;
             }
             @media screen and (min-width:$m){
-                top: 28%;
+                top: 30%;
                 font-size: 4em;
             }
             &::before{
@@ -34,7 +40,7 @@
                 height: 0.3%;
                 position: fixed;
                 left:15%;
-                top: 30%;
+                top: 33%;
                 background-color: #000;
                 @media screen and (min-width:$s){
                     height: 0.5%;
@@ -67,20 +73,23 @@
     display: flex;
     overflow-x: hidden;
     position:fixed;
-    // transition: 1.5s ease-in-out;
+    transition: 1.5s ease-in-out;
     .sliderWrapper{
         width: 100vw;
-        &.slidePrevious{
-            animation: slidePrevious 1.2s;
-        }
-        &.slideNext{
-            animation: slideNext 1.2s;
-        }
+        // &.slidePrevious{
+        //     animation: slidePrevious 1.2s ease-out;
+        // }
+        // &.slideNext{
+        //     animation: slideNext 1.2s ease-out;
+        // }
         .carousel{
-            overflow-x: hidden;
-            flex-direction: row;
+            height: 100vh;
+            width: 100vw;
+            .homeScene{
+                @include fullviewPort();
+            }
                 .carouselImage1, .carouselImage2, .carouselImage3{
-                    overflow-x: hidden;    
+                    overflow-x: hidden;
                 &.slideNext{
                     animation: slideNext 0.8s ease-out;
                 }
@@ -88,7 +97,7 @@
                     animation: slidePrevious 0.8s ease-out;
                 }
             }
-    }
+        }
 }
 }
 
