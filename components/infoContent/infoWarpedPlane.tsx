@@ -34,7 +34,6 @@ export default function inforWarpImg({infoData}: Type):JSX.Element{
         const loader = new THREE.TextureLoader();
         // loader.setCrossOrigin("anonymous");
         const texture = loader.load(`https://kidstudio.co/${infoData.imgSrc}`);
-        console.log(texture);
  
         const width = screenWidth >= 1200 ? 5.5 : 2.1;
         const height = screenWidth >= 1200 ? 3 : 1.2;
