@@ -11,7 +11,7 @@
 .titles{
     display: flex;
     overflow-x: hidden;
-    position:fixed;
+    position: fixed;
     transition: .55s linear;
     z-index: 5656565656;
     .titleWrapper{
@@ -39,14 +39,20 @@
                 width: 10%;
                 height: 0.3%;
                 position: fixed;
-                left:15%;
+                left: 15%;
                 top: 30%;
                 background-color: #000;
                 @media screen and (min-width:$xs){
                     // height: 0.5%;
+                    // width: 9%;
                     top: 32%;
                 }
                 @media screen and (min-width:$s){
+                    height: 1%;
+                    top: 29%;
+                    // width: 10%;
+                }
+                @media screen and (min-width:$m){
                     height: 1%;
                     top: 33%;
                     width: 8%;
@@ -75,7 +81,7 @@
     margin: auto;
     display: flex;
     overflow-x: hidden;
-    position:fixed;
+    position: fixed;
     transition: 1.5s ease-in-out;
     .sliderWrapper{
         width: 100vw;
@@ -101,6 +107,6 @@
                 }
             }
         }
-}
+    }
 }
 
