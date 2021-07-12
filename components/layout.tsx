@@ -42,17 +42,18 @@ export default function layout({ children, bgImg, setbgImg, specificStyles }:Typ
         const flashObj = document.getElementById("flash");
         const imgLink = `https://kidstudio.co${item}`;
         const bg = document.body;
+        bg.classList.add('flashStyles');
         
         console.log(flashObj);
         console.log(imgLink);
 
         setInterval(() => {
             flashObj.style.backgroundImage = `url(${imgLink})`;
-			flashObj.classList.remove('hide-flash');
+			flashObj.classList.remove(`${styles.hideFlash}`);
             console.log("flash!!!!!");
-            console.log(flashObj);
+            console.log(bg);
 			setTimeout(()=> {
-				flashObj.classList.add('hide-flash');
+				flashObj.classList.add(`${styles.hideFlash}`);
 			}, 100);
         }, 15000);
     }
@@ -61,7 +62,7 @@ export default function layout({ children, bgImg, setbgImg, specificStyles }:Typ
     // bg.style.zIndex = "420";
 
     useEffect(()=>{
-        // flash();
+        flash();
     },[]);
     return(
         <>
