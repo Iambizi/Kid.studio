@@ -95,14 +95,15 @@ export default function inforWarpImg({infoData}: Type):JSX.Element{
             /** End Makes canvas responsive canvas **/
             
             /** Warped tilt hover functionality **/
-            const onMouseDown = (a) => {
+            const onMouseDown = (e) => {
                 (mouseDown = !0), (prevMouse.x = mouse.x), (prevMouse.y = mouse.y);
+                e.stopImmediatePropagation();
             }
             const onMouseUp = () => {
                 (mouseDown = !1), (snapping = !0), (snapback.x = mesh.rotation.x / 60), (snapback.y = mesh.rotation.y / 60);
             }
-            const onDocumentMouseMove = (a)=> {
-                (hovering = !1), (mouse.x = a.clientX / window.innerWidth), (mouse.y = a.clientY / window.innerHeight);
+            const onDocumentMouseMove = (e)=> {
+                (hovering = !1), (mouse.x = e.clientX / window.innerWidth), (mouse.y = e.clientY / window.innerHeight);
             }
             const dragMove = () => {
                 (distMouse.x = prevMouse.x - mouse.x), (distMouse.y = prevMouse.y - mouse.y);

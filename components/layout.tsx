@@ -16,14 +16,17 @@ export default function layout({ children, bgImg, setbgImg, specificStyles }:Typ
     const [displayChildren, setDisplayChildren] = useState(children);
     const [transitionStage, setTransitionStage] = useState("fadeOut");
 
-    useEffect(() => {
-        setTransitionStage("fadeIn");
-      }, []);
+    // useEffect(() => {
+    //     setTransitionStage("fadeIn");
+    //   }, []);
 
-      useEffect(() => {
-        if (children !== displayChildren) setTransitionStage("fadeOut");
-      }, [children, setDisplayChildren, displayChildren]);
+    //   useEffect(() => {
+    //     if (children !== displayChildren) setTransitionStage("fadeOut");
+    //   }, [children, setDisplayChildren, displayChildren]);
 
+    const flashImg = [
+        
+    ]
     return(
         <>
             <Navigation bgImg={bgImg} />
