@@ -135,7 +135,6 @@ export default function inforWarpImg({infoData}: Type):JSX.Element{
                 document.addEventListener("mouseup", onMouseUp, !1)
             /** End controls mouse and hover effects **/
             
-
             // Render
             renderer.render(scene, camera);
         }
