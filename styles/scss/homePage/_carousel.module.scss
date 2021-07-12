@@ -40,13 +40,16 @@
                 height: 0.3%;
                 position: fixed;
                 left:15%;
-                top: 33%;
+                top: 30%;
                 background-color: #000;
-                @media screen and (min-width:$s){
-                    height: 0.5%;
+                @media screen and (min-width:$xs){
+                    // height: 0.5%;
+                    top: 32%;
                 }
                 @media screen and (min-width:$s){
                     height: 1%;
+                    top: 33%;
+                    width: 8%;
                 }    
             }
         }

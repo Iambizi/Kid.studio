@@ -33,6 +33,7 @@ export default function warpedImage({ slideNext, slidePrevious, homeProjects, ca
         let hovering = !1;
         let snapping = !1;
         let mouseDown = !1;
+        const scale = 1;
 
         const scene = new THREE.Scene();
         // scene.background = new THREE.Color( 0xFFA500 );
@@ -42,10 +43,10 @@ export default function warpedImage({ slideNext, slidePrevious, homeProjects, ca
         const loader = new THREE.TextureLoader();
         const texture = loader.load(`https://kidstudio.co/content/2-home/${homeProjects[count].imgSrc}`);
  
-        const width = screenWidth >= 1200 ? 5.5 : 2.1;
-        const height = screenWidth >= 1200 ? 3 : 1.2;
-        // const width = 5.5;
-        // const height = 3;
+        // const width = screenWidth >= 1200 ? 5.5 : 2.1;
+        // const height = screenWidth >= 1200 ? 3 : 1.2;
+        const width = 5.5;
+        const height = 3;
         const geometry = new THREE.PlaneGeometry(width, height);
         const material = new THREE.MeshBasicMaterial({ map: texture })
         // const material = new THREE.MeshBasicMaterial( {color: 0xC0C0C0, side: THREE.DoubleSide} );
@@ -57,17 +58,19 @@ export default function warpedImage({ slideNext, slidePrevious, homeProjects, ca
             height: window.innerHeight
         }
          //camera
-        const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100);
+        // const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100);
+        const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 1, 1e4);
         
         //Renderer
         const canvas = document.querySelector('.homeScene');
 
-        camera.position.z = 3
+        // camera.position.z = 3;
+        camera.position.z = screenWidth >= 1200 ? 3 : 8;
 
         const renderer = new THREE.WebGLRenderer({
             canvas: canvas,
             antialias: true,
-            alpha: true
+            alpha: !0
         })
 
         function resizeRendererToDisplaySize(renderer) {
@@ -134,13 +137,17 @@ export default function warpedImage({ slideNext, slidePrevious, homeProjects, ca
             mouseDown ? dragMove() : snapping ? snapBack() : hovering ? hover() : hoverMove()
             mouseDown && ((prevMouse.y = mouse.y), (prevMouse.x = mouse.x))
 
-            document.addEventListener("mousemove", onDocumentMouseMove, !1),
-            document.addEventListener("mousedown", onMouseDown, !1),
-            document.addEventListener("mouseup", onMouseUp, !1)
-            document.addEventListener("mousemove", onDocumentMouseMove, !1)
-            document.addEventListener("mousedown", onMouseDown, !1)
-            document.addEventListener("mouseup", onMouseUp, !1)
+            
             /** End Warped tilt hover functionality **/
+
+            /** controls mouse and hover effects **/
+                // camera.position.z = 500;
+                // mesh.position.x = 2e3;
+                // mesh.position.x = 4e3;
+                document.addEventListener("mousemove", onDocumentMouseMove, !1)
+                document.addEventListener("mousedown", onMouseDown, !1)
+                document.addEventListener("mouseup", onMouseUp, !1)
+            /** End controls mouse and hover effects **/
 
             // Render
             renderer.render(scene, camera);

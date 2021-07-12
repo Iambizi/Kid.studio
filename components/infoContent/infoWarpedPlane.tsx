@@ -126,14 +126,14 @@ export default function inforWarpImg({infoData}: Type):JSX.Element{
 
             mouseDown ? dragMove() : snapping ? snapBack() : hovering ? hover() : hoverMove()
             mouseDown && ((prevMouse.y = mouse.y), (prevMouse.x = mouse.x))
-
-            document.addEventListener("mousemove", onDocumentMouseMove, !1),
-            document.addEventListener("mousedown", onMouseDown, !1),
-            document.addEventListener("mouseup", onMouseUp, !1)
-            document.addEventListener("mousemove", onDocumentMouseMove, !1)
-            document.addEventListener("mousedown", onMouseDown, !1)
-            document.addEventListener("mouseup", onMouseUp, !1)
             /** End Warped tilt hover functionality **/
+
+            /** controls mouse and hover effects **/
+                document.addEventListener("mousemove", onDocumentMouseMove, !1)
+                document.addEventListener("mousedown", onMouseDown, !1)
+                document.addEventListener("mouseup", onMouseUp, !1)
+            /** End controls mouse and hover effects **/
+            
 
             // Render
             renderer.render(scene, camera);

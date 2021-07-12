@@ -41,15 +41,11 @@ export default function carousel({ homeProjects, carouselX, slideNext, slidePrev
         <>
             <div className={styles.titles} style={{left: `${ -carouselX }%`}}>
                 {homeProjects && homeProjects.length > 0 ? homeProjects.map((item, i)=>(
-                    
-                    <>
                         <div className={styles.titleWrapper} key={i}>
                         <Link href={ process.env.NEXT_PUBLIC_APP_DOMAIN + "/work" + homeProjects[i].path }>
                             <h2 className={`${styles[homeProjects[i].titleClassName]}`}>{ homeProjects[i].videoTitle}</h2>
                         </Link>
                     </div>
-                        {/* <WarpedIMG count={count} slideNext={slidePrevious} slidePrevious={slidePrevious} homeProjects={homeProjects} carouselX={carouselX} /> */}
-                    </>
                 )) : ""}
             </div>
             <div className={styles.slider} style={{left: `${ -carouselX }%`}}>
@@ -71,7 +67,6 @@ export default function carousel({ homeProjects, carouselX, slideNext, slidePrev
                         </div>
                     )
                 )}
-                {/* <WarpedIMG count={count} slideNext={slidePrevious} slidePrevious={slidePrevious} homeProjects={homeProjects} carouselX={carouselX} /> */}
             </div>
         </>
     )
