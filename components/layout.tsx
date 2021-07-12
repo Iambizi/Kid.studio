@@ -41,8 +41,6 @@ export default function layout({ children, bgImg, setbgImg, specificStyles }:Typ
         const item = flashImg[Math.floor(Math.random()*flashImg.length)];
         const flashObj = document.getElementById("flash");
         const imgLink = `https://kidstudio.co${item}`;
-        const bg = document.body;
-        bg.classList.add('flashStyles');
         
         console.log(flashObj);
         console.log(imgLink);
@@ -50,8 +48,6 @@ export default function layout({ children, bgImg, setbgImg, specificStyles }:Typ
         setInterval(() => {
             flashObj.style.backgroundImage = `url(${imgLink})`;
 			flashObj.classList.remove(`${styles.hideFlash}`);
-            console.log("flash!!!!!");
-            console.log(bg);
 			setTimeout(()=> {
 				flashObj.classList.add(`${styles.hideFlash}`);
 			}, 100);
