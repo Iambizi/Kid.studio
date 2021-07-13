@@ -15,6 +15,7 @@ interface Type {
 export default function layout({ children, bgImg, setbgImg, specificStyles }:Type):JSX.Element{
     const [displayChildren, setDisplayChildren] = useState(children);
     const [transitionStage, setTransitionStage] = useState("fadeOut");
+    const [ flashed, setFlashed ] = useState(false);
 
     // useEffect(() => {
     //     setTransitionStage("fadeIn");
@@ -23,8 +24,6 @@ export default function layout({ children, bgImg, setbgImg, specificStyles }:Typ
     //   useEffect(() => {
     //     if (children !== displayChildren) setTransitionStage("fadeOut");
     //   }, [children, setDisplayChildren, displayChildren]);
-
-    "https://kidstudio.co"
 
     const flashImg = [
         "/assets/images/flash/1.png",
@@ -36,34 +35,31 @@ export default function layout({ children, bgImg, setbgImg, specificStyles }:Typ
         "/assets/images/flash/7.png",
         "/assets/images/flash/8.png",
         "/assets/images/flash/9.png"
-    ]
+    ];
     const flash = ()=>{
         const item = flashImg[Math.floor(Math.random()*flashImg.length)];
         const flashObj = document.getElementById("flash");
         const imgLink = `https://kidstudio.co${item}`;
         
-        console.log(flashObj);
-        console.log(imgLink);
-
         setInterval(() => {
             flashObj.style.backgroundImage = `url(${imgLink})`;
-			flashObj.classList.remove(`${styles.hideFlash}`);
+            flashObj.style.zIndex = "5656565656565656565656";
+            setFlashed(true);
 			setTimeout(()=> {
-				flashObj.classList.add(`${styles.hideFlash}`);
+                setFlashed(false);
 			}, 100);
         }, 15000);
     }
-    //link[index].addEventListener("mousemove", ()=> {
-    // bg.style.backgroundPosition = `${e.pageX}px ${e.pageY}px`;
-    // bg.style.zIndex = "420";
+
 
     useEffect(()=>{
         flash();
+        console.log(flashed);
     },[]);
     return(
         <>
             <Navigation bgImg={bgImg} />
-            <div className={`${styles.flash}`} id="flash"></div>
+            <div className={ flashed ? `${styles.flash}` : `${styles.flash} ${styles.hideFlash}` } id="flash"></div>
             {/* <div 
                 onClick={() => {
                     if (transitionStage === "fadeOut") {
