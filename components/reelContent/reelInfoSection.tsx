@@ -32,7 +32,7 @@ export default function mainInfoSection( { reels }: Type ):JSX.Element{
 
         const overlay = document.getElementsByClassName('overlay');
 
-        for(var i = 0; i < overlay.length; i++) {
+        for(let i = 0; i < overlay.length; i++) {
             ((index)=> {
               overlay[index].classList.add(`${styles.hideOverlay}`)
             })(i);

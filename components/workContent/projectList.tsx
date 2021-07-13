@@ -36,7 +36,7 @@ export default function work( { bgImg, setbgImg, projects }:Type ){
         // Because link constant returns htmlCollection, we need to iterate through using a for loop to make changes
         // for loop for function on mousemove event adds: backgroundPosition, z-index
 
-        for(var i = 0; i < link.length; i++) {
+        for(let i = 0; i < link.length; i++) {
             ((index)=> {
               link[index].addEventListener("mousemove", ()=> {
                 bg.style.backgroundPosition = `${e.pageX}px ${e.pageY}px`;
@@ -52,14 +52,14 @@ export default function work( { bgImg, setbgImg, projects }:Type ){
         }
 
         // on mouseOut event: removes all styles 
-        for(var i = 0; i < link.length; i++) {
+        for(let i = 0; i < link.length; i++) {
             ((index)=> {
               link[index].addEventListener("mouseout", removeStyles, false);
             })(i);
           }
 
         // on click event: removes all styles
-          for(var i = 0; i < link.length; i++) {
+          for(let i = 0; i < link.length; i++) {
             ((index)=> {
               link[index].addEventListener("click", removeStyles, false);
             })(i);

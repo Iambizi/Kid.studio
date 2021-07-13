@@ -15,7 +15,7 @@ export default function stills( {reels}: Type ):JSX.Element{
         // Fisher-Yates (aka Knuth) Shuffle
         // function that shuffles values in positions array
         const shuffle = (array)=>{
-            var currentIndex = array.length,  randomIndex;
+            let currentIndex = array.length,  randomIndex;
             // While there remain elements to shuffle...
             while (0 !== currentIndex) {
               // Pick a remaining element...
@@ -37,7 +37,7 @@ export default function stills( {reels}: Type ):JSX.Element{
         if(screenWidth >= 1200){
             const stills = Array.from(document.getElementsByClassName("stills") as HTMLCollectionOf<HTMLElement>);
 
-            for(var i = 0; i < stills.length; i++) {
+            for(let i = 0; i < stills.length; i++) {
                 stills[i].style.marginLeft = `${position[i]}%`;
             }
         }

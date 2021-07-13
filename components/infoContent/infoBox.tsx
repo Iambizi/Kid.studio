@@ -1,10 +1,7 @@
 import styles from '../../styles/scss/info/_info.module.scss';
-import React, { useEffect } from "react";
 
 export default function infoBox(){
-    useEffect(()=>{
-        
-    },[]);
+
     return(
     <>
         <div className={styles.infoContainer}>

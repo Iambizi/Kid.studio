@@ -1,6 +1,3 @@
-import { GetStaticProps} from 'next';
-import fs from 'fs';
-import path from 'path';
 import Navigation from "../components/common/header/navigation";
 import Footer from "../components/common/footer";
 import React, { useState, useEffect } from "react";
@@ -42,7 +39,8 @@ export default function layout({ children, bgImg, setbgImg, specificStyles, flas
         "/assets/images/flash/8.png",
         "/assets/images/flash/9.png"
     ];
-    const flash = ()=>{
+
+    const flash = () =>{
         const item = flashImg[Math.floor(Math.random()*flashImg.length)];
         const flashObj = document.getElementById("flash");
         const imgLink = `https://kidstudio.co${item}`;
@@ -57,8 +55,7 @@ export default function layout({ children, bgImg, setbgImg, specificStyles, flas
         }, 15000);
     }
 
-
-    useEffect(()=>{
+    useEffect(() =>{
         flash();
     },[]);
     return(
@@ -79,21 +76,4 @@ export default function layout({ children, bgImg, setbgImg, specificStyles, flas
             <Footer bgImg={bgImg} specificStyles={specificStyles} />
         </>
     );
-}
-
-export const getStaticProps: GetStaticProps = async ()=>{
-    
-    const fileToRead = path.join(process.cwd(),'./backEndData/flash.json');
-    const data = JSON.parse(await fs.readFileSync(fileToRead).toString());
-
-    const flashImages = data.homeProjects.map((item, i)=>(data.homeProjects[i]))
-    
-    // using page specific data return data according to the params (specific project being selected)
-    // Once I start creating api endpoints this will no longer be necessary
-    console.log(data.flashImg);
-    return {
-        props: {
-            flashImgData: data
-        }
-    }
 }

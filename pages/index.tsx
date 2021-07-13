@@ -29,9 +29,7 @@ export default function home({homeProjects}: Type):JSX.Element {
   )
 }
 
-export const getStaticProps: GetStaticProps = async (context)=>{
-  
-  const  { params } = context;
+export const getStaticProps: GetStaticProps = async () =>{
   
   const fileToRead = path.join(process.cwd(),'./backEndData/homeProjects.json');
   const data = JSON.parse(await fs.readFileSync(fileToRead).toString());
