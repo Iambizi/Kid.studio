@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import projectPages from "../pages/work/[project]";
 import styles from "../styles/scss/common/_layout.module.scss";
 import Router from "next/router";
+import { getRandoNum } from "./common/utils/getRandoNum";
 
 interface Type {
     children: React.ReactNode,
@@ -13,12 +14,10 @@ interface Type {
     flashImgData?: string[];
 }
 
-export default function layout({ children, bgImg, setbgImg, specificStyles, flashImgData }:Type):JSX.Element{
-    const [displayChildren, setDisplayChildren] = useState(children);
-    const [transitionStage, setTransitionStage] = useState("fadeOut");
+export default function layout({ children, bgImg, setbgImg, specificStyles }:Type):JSX.Element{
+    const [ displayChildren, setDisplayChildren ] = useState(children);
+    const [ transitionStage, setTransitionStage ] = useState("fadeOut");
     const [ flashed, setFlashed ] = useState(false);
-
-    console.log(flashImgData);
 
     // useEffect(() => {
     //     setTransitionStage("fadeIn");
@@ -28,27 +27,15 @@ export default function layout({ children, bgImg, setbgImg, specificStyles, flas
     //     if (children !== displayChildren) setTransitionStage("fadeOut");
     //   }, [children, setDisplayChildren, displayChildren]);
 
-    const flashImg = [
-        "/assets/images/flash/1.png",
-        "/assets/images/flash/2.png",
-        "/assets/images/flash/3.png",
-        "/assets/images/flash/4.png",
-        "/assets/images/flash/5.png",
-        "/assets/images/flash/6.png",
-        "/assets/images/flash/7.png",
-        "/assets/images/flash/8.png",
-        "/assets/images/flash/9.png"
-    ];
-
-    const flash = () =>{
-        const item = flashImg[Math.floor(Math.random()*flashImg.length)];
+    const flash = () => {
         const flashObj = document.getElementById("flash");
-        const imgLink = `https://kidstudio.co${item}`;
-        
         setInterval(() => {
+            const rando = getRandoNum(1,9);
+            const imgLink = `https://kidstudio.co/assets/images/flash/${rando}.png`;
             flashObj.style.backgroundImage = `url(${imgLink})`;
             flashObj.style.zIndex = "5656565656565656565656";
             setFlashed(true);
+            console.log(imgLink);
 			setTimeout(()=> {
                 setFlashed(false);
 			}, 100);
@@ -58,6 +45,7 @@ export default function layout({ children, bgImg, setbgImg, specificStyles, flas
     useEffect(() =>{
         flash();
     },[]);
+
     return(
         <>
             <Navigation bgImg={bgImg} />

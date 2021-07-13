@@ -40,13 +40,10 @@ export default function reels({reelPageData}: Type):JSX.Element{
     )
 }
 
-export const getStaticProps: GetStaticProps = async (context)=>{
-
-    const { params } = context;
+export const getStaticProps: GetStaticProps = async ()=>{
     
     const fileToRead = path.join(process.cwd(),'./backEndData/projects/reelPage.json');
     const data = JSON.parse(await fs.readFileSync(fileToRead).toString());
-    
     
     return {
         props: {
