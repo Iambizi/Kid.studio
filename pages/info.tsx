@@ -30,15 +30,10 @@ export default function info({ infoPageData }:Type):JSX.Element{
     )
 }
 
-export const getStaticProps: GetStaticProps = async (context)=>{
-
-    const { params } = context;
+export const getStaticProps: GetStaticProps = async ()=>{
     
     const fileToRead = path.join(process.cwd(),'./backEndData/infoPage.json');
     const data = JSON.parse(await fs.readFileSync(fileToRead).toString());
-    
-    // using page specific data return data according to the params (specific project being selected)
-    // Once I start creating api endpoints this will no longer be necessary
     
     return {
         props: {

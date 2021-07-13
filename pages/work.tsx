@@ -21,13 +21,11 @@ export default function work({workPageData}:Type):JSX.Element{
      )
 }
 
-export const getStaticProps: GetStaticProps = async (context)=>{
-    const  { params } = context;
+export const getStaticProps: GetStaticProps = async ()=>{
     
     const fileToRead = path.join(process.cwd(),'./backEndData/projectsList.json');
     const data = JSON.parse(await fs.readFileSync(fileToRead).toString());
-    // const project = data.projects.find(project => project.path === projectPath)
-    // const projects = data.projects.map((item, i)=>(item[i]))
+    
     if (!data) {
         return {
             notFound: true

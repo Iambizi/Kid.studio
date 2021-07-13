@@ -1,4 +1,7 @@
-import Navigation from "../components/common/header/navigation"
+import { GetStaticProps} from 'next';
+import fs from 'fs';
+import path from 'path';
+import Navigation from "../components/common/header/navigation";
 import Footer from "../components/common/footer";
 import React, { useState, useEffect } from "react";
 import projectPages from "../pages/work/[project]";
@@ -10,12 +13,15 @@ interface Type {
     bgImg?: boolean;
     setbgImg?: any;
     specificStyles?: string;
+    flashImgData?: string[];
 }
 
-export default function layout({ children, bgImg, setbgImg, specificStyles }:Type):JSX.Element{
+export default function layout({ children, bgImg, setbgImg, specificStyles, flashImgData }:Type):JSX.Element{
     const [displayChildren, setDisplayChildren] = useState(children);
     const [transitionStage, setTransitionStage] = useState("fadeOut");
     const [ flashed, setFlashed ] = useState(false);
+
+    console.log(flashImgData);
 
     // useEffect(() => {
     //     setTransitionStage("fadeIn");
@@ -54,7 +60,6 @@ export default function layout({ children, bgImg, setbgImg, specificStyles }:Typ
 
     useEffect(()=>{
         flash();
-        console.log(flashed);
     },[]);
     return(
         <>
@@ -74,4 +79,21 @@ export default function layout({ children, bgImg, setbgImg, specificStyles }:Typ
             <Footer bgImg={bgImg} specificStyles={specificStyles} />
         </>
     );
+}
+
+export const getStaticProps: GetStaticProps = async ()=>{
+    
+    const fileToRead = path.join(process.cwd(),'./backEndData/flash.json');
+    const data = JSON.parse(await fs.readFileSync(fileToRead).toString());
+
+    const flashImages = data.homeProjects.map((item, i)=>(data.homeProjects[i]))
+    
+    // using page specific data return data according to the params (specific project being selected)
+    // Once I start creating api endpoints this will no longer be necessary
+    console.log(data.flashImg);
+    return {
+        props: {
+            flashImgData: data
+        }
+    }
 }

@@ -47,8 +47,6 @@ export const getStaticProps: GetStaticProps = async (context)=>{
     const fileToRead = path.join(process.cwd(),'./backEndData/projects/reelPage.json');
     const data = JSON.parse(await fs.readFileSync(fileToRead).toString());
     
-    // using page specific data return data according to the params (specific project being selected)
-    // Once I start creating api endpoints this will no longer be necessary
     
     return {
         props: {
