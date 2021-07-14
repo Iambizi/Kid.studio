@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import styles from "../../styles/scss/projectPages/_projectPages.module.scss";
+import { shuffle } from "../common/utils/shuffle";
 
 
 import React, { useEffect } from "react";
@@ -12,22 +13,6 @@ export default function stills( {reels}: Type ):JSX.Element{
     useEffect(()=>{
         const screenWidth = window.innerWidth;
         
-        // Fisher-Yates (aka Knuth) Shuffle
-        // function that shuffles values in positions array
-        const shuffle = (array)=>{
-            let currentIndex = array.length,  randomIndex;
-            // While there remain elements to shuffle...
-            while (0 !== currentIndex) {
-              // Pick a remaining element...
-              randomIndex = Math.floor(Math.random() * currentIndex);
-              currentIndex--;
-              // And swap it with the current element.
-              [array[currentIndex], array[randomIndex]] = [
-                array[randomIndex], array[currentIndex]];
-            }
-            return array;
-        }
-
         const position = [
             30, 50, 30, 10, 30, 10, 50, 30, 10, 30,
             10, 30, 30, 50, 30, 30, 10, 30, 50, 10, 30  
