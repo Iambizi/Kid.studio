@@ -8,7 +8,7 @@ interface Type{
     projects?: any;
 }
 
-export default function stills( {projects}: Type ):JSX.Element{
+export default function stills( { projects }: Type ):JSX.Element{
     useEffect(()=>{
         const screenWidth = window.innerWidth;
         

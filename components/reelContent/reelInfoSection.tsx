@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import styles from "../../styles/scss/projectPages/_projectPages.module.scss";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 interface Type {
     reels: any;
@@ -40,11 +40,24 @@ export default function mainInfoSection( { reels }: Type ):JSX.Element{
           
     }
 
+    const titleScroll = () => {
+        const pageY = window.pageYOffset;        
+        const screenWidth = window.innerWidth;
+        const title = document.querySelector(".reelTitle") as HTMLElement;
+
+        if(screenWidth >= 1200){
+            title.style.transform = `translateY(-${pageY}px)`;
+        }
+    }
+    useEffect(()=>{
+        window.addEventListener('scroll', titleScroll);
+    },[])
+
     return(
         <>
             <section className={styles.projectPageSection}>
                 <div className={styles.projectDetailsWrapper}>
-                    <h3 className={styles.projectTitle}>
+                    <h3 className={`${styles.projectTitle} reelTitle`}>
                         {reels.title}
                     </h3>
                     <div className={styles.projectCredsWrapper}>
@@ -55,7 +68,7 @@ export default function mainInfoSection( { reels }: Type ):JSX.Element{
                 </div>
                 <div className={ toggleIndex ? `${styles.projectVideo} ${styles.toggleIndex} video` : `${styles.projectVideo} video`}>
                     <div onClick={ overlayPlay } className={`${styles.videoOverlay} overlay`} style={{backgroundImage: `url(${reels.videoCover})`}}>
-                        <div  className={`${styles.videoOverlay} overlay`} style={{backgroundImage: `url(https://kidstudio.co/assets/images/play.png)`}}>
+                        <div className={`${styles.videoOverlay} overlay`} style={{backgroundImage: `url(https://kidstudio.co/assets/images/play.png)`}}>
                             {/* <Image
                             unoptimized
                             className={styles.videoCover}
