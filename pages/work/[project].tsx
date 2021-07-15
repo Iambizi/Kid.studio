@@ -15,6 +15,7 @@ interface Type{
 }
 
 export default function projectPages( {projectsPageData}: Type):JSX.Element{
+    // console.log(projectsPageData);
     const router = useRouter();
     const pathName = router.pathname;
     const comparison = pathName === "/work/[project]";
@@ -53,10 +54,11 @@ export const getStaticProps: GetStaticProps = async (context)=>{
     // using page specific data return data according to the params (specific project being selected)
     // Once I start creating api endpoints this will no longer be necessary
     const pageSpecificData = data.projectPage.map((item, i)=>(data.projectPage[i])).find(item => item.path.includes(projectPath));
-    
+    const pageSpecificDataS = JSON.parse(JSON.stringify(pageSpecificData));
+    console.log(pageSpecificDataS);
     return {
         props: {
-            projectsPageData: pageSpecificData
+            projectsPageData: pageSpecificDataS
         }
     }
 }
