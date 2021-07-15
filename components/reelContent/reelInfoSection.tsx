@@ -6,7 +6,7 @@ interface Type {
     reels: any;
 }
 
-export default function mainInfoSection( { reels }: Type ):JSX.Element{
+export default function reelInfoSection( { reels }: Type ):JSX.Element{
     // hook for handling z-index state
     const [toggleIndex, setToggleIndex] = useState(false);
 
@@ -45,12 +45,14 @@ export default function mainInfoSection( { reels }: Type ):JSX.Element{
         const screenWidth = window.innerWidth;
         const title = document.querySelector(".reelTitle") as HTMLElement;
 
-        if(screenWidth >= 1200){
+        if( title && screenWidth >= 1200){
             title.style.transform = `translateY(-${pageY}px)`;
         }
     }
     useEffect(()=>{
+        const title = document.querySelector(".reelTitle") as HTMLElement;
         window.addEventListener('scroll', titleScroll);
+
     },[])
 
     return(
