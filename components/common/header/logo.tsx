@@ -11,7 +11,7 @@ interface Type {
         width={85}
         height={46.3}
     /> */}
-export default function logo( { bgImg }:Type ):JSX.Element{
+export default function logo( { bgImg }: Type ):JSX.Element{
     return(
         <>
             <div className={styles.logo}>
