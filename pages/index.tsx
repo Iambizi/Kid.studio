@@ -5,7 +5,6 @@ import Layout from '../components/layout';
 import Meta  from '../components/common/meta';
 import Content from '../components/homeContent/content';
 import React, { useEffect } from "react";
-import { useRouter } from 'next/router';
 
 interface Type{
   homeProjects: any;
