@@ -56,7 +56,6 @@ export const getStaticProps: GetStaticProps = async (context)=>{
     const pageSpecificData = data.projectPage.map((item, i)=>(data.projectPage[i])).find(item => item.path.includes(projectPath));
     const pageSpecificDataS = JSON.parse(JSON.stringify(pageSpecificData));
     // const pageSpecificDataS = JSON.parse(pageSpecificData);
-    console.log(pageSpecificDataS);
     return {
         props: {
             projectsPageData: pageSpecificDataS
