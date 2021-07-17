@@ -30,6 +30,11 @@ export default function warpedImage({ slideNext, slidePrevious, homeProjects, ca
         let i = 0;
         let timerx = 500;
         let transitionFrames = 31;
+        let transitionCounter = 0;
+        let leftScroll = !1;
+        let dLeftScroll = !1;
+        let dRightScroll = !1;
+        let rightScroll = !1;
         let hovering = !1;
         let snapping = !1;
         let mouseDown = !1;
@@ -136,12 +141,17 @@ export default function warpedImage({ slideNext, slidePrevious, homeProjects, ca
             window.requestAnimationFrame(animationLoop);
 
             mouseDown ? dragMove() : snapping ? snapBack() : hovering ? hover() : hoverMove()
+            // leftScroll && (transitionFrames >= transitionCounter ? ((camera.position.x += 62.5), transitionCounter++) : ((transitionCounter = 0), (leftScroll = !1)));
+            // dLeftScroll && (transitionFrames >= transitionCounter ? ((camera.position.x += 125), transitionCounter++) : ((transitionCounter = 0), (dLeftScroll = !1)));
+            // rightScroll && (transitionFrames >= transitionCounter ? ((camera.position.x -= 62.5), transitionCounter++) : ((transitionCounter = 0), (rightScroll = !1)));
+            // dRightScroll && (transitionFrames >= transitionCounter ? ((camera.position.x -= 125), transitionCounter++) : ((transitionCounter = 0), (dRightScroll = !1)));
             mouseDown && ((prevMouse.y = mouse.y), (prevMouse.x = mouse.x))
 
             
             /** End Warped tilt hover functionality **/
 
             /** controls mouse and hover effects **/
+                scene.add(mesh);
                 // camera.position.z = 500;
                 // mesh.position.x = 2e3;
                 // mesh.position.x = 4e3;
@@ -159,14 +169,6 @@ export default function warpedImage({ slideNext, slidePrevious, homeProjects, ca
         <>
             <canvas className={`${styles.homeScene} homeScene`}>
             </canvas>
-            {/* <canvas className={ 
-                (slideNext) ? 
-                `${styles[homeProjects[count].imageClassName]} ${styles.slideNext} homeScene` : 
-                (slidePrevious) ?
-                `${styles[homeProjects[count].imageClassName]} ${styles.slidePrevious} homeScene` :
-                `${styles[homeProjects[count].imageClassName]} homeScene`
-            }>
-            </canvas> */}
         </>
     )
 }
