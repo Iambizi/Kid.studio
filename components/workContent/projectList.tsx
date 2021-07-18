@@ -1,6 +1,6 @@
 import Link from "next/link";
 import styles from "../../styles/scss/workPage/_work.module.scss";
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from 'next/router'
 
 interface Type{
@@ -10,14 +10,8 @@ interface Type{
 }
 
 export default function work( { bgImg, setbgImg, projects }:Type ){
-
-  // removes needsScroll class set in project pages from vertical scroll
-  // projectPage useEffect hook needs refactoring to avoid calling it again here.
-  useEffect(()=>{
-    const bg = document.body;
-    bg.classList.remove("needsScroll");
-},[]);
   
+  const [notFullScreen, setNotFullScreen] = useState(false);
   const router = useRouter();
 
     // rewrote okHover plugin mouse over functionality
@@ -70,10 +64,24 @@ export default function work( { bgImg, setbgImg, projects }:Type ){
             removeStyles();
           }
     }
+
+      // removes needsScroll class set in project pages from vertical scroll
+  // projectPage useEffect hook needs refactoring to avoid calling it again here.
+  useEffect(()=>{
+    const bg = document.body;
+    bg.classList.remove("needsScroll");
+
+      if (window.screenTop && window.screenY) {
+        setNotFullScreen(true);
+      }else if( !window.screenTop && !window.screenY){
+        setNotFullScreen(false);
+      }
+    },[notFullScreen]);
+
     return(
         <>
             <section className={styles.projectListSection}>
-                <div className={styles.projectLinks}>
+                <div className={ notFullScreen ?  `${styles.projectLinks} ${styles.notFullScreenAdjust}` : `${styles.projectLinks}` }>
                     {projects.map((item, i)=>(
                         <Link href={ process.env.NEXT_PUBLIC_APP_DOMAIN + "/work" + item.path } key={i}>
                             <a data-okimage={ "http://kidstudio.co/work" + item.hoverImage } className={ bgImg ? `${styles.projectLink} ${styles.hoverColor } Link`: `${styles.projectLink} Link` } onMouseMove={handleMouseOver}>{item.title}</a>
