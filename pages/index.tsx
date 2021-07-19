@@ -9,12 +9,13 @@ import { createClient } from 'contentful';
 
 interface Type{
   homeProjects: any;
-  projects: string;
+  projects: any;
 }
 
 export default function home({homeProjects, projects}: Type):JSX.Element {
   // removes needsScroll class set in project pages from vertical scroll
   // projectPage useEffect hook needs refactoring to avoid calling it again here.
+  console.log(projects[0].fields.title);
   console.log(projects);
     useEffect(()=>{
         const bg = document.body;
