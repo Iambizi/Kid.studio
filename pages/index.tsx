@@ -5,6 +5,7 @@ import Layout from '../components/layout';
 import Meta  from '../components/common/meta';
 import Content from '../components/homeContent/content';
 import React, { useEffect } from "react";
+import { createClient } from 'contentful';
 
 interface Type{
   homeProjects: any;
@@ -29,6 +30,14 @@ export default function home({homeProjects}: Type):JSX.Element {
 }
 
 export const getStaticProps: GetStaticProps = async () =>{
+
+  // const client = createClient({
+  //   space: process.env.NEXT_CONTENTFUL_ID,
+  //   accessToken: process.env.NEXT_CONTENTFUL_ACCESSKEY
+  // });
+
+  console.log(process.env.CONTENTFUL_ID)
+
   
   const fileToRead = path.join(process.cwd(),'./backEndData/homeProjects.json');
   const data = JSON.parse(await fs.readFileSync(fileToRead).toString());
