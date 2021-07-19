@@ -9,11 +9,13 @@ import { createClient } from 'contentful';
 
 interface Type{
   homeProjects: any;
+  projects: string;
 }
 
-export default function home({homeProjects}: Type):JSX.Element {
+export default function home({homeProjects, projects}: Type):JSX.Element {
   // removes needsScroll class set in project pages from vertical scroll
   // projectPage useEffect hook needs refactoring to avoid calling it again here.
+  console.log(projects);
     useEffect(()=>{
         const bg = document.body;
         bg.classList.remove("needsScroll");
@@ -36,7 +38,7 @@ export const getStaticProps: GetStaticProps = async () =>{
     accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY
   });
 
- 
+  const res = await client.getEntries({ content_type: 'project' });
 
   
   const fileToRead = path.join(process.cwd(),'./backEndData/homeProjects.json');
@@ -46,7 +48,8 @@ export const getStaticProps: GetStaticProps = async () =>{
   // console.log(data.projects[0].path)
   return {
       props: {
-          homeProjects: HomeProjects
+          homeProjects: HomeProjects,
+          projects: res.items
       },
       revalidate: 300
   }
