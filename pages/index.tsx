@@ -31,12 +31,12 @@ export default function home({homeProjects}: Type):JSX.Element {
 
 export const getStaticProps: GetStaticProps = async () =>{
 
-  // const client = createClient({
-  //   space: process.env.NEXT_CONTENTFUL_ID,
-  //   accessToken: process.env.NEXT_CONTENTFUL_ACCESSKEY
-  // });
+  const client = createClient({
+    space: process.env.NEXT_PUBLIC_CONTENTFUL_ID,
+    accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY
+  });
 
-  console.log(process.env.CONTENTFUL_ID)
+ 
 
   
   const fileToRead = path.join(process.cwd(),'./backEndData/homeProjects.json');
