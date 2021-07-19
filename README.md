@@ -2,4 +2,4 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Kid Studio nextJS
 
-Fun Side project Re-building http://kidstudio.co/ using nextJS
+Fun Side project Re-building http://kidstudio.co/ using nextJS, hooked up to a Headless CMS

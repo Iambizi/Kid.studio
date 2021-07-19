@@ -50,8 +50,8 @@ export default function warpedImage({ slideNext, slidePrevious, homeProjects, ca
  
         // const width = screenWidth >= 1200 ? 5.5 : 2.1;
         // const height = screenWidth >= 1200 ? 3 : 1.2;
-        const width = 5.5;
-        const height = 3;
+        const width = 5.4;
+        const height = 2.9;
         const geometry = new THREE.PlaneGeometry(width, height);
         const material = new THREE.MeshBasicMaterial({ map: texture })
         // const material = new THREE.MeshBasicMaterial( {color: 0xC0C0C0, side: THREE.DoubleSide} );
