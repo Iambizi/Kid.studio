@@ -29,12 +29,12 @@ export default function warpedImage({ slideNext, slidePrevious, homeProjects, ca
         let distMouse = { x: 0, y: 0 };
         let i = 0;
         let timerx = 500;
-        let transitionFrames = 31;
-        let transitionCounter = 0;
         let leftScroll = !1;
         let dLeftScroll = !1;
         let dRightScroll = !1;
         let rightScroll = !1;
+        let transitionFrames = 31;
+        let transitionCounter = 0;
         let hovering = !1;
         let snapping = !1;
         let mouseDown = !1;
@@ -43,7 +43,7 @@ export default function warpedImage({ slideNext, slidePrevious, homeProjects, ca
         const scene = new THREE.Scene();
         // scene.background = new THREE.Color( 0xFFA500 );
         // this along with code on lines 42 & 43 sets scene color to transparent
-        scene.background = null;
+        // scene.background = null;
         
         const loader = new THREE.TextureLoader();
         const texture = loader.load(`https://kidstudio.co/content/2-home/${homeProjects[count].imgSrc}`);
@@ -52,7 +52,7 @@ export default function warpedImage({ slideNext, slidePrevious, homeProjects, ca
         // const height = screenWidth >= 1200 ? 3 : 1.2;
         const width = 5.4;
         const height = 2.9;
-        const geometry = new THREE.PlaneGeometry(width, height);
+        const geometry = new THREE.PlaneGeometry(width * scale, height * scale);
         const material = new THREE.MeshBasicMaterial({ map: texture })
         // const material = new THREE.MeshBasicMaterial( {color: 0xC0C0C0, side: THREE.DoubleSide} );
         const mesh = new THREE.Mesh( geometry, material );
