@@ -8,7 +8,6 @@ interface Type{
 }
 
 export default function content({ homeProjects, projects }: Type):JSX.Element{
-    console.log(projects[0].fields)
     
     // State for counter
     const [count, setCount] = useState(0);
