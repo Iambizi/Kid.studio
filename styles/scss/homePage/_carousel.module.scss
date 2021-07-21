@@ -16,7 +16,7 @@
     z-index: 5656565656;
     .titleWrapper{
         width: 100vw;
-        .videoTitle1, .videoTitle2, .videoTitle3{
+        .videoTitle, .videoTitle1, .videoTitle2, .videoTitle3{
             flex-direction: row;
             font-size: 1em;
             font-family: 'Helvetica', Helvetica;
@@ -97,7 +97,7 @@
             .homeScene{
                 @include fullviewPort();
             }
-                .carouselImage1, .carouselImage2, .carouselImage3{
+            .carouselImage, .carouselImage1, .carouselImage2, .carouselImage3{
                     overflow-x: hidden;
                 &.slideNext{
                     animation: slideNext 0.8s ease-out;

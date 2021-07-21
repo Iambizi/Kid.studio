@@ -8,9 +8,10 @@ interface Type {
     slideNext: boolean;
     slidePrevious: boolean;
     count: number;
+    projects: any;
 }
 
-export default function carousel({ homeProjects, carouselX, slideNext, slidePrevious, count }:Type): JSX.Element{
+export default function carousel({ homeProjects, carouselX, slideNext, slidePrevious, count, projects }:Type): JSX.Element{
     {
         carouselX  < -200 ?  `${styles.sliderWrapper} ${styles.slidePrevious}` : carouselX < -100 ? `${styles.sliderWrapper} ${styles.slideNext}` : `${styles.sliderWrapper}`
     }
@@ -40,10 +41,11 @@ export default function carousel({ homeProjects, carouselX, slideNext, slidePrev
     return(
         <>
             <div className={styles.titles} style={{left: `${ -carouselX }%`}}>
-                {homeProjects && homeProjects.length > 0 ? homeProjects.map((item, i)=>(
+                {projects && projects.length > 0 ? projects.map((item, i)=>(
                         <div className={styles.titleWrapper} key={i}>
-                        <Link href={ process.env.NEXT_PUBLIC_APP_DOMAIN + "/work" + homeProjects[i].path }>
-                            <h2 className={`${styles[homeProjects[i].titleClassName]}`}>{ homeProjects[i].videoTitle}</h2>
+                        <Link href={ process.env.NEXT_PUBLIC_APP_DOMAIN + projects[i].fields.slug }>
+                            {/* <h2 className={`${styles[homeProjects[i].titleClassName]}`}>{ homeProjects[i].videoTitle}</h2> */}
+                            <h2 className={styles.videoTitle}>{ projects[i].fields.title}</h2>
                         </Link>
                     </div>
                 )) : ""}

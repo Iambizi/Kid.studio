@@ -4,9 +4,11 @@ import React, { useState } from "react";
 
 interface Type{
     homeProjects: any;
+    projects: any;
 }
 
-export default function content({ homeProjects }: Type):JSX.Element{
+export default function content({ homeProjects, projects }: Type):JSX.Element{
+    console.log(projects[0].fields)
     
     // State for counter
     const [count, setCount] = useState(0);
@@ -40,7 +42,7 @@ export default function content({ homeProjects }: Type):JSX.Element{
         <>
             <section className={styles.noScroll}>
                 <article className={styles.homeContentSection}>
-                <Carousel homeProjects={homeProjects} count={count} carouselX={ carouselX } slideNext={slideNext} slidePrevious={slidePrevious}/>
+                <Carousel homeProjects={homeProjects} count={count} carouselX={ carouselX } slideNext={slideNext} slidePrevious={slidePrevious} projects={projects}/>
                 </article>
                 <p className={styles.nextButton} onClick={goNext}>NEXT</p>
                 <p className={styles.previousButton} onClick={goPrevious}>PREVIOUS</p>
