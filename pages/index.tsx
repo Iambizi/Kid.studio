@@ -15,8 +15,6 @@ interface Type{
 export default function home({homeProjects, projects}: Type):JSX.Element {
   // removes needsScroll class set in project pages from vertical scroll
   // projectPage useEffect hook needs refactoring to avoid calling it again here.
-  console.log(projects);
-  console.log(projects.fields);
     useEffect(()=>{
         const bg = document.body;
         bg.classList.remove("needsScroll");

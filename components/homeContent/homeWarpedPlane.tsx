@@ -10,10 +10,12 @@ interface Type{
     slideNext: boolean;
     slidePrevious: boolean;
     count: number;
+    projects: any;
 }
 
-export default function warpedImage({ slideNext, slidePrevious, homeProjects, carouselX, count }:Type):JSX.Element{
-    
+export default function warpedImage({ slideNext, slidePrevious, homeProjects, carouselX, count, projects }:Type):JSX.Element{
+    console.log(projects[count].fields.featuredProjectImage.fields.file.url)
+    const src = projects[count].fields.featuredProjectImage.fields.file.url;
     
     useEffect(()=>{
         const screenWidth = window.innerWidth;
@@ -46,7 +48,7 @@ export default function warpedImage({ slideNext, slidePrevious, homeProjects, ca
         // scene.background = null;
         
         const loader = new THREE.TextureLoader();
-        const texture = loader.load(`https://kidstudio.co/content/2-home/${homeProjects[count].imgSrc}`);
+        const texture = loader.load(`${src}`);
  
         // const width = screenWidth >= 1200 ? 5.5 : 2.1;
         // const height = screenWidth >= 1200 ? 3 : 1.2;
