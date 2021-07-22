@@ -1,11 +1,12 @@
 import styles from '../../styles/scss/info/_info.module.scss';
 import * as THREE from 'three';
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 interface Type{
     src: string;
 }
 export default function inforWarpImg({src}: Type):JSX.Element{
+    
     useEffect(()=>{
 
         const screenWidth = window.innerWidth;
