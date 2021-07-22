@@ -37,7 +37,7 @@ export const getStaticProps: GetStaticProps = async () =>{
     accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY
   });
 
-  const res = await client.getEntries({ content_type: 'project' });
+  const res = await client.getEntries({ content_type: 'homePage' });
 
   
   const fileToRead = path.join(process.cwd(),'./backEndData/homeProjects.json');

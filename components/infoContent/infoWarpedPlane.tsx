@@ -3,9 +3,10 @@ import * as THREE from 'three';
 import React, { useEffect } from "react";
 
 interface Type{
-    infoData: any;
+    src: string;
 }
-export default function inforWarpImg({infoData}: Type):JSX.Element{
+export default function inforWarpImg({src}: Type):JSX.Element{
+    console.log(src);
     useEffect(()=>{
 
         const screenWidth = window.innerWidth;
@@ -33,7 +34,7 @@ export default function inforWarpImg({infoData}: Type):JSX.Element{
         
         const loader = new THREE.TextureLoader();
         // loader.setCrossOrigin("anonymous");
-        const texture = loader.load(`https://kidstudio.co/${infoData.imgSrc}`);
+        const texture = loader.load(`${src}`);
  
         const width = screenWidth >= 1200 ? 5.5 : 2.1;
         const height = screenWidth >= 1200 ? 3 : 1.2;

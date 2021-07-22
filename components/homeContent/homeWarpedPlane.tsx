@@ -16,7 +16,6 @@ interface Type{
 export default function warpedImage({ slideNext, slidePrevious, homeProjects, carouselX, count, projects }:Type):JSX.Element{
     // const src = projects && projects.length > 0 ? projects[count].fields.featuredProjectImage.fields.file.url : "";
     const src = projects[count].fields.featuredProjectImage.fields ? projects[count].fields.featuredProjectImage.fields.file.url : null;
-    
     useEffect(()=>{
         const screenWidth = window.innerWidth;
         let scaling = 1;

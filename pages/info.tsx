@@ -6,25 +6,29 @@ import fs from 'fs';
 import path from 'path';
 import InfoBox from '../components/infoContent/infoBox';
 import InfoWarpImg from '../components/infoContent/infoWarpedPlane';
+import { createClient } from 'contentful';
 
 interface Type{
     infoPageData: any;
+    infoData: any;
 }
 
-export default function info({ infoPageData }:Type):JSX.Element{
+export default function info({ infoData }:Type):JSX.Element{
 // removes needsScroll class set in project pages from vertical scroll
 // projectPage useEffect hook needs refactoring to avoid calling it again here.
-// console.log(infoPageData);
+// console.log(infoDatap);
   useEffect(()=>{
     const bg = document.body;
     bg.classList.remove("needsScroll");
 },[]);
+console.log(infoData.includes.Asset[0].fields);
+    const src = infoData ? infoData.includes.Asset[0].fields.file.url : null;
     return(
         <>
             <Meta page={"Info"} />
             <Layout>
             <InfoBox />
-            <InfoWarpImg infoData={infoPageData} />
+            <InfoWarpImg src={src} />
             </Layout>
         </>
     )
@@ -34,10 +38,18 @@ export const getStaticProps: GetStaticProps = async ()=>{
     
     const fileToRead = path.join(process.cwd(),'./backEndData/infoPage.json');
     const data = JSON.parse(await fs.readFileSync(fileToRead).toString());
+
+    const client = createClient({
+        space: process.env.NEXT_PUBLIC_CONTENTFUL_ID,
+        accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY
+      });
+
+    const res = await client.getEntries({ content_type: 'infoPage' });
     
     return {
         props: {
-            infoPageData: data
+            infoPageData: data,
+            infoData: res
         }
     }
 }
