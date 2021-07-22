@@ -21,7 +21,6 @@ export default function info({ infoData }:Type):JSX.Element{
     const bg = document.body;
     bg.classList.remove("needsScroll");
 },[]);
-console.log(infoData.includes.Asset[0].fields);
     const src = infoData ? infoData.includes.Asset[0].fields.file.url : null;
     return(
         <>
