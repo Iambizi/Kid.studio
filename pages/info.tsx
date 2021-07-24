@@ -4,7 +4,7 @@ import Meta  from '../components/common/meta';
 import React, { useEffect } from "react";
 import InfoBox from '../components/infoContent/infoBox';
 import InfoWarpImg from '../components/infoContent/infoWarpedPlane';
-import { connectClient } from '../components/common/utils/creatClient';
+import { connectClient } from '../components/common/utils/createClient';
 
 interface Type{
     infoData: any;

@@ -5,7 +5,7 @@ import Layout from '../components/layout';
 import Meta  from '../components/common/meta';
 import Content from '../components/homeContent/content';
 import React, { useEffect } from "react";
-import { connectClient } from '../components/common/utils/creatClient';
+import { connectClient } from '../components/common/utils/createClient';
 
 interface Type{
   homeProjects: any;
