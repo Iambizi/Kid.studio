@@ -5,7 +5,6 @@ import Layout from '../components/layout';
 import Meta  from '../components/common/meta';
 import Content from '../components/homeContent/content';
 import React, { useEffect } from "react";
-import { createClient } from 'contentful';
 import { connectClient } from '../components/common/utils/creatClient';
 
 interface Type{
