@@ -114,9 +114,8 @@ export default function warpedImage({ slideNext, slidePrevious, homeProjects, ca
                 (mouseDown = !0), (prevMouse.x = mouse.x), (prevMouse.y = mouse.y);
                 e.stopImmediatePropagation();
             }
-            const onMouseUp = (e) => {
+            const onMouseUp = () => {
                 (mouseDown = !1), (snapping = !0), (snapback.x = mesh.rotation.x / 60), (snapback.y = mesh.rotation.y / 60);
-                e.stopImmediatePropagation();
             }
             const onDocumentMouseMove = (e)=> {
                 (hovering = !1), (mouse.x = e.clientX / window.innerWidth), (mouse.y = e.clientY / window.innerHeight);

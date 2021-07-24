@@ -87,6 +87,7 @@ export default function inforWarpImg({src}: Type):JSX.Element{
             if (resizeRendererToDisplaySize(renderer)) {
                 const canvas = renderer.domElement;
                 camera.aspect = canvas.clientWidth / canvas.clientHeight;
+                camera.updateProjectionMatrix();
             }
 
             // const canvas = renderer.domElement;
@@ -99,9 +100,8 @@ export default function inforWarpImg({src}: Type):JSX.Element{
                 (mouseDown = !0), (prevMouse.x = mouse.x), (prevMouse.y = mouse.y);
                 e.stopImmediatePropagation();
             }
-            const onMouseUp = (e) => {
+            const onMouseUp = () => {
                 (mouseDown = !1), (snapping = !0), (snapback.x = mesh.rotation.x / 60), (snapback.y = mesh.rotation.y / 60);
-                e.stopImmediatePropagation();
             }
             const onDocumentMouseMove = (e)=> {
                 (hovering = !1), (mouse.x = e.clientX / window.innerWidth), (mouse.y = e.clientY / window.innerHeight);
@@ -124,18 +124,18 @@ export default function inforWarpImg({src}: Type):JSX.Element{
                 timerx / 2 > i ? ((mesh.rotation.x += 3e-4), (mesh.rotation.y -= 3e-4)) : ((mesh.rotation.x -= 3e-4), (mesh.rotation.y += 3e-4));
                 i++;
             }
-            function resize(a) {
-                // const canvas = renderer.domElement;
-                // camera.aspect = canvas.clientWidth / canvas.clientHeight;
-                (widthIncrease = window.innerWidth / prevWidth), (heightIncrease = window.innerHeight / prevHeight), (scaling *= heightIncrease / widthIncrease);
-                for (var b = 0; b < mesh.length; b++) mesh.scale.x = scaling;
-                (prevHeight = window.innerHeight), (prevWidth = window.innerWidth), renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+            // function resize(a) {
+            //     // const canvas = renderer.domElement;
+            //     // camera.aspect = canvas.clientWidth / canvas.clientHeight;
+            //     (widthIncrease = window.innerWidth / prevWidth), (heightIncrease = window.innerHeight / prevHeight), (scaling *= heightIncrease / widthIncrease);
+            //     for (var b = 0; b < mesh.length; b++) mesh.scale.x = scaling;
+            //     (prevHeight = window.innerHeight), (prevWidth = window.innerWidth), renderer.setSize(canvas.clientWidth, canvas.clientHeight);
                 
-                // var c = window.innerHeight,
-                //     d = $("#featured").height(),
-                //     e = (c - d) / 2;
-                // (isInfoPage && window.innerWidth <= 600) || $("#featured").css("margin-top", e + "px");
-            }
+            //     var c = window.innerHeight,
+            //         d = $("#featured").height(),
+            //         e = (c - d) / 2;
+            //     (isInfoPage && window.innerWidth <= 600) || $("#featured").css("margin-top", e + "px");
+            // }
             window.requestAnimationFrame(animationLoop);
             
             mouseDown ? dragMove() : snapping ? snapBack() : hovering ? hover() : hoverMove()
@@ -146,7 +146,8 @@ export default function inforWarpImg({src}: Type):JSX.Element{
                 document.addEventListener("mousemove", onDocumentMouseMove, !1)
                 document.addEventListener("mousedown", onMouseDown, !1)
                 document.addEventListener("mouseup", onMouseUp, !1)
-                window.addEventListener('resize', resize);
+
+                // window.addEventListener('resize', resize);
             /** End controls mouse and hover effects **/
             
             // Render
