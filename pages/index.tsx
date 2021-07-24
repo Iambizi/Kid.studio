@@ -6,6 +6,7 @@ import Meta  from '../components/common/meta';
 import Content from '../components/homeContent/content';
 import React, { useEffect } from "react";
 import { createClient } from 'contentful';
+import { connectClient } from '../components/common/utils/creatClient';
 
 interface Type{
   homeProjects: any;
@@ -32,12 +33,7 @@ export default function home({homeProjects, projects}: Type):JSX.Element {
 
 export const getStaticProps: GetStaticProps = async () =>{
 
-  const client = createClient({
-    space: process.env.NEXT_PUBLIC_CONTENTFUL_ID,
-    accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY
-  });
-
-  const res = await client.getEntries({ content_type: 'homePage' });
+  const res = await connectClient.getEntries({ content_type: 'homePage' });
 
   
   const fileToRead = path.join(process.cwd(),'./backEndData/homeProjects.json');
