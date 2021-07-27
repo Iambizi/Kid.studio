@@ -5,11 +5,15 @@ import React, { useState } from 'react';
 import Layout from '../components/layout';
 import Meta  from '../components/common/meta';
 import ProjectList from '../components/workContent/projectList';
-
+import { connectClient } from '../components/common/utils/createClient';
 interface Type {
     workPageData: any;
+    workData: any;
 }
-export default function work({workPageData}:Type):JSX.Element{
+
+
+export default function work({workPageData, workData}:Type):JSX.Element{
+    console.log(workData);
     const [bgImg, setbgImg] = useState(false);
      return(
          <>
@@ -25,6 +29,8 @@ export const getStaticProps: GetStaticProps = async ()=>{
     
     const fileToRead = path.join(process.cwd(),'./backEndData/projectsList.json');
     const data = JSON.parse(await fs.readFileSync(fileToRead).toString());
+
+    const res = await connectClient.getEntries({ content_type: 'workPage' });
     
     if (!data) {
         return {
@@ -33,7 +39,8 @@ export const getStaticProps: GetStaticProps = async ()=>{
     }
     return {
         props: {
-            workPageData: data
+            workPageData: data,
+            workData: res
         },
         revalidate: 300
     }
