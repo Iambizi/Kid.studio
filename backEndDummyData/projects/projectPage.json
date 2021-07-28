@@ -1,0 +1,581 @@
+{
+    "projectPage": [
+        {
+            "id": "1",
+            "title": "Vince Staples 'Law of Averages'",
+            "path": "/vs-loa",
+            "projectInfo":[
+                "Directed by Glenn Michael & Christo\n",
+                "EP: Ryan Hahn\n",
+                "Producer: Collin Druz\n",
+                "DP: Xialong Liu\n",
+                "SFX MUA: Amber Mari\n",
+                "PD: Evaline Wu Huang\n",
+                "Editor: Chaz Smedley\n",
+                "VFX: Evan Langley\n",
+                "Color: Kaitlyn Battistelli\n",
+                "Production Company: HPLA\n",
+                "Big thanks to Corey Smyth, Kevin Kloecker and Tommy Chase'"
+            ],
+            "videoCover": "/work/vs-loa/video/thumbvs.png",
+            "videoID": "1y4s6b",
+            "videoPath": "http://player.vimeo.com/video/569465218",
+            "stills": [
+                "/thumbs/loa01-3f877673399f42db992c34ea76e34314.jpg",
+                "/thumbs/loa02-02583c5a3029890202280d9fcdffce8e.jpg",
+                "/thumbs/loa03-64b9b4c594e7bcee32599ef55db6f3cd.jpg",
+                "/thumbs/loa04-461986c4185d6148f73861711d1dad78.jpg",
+                "/thumbs/loa05-99a29ec2377ce3889540d6b3e3f57572.jpg",
+                "/thumbs/loa06-38e897bfe8be1be9d8186f0f4d5b8d52.jpg",
+                "/thumbs/loa07-3442fedff539755aa990629630722f14.jpg",
+                "/thumbs/loa08-5980ccf3a8b386bb12825cbec6b76e23.jpg",
+                "/thumbs/loa09-19423387b19661d417e10e94bd4b6745.jpg",
+                "/thumbs/loa10-f9a872bebdbacc5c7a35211c762308ab.jpg"
+            ]
+        },
+        {
+            "id": "2",
+            "title": "Bryson Tiller 'Always Forever'",
+            "path": "/bryson-tiller-always-forever",
+            "projectInfo": [
+                "Starring Kehlani\n",
+                "Directed by Glenn Michael & Christo\n",
+                "Production: HPLA\n",
+                "Cinematographer: Xiaolong Liu\n",
+                "Production Designer: Clatyon Beisner\n",
+                "Editor: Emilie Aubry\n",
+                "VFX: Foreign Xchange\n",
+                "Color: Kaitlyn Battistelli for Ethos Studio\n"
+            ],
+            "videoCover": "/work/bryson-tiller-always-forever/vid/alwaysforever.gif",
+            "videoID": "vimeo1aolzk8",
+            "videoPath": "http://player.vimeo.com/video/470421376?color=eef1f3#t=0",
+            "stills": [
+                "/thumbs/bryson01-3923ae8203d737d4e37ee8da95c7a315.jpg",
+                "/thumbs/bryson02-817d81e556c76808a99a5b15891887e2.jpg",
+                "/thumbs/bryson03-7aea9c8ae691c54a8ca906195bf02095.jpg",
+                "/thumbs/bryson04-34bc3fd50b4510e3a8d326d8f78dba1b.jpg",
+                "/thumbs/bryson05-d390484f7e581e0a2adbd7109c9b3e1d.jpg",
+                "/thumbs/bryson06-128f7c786b72954bfed9eae6f9faa169.jpg",
+                "/thumbs/bryson07-29d98616a15d6f0e6640e801eab03147.jpg",
+                "/thumbs/bryson08-adee57834ebef69ba7833102cbeb8301.jpg",
+                "/thumbs/bryson09-e7cc978f34e0ce9fe3fe2d904d2af568.jpg",
+                "/thumbs/bryson10-d81104daec1f760bf84ad79c2e400cce.jpg"
+            ]
+        },
+        {
+            "id": "3",
+            "title": "Big Sean 'Wolves' ft. Post Malone",
+            "path": "/wolves",
+            "hoverImage": "/wolves/wolves.gif",
+            "projectInfo": [
+                "Directed by Glenn Michael & Christo\n",
+                "Producer: Chanel Urban\n",
+                "DP: Xialong Liu\n",
+                "Editor: Emilie Aubry\n",
+                "VFX: Foreign Xchange\n",
+                "Color: Company 3\n",
+                "EP: Ryan Hahn\n",
+                "Production Company: HPLA"
+            ],
+            "videoCover": "/work/wolves/vid/wolves.gif",
+            "videoID": "vimeobnh9mc",
+            "videoPath": "http://player.vimeo.com/video/482083299",
+            "stills": [
+                 "/thumbs/1-b2ef3b13515b8dd54f78bcbe206ce137.jpg",
+                 "/thumbs/10-4288251656a9a766392635652d421bd0.jpg",
+                 "/thumbs/11-2cf21535413aa595b5cc8d430b4315b3.jpg",
+                 "/thumbs/12-9af5c48c5fee311b5ba24f92a953a88c.jpg",
+                 "/thumbs/13-0d32483455dd72942123a945d8f252f8.jpg",
+                 "/thumbs/14-fca795cd9f81115e6aea2233b6abacc2.jpg",
+                 "/thumbs/15-0e4b13b8bff2f0ee9fa85b0f4c9e1808.jpg",
+                 "/thumbs/16-72c0b58d72f74478dc098b1e07d29970.jpg",
+                 "/thumbs/17-e1669af79d0794f7043bcdb47f57d3c2.jpg",
+                 "/thumbs/18-77feb416d0cd511c080ac0a96b8870c8.jpg",
+                 "/thumbs/19-45ef7241080cc8da658e84d0205610f5.jpg",
+                 "/thumbs/2-d656372472720e7d53d143f7e13bc804.jpg",
+                 "/thumbs/20-2dba03fb84b15105e29e44274ef21087.jpg",
+                 "/thumbs/21-d8b46973e70bc68bfba86a42aeb08411.jpg",
+                 "/thumbs/3-59fc61d93f5d07e84300c9401ac8036e.jpg",
+                 "/thumbs/4-f8a595d73bb9c0cab1943624208cfe3e.jpg",
+                 "/thumbs/5-9e4e25f20c39ed367f822e93784732ae.jpg",
+                 "/thumbs/6-bd43820f0ac10b4fa2a257b641146145.jpg",
+                 "/thumbs/7-6758078576c47ffd5e653268e7521b49.jpg",
+                 "/thumbs/8-fda455de4d8f976e4738d95496c4e9eb.jpg",
+                 "/thumbs/9-f087d00824fbcb072b136b5c88e68dab.jpg"
+            ]
+        },
+        {
+            "id": "4",
+            "title": "Mustafa 'Air Forces'",
+            "path": "/mustafa-air-forces",
+            "hoverImage": "/mustafa-air-forces/airforces.gif",
+            "projectInfo": [
+                "Directed by Glenn Michael & Christo (Kid. Studio)\n",
+                "Cinematographer: Ali Khurshid\n",
+                "Producer: Vince Tran\n",
+                "1st AC: Cameron Gonsalves\n",
+                "2nd AC: Chris Yue\n",
+                "Ronin Op: Luke Saagi\n",
+                "Gaffer: Kay Grospe\n",
+                "Key Grip: Rohan Painter + Greg Paraskov\n",
+                "Art Director: Noelle Hindi\n",
+                "MU Artist: Ariana Zhang\n",
+                "Editor: Red Barbaza\n",
+                "Assistant Editor: Mikka Quinsac\n",
+                "VFX EP: Sara Windrim\n",
+                "VFX: Studio Feather\n",
+                "Colorist: Mathieu Caplanne\n",
+                "Production Manager: Joey Bilewicz\n",
+                "Production Company: Kid. Studio\n",
+                "Special thanks Ontario Camera & FilmoTechnic Canada\n"
+            ],
+            "videoCover": "/work/mustafa-air-forces/video/af-cover.png",
+            "videoID": "vimeox92xjc",
+            "videoPath": "http://player.vimeo.com/video/454181064",
+            "stills": [
+                "/thumbs/af01-8529bb5a482fa4c84ce10d620f49a6bb.jpg",
+                "/thumbs/af02-ee1aea4b527db14a3c3403b674ebfe24.jpg",
+                "/thumbs/af03-c7eb884c89c5e035fae730b72f12efe6.jpg",
+                "/thumbs/af04-2ba4c317b0ccf8e4434ac9dc70d73501.jpg",
+                "/thumbs/af05-db677e6421bdb80810ecab443b0b55c6.jpg",
+                "/thumbs/af06-51ce0e90860ac1a75ebc7344d24f531a.jpg",
+                "/thumbs/af07-6d06f9c9885b2d0a7a1e830b1d1de17e.jpg",
+                "/thumbs/af08-392325d17bf2c030ef563f5419bd9a6d.jpg",
+                "/thumbs/af09-3b6be5e4e4e5e5d3a2899fb42291df6c.jpg",
+                "/thumbs/af10-15f19eb4c921d89d90dce9d5357f459d.jpg"
+            ]
+        },
+        {
+            "id": "5",
+            "title": "Disclosure 'Energy'",
+            "path": "/disclosure-energy",
+            "hoverImage": "/disclosure-energy/energy.gif",
+            "projectInfo": [
+                "Directors: Glenn Michael & Christo (Kid. Studio)\n",
+                "Executive Producers: Ryan Hahn & Vince Tran\n",
+                "Producers: Chanel Urban & Marguerite Hermand\n",
+                "Cinematographer: Ben Mullen\n",
+                "Production Designer: Aurelie Taillefer\n",
+                "Wardrobe: Chloe & Chenelle Delgadillo\n",
+                "Editor: Red Barbaza\n",
+                "Assistant Editor: Mikka Quinsac\n",
+                "VFX: Common Good\n",
+                "Colorist: Andrew Francis @ Technicolor\n",
+                "Color Adjustments: Kevin Wu @ Art Jail\n",
+                "Commissioner: Kevin Kloecker\n",
+                "Production Company: HPLA"
+            ],
+            "videoCover": "/work/disclosure-energy/video/title.jpg",
+            "videoID": "vimeo1s78l7k",
+            "videoPath": "http://player.vimeo.com/video/423463712",
+            "stills": [
+                "/thumbs/bts1-b7f4b42f10cc7ede16ee6f6b1c62bf42.jpg",
+                "/thumbs/bts10-f73f6047e3645b9ce7620f4feffa9032.jpg",
+                "/thumbs/bts11-9c3bc0ffc2becd3a617c86b9aa9ad235.jpg",
+                "/thumbs/bts2-2a1a38513808015728fe3ca9dba98d72.jpg",
+                "/thumbs/bts3-3b5b588ed1c9aa13b4c55c73c297629e.jpg",
+                "/thumbs/bts4-252b59a34c74d68febc42b034e580c6e.jpg",
+                "/thumbs/bts5-871528f7364c12a303af406dbcb7fcb3.jpg",
+                "/thumbs/bts6-c6d8588e04dec84965c7db3dde222d88.jpg",
+                "/thumbs/bts7-4b7aeb2809a87d847ab79c90dd97db5c.jpg",
+                "/thumbs/bts8-24182e9fe63edd0da27235003b76abf3.jpg",
+                "/thumbs/bts9-cd9b72adbb917f76cf1079b204985f49.jpg"
+            ]
+        },
+        {
+            "id": "6",
+            "title": "Disclosure 'Birthday' ft.Kehlani & Syd",
+            "path": "/disclosure-birthday",
+            "hoverImage": "/disclosure-birthday/birthday.gif",
+            "projectInfo": [
+                "Directed by Glenn Michael & Christo (Kid. Studio)\n",
+                "Producer: Chanel Urban\nCinematographer: Marz Miller\n",
+                "1st AC: Paolo Arriola\n",
+                "2nd AC: Bobby Pavlovsky\n",
+                "Production Designer: Tyler Evans\n",
+                "Art Director: Angus Bernsen\n",
+                "Leadman: Oliver Bernsen\n",
+                "Set Dresser: Theo Cohn\n",
+                "Stop Motion Direction & animation: Chris Ullens\n",
+                "Producer: Jade Bogue\n",
+                "Cinematographer: Jamie Durand\n",
+                "Art Directors: The Joy of Sets\n",
+                "Editor: Red Barbaza\n",
+                "Assistant Editor: Mikka Quinsac\n",
+                "Colorist: Kaitlyn Battistelli @ Ethos Studio\n",
+                "Title Design: Marvin Lau\n",
+                "Commissioner: Kevin Kloecker\n",
+                "Executive Producers: Ryan Hahn & Vince Tran (Kid. Studio)\n",
+                "Production Company: HPLA"
+            ],
+            "videoCover": "/work/disclosure-birthday/vide/birthday.gif",
+            "videoID": "vimeogjk0k6",
+            "videoPath": "http://player.vimeo.com/video/451626607",
+            "stills": [
+                "/thumbs/birthday1-d24b722ac0c337dcf12b39cee6966ddf.jpg",
+                "/thumbs/birthday10-2c6a59b988817273fb03f850cf7cf48d.jpg",
+                "/thumbs/birthday11-59e245f8c4cf75292bbe10ee02de36eb.jpg",
+                "/thumbs/birthday2-5b57171fec5440925fbd741ea870cce7.jpg",
+                "/thumbs/birthday3-72e8af87b937d114cee7ad95223ca99b.jpg",
+                "/thumbs/birthday4-b76b7f14cd7a4c1c8ee3c14f93fcdb0a.jpg",
+                "/thumbs/birthday5-0be16e4af1b064f1b96be0f2cace71c8.jpg",
+                "/thumbs/birthday6-13b915907cc8eebb5b8398c9b707adcc.jpg",
+                "/thumbs/birthday7-a5842c1f30ddc6e5ee5d1667975daea9.jpg",
+                "/thumbs/birthday8-aafea0e86d9c3445f4ef0eb1d9a2f53b.jpg",
+                "/thumbs/birthday9-08db40606bd44d75f2b39f720a2912a2.jpg"
+            ]
+        },
+        {
+            "id": "7",
+            "title": "Disclosure Watch Your Step ft. Kelis",
+            "path": "/disclosure-wys",
+            "hoverImage": "/disclosure-wys/wys.gif",
+            "projectInfo": [
+                "Directed by Glenn Michael & Christo\n",
+                "Producer: Chanel Urban\n",
+                "DP: Marz Miller\n",
+                "Editor: Red Barbaza\n",
+                "Colorist: Kaitlyn Battistelli @ Ethos Studio\n",
+                "Gaffer: Tony Jou\n",
+                "Key Grip: Sean Hunt\n",
+                "Playback: Dee Dee Deschanel\n",
+                "SPFX MUA: Erin Koskella\n",
+                "PA: Gerald Tineo\nPA: Kiki Rascon\n",
+                "EP: Ryan Hahn\n",
+                "Production Company: HPLA"
+            ],
+            "videoCover": "/work/disclosure-wys/video/wys.gif",
+            "videoID": "vimeof7dufu",
+            "videoPath": "http://player.vimeo.com/video/488562068?color=eef1f3",
+            "stills": [
+                "/thumbs/1-b6ab621853dffc1ceadde2e5ebade2b4.jpg",
+                "/thumbs/2-06d7fdbbb0dbc9c40241b343b66b37fc.jpg",
+                "/thumbs/3-48e07dda479287058675ea50fc0fbb0a.jpg",
+                "/thumbs/4-3001a0c019493cf44b466b450f4971af.jpg",
+                "/thumbs/5-beb0d31707c73a92715c53cc5e84bed9.jpg",
+                "/thumbs/6-ae42f26904ace9e46781b868e63e2e98.jpg",
+                "/thumbs/7-2766fff9b70158d01360a9c78db9a2e2.jpg",
+                "/thumbs/8-3f5c629d1f5da616bbdb12f922b5e655.jpg",
+                "/thumbs/9-51de549abea81c15e91841c5fda882dd.jpg",
+                "/thumbs/10-551d7dd1de3872d2ac0b6efbe9e1327d.jpg"
+            ]
+        },
+        {
+            "id": "8",
+            "title": "The Weeknd 'King of The Fall'",
+            "path": "/king-of-the-fall",
+            "hoverImage": "/king-of-the-fall/featured1.png",
+            "projectInfo": [
+                "Directed by Glenn Michael & Christo\n",
+                "Producers: Vince Tran & Mike Kniazeff\n",
+                "DOP: Ali Khurshid\n",
+                "Editor: Red Barbaza\n",
+                "Creative Director: La Mar Taylor\n",
+                "Assistant Directors: Tommy Hagos & Christo\n",
+                "Assistant Editors: Sara Windrim & Jamey Wieser\n",
+                "1st AC: Jerome Riel\n",
+                "2nd AC: Raymond Banh\n",
+                "Camera PA: Tracy Huynh\n",
+                "Colourist: Tricia Hagoriles\n",
+                "VFX: Steve McGregor\n",
+                "Stylists: Loretta MK & Alyssa Alikpala\n",
+                "MUA: Sarah Smith & Aarti Motala"
+            ],
+            "videoCover": "/work/king-of-the-fall/vide/weeknd1.jpg",
+            "videoID": "vimeo8mzsb2",
+            "videoPath": "http://player.vimeo.com/video/105295316",
+            "stills": [
+                "/thumbs/weeknd10-f6ef0a5a48ae0e55d1338b32b2dc3657.jpg",
+                "/thumbs/weeknd2-45243a7daecacae6af9fd7c11afb0ce2.jpg",
+                "/thumbs/weeknd3-22fab77f6141c043b8312122375bca80.jpg",
+                "/thumbs/weeknd4-dfa95b40de73ed51f61d73bb8c23bc41.jpg",
+                "/thumbs/weeknd5-6032d35f9faecadbbfcca39cffa3b19d.jpg",
+                "/thumbs/weeknd6-919cb0866bf06c5b534d32b264264207.jpg",
+                "/thumbs/weeknd7-05a56f07daa4578de77401660939b811.jpg",
+                "/thumbs/weeknd8-2e07640f1482401a7c98f043814a11b1.jpg",
+                "/thumbs/weeknd9-76e8af5d2c1490585ff09836b320ef26.jpg"
+            ]
+        },
+        {
+            "id": "9",
+            "title": "The Weeknd 'Reminder'",
+            "path": "/reminder",
+            "hoverImage": "/reminder/reminder.gif",
+            "projectInfo": [
+                "Directed by Kid. Studio\nCinematographer: Kelly Jeffrey\n",
+                "2nd Unit DP: Ali Khurshid\n",
+                "Producers: Vince Tran", 
+                "Ryan Hahn, Julian Nieva\n",
+                "Production Company: HPLA & Kid. Studio\n",
+                "Nominated 4x MTV VMA including Best Video of The Year"
+            ],
+            "videoCover": "/work/reminder/v/reminder.gif",
+            "videoID":"youtube77enpk",
+            "videoPath":"https://www.youtube.com/embed/JZjAg6fK-BQ",
+            "stills": [
+                "/thumbs/1-308926d29a3907417dd59e195695d998.png",
+                "/thumbs/10-7e00a4c24587ed0289df03a887f55e01.png",
+                "/thumbs/11-9288b8dc0368cb03b4dbb83d5aba8a61.png",
+                "/thumbs/12-e87715907de043a6b038edad87b98a1e.png",
+                "/thumbs/13-a40e582397cf0e9debeb412e4c024e1c.png",
+                "/thumbs/2-470811f4144b0b897e2bf9038771a4ad.png",
+                "/thumbs/3-da576d3b87f462131d7838f442b71f76.png",
+                "/thumbs/4-4a791790c0bcfd7617c30b208ed86d38.png",
+                "/thumbs/5-e5e1275dbb9e0a4efe6dcae84a999774.png",
+                "/thumbs/6-9f0b9c355cc7d81b24f1dcfb4afcda46.png",
+                "/thumbs/7-8e11bdc6541a397b034a4bdab0539caf.png",
+                "/thumbs/8-a47c8e5f6fc442ea4aa6bdd740e5b6fb.png",
+                "/thumbs/9-26218fe1d019397b450be67178bb9b9e.png"
+            ]
+        },
+        {
+            "id": "10",
+            "title": "French Motana ft. Drake 'No Stylist'",
+            "path": "/no-stylist",
+            "hoverImage": "/no-stylist/stylist.gif",
+            "projectInfo": [
+                "Directed by Kid. Studio\n",
+                "Producers: Ryan Hahn & Vince Tran\n",
+                "Cinematographer: Kelly Jeffrey\n",
+                "Production Company: HPLA"
+            ],
+            "videoCover": "/work/no-stylist/v/stylist.gif",
+            "videoID": "vimeo124i0zw",
+            "videoPath": "http://player.vimeo.com/video/297170959",
+            "stills": [
+                "/thumbs/1-2bb520802b51c0c5b197c104c155f32e.jpg",
+                "/thumbs/2-784f37104ed7ecbc07c8c19c46d2d9ef.jpg",
+                "/thumbs/3-3419201ed0198ef4bcea2e973067360e.jpg",
+                "/thumbs/4-dad80742b4bbec5b0e87596fc246f558.jpg",
+                "/thumbs/5-b945d90b82b871147b602605336eae43.jpg",
+                "/thumbs/6-08dfce5606002eb246b46a586d8ceee6.jpg",
+                "/thumbs/7-316feb65fb60b8b9481dcd73add6c38e.jpg",
+                "/thumbs/8-040a99822cb8e5b39cc0e55dc0b6c77f.jpg",
+                "/thumbs/9-6e811550e7d7e3f712901a3a865a8b43.jpg"
+            ]
+        },
+        {
+            "id": "11",
+            "title": "Big Sean 'Bounce Back'",
+            "path": "/bounce-back",
+            "hoverImage": "/bounce-back/bb.gif",
+            "projectInfo": [
+                "Big Sean - Bounce Back\n",
+                "Director - Glenn Michael + Christo Anesti\n",
+                "DP - Kelly Jeffrey\n",
+                "2nd Unit DP - Ali Khurshid\n",
+                "Producers - Vince Tran, Julian Nieva, Ryan Hahn\n",
+                "Nominated for BET Awards Best Video of The Year"
+            ],
+            "videoCover": "/work/bounce-back/vid/bb.gif",
+            "videoID": "vimeo1ji3o1v",
+            "videoPath": "http://player.vimeo.com/video/204058501",
+            "stills": [
+                "/thumbs/1-15f5ba78c9cd7a42d1df86d4ff387224.png",
+                "/thumbs/10-14b9e87dbff314bb19b9c56c57df6de5.png",
+                "/thumbs/11-bb8d3561e1f4a626892d95f411a5d67a.png",
+                "/thumbs/12-be53c65b960e73aca64f801c027b7018.png",
+                "/thumbs/13-46e0a80909f30838341e0b9121e5c31f.png",
+                "/thumbs/14-357fc4cb015e132ec57477b33e961aff.png",
+                "/thumbs/2-e1e03e6761f3b55b755b3fe2a9361aae.png",
+                "/thumbs/3-bf3070d8e41f9dfb32b09bbdc944f11d.png",
+                "/thumbs/4-db88756adbe030598a47153c77c611ba.png",
+                "/thumbs/5-e36581ae45f7fc65e7280c4dbbd9b627.png",
+                "/thumbs/6-582aa99823f447bbad8c4ecbd1a4b74a.png",
+                "/thumbs/7-32ec84d34f9be9a0c058f6875af0f73f.png",
+                "/thumbs/8-b866cafb8ef7188fa34bf9954645168d.png",
+                "/thumbs/9-200446b75062eae20b50ca1f7b683efb.png"
+            ]
+        },
+        {
+            "id": "12",
+            "title": "Future ft. The Weeknd 'Comin out Strong'",
+            "path": "/cos",
+            "hoverImage": "/cos/cos.gif",
+            "projectInfo": [
+                "Future — Comin' Out Strong ft. The Weeknd\n",
+                "Directed by Kid. Studio\n",
+                "Producer: Vince Tran & Julian Nieva\n",
+                "Cinematographer: Kelly Jeffrey\n",
+                "Production Company: Kid. Studio"
+            ],
+            "videoCover": "/work/cos/vd/cos.gif",
+            "videoID": "vimeo7c3ae4",
+            "videoPath": "http://player.vimeo.com/video/270737964",
+            "stills": [
+                "/thumbs/screen-shot-2019-01-21-at-5.15.55-pm-2d91e55128903c1055382c71d87013c7.png",
+                "/thumbs/screen-shot-2019-01-21-at-5.17.26-pm-f6e3ffeaa28a80a94e8ae59078fe4cf7.png",
+                "/thumbs/screen-shot-2019-01-21-at-5.17.37-pm-edf122e426832a72292594d17ab6af1d.png",
+                "/thumbs/screen-shot-2019-01-21-at-5.18.53-pm-6a54918e9723508bfef04390f0c68773.png"
+            ]
+        },
+        {
+            "id": "13",
+            "title": "Hard To Kill 'Slime'",
+            "path": "/slime",
+            "hoverImage": "/slime/htk.gif",
+            "projectInfo": [
+                "Hard to Kill — Slime\n\n",
+                "Directed by Kid. Studio\n",
+                "Cinematographer: Ali Khurshid\n",
+                "Producer: Julian Nieva & Vince Tran\n",
+                "Production Company: Kid. Studio"
+            ],
+            "videoCover": "/work/slime/v/htk.gif",
+            "videoID": "vimeo1yjzndi",
+            "videoPath": "http://player.vimeo.com/video/271157804",
+            "stills": [
+                "/thumbs/screen-shot-2019-01-21-at-5.43.09-pm-6f1a58926ff3f09f20bb453159124c2d.png",
+                "/thumbs/screen-shot-2019-01-21-at-5.43.41-pm-e81d6d2a69b5af7e4afc4a7ea8317d9b.png",
+                "/thumbs/screen-shot-2019-01-21-at-5.44.03-pm-4eccb33b47865e7a71f5d27e7416f8b2.png",
+                "/thumbs/screen-shot-2019-01-21-at-5.44.19-pm-45caee7ea0a02ee7eb8b13ff7c066967.png",
+                "/thumbs/screen-shot-2019-01-21-at-5.44.28-pm-2a9d202701312d18849ff6d69caf938b.png",
+                "/thumbs/screen-shot-2019-01-21-at-5.45.06-pm-4792ae0cdc233e0c33ad1d2a241a6795.png",
+                "/thumbs/screen-shot-2019-01-21-at-5.45.14-pm-62ea5fd41bf89f4d210b13fb6be615e7.png",
+                "/thumbs/screen-shot-2019-01-21-at-5.45.21-pm-232e1ec151a2750a6ca2c435d802fc4d.png",
+                "/thumbs/screen-shot-2019-01-21-at-5.45.43-pm-be9e1d95ff9b4f052db1380fc71797d8.png"
+            ]
+        },
+        {
+            "id": "14",
+            "title": "Nike React Hyperdunk (Campaign Direction)",
+            "path": "/nikereact",
+            "hoverImage": "/nikereact/nike.gif",
+            "projectInfo": [
+                "Creative Direction & Video by Kid. Studio\n",
+                "Photographer: Ryan Hahn (@ryan.hahn / @hp.la)\n",
+                "Production Company: Kid. Studio & HPLA"
+            ],
+            "videoCover": "/work/nikereact/v/nike.gif",
+            "videoID": "vimeov1z65m",
+            "videoPath": "http://player.vimeo.com/video/233701028",
+            "stills": [
+                "/thumbs/nike-react-1-55c09e7ed8e384ae48a658c415230a25.jpg",
+                "/thumbs/nike-react-12-4fdecf82764ef46324a6f8dd120b2466.jpg",
+                "/thumbs/nike-react-13-374ed6c42d03e6605540a94acc94ad02.jpg",
+                "/thumbs/nike-react-14-e0ef25c4ff28d695abcb336ef79d98f1.jpg",
+                "/thumbs/nike-react-15-2530b28d409c95a27041c2b74557349d.jpg",
+                "/thumbs/nike-react-16-fb9e1764933f55ab0001cf3cb6cca0be.jpg",
+                "/thumbs/nike-react-17-f188fecbb55c2c3da62b23f52423168c.jpg",
+                "/thumbs/nike-react-18-7b0330a67dd10519ea860e6c8e4ef8d5.jpg",
+                "/thumbs/nike-react-19-1a7abf594f6fbac2024778c9b2f31e60.jpg"
+            ]
+        },
+        {
+            "id": "15",
+            "title": "Cyber69 X Nowness (Short)",
+            "path": "/cyber69",
+            "hoverImage": "/cyber69/cyber.gif",
+            "projectInfo": [
+                "Cyber69 is one of the most young influential DJ’s in Toronto. The first time he performed, Drake and Kanye West were in attendance. He’s developed close relationships with some of the culture's most influential people including Off-White’s, Virgil Abloh and Been Trill’s, Heron Preston.\n\n",
+                "In his short and blooming career, his eccentric style choices and peculiar personality has penetrated the internet culture and landed him features with Hypebeast and Complex Magazine.\n\n",
+                "This video profiles how he has garnered the notoriety as one of Toronto’s most sought out DJ’s.\n\n\n",
+                "Premiered on Nowness.com"
+            ],
+            "videoCover": "/work/cyber69/video/cyber.gif",
+            "videoID": "vimeoyjcjsh",
+            "videoPath": "http://player.vimeo.com/video/153274268",
+            "stills": [
+                "/thumbs/screen-shot-2016-03-08-at-4.00.33-pm-570fca3c8f32f1635d8e6f706c408249.png",
+                "/thumbs/screen-shot-2016-03-08-at-4.01.14-pm-d3f5b99aeff15771fe73ad471be68c2e.png",
+                "/thumbs/screen-shot-2016-03-08-at-4.02.12-pm-f2d5d0e9a2889a285e595580cf612b65.png",
+                "/thumbs/screen-shot-2016-03-08-at-4.02.31-pm-c1f116cfcfe97507b9be9d4eebaeb0b9.png",
+                "/thumbs/screen-shot-2016-03-08-at-4.03.33-pm-104793a14ca4d8a640481b1f683bc156.png",
+                "/thumbs/screen-shot-2016-03-08-at-4.04.44-pm-9f7d5fcc09f12393630252c2daf35aeb.png",
+                "/thumbs/screen-shot-2016-03-08-at-4.05.19-pm-e7affeb6b6cd6873bf73e70d915f0144.png",
+                "/thumbs/screen-shot-2016-03-08-at-4.06.56-pm-50911c3a97515bb8e092ce56aedee327.png",
+                "/thumbs/screen-shot-2016-03-08-at-4.08.03-pm-0ecd2f6bd792531941be5e7849d311e3.png"
+            ]
+        },
+        {
+            "id": "16",
+            "title": "Nike AF1 x Saintwoods",
+            "path": "/nike-af1-x-saintwoods",
+            "hoverImage": "/nike-af1-x-saintwoods/hover-img.png",
+            "projectInfo": [
+                "Saintwoods x Nike AF1\n\n",
+                "Directed by Kid. Studio\n",
+                "Producers: Vince Tran & Julian Nieva\n",
+                "Production Company: Kid. Studio"
+            ],
+            "videoCover": "/work/nike-af1-x-saintwoods/vide/thumb.png",
+            "videoID": "vimeoi3g4ne",
+            "videoPath": "http://player.vimeo.com/video/271160069",
+            "stills": [
+                "/work/nike-af1-x-saintwoods/video/1.png",
+                "/thumbs/screen-shot-2020-03-05-at-2.44.29-pm-2fc9342c6ddd1238f4be131644fb825e.png",
+                "/thumbs/screen-shot-2020-03-05-at-2.47.50-pm-3cf107249f4a10213566554f05d91421.png"
+            ]
+        },
+        {
+            "id": "17",
+            "title": "RIFF Cannabis (Short)",
+            "path": "/riff",
+            "hoverImage": "/riff/hover.gif",
+            "projectInfo": [
+                "Short film for RIFF, a cannabis brand.\n",
+                "Directed by Kid. Studio\n",
+                "Producers: Vince Tran & Julian Nieva\n",
+                "Production Company: Kid. Studio\n"
+            ],
+            "videoCover": "/work/riff/vide/1.png",
+            "videoID": "vimeo9zarg6",
+            "videoPath": "http://player.vimeo.com/video/304467879",
+            "stills": [
+                "/thumbs/2-50783adac2d968382c7a1cb00b7e7de8.png",
+                "/thumbs/3-c74e4cbb1eb543d78707783ae0b05c3c.png",
+                "/thumbs/4-15ffdb0b3c2a8a4bf28ecdfa812a53fa.png",
+                "/thumbs/5-c76bc04b6b6964c7babbbd7d75f60cd9.png",
+                "/thumbs/6-46e572757ee53f25869ab05e0aebe2bc.png",
+                "/thumbs/7-288a5ba3a9214e6ebc2b4f32cc6a52bc.png"
+            ]
+        },
+        {
+            "id": "18",
+            "title": "God Bless Toronto (Compilation)",
+            "path": "/god-bless-toronto",
+            "hoverImage": "/god-bless-toronto/gbt-bmp.jpg",
+            "projectInfo": [
+                "— Branding + Website + Sound\n\n",
+                "God Bless Toronto is a project that represents the nocturnal underground life of the city. When it's so late that it's early, inside of a basement or a loft that you have to enter through an exit... Toronto's creatives, hustlers, artists, tastemakers, users, insomniacs gather, give thanks and indulge in music, habits and hugs. It's these peculiar moments in unexpected locations at ungodly hours where inspiration is indirectly conceived. It is the obligation of the like-minded to protect and nurture these moments.\n\n",
+                "The first compilation consists of some of the city's most talented upcoming producers and musicians who are beginning to develop and shape Toronto's underground culture and sound.\n\n",
+                "Listen & Download 'God Bless Toronto'"
+            ],
+            "videoCover":"/thumbs/gbt1-4bb50410eb93e5687013db267b9dba51.jpg",
+            "videoID":"",
+            "videoPath":"",
+            "stills": [
+                "/thumbs/gbt2-04d9e47b44d12657ad34b57fdbd373e7.jpg",
+                "/thumbs/gbt3-2a837424b0b491be51726c9061bb1c9b.jpg",
+                "/thumbs/gbt4-075a7ba64ba78efdfcd0c5cfaaac54ac.jpg"
+            ]
+        },
+        {
+            "id": "19",
+            "title": "Pique",
+            "path": "/pique",
+            "hoverImage": "/pique/pique-bmp.gif",
+            "projectInfo": [
+                "Directed by Kid. Studio\n",
+                "Series of original content to answer 13 interview questions from the team at Pique."
+            ],
+            "videoCover": "/work/pique/1/1-pk.png",
+            "videoID": "vimeo1dn45ko",
+            "videoPath": "http://player.vimeo.com/video/136341179",
+            "stills": [
+                "/work/pique/2/2-pk.png",
+                "/work/pique/cereal/3-pk.png",
+                "/work/pique/pyscho/4-pk.png",
+                "/work/pique/tongue/5-pk.png",
+                "/work/pique/chantelle/6-pk.png",
+                "/work/pique/bump/7-pk.png",
+                "/work/pique/scream/8-pk.png",
+                "/work/pique/sabbath/9-pk.png",
+                "/work/pique/molly/10-pk.png",
+                "/work/pique/dream/12-pk.png",
+                "/thumbs/ig-coverimage-pique-92390d7af93e94c30bc1e6b0f6709845.jpg"
+            ]
+        }
+    ]
+}
