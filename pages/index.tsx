@@ -34,7 +34,7 @@ export const getStaticProps: GetStaticProps = async () =>{
 
   const res = await connectClient.getEntries({ content_type: 'homePage' });
 
-  const fileToRead = path.join(process.cwd(),'./backEndData/homeProjects.json');
+  const fileToRead = path.join(process.cwd(),'./backEndDummyData/homeProjects.json');
   const data = JSON.parse(await fs.readFileSync(fileToRead).toString());
   // const project = data.projects.find(project => project.path === projectPath)
   const HomeProjects = data.homeProjects.map((item, i)=>(data.homeProjects[i]))

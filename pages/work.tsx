@@ -27,7 +27,7 @@ export default function work({workPageData, workData}:Type):JSX.Element{
 
 export const getStaticProps: GetStaticProps = async ()=>{
     
-    const fileToRead = path.join(process.cwd(),'./backEndData/projectsList.json');
+    const fileToRead = path.join(process.cwd(),'./backEndDummyData/projectsList.json');
     const data = JSON.parse(await fs.readFileSync(fileToRead).toString());
 
     const res = await connectClient.getEntries({ content_type: 'workPage' });

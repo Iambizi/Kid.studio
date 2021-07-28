@@ -48,7 +48,7 @@ export const getStaticProps: GetStaticProps = async (context)=>{
     const { params } = context;
     const projectPath = params.project;
     
-    const fileToRead = path.join(process.cwd(),'./backEndData/projects/projectPage.json');
+    const fileToRead = path.join(process.cwd(),'./backEndDummyData/projects/projectPage.json');
     const data = JSON.parse(await fs.readFileSync(fileToRead).toString());
     
     // using page specific data return data according to the params (specific project being selected)
