@@ -40,7 +40,7 @@ export const getStaticProps: GetStaticProps = async ()=>{
     return {
         props: {
             workPageData: data,
-            workData: res
+            workData: res.items
         },
         revalidate: 300
     }
