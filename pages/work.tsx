@@ -9,17 +9,18 @@ import { connectClient } from '../components/common/utils/createClient';
 interface Type {
     workPageData: any;
     workData: any;
+    res: any;
 }
 
 
-export default function work({workPageData, workData}:Type):JSX.Element{
-    console.log(workData);
+export default function work({workPageData, workData, res}:Type):JSX.Element{
+    console.log(res);
     const [bgImg, setbgImg] = useState(false);
      return(
          <>
             <Meta page={"Work"} />
             <Layout bgImg={bgImg} setbgImg={setbgImg}>
-                <ProjectList bgImg={bgImg} setbgImg={setbgImg} projects={ workPageData.projects }  />
+                <ProjectList bgImg={bgImg} setbgImg={setbgImg} projects={ workPageData.projects } projectList={workData}  />
             </Layout>
          </>
      )
@@ -40,7 +41,8 @@ export const getStaticProps: GetStaticProps = async ()=>{
     return {
         props: {
             workPageData: data,
-            workData: res.items
+            workData: res.items,
+            res: res
         },
         revalidate: 300
     }
