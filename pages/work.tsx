@@ -6,21 +6,22 @@ import Layout from '../components/layout';
 import Meta  from '../components/common/meta';
 import ProjectList from '../components/workContent/projectList';
 import { connectClient } from '../components/common/utils/createClient';
+import useSWR from 'swr';
+
 interface Type {
-    workPageData: any;
     workData: any;
-    res: any;
 }
 
 
-export default function work({workPageData, workData, res}:Type):JSX.Element{
-    console.log(res);
+export default function work({ workData }:Type):JSX.Element{
     const [bgImg, setbgImg] = useState(false);
+    console.log(workData);
+    const hoverImage = workData
      return(
          <>
             <Meta page={"Work"} />
             <Layout bgImg={bgImg} setbgImg={setbgImg}>
-                <ProjectList bgImg={bgImg} setbgImg={setbgImg} projects={ workPageData.projects } projectList={workData}  />
+                <ProjectList bgImg={bgImg} setbgImg={setbgImg} projectList={workData}  />
             </Layout>
          </>
      )
@@ -28,21 +29,16 @@ export default function work({workPageData, workData, res}:Type):JSX.Element{
 
 export const getStaticProps: GetStaticProps = async ()=>{
     
-    const fileToRead = path.join(process.cwd(),'./backEndDummyData/projectsList.json');
-    const data = JSON.parse(await fs.readFileSync(fileToRead).toString());
-
     const res = await connectClient.getEntries({ content_type: 'workPage' });
     
-    if (!data) {
+    if (!res) {
         return {
             notFound: true
         };
     }
     return {
         props: {
-            workPageData: data,
-            workData: res.items,
-            res: res
+            workData: res.items
         },
         revalidate: 300
     }

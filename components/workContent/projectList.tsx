@@ -6,16 +6,10 @@ import { useRouter } from 'next/router'
 interface Type{
     bgImg: boolean;
     setbgImg: any;
-    projects: any;
     projectList: any;
 }
 
-export default function work( { bgImg, setbgImg, projects, projectList }:Type ){
-
-  // console.log(projectList);
-  // console.log(projectList[0].fields.projectName);
-  // console.log(projectList[0].fields.projectLink);
-
+export default function work( { bgImg, setbgImg, projectList }:Type ){
   
   const [ notFullScreen, setNotFullScreen ] = useState(false);
   const router = useRouter();
@@ -95,7 +89,7 @@ export default function work( { bgImg, setbgImg, projects, projectList }:Type ){
                     ))} */}
                     {projectList.map((item, i)=>(
                         <Link href={ process.env.NEXT_PUBLIC_APP_DOMAIN + item.fields.projectLink } key={i}>
-                            <a data-okimage={ "http://kidstudio.co/work" + item.fields.hoverImage.project } className={ bgImg ? `${styles.projectLink} ${styles.hoverColor } Link`: `${styles.projectLink} Link` } onMouseMove={handleMouseOver}>{item.fields.projectName}</a>
+                            <a data-okimage={ item.fields.hoverImage.fields.file.url } className={ bgImg ? `${styles.projectLink} ${styles.hoverColor } Link`: `${styles.projectLink} Link` } onMouseMove={handleMouseOver}>{item.fields.projectName}</a>
                         </Link>
                     ))}
                 </div>
