@@ -62,7 +62,7 @@ export default function carousel({ homeProjects, carouselX, slideNext, slidePrev
                                     `${styles[homeProjects[i].imageClassName]} ${styles.slidePrevious}` :
                                     `${styles[homeProjects[i].imageClassName]}`
                                 }>
-                                    <WarpedIMG count={count} slideNext={slidePrevious} slidePrevious={slidePrevious} homeProjects={homeProjects} carouselX={carouselX} projects={projects} />
+                                    <WarpedIMG count={count} slideNext={slidePrevious} slidePrevious={slidePrevious} carouselX={carouselX} projects={projects} />
                                 </div>
                                 {/* <WarpedIMG count={count} slideNext={slidePrevious} slidePrevious={slidePrevious} homeProjects={homeProjects} carouselX={carouselX} /> */}
                             </div>

@@ -5,7 +5,6 @@ import * as THREE from 'three';
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
 
 interface Type{
-    homeProjects: any;
     carouselX : number;
     slideNext: boolean;
     slidePrevious: boolean;
@@ -13,7 +12,7 @@ interface Type{
     projects: any;
 }
 
-export default function warpedImage({ slideNext, slidePrevious, homeProjects, carouselX, count, projects }:Type):JSX.Element{
+export default function warpedImage({ slideNext, slidePrevious, carouselX, count, projects }:Type):JSX.Element{
     const src = projects[count].fields.featuredProjectImage.fields ? projects[count].fields.featuredProjectImage.fields.file.url : null;
     useEffect(()=>{
         const screenWidth = window.innerWidth;
