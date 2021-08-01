@@ -15,8 +15,6 @@ interface Type {
 
 export default function work({ workData }:Type):JSX.Element{
     const [bgImg, setbgImg] = useState(false);
-    console.log(workData);
-    const hoverImage = workData
      return(
          <>
             <Meta page={"Work"} />
