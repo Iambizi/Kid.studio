@@ -5,6 +5,7 @@ import React, { useEffect } from "react";
 import InfoBox from '../components/infoContent/infoBox';
 import InfoWarpImg from '../components/infoContent/infoWarpedPlane';
 import { connectClient } from '../components/common/utils/createClient';
+import useSWR from 'swr';
 
 interface Type{
     infoData: any;
@@ -36,6 +37,9 @@ const src = infoData ? infoData.fields.file.url : null;
 export const getStaticProps: GetStaticProps = async ()=>{
     
     const res = await connectClient.getEntries({ content_type: 'infoPage' });
+    // const fetcher = url => fetch(url).then(r => r.json())
+
+    // const res = await fetcher(connectClient.getEntries({ content_type: 'infoPage' }))
     
     return {
         props: {
