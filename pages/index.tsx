@@ -39,6 +39,12 @@ export const getStaticProps: GetStaticProps = async () =>{
   // const project = data.projects.find(project => project.path === projectPath)
   const HomeProjects = data.homeProjects.map((item, i)=>(data.homeProjects[i]))
   // console.log(data.projects[0].path)
+  
+    if (!res) {
+      return {
+          notFound: true
+      };
+  }
   return {
       props: {
           homeProjects: HomeProjects,

@@ -40,7 +40,11 @@ export const getStaticProps: GetStaticProps = async ()=>{
     // const fetcher = url => fetch(url).then(r => r.json())
 
     // const res = await fetcher(connectClient.getEntries({ content_type: 'infoPage' }))
-    
+    if (!res) {
+        return {
+            notFound: true
+        };
+    }
     return {
         props: {
             infoData: res.includes.Asset[0]
