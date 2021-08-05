@@ -14,7 +14,7 @@ interface Type{
 export default function info({ infoData }:Type):JSX.Element{
 // removes needsScroll class set in project pages from vertical scroll
 // projectPage useEffect hook needs refactoring to avoid calling it again here.
-// console.log(infoDatap);
+console.log(infoData);
 
   useEffect(()=>{
     const bg = document.body;
