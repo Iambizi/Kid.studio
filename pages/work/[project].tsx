@@ -8,17 +8,22 @@ import Stills from '../../components/workContent/projectPages/stills';
 import React, { useEffect } from "react";
 import { useRouter } from 'next/router';
 import styles from '../../styles/scss/common/_footer.module.scss';
+import { connectClient } from '../../components/common/utils/createClient';
+
 
 
 interface Type{
     projectsPageData: any;
+    projects: any;
 }
 
-export default function projectPages( {projectsPageData}: Type):JSX.Element{
+export default function projectPages( {projectsPageData, projects}: Type):JSX.Element{
     // console.log(projectsPageData);
     const router = useRouter();
     const pathName = router.pathname;
     const comparison = pathName === "/work/[project]";
+
+    console.log(projects);
 
     useEffect(()=>{
 
@@ -56,9 +61,12 @@ export const getStaticProps: GetStaticProps = async (context)=>{
     const pageSpecificData = data.projectPage.map((item, i)=>(data.projectPage[i])).find(item => item.path.includes(projectPath));
     const pageSpecificDataS = JSON.parse(JSON.stringify(pageSpecificData));
     // const pageSpecificDataS = JSON.parse(pageSpecificData);
+
+    const res = await connectClient.getEntries({ content_type: 'projectPage' });
     return {
         props: {
-            projectsPageData: pageSpecificDataS
+            projectsPageData: pageSpecificDataS,
+            projects: res.items[0]
         }
     }
 }
