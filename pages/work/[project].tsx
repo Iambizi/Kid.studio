@@ -66,7 +66,7 @@ export const getStaticProps: GetStaticProps = async (context)=>{
     return {
         props: {
             projectsPageData: pageSpecificDataS,
-            projects: res.items[0]
+            projects: res
         }
     }
 }
