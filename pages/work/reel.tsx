@@ -19,13 +19,13 @@ export default function reels({reelPageData, reelData}: Type):JSX.Element{
     const router = useRouter();
     const pathName = router.pathname;
     const comparison = pathName === "/work/reel";
-
-    console.log(reelData);
-    console.log(reelData.details.content[0].content[0].value);
-    console.log(reelData.pageTitle);
-
+    
     const title = reelData.pageTitle;
     const details = reelData.details.content[0].content[0].value;
+    const videoCover = reelData.videoCover.fields.file.url;
+    const playButton = reelData.playButton.fields.file.url;
+    const projectVideo = reelData.projectVideo;
+    const reelStills = reelData.videoStills;
 
     useEffect(()=>{
 
@@ -43,8 +43,8 @@ export default function reels({reelPageData, reelData}: Type):JSX.Element{
         <>
             <Meta page={reelPageData.title} />
             <Layout specificStyles={`${styles.projectPages}`}>
-                <ReelInfo reels={reelPageData} title={title} details={details} />
-                <ReelStills reels={reelPageData} />
+                <ReelInfo reelTitle={title} reelDetails={details} videoCover={videoCover} playButton={playButton} projectVideo={projectVideo} />
+                <ReelStills reels={reelPageData} reelStills={reelStills} />
             </Layout>
         </>
     )

@@ -3,12 +3,14 @@ import styles from "../../styles/scss/projectPages/_projectPages.module.scss";
 import React, { useState, useEffect } from "react";
 
 interface Type {
-    reels: any;
-    title: string;
-    details: string;
+    reelTitle: string;
+    reelDetails: string;
+    videoCover: string;
+    playButton: string;
+    projectVideo: string;
 }
 
-export default function reelInfoSection( { reels, title, details }: Type ):JSX.Element{
+export default function reelInfoSection( { reelTitle, reelDetails, videoCover, playButton, projectVideo }: Type ):JSX.Element{
     // hook for handling z-index state
     const [toggleIndex, setToggleIndex] = useState(false);
 
@@ -62,17 +64,17 @@ export default function reelInfoSection( { reels, title, details }: Type ):JSX.E
             <section className={styles.projectPageSection}>
                 <div className={styles.projectDetailsWrapper}>
                     <h3 className={`${styles.projectTitle} reelTitle`}>
-                        {reels.title}
+                        {reelTitle}
                     </h3>
                     <div className={styles.projectCredsWrapper}>
                         <p className={styles.projectCreds}>
-                            {reels.details}
+                            {reelDetails}
                         </p>
                     </div>
                 </div>
                 <div className={ toggleIndex ? `${styles.projectVideo} ${styles.toggleIndex} video` : `${styles.projectVideo} video`}>
-                    <div onClick={ overlayPlay } className={`${styles.videoOverlay} overlay`} style={{backgroundImage: `url(${reels.videoCover})`}}>
-                        <div className={`${styles.videoOverlay} overlay`} style={{backgroundImage: `url(https://kidstudio.co/assets/images/play.png)`}}>
+                    <div onClick={ overlayPlay } className={`${styles.videoOverlay} overlay`} style={{backgroundImage: `url(${videoCover})`}}>
+                        <div className={`${styles.videoOverlay} overlay`} style={{backgroundImage: `url(${playButton})`}}>
                             {/* <Image
                             unoptimized
                             className={styles.videoCover}
@@ -83,12 +85,12 @@ export default function reelInfoSection( { reels, title, details }: Type ):JSX.E
                         /> */}
                         <img 
                             className={styles.videoCover}
-                            src={ `${reels.videoCover}` }
+                            src={ `${videoCover}` }
                             alt="Main video/image still" 
                             />
                         </div>  
                     </div>
-                    <iframe onMouseMove={ handleIndex } onClick={ handleIndex } className={styles.video} id="vimeo1aolzk8" src={`${reels.videoPath}`} frameBorder="0" allowFullScreen></iframe>
+                    <iframe onMouseMove={ handleIndex } onClick={ handleIndex } className={styles.video} id="vimeo1aolzk8" src={`${projectVideo}`} frameBorder="0" allowFullScreen></iframe>
                 </div>
             </section>
         </>

@@ -7,9 +7,10 @@ import React, { useEffect } from "react";
 
 interface Type{
     reels: any;
+    reelStills: any;
 }
 
-export default function stills( {reels}: Type ):JSX.Element{
+export default function stills( {reels, reelStills}: Type ):JSX.Element{
     useEffect(()=>{
         const screenWidth = window.innerWidth;
         
@@ -31,7 +32,7 @@ export default function stills( {reels}: Type ):JSX.Element{
         <>
             <section className={styles.projectPageSection}>
                 <div className={styles.projectStills}>
-                    {reels.stills.map((item, i)=>(
+                    {reelStills.map((item, i)=>(
                         // <Image
                         //     unoptimized
                         //     className={styles.stills}
@@ -42,7 +43,7 @@ export default function stills( {reels}: Type ):JSX.Element{
                         //     key={i}
                         // />
                         <img className={`${styles.stills} stills`}
-                        src={`${reels.stills[i]}`}
+                        src={`${reelStills[i].fields.file.url}`}
                         alt="Project image stills"
                         key={i}  />
                     ))}
