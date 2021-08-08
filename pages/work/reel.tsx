@@ -8,14 +8,24 @@ import styles from '../../styles/scss/common/_footer.module.scss';
 import ReelInfo from '../../components/reelContent/reelInfoSection';
 import ReelStills from '../../components/reelContent/reelStills';
 import { useRouter } from 'next/router';
+import { connectClient } from '../../components/common/utils/createClient';
+
 
 interface Type{
     reelPageData: any;
+    reelData: any;
 }
-export default function reels({reelPageData}: Type):JSX.Element{
+export default function reels({reelPageData, reelData}: Type):JSX.Element{
     const router = useRouter();
     const pathName = router.pathname;
     const comparison = pathName === "/work/reel";
+
+    console.log(reelData);
+    console.log(reelData.details.content[0].content[0].value);
+    console.log(reelData.pageTitle);
+
+    const title = reelData.pageTitle;
+    const details = reelData.details.content[0].content[0].value;
 
     useEffect(()=>{
 
@@ -33,7 +43,7 @@ export default function reels({reelPageData}: Type):JSX.Element{
         <>
             <Meta page={reelPageData.title} />
             <Layout specificStyles={`${styles.projectPages}`}>
-                <ReelInfo reels={reelPageData} />
+                <ReelInfo reels={reelPageData} title={title} details={details} />
                 <ReelStills reels={reelPageData} />
             </Layout>
         </>
@@ -44,10 +54,15 @@ export const getStaticProps: GetStaticProps = async ()=>{
     
     const fileToRead = path.join(process.cwd(),'./backEndDummyData/projects/reelPage.json');
     const data = JSON.parse(await fs.readFileSync(fileToRead).toString());
-    
+
+    const res = await connectClient.getEntries({ content_type: 'reelPage' });
+
+    const reelData = res.items[0].fields;
+
     return {
         props: {
-            reelPageData: data
+            reelPageData: data,
+            reelData: reelData
         }
     }
 }

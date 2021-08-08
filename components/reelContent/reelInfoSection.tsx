@@ -4,9 +4,11 @@ import React, { useState, useEffect } from "react";
 
 interface Type {
     reels: any;
+    title: string;
+    details: string;
 }
 
-export default function reelInfoSection( { reels }: Type ):JSX.Element{
+export default function reelInfoSection( { reels, title, details }: Type ):JSX.Element{
     // hook for handling z-index state
     const [toggleIndex, setToggleIndex] = useState(false);
 
