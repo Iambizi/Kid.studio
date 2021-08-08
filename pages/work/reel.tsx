@@ -12,10 +12,9 @@ import { connectClient } from '../../components/common/utils/createClient';
 
 
 interface Type{
-    reelPageData: any;
     reelData: any;
 }
-export default function reels({reelPageData, reelData}: Type):JSX.Element{
+export default function reels({ reelData } :Type):JSX.Element{
     const router = useRouter();
     const pathName = router.pathname;
     const comparison = pathName === "/work/reel";
@@ -41,7 +40,7 @@ export default function reels({reelPageData, reelData}: Type):JSX.Element{
     
     return(
         <>
-            <Meta page={reelPageData.title} />
+            <Meta page={title} />
             <Layout specificStyles={`${styles.projectPages}`}>
                 <ReelInfo reelTitle={title} reelDetails={details} videoCover={videoCover} playButton={playButton} projectVideo={projectVideo} />
                 <ReelStills reelStills={reelStills} />
@@ -52,16 +51,11 @@ export default function reels({reelPageData, reelData}: Type):JSX.Element{
 
 export const getStaticProps: GetStaticProps = async ()=>{
     
-    const fileToRead = path.join(process.cwd(),'./backEndDummyData/projects/reelPage.json');
-    const data = JSON.parse(await fs.readFileSync(fileToRead).toString());
-
     const res = await connectClient.getEntries({ content_type: 'reelPage' });
-
     const reelData = res.items[0].fields;
 
     return {
         props: {
-            reelPageData: data,
             reelData: reelData
         }
     }
