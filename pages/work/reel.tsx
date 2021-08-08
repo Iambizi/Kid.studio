@@ -44,7 +44,7 @@ export default function reels({reelPageData, reelData}: Type):JSX.Element{
             <Meta page={reelPageData.title} />
             <Layout specificStyles={`${styles.projectPages}`}>
                 <ReelInfo reelTitle={title} reelDetails={details} videoCover={videoCover} playButton={playButton} projectVideo={projectVideo} />
-                <ReelStills reels={reelPageData} reelStills={reelStills} />
+                <ReelStills reelStills={reelStills} />
             </Layout>
         </>
     )

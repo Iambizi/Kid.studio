@@ -6,11 +6,10 @@ import { shuffle } from "../common/utils/shuffle";
 import React, { useEffect } from "react";
 
 interface Type{
-    reels: any;
     reelStills: any;
 }
 
-export default function stills( {reels, reelStills}: Type ):JSX.Element{
+export default function stills( { reelStills }: Type ):JSX.Element{
     useEffect(()=>{
         const screenWidth = window.innerWidth;
         
