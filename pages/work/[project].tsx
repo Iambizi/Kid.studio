@@ -23,7 +23,7 @@ export default function projectPages( {projectsPageData, projects}: Type):JSX.El
     const pathName = router.pathname;
     const comparison = pathName === "/work/[project]";
 
-    console.log(projects);
+    // console.log(projects[0].fields.projectSlug);
 
     useEffect(()=>{
 
@@ -66,13 +66,16 @@ export const getStaticProps: GetStaticProps = async (context)=>{
     const res = await connectClient.getEntries({ content_type: 'projectPage' });
 
     const projectSpe = res.items;
+    const projectSlug = projectSpe[0].fields;
 
-    const specRes = res.items.map((item, i)=>(res.items[i]));
+    // const specRes = res.items.map((item, i)=>(res.items[i]));
+    // const specRes = res.items.map((item, i)=>(res.items[i])).find(item => item.fields.projectSlug.includes(projectPath));
 
     // console.log(projectPath);
     // console.log(specRes);
-    console.log(res);
-    console.log(params.project);
+    // console.log(res);
+    console.log(projectSlug);
+    // console.log(data.projectPage.path);
 
     return {
         props: {
