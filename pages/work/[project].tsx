@@ -65,17 +65,8 @@ export const getStaticProps: GetStaticProps = async (context)=>{
 
     const res = await connectClient.getEntries({ content_type: 'projectPage' });
 
+
     const projectSpe = res.items;
-    const projectSlug = projectSpe[0].fields;
-
-    // const specRes = res.items.map((item, i)=>(res.items[i]));
-    // const specRes = res.items.map((item, i)=>(res.items[i])).find(item => item.fields.projectSlug.includes(projectPath));
-
-    // console.log(projectPath);
-    // console.log(specRes);
-    // console.log(res);
-    console.log(projectSlug);
-    // console.log(data.projectPage.path);
 
     return {
         props: {
