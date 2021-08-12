@@ -65,6 +65,14 @@ export const getStaticProps: GetStaticProps = async (context)=>{
 
     const res = await connectClient.getEntries({ content_type: 'projectPage' });
 
+//     res.getEntry('<entry_id>')
+// .then(function (entry) {
+//   // logs the entry metadata
+//   console.log(entry.sys)
+
+//   // logs the field with ID title
+//   console.log(entry.fields.productName)
+// })
 
     const projectSpe = res.items;
 
