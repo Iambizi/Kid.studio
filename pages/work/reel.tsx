@@ -15,10 +15,19 @@ import useSWR from 'swr';
 interface Type{
     reelData: any;
 }
+
+async function fetcher(url){
+    const res = await fetch(url);
+    return res.json();
+}
+
 export default function reels({ reelData } :Type):JSX.Element{
     const router = useRouter();
     const pathName = router.pathname;
     const comparison = pathName === "/work/reel";
+    const baseUrl = "https://cdn.contentful.com?access_token=E2IVpgcZ42Dnz6TZREbi2FkPvdOCc-bYjM86apdVyYA";
+    "/content_types"
+    const {data} = useSWR("",fetcher, {initialData: reelData})
     
     const title = reelData.pageTitle;
     const details = reelData.details.content[0].content[0].value;
@@ -53,6 +62,10 @@ export default function reels({ reelData } :Type):JSX.Element{
 export const getStaticProps: GetStaticProps = async ()=>{
     
     const res = await connectClient.getEntries({ content_type: 'reelPage' });
+    
+    const entry = await connectClient.getEntry('6Ni31mFt8UZPFf7eGap7lS');
+    console.log(entry);
+
     const reelData = res.items[0].fields;
     return {
         props: {
