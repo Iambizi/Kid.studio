@@ -9,6 +9,7 @@ import ReelInfo from '../../components/reelContent/reelInfoSection';
 import ReelStills from '../../components/reelContent/reelStills';
 import { useRouter } from 'next/router';
 import { connectClient } from '../../components/common/utils/createClient';
+import useSWR from 'swr';
 
 
 interface Type{
@@ -53,7 +54,6 @@ export const getStaticProps: GetStaticProps = async ()=>{
     
     const res = await connectClient.getEntries({ content_type: 'reelPage' });
     const reelData = res.items[0].fields;
-
     return {
         props: {
             reelData: reelData
