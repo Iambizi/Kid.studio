@@ -62,11 +62,8 @@ export default function reels({ reelData } :Type):JSX.Element{
 export const getStaticProps: GetStaticProps = async ()=>{
     
     const res = await connectClient.getEntries({ content_type: 'reelPage' });
-    
-    const entry = await connectClient.getEntry('6Ni31mFt8UZPFf7eGap7lS');
-    console.log(entry);
-
     const reelData = res.items[0].fields;
+    
     return {
         props: {
             reelData: reelData
