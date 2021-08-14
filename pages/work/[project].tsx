@@ -22,6 +22,7 @@ export default function projectPages( {projectsPageData, projects}: Type):JSX.El
     const router = useRouter();
     const pathName = router.pathname;
     const comparison = pathName === "/work/[project]";
+    console.log(projects);
 
     // console.log(projects[0].fields.projectSlug);
 
@@ -64,12 +65,14 @@ export const getStaticProps: GetStaticProps = async (context)=>{
     
 
     const res = await connectClient.getEntries({ content_type: 'projectPage' });
-
-    const entry = await connectClient.getEntry('6Ni31mFt8UZPFf7eGap7lS');
-    console.log(entry);
     
+    const projectSpe = res.items[1].sys.id;
 
-    const projectSpe = res.items;
+    const entry = await connectClient.getEntry(projectSpe);
+    console.log(entry);
+
+
+    
 
     return {
         props: {
