@@ -22,7 +22,7 @@ export default function projectPages( {projectsPageData, projects}: Type):JSX.El
     const router = useRouter();
     const pathName = router.pathname;
     const comparison = pathName === "/work/[project]";
-    console.log(projects);
+    // console.log(projects);
 
     // console.log(projects[0].fields.projectSlug);
 
@@ -66,28 +66,48 @@ export const getStaticProps: GetStaticProps = async (context)=>{
 
     const res = await connectClient.getEntries({ content_type: 'projectPage' });
     
-    const projectSpe = res.items[1].sys.id;
+    const projectID = res.items[0].sys.id;
+    const projectFields: any = res.items[0].fields;
+    const projectSlug = projectFields.projectSlug;
 
-    const entry = await connectClient.getEntry(projectSpe);
-    console.log(entry);
-
-
+    res.items.map((item, i)=>{
+     console.log(res.items[i].sys.id);
+    })
     
+    const entry = await connectClient.getEntry(projectID);
+    // console.log(entry);
+    console.log(projectPath);
+    // console.log(res);
+    console.log(projectSlug);
 
     return {
         props: {
             projectsPageData: pageSpecificDataS,
-            projects: projectSpe
+            projects: res.items
         }
     }
 }
 
-export const getStaticPaths: GetStaticPaths = async (context) =>{
+// export const getStaticPaths: GetStaticPaths = async () =>{
+//     return {
+//         paths: [
+//             { params: { project: 'project' }}
+//         ],
+//         fallback: 'blocking'
+//     };
+// }
+
+export const getStaticPaths: GetStaticPaths = async () =>{
+    const res = await connectClient.getEntries({ content_type: 'projectPage' });
+    
     return {
         paths: [
-            { params: { project: 'project' }}
+            res.items.map((item, i)=>{
+                const projectFields: any = res.items[i].fields;
+                { params: { project: projectFields.projectSlug }}
+               })
+            
         ],
         fallback: 'blocking'
     };
 }
-
