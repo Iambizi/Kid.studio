@@ -88,26 +88,23 @@ export const getStaticProps: GetStaticProps = async (context)=>{
     }
 }
 
-// export const getStaticPaths: GetStaticPaths = async () =>{
-//     return {
-//         paths: [
-//             { params: { project: 'project' }}
-//         ],
-//         fallback: 'blocking'
-//     };
-// }
-
 export const getStaticPaths: GetStaticPaths = async () =>{
-    const res = await connectClient.getEntries({ content_type: 'projectPage' });
-    
     return {
         paths: [
-            res.items.map((item, i)=>{
-                const projectFields: any = res.items[i].fields;
-                { params: { project: projectFields.projectSlug }}
-               })
-            
+            { params: { project: 'project' }}
         ],
         fallback: 'blocking'
     };
 }
+
+// export const getStaticPaths: GetStaticPaths = async () =>{
+//     const res: any = await connectClient.getEntries({ content_type: 'projectPage' });
+//     return {
+//         paths: [
+//                { params: { project: res.items.map((item, i)=>{
+//                 return res.items[i].fields.projectSlug;
+//                }) }}
+//         ],
+//         fallback: 'blocking'
+//     };
+// }
