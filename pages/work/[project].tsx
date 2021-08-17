@@ -71,14 +71,10 @@ export const getStaticProps: GetStaticProps = async (context)=>{
     const projectSlug = projectFields.projectSlug;
 
     res.items.map((item, i)=>{
-     console.log(res.items[i].sys.id);
+    //  console.log(res.items[i].sys.id);
     })
     
     const entry = await connectClient.getEntry(projectID);
-    // console.log(entry);
-    console.log(projectPath);
-    // console.log(res);
-    console.log(projectSlug);
 
     return {
         props: {
@@ -88,23 +84,23 @@ export const getStaticProps: GetStaticProps = async (context)=>{
     }
 }
 
-export const getStaticPaths: GetStaticPaths = async () =>{
-    return {
-        paths: [
-            { params: { project: 'project' }}
-        ],
-        fallback: 'blocking'
-    };
-}
-
 // export const getStaticPaths: GetStaticPaths = async () =>{
-//     const res: any = await connectClient.getEntries({ content_type: 'projectPage' });
 //     return {
 //         paths: [
-//                { params: { project: res.items.map((item, i)=>{
-//                 return res.items[i].fields.projectSlug;
-//                }) }}
+//             { params: { project: 'project' }}
 //         ],
 //         fallback: 'blocking'
 //     };
 // }
+
+export const getStaticPaths: GetStaticPaths = async () =>{
+    const res: any = await connectClient.getEntries({ content_type: 'projectPage' });
+    
+    const paths = res.items.map((item) => ({
+        params: { project: item.fields.projectSlug },
+      }))
+    return {
+        paths,
+        fallback: 'blocking'
+    };
+}
