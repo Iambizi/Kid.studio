@@ -71,7 +71,7 @@ export const getStaticProps: GetStaticProps = async (context)=>{
     const projectSlug = projectFields.projectSlug;
 
     res.items.map((item, i)=>{
-    //  console.log(res.items[i].sys.id);
+     console.log(res.items[i].sys.id);
     })
     
     const entry = await connectClient.getEntry(projectID);
@@ -83,15 +83,6 @@ export const getStaticProps: GetStaticProps = async (context)=>{
         }
     }
 }
-
-// export const getStaticPaths: GetStaticPaths = async () =>{
-//     return {
-//         paths: [
-//             { params: { project: 'project' }}
-//         ],
-//         fallback: 'blocking'
-//     };
-// }
 
 export const getStaticPaths: GetStaticPaths = async () =>{
     const res: any = await connectClient.getEntries({ content_type: 'projectPage' });
