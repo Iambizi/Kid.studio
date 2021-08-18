@@ -15,9 +15,10 @@ import { connectClient } from '../../components/common/utils/createClient';
 interface Type{
     projectsPageData: any;
     projects: any;
+    projectPage: any;
 }
 
-export default function projectPages( {projectsPageData, projects}: Type):JSX.Element{
+export default function projectPages( {projectsPageData, projects, projectPage}: Type):JSX.Element{
     // console.log(projectsPageData);
     const router = useRouter();
     const pathName = router.pathname;
@@ -25,6 +26,8 @@ export default function projectPages( {projectsPageData, projects}: Type):JSX.El
     // console.log(projects);
 
     // console.log(projects[0].fields.projectSlug);
+
+    console.log(projectPage);
 
     useEffect(()=>{
 
@@ -61,25 +64,22 @@ export const getStaticProps: GetStaticProps = async (context)=>{
     // Once I start creating api endpoints this will no longer be necessary
     const pageSpecificData = data.projectPage.map((item, i)=>(data.projectPage[i])).find(item => item.path.includes(projectPath));
     const pageSpecificDataS = JSON.parse(JSON.stringify(pageSpecificData));
-    // const pageSpecificDataS = JSON.parse(pageSpecificData);
     
+    const res: any = await connectClient.getEntries({ content_type: 'projectPage' });
 
-    const res = await connectClient.getEntries({ content_type: 'projectPage' });
+    const projectPage = res.items.map((item,i)=> res.items[i]).find((item, i) => res.items[i].fields.projectSlug.includes(projectPath));
+
+    console.log(`${projectPage}`);
     
     const projectID = res.items[0].sys.id;
-    const projectFields: any = res.items[0].fields;
-    const projectSlug = projectFields.projectSlug;
-
-    res.items.map((item, i)=>{
-     console.log(res.items[i].sys.id);
-    })
     
     const entry = await connectClient.getEntry(projectID);
 
     return {
         props: {
             projectsPageData: pageSpecificDataS,
-            projects: res.items
+            projects: res.items,
+            spe: projectPage
         }
     }
 }
