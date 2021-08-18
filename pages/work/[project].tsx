@@ -14,18 +14,13 @@ import { connectClient } from '../../components/common/utils/createClient';
 
 interface Type{
     projectsPageData: any;
-    projects: any;
     projectPage: any;
 }
 
-export default function projectPages( {projectsPageData, projects, projectPage}: Type):JSX.Element{
-    // console.log(projectsPageData);
+export default function projectPages( {projectsPageData, projectPage}: Type):JSX.Element{
     const router = useRouter();
     const pathName = router.pathname;
     const comparison = pathName === "/work/[project]";
-    // console.log(projects);
-
-    // console.log(projects[0].fields.projectSlug);
 
     console.log(projectPage);
 
@@ -68,12 +63,6 @@ export const getStaticProps: GetStaticProps = async (context)=>{
     const res: any = await connectClient.getEntries({ content_type: 'projectPage' });
 
     const projectPage = res.items.map((item,i)=> res.items[i]).find((item, i) => res.items[i].fields.projectSlug.includes(projectPath));
-
-    console.log(`${projectPage}`);
-    
-    const projectID = res.items[0].sys.id;
-    
-    const entry = await connectClient.getEntry(projectID);
 
     return {
         props: {
