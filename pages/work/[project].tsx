@@ -59,13 +59,8 @@ export const getStaticProps: GetStaticProps = async (context)=>{
     const { params } = context;
     const projectPath = params.project;
     
-    const fileToRead = path.join(process.cwd(),'./backEndDummyData/projects/projectPage.json');
-    const data = JSON.parse(await fs.readFileSync(fileToRead).toString());
-    
     // using page specific data return data according to the params (specific project being selected)
     // Once I start creating api endpoints this will no longer be necessary
-    const pageSpecificData = data.projectPage.map((item, i)=>(data.projectPage[i])).find(item => item.path.includes(projectPath));
-    const pageSpecificDataS = JSON.parse(JSON.stringify(pageSpecificData));
     
     const res: any = await connectClient.getEntries({ content_type: 'projectPage' });
 
@@ -73,7 +68,6 @@ export const getStaticProps: GetStaticProps = async (context)=>{
 
     return {
         props: {
-            projectsPageData: pageSpecificDataS,
             projects: res.items,
             projectPage: projectPage.fields
         }
