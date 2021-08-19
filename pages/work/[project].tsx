@@ -24,6 +24,13 @@ export default function projectPages( {projectsPageData, projectPage}: Type):JSX
 
     console.log(projectPage);
 
+    const title = projectPage.projectTitle;
+    const details = projectPage.projectCreds.content[0].content[0].value;
+    const videoCover = projectPage.videoCover.fields.file.url;
+    const playButton = projectPage.playButton.fields.file.url;
+    const projectVideo = projectPage.projectVideo;
+    const projectStills = projectPage.videoStills;
+
     useEffect(()=>{
 
         const bg = document.body;
@@ -40,8 +47,8 @@ export default function projectPages( {projectsPageData, projectPage}: Type):JSX
         <>
             <Meta page={projectsPageData.title} />
             <Layout specificStyles={`${styles.projectPages}`}>
-                <MainInfo projects={projectsPageData} />
-                <Stills projects={projectsPageData} />
+                <MainInfo projects={projectsPageData} title={title} details={details} videoCover={videoCover} playButton={playButton} projectVideo={projectVideo}/>
+                <Stills projects={projectsPageData} projectStills={projectStills} />
             </Layout>
         </>
     )
@@ -68,7 +75,7 @@ export const getStaticProps: GetStaticProps = async (context)=>{
         props: {
             projectsPageData: pageSpecificDataS,
             projects: res.items,
-            spe: projectPage
+            projectPage: projectPage.fields
         }
     }
 }

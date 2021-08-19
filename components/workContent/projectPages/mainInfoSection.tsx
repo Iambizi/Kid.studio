@@ -4,9 +4,14 @@ import React, { useState, useEffect } from "react";
 
 interface Type{
     projects: any;
+    title: any;
+    details: any;
+    videoCover: any;
+    playButton: any;
+    projectVideo: any;
 }
 
-export default function mainInfoSection( {projects}: Type ):JSX.Element{
+export default function mainInfoSection( { projects, title, details, videoCover, playButton, projectVideo }: Type ):JSX.Element{
     // hook for handling z-index state
     const [toggleIndex, setToggleIndex] = useState(false);
 

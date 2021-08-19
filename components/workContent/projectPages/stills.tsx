@@ -6,9 +6,10 @@ import React, { useEffect } from "react";
 
 interface Type{
     projects?: any;
+    projectStills: any;
 }
 
-export default function stills( { projects }: Type ):JSX.Element{
+export default function stills( { projects, projectStills }: Type ):JSX.Element{
     useEffect(()=>{
         const screenWidth = window.innerWidth;
         
