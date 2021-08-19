@@ -10,6 +10,8 @@ interface Type{
 }
 
 export default function stills( { projects, projectStills }: Type ):JSX.Element{
+
+    console.log(projectStills);
     useEffect(()=>{
         const screenWidth = window.innerWidth;
         
@@ -30,7 +32,7 @@ export default function stills( { projects, projectStills }: Type ):JSX.Element{
         <>
             <section className={styles.projectPageSection}>
                 <div className={styles.projectStills}>
-                    {projects.stills.map((item, i)=>(
+                    {projectStills.map((item, i)=>(
                         // <Image
                         //     unoptimized
                         //     className={styles.stills}
@@ -41,7 +43,7 @@ export default function stills( { projects, projectStills }: Type ):JSX.Element{
                         //     key={i}
                         // />
                         <img className={`${styles.stills} stills`}
-                        src={`https://kidstudio.co${projects.stills[i]}`}
+                        src={`${projectStills[i].fields.file.url}`}
                         alt="Project image stills"
                         key={i}  />
                     ))}
