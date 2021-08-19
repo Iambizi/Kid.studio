@@ -64,17 +64,17 @@ export default function mainInfoSection( { projects, title, details, videoCover,
             <section className={styles.projectPageSection}>
                 <div className={styles.projectDetailsWrapper}>
                     <h3 className={`${styles.projectTitle} title`}>
-                        {projects.title}
+                        {title}
                     </h3>
                     <div className={styles.projectCredsWrapper}>
                         <p className={styles.projectCreds}>
-                            {projects.projectInfo}
+                            {details}
                         </p>
                     </div>
                 </div>
                 <div className={ toggleIndex ? `${styles.projectVideo} ${styles.toggleIndex} video` : `${styles.projectVideo} video`}>
-                    <div onClick={ overlayPlay } className={`${styles.videoOverlay} overlay`} style={{backgroundImage: `url(https://kidstudio.co${projects.videoCover})`}}>
-                        <div  className={`${styles.videoOverlay} overlay`} style={{backgroundImage: `url(https://kidstudio.co/assets/images/play.png)`}}>
+                    <div onClick={ overlayPlay } className={`${styles.videoOverlay} overlay`} style={{backgroundImage: `url(${videoCover})`}}>
+                        <div  className={`${styles.videoOverlay} overlay`} style={{backgroundImage: `url(${playButton})`}}>
                             {/* <Image
                             unoptimized
                             className={styles.videoCover}
@@ -85,12 +85,12 @@ export default function mainInfoSection( { projects, title, details, videoCover,
                         /> */}
                         <img 
                             className={styles.videoCover}
-                            src={ `https://kidstudio.co${projects.videoCover}` }
+                            src={ `${videoCover}` }
                             alt="Main video/image still" 
                             />
                         </div>  
                     </div>
-                    <iframe onMouseMove={ handleIndex } onClick={ handleIndex } className={styles.video} id="vimeo1aolzk8" src={`${projects.videoPath}`} frameBorder="0" allowFullScreen></iframe>
+                    <iframe onMouseMove={ handleIndex } onClick={ handleIndex } className={styles.video} id="vimeo1aolzk8" src={`${projectVideo}`} frameBorder="0" allowFullScreen></iframe>
                 </div>
             </section>
         </>

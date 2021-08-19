@@ -48,7 +48,7 @@ export default function projectPages( {projectsPageData, projectPage}: Type):JSX
             <Meta page={projectsPageData.title} />
             <Layout specificStyles={`${styles.projectPages}`}>
                 <MainInfo projects={projectsPageData} title={title} details={details} videoCover={videoCover} playButton={playButton} projectVideo={projectVideo}/>
-                <Stills projects={projectsPageData} projectStills={projectStills} />
+                <Stills projectStills={projectStills} />
             </Layout>
         </>
     )

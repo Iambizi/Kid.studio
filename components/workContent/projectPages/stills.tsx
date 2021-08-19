@@ -5,11 +5,10 @@ import {shuffle} from "../../common/utils/shuffle";
 import React, { useEffect } from "react";
 
 interface Type{
-    projects?: any;
     projectStills: any;
 }
 
-export default function stills( { projects, projectStills }: Type ):JSX.Element{
+export default function stills( { projectStills }: Type ):JSX.Element{
 
     console.log(projectStills);
     useEffect(()=>{
