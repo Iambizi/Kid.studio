@@ -32,13 +32,12 @@ export default function stills( { reelStills }: Type ):JSX.Element{
             <section className={styles.projectPageSection}>
                 <div className={styles.projectStills}>
                     {reelStills.map((item, i)=>(
-                        // <Image
-                        //     unoptimized
+                        //     <Image
                         //     className={styles.stills}
-                        //     src={`https://kidstudio.co${projects.stills[i]}`}
+                        //     src={`https:${projectStills[i].fields.file.url}`}
                         //     alt="Project image stills"
-                        //     width={300}
-                        //     height={337.8}
+                        //     width={projectStills[i].fields.file.details.image.width}
+                        //     height={projectStills[i].fields.file.details.image.height}
                         //     key={i}
                         // />
                         <img className={`${styles.stills} stills`}

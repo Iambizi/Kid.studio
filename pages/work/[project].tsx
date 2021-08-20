@@ -22,6 +22,8 @@ export default function projectPages( { projectPage }: Type):JSX.Element{
     const pathName = router.pathname;
     const comparison = pathName === "/work/[project]";
 
+    console.log(projectPage);
+
     const title = projectPage.projectTitle;
     const details = projectPage.projectCreds.content[0].content[0].value;
     const videoCover = projectPage.videoCover.fields.file.url;

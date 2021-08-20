@@ -33,12 +33,11 @@ export default function stills( { projectStills }: Type ):JSX.Element{
                 <div className={styles.projectStills}>
                     {projectStills.map((item, i)=>(
                         // <Image
-                        //     unoptimized
                         //     className={styles.stills}
-                        //     src={`https://kidstudio.co${projects.stills[i]}`}
+                        //     src={`https:${projectStills[i].fields.file.url}`}
                         //     alt="Project image stills"
-                        //     width={300}
-                        //     height={337.8}
+                        //     width={projectStills[i].fields.file.details.image.width}
+                        //     height={projectStills[i].fields.file.details.image.height}
                         //     key={i}
                         // />
                         <img className={`${styles.stills} stills`}
