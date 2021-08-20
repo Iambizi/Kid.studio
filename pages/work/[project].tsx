@@ -17,12 +17,10 @@ interface Type{
     projectPage: any;
 }
 
-export default function projectPages( {projectsPageData, projectPage}: Type):JSX.Element{
+export default function projectPages( { projectPage }: Type):JSX.Element{
     const router = useRouter();
     const pathName = router.pathname;
     const comparison = pathName === "/work/[project]";
-
-    console.log(projectPage);
 
     const title = projectPage.projectTitle;
     const details = projectPage.projectCreds.content[0].content[0].value;
@@ -45,7 +43,7 @@ export default function projectPages( {projectsPageData, projectPage}: Type):JSX
 
     return(
         <>
-            <Meta page={projectsPageData.title} />
+            <Meta page={title} />
             <Layout specificStyles={`${styles.projectPages}`}>
                 <MainInfo title={title} details={details} videoCover={videoCover} playButton={playButton} projectVideo={projectVideo}/>
                 <Stills projectStills={projectStills} />
