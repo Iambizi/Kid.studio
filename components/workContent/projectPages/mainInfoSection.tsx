@@ -15,7 +15,7 @@ export default function mainInfoSection( { title, details, videoCover, playButto
     const [toggleIndex, setToggleIndex] = useState(false);
 
     
-
+console.log(videoCover);
     const handleIndex = () => {
         // console.log(video);
 
@@ -77,7 +77,7 @@ export default function mainInfoSection( { title, details, videoCover, playButto
                             {/* <Image
                             unoptimized
                             className={styles.videoCover}
-                            src={ `https://kidstudio.co${projects.videoCover}` }
+                            src={ `https:${videoCover}` }
                             alt="Main video/image still"
                             width={256}
                             height={144}

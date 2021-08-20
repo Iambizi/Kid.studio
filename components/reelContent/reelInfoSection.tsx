@@ -78,7 +78,7 @@ export default function reelInfoSection( { reelTitle, reelDetails, videoCover, p
                             {/* <Image
                             unoptimized
                             className={styles.videoCover}
-                            src={ `https://kidstudio.co${reels.videoCover}` }
+                            src={ `https:${videoCover}` }
                             alt="Main video/image still"
                             width={256}
                             height={144}

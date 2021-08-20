@@ -34,16 +34,16 @@ export default function stills( { reelStills }: Type ):JSX.Element{
                     {reelStills.map((item, i)=>(
                         //     <Image
                         //     className={styles.stills}
-                        //     src={`https:${projectStills[i].fields.file.url}`}
+                        //     src={`https:${reelStills[i].fields.file.url}`}
                         //     alt="Project image stills"
-                        //     width={projectStills[i].fields.file.details.image.width}
-                        //     height={projectStills[i].fields.file.details.image.height}
+                        //     width={reelStills[i].fields.file.details.image.width}
+                        //     height={reelStills[i].fields.file.details.image.height}
                         //     key={i}
                         // />
                         <img className={`${styles.stills} stills`}
                         src={`${reelStills[i].fields.file.url}`}
                         alt="Project image stills"
-                        key={i}  />
+                        key={i} />
                     ))}
                 </div>
             </section>
