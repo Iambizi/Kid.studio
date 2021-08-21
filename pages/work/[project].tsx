@@ -74,12 +74,13 @@ export const getStaticProps: GetStaticProps = async (context)=>{
     }
 }
 
-export const getStaticPaths: GetStaticPaths = async () =>{
+export const getStaticPaths: GetStaticPaths = async (context) =>{
     const res: any = await connectClient.getEntries({ content_type: 'projectPage' });
     
     const paths = res.items.map((item) => ({
         params: { project: item.fields.projectSlug },
       }))
+
     return {
         paths,
         fallback: 'blocking'
