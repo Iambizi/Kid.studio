@@ -15,7 +15,7 @@ export default function mainInfoSection( { title, details, videoCover, playButto
     const [toggleIndex, setToggleIndex] = useState(false);
 
     
-console.log(videoCover);
+// console.log(videoCover);
     const handleIndex = () => {
         // console.log(video);
 

@@ -1,6 +1,6 @@
 import styles from '../../styles/scss/info/_info.module.scss';
 import * as THREE from 'three';
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 interface Type{
     src: string;
