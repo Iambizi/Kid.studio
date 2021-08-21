@@ -79,8 +79,8 @@ console.log(videoCover);
                             className={styles.videoCover}
                             src={ `https:${videoCover}` }
                             alt="Main video/image still"
-                            width={256}
-                            height={144}
+                            width={projectStills[i].fields.file.details.image.width}
+                            height={projectStills[i].fields.file.details.image.height}
                         /> */}
                         <img 
                             className={styles.videoCover}
