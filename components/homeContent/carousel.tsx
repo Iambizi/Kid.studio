@@ -43,7 +43,7 @@ export default function carousel({ homeProjects, carouselX, slideNext, slidePrev
             <div className={styles.titles} style={{left: `${ -carouselX }%`}}>
                 {projects && projects.length > 0 ? projects.map((item, i)=>(
                         <div className={styles.titleWrapper} key={i}>
-                        <Link href={ process.env.NEXT_PUBLIC_APP_DOMAIN + projects[i].fields.slug }>
+                        <Link href={ projects[i].fields.slug }>
                             <h2 className={styles.videoTitle}>{ projects[i].fields.title}</h2>
                         </Link>
                     </div>
