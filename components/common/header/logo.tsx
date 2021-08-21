@@ -15,7 +15,7 @@ export default function logo( { bgImg }: Type ): JSX.Element {
     return(
         <>
             <div className={styles.logo}>
-                <Link href={ process.env.NEXT_PUBLIC_APP_DOMAIN + "/"}>
+                <Link href={"/"}>
                     <a>
                         <img src={ bgImg ? "https://kidstudio.co/assets/images/kidwhite.png" : "https://kidstudio.co/assets/images/kid.png" } alt="Kid Studio logo" width={85}
                         height={46.3} />
