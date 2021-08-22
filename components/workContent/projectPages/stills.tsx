@@ -38,6 +38,7 @@ export default function stills( { projectStills }: Type ):JSX.Element{
                         //     alt="Project image stills"
                         //     width={projectStills[i].fields.file.details.image.width}
                         //     height={projectStills[i].fields.file.details.image.height}
+                        //         layout="responsive"
                         //     key={i}
                         // />
                         <img className={`${styles.stills} stills`}
