@@ -43,7 +43,7 @@ export default function stills( { projectStills }: Type ):JSX.Element{
                         <img className={`${styles.stills} stills`}
                         src={`${projectStills[i].fields.file.url}`}
                         alt="Project image stills"
-                        key={i}  />
+                        key={i} />
                     ))}
                 </div>
             </section>
