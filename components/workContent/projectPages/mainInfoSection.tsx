@@ -75,9 +75,8 @@ console.log(videoCover);
                     <div onClick={ overlayPlay } className={`${styles.videoOverlay} overlay`} style={{backgroundImage: `url(${videoCover.fields.file.url})`}}>
                         <div  className={`${styles.videoOverlay} overlay`} style={{backgroundImage: `url(${playButton})`}}>
                             <Image
-                            unoptimized
                             className={styles.videoCover}
-                            src={ `https:${videoCover}` }
+                            src={ `https:${videoCover.fields.file.url}` }
                             alt="Main video/image still"
                             width={videoCover.fields.file.details.image.width}
                             height={videoCover.fields.file.details.image.height}
