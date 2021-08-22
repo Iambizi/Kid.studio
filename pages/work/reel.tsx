@@ -31,7 +31,7 @@ export default function reels({ reelData } :Type):JSX.Element{
     
     const title = reelData.pageTitle;
     const details = reelData.details.content[0].content[0].value;
-    const videoCover = reelData.videoCover.fields.file.url;
+    const videoCover = reelData.videoCover;
     const playButton = reelData.playButton.fields.file.url;
     const projectVideo = reelData.projectVideo;
     const reelStills = reelData.videoStills;

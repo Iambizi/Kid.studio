@@ -26,7 +26,7 @@ export default function projectPages( { projectPage }: Type):JSX.Element{
 
     const title = projectPage.projectTitle;
     const details = projectPage.projectCreds.content[0].content[0].value;
-    const videoCover = projectPage.videoCover.fields.file.url;
+    const videoCover = projectPage.videoCover;
     const playButton = projectPage.playButton ? projectPage.playButton.fields.file.url : null ;
     const projectVideo = projectPage.projectVideo;
     const projectStills = projectPage.videoStills;

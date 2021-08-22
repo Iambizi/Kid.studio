@@ -15,7 +15,7 @@ export default function mainInfoSection( { title, details, videoCover, playButto
     const [toggleIndex, setToggleIndex] = useState(false);
 
     
-// console.log(videoCover);
+console.log(videoCover);
     const handleIndex = () => {
         // console.log(video);
 
@@ -72,21 +72,21 @@ export default function mainInfoSection( { title, details, videoCover, playButto
                     </div>
                 </div>
                 <div className={ toggleIndex ? `${styles.projectVideo} ${styles.toggleIndex} video` : `${styles.projectVideo} video`}>
-                    <div onClick={ overlayPlay } className={`${styles.videoOverlay} overlay`} style={{backgroundImage: `url(${videoCover})`}}>
+                    <div onClick={ overlayPlay } className={`${styles.videoOverlay} overlay`} style={{backgroundImage: `url(${videoCover.fields.file.url})`}}>
                         <div  className={`${styles.videoOverlay} overlay`} style={{backgroundImage: `url(${playButton})`}}>
-                            {/* <Image
+                            <Image
                             unoptimized
                             className={styles.videoCover}
                             src={ `https:${videoCover}` }
                             alt="Main video/image still"
-                            width={projectStills[i].fields.file.details.image.width}
-                            height={projectStills[i].fields.file.details.image.height}
-                        /> */}
-                        <img 
+                            width={videoCover.fields.file.details.image.width}
+                            height={videoCover.fields.file.details.image.height}
+                        />
+                        {/* <img 
                             className={styles.videoCover}
                             src={ `${videoCover}` }
                             alt="Main video/image still" 
-                            />
+                            /> */}
                         </div>  
                     </div>
                     <iframe onMouseMove={ handleIndex } onClick={ handleIndex } className={styles.video} id="vimeo1aolzk8" src={`${projectVideo}`} frameBorder="0" allowFullScreen></iframe>

@@ -1,11 +1,11 @@
 import Image from 'next/image';
 import styles from "../../styles/scss/projectPages/_projectPages.module.scss";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 interface Type {
     reelTitle: string;
     reelDetails: string;
-    videoCover: string;
+    videoCover: any;
     playButton: string;
     projectVideo: string;
 }
@@ -73,21 +73,21 @@ export default function reelInfoSection( { reelTitle, reelDetails, videoCover, p
                     </div>
                 </div>
                 <div className={ toggleIndex ? `${styles.projectVideo} ${styles.toggleIndex} video` : `${styles.projectVideo} video`}>
-                    <div onClick={ overlayPlay } className={`${styles.videoOverlay} overlay`} style={{backgroundImage: `url(${videoCover})`}}>
+                    <div onClick={ overlayPlay } className={`${styles.videoOverlay} overlay`} style={{backgroundImage: `url(${videoCover.fields.file.url})`}}>
                         <div className={`${styles.videoOverlay} overlay`} style={{backgroundImage: `url(${playButton})`}}>
-                            {/* <Image
+                            <Image
                             unoptimized
                             className={styles.videoCover}
                             src={ `https:${videoCover}` }
                             alt="Main video/image still"
-                            width={256}
-                            height={144}
-                        /> */}
-                        <img 
+                            width={videoCover.fields.file.details.image.width}
+                            height={videoCover.fields.file.details.image.height}
+                        />
+                        {/* <img 
                             className={styles.videoCover}
                             src={ `${videoCover}` }
                             alt="Main video/image still" 
-                            />
+                            /> */}
                         </div>  
                     </div>
                     <iframe onMouseMove={ handleIndex } onClick={ handleIndex } className={styles.video} id="vimeo1aolzk8" src={`${projectVideo}`} frameBorder="0" allowFullScreen></iframe>
