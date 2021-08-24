@@ -33,12 +33,12 @@ export default function stills( { projectStills }: Type ):JSX.Element{
                 <div className={styles.projectStills}>
                     {projectStills.map((item, i)=>(
                         // <Image
-                        //     className={styles.stills}
+                        //     className={`${styles.stills} stills`}
                         //     src={`https:${projectStills[i].fields.file.url}`}
                         //     alt="Project image stills"
                         //     width={projectStills[i].fields.file.details.image.width}
                         //     height={projectStills[i].fields.file.details.image.height}
-                        //         layout="responsive"
+                        //     layout="responsive"
                         //     key={i}
                         // />
                         <img className={`${styles.stills} stills`}

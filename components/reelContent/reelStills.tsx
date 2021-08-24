@@ -33,7 +33,7 @@ export default function stills( { reelStills }: Type ):JSX.Element{
                 <div className={styles.projectStills}>
                     {reelStills.map((item, i)=>(
                         //     <Image
-                        //     className={styles.stills}
+                        //     className={`${styles.stills} stills`}
                         //     src={`https:${reelStills[i].fields.file.url}`}
                         //     alt="Project image stills"
                         //     width={reelStills[i].fields.file.details.image.width}
