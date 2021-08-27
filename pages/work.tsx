@@ -1,5 +1,3 @@
-import fs from 'fs'
-import path from 'path'
 import { GetStaticProps } from 'next';
 import React, { useState } from 'react';
 import Layout from '../components/layout';
