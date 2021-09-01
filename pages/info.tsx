@@ -19,20 +19,21 @@ export default function info({ infoPageData }:Type):JSX.Element{
     const bg = document.body;
     bg.classList.remove("needsScroll");
 },[]);
-const aboutUs = infoPageData.aboutUs.content[0].content[0].value;
-const infoImage = infoPageData.infoImage.fields.file.url;
 
-const src = infoImage ? infoPageData.infoImage.fields.file.url : null;
+// async url fetcher function
+async function fetcher(url){
+    const res = await fetch(url);
+    return res.json();
+}
 
-    // async url fetcher function
-    async function fetcher(url){
-        const res = await fetch(url);
-        return res.json();
-    }
+//use swr revalidation magic
+const baseUrl = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}`;
+const { data } = useSWR(baseUrl,fetcher, {initialData: infoPageData}) 
 
-    //use swr revalidation magic
-    const baseUrl = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}`;
-    const {data} = useSWR(baseUrl,fetcher, {initialData: infoPageData}) 
+const aboutUs = data.aboutUs.content[0].content[0].value;
+const infoImage = data.infoImage.fields.file.url;
+
+const src = infoImage ? data.infoImage.fields.file.url : null;
 
     return(
         <>

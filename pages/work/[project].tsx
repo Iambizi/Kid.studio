@@ -34,12 +34,12 @@ export default function projectPages( { projectPage }: Type):JSX.Element{
     const {data} = useSWR(baseUrl,fetcher, {initialData: projectPage})
 
 
-    const title = projectPage.projectTitle;
-    const details = projectPage.projectCreds.content[0].content[0].value;
-    const videoCover = projectPage.videoCover;
-    const playButton = projectPage.playButton ? projectPage.playButton.fields.file.url : null ;
-    const projectVideo = projectPage.projectVideo;
-    const projectStills = projectPage.videoStills;
+    const title = data.projectTitle;
+    const details = data.projectCreds.content[0].content[0].value;
+    const videoCover = data.videoCover;
+    const playButton = data.playButton ? data.playButton.fields.file.url : null ;
+    const projectVideo = data.projectVideo;
+    const projectStills = data.videoStills;
 
     useEffect(()=>{
 
