@@ -24,6 +24,17 @@ const infoImage = infoPageData.infoImage.fields.file.url;
 
 const src = infoImage ? infoPageData.infoImage.fields.file.url : null;
 
+    // async url fetcher function
+    async function fetcher(url){
+        const res = await fetch(url);
+        return res.json();
+    }
+
+    //use swr revalidation magic
+    const baseUrl = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}`;
+    console.log(baseUrl);
+    const {data} = useSWR(baseUrl,fetcher, {initialData: infoPageData}) 
+
     return(
         <>
             <Meta page={"Info"} />
