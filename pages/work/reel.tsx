@@ -2,8 +2,6 @@ import { GetStaticProps} from 'next';
 import Layout from '../../components/layout';
 import Meta  from '../../components/common/meta';
 import React, { useEffect } from "react";
-import fs from 'fs'
-import path from 'path'
 import styles from '../../styles/scss/common/_footer.module.scss';
 import ReelInfo from '../../components/reelContent/reelInfoSection';
 import ReelStills from '../../components/reelContent/reelStills';
@@ -46,7 +44,7 @@ export default function reels({ reelData } :Type):JSX.Element{
             bg.classList.remove("needsScroll");
         }
 
-    },[path]);
+    },[]);
     
     return(
         <>
