@@ -7,6 +7,7 @@ import Content from '../components/homeContent/content';
 import React, { useEffect } from "react";
 import { connectClient } from '../components/common/utils/createClient';
 import useSWR from 'swr';
+import fetcherFunction  from '../components/common/utils/fetcherFunction';
 
 interface Type{
   homeProjects: any;
@@ -29,7 +30,7 @@ export default function home({homeProjects, projects}: Type):JSX.Element {
 
     //use swr revalidation magic
     const baseUrl = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}`;
-    const { data } = useSWR(baseUrl,fetcher, { initialData: projects });  
+    const { data } = useSWR(baseUrl, fetcherFunction, { initialData: projects });  
     
   return (
     <>

@@ -10,7 +10,7 @@ import { useRouter } from 'next/router';
 import styles from '../../styles/scss/common/_footer.module.scss';
 import { connectClient } from '../../components/common/utils/createClient';
 import useSWR from 'swr';
-
+import fetcherFunction  from '../../components/common/utils/fetcherFunction';
 
 
 interface Type{
@@ -31,7 +31,7 @@ export default function projectPages( { projectPage }: Type):JSX.Element{
 
     //use swr revalidation magic
     const baseUrl = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}`;
-    const {data} = useSWR(baseUrl,fetcher, {initialData: projectPage})
+    const {data} = useSWR(baseUrl, fetcherFunction, {initialData: projectPage})
 
 
     const title = data.projectTitle;
