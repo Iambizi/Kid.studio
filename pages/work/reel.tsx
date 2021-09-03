@@ -38,7 +38,8 @@ export default function reels({ reelData }: Type):JSX.Element{
     const projectVideo = data.projectVideo;
     const reelStills = data.videoStills;
 
-    console.log(data);
+    console.log(data.details.content[0]);
+    console.log(details);
 
     useEffect(()=>{
 
