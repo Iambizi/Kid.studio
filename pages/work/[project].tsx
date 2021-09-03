@@ -23,13 +23,7 @@ export default function projectPages( { projectPage }: Type):JSX.Element{
     const pathName = router.pathname;
     const comparison = pathName === "/work/[project]";
 
-    // async url fetcher function
-    async function fetcher(url){
-        const res = await fetch(url);
-        return res.json();
-    }
-
-    //use swr revalidation magic
+    //use swr cache revalidation magic
     const baseUrl = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}`;
     const {data} = useSWR(baseUrl, fetcherFunction, {initialData: projectPage})
 
