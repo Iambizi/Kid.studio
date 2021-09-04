@@ -8,8 +8,6 @@ import ReelStills from '../../components/reelContent/reelStills';
 import { useRouter } from 'next/router';
 import { connectClient } from '../../components/common/utils/createClient';
 import useSWR from 'swr';
-import fetcherFunction  from '../../components/common/utils/fetcherFunction';
-
 
 interface Type{
     reelData: any;

@@ -10,8 +10,6 @@ import { useRouter } from 'next/router';
 import styles from '../../styles/scss/common/_footer.module.scss';
 import { connectClient } from '../../components/common/utils/createClient';
 import useSWR from 'swr';
-import fetcherFunction  from '../../components/common/utils/fetcherFunction';
-
 
 interface Type{
     projectsPageData: any;

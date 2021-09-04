@@ -6,7 +6,6 @@ import InfoBox from '../components/infoContent/infoBox';
 import InfoWarpImg from '../components/infoContent/infoWarpedPlane';
 import { connectClient } from '../components/common/utils/createClient';
 import useSWR from 'swr';
-import fetcherFunction  from '../components/common/utils/fetcherFunction';
 
 
 interface Type{

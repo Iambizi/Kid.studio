@@ -7,7 +7,6 @@ import Content from '../components/homeContent/content';
 import React, { useEffect } from "react";
 import { connectClient } from '../components/common/utils/createClient';
 import useSWR from 'swr';
-import fetcherFunction  from '../components/common/utils/fetcherFunction';
 
 interface Type{
   homeProjects: any;
