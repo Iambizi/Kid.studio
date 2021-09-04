@@ -22,7 +22,7 @@ export default function reels({ reelData }: Type):JSX.Element{
 
     //use swr cache revalidation magic
     const baseUrl = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}`;
-    const {data} = useSWR(baseUrl, fetcherFunction, {initialData: reelData})
+    const {data} = useSWR(baseUrl, fetcherFunction, {initialData: reelData, refreshInterval: 180000})
     
     const title = data.pageTitle;
     const details = data.details.content[0].content[0].value;
@@ -50,8 +50,8 @@ export default function reels({ reelData }: Type):JSX.Element{
         <>
             <Meta page={title} />
             <Layout specificStyles={`${styles.projectPages}`}>
-                <ReelInfo reelTitle={title} reelDetails={details} videoCover={videoCover} playButton={playButton} projectVideo={projectVideo} />
-                <ReelStills reelStills={reelStills} />
+                {data? <ReelInfo reelTitle={title} reelDetails={details} videoCover={videoCover} playButton={playButton} projectVideo={projectVideo} /> : null }
+                {data? <ReelStills reelStills={reelStills} /> : null }
             </Layout>
         </>
     )

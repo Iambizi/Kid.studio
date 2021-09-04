@@ -17,14 +17,14 @@ export default function work({ workData }:Type):JSX.Element{
     
         //use swr cache revalidation magic
         const baseUrl = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}`;
-        const { data } = useSWR(baseUrl, fetcherFunction, {initialData: workData}) 
+        const { data } = useSWR(baseUrl, fetcherFunction, {initialData: workData, refreshInterval: 180000}) 
 
 
      return(
          <>
             <Meta page={"Work"} />
             <Layout bgImg={bgImg} setbgImg={setbgImg}>
-                <ProjectList bgImg={bgImg} setbgImg={setbgImg} projectList={data}  />
+                { data? <ProjectList bgImg={bgImg} setbgImg={setbgImg} projectList={data}  /> : null}
             </Layout>
          </>
      )
