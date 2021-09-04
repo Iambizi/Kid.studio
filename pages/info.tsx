@@ -24,10 +24,10 @@ export default function info({ infoPageData }:Type):JSX.Element{
 
 //use swr cache revalidation magic
 const baseUrl = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}`;
-const { data } = useSWR(baseUrl, fetcherFunction, {initialData: infoPageData}) 
+const { data } = useSWR( baseUrl, fetcherFunction, {initialData: infoPageData, refreshInterval: 180000}) 
 
-const aboutUs = data.aboutUs?.content[0].content[0].value;
-const infoImage = data.infoImage?.fields.file.url;
+const aboutUs = data.aboutUs.content[0].content[0].value;
+const infoImage = data.infoImage.fields.file.url;
 
 const src = infoImage ? data.infoImage.fields.file.url : null;
 
@@ -35,8 +35,8 @@ const src = infoImage ? data.infoImage.fields.file.url : null;
         <>
             <Meta page={"Info"} />
             <Layout>
-            <InfoBox aboutUs={aboutUs} />
-            <InfoWarpImg src={src} />
+            {aboutUs ? <InfoBox aboutUs={aboutUs} /> : null}
+            {infoImage ? <InfoWarpImg src={src} /> : null}
             </Layout>
         </>
     )

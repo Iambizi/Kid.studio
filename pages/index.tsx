@@ -24,13 +24,13 @@ export default function home({homeProjects, projects}: Type):JSX.Element {
 
     //use swr cache revalidation magic
     const baseUrl = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}`;
-    const { data } = useSWR(baseUrl, fetcherFunction, { initialData: projects });  
+    const { data } = useSWR(baseUrl, fetcherFunction, { initialData: projects, refreshInterval: 180000});  
     
   return (
     <>
         <Meta page={"Home"} />
           <Layout>
-            <Content homeProjects={ homeProjects } projects={ data } />
+            { data? <Content homeProjects={ homeProjects } projects={ data } /> : null}
         </Layout>
     </>
   )
