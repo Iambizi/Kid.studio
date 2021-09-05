@@ -73,14 +73,14 @@ export default function reelInfoSection( { reelTitle, reelDetails, videoCover, p
                     </div>
                 </div>
                 <div className={ toggleIndex ? `${styles.projectVideo} ${styles.toggleIndex} video` : `${styles.projectVideo} video`}>
-                    <div onClick={ overlayPlay } className={`${styles.videoOverlay} overlay`} style={{backgroundImage: `url(${videoCover.fields.file.url})`}}>
+                    <div onClick={ overlayPlay } className={`${styles.videoOverlay} overlay`} style={{backgroundImage: `url(${videoCover?.fields.file.url})`}}>
                         <div className={`${styles.videoOverlay} overlay`} style={{backgroundImage: `url(${playButton})`}}>
                             <Image
                             className={styles.videoCover}
-                            src={ `https:${videoCover.fields.file.url}` }
+                            src={ `https:${videoCover?.fields.file.url}` }
                             alt="Main video/image still"
-                            width={videoCover.fields.file.details.image.width}
-                            height={videoCover.fields.file.details.image.height}
+                            width={videoCover?.fields.file.details.image.width}
+                            height={videoCover?.fields.file.details.image.height}
                         />
                         {/* <img 
                             className={styles.videoCover}

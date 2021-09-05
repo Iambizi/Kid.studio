@@ -6,6 +6,7 @@ import InfoBox from '../components/infoContent/infoBox';
 import InfoWarpImg from '../components/infoContent/infoWarpedPlane';
 import { connectClient } from '../components/common/utils/createClient';
 import useSWR from 'swr';
+import Loader from "../components/common/loader";
 
 
 interface Type{
@@ -27,13 +28,19 @@ async function fetcher(url){
 }
 
 //use swr cache revalidation magic
-const baseUrl = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}`;
-const { data } = useSWR( baseUrl, fetcher, { initialData: infoPageData }) 
+const baseUrl = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master/entries?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}`;
+const { data } = useSWR( baseUrl, fetcher, { initialData: infoPageData}) 
 
-const aboutUs = data ? data.aboutUs.content[0].content[0].value : null;
-const infoImage =  data ? data.infoImage.fields.file.url : null;
+if(!data){
+    return(
+        <Loader />
+    )
+}
 
-const src = infoImage ? data.infoImage.fields.file.url : null;
+const aboutUs = data.aboutUs?.content[0].content[0].value;
+const infoImage =  data.infoImage?.fields.file.url;
+
+const src = infoImage ? data.infoImage?.fields.file.url : null;
 
     return(
         <>

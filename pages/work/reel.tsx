@@ -24,18 +24,15 @@ export default function reels({ reelData }: Type):JSX.Element{
     }
 
     //use swr cache revalidation magic
-    const baseUrl = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}`;
+    const baseUrl = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master/entries?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}`;
     const {data} = useSWR(baseUrl, fetcher, { initialData: reelData })
     
-    const title = data.pageTitle;
-    const details = data.details.content[0].content[0].value;
-    const videoCover = data.videoCover;
-    const playButton = data.playButton.fields.file.url;
-    const projectVideo = data.projectVideo;
-    const reelStills = data.videoStills;
-
-    console.log(data.details.content[0]);
-    console.log(details);
+    const title = reelData.pageTitle;
+    const details = reelData.details?.content[0].content[0].value;
+    const videoCover = reelData.videoCover;
+    const playButton = reelData.playButton?.fields.file.url;
+    const projectVideo = reelData.projectVideo;
+    const reelStills = reelData.videoStills;
 
     useEffect(()=>{
 

@@ -82,7 +82,7 @@ export default function work( { bgImg, setbgImg, projectList }:Type ){
         <>
             <section className={styles.projectListSection}>
                 <div className={ notFullScreen ?  `${styles.projectLinks} ${styles.notFullScreenAdjust}` : `${styles.projectLinks}` }>
-                    {projectList.map((item, i)=>(
+                    {projectList?.map((item, i)=>(
                         <Link href={ item.fields.projectLink } key={i}>
                             <a data-okimage={ item.fields.hoverImage.fields.file.url } className={ bgImg ? `${styles.projectLink} ${styles.hoverColor } Link`: `${styles.projectLink} Link` } onMouseMove={handleMouseOver}>{item.fields.projectName}</a>
                         </Link>
