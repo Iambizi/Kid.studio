@@ -34,7 +34,7 @@ export default function home({homeProjects, projects}: Type):JSX.Element {
     <>
         <Meta page={"Home"} />
           <Layout>
-            { data? <Content homeProjects={ homeProjects } projects={ data } /> : null}
+            <Content homeProjects={ homeProjects } projects={ data } />
         </Layout>
     </>
   )

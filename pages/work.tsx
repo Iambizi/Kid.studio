@@ -28,7 +28,7 @@ export default function work({ workData }:Type):JSX.Element{
          <>
             <Meta page={"Work"} />
             <Layout bgImg={bgImg} setbgImg={setbgImg}>
-                { data? <ProjectList bgImg={bgImg} setbgImg={setbgImg} projectList={data}  /> : null}
+                <ProjectList bgImg={bgImg} setbgImg={setbgImg} projectList={data}  />
             </Layout>
          </>
      )
