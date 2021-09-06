@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import styles from "../../../styles/scss/projectPages/_projectPages.module.scss";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import Loader from "../../common/loader";
 
 interface Type{
     title: any;
@@ -13,7 +14,6 @@ interface Type{
 export default function mainInfoSection( { title, details, videoCover, playButton, projectVideo }: Type ):JSX.Element{
     // hook for handling z-index state
     const [toggleIndex, setToggleIndex] = useState(false);
-
     
 console.log(videoCover);
     const handleIndex = () => {
@@ -58,6 +58,11 @@ console.log(videoCover);
     // useEffect(()=>{
     //     window.addEventListener('scroll', titleScroll);
     // },[])
+    if(!videoCover){
+        return(
+            <Loader />
+        )
+    }
     return(
         <>
             <section className={styles.projectPageSection}>
