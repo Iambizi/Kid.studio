@@ -5,7 +5,7 @@ import React, { useEffect } from "react";
 import InfoBox from '../components/infoContent/infoBox';
 import InfoWarpImg from '../components/infoContent/infoWarpedPlane';
 import { connectClient } from '../components/common/utils/createClient';
-import useSWR from 'swr';
+import useSWR, { SWRConfig } from 'swr';
 import Loader from "../components/common/loader";
 
 
