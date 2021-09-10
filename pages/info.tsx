@@ -49,7 +49,7 @@ const src = infoImage ? infoPageData.infoImage?.fields.file.url : null;
                 {/*<SWRConfig value={{ infoPageData }}>
                  <InfoBox aboutUs={aboutUs} />
                 <InfoWarpImg src={src} />
-                </SWRConfig> /*}
+                </SWRConfig> */}
             </Layout>
 
         </>
