@@ -30,15 +30,28 @@ async function fetcher(url){
 
 //use swr cache revalidation magic
 const infoEntryID = "65tpeH9l765M0OdtSeFDWN";
+const infoAssetID = "4HforvkWa8x76LM9AZ1srE";
 // const baseUrl = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master/entries/${infoEntryID}?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}`;
-const baseUrl = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master/entries/${infoEntryID}?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}`;
+// const baseUrl = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/sync?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}&initial=true&type=Entry&content_type=infoPage&limit=40`;
+// const baseUrlAssets = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master/assets/${infoAssetID}?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}`;
+const baseUrlAssets = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master/assets/${infoAssetID}?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}`;
 
-const { data } = useSWR( infoPageData, fetcher);
+const { data } = useSWR( baseUrlAssets, fetcher);
+
+
+
 
 const aboutUs = infoPageData.aboutUs?.content[0].content[0].value;
 const infoImage =  infoPageData.infoImage?.fields.file.url;
 
 const src = infoImage ? infoPageData.infoImage?.fields.file.url : null;
+
+console.log(data);
+// console.log(infoPageData);
+
+// console.log(infoImage);
+
+console.log(baseUrlAssets);
 
     return(
         <>
@@ -51,7 +64,6 @@ const src = infoImage ? infoPageData.infoImage?.fields.file.url : null;
                     <InfoWarpImg src={src} />
                 </SWRConfig>
             </Layout>
-
         </>
     )
 }
@@ -75,7 +87,7 @@ export const getStaticProps: GetStaticProps = async ()=>{
             fallback:{
                 infoImage: res.includes.Asset[0],
                 aboutUs: res.items[0].fields,
-                infoPageData: res.items[0].fields
+            infoPageData: res.items[0].fields
             }
         }
     }
