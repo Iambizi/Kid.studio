@@ -57,12 +57,12 @@ console.log(baseUrlAssets);
         <>
             <Meta page={"Info"} />
             <Layout>
-                {/* <InfoBox aboutUs={aboutUs} />
-                <InfoWarpImg src={src} /> */}
-                <SWRConfig value={{ fallback }}>
+                <InfoBox aboutUs={aboutUs} />
+                <InfoWarpImg src={src} />
+                {/* <SWRConfig value={{ fallback }}>
                     <InfoBox aboutUs={aboutUs} />
                     <InfoWarpImg src={src} />
-                </SWRConfig>
+                </SWRConfig> */}
             </Layout>
         </>
     )
