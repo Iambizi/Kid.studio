@@ -11,9 +11,10 @@ import Loader from "../components/common/loader";
 
 interface Type{
     infoPageData: any;
+    fallback: string;
 }
 
-export default function info({ infoPageData }:Type):JSX.Element{
+export default function info({ infoPageData, fallback }:Type):JSX.Element{
 // removes needsScroll class set in project pages from vertical scroll
 // projectPage useEffect hook needs refactoring to avoid calling it again here.
 
@@ -29,11 +30,10 @@ async function fetcher(url){
 
 //use swr cache revalidation magic
 const infoEntryID = "65tpeH9l765M0OdtSeFDWN";
+// const baseUrl = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master/entries/${infoEntryID}?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}`;
 const baseUrl = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master/entries/${infoEntryID}?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}`;
-const { data } = useSWR( baseUrl, fetcher);
 
-console.log(data);
-// console.log(baseUrl);
+const { data } = useSWR( infoPageData, fetcher);
 
 const aboutUs = infoPageData.aboutUs?.content[0].content[0].value;
 const infoImage =  infoPageData.infoImage?.fields.file.url;
@@ -44,12 +44,12 @@ const src = infoImage ? infoPageData.infoImage?.fields.file.url : null;
         <>
             <Meta page={"Info"} />
             <Layout>
-                <InfoBox aboutUs={aboutUs} />
-                <InfoWarpImg src={src} />
-                {/*<SWRConfig value={{ infoPageData }}>
-                 <InfoBox aboutUs={aboutUs} />
-                <InfoWarpImg src={src} />
-                </SWRConfig> */}
+                {/* <InfoBox aboutUs={aboutUs} />
+                <InfoWarpImg src={src} /> */}
+                <SWRConfig value={{ fallback }}>
+                    <InfoBox aboutUs={aboutUs} />
+                    <InfoWarpImg src={src} />
+                </SWRConfig>
             </Layout>
 
         </>
@@ -72,6 +72,11 @@ export const getStaticProps: GetStaticProps = async ()=>{
             infoImage: res.includes.Asset[0],
             aboutUs: res.items[0].fields,
             infoPageData: res.items[0].fields,
+            fallback:{
+                infoImage: res.includes.Asset[0],
+                aboutUs: res.items[0].fields,
+                infoPageData: res.items[0].fields
+            }
         }
     }
 }

@@ -27,8 +27,6 @@ export default function reels({ reelData }: Type):JSX.Element{
     const reelEntryID = "4AcYGCG0p8FOFAj0bsaLYm";
     const baseUrl = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master/entries/${reelEntryID}?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}`;
     const {data} = useSWR(baseUrl, fetcher);
-
-    console.log(baseUrl);
     
     const title = reelData.pageTitle;
     const details = reelData.details?.content[0].content[0].value;

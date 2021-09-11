@@ -10,7 +10,6 @@ interface Type{
 
 export default function stills( { projectStills }: Type ):JSX.Element{
 
-    console.log(projectStills);
     useEffect(()=>{
         const screenWidth = window.innerWidth;
         
