@@ -29,30 +29,26 @@ async function fetcher(url){
 }
 
 //use swr cache revalidation magic
-const infoEntryID = "65tpeH9l765M0OdtSeFDWN";
-const infoAssetID = "4HforvkWa8x76LM9AZ1srE";
-const baseUrlSyncApi = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/sync?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}&initial=true&type=Entry&content_type=infoPage&limit=40`;
-// const baseUrlAssets = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master/assets/${infoAssetID}?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}`;
-const allEntries = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master/entries?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}`;
-const singleEntry = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master/entries/?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}&content_type=infoPage&select=fields`;
-const singleEntry1 = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master/entries/${infoEntryID}?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}`;
 
-const baseUrlAssets = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master/assets/${infoAssetID}?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}`;
-const baseUrlAssetsFields = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master/assets/${infoAssetID}?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}`;
+const singleEntry = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master/entries/?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}&content_type=infoPage&select=fields`;
 
 const { data } = useSWR( singleEntry, fetcher);
 
 
 
 
-const aboutUs = infoPageData.aboutUs?.content[0].content[0].value;
-// const aboutUs = data?.fields.aboutUs.content[0].content[0].value;
-const infoImage =  infoPageData.infoImage?.fields.file.url;
+const aboutUs0 = infoPageData.aboutUs?.content[0].content[0].value;
+const aboutUs = data?.items[0].fields.aboutUs.content[0].content[0].value;
 
-const src = infoImage ? infoPageData.infoImage?.fields.file.url : null;
+// const aboutUs = data?.fields.aboutUs.content[0].content[0].value;
+const infoImage0 =  infoPageData.infoImage?.fields.file.url;
+const infoImage = data?.includes.Asset[0].fields.file.url;
+
+const src = infoImage ? data?.includes.Asset[0].fields.file.url : null;
 
 console.log(singleEntry);
-console.log(data);
+console.log(data?.items[0].fields.aboutUs.content[0].content[0].value);
+console.log(infoImage0)
 
 // console.log(infoImage);
 
@@ -63,7 +59,7 @@ console.log(data);
             <Meta page={"Info"} />
             <Layout>
                 <InfoBox aboutUs={aboutUs} />
-                <InfoWarpImg src={src} />
+                <InfoWarpImg src={infoImage} />
                 {/* <SWRConfig value={{ fallback }}>
                     <InfoBox aboutUs={aboutUs} />
                     <InfoWarpImg src={src} />
