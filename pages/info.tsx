@@ -34,7 +34,9 @@ const infoAssetID = "4HforvkWa8x76LM9AZ1srE";
 const baseUrlSyncApi = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/sync?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}&initial=true&type=Entry&content_type=infoPage&limit=40`;
 // const baseUrlAssets = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master/assets/${infoAssetID}?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}`;
 const allEntries = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master/entries?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}`;
-const singleEntry = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master/entries/${infoEntryID}?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}`;
+const singleEntry = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master/entries/?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}&content_type=infoPage&select=fields`;
+const singleEntry1 = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master/entries/${infoEntryID}?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}`;
+
 const baseUrlAssets = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master/assets/${infoAssetID}?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}`;
 const baseUrlAssetsFields = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master/assets/${infoAssetID}?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}`;
 
@@ -49,12 +51,12 @@ const infoImage =  infoPageData.infoImage?.fields.file.url;
 
 const src = infoImage ? infoPageData.infoImage?.fields.file.url : null;
 
+console.log(singleEntry);
 console.log(data);
-// console.log(infoPageData);
 
 // console.log(infoImage);
 
-console.log(baseUrlAssetsFields);
+// console.log(baseUrlAssetsFields);
 
     return(
         <>
