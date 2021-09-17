@@ -28,13 +28,12 @@ export default function projectPages( { projectPage }: Type):JSX.Element{
 
     //use swr cache revalidation magic
     const baseUrl = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master/entries?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}`;
-    const {data} = useSWR(baseUrl, fetcher, { initialData: projectPage })
-
+    const {data} = useSWR(baseUrl, fetcher, { initialData: projectPage });
 
     const title = projectPage.projectTitle;
     const details = projectPage.projectCreds.content[0].content[0].value;
     const videoCover = projectPage.videoCover;
-    const playButton = projectPage.playButton ? projectPage.playButton.fields.file.url : null ;
+    const playButton = projectPage.playButton ? projectPage.playButton?.fields.file.url : null ;
     const projectVideo = projectPage.projectVideo;
     const projectStills = projectPage.videoStills;
 
