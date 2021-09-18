@@ -25,8 +25,6 @@ export default function reels({ reelData }: Type):JSX.Element{
 
     //use swr cache revalidation magic
     const reelEntryID = "4AcYGCG0p8FOFAj0bsaLYm";
-    const baseUrl = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master/entries/${reelEntryID}?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}`;
-    // const singleEntry = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master/entries/${reelEntryID}?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}&include=10`;
     const singleEntry = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master/entries/?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}&content_type=reelPage&select=fields`;
 
     console.log(singleEntry);
