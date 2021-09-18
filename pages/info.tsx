@@ -31,6 +31,7 @@ async function fetcher(url){
 //use swr cache revalidation magic
 
 const singleEntry = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master/entries/?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}&content_type=infoPage&select=fields`;
+const singleEntry1 = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master/entries/?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}&links_to_asset={}`;
 
 const { data } = useSWR( singleEntry, fetcher);
 
@@ -49,6 +50,7 @@ const src = infoImage ? data?.includes.Asset[0].fields.file.url : null;
 console.log(singleEntry);
 console.log(data?.items[0].fields.aboutUs.content[0].content[0].value);
 console.log(infoImage);
+console.log(infoImage0);
 
 // console.log(infoImage);
 
