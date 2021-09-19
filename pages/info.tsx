@@ -42,8 +42,8 @@ const aboutUs0 = infoPageData.aboutUs?.content[0].content[0].value;
 const aboutUs = data?.items[0].fields.aboutUs.content[0].content[0].value;
 
 // const aboutUs = data?.fields.aboutUs.content[0].content[0].value;
-const infoImage0 =  infoPageData.infoImage?.fields.file.url;
-const infoImage = data?.includes.Asset[0].fields.file.url;
+const infoImage =  infoPageData.infoImage?.fields.file.url;
+const infoImage0 = data?.includes.Asset[0].fields.file.url;
 
 const src = infoImage ? data?.includes.Asset[0].fields.file.url : null;
 
