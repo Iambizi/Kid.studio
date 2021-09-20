@@ -46,6 +46,7 @@ export default function warpedImage({ slideNext, slidePrevious, carouselX, count
         
         const loader = new THREE.TextureLoader();
         const texture = loader.load(`${src}`);
+        texture.minFilter = THREE.NearestFilter
  
         // const width = screenWidth >= 1200 ? 5.5 : 2.1;
         // const height = screenWidth >= 1200 ? 3 : 1.2;
