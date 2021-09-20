@@ -46,6 +46,8 @@ export default function warpedImage({ slideNext, slidePrevious, carouselX, count
         
         const loader = new THREE.TextureLoader();
         const texture = loader.load(`${src}`);
+        
+        //Handles moire effect on image texture
         texture.minFilter = THREE.NearestFilter
  
         // const width = screenWidth >= 1200 ? 5.5 : 2.1;
