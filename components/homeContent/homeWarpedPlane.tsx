@@ -80,17 +80,20 @@ export default function warpedImage({ slideNext, slidePrevious, carouselX, count
             alpha: !0
         })
 
-        function resizeRendererToDisplaySize(renderer) {
-            // (widthIncrease = window.innerWidth / prevWidth), (heightIncrease = window.innerHeight / prevHeight), (scaling *= heightIncrease / widthIncrease);
-            // mesh.scale.x = scaling;
-            const canvas = renderer.domElement;
-            const width = canvas.clientWidth;
-            const height = canvas.clientHeight;
-            const needResize = canvas.width !== width || canvas.height !== height;
-            if (needResize) {
-              renderer.setSize(width, height, false);
-            }
-            return needResize;
+        function resizeRender(){
+            window.addEventListener('resize', () =>
+            {
+                // Update sizes
+                sizes.width = window.innerWidth
+                sizes.height = window.innerHeight
+
+                // Update camera
+                camera.aspect = sizes.width / sizes.height
+                camera.updateProjectionMatrix()
+
+                // Update renderer
+                renderer.setSize(sizes.width, sizes.height)
+            })
         }
 
         renderer.setClearColor( 0x000000, 0 );
@@ -103,12 +106,10 @@ export default function warpedImage({ slideNext, slidePrevious, carouselX, count
         // Animations loop function
         const animationLoop = () =>
         {   
-            /** Makes canvas responsive canvas **/
-            if (resizeRendererToDisplaySize(renderer)) {
-                const canvas = renderer.domElement;
-                camera.aspect = canvas.clientWidth / canvas.clientHeight;
-                camera.updateProjectionMatrix();
-            }
+
+            // Handles geometry resize
+            resizeRender();
+
             /** End Makes canvas responsive canvas **/
             
             /** Warped tilt hover functionality **/

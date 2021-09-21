@@ -62,15 +62,20 @@ export default function inforWarpImg({src}: Type):JSX.Element{
             alpha: true
         })
 
-        function resizeRendererToDisplaySize(renderer) {
-            const canvas = renderer.domElement;
-            const width = canvas.clientWidth;
-            const height = canvas.clientHeight;
-            const needResize = canvas.width !== width || canvas.height !== height;
-            if (needResize) {
-              renderer.setSize(width, height, false);
-            }
-            return needResize;
+        function resizeRender(){
+            window.addEventListener('resize', () =>
+            {
+                // Update sizes
+                sizes.width = window.innerWidth
+                sizes.height = window.innerHeight
+
+                // Update camera
+                camera.aspect = sizes.width / sizes.height
+                camera.updateProjectionMatrix()
+
+                // Update renderer
+                renderer.setSize(sizes.width, sizes.height)
+            })
         }
 
         renderer.setClearColor( 0x000000, 0 );
@@ -83,17 +88,8 @@ export default function inforWarpImg({src}: Type):JSX.Element{
         // Animations loop function
         const animationLoop = () =>
         {   
-            /** Makes canvas responsive canvas **/
-            if (resizeRendererToDisplaySize(renderer)) {
-                const canvas = renderer.domElement;
-                camera.aspect = canvas.clientWidth / canvas.clientHeight;
-                camera.updateProjectionMatrix();
-            }
-
-            // const canvas = renderer.domElement;
-            // camera.aspect = canvas.clientWidth / canvas.clientHeight;
-            // camera.updateProjectionMatrix();
-            /** End Makes canvas responsive canvas **/
+            // Handles geometry resize
+            resizeRender();
             
             /** Warped tilt hover functionality **/
             const onMouseDown = (e) => {
