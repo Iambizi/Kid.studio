@@ -55,8 +55,9 @@ export default function warpedImage({ slideNext, slidePrevious, carouselX, count
         const width = 5.4;
         const height = 2.9;
         const geometry = new THREE.PlaneGeometry(width * scale, height * scale);
-        const material = new THREE.MeshBasicMaterial({ map: texture })
-        // const material = new THREE.MeshBasicMaterial( {color: 0xC0C0C0, side: THREE.DoubleSide} );
+        
+        const material = new THREE.MeshBasicMaterial({ map: texture });
+        // // const material = new THREE.MeshBasicMaterial( {color: 0xC0C0C0, side: THREE.DoubleSide} );
         const mesh = new THREE.Mesh( geometry, material );
         scene.add( mesh );
 
