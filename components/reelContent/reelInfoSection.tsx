@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import styles from "../../styles/scss/projectPages/_projectPages.module.scss";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 interface Type {
     reelTitle: string;
@@ -44,20 +44,20 @@ export default function reelInfoSection( { reelTitle, reelDetails, videoCover, p
           
     }
 
-    // const titleScroll = () => {
-    //     const pageY = window.pageYOffset;        
-    //     const screenWidth = window.innerWidth;
-    //     const title = document.querySelector(".reelTitle") as HTMLElement;
+    const titleScroll = () => {
+        const pageY = window.pageYOffset;        
+        const screenWidth = window.innerWidth;
+        const title = document.querySelector(".reelTitle") as HTMLElement;
 
-    //     if( screenWidth >= 1200){
-    //         title.style.transform = `translateY(-${pageY}px)`;
-    //     }
-    // }
-    // useEffect(()=>{
-    //     const title = document.querySelector(".reelTitle") as HTMLElement;
-    //     window.addEventListener('scroll', titleScroll);
+        if( screenWidth >= 1200 && title ){
+            title.style.transform = `translateY(-${pageY}px)`;
+        }
+    }
+    useEffect(()=>{
+        const title = document.querySelector(".reelTitle") as HTMLElement;
+        window.addEventListener('scroll', titleScroll);
 
-    // },[])
+    },[])
 
     return(
         <>
