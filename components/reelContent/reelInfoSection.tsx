@@ -50,7 +50,7 @@ export default function reelInfoSection( { reelTitle, reelDetails, videoCover, p
         const title = document.querySelector(".reelTitle") as HTMLElement;
 
         if( screenWidth >= 1200 && title ){
-            title.style.transform = `translateY(${pageY}px)`;
+            title.style.transform = `translateY(-${pageY}px)`;
         }
     }
     useEffect(()=>{

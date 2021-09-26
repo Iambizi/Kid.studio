@@ -1,6 +1,6 @@
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
 import Link from "next/link";
-import WarpedIMG from "./homeWarpedPlane";
+import WarpedIMG from "./homeWarpedPlan";
 
 interface Type {
     homeProjects: any;
@@ -61,8 +61,8 @@ export default function carousel({ homeProjects, carouselX, slideNext, slidePrev
                                     `${styles[homeProjects[i].imageClassName]} ${styles.slidePrevious}` :
                                     `${styles[homeProjects[i].imageClassName]}`
                                 }>
-                                    <WarpedIMG count={count} slideNext={slidePrevious} slidePrevious={slidePrevious} carouselX={carouselX} projects={projects} />
-                                </div>
+                                <WarpedIMG count={count} slideNext={slidePrevious} slidePrevious={slidePrevious} carouselX={carouselX} projects={projects} />
+                                 </div>
                             </div>
                         </div>
                     )

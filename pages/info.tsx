@@ -47,10 +47,8 @@ const infoImage0 = data?.includes.Asset[0].fields.file.url;
 
 const src = infoImage ? data?.includes.Asset[0].fields.file.url : null;
 
-console.log(singleEntry);
 console.log(data?.items[0].fields.aboutUs.content[0].content[0].value);
-console.log(infoImage);
-console.log(infoImage0);
+
 
 // console.log(infoImage);
 
