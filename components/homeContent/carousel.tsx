@@ -1,6 +1,6 @@
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
 import Link from "next/link";
-import WarpedIMG from "./homeWarpedPlan";
+import WarpedIMG from "./homeWarpedPlane";
 
 interface Type {
     homeProjects: any;
