@@ -4,6 +4,7 @@ import Layout from '../components/layout';
 import Meta  from '../components/common/meta';
 import ProjectList from '../components/workContent/projectList';
 import { connectClient } from '../components/common/utils/createClient';
+import styles from '../styles/scss/common/_footer.module.scss';
 import useSWR from 'swr';
 
 interface Type {
@@ -27,7 +28,7 @@ export default function work({ workData }:Type):JSX.Element{
      return(
          <>
             <Meta page={"Work"} />
-            <Layout bgImg={bgImg} setbgImg={setbgImg}>
+            <Layout bgImg={bgImg} setbgImg={setbgImg} specificStyles={`${styles.workPage}`}>
                 <ProjectList bgImg={bgImg} setbgImg={setbgImg} projectList={workData}  />
             </Layout>
          </>

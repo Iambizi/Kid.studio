@@ -60,10 +60,6 @@ const src = infoImage ? data?.includes.Asset[0].fields.file.url : null;
             <Layout>
                 <InfoBox aboutUs={aboutUs} />
                 <InfoWarpImg src={infoImage} />
-                {/* <SWRConfig value={{ fallback }}>
-                    <InfoBox aboutUs={aboutUs} />
-                    <InfoWarpImg src={src} />
-                </SWRConfig> */}
             </Layout>
         </>
     )
