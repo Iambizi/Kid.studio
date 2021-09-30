@@ -37,7 +37,7 @@ export default function work({ workData }:Type):JSX.Element{
      return(
          <>
             <Meta page={"Work"} />
-            <Layout bgImg={bgImg} setbgImg={setbgImg} specificStyles={ checkBottom ? `${styles.workPageFooter}`: null}>
+            <Layout bgImg={bgImg} setbgImg={setbgImg} specificStyles={ checkBottom ? null : `${styles.workPageFooter}`}>
                 <ProjectList bgImg={bgImg} setbgImg={setbgImg} projectList={workData}  />
             </Layout>
          </>
