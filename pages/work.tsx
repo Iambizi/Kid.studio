@@ -1,5 +1,5 @@
 import { GetStaticProps } from 'next';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Layout from '../components/layout';
 import Meta  from '../components/common/meta';
 import ProjectList from '../components/workContent/projectList';
@@ -15,11 +15,20 @@ interface Type {
 export default function work({ workData }:Type):JSX.Element{
     const [bgImg, setbgImg] = useState(false);
 
+    const [checkBottom, setBottom] = useState(false);
+
+    
+
     async function fetcher(url){
         const res = await fetch(url);
         return res.json();
     }
-    
+    useEffect(()=>{
+        let maxScroll = document.body.scrollHeight - window.innerHeight;
+        maxScroll ? setBottom(true) : null;
+    },[])
+
+    console.log(checkBottom);
     //use swr cache revalidation magic
     const baseUrl = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master/entries?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}`;
     const { data } = useSWR(baseUrl, fetcher, { initialData: workData }) 
@@ -28,7 +37,7 @@ export default function work({ workData }:Type):JSX.Element{
      return(
          <>
             <Meta page={"Work"} />
-            <Layout bgImg={bgImg} setbgImg={setbgImg} specificStyles={`${styles.workPage}`}>
+            <Layout bgImg={bgImg} setbgImg={setbgImg} specificStyles={ checkBottom ? `${styles.workPageFooter}`: null}>
                 <ProjectList bgImg={bgImg} setbgImg={setbgImg} projectList={workData}  />
             </Layout>
          </>
