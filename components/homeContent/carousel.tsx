@@ -1,6 +1,6 @@
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
 import Link from "next/link";
-import WarpedIMG from "./homeWarpedPlane";
+import WarpedIMG from "./homeWarpedPlan";
 
 interface Type {
     homeProjects: any;
@@ -42,13 +42,11 @@ export default function carousel({ homeProjects, carouselX, slideNext, slidePrev
         <>
             <div className={styles.titles} style={{left: `${ -carouselX }%`}}>
                 {projects && projects.length > 0 ? projects.map((item, i)=>(
-                    <>
                         <div className={styles.titleWrapper} key={i}>
                             <Link href={ projects[i].fields.slug }>
                                 <h2 className={styles.videoTitle}>{ projects[i].fields.title}</h2>
                             </Link>
                         </div>
-                    </>
                 )) : ""}
             </div>
             {/* <div className={styles.slider} style={{left: `${ -carouselX }%`}}>
