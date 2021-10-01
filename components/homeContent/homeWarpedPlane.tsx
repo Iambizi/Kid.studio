@@ -152,7 +152,7 @@ export default function warpedImage({ slideNext, slidePrevious, carouselX, count
             mouseDown && ((prevMouse.y = mouse.y), (prevMouse.x = mouse.x))
 
             
-            /** End Warped tilt hover functionality **/
+            /** End of Warped tilt hover functionality **/
 
             /** controls mouse and hover effects **/
                 scene.add(mesh);
