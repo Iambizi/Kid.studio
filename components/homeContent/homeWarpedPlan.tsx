@@ -191,7 +191,7 @@ export default function warpedImage({ count, projects }:Type):JSX.Element{
         animationLoop()
         }
         
-    },[])
+    },[count])
     return(
         <>
             <canvas className={`${styles.homeScene} homeScene`}>
