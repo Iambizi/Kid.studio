@@ -12,7 +12,7 @@ interface Type{
     slidePrevious: boolean;
 }
 
-export default function warpedImage({ count, projects }:Type):JSX.Element{
+export default function warpedImage({ count, projects, carouselX, slideNext, slidePrevious }:Type):JSX.Element{
 
     const src1 = projects[0]?.fields.featuredProjectImage.fields ? projects[0].fields.featuredProjectImage.fields.file.url : null;
     const src2 = projects[1]?.fields.featuredProjectImage.fields ? projects[1].fields.featuredProjectImage.fields.file.url : null;
@@ -20,11 +20,11 @@ export default function warpedImage({ count, projects }:Type):JSX.Element{
 
     useEffect(()=>{
         const screenWidth = window.innerWidth;
-        let scaling = 1;
-        let widthIncrease = 1;
-        let heightIncrease = 1;
-        let prevHeight = window.innerHeight;
-        let prevWidth = window.innerWidth;
+        // let scaling = 1;
+        // let widthIncrease = 1;
+        // let heightIncrease = 1;
+        // let prevHeight = window.innerHeight;
+        // let prevWidth = window.innerWidth;
         let hover_dist = 0.3;
         let mouse = { x: 0, y: 0 };
         let snapback = { x: 0, y: 0 };
@@ -61,7 +61,7 @@ export default function warpedImage({ count, projects }:Type):JSX.Element{
         
         const width = 5.4;
         const height = 2.9;
-        // const geometry = new THREE.PlaneGeometry(width * scale, height * scale);
+
         const sizes = {
             width: window.innerWidth,
             height: window.innerHeight
@@ -76,21 +76,22 @@ export default function warpedImage({ count, projects }:Type):JSX.Element{
                looptyLoop++
         ){
         
-            let cubes = [
-                new THREE.Mesh(
-                    new THREE.PlaneGeometry(width * scale, height * scale),
-                    new THREE.MeshBasicMaterial({ map: texture1 })
-                ),
-                new THREE.Mesh(
-                    new THREE.PlaneGeometry(width * scale, height * scale),
-                    new THREE.MeshBasicMaterial({ map: texture2 })
-                )
-                ,
-                new THREE.Mesh(
-                    new THREE.PlaneGeometry(width * scale, height * scale),
-                    new THREE.MeshBasicMaterial({ map: texture3 })
-                ),
-            ]
+        let cubes = [
+            new THREE.Mesh(
+                new THREE.PlaneGeometry(width * scale, height * scale),
+                new THREE.MeshBasicMaterial({ map: texture1 })
+            ),
+            new THREE.Mesh(
+                new THREE.PlaneGeometry(width * scale, height * scale),
+                new THREE.MeshBasicMaterial({ map: texture2 })
+            )
+            ,
+            new THREE.Mesh(
+                new THREE.PlaneGeometry(width * scale, height * scale),
+                new THREE.MeshBasicMaterial({ map: texture3 })
+            ),
+        ]
+
         group.add(cubes[looptyLoop]);
         const canvas = document.querySelector('.homeScene');
 
@@ -140,7 +141,6 @@ export default function warpedImage({ count, projects }:Type):JSX.Element{
             }
             const onMouseUp = () => {
                 (mouseDown = !1), (snapping = !0), (snapback.x = cubes[0].rotation.x / 60), (snapback.y = cubes[0].rotation.y / 60);
-
             }
             const onDocumentMouseMove = (a)=> {
                 (hovering = !1), (mouse.x = a.clientX / window.innerWidth), (mouse.y = a.clientY / window.innerHeight);
@@ -178,8 +178,17 @@ export default function warpedImage({ count, projects }:Type):JSX.Element{
 
             /** controls mouse and hover effects **/
                 scene.add(group);
-                (cubes[1].position.x = 2);
-                (cubes[2].position.x = 3);
+                // (cubes[0].position.x = 0);
+                (cubes[1].position.x = 10);
+                (cubes[2].position.x = 20);
+                
+                count > 0 ? group.position.x = -10 : '';
+
+                count < 0 ? group.position.x = 10 : '';
+            
+                // slideNext && carouselX  < -200 ?  cubes[i].position.x = -10 : carouselX < -100 ? cubes[i].position.x = 10 : '';
+
+                
                 document.addEventListener("mousemove", onDocumentMouseMove, !1)
                 document.addEventListener("mousedown", onMouseDown, !1)
                 document.addEventListener("mouseup", onMouseUp, !1)
