@@ -1,6 +1,6 @@
 
 
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import * as THREE from 'three';
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
 
@@ -17,7 +17,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
     const src1 = projects[0]?.fields.featuredProjectImage.fields ? projects[0].fields.featuredProjectImage.fields.file.url : null;
     const src2 = projects[1]?.fields.featuredProjectImage.fields ? projects[1].fields.featuredProjectImage.fields.file.url : null;
     const src3 = projects[2]?.fields.featuredProjectImage.fields ? projects[2].fields.featuredProjectImage.fields.file.url : null;
-
+    const [ noLoop, setNoLoop ] = useState(false);
     useEffect(()=>{
         const screenWidth = window.innerWidth;
         // let scaling = 1;
@@ -178,17 +178,16 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
 
             /** controls mouse and hover effects **/
                 scene.add(group);
-                // (cubes[0].position.x = 0);
                 (cubes[1].position.x = 10);
                 (cubes[2].position.x = 20);
+
                 
                 count > 0 ? group.position.x = -10 : '';
 
-                count < 0 ? group.position.x = 10 : '';
-            
-                // slideNext && carouselX  < -200 ?  cubes[i].position.x = -10 : carouselX < -100 ? cubes[i].position.x = 10 : '';
+                count === 2? group.position.x = -20 : '';
 
-                
+                count < 0 ? group.position.x = 10 : '';
+                            
                 document.addEventListener("mousemove", onDocumentMouseMove, !1)
                 document.addEventListener("mousedown", onMouseDown, !1)
                 document.addEventListener("mouseup", onMouseUp, !1)
@@ -199,7 +198,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         }
         animationLoop()
         }
-        
+        console.log(group.position.x);
     },[count])
     return(
         <>
