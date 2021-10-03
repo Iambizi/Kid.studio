@@ -15,7 +15,7 @@ interface Type {
 export default function work({ workData }:Type):JSX.Element{
     const [bgImg, setbgImg] = useState(false);
 
-    const [checkBottom, setBottom] = useState(false);
+    // const [checkBottom, setBottom] = useState(false);
 
     
 
@@ -24,11 +24,10 @@ export default function work({ workData }:Type):JSX.Element{
         return res.json();
     }
     useEffect(()=>{
-        let maxScroll = document.body.scrollHeight - window.innerHeight;
-        maxScroll ? setBottom(true) : null;
+        // let maxScroll = document.body.scrollHeight - window.innerHeight;
+        // maxScroll ? setBottom(true) : null;
     },[])
 
-    console.log(checkBottom);
     //use swr cache revalidation magic
     const baseUrl = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master/entries?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}`;
     const { data } = useSWR(baseUrl, fetcher, { initialData: workData }) 
@@ -37,7 +36,7 @@ export default function work({ workData }:Type):JSX.Element{
      return(
          <>
             <Meta page={"Work"} />
-            <Layout bgImg={bgImg} setbgImg={setbgImg} specificStyles={ checkBottom ? null : `${styles.workPageFooter}`}>
+            <Layout bgImg={bgImg} setbgImg={setbgImg} specificStyles={styles.workPageFooter}>
                 <ProjectList bgImg={bgImg} setbgImg={setbgImg} projectList={workData}  />
             </Layout>
          </>

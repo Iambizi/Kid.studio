@@ -9,7 +9,7 @@
     width: 100%;
     letter-spacing: 0.1em;
 
-    @media screen and (max-width:$xs){
+    @media screen and (min-width:$xs){
         &.workPageFooter{
             display: none;
         }
