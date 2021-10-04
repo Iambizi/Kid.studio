@@ -44,6 +44,8 @@ export default function inforWarpImg({src}: Type):JSX.Element{
         const mesh = new THREE.Mesh( geometry, material );
         scene.add( mesh );
 
+        
+
         const sizes = {
             width: window.innerWidth,
             height: window.innerHeight
@@ -66,15 +68,15 @@ export default function inforWarpImg({src}: Type):JSX.Element{
             window.addEventListener('resize', () =>
             {
                 // Update sizes
-                sizes.width = window.innerWidth
-                sizes.height = window.innerHeight
-
-                // Update camera
-                camera.aspect = sizes.width / sizes.height
-                camera.updateProjectionMatrix()
+                sizes.width = window.innerWidth;
+                sizes.height = window.innerHeight;
 
                 // Update renderer
-                renderer.setSize(sizes.width, sizes.height)
+                renderer.setSize(sizes.width, sizes.height);
+
+                // Update camera
+                camera.aspect = sizes.width / sizes.height;
+                camera.updateProjectionMatrix();
             })
         }
 
@@ -120,18 +122,7 @@ export default function inforWarpImg({src}: Type):JSX.Element{
                 timerx / 2 > i ? ((mesh.rotation.x += 3e-4), (mesh.rotation.y -= 3e-4)) : ((mesh.rotation.x -= 3e-4), (mesh.rotation.y += 3e-4));
                 i++;
             }
-            // function resize(a) {
-            //     // const canvas = renderer.domElement;
-            //     // camera.aspect = canvas.clientWidth / canvas.clientHeight;
-            //     (widthIncrease = window.innerWidth / prevWidth), (heightIncrease = window.innerHeight / prevHeight), (scaling *= heightIncrease / widthIncrease);
-            //     for (var b = 0; b < mesh.length; b++) mesh.scale.x = scaling;
-            //     (prevHeight = window.innerHeight), (prevWidth = window.innerWidth), renderer.setSize(canvas.clientWidth, canvas.clientHeight);
-                
-            //     var c = window.innerHeight,
-            //         d = $("#featured").height(),
-            //         e = (c - d) / 2;
-            //     (isInfoPage && window.innerWidth <= 600) || $("#featured").css("margin-top", e + "px");
-            // }
+
             window.requestAnimationFrame(animationLoop);
             
             mouseDown ? dragMove() : snapping ? snapBack() : hovering ? hover() : hoverMove()

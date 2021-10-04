@@ -110,12 +110,12 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                 sizes.width = window.innerWidth
                 sizes.height = window.innerHeight
 
-                // Update camera
-                camera.aspect = sizes.width / sizes.height
-                camera.updateProjectionMatrix()
-
                 // Update renderer
-                renderer.setSize(sizes.width, sizes.height)
+                renderer.setSize(sizes.width, sizes.height);
+
+                // Update camera
+                camera.aspect = sizes.width / sizes.height;
+                camera.updateProjectionMatrix();
             })
         }
 
@@ -181,12 +181,28 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                 (cubes[1].position.x = 10);
                 (cubes[2].position.x = 20);
 
+                const smoothness= 0.1 // 0 to 1 only
+
+                const targetPosition = group.position.clone();
+                const next = targetPosition.x -= 10;
+                const nextLast = targetPosition.x -= 20;
+                const previous = targetPosition.x = 10;
+
+                function lerp() {
+                    group.position.lerp(targetPosition, smoothness);
+                }
                 
                 count > 0 ? group.position.x = -10 : '';
 
+                // count > 0 ? next : '';
+
                 count === 2? group.position.x = -20 : '';
 
+                // count === 2? nextLast : '';
+
                 count < 0 ? group.position.x = 10 : '';
+
+                // count < 0 ? previous : '';
                             
                 document.addEventListener("mousemove", onDocumentMouseMove, !1)
                 document.addEventListener("mousedown", onMouseDown, !1)
@@ -198,7 +214,6 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         }
         animationLoop()
         }
-        console.log(group.position.x);
     },[count])
     return(
         <>
