@@ -44,7 +44,7 @@ export default function inforWarpImg({src}: Type):JSX.Element{
         const mesh = new THREE.Mesh( geometry, material );
         scene.add( mesh );
 
-        screenWidth <= 500 ? mesh.position.y = -2: null;
+        screenWidth <= 500 ? mesh.position.y = -.5: null;
 
         const sizes = {
             width: window.innerWidth,
