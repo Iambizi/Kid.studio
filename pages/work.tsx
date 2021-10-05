@@ -15,18 +15,10 @@ interface Type {
 export default function work({ workData }:Type):JSX.Element{
     const [bgImg, setbgImg] = useState(false);
 
-    // const [checkBottom, setBottom] = useState(false);
-
-    
-
     async function fetcher(url){
         const res = await fetch(url);
         return res.json();
     }
-    useEffect(()=>{
-        // let maxScroll = document.body.scrollHeight - window.innerHeight;
-        // maxScroll ? setBottom(true) : null;
-    },[])
 
     //use swr cache revalidation magic
     const baseUrl = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master/entries?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}`;
