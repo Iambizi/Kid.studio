@@ -1,6 +1,7 @@
 import styles from '../../styles/scss/info/_info.module.scss';
 import * as THREE from 'three';
 import React, { useEffect } from "react";
+import { isMobile } from 'react-device-detect';
 
 interface Type{
     src: string;
@@ -44,7 +45,7 @@ export default function inforWarpImg({src}: Type):JSX.Element{
         const mesh = new THREE.Mesh( geometry, material );
         scene.add( mesh );
 
-        screenWidth <= 500 ? mesh.position.y = -.375: null;
+        isMobile ? mesh.position.y = -.375: null;
 
         const sizes = {
             width: window.innerWidth,
