@@ -196,7 +196,23 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
     // },[count])
 
 
+
+
     const Plane = (props) =>{
+        
+        const ref = useRef<HTMLElement | any>(null);
+        // const refCurrent = ref.current;
+
+        const [refVisible, setRefVisible] = useState(false)
+
+        // useEffect(() => {
+        // if (!refVisible) { 
+        //     return
+        // }
+        // // detected rendering
+        // }, refVisible)
+
+        // console.log(ref);
 
         let hover_dist = 0.3;
         let mouse = { x: 0, y: 0 };
@@ -216,7 +232,6 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         let mouseDown = !1;
         let scale = 1;
 
-        const ref = useRef<any>();
 
         const loader = new THREE.TextureLoader();
         // const texture1 = useLoader(TextureLoader, `${src1}`)
@@ -234,7 +249,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         // const height = 2.9;
         // const width = 6.4;
         // const height = 3.4;
-        const width = isMobile ? 3 : 9.6;
+        const width = isMobile ? 3.1 : 9.6;
         const height = isMobile ? 1.7 : 5.44;
 
         const sizes = {
@@ -242,57 +257,55 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
             height: window.innerHeight
         }
 
-                const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1e4);
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1e4);
 
             
+        useFrame(() => {
+            // ref.current.rotation.x = ref.current.rotation.y += 0.0001
+            const onMouseDown = (e) => {
+                (mouseDown = !0), (prevMouse.x = mouse.x), (prevMouse.y = mouse.y);
+                e.stopImmediatePropagation();
+            }
+            const onMouseUp = () => {
+                (mouseDown = !1), (snapping = !0), (snapback.x = ref.current.rotation.x / 60), (snapback.y = ref.current.rotation.y / 60);
+            }
+            const onDocumentMouseMove = (e)=> {
+                (hovering = !1), (mouse.x = e.clientX / window.innerWidth), (mouse.y = e.clientY / window.innerHeight);
+            }
+            const dragMove = () => {
+                (distMouse.x = prevMouse.x - mouse.x), (distMouse.y = prevMouse.y - mouse.y);
+                (ref.current.rotation.y -= 2 * distMouse.x), (ref.current.rotation.x -= 2 * distMouse.y);
+            }
+            const hoverMove = () => {
+                    mouse.x > 0.5 ? ref.current.rotation.y < hover_dist && (ref.current.rotation.y += 0.002) : mouse.x < 0.5 && ref.current.rotation.y > -hover_dist && (ref.current.rotation.y -= 0.002),
+                    mouse.y > 0.5 ? ref.current.rotation.x < hover_dist && (ref.current.rotation.x += 0.002) : mouse.y < 0.5 && ref.current.rotation.x > -hover_dist && (ref.current.rotation.x -= 0.002);
+                (ref.current.rotation.y > hover_dist || ref.current.rotation.y < -hover_dist) && (ref.current.rotation.x > hover_dist || ref.current.rotation.x < -hover_dist) && (hovering = !0);
+            }
+            const snapBack = () => {
+                ref.current.rotation.x < 0.002 && ref.current.rotation.x > -0.002 && ref.current.rotation.y < 0.002 && ref.current.rotation.y > -0.002 && (snapping = !1);
+                (ref.current.rotation.x -= snapback.x), (ref.current.rotation.y -= snapback.y);
+            }
+            const hover = () => {
+                i == timerx && (i = 0);
+                timerx / 2 > i ? ((ref.current.rotation.x += 3e-4), (ref.current.rotation.y -= 3e-4)) : ((ref.current.rotation.x -= 3e-4), (ref.current.rotation.y += 3e-4));
+                i++;
+            }
 
-            useFrame(() => {
-                // ref.current.rotation.x = ref.current.rotation.y += 0.0001
-                const onMouseDown = (e) => {
-                    (mouseDown = !0), (prevMouse.x = mouse.x), (prevMouse.y = mouse.y);
-                    e.stopImmediatePropagation();
-                }
-                const onMouseUp = () => {
-                    (mouseDown = !1), (snapping = !0), (snapback.x = ref.current.rotation.x / 60), (snapback.y = ref.current.rotation.y / 60);
-                }
-                const onDocumentMouseMove = (e)=> {
-                    (hovering = !1), (mouse.x = e.clientX / window.innerWidth), (mouse.y = e.clientY / window.innerHeight);
-                }
-                const dragMove = () => {
-                    (distMouse.x = prevMouse.x - mouse.x), (distMouse.y = prevMouse.y - mouse.y);
-                    (ref.current.rotation.y -= 2 * distMouse.x), (ref.current.rotation.x -= 2 * distMouse.y);
-                }
-                const hoverMove = () => {
-                        mouse.x > 0.5 ? ref.current.rotation.y < hover_dist && (ref.current.rotation.y += 0.002) : mouse.x < 0.5 && ref.current.rotation.y > -hover_dist && (ref.current.rotation.y -= 0.002),
-                        mouse.y > 0.5 ? ref.current.rotation.x < hover_dist && (ref.current.rotation.x += 0.002) : mouse.y < 0.5 && ref.current.rotation.x > -hover_dist && (ref.current.rotation.x -= 0.002);
-                    (ref.current.rotation.y > hover_dist || ref.current.rotation.y < -hover_dist) && (ref.current.rotation.x > hover_dist || ref.current.rotation.x < -hover_dist) && (hovering = !0);
-                }
-                const snapBack = () => {
-                    ref.current.rotation.x < 0.002 && ref.current.rotation.x > -0.002 && ref.current.rotation.y < 0.002 && ref.current.rotation.y > -0.002 && (snapping = !1);
-                    (ref.current.rotation.x -= snapback.x), (ref.current.rotation.y -= snapback.y);
-                }
-                const hover = () => {
-                    i == timerx && (i = 0);
-                    timerx / 2 > i ? ((ref.current.rotation.x += 3e-4), (ref.current.rotation.y -= 3e-4)) : ((ref.current.rotation.x -= 3e-4), (ref.current.rotation.y += 3e-4));
-                    i++;
-                }
-    
-                mouseDown ? dragMove() : snapping ? snapBack() : hovering ? hover() : hoverMove();
-                leftScroll && (transitionFrames >= transitionCounter ? ((camera.position.x += 62.5), transitionCounter++) : ((transitionCounter = 0), (leftScroll = !1)));
-                dLeftScroll && (transitionFrames >= transitionCounter ? ((camera.position.x += 125), transitionCounter++) : ((transitionCounter = 0), (dLeftScroll = !1)));
-                rightScroll && (transitionFrames >= transitionCounter ? ((camera.position.x -= 62.5), transitionCounter++) : ((transitionCounter = 0), (rightScroll = !1)));
-                dRightScroll && (transitionFrames >= transitionCounter ? ((camera.position.x -= 125), transitionCounter++) : ((transitionCounter = 0), (dRightScroll = !1)));
-                mouseDown && ((prevMouse.y = mouse.y), (prevMouse.x = mouse.x));
+            mouseDown ? dragMove() : snapping ? snapBack() : hovering ? hover() : hoverMove();
+            leftScroll && (transitionFrames >= transitionCounter ? ((camera.position.x += 62.5), transitionCounter++) : ((transitionCounter = 0), (leftScroll = !1)));
+            dLeftScroll && (transitionFrames >= transitionCounter ? ((camera.position.x += 125), transitionCounter++) : ((transitionCounter = 0), (dLeftScroll = !1)));
+            rightScroll && (transitionFrames >= transitionCounter ? ((camera.position.x -= 62.5), transitionCounter++) : ((transitionCounter = 0), (rightScroll = !1)));
+            dRightScroll && (transitionFrames >= transitionCounter ? ((camera.position.x -= 125), transitionCounter++) : ((transitionCounter = 0), (dRightScroll = !1)));
+            mouseDown && ((prevMouse.y = mouse.y), (prevMouse.x = mouse.x));
 
-                document.addEventListener("mousemove", onDocumentMouseMove, !1)
-                document.addEventListener("mousedown", onMouseDown, !1)
-                document.addEventListener("mouseup", onMouseUp, !1)
-              })
-              
-
+            document.addEventListener("mousemove", onDocumentMouseMove, !1)
+            document.addEventListener("mousedown", onMouseDown, !1)
+            document.addEventListener("mouseup", onMouseUp, !1)
+            })
             return(
-                <mesh {...props} ref={ref}>
-                    <planeGeometry args={[width * scale, height * scale]} />
+                <mesh 
+                {...props} ref={ref}>
+                    <planeGeometry args={[width, height]} />
                     <meshBasicMaterial map={texture1} />
                 </mesh>
             )
