@@ -237,8 +237,8 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         // const height = 2.9;
         // const width = 6.4;
         // const height = 3.4;
-        const width = isMobile ? 3.1 : 9.5;
-        const height = isMobile ? 1.7 : 5.44;
+        const width = isMobile ? 3.1 : 9.4;
+        const height = isMobile ? 1.7 : 5.3;
 
         const sizes = {
             width: window.innerWidth,
@@ -305,9 +305,9 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
             <div className={`${styles.homeScene} homeScene`}>
                 {/* <Canvas frameloop="demand"  dpr={[1, 2]}> */}
                 <Canvas dpr={[1, 2]}>
-                    <Plane position={[0, .1, 0]} />
-                    <Plane position={[20, 0, 0]} />
-                    <Plane position={[30, 0, 0]} />
+                   {isMobile ? <Plane position={[0, .1, 0]} /> : <Plane position={[0, 0, 0]} /> }
+                   {isMobile ? <Plane position={[20, .1, 0]} /> : <Plane position={[20, 0, 0]} /> }
+                   {isMobile ? <Plane position={[30, .1, 0]} /> : <Plane position={[30, 0, 0]} /> }
                 </Canvas>
             </div>
         </>
