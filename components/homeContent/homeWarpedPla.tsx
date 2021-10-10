@@ -201,18 +201,6 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
     const Plane = (props) =>{
         
         const ref = useRef<HTMLElement | any>(null);
-        // const refCurrent = ref.current;
-
-        const [refVisible, setRefVisible] = useState(false)
-
-        // useEffect(() => {
-        // if (!refVisible) { 
-        //     return
-        // }
-        // // detected rendering
-        // }, refVisible)
-
-        // console.log(ref);
 
         let hover_dist = 0.3;
         let mouse = { x: 0, y: 0 };
@@ -249,7 +237,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         // const height = 2.9;
         // const width = 6.4;
         // const height = 3.4;
-        const width = isMobile ? 3.1 : 9.6;
+        const width = isMobile ? 3.1 : 9.5;
         const height = isMobile ? 1.7 : 5.44;
 
         const sizes = {
@@ -299,12 +287,13 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
             mouseDown && ((prevMouse.y = mouse.y), (prevMouse.x = mouse.x));
 
             document.addEventListener("mousemove", onDocumentMouseMove, !1)
-            document.addEventListener("mousedown", onMouseDown, !1)
-            document.addEventListener("mouseup", onMouseUp, !1)
+            // document.addEventListener("mousedown", onMouseDown, !1)
+            // document.addEventListener("mouseup", onMouseUp, !1)
             })
             return(
                 <mesh 
-                {...props} ref={ref}>
+                {...props} ref={ref}
+                >
                     <planeGeometry args={[width, height]} />
                     <meshBasicMaterial map={texture1} />
                 </mesh>
@@ -316,7 +305,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
             <div className={`${styles.homeScene} homeScene`}>
                 {/* <Canvas frameloop="demand"  dpr={[1, 2]}> */}
                 <Canvas dpr={[1, 2]}>
-                    <Plane position={[0, 0, 0]} />
+                    <Plane position={[0, .1, 0]} />
                     <Plane position={[20, 0, 0]} />
                     <Plane position={[30, 0, 0]} />
                 </Canvas>
