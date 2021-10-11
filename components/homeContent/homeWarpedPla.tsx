@@ -203,7 +203,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
 
     const Plane = (props: any) =>{
         
-        const ref = useRef<HTMLElement | any>(null);
+        const ref = useRef<HTMLElement | any>(null!);
         const current = ref?.current;
 
         let hover_dist = 0.3;
