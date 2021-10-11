@@ -287,8 +287,8 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                     timerx / 2 > i ? ((ref.current.rotation.x += 3e-4), (ref.current.rotation.y -= 3e-4)) : ((ref.current.rotation.x -= 3e-4), (ref.current.rotation.y += 3e-4));
                     i++;
                 }
-                // hovering ? hover() : hoverMove();
-                mouseDown ? dragMove() : snapping ? snapBack() : hovering ? hover() : hoverMove();
+                hovering ? hover() : hoverMove();
+                // mouseDown ? dragMove() : snapping ? snapBack() : hovering ? hover() : hoverMove();
                 document.addEventListener("mousemove", onDocumentMouseMove, !1)
                 // document.addEventListener("mousedown", onMouseDown, !1)
                 // document.addEventListener("mouseup", onMouseUp, !1)
