@@ -3,11 +3,12 @@
 import React, {useEffect, useRef, useState} from 'react';
 import * as THREE from 'three';
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
-import { Canvas, useFrame } from '@react-three/fiber';
+import { Canvas, useFrame, useLoader } from '@react-three/fiber';
 import Link from "next/link";
 import { TextureLoader } from 'three';
 import { isMobile } from 'react-device-detect';
 import { useTexture } from "@react-three/drei";
+import { Plane } from "@react-three/drei";
 
 
 interface Type{
@@ -201,7 +202,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
 
 
 
-    const Plane = (props: any) =>{
+    const Planee = (props: any) =>{
         
         const ref = useRef<HTMLElement | any>(null!);
         const current = ref?.current;
@@ -315,8 +316,8 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
     return(
         <>
             <div className={`${styles.homeScene} homeScene`}>
-            <div className={styles.titles} style={{left: `${ -carouselX }%`}}>
-                    {projects && projects.length > 0 ? projects.map((item, i)=>(
+                <div className={styles.titles} style={{left: `${ -carouselX }%`}}>
+                    {projects && projects.length > 0 ? projects?.map((item, i)=>(
                             <div className={styles.titleWrapper} key={i}>
                                 <Link href={ projects[i].fields.slug }>
                                     <h2 className={styles.videoTitle}>{ projects[i].fields.title}</h2>
@@ -326,9 +327,9 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                 </div>
                 {/* <Canvas frameloop="demand"  dpr={[1, 2]}> */}
                 <Canvas dpr={[1, 2]}>
-                   { isMobile ? <Plane position={[0, .1, 0]} /> : <Plane position={[0, 0, 0]} /> }
-                   { isMobile ? <Plane position={[20, .1, 0]} /> : <Plane position={[20, 0, 0]} /> }
-                   { isMobile ? <Plane position={[30, .1, 0]} /> : <Plane position={[30, 0, 0]} /> }
+                   { isMobile ? <Planee position={[0, .1, 0]} /> : <Planee position={[0, 0, 0]} /> }
+                   { isMobile ? <Planee position={[20, .1, 0]} /> : <Planee position={[20, 0, 0]} /> }
+                   { isMobile ? <Planee position={[30, .1, 0]} /> : <Planee position={[30, 0, 0]} /> }
                 </Canvas>
             </div>
         </>

@@ -43,8 +43,8 @@ export default function content({ homeProjects, projects }: Type):JSX.Element{
                 <article className={styles.homeContentSection}>
                 <Carousel homeProjects={homeProjects} count={count} carouselX={ carouselX } slideNext={slideNext} slidePrevious={slidePrevious} projects={projects}/>
                 </article>
-                <p className={styles.nextButton} onClick={goNext}>NEXT</p>
-                <p className={styles.previousButton} onClick={goPrevious}>PREVIOUS</p>
+                <p className={styles.nextButton} onClick={goNext} onTouchStart={goNext}>NEXT</p>
+                <p className={styles.previousButton} onClick={goPrevious} onTouchStart={goNext}>PREVIOUS</p>
                 <p className ={styles.counter}>{count + 1}&nbsp;/&nbsp;3</p>
             </section>
         </>
