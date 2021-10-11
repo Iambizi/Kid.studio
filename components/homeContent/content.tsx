@@ -1,5 +1,5 @@
 import styles from "../../styles/scss/homePage/_home.module.scss";
-import Carousel from "./carousel";
+import Carousel from "./carouse";
 import React, { useState } from "react";
 
 interface Type{

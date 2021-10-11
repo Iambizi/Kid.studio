@@ -3,6 +3,7 @@
 import React, {useEffect, useState} from 'react';
 import * as THREE from 'three';
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
+import Link from "next/link";
 import { isMobile } from 'react-device-detect';
 
 interface Type{
@@ -18,7 +19,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
     const src1 = projects[0]?.fields.featuredProjectImage.fields ? projects[0].fields.featuredProjectImage.fields.file.url : null;
     const src2 = projects[1]?.fields.featuredProjectImage.fields ? projects[1].fields.featuredProjectImage.fields.file.url : null;
     const src3 = projects[2]?.fields.featuredProjectImage.fields ? projects[2].fields.featuredProjectImage.fields.file.url : null;
-    
+
     useEffect(()=>{
         const screenWidth = window.innerWidth;
         // let scaling = 1;
