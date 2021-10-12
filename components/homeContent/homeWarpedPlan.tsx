@@ -130,7 +130,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         renderer.setSize(window.innerWidth, window.innerHeight);
         //pixel ratio: corresponds to how many physical pixels you have on the screen for one pixel unit on the software part.
         // Device pixel ratio: allows us to adjust the pixel ratio of our scene to pixel ratio of our device
-        
+
         // Hide this if you want to achieve exact textured look as OG site
         renderer.setPixelRatio(Math.min(window.devicePixelRatio),2);
     
@@ -196,9 +196,6 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                 const nextLast = targetPosition.x -= 20;
                 const previous = targetPosition.x = 10;
 
-                function lerp() {
-                    group.position.lerp(targetPosition, smoothness);
-                }
                 
                 count > 0 ? group.position.x = -10 : '';
 
@@ -223,6 +220,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
             renderer.render(scene, camera);
         }
         animationLoop()
+        // return () => ref.current.removeChild( renderer.domElement);
         }
     },[count])
     return(
