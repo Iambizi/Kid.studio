@@ -1,6 +1,6 @@
 
 
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import * as THREE from 'three';
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
 import Link from "next/link";
@@ -19,9 +19,13 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
     const src1 = projects[0]?.fields.featuredProjectImage.fields ? projects[0].fields.featuredProjectImage.fields.file.url : null;
     const src2 = projects[1]?.fields.featuredProjectImage.fields ? projects[1].fields.featuredProjectImage.fields.file.url : null;
     const src3 = projects[2]?.fields.featuredProjectImage.fields ? projects[2].fields.featuredProjectImage.fields.file.url : null;
+    
+    const ref = useRef<HTMLElement | any>(null!);
+    const current = ref?.current;
 
     useEffect(()=>{
         const screenWidth = window.innerWidth;
+        
         // let scaling = 1;
         // let widthIncrease = 1;
         // let heightIncrease = 1;
@@ -126,6 +130,8 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         renderer.setSize(window.innerWidth, window.innerHeight);
         //pixel ratio: corresponds to how many physical pixels you have on the screen for one pixel unit on the software part.
         // Device pixel ratio: allows us to adjust the pixel ratio of our scene to pixel ratio of our device
+        
+        // Hide this if you want to achieve exact textured look as OG site
         renderer.setPixelRatio(Math.min(window.devicePixelRatio),2);
     
         // Animations loop function
@@ -206,7 +212,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
 
                 // count < 0 ? previous : '';
 
-                console.log('im runninnn')
+                // console.log('im runninnn')
                             
                 document.addEventListener("mousemove", onDocumentMouseMove, !1)
                 document.addEventListener("mousedown", onMouseDown, !1)
@@ -221,7 +227,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
     },[count])
     return(
         <>
-            <canvas className={`${styles.homeScene} homeScene`}>
+            <canvas ref={ref}  className={`${styles.homeScene} homeScene`}>
             </canvas>
         </>
     )
