@@ -97,12 +97,12 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         }
 
         for (
-               let looptyLoop = 0;
-               looptyLoop < 3;
-               looptyLoop++
+               let loopityLoop = 0;
+               loopityLoop < 3;
+               loopityLoop++
         ){
         
-        let cubes = [
+        let planes = [
             new THREE.Mesh(
                 new THREE.PlaneGeometry(width * scale, height * scale),
                 new THREE.MeshBasicMaterial({ map: texture1 })
@@ -118,7 +118,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
             ),
         ]
 
-        group.add(cubes[looptyLoop]);
+        group.add(planes[loopityLoop]);
         
 
         camera.position.z = screenWidth >= 1200 ? 3 : 8;
@@ -127,7 +127,6 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         
         renderer.setSize(window.innerWidth, window.innerHeight);
 
-        //
         ref.current.appendChild( renderer.domElement );
 
         //pixel ratio: corresponds to how many physical pixels you have on the screen for one pixel unit on the software part.
@@ -150,28 +149,28 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                 e.stopImmediatePropagation();
             }
             const onMouseUp = () => {
-                (mouseDown = !1), (snapping = !0), (snapback.x = cubes[0].rotation.x / 60), (snapback.y = cubes[0].rotation.y / 60);
+                (mouseDown = !1), (snapping = !0), (snapback.x = planes[0].rotation.x / 60), (snapback.y = planes[0].rotation.y / 60);
             }
             const onDocumentMouseMove = (a)=> {
                 (hovering = !1), (mouse.x = a.clientX / window.innerWidth), (mouse.y = a.clientY / window.innerHeight);
             }
             const dragMove = () => {
                 (distMouse.x = prevMouse.x - mouse.x), (distMouse.y = prevMouse.y - mouse.y);
-            for (var a = 0; a < cubes.length; a++) (cubes[a].rotation.y -= 2 * distMouse.x), (cubes[a].rotation.x -= 2 * distMouse.y);
+            for (var a = 0; a < planes.length; a++) (planes[a].rotation.y -= 2 * distMouse.x), (planes[a].rotation.x -= 2 * distMouse.y);
             }
             const hoverMove = () => {
-                for (var a = 0; a < cubes.length; a++)
-                mouse.x > 0.5 ? cubes[a].rotation.y < hover_dist && (cubes[a].rotation.y += 0.002) : mouse.x < 0.5 && cubes[a].rotation.y > -hover_dist && (cubes[a].rotation.y -= 0.002),
-                    mouse.y > 0.5 ? cubes[a].rotation.x < hover_dist && (cubes[a].rotation.x += 0.002) : mouse.y < 0.5 && cubes[a].rotation.x > -hover_dist && (cubes[a].rotation.x -= 0.002);
-            (cubes[0].rotation.y > hover_dist || cubes[0].rotation.y < -hover_dist) && (cubes[0].rotation.x > hover_dist || cubes[0].rotation.x < -hover_dist) && (hovering = !0);
+                for (var a = 0; a < planes.length; a++)
+                mouse.x > 0.5 ? planes[a].rotation.y < hover_dist && (planes[a].rotation.y += 0.002) : mouse.x < 0.5 && planes[a].rotation.y > -hover_dist && (planes[a].rotation.y -= 0.002),
+                    mouse.y > 0.5 ? planes[a].rotation.x < hover_dist && (planes[a].rotation.x += 0.002) : mouse.y < 0.5 && planes[a].rotation.x > -hover_dist && (planes[a].rotation.x -= 0.002);
+            (planes[0].rotation.y > hover_dist || planes[0].rotation.y < -hover_dist) && (planes[0].rotation.x > hover_dist || planes[0].rotation.x < -hover_dist) && (hovering = !0);
             }
             const snapBack = () => {
-                cubes[0].rotation.x < 0.002 && cubes[0].rotation.x > -0.002 && cubes[0].rotation.y < 0.002 && cubes[0].rotation.y > -0.002 && (snapping = !1);
-                for (var a = 0; a < cubes.length; a++) (cubes[a].rotation.x -= snapback.x), (cubes[a].rotation.y -= snapback.y);
+                planes[0].rotation.x < 0.002 && planes[0].rotation.x > -0.002 && planes[0].rotation.y < 0.002 && planes[0].rotation.y > -0.002 && (snapping = !1);
+                for (var a = 0; a < planes.length; a++) (planes[a].rotation.x -= snapback.x), (planes[a].rotation.y -= snapback.y);
             }
             const hover = () => {
                 i == timerx && (i = 0);
-            for (var a = 0; a < cubes.length; a++) timerx / 2 > i ? ((cubes[a].rotation.x += 3e-4), (cubes[a].rotation.y -= 3e-4)) : ((cubes[a].rotation.x -= 3e-4), (cubes[a].rotation.y += 3e-4));
+            for (var a = 0; a < planes.length; a++) timerx / 2 > i ? ((planes[a].rotation.x += 3e-4), (planes[a].rotation.y -= 3e-4)) : ((planes[a].rotation.x -= 3e-4), (planes[a].rotation.y += 3e-4));
             i++;
             }
             window.requestAnimationFrame(animationLoop);
@@ -188,8 +187,8 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
 
             /** controls mouse and hover effects **/
                 scene.add(group);
-                (cubes[1].position.x = 10);
-                (cubes[2].position.x = 20);
+                (planes[1].position.x = 10);
+                (planes[2].position.x = 20);
 
                 const smoothness= 0.1 // 0 to 1 only
 
@@ -222,19 +221,37 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
             renderer.render(scene, camera);
         }
         animationLoop();
-            
+
+        {/* 
+            In order to avoid having the 'return' statement stop the planes from looping we need to check that we're done looping 
+            through the cubes before we proceed with this clean up code
+        */}
+        if(planes.length - 1 === loopityLoop) {
+            console.log('loop ends');
+            return () => {
+                if(ref.current){
+                    window.removeEventListener("resize", resizeRender);
+                ref.current.removeChild(renderer.domElement);
+                scene.remove(scene.children[0]);
+                }else{
+                    return null;
+                }
+                
+            };
         }
 
-        return () => {
-            if(ref.current){
-                window.removeEventListener("resize", resizeRender);
-            ref.current.removeChild(renderer.domElement);
-            scene.remove(scene.children[0]);
-            }else{
-                return null;
-            }
+
+        }
+        // return () => {
+        //     if(ref.current){
+        //         window.removeEventListener("resize", resizeRender);
+        //     ref.current.removeChild(renderer.domElement);
+        //     scene.remove(scene.children[0]);
+        //     }else{
+        //         return null;
+        //     }
             
-        };
+        // };
     },[count])
     return(
 
