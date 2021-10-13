@@ -1,6 +1,6 @@
 
 
-import React, {useEffect, useState, useRef} from 'react';
+import React, {useEffect, useRef} from 'react';
 import * as THREE from 'three';
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
 import Link from "next/link";
@@ -20,17 +20,10 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
     const src2 = projects[1]?.fields.featuredProjectImage.fields ? projects[1].fields.featuredProjectImage.fields.file.url : null;
     const src3 = projects[2]?.fields.featuredProjectImage.fields ? projects[2].fields.featuredProjectImage.fields.file.url : null;
     
-    const ref = useRef<HTMLElement | any>(null!);
-    const current = ref?.current;
 
     useEffect(()=>{
         const screenWidth = window.innerWidth;
         
-        // let scaling = 1;
-        // let widthIncrease = 1;
-        // let heightIncrease = 1;
-        // let prevHeight = window.innerHeight;
-        // let prevWidth = window.innerWidth;
         let hover_dist = 0.3;
         let mouse = { x: 0, y: 0 };
         let snapback = { x: 0, y: 0 };
@@ -72,10 +65,36 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
             width: window.innerWidth,
             height: window.innerHeight
         }
+
         
+
+        const canvas = document.querySelector('.homeScene');
+        const renderer = new THREE.WebGLRenderer({
+            canvas: canvas,
+            antialias: true,
+            alpha: !0
+        });
+
+        // ref.current.appendChild(renderer.domElement);
         
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1e4);
-        
+
+        const  resizeRender = () =>{
+            window.addEventListener('resize', () =>
+            {
+                // Update sizes
+                sizes.width = window.innerWidth
+                sizes.height = window.innerHeight
+
+                // Update renderer
+                renderer.setSize(sizes.width, sizes.height);
+
+                // Update camera
+                camera.aspect = sizes.width / sizes.height;
+                camera.updateProjectionMatrix();
+            })
+        }
+
         for (
                let looptyLoop = 0;
                looptyLoop < 3;
@@ -99,35 +118,14 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         ]
 
         group.add(cubes[looptyLoop]);
-        const canvas = document.querySelector('.homeScene');
+        
 
         camera.position.z = screenWidth >= 1200 ? 3 : 8;
-
-        const renderer = new THREE.WebGLRenderer({
-            canvas: canvas,
-            antialias: true,
-            alpha: !0
-        })
-
-        const  resizeRender = () =>{
-            window.addEventListener('resize', () =>
-            {
-                // Update sizes
-                sizes.width = window.innerWidth
-                sizes.height = window.innerHeight
-
-                // Update renderer
-                renderer.setSize(sizes.width, sizes.height);
-
-                // Update camera
-                camera.aspect = sizes.width / sizes.height;
-                camera.updateProjectionMatrix();
-            })
-        }
-
+        
         renderer.setClearColor( 0x000000, 0 );
         
         renderer.setSize(window.innerWidth, window.innerHeight);
+
         //pixel ratio: corresponds to how many physical pixels you have on the screen for one pixel unit on the software part.
         // Device pixel ratio: allows us to adjust the pixel ratio of our scene to pixel ratio of our device
 
@@ -175,10 +173,10 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
             window.requestAnimationFrame(animationLoop);
 
             mouseDown ? dragMove() : snapping ? snapBack() : hovering ? hover() : hoverMove()
-            leftScroll && (transitionFrames >= transitionCounter ? ((camera.position.x += 62.5), transitionCounter++) : ((transitionCounter = 0), (leftScroll = !1)));
-            dLeftScroll && (transitionFrames >= transitionCounter ? ((camera.position.x += 125), transitionCounter++) : ((transitionCounter = 0), (dLeftScroll = !1)));
-            rightScroll && (transitionFrames >= transitionCounter ? ((camera.position.x -= 62.5), transitionCounter++) : ((transitionCounter = 0), (rightScroll = !1)));
-            dRightScroll && (transitionFrames >= transitionCounter ? ((camera.position.x -= 125), transitionCounter++) : ((transitionCounter = 0), (dRightScroll = !1)));
+            // leftScroll && (transitionFrames >= transitionCounter ? ((camera.position.x += 62.5), transitionCounter++) : ((transitionCounter = 0), (leftScroll = !1)));
+            // dLeftScroll && (transitionFrames >= transitionCounter ? ((camera.position.x += 125), transitionCounter++) : ((transitionCounter = 0), (dLeftScroll = !1)));
+            // rightScroll && (transitionFrames >= transitionCounter ? ((camera.position.x -= 62.5), transitionCounter++) : ((transitionCounter = 0), (rightScroll = !1)));
+            // dRightScroll && (transitionFrames >= transitionCounter ? ((camera.position.x -= 125), transitionCounter++) : ((transitionCounter = 0), (dRightScroll = !1)));
             mouseDown && ((prevMouse.y = mouse.y), (prevMouse.x = mouse.x))
 
             
@@ -219,13 +217,16 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
             // Render
             renderer.render(scene, camera);
         }
-        animationLoop()
-        // return () => ref.current.removeChild( renderer.domElement);
+        animationLoop();
+            
         }
     },[count])
     return(
+
+        // In order for line 131 to work we need to renderer.Element to return an actual DOM Element.
+        //Canvas won't work because it's just a container for graphics.
         <>
-            <canvas ref={ref}  className={`${styles.homeScene} homeScene`}>
+            <canvas className={`${styles.homeScene} homeScene`}>
             </canvas>
         </>
     )
