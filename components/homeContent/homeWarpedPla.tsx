@@ -3,7 +3,6 @@
 import React, {useEffect, useRef} from 'react';
 import * as THREE from 'three';
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
-import Link from "next/link";
 import { isMobile } from 'react-device-detect';
 
 interface Type{
@@ -36,7 +35,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         let dLeftScroll = !1;
         let dRightScroll = !1;
         let rightScroll = !1;
-        let transitionFrames = 31;
+        let transitionFrames = 3;
         let transitionCounter = 0;
         let hovering = !1;
         let snapping = !1;
@@ -176,10 +175,10 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
             window.requestAnimationFrame(animationLoop);
 
             mouseDown ? dragMove() : snapping ? snapBack() : hovering ? hover() : hoverMove()
-            // leftScroll && (transitionFrames >= transitionCounter ? ((camera.position.x += 62.5), transitionCounter++) : ((transitionCounter = 0), (leftScroll = !1)));
-            // dLeftScroll && (transitionFrames >= transitionCounter ? ((camera.position.x += 125), transitionCounter++) : ((transitionCounter = 0), (dLeftScroll = !1)));
-            // rightScroll && (transitionFrames >= transitionCounter ? ((camera.position.x -= 62.5), transitionCounter++) : ((transitionCounter = 0), (rightScroll = !1)));
-            // dRightScroll && (transitionFrames >= transitionCounter ? ((camera.position.x -= 125), transitionCounter++) : ((transitionCounter = 0), (dRightScroll = !1)));
+            leftScroll && (transitionFrames >= count ? ((camera.position.x += 62.5), count++) : ((count = 0), (leftScroll = !1)));
+            dLeftScroll && (transitionFrames >= count ? ((camera.position.x += 125), count++) : ((count = 0), (dLeftScroll = !1)));
+            rightScroll && (transitionFrames >= count ? ((camera.position.x -= 62.5), count++) : ((count = 0), (rightScroll = !1)));
+            dRightScroll && (transitionFrames >= count ? ((camera.position.x -= 125), count++) : ((count = 0), (dRightScroll = !1)));
             mouseDown && ((prevMouse.y = mouse.y), (prevMouse.x = mouse.x))
 
             
@@ -226,13 +225,13 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
             In order to avoid having the 'return' statement stop the planes from looping we need to check that we're done looping 
             through the cubes before we proceed with this clean up code
         */}
+
         if(planes.length - 1 === loopityLoop) {
-            console.log('loop ends');
             return () => {
                 if(ref.current){
                     window.removeEventListener("resize", resizeRender);
-                ref.current.removeChild(renderer.domElement);
-                scene.remove(scene.children[0]);
+                    ref.current.removeChild(renderer.domElement);
+                    scene.remove(scene.children[0]);
                 }else{
                     return null;
                 }
