@@ -131,6 +131,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
 
         // Hide this if you want to achieve exact textured look as OG site
         renderer.setPixelRatio(Math.min(window.devicePixelRatio),2);
+        
     
         // Animations loop function
         const animationLoop = () =>

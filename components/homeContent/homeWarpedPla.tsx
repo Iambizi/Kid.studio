@@ -4,6 +4,8 @@ import React, {useEffect, useRef} from 'react';
 import * as THREE from 'three';
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
 import { isMobile } from 'react-device-detect';
+import * as TWEEN from "@tweenjs/tween.js";
+
 
 interface Type{
     count: number;
@@ -133,6 +135,14 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
 
         // Hide this if you want to achieve exact textured look as OG site
         renderer.setPixelRatio(Math.min(window.devicePixelRatio),2);
+        
+        const coords = { x: camera.position.x, y: camera.position.y };
+
+        new TWEEN.Tween(coords)
+            .to({ x: camera.position.x, y: camera.position.y })
+            .onUpdate(() =>
+                camera.position.set(coords.x, coords.y, camera.position.z)
+        )
     
         // Animations loop function
         const animationLoop = () =>
@@ -174,11 +184,11 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
             }
             window.requestAnimationFrame(animationLoop);
 
-            mouseDown ? dragMove() : snapping ? snapBack() : hovering ? hover() : hoverMove()
-            leftScroll && (transitionFrames >= count ? ((camera.position.x += 62.5), count++) : ((count = 0), (leftScroll = !1)));
-            dLeftScroll && (transitionFrames >= count ? ((camera.position.x += 125), count++) : ((count = 0), (dLeftScroll = !1)));
-            rightScroll && (transitionFrames >= count ? ((camera.position.x -= 62.5), count++) : ((count = 0), (rightScroll = !1)));
-            dRightScroll && (transitionFrames >= count ? ((camera.position.x -= 125), count++) : ((count = 0), (dRightScroll = !1)));
+            mouseDown ? dragMove() : snapping ? snapBack() : hovering ? hover() : hoverMove();
+            // leftScroll && (transitionFrames >= count ? ((camera.position.x += 62.5), count++) : ((count = 0), (leftScroll = !1)));
+            // dLeftScroll && (transitionFrames >= count ? ((camera.position.x += 125), count++) : ((count = 0), (dLeftScroll = !1)));
+            // rightScroll && (transitionFrames >= count ? ((camera.position.x -= 62.5), count++) : ((count = 0), (rightScroll = !1)));
+            // dRightScroll && (transitionFrames >= count ? ((camera.position.x -= 125), count++) : ((count = 0), (dRightScroll = !1)));
             mouseDown && ((prevMouse.y = mouse.y), (prevMouse.x = mouse.x))
 
             
@@ -199,7 +209,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                 
                 count > 0 ? group.position.x = -10 : '';
 
-                // count > 0 ? next : '';
+                // count > 0 ? camera.position.x += 0.0999 : '';
 
                 count === 2? group.position.x = -20 : '';
 
