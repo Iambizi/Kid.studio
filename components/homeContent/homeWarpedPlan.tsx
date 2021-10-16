@@ -20,6 +20,8 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
     const src2 = projects[1]?.fields.featuredProjectImage.fields ? projects[1].fields.featuredProjectImage.fields.file.url : null;
     const src3 = projects[2]?.fields.featuredProjectImage.fields ? projects[2].fields.featuredProjectImage.fields.file.url : null;
     
+    console.log(count);
+
 
     useEffect(()=>{
         const screenWidth = window.innerWidth;

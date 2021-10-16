@@ -4,8 +4,7 @@ import React, {useEffect, useRef} from 'react';
 import * as THREE from 'three';
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
 import { isMobile } from 'react-device-detect';
-import * as TWEEN from "@tweenjs/tween.js";
-
+import gsap from 'gsap';
 
 interface Type{
     count: number;
@@ -33,12 +32,6 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         let distMouse = { x: 0, y: 0 };
         let i = 0;
         let timerx = 500;
-        let leftScroll = !1;
-        let dLeftScroll = !1;
-        let dRightScroll = !1;
-        let rightScroll = !1;
-        let transitionFrames = 3;
-        let transitionCounter = 0;
         let hovering = !1;
         let snapping = !1;
         let mouseDown = !1;
@@ -77,7 +70,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
             alpha: !0
         });
 
-        // ref.current.appendChild(renderer.domElement);
+        ref.current.appendChild(renderer.domElement);
         
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1e4);
 
@@ -135,15 +128,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
 
         // Hide this if you want to achieve exact textured look as OG site
         renderer.setPixelRatio(Math.min(window.devicePixelRatio),2);
-        
-        const coords = { x: camera.position.x, y: camera.position.y };
 
-        new TWEEN.Tween(coords)
-            .to({ x: camera.position.x, y: camera.position.y })
-            .onUpdate(() =>
-                camera.position.set(coords.x, coords.y, camera.position.z)
-        )
-    
         // Animations loop function
         const animationLoop = () =>
         {   
@@ -163,14 +148,14 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
             const onDocumentMouseMove = (a)=> {
                 (hovering = !1), (mouse.x = a.clientX / window.innerWidth), (mouse.y = a.clientY / window.innerHeight);
             }
-            const dragMove = () => {
-                (distMouse.x = prevMouse.x - mouse.x), (distMouse.y = prevMouse.y - mouse.y);
-            for (var a = 0; a < planes.length; a++) (planes[a].rotation.y -= 2 * distMouse.x), (planes[a].rotation.x -= 2 * distMouse.y);
-            }
+            // const dragMove = () => {
+            //     (distMouse.x = prevMouse.x - mouse.x), (distMouse.y = prevMouse.y - mouse.y);
+            // for (var a = 0; a < planes.length; a++) (planes[a].rotation.y -= 2 * distMouse.x), (planes[a].rotation.x -= 2 * distMouse.y);
+            // }
             const hoverMove = () => {
                 for (var a = 0; a < planes.length; a++)
-                mouse.x > 0.5 ? planes[a].rotation.y < hover_dist && (planes[a].rotation.y += 0.002) : mouse.x < 0.5 && planes[a].rotation.y > -hover_dist && (planes[a].rotation.y -= 0.002),
-                    mouse.y > 0.5 ? planes[a].rotation.x < hover_dist && (planes[a].rotation.x += 0.002) : mouse.y < 0.5 && planes[a].rotation.x > -hover_dist && (planes[a].rotation.x -= 0.002);
+                mouse.x > 0.5 ? planes[a].rotation.y < hover_dist && (planes[a].rotation.y += 0.0025) : mouse.x < 0.5 && planes[a].rotation.y > -hover_dist && (planes[a].rotation.y -= 0.0025),
+                    mouse.y > 0.5 ? planes[a].rotation.x < hover_dist && (planes[a].rotation.x += 0.0025) : mouse.y < 0.5 && planes[a].rotation.x > -hover_dist && (planes[a].rotation.x -= 0.0025);
             (planes[0].rotation.y > hover_dist || planes[0].rotation.y < -hover_dist) && (planes[0].rotation.x > hover_dist || planes[0].rotation.x < -hover_dist) && (hovering = !0);
             }
             const snapBack = () => {
@@ -184,11 +169,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
             }
             window.requestAnimationFrame(animationLoop);
 
-            mouseDown ? dragMove() : snapping ? snapBack() : hovering ? hover() : hoverMove();
-            // leftScroll && (transitionFrames >= count ? ((camera.position.x += 62.5), count++) : ((count = 0), (leftScroll = !1)));
-            // dLeftScroll && (transitionFrames >= count ? ((camera.position.x += 125), count++) : ((count = 0), (dLeftScroll = !1)));
-            // rightScroll && (transitionFrames >= count ? ((camera.position.x -= 62.5), count++) : ((count = 0), (rightScroll = !1)));
-            // dRightScroll && (transitionFrames >= count ? ((camera.position.x -= 125), count++) : ((count = 0), (dRightScroll = !1)));
+            snapping ? snapBack() : hovering ? hover() : hoverMove();
             mouseDown && ((prevMouse.y = mouse.y), (prevMouse.x = mouse.x))
 
             
@@ -198,26 +179,19 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                 scene.add(group);
                 (planes[1].position.x = 10);
                 (planes[2].position.x = 20);
-
-                const smoothness= 0.1 // 0 to 1 only
-
-                const targetPosition = group.position.clone();
-                const next = targetPosition.x -= 10;
-                const nextLast = targetPosition.x -= 20;
-                const previous = targetPosition.x = 10;
-
                 
-                count > 0 ? group.position.x = -10 : '';
+                // count > 0 ? group.position.x = -10 : '';
 
-                // count > 0 ? camera.position.x += 0.0999 : '';
+                count > 0 ? gsap.to(group.position, { duration: .5, delay: .02, x: -10 }) : '';
 
-                count === 2? group.position.x = -20 : '';
+                // count === 2? group.position.x = -20 : '';
 
-                // count === 2? nextLast : '';
+                count === 2? gsap.to(group.position, { duration: .5, delay: .02, x: -20 }) : '';
 
-                count < 0 ? group.position.x = 10 : '';
+                // count < 0 ? group.position.x = 10 : '';
 
-                // count < 0 ? previous : '';
+                count < 0 ? gsap.to(group.position, { duration: .5, delay: .02, x: -30 }) : '';
+
 
                 // console.log('im runninnn')
                             
@@ -238,7 +212,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
 
         if(planes.length - 1 === loopityLoop) {
             return () => {
-                if(ref.current){
+                if( ref.current){
                     window.removeEventListener("resize", resizeRender);
                     ref.current.removeChild(renderer.domElement);
                     scene.remove(scene.children[0]);
