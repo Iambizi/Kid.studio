@@ -154,12 +154,12 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
             // }
             const hoverMove = () => {
                 for (var a = 0; a < planes.length; a++)
-                mouse.x > 0.5 ? planes[a].rotation.y < hover_dist && (planes[a].rotation.y += 0.0025) : mouse.x < 0.5 && planes[a].rotation.y > -hover_dist && (planes[a].rotation.y -= 0.0025),
-                    mouse.y > 0.5 ? planes[a].rotation.x < hover_dist && (planes[a].rotation.x += 0.0025) : mouse.y < 0.5 && planes[a].rotation.x > -hover_dist && (planes[a].rotation.x -= 0.0025);
+                mouse.x > 0.5 ? planes[a].rotation.y < hover_dist && (planes[a].rotation.y += 0.003) : mouse.x < 0.5 && planes[a].rotation.y > -hover_dist && (planes[a].rotation.y -= 0.003),
+                    mouse.y > 0.5 ? planes[a].rotation.x < hover_dist && (planes[a].rotation.x += 0.003) : mouse.y < 0.5 && planes[a].rotation.x > -hover_dist && (planes[a].rotation.x -= 0.003);
             (planes[0].rotation.y > hover_dist || planes[0].rotation.y < -hover_dist) && (planes[0].rotation.x > hover_dist || planes[0].rotation.x < -hover_dist) && (hovering = !0);
             }
             const snapBack = () => {
-                planes[0].rotation.x < 0.002 && planes[0].rotation.x > -0.002 && planes[0].rotation.y < 0.002 && planes[0].rotation.y > -0.002 && (snapping = !1);
+                planes[0].rotation.x < 0.003 && planes[0].rotation.x > -0.003 && planes[0].rotation.y < 0.003 && planes[0].rotation.y > -0.003 && (snapping = !1);
                 for (var a = 0; a < planes.length; a++) (planes[a].rotation.x -= snapback.x), (planes[a].rotation.y -= snapback.y);
             }
             const hover = () => {
