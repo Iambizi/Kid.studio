@@ -7,7 +7,7 @@ import { PageTransition } from 'next-page-transitions';
 function MyApp({ Component, pageProps}) {
   const router = useRouter();
   return(
-    <PageTransition timeout={600} classNames="page-transition">
+    <PageTransition timeout={900} classNames="page-transition">
       <Component {...pageProps} key={router.route} />
     </PageTransition>  
   )

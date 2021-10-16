@@ -21,7 +21,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
     const src3 = projects[2]?.fields.featuredProjectImage.fields ? projects[2].fields.featuredProjectImage.fields.file.url : null;
     
     const ref = useRef<HTMLElement | any>(null!);
-
+    console.log(carouselX);
     useEffect(()=>{
         const screenWidth = window.innerWidth;
         
@@ -60,8 +60,6 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
             width: window.innerWidth,
             height: window.innerHeight
         }
-
-        
 
         const canvas = document.querySelector('.homeScene');
         const renderer = new THREE.WebGLRenderer({
@@ -148,10 +146,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
             const onDocumentMouseMove = (a)=> {
                 (hovering = !1), (mouse.x = a.clientX / window.innerWidth), (mouse.y = a.clientY / window.innerHeight);
             }
-            // const dragMove = () => {
-            //     (distMouse.x = prevMouse.x - mouse.x), (distMouse.y = prevMouse.y - mouse.y);
-            // for (var a = 0; a < planes.length; a++) (planes[a].rotation.y -= 2 * distMouse.x), (planes[a].rotation.x -= 2 * distMouse.y);
-            // }
+
             const hoverMove = () => {
                 for (var a = 0; a < planes.length; a++)
                 mouse.x > 0.5 ? planes[a].rotation.y < hover_dist && (planes[a].rotation.y += 0.003) : mouse.x < 0.5 && planes[a].rotation.y > -hover_dist && (planes[a].rotation.y -= 0.003),
@@ -177,23 +172,19 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
 
             /** controls mouse and hover effects **/
                 scene.add(group);
-                (planes[1].position.x = 10);
-                (planes[2].position.x = 20);
+                // (planes[1].position.x = 10);
+                // (planes[2].position.x = 20);
+                // (camera.position.z = 500);
+                (planes[1].position.x = 100);
+                (planes[2].position.x = 200);
                 
-                // count > 0 ? group.position.x = -10 : '';
 
-                count > 0 ? gsap.to(group.position, { duration: .5, delay: .02, x: -10 }) : '';
+                count > 0 && count <= 2 ? gsap.to(camera.position, { duration: .9, delay: .0, x: 100 }) : '';
+                
+                // count === 2 ? gsap.to(camera.position, { duration: .5, delay: .0, x: 25 }) : '';
 
-                // count === 2? group.position.x = -20 : '';
-
-                count === 2? gsap.to(group.position, { duration: .5, delay: .02, x: -20 }) : '';
-
-                // count < 0 ? group.position.x = 10 : '';
-
-                count < 0 ? gsap.to(group.position, { duration: .5, delay: .02, x: -30 }) : '';
-
-
-                // console.log('im runninnn')
+                // slidePrevious ? gsap.from(camera.position, { duration: .5, delay: .02, x: -10 }) : '';
+                // camera.position.x < 10 ? gsap.to(camera.position, { duration: .5, delay: .02, x: 20 }) : '';
                             
                 document.addEventListener("mousemove", onDocumentMouseMove, !1)
                 document.addEventListener("mousedown", onMouseDown, !1)
@@ -201,6 +192,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
             /** End controls mouse and hover effects **/
 
             // Render
+            // console.log(camera.position.x);
             renderer.render(scene, camera);
         }
         animationLoop();
