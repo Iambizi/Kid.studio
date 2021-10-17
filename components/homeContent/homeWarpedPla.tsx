@@ -1,6 +1,6 @@
 
 
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import * as THREE from 'three';
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
 import { isMobile } from 'react-device-detect';
@@ -21,7 +21,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
     const src3 = projects[2]?.fields.featuredProjectImage.fields ? projects[2].fields.featuredProjectImage.fields.file.url : null;
     
     const ref = useRef<HTMLElement | any>(null!);
-    console.log(carouselX);
+
     useEffect(()=>{
         const screenWidth = window.innerWidth;
         
@@ -177,11 +177,20 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                 // (camera.position.z = 500);
                 (planes[1].position.x = 100);
                 (planes[2].position.x = 200);
+
+                // camera.position.x = carouselX
                 
 
-                count > 0 && count <= 2 ? gsap.to(camera.position, { duration: .9, delay: .0, x: 100 }) : '';
+                // slideNext && camera.position.x < 200 ? gsap.to(camera.position, { duration: .9, delay: .0, x: 100 }) : camera.position.x = 0;
+
+                slideNext && camera.position.x < 200 ? gsap.to(camera.position, { duration: .9, delay: .0, x: carouselX }) : camera.position.x = 0;
+
                 
-                // count === 2 ? gsap.to(camera.position, { duration: .5, delay: .0, x: 25 }) : '';
+
+                // count <  && count <= 2 ? gsap.to(camera.position, { duration: .9, delay: .0, x: 100 }) : '';
+
+                // slidePrevious && camera.position.x < 100 ? camera.position.x = 200 : gsap.to(camera.position, { duration: .9, delay: .0, x: -carouselX });
+                
 
                 // slidePrevious ? gsap.from(camera.position, { duration: .5, delay: .02, x: -10 }) : '';
                 // camera.position.x < 10 ? gsap.to(camera.position, { duration: .5, delay: .02, x: 20 }) : '';
