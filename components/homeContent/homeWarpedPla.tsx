@@ -172,24 +172,20 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
 
             /** controls mouse and hover effects **/
                 scene.add(group);
-                // (planes[1].position.x = 10);
-                // (planes[2].position.x = 20);
-                // (camera.position.z = 500);
+
                 (planes[1].position.x = 100);
                 (planes[2].position.x = 200);
 
-                // camera.position.x = carouselX
+                const tl = gsap.timeline();
+                const next = tl.to(camera.position, { duration: .9, delay: .0, x: carouselX });
+                const previous = next.reverse();
+
+                slideNext && camera.position.x < 200 ? next.play() : '';
+
                 
 
-                // slideNext && camera.position.x < 200 ? gsap.to(camera.position, { duration: .9, delay: .0, x: 100 }) : camera.position.x = 0;
 
-                slideNext && camera.position.x < 200 ? gsap.to(camera.position, { duration: .9, delay: .0, x: carouselX }) : camera.position.x = 0;
-
-                
-
-                // count <  && count <= 2 ? gsap.to(camera.position, { duration: .9, delay: .0, x: 100 }) : '';
-
-                // slidePrevious && camera.position.x < 100 ? camera.position.x = 200 : gsap.to(camera.position, { duration: .9, delay: .0, x: -carouselX });
+                slidePrevious ? next.reverse() : '';
                 
 
                 // slidePrevious ? gsap.from(camera.position, { duration: .5, delay: .02, x: -10 }) : '';
