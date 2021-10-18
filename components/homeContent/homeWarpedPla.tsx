@@ -188,7 +188,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
 
                 // const slideBackToStart = tl.fromTo(camera.position,{duration: .9, x: 0 },{duration: .9, x: 200});
 
-                slideNext && camera.position.x < 200 ? slide.play() : 'slide.restart()';
+                slideNext && camera.position.x < 200 ? slide.play() : '';
 
                 // YOOO Reverse works, your conditions are just a little wrong right now //
 
