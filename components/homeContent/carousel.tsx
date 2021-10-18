@@ -9,7 +9,7 @@ interface Type {
     slidePrevious: boolean;
     count: number;
     projects: any;
-    goPrevious: any;
+    goPrevious?: any;
 }
 
 export default function carousel({ homeProjects, carouselX, slideNext, slidePrevious, count, projects, goPrevious }:Type): JSX.Element{
