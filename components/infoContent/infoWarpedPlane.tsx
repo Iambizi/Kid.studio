@@ -142,7 +142,6 @@ export default function inforWarpImg({src}: Type):JSX.Element{
             }
             
         };
-
     },[])
 
     return(

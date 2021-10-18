@@ -48,14 +48,18 @@
             @media screen and (min-width:$m){
                 margin: 20px 22px;
             }
-            &:hover{
-                color: #f0f0f0;
-                // padding: 2px 10px;
-                background-color: #000;
+            @media (hover: hover) {
+                &:hover{
+                    color: #f0f0f0;
+                    background-color: #000;
+                }
             }
             &.hoverColor{
                 color: #f0f0f0;
             }
+            @media (hover: none) {
+                a:hover { color: inherit; }
+              }
         }
     }
     @media screen and (max-width:$l){

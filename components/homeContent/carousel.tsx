@@ -9,9 +9,10 @@ interface Type {
     slidePrevious: boolean;
     count: number;
     projects: any;
+    goPrevious: any;
 }
 
-export default function carousel({ homeProjects, carouselX, slideNext, slidePrevious, count, projects }:Type): JSX.Element{
+export default function carousel({ homeProjects, carouselX, slideNext, slidePrevious, count, projects, goPrevious }:Type): JSX.Element{
     {
         carouselX  < -200 ?  `${styles.sliderWrapper} ${styles.slidePrevious}` : carouselX < -100 ? `${styles.sliderWrapper} ${styles.slideNext}` : `${styles.sliderWrapper}`
     }
@@ -26,7 +27,7 @@ export default function carousel({ homeProjects, carouselX, slideNext, slidePrev
                         </div>
                 )) : ""}
             </div>
-            <WarpedIMG count={count} slideNext={slideNext} slidePrevious={slidePrevious} carouselX={carouselX} projects={projects} />
+            <WarpedIMG count={count} slideNext={slideNext} slidePrevious={slidePrevious} carouselX={carouselX} projects={projects} goPrevious={goPrevious} />
         </>
     )
 }

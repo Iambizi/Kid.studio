@@ -12,9 +12,10 @@ interface Type{
     carouselX : number;
     slideNext: boolean;
     slidePrevious: boolean;
+    goPrevious: any;
 }
 
-export default function warpedImage({ count, projects, carouselX, slideNext, slidePrevious }:Type):JSX.Element{
+export default function warpedImage({ count, projects, carouselX, slideNext, slidePrevious, goPrevious }:Type):JSX.Element{
 
     const src1 = projects[0]?.fields.featuredProjectImage.fields ? projects[0].fields.featuredProjectImage.fields.file.url : null;
     const src2 = projects[1]?.fields.featuredProjectImage.fields ? projects[1].fields.featuredProjectImage.fields.file.url : null;
@@ -23,6 +24,10 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
     const ref = useRef<HTMLElement | any>(null!);
 
     useEffect(()=>{
+
+        if (!ref.current) {
+            return
+        }
         const screenWidth = window.innerWidth;
         
         let hover_dist = 0.3;
@@ -165,7 +170,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
             window.requestAnimationFrame(animationLoop);
 
             snapping ? snapBack() : hovering ? hover() : hoverMove();
-            mouseDown && ((prevMouse.y = mouse.y), (prevMouse.x = mouse.x))
+            mouseDown && ((prevMouse.y = mouse.y), (prevMouse.x = mouse.x));
 
             
             /** End Warped tilt hover functionality **/
@@ -177,23 +182,25 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                 (planes[2].position.x = 200);
 
                 const tl = gsap.timeline();
-                const next = tl.to(camera.position, { duration: .9, delay: .0, x: carouselX });
-                const previous = next.reverse();
+                const slide = tl.to(camera.position, { duration: .9, x: carouselX });
 
-                slideNext && camera.position.x < 200 ? next.play() : '';
+                // const slideReachedEnd = tl.fromTo(camera.position,{duration: .9, x: 200 },{duration: .9, x: 0});
 
+                // const slideBackToStart = tl.fromTo(camera.position,{duration: .9, x: 0 },{duration: .9, x: 200});
+
+                slideNext && camera.position.x < 200 ? slide.play() : 'slide.restart()';
+
+                // YOOO Reverse works, your conditions are just a little wrong right now //
+
+                goPrevious > 3 ? slide.reversed() : '';
                 
-
-
-                slidePrevious ? next.reverse() : '';
-                
-
+                // console.log(slide.reverse());
                 // slidePrevious ? gsap.from(camera.position, { duration: .5, delay: .02, x: -10 }) : '';
                 // camera.position.x < 10 ? gsap.to(camera.position, { duration: .5, delay: .02, x: 20 }) : '';
                             
-                document.addEventListener("mousemove", onDocumentMouseMove, !1)
-                document.addEventListener("mousedown", onMouseDown, !1)
-                document.addEventListener("mouseup", onMouseUp, !1)
+                document.addEventListener("mousemove", onDocumentMouseMove, !1);
+                document.addEventListener("mousedown", onMouseDown, !1);
+                document.addEventListener("mouseup", onMouseUp, !1);
             /** End controls mouse and hover effects **/
 
             // Render
