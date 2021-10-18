@@ -56,6 +56,9 @@
             &.hoverColor{
                 color: #f0f0f0;
             }
+            @media (hover: hover) and (pointer: fine) {
+                color: inherit;
+            }
         }
     }
     @media screen and (max-width:$l){
