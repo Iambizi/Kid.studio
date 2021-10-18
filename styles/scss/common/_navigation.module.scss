@@ -57,7 +57,11 @@
                 color: #f0f0f0;
             }
             @media (hover: hover) and (pointer: fine) {
-                color: inherit;
+                &:hover{
+                    color: #f0f0f0;
+                    // padding: 2px 10px;
+                    background-color: #000;
+                }
             }
         }
     }
