@@ -15,8 +15,6 @@ interface Type{
 
 export default function reels({ reelData }: Type):JSX.Element{
     const router = useRouter();
-    const pathName = router.pathname;
-    const comparison = pathName === "/work/reel";
 
     async function fetcher(url){
         const res = await fetch(url);
