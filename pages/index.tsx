@@ -4,7 +4,7 @@ import { GetStaticProps } from 'next';
 import Layout from '../components/layout';
 import Meta  from '../components/common/meta';
 import Content from '../components/homeContent/content';
-import React, { useEffect } from "react";
+import React from "react";
 import { connectClient } from '../components/common/utils/createClient';
 import useSWR from 'swr';
 
@@ -16,10 +16,6 @@ interface Type{
 export default function home({homeProjects, projects}: Type):JSX.Element {
   // removes needsScroll class set in project pages from vertical scroll
   // projectPage useEffect hook needs refactoring to avoid calling it again here.
-    useEffect(()=>{
-        // const bg = document.body;
-        // bg.classList.remove("needsScroll");
-    },[]);
 
     async function fetcher(url){
       const res = await fetch(url);

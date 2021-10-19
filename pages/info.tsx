@@ -1,7 +1,7 @@
 import Layout from '../components/layout';
 import { GetStaticProps} from 'next';
 import Meta  from '../components/common/meta';
-import React, { useEffect } from "react";
+import React from "react";
 import InfoBox from '../components/infoContent/infoBox';
 import InfoWarpImg from '../components/infoContent/infoWarpedPlane';
 import { connectClient } from '../components/common/utils/createClient';
@@ -18,10 +18,6 @@ export default function info({ infoPageData, fallback }:Type):JSX.Element{
 // removes needsScroll class set in project pages from vertical scroll
 // projectPage useEffect hook needs refactoring to avoid calling it again here.
 
-  useEffect(()=>{
-    const bg = document.body;
-    bg.classList.remove("needsScroll");
-},[]);
 
 async function fetcher(url){
     const res = await fetch(url);

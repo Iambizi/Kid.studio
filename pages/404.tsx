@@ -1,6 +1,5 @@
 import Layout from '../components/layout';
 import Meta  from '../components/common/meta';
-import Content from '../components/homeContent/content';
 import styles from '../styles/scss/common/_error.module.scss';
 export default function Custom404() {
     return (

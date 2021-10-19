@@ -1,7 +1,7 @@
 import { GetStaticProps} from 'next';
 import Layout from '../../components/layout';
 import Meta  from '../../components/common/meta';
-import React, { useEffect } from "react";
+import React, {useEffect} from "react";
 import styles from '../../styles/scss/common/_footer.module.scss';
 import ReelInfo from '../../components/reelContent/reelInfoSection';
 import ReelStills from '../../components/reelContent/reelStills';
@@ -38,13 +38,21 @@ export default function reels({ reelData }: Type):JSX.Element{
 
         const bg = document.body;
         
-        if(pathName === "/work/reel"){
-            bg.classList.add("needsScroll");
-        }else if(comparison === false){
-            bg.classList.remove("needsScroll");
+        bg.classList.add("needsScroll");
+        console.log('scrolly');
+    
+        const removePageScroll = () =>{
+              bg.classList.remove("needsScroll");
+              console.log('no scrolly');
         }
+    
+        router.events.on('beforeHistoryChange', removePageScroll);
+        return () => {
+          router.events.off('beforeHistoryChange', removePageScroll);
+        };
 
     },[]);
+
     
     return(
         <>
