@@ -18,8 +18,6 @@ interface Type{
 
 export default function projectPages( { projectPage }: Type):JSX.Element{
     const router = useRouter();
-    const pathName = router.pathname;
-    const comparison = pathName === "/work/[project]";
 
     async function fetcher(url){
         const res = await fetch(url);
@@ -41,13 +39,20 @@ export default function projectPages( { projectPage }: Type):JSX.Element{
 
         const bg = document.body;
         
-        if(pathName === "/work/[project]"){
-            bg.classList.add("needsScroll");
-        }else if(comparison === false){
-            bg.classList.remove("needsScroll");
+        bg.classList.add("needsScroll");
+        console.log('scrolly');
+    
+        const removePageScroll = () =>{
+              bg.classList.remove("needsScroll");
+              console.log('no scrolly');
         }
+    
+        router.events.on('beforeHistoryChange', removePageScroll);
+        return () => {
+          router.events.off('beforeHistoryChange', removePageScroll);
+        };
 
-    },[path]);
+    },[]);
 
     return(
         <>
