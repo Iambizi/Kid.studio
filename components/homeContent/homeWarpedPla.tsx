@@ -181,14 +181,13 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                 (planes[1].position.x = 100);
                 (planes[2].position.x = 200);
 
-                const tl = gsap.timeline();
-                const slide = tl.to(camera.position, { duration: .9, x: carouselX });
+                
 
                 // const slideReachedEnd = tl.fromTo(camera.position,{duration: .9, x: 200 },{duration: .9, x: 0});
 
                 // const slideBackToStart = tl.fromTo(camera.position,{duration: .9, x: 0 },{duration: .9, x: 200});
 
-                slideNext && camera.position.x < 200 ? slide.play() : '';
+                
 
                 // YOOO Reverse works, your conditions are just a little wrong right now //
 
@@ -204,7 +203,6 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
             /** End controls mouse and hover effects **/
 
             // Render
-            // console.log(camera.position.x);
             renderer.render(scene, camera);
         }
         animationLoop();
@@ -239,7 +237,11 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         //     }
             
         // };
-    },[count])
+        const tl = gsap.timeline();
+                const slide = tl.to(camera.position, { duration: .9, x: carouselX });
+        slideNext && camera.position.x < 200 ? slide.play() : '';
+    },[])
+    
     return(
 
         // In order for line 131 to work we need to renderer.Element to return an actual DOM Element.
