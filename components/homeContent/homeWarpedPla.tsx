@@ -1,6 +1,6 @@
 
 
-import React, {useEffect, useRef, useState} from 'react';
+import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
 import { isMobile } from 'react-device-detect';
@@ -23,25 +23,33 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
     
     const ref = useRef<HTMLElement | any>(null!);
 
+    slideNext ? console.log("click farwud") : null;
+    slideNext && carouselX <= 100 ? "'nother click farwud" : "back to 1st";
+    slidePrevious ? console.log("click Previas") : null;
+    slidePrevious && carouselX == 100 ? "back to 1st": "'nother click backwuads";
+    
+
+
+    // const tl = gsap.timeline();
+    // const slide = tl.to(camera.position, { duration: .9, x: carouselX });
+    // slideNext && camera.position.x < 200 ? slide.play() : '';
+
     useEffect(()=>{
 
         if (!ref.current) {
             return
         }
-        const screenWidth = window.innerWidth;
         
         let hover_dist = 0.3;
         let mouse = { x: 0, y: 0 };
         let snapback = { x: 0, y: 0 };
         let prevMouse = { x: 0, y: 0 };
-        let distMouse = { x: 0, y: 0 };
         let i = 0;
         let timerx = 500;
         let hovering = !1;
         let snapping = !1;
         let mouseDown = !1;
         let scale = 1;
-        let a = !1;
 
 
         const scene = new THREE.Scene();
@@ -61,10 +69,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         const width = 5.4;
         const height = 2.9;
 
-        const sizes = {
-            width: window.innerWidth,
-            height: window.innerHeight
-        }
+
 
         const canvas = document.querySelector('.homeScene');
         const renderer = new THREE.WebGLRenderer({
@@ -75,7 +80,13 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
 
         ref.current.appendChild(renderer.domElement);
         
+        const sizes = {
+            width: window.innerWidth,
+            height: window.innerHeight
+        }
+    
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1e4);
+
 
         const  resizeRender = () =>{
             window.addEventListener('resize', () =>
@@ -118,7 +129,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         group.add(planes[loopityLoop]);
         
 
-        camera.position.z = screenWidth >= 1200 ? 3 : 8;
+        camera.position.z = isMobile ? 8 : 3;
         
         renderer.setClearColor( 0x000000, 0 );
         
@@ -182,16 +193,11 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                 (planes[2].position.x = 200);
 
                 
-
                 // const slideReachedEnd = tl.fromTo(camera.position,{duration: .9, x: 200 },{duration: .9, x: 0});
 
                 // const slideBackToStart = tl.fromTo(camera.position,{duration: .9, x: 0 },{duration: .9, x: 200});
 
-                
-
                 // YOOO Reverse works, your conditions are just a little wrong right now //
-
-                goPrevious > 3 ? slide.reversed() : '';
                 
                 // console.log(slide.reverse());
                 // slidePrevious ? gsap.from(camera.position, { duration: .5, delay: .02, x: -10 }) : '';
@@ -224,22 +230,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                 
             };
         }
-
-
         }
-        // return () => {
-        //     if(ref.current){
-        //         window.removeEventListener("resize", resizeRender);
-        //     ref.current.removeChild(renderer.domElement);
-        //     scene.remove(scene.children[0]);
-        //     }else{
-        //         return null;
-        //     }
-            
-        // };
-        const tl = gsap.timeline();
-                const slide = tl.to(camera.position, { duration: .9, x: carouselX });
-        slideNext && camera.position.x < 200 ? slide.play() : '';
     },[])
     
     return(
