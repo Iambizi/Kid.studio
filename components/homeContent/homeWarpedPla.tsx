@@ -1,6 +1,6 @@
 
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
 import { isMobile } from 'react-device-detect';
@@ -23,16 +23,16 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
     
     const ref = useRef<HTMLElement | any>(null!);
 
-    slideNext ? console.log("click farwud") : null;
-    slideNext && carouselX <= 100 ? "'nother click farwud" : "back to 1st";
-    slidePrevious ? console.log("click Previas") : null;
-    slidePrevious && carouselX == 100 ? "back to 1st": "'nother click backwuads";
+    // slideNext ? console.log("click farwud") : null;
+    // slideNext && carouselX <= 100 ? "'nother click farwud" : "back to 1st";
+    // slidePrevious ? console.log("click Previas") : null;
+    // slidePrevious && carouselX == 100 ? "back to 1st": "'nother click backwuads";
     
-
-
     // const tl = gsap.timeline();
     // const slide = tl.to(camera.position, { duration: .9, x: carouselX });
     // slideNext && camera.position.x < 200 ? slide.play() : '';
+
+    console.log(carouselX);
 
     useEffect(()=>{
 
@@ -51,7 +51,6 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         let mouseDown = !1;
         let scale = 1;
 
-
         const scene = new THREE.Scene();
 
         const group = new THREE.Group();
@@ -68,8 +67,6 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         
         const width = 5.4;
         const height = 2.9;
-
-
 
         const canvas = document.querySelector('.homeScene');
         const renderer = new THREE.WebGLRenderer({
@@ -191,6 +188,18 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
 
                 (planes[1].position.x = 100);
                 (planes[2].position.x = 200);
+                camera.position.x = carouselX;
+                const tl = gsap.timeline();
+                const slide = tl.to(camera.position, { duration: .9, x: carouselX });
+
+                const nextButton = document.getElementById("next");
+                const previousButton = document.getElementById("previous");
+
+                const next = () =>{
+                    slide.play();
+                }
+                const previous = ()=>{
+                }
 
                 
                 // const slideReachedEnd = tl.fromTo(camera.position,{duration: .9, x: 200 },{duration: .9, x: 0});
@@ -206,6 +215,9 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                 document.addEventListener("mousemove", onDocumentMouseMove, !1);
                 document.addEventListener("mousedown", onMouseDown, !1);
                 document.addEventListener("mouseup", onMouseUp, !1);
+                nextButton.addEventListener("mouseup", next, !1 );
+                previousButton.addEventListener("mouseup", previous, !1 );
+
             /** End controls mouse and hover effects **/
 
             // Render
