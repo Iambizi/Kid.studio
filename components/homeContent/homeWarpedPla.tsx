@@ -20,8 +20,12 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
     const src1 = projects[0]?.fields.featuredProjectImage.fields ? projects[0].fields.featuredProjectImage.fields.file.url : null;
     const src2 = projects[1]?.fields.featuredProjectImage.fields ? projects[1].fields.featuredProjectImage.fields.file.url : null;
     const src3 = projects[2]?.fields.featuredProjectImage.fields ? projects[2].fields.featuredProjectImage.fields.file.url : null;
+
+    
     
     const ref = useRef<HTMLElement | any>(null!);
+
+    ref.current = count;
 
     // slideNext ? console.log("click farwud") : null;
     // slideNext && carouselX <= 100 ? "'nother click farwud" : "back to 1st";
@@ -31,8 +35,6 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
     // const tl = gsap.timeline();
     // const slide = tl.to(camera.position, { duration: .9, x: carouselX });
     // slideNext && camera.position.x < 200 ? slide.play() : '';
-
-    console.log(carouselX);
 
     useEffect(()=>{
 
@@ -208,7 +210,8 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                 (planes[1].position.x = 100);
                 (planes[2].position.x = 200);
                 // camera.position.x = carouselX;
-                const tl = gsap.timeline();
+                // const tl = gsap.timeline();
+                // const slide = tl.to(camera.position, { duration: .9, x: 100 });
                 
 
                 const nextButton = document.getElementById("next");
@@ -216,11 +219,9 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
 
                 const next = () =>{
                     // slide.play();
-                    const slide = tl.to(camera.position, { duration: .9, x: 100 });
                 }
                 const previous = ()=>{
                 }
-
                 
                 // const slideReachedEnd = tl.fromTo(camera.position,{duration: .9, x: 200 },{duration: .9, x: 0});
 
@@ -238,6 +239,8 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
 
                 nextButton ? nextButton.addEventListener("mouseup", next, !1 ) : null; 
                 previousButton ? previousButton.addEventListener("mouseup", previous, !1 ): null;
+
+                
 
             /** End controls mouse and hover effects **/
 
