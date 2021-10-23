@@ -50,6 +50,13 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         let snapping = !1;
         let mouseDown = !1;
         let scale = 1;
+        let transitionFrames = 31;
+        let transitionCounter = 0;
+        let leftScroll = !1;
+        let dLeftScroll = !1;
+        let dRightScroll = !1;
+        let rightScroll = !1;
+        let distMouse = { x: 0, y: 0 };
 
         const scene = new THREE.Scene();
 
@@ -160,6 +167,11 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                 (hovering = !1), (mouse.x = a.clientX / window.innerWidth), (mouse.y = a.clientY / window.innerHeight);
             }
 
+            function dragMove() {
+                (distMouse.x = prevMouse.x - mouse.x), (distMouse.y = prevMouse.y - mouse.y);
+                for (var a = 0; a < planes.length; a++) (planes[a].rotation.y -= 2 * distMouse.x), (planes[a].rotation.x -= 2 * distMouse.y);
+            }
+
             const hoverMove = () => {
                 for (var a = 0; a < planes.length; a++)
                 mouse.x > 0.5 ? planes[a].rotation.y < hover_dist && (planes[a].rotation.y += 0.003) : mouse.x < 0.5 && planes[a].rotation.y > -hover_dist && (planes[a].rotation.y -= 0.003),
@@ -177,8 +189,15 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
             }
             window.requestAnimationFrame(animationLoop);
 
-            snapping ? snapBack() : hovering ? hover() : hoverMove();
+            mouseDown ? dragMove() : snapping ? snapBack() : hovering ? hover() : hoverMove();
+            leftScroll && (transitionFrames >= transitionCounter ? ((camera.position.x += 100), transitionCounter++) : ((transitionCounter = 0), (leftScroll = !1)));
+            dLeftScroll && (transitionFrames >= transitionCounter ? ((camera.position.x += 200), transitionCounter++) : ((transitionCounter = 0), (dLeftScroll = !1)));
+            rightScroll && (transitionFrames >= transitionCounter ? ((camera.position.x -= 100), transitionCounter++) : ((transitionCounter = 0), (rightScroll = !1)));
+            dRightScroll && (transitionFrames >= transitionCounter ? ((camera.position.x -= 200), transitionCounter++) : ((transitionCounter = 0), (dRightScroll = !1)));
             mouseDown && ((prevMouse.y = mouse.y), (prevMouse.x = mouse.x));
+
+            // snapping ? snapBack() : hovering ? hover() : hoverMove();
+            // mouseDown && ((prevMouse.y = mouse.y), (prevMouse.x = mouse.x));
 
             
             /** End Warped tilt hover functionality **/
@@ -188,15 +207,16 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
 
                 (planes[1].position.x = 100);
                 (planes[2].position.x = 200);
-                camera.position.x = carouselX;
+                // camera.position.x = carouselX;
                 const tl = gsap.timeline();
-                const slide = tl.to(camera.position, { duration: .9, x: carouselX });
+                
 
                 const nextButton = document.getElementById("next");
                 const previousButton = document.getElementById("previous");
 
                 const next = () =>{
-                    slide.play();
+                    // slide.play();
+                    const slide = tl.to(camera.position, { duration: .9, x: 100 });
                 }
                 const previous = ()=>{
                 }
@@ -215,8 +235,9 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                 document.addEventListener("mousemove", onDocumentMouseMove, !1);
                 document.addEventListener("mousedown", onMouseDown, !1);
                 document.addEventListener("mouseup", onMouseUp, !1);
-                nextButton.addEventListener("mouseup", next, !1 );
-                previousButton.addEventListener("mouseup", previous, !1 );
+
+                nextButton ? nextButton.addEventListener("mouseup", next, !1 ) : null; 
+                previousButton ? previousButton.addEventListener("mouseup", previous, !1 ): null;
 
             /** End controls mouse and hover effects **/
 
