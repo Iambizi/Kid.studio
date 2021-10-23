@@ -25,7 +25,6 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
     
     const ref = useRef<HTMLElement | any>(null!);
 
-    ref.current = count;
 
     // slideNext ? console.log("click farwud") : null;
     // slideNext && carouselX <= 100 ? "'nother click farwud" : "back to 1st";
@@ -191,15 +190,15 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
             }
             window.requestAnimationFrame(animationLoop);
 
-            mouseDown ? dragMove() : snapping ? snapBack() : hovering ? hover() : hoverMove();
-            leftScroll && (transitionFrames >= transitionCounter ? ((camera.position.x += 100), transitionCounter++) : ((transitionCounter = 0), (leftScroll = !1)));
-            dLeftScroll && (transitionFrames >= transitionCounter ? ((camera.position.x += 200), transitionCounter++) : ((transitionCounter = 0), (dLeftScroll = !1)));
-            rightScroll && (transitionFrames >= transitionCounter ? ((camera.position.x -= 100), transitionCounter++) : ((transitionCounter = 0), (rightScroll = !1)));
-            dRightScroll && (transitionFrames >= transitionCounter ? ((camera.position.x -= 200), transitionCounter++) : ((transitionCounter = 0), (dRightScroll = !1)));
-            mouseDown && ((prevMouse.y = mouse.y), (prevMouse.x = mouse.x));
-
-            // snapping ? snapBack() : hovering ? hover() : hoverMove();
+            // mouseDown ? dragMove() : snapping ? snapBack() : hovering ? hover() : hoverMove();
+            // leftScroll && (transitionFrames >= transitionCounter ? ((camera.position.x += 100), transitionCounter++) : ((transitionCounter = 0), (leftScroll = !1)));
+            // dLeftScroll && (transitionFrames >= transitionCounter ? ((camera.position.x += 200), transitionCounter++) : ((transitionCounter = 0), (dLeftScroll = !1)));
+            // rightScroll && (transitionFrames >= transitionCounter ? ((camera.position.x -= 100), transitionCounter++) : ((transitionCounter = 0), (rightScroll = !1)));
+            // dRightScroll && (transitionFrames >= transitionCounter ? ((camera.position.x -= 200), transitionCounter++) : ((transitionCounter = 0), (dRightScroll = !1)));
             // mouseDown && ((prevMouse.y = mouse.y), (prevMouse.x = mouse.x));
+
+            snapping ? snapBack() : hovering ? hover() : hoverMove();
+            mouseDown && ((prevMouse.y = mouse.y), (prevMouse.x = mouse.x));
 
             
             /** End Warped tilt hover functionality **/
