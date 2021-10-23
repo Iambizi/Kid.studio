@@ -1,11 +1,5 @@
 module.exports = {
     // config for using fs and path in getStaticProps to read backend files
-    webpack: (config) => {
-        config.node = {
-            fs: 'empty', // This is required
-        }
-        return config
-    },
     images: {
         domains: ['images.ctfassets.net'],
         deviceSizes: [ 320, 375, 425, 768, 1024, 1200, 1400, 1600 ]
