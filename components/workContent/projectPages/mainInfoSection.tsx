@@ -1,17 +1,21 @@
 import Image from 'next/image';
 import styles from "../../../styles/scss/projectPages/_projectPages.module.scss";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import Loader from "../../common/loader";
 
 interface Type{
-    projects: any;
+    title: any;
+    details: any;
+    videoCover: any;
+    playButton: any;
+    projectVideo: any;
 }
 
-export default function mainInfoSection( {projects}: Type ):JSX.Element{
+export default function mainInfoSection( { title, details, videoCover, playButton, projectVideo }: Type ):JSX.Element{
     // hook for handling z-index state
     const [toggleIndex, setToggleIndex] = useState(false);
-
     
-
+console.log(videoCover);
     const handleIndex = () => {
         // console.log(video);
 
@@ -42,50 +46,54 @@ export default function mainInfoSection( {projects}: Type ):JSX.Element{
     }
 
 
-    const titleScroll = () => {
-        const pageY = window.pageYOffset;        
-        const screenWidth = window.innerWidth;
-        const title = document.querySelector(".title") as HTMLElement;
+    // const titleScroll = () => {
+    //     const pageY = window.pageYOffset;        
+    //     const screenWidth = window.innerWidth;
+    //     const title = document.querySelector(".title") as HTMLElement;
 
-        if(screenWidth >= 1200){
-            title.style.transform = `translateY(-${pageY}px)`;
-        }
+    //     if(screenWidth >= 1200){
+    //         title.style.transform = `translateY(-${pageY}px)`;
+    //     }
+    // }
+    // useEffect(()=>{
+    //     window.addEventListener('scroll', titleScroll);
+    // },[])
+    if(!videoCover){
+        return(
+            <Loader />
+        )
     }
-    useEffect(()=>{
-        window.addEventListener('scroll', titleScroll);
-    },[])
     return(
         <>
             <section className={styles.projectPageSection}>
                 <div className={styles.projectDetailsWrapper}>
                     <h3 className={`${styles.projectTitle} title`}>
-                        {projects.title}
+                        {title}
                     </h3>
                     <div className={styles.projectCredsWrapper}>
                         <p className={styles.projectCreds}>
-                            {projects.projectInfo}
+                            {details}
                         </p>
                     </div>
                 </div>
                 <div className={ toggleIndex ? `${styles.projectVideo} ${styles.toggleIndex} video` : `${styles.projectVideo} video`}>
-                    <div onClick={ overlayPlay } className={`${styles.videoOverlay} overlay`} style={{backgroundImage: `url(https://kidstudio.co${projects.videoCover})`}}>
-                        <div  className={`${styles.videoOverlay} overlay`} style={{backgroundImage: `url(https://kidstudio.co/assets/images/play.png)`}}>
-                            {/* <Image
-                            unoptimized
+                    <div onClick={ overlayPlay } className={`${styles.videoOverlay} overlay`} style={{backgroundImage: `url(${videoCover.fields.file.url})`}}>
+                        <div  className={`${styles.videoOverlay} overlay`} style={{backgroundImage: `url(${playButton})`}}>
+                            <Image
                             className={styles.videoCover}
-                            src={ `https://kidstudio.co${projects.videoCover}` }
+                            src={ `https:${videoCover.fields.file.url}` }
                             alt="Main video/image still"
-                            width={256}
-                            height={144}
-                        /> */}
-                        <img 
+                            width={videoCover.fields.file.details.image.width}
+                            height={videoCover.fields.file.details.image.height}
+                        />
+                        {/* <img 
                             className={styles.videoCover}
-                            src={ `https://kidstudio.co${projects.videoCover}` }
+                            src={ `${videoCover}` }
                             alt="Main video/image still" 
-                            />
+                            /> */}
                         </div>  
                     </div>
-                    <iframe onMouseMove={ handleIndex } onClick={ handleIndex } className={styles.video} id="vimeo1aolzk8" src={`${projects.videoPath}`} frameBorder="0" allowFullScreen></iframe>
+                    <iframe onMouseMove={ handleIndex } onClick={ handleIndex } className={styles.video} id="vimeo1aolzk8" src={`${projectVideo}`} frameBorder="0" allowFullScreen></iframe>
                 </div>
             </section>
         </>

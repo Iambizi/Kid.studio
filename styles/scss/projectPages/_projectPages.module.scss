@@ -1,5 +1,4 @@
 @import "../variables";
-
 .projectPageSection{
     margin: 30px 10% 0px 10%;
     @media screen and (min-width:$l){
@@ -13,7 +12,7 @@
             text-align: left;
             line-height: 1;
             margin: 20px 0px 20px 0px;
-            z-index: 10000000000000000;
+            z-index: 8000000000000000000000000000000000000000;
             @media screen and (min-width:$l){
                 text-align: center;
                 font-size: 4.7em;
@@ -104,8 +103,10 @@
         .stills{
             margin-bottom: 5%;
             @media screen and (min-width: $l){
-                width: 30%;
+                width: 45%;
             }
         }
     }
 }
+
+

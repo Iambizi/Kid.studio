@@ -5,16 +5,15 @@ import * as THREE from 'three';
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
 
 interface Type{
-    homeProjects: any;
     carouselX : number;
     slideNext: boolean;
     slidePrevious: boolean;
     count: number;
+    projects: any;
 }
 
-export default function warpedImage({ slideNext, slidePrevious, homeProjects, carouselX, count }:Type):JSX.Element{
-    
-    
+export default function warpedImage({ slideNext, slidePrevious, carouselX, count, projects }:Type):JSX.Element{
+    const src = projects[count]?.fields.featuredProjectImage.fields ? projects[count].fields.featuredProjectImage.fields.file.url : null;
     useEffect(()=>{
         const screenWidth = window.innerWidth;
         let scaling = 1;
@@ -29,12 +28,12 @@ export default function warpedImage({ slideNext, slidePrevious, homeProjects, ca
         let distMouse = { x: 0, y: 0 };
         let i = 0;
         let timerx = 500;
-        let transitionFrames = 31;
-        let transitionCounter = 0;
         let leftScroll = !1;
         let dLeftScroll = !1;
         let dRightScroll = !1;
         let rightScroll = !1;
+        let transitionFrames = 31;
+        let transitionCounter = 0;
         let hovering = !1;
         let snapping = !1;
         let mouseDown = !1;
@@ -43,18 +42,22 @@ export default function warpedImage({ slideNext, slidePrevious, homeProjects, ca
         const scene = new THREE.Scene();
         // scene.background = new THREE.Color( 0xFFA500 );
         // this along with code on lines 42 & 43 sets scene color to transparent
-        scene.background = null;
+        // scene.background = null;
         
         const loader = new THREE.TextureLoader();
-        const texture = loader.load(`https://kidstudio.co/content/2-home/${homeProjects[count].imgSrc}`);
+        const texture = loader.load(`${src}`);
+        
+        //Handles moire effect on image texture
+        texture.minFilter = THREE.LinearFilter
  
         // const width = screenWidth >= 1200 ? 5.5 : 2.1;
         // const height = screenWidth >= 1200 ? 3 : 1.2;
         const width = 5.4;
         const height = 2.9;
-        const geometry = new THREE.PlaneGeometry(width, height);
-        const material = new THREE.MeshBasicMaterial({ map: texture })
-        // const material = new THREE.MeshBasicMaterial( {color: 0xC0C0C0, side: THREE.DoubleSide} );
+        const geometry = new THREE.PlaneGeometry(width * scale, height * scale);
+        
+        const material = new THREE.MeshBasicMaterial({ map: texture });
+        // // const material = new THREE.MeshBasicMaterial( {color: 0xC0C0C0, side: THREE.DoubleSide} );
         const mesh = new THREE.Mesh( geometry, material );
         scene.add( mesh );
 
@@ -78,17 +81,20 @@ export default function warpedImage({ slideNext, slidePrevious, homeProjects, ca
             alpha: !0
         })
 
-        function resizeRendererToDisplaySize(renderer) {
-            // (widthIncrease = window.innerWidth / prevWidth), (heightIncrease = window.innerHeight / prevHeight), (scaling *= heightIncrease / widthIncrease);
-            // mesh.scale.x = scaling;
-            const canvas = renderer.domElement;
-            const width = canvas.clientWidth;
-            const height = canvas.clientHeight;
-            const needResize = canvas.width !== width || canvas.height !== height;
-            if (needResize) {
-              renderer.setSize(width, height, false);
-            }
-            return needResize;
+        function resizeRender(){
+            window.addEventListener('resize', () =>
+            {
+                // Update sizes
+                sizes.width = window.innerWidth
+                sizes.height = window.innerHeight
+
+                // Update camera
+                camera.aspect = sizes.width / sizes.height
+                camera.updateProjectionMatrix()
+
+                // Update renderer
+                renderer.setSize(sizes.width, sizes.height)
+            })
         }
 
         renderer.setClearColor( 0x000000, 0 );
@@ -101,12 +107,10 @@ export default function warpedImage({ slideNext, slidePrevious, homeProjects, ca
         // Animations loop function
         const animationLoop = () =>
         {   
-            /** Makes canvas responsive canvas **/
-            if (resizeRendererToDisplaySize(renderer)) {
-                const canvas = renderer.domElement;
-                camera.aspect = canvas.clientWidth / canvas.clientHeight;
-                camera.updateProjectionMatrix();
-            }
+
+            // Handles geometry resize
+            resizeRender();
+
             /** End Makes canvas responsive canvas **/
             
             /** Warped tilt hover functionality **/
@@ -148,7 +152,7 @@ export default function warpedImage({ slideNext, slidePrevious, homeProjects, ca
             mouseDown && ((prevMouse.y = mouse.y), (prevMouse.x = mouse.x))
 
             
-            /** End Warped tilt hover functionality **/
+            /** End of Warped tilt hover functionality **/
 
             /** controls mouse and hover effects **/
                 scene.add(mesh);

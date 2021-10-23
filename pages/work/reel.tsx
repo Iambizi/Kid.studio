@@ -1,40 +1,63 @@
 import { GetStaticProps} from 'next';
 import Layout from '../../components/layout';
 import Meta  from '../../components/common/meta';
-import React, { useEffect } from "react";
-import fs from 'fs'
-import path from 'path'
+import React, {useEffect} from "react";
 import styles from '../../styles/scss/common/_footer.module.scss';
 import ReelInfo from '../../components/reelContent/reelInfoSection';
 import ReelStills from '../../components/reelContent/reelStills';
 import { useRouter } from 'next/router';
+import { connectClient } from '../../components/common/utils/createClient';
+import useSWR from 'swr';
 
 interface Type{
-    reelPageData: any;
+    reelData: any;
 }
-export default function reels({reelPageData}: Type):JSX.Element{
+
+export default function reels({ reelData }: Type):JSX.Element{
     const router = useRouter();
-    const pathName = router.pathname;
-    const comparison = pathName === "/work/reel";
+
+    async function fetcher(url){
+        const res = await fetch(url);
+        return res.json();
+    }
+
+    //use swr cache revalidation magic
+    const reelEntryID = "4AcYGCG0p8FOFAj0bsaLYm";
+    const singleEntry = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master/entries/?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}&content_type=reelPage&select=fields`;
+
+    const title = reelData.pageTitle;
+    const details = reelData.details?.content[0].content[0].value;
+    const videoCover = reelData.videoCover;
+    const playButton = reelData.playButton?.fields.file.url;
+    const projectVideo = reelData.projectVideo;
+    const reelStills = reelData.videoStills;
 
     useEffect(()=>{
 
         const bg = document.body;
         
-        if(pathName === "/work/reel"){
-            bg.classList.add("needsScroll");
-        }else if(comparison === false){
-            bg.classList.remove("needsScroll");
+        bg.classList.add("needsScroll");
+        console.log('scrolly');
+    
+        const removePageScroll = () =>{
+              bg.classList.remove("needsScroll");
+              console.log('no scrolly');
         }
+    
+        router.events.on('beforeHistoryChange', removePageScroll);
+        return () => {
+          router.events.off('beforeHistoryChange', removePageScroll);
+        };
 
-    },[path]);
+    },[]);
+
     
     return(
         <>
-            <Meta page={reelPageData.title} />
+            <Meta page={title} />
             <Layout specificStyles={`${styles.projectPages}`}>
-                <ReelInfo reels={reelPageData} />
-                <ReelStills reels={reelPageData} />
+                <ReelInfo reelTitle={title} reelDetails={details} videoCover={videoCover} playButton={playButton} projectVideo={projectVideo} />
+                <ReelStills reelStills={reelStills} />
             </Layout>
         </>
     )
@@ -42,12 +65,12 @@ export default function reels({reelPageData}: Type):JSX.Element{
 
 export const getStaticProps: GetStaticProps = async ()=>{
     
-    const fileToRead = path.join(process.cwd(),'./backEndData/projects/reelPage.json');
-    const data = JSON.parse(await fs.readFileSync(fileToRead).toString());
+    const res = await connectClient.getEntries({ content_type: 'reelPage' });
+    const reelData = res.items[0].fields;
     
     return {
         props: {
-            reelPageData: data
+            reelData: reelData
         }
     }
 }

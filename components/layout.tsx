@@ -4,6 +4,8 @@ import Flash from "../components/common/flash";
 import Loader from "../components/common/loader";
 import React, { useState, useEffect } from "react";
 import { useRouter } from 'next/router';
+import Head from "next/head";
+import Link from "next/link";
 
 interface Type {
     children: React.ReactNode,

@@ -6,10 +6,10 @@ import { shuffle } from "../common/utils/shuffle";
 import React, { useEffect } from "react";
 
 interface Type{
-    reels: any;
+    reelStills: any;
 }
 
-export default function stills( {reels}: Type ):JSX.Element{
+export default function stills( { reelStills }: Type ):JSX.Element{
     useEffect(()=>{
         const screenWidth = window.innerWidth;
         
@@ -31,20 +31,19 @@ export default function stills( {reels}: Type ):JSX.Element{
         <>
             <section className={styles.projectPageSection}>
                 <div className={styles.projectStills}>
-                    {reels.stills.map((item, i)=>(
-                        // <Image
-                        //     unoptimized
-                        //     className={styles.stills}
-                        //     src={`https://kidstudio.co${projects.stills[i]}`}
+                    {reelStills.map((item, i)=>(
+                        //     <Image
+                        //     className={`${styles.stills} stills`}
+                        //     src={`https:${reelStills[i].fields.file.url}`}
                         //     alt="Project image stills"
-                        //     width={300}
-                        //     height={337.8}
+                        //     width={reelStills[i].fields.file.details.image.width}
+                        //     height={reelStills[i].fields.file.details.image.height}
                         //     key={i}
                         // />
                         <img className={`${styles.stills} stills`}
-                        src={`${reels.stills[i]}`}
+                        src={`${reelStills[i].fields.file.url}`}
                         alt="Project image stills"
-                        key={i}  />
+                        key={i} />
                     ))}
                 </div>
             </section>

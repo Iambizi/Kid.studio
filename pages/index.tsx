@@ -4,8 +4,9 @@ import { GetStaticProps } from 'next';
 import Layout from '../components/layout';
 import Meta  from '../components/common/meta';
 import Content from '../components/homeContent/content';
-import React, { useEffect } from "react";
-import { createClient } from 'contentful';
+import React from "react";
+import { connectClient } from '../components/common/utils/createClient';
+import useSWR from 'swr';
 
 interface Type{
   homeProjects: any;
@@ -15,18 +16,21 @@ interface Type{
 export default function home({homeProjects, projects}: Type):JSX.Element {
   // removes needsScroll class set in project pages from vertical scroll
   // projectPage useEffect hook needs refactoring to avoid calling it again here.
-  console.log(projects[0].fields.title);
-  console.log(projects);
-    useEffect(()=>{
-        const bg = document.body;
-        bg.classList.remove("needsScroll");
-    },[]);
+
+    async function fetcher(url){
+      const res = await fetch(url);
+      return res.json();
+    }
+
+    //use swr cache revalidation magic
+    const baseUrl = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master/entries?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}`;
+    const { data } = useSWR(baseUrl, fetcher, { initialData: projects });  
     
   return (
     <>
         <Meta page={"Home"} />
           <Layout>
-            <Content homeProjects={homeProjects}  />
+            <Content homeProjects={ homeProjects } projects={ projects } />
         </Layout>
     </>
   )
@@ -34,19 +38,19 @@ export default function home({homeProjects, projects}: Type):JSX.Element {
 
 export const getStaticProps: GetStaticProps = async () =>{
 
-  const client = createClient({
-    space: process.env.NEXT_PUBLIC_CONTENTFUL_ID,
-    accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY
-  });
+  const res = await connectClient.getEntries({ content_type: 'homePage' });
 
-  const res = await client.getEntries({ content_type: 'project' });
-
-  
-  const fileToRead = path.join(process.cwd(),'./backEndData/homeProjects.json');
+  const fileToRead = path.join(process.cwd(),'./backEndDummyData/homeProjects.json');
   const data = JSON.parse(await fs.readFileSync(fileToRead).toString());
   // const project = data.projects.find(project => project.path === projectPath)
-  const HomeProjects = data.homeProjects.map((item, i)=>(data.homeProjects[i]))
+  const HomeProjects = data.homeProjects.map((item: any, i: number)=>(data.homeProjects[i]))
   // console.log(data.projects[0].path)
+  
+    if (!res) {
+      return {
+          notFound: true
+      };
+  }
   return {
       props: {
           homeProjects: HomeProjects,

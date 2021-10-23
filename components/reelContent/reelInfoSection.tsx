@@ -3,10 +3,14 @@ import styles from "../../styles/scss/projectPages/_projectPages.module.scss";
 import React, { useState, useEffect } from "react";
 
 interface Type {
-    reels: any;
+    reelTitle: string;
+    reelDetails: string;
+    videoCover: any;
+    playButton: string;
+    projectVideo: string;
 }
 
-export default function reelInfoSection( { reels }: Type ):JSX.Element{
+export default function reelInfoSection( { reelTitle, reelDetails, videoCover, playButton, projectVideo }: Type ):JSX.Element{
     // hook for handling z-index state
     const [toggleIndex, setToggleIndex] = useState(false);
 
@@ -45,12 +49,11 @@ export default function reelInfoSection( { reels }: Type ):JSX.Element{
         const screenWidth = window.innerWidth;
         const title = document.querySelector(".reelTitle") as HTMLElement;
 
-        if( title && screenWidth >= 1200){
+        if( screenWidth >= 1200 && title ){
             title.style.transform = `translateY(-${pageY}px)`;
         }
     }
     useEffect(()=>{
-        const title = document.querySelector(".reelTitle") as HTMLElement;
         window.addEventListener('scroll', titleScroll);
 
     },[])
@@ -60,33 +63,32 @@ export default function reelInfoSection( { reels }: Type ):JSX.Element{
             <section className={styles.projectPageSection}>
                 <div className={styles.projectDetailsWrapper}>
                     <h3 className={`${styles.projectTitle} reelTitle`}>
-                        {reels.title}
+                        {reelTitle}
                     </h3>
                     <div className={styles.projectCredsWrapper}>
                         <p className={styles.projectCreds}>
-                            {reels.details}
+                            {reelDetails}
                         </p>
                     </div>
                 </div>
                 <div className={ toggleIndex ? `${styles.projectVideo} ${styles.toggleIndex} video` : `${styles.projectVideo} video`}>
-                    <div onClick={ overlayPlay } className={`${styles.videoOverlay} overlay`} style={{backgroundImage: `url(${reels.videoCover})`}}>
-                        <div className={`${styles.videoOverlay} overlay`} style={{backgroundImage: `url(https://kidstudio.co/assets/images/play.png)`}}>
-                            {/* <Image
-                            unoptimized
+                    <div onClick={ overlayPlay } className={`${styles.videoOverlay} overlay`} style={{backgroundImage: `url(${videoCover?.fields.file.url})`}}>
+                        <div className={`${styles.videoOverlay} overlay`} style={{backgroundImage: `url(${playButton})`}}>
+                            <Image
                             className={styles.videoCover}
-                            src={ `https://kidstudio.co${reels.videoCover}` }
+                            src={ `https:${videoCover?.fields.file.url}` }
                             alt="Main video/image still"
-                            width={256}
-                            height={144}
-                        /> */}
-                        <img 
+                            width={videoCover?.fields.file.details.image.width}
+                            height={videoCover?.fields.file.details.image.height}
+                        />
+                        {/* <img 
                             className={styles.videoCover}
-                            src={ `${reels.videoCover}` }
+                            src={ `${videoCover}` }
                             alt="Main video/image still" 
-                            />
+                            /> */}
                         </div>  
                     </div>
-                    <iframe onMouseMove={ handleIndex } onClick={ handleIndex } className={styles.video} id="vimeo1aolzk8" src={`${reels.videoPath}`} frameBorder="0" allowFullScreen></iframe>
+                    <iframe onMouseMove={ handleIndex } onClick={ handleIndex } className={styles.video} id="vimeo1aolzk8" src={`${projectVideo}`} frameBorder="0" allowFullScreen></iframe>
                 </div>
             </section>
         </>

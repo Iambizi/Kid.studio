@@ -6,12 +6,12 @@ import { useRouter } from 'next/router'
 interface Type{
     bgImg: boolean;
     setbgImg: any;
-    projects: any;
+    projectList: any;
 }
 
-export default function work( { bgImg, setbgImg, projects }:Type ){
+export default function work( { bgImg, setbgImg, projectList }:Type ){
   
-  const [notFullScreen, setNotFullScreen] = useState(false);
+  const [ notFullScreen, setNotFullScreen ] = useState(false);
   const router = useRouter();
 
     // rewrote okHover plugin mouse over functionality
@@ -82,9 +82,9 @@ export default function work( { bgImg, setbgImg, projects }:Type ){
         <>
             <section className={styles.projectListSection}>
                 <div className={ notFullScreen ?  `${styles.projectLinks} ${styles.notFullScreenAdjust}` : `${styles.projectLinks}` }>
-                    {projects.map((item, i)=>(
-                        <Link href={ process.env.NEXT_PUBLIC_APP_DOMAIN + "/work" + item.path } key={i}>
-                            <a data-okimage={ "http://kidstudio.co/work" + item.hoverImage } className={ bgImg ? `${styles.projectLink} ${styles.hoverColor } Link`: `${styles.projectLink} Link` } onMouseMove={handleMouseOver}>{item.title}</a>
+                    {projectList?.map((item, i)=>(
+                        <Link href={ item.fields.projectLink } key={i}>
+                            <a data-okimage={ item.fields.hoverImage.fields.file.url } className={ bgImg ? `${styles.projectLink} ${styles.hoverColor } Link`: `${styles.projectLink} Link` } onMouseMove={handleMouseOver}>{item.fields.projectName}</a>
                         </Link>
                     ))}
                 </div>

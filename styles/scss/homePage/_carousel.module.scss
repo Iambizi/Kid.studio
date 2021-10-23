@@ -16,7 +16,7 @@
     z-index: 5656565656;
     .titleWrapper{
         width: 100vw;
-        .videoTitle1, .videoTitle2, .videoTitle3{
+        .videoTitle, .videoTitle1, .videoTitle2, .videoTitle3{
             flex-direction: row;
             font-size: 1em;
             font-family: 'Helvetica', Helvetica;
@@ -40,23 +40,40 @@
                 height: 0.3%;
                 position: fixed;
                 left: 15%;
-                top: 30%;
+                top: 30.5%;
                 background-color: #000;
+                @media screen and (min-width:$xxs){
+                    width: 9.5%;
+                    top: 30.5%;
+                }
                 @media screen and (min-width:$xs){
-                    // height: 0.5%;
-                    // width: 9%;
                     top: 32%;
                 }
                 @media screen and (min-width:$s){
-                    height: .8%;
-                    top: 29%;
-                    // width: 10%;
+                    height: .6%;
+                    top: 30%;
+                    width: 12%;
                 }
-                @media screen and (min-width:$m){
+                @media screen and (min-width: 1024px){
+                    height: .55%;
+                    top: 29.5%;
+                    width: 9.4%;
+                }
+                @media screen and (min-width:$l){
                     height: 1%;
-                    top: 33%;
+                    top: 36%;
+                    width: 11%;
+                }
+                @media screen and (min-width: 1440px){
+                    height: 1.3%;
+                    top: 34%;
+                    width: 10.6%;
+                }
+                @media screen and (min-width: $xl){
+                    height: 1%;
+                    top: 33.5%;
                     width: 8%;
-                }    
+                }       
             }
         }
     }
@@ -85,25 +102,19 @@
     transition: 1.5s ease-in-out;
     .sliderWrapper{
         width: 100vw;
-        // &.slidePrevious{
-        //     animation: slidePrevious 1.2s ease-out;
-        // }
-        // &.slideNext{
-        //     animation: slideNext 1.2s ease-out;
-        // }
         .carousel{
             height: 100vh;
             width: 100vw;
             .homeScene{
                 @include fullviewPort();
             }
-                .carouselImage1, .carouselImage2, .carouselImage3{
+            .carouselImage, .carouselImage1, .carouselImage2, .carouselImage3{
                     overflow-x: hidden;
                 &.slideNext{
-                    animation: slideNext 0.8s ease-out;
+                    animation: slideNext 0.9s none;
                 }
                 &.slidePrevious{
-                    animation: slidePrevious 0.8s ease-out;
+                    animation: slidePrevious 0.9s none;
                 }
             }
         }

@@ -8,6 +8,12 @@
     right: 0;
     width: 100%;
     letter-spacing: 0.1em;
+
+    @media screen and (max-width:$xs){
+        &.workPageFooter{
+            display: none;
+        }
+    }
     @media screen and (min-width:$m){
         font-size: 0.8em;
     }

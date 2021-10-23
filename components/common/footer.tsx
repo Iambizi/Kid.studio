@@ -14,7 +14,7 @@ export default function footer({ bgImg, specificStyles }:Type):JSX.Element{
                 <ul className={ bgImg ? `${styles.footerLinks} ${styles.hoverColor}` : `${styles.footerLinks}` }>
                     <a className={styles.footerLink} href={"http://instagram.com/kidstudio_"}>INSTAGRAM</a>
                     /
-                    <Link href={ process.env.NEXT_PUBLIC_APP_DOMAIN + "/work/reel"}>
+                    <Link href={"/work/reel"}>
                         <a className={styles.footerLink}>REEL</a>
                     </Link>
                     /

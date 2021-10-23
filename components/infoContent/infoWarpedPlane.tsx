@@ -1,19 +1,18 @@
 import styles from '../../styles/scss/info/_info.module.scss';
 import * as THREE from 'three';
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
+import { isMobile } from 'react-device-detect';
 
 interface Type{
-    infoData: any;
+    src: string;
 }
-export default function inforWarpImg({infoData}: Type):JSX.Element{
+export default function inforWarpImg({src}: Type):JSX.Element{
+
+    const ref = useRef<HTMLElement | any>(null!);
+    
     useEffect(()=>{
 
         const screenWidth = window.innerWidth;
-        let scaling = 1;
-        let widthIncrease = 1;
-        let heightIncrease = 1;
-        let prevHeight = window.innerHeight;
-        let prevWidth = window.innerWidth;
         let hover_dist = 0.3;
         let mouse = { x: 0, y: 0 };
         let snapback = { x: 0, y: 0 };
@@ -21,27 +20,25 @@ export default function inforWarpImg({infoData}: Type):JSX.Element{
         let distMouse = { x: 0, y: 0 };
         let i = 0;
         let timerx = 500;
-        let transitionFrames = 31;
         let hovering = !1;
         let snapping = !1;
         let mouseDown = !1;
 
         const scene = new THREE.Scene();
-        // scene.background = new THREE.Color( 0xFFA500 );
-        // this along with code on lines 42 & 43 sets scene color to transparent
         scene.background = null;
         
         const loader = new THREE.TextureLoader();
-        // loader.setCrossOrigin("anonymous");
-        const texture = loader.load(`https://kidstudio.co/${infoData.imgSrc}`);
+        const texture = loader.load(`${src}`);
  
         const width = screenWidth >= 1200 ? 5.5 : 2.1;
         const height = screenWidth >= 1200 ? 3 : 1.2;
         const geometry = new THREE.PlaneGeometry(width, height);
-        const material = new THREE.MeshBasicMaterial({ map: texture })
-        // const material = new THREE.MeshBasicMaterial( {color: 0xffa805, side: THREE.DoubleSide} );
+        const material = new THREE.MeshBasicMaterial({ map: texture });
+
         const mesh = new THREE.Mesh( geometry, material );
         scene.add( mesh );
+
+        isMobile ? mesh.position.y = -.375: null;
 
         const sizes = {
             width: window.innerWidth,
@@ -56,43 +53,42 @@ export default function inforWarpImg({infoData}: Type):JSX.Element{
         camera.position.z = 3
 
         const renderer = new THREE.WebGLRenderer({
-            canvas: canvas,
+            div: canvas,
             antialias: true,
             alpha: true
         })
 
-        function resizeRendererToDisplaySize(renderer) {
-            const canvas = renderer.domElement;
-            const width = canvas.clientWidth;
-            const height = canvas.clientHeight;
-            const needResize = canvas.width !== width || canvas.height !== height;
-            if (needResize) {
-              renderer.setSize(width, height, false);
-            }
-            return needResize;
+        function resizeRender(){
+            window.addEventListener('resize', () =>
+            {
+                // Update sizes
+                sizes.width = window.innerWidth;
+                sizes.height = window.innerHeight;
+
+                // Update renderer
+                renderer.setSize(sizes.width, sizes.height);
+
+                // Update camera
+                camera.aspect = sizes.width / sizes.height;
+                camera.updateProjectionMatrix();
+            });
         }
 
         renderer.setClearColor( 0x000000, 0 );
         
         renderer.setSize(sizes.width, sizes.height);
+
+        ref.current.appendChild( renderer.domElement );
         //pixel ratio: corresponds to how many physical pixels you have on the screen for one pixel unit on the software part.
+
         // Device pixel ratio: allows us to adjust the pixel ratio of our scene to pixel ratio of our device
         renderer.setPixelRatio(Math.min(window.devicePixelRatio),2);
     
         // Animations loop function
         const animationLoop = () =>
         {   
-            /** Makes canvas responsive canvas **/
-            if (resizeRendererToDisplaySize(renderer)) {
-                const canvas = renderer.domElement;
-                camera.aspect = canvas.clientWidth / canvas.clientHeight;
-                camera.updateProjectionMatrix();
-            }
-
-            // const canvas = renderer.domElement;
-            // camera.aspect = canvas.clientWidth / canvas.clientHeight;
-            // camera.updateProjectionMatrix();
-            /** End Makes canvas responsive canvas **/
+            // Handles geometry resize
+            resizeRender();
             
             /** Warped tilt hover functionality **/
             const onMouseDown = (e) => {
@@ -104,10 +100,6 @@ export default function inforWarpImg({infoData}: Type):JSX.Element{
             }
             const onDocumentMouseMove = (e)=> {
                 (hovering = !1), (mouse.x = e.clientX / window.innerWidth), (mouse.y = e.clientY / window.innerHeight);
-            }
-            const dragMove = () => {
-                (distMouse.x = prevMouse.x - mouse.x), (distMouse.y = prevMouse.y - mouse.y);
-                (mesh.rotation.y -= 2 * distMouse.x), (mesh.rotation.x -= 2 * distMouse.y);
             }
             const hoverMove = () => {
                     mouse.x > 0.5 ? mesh.rotation.y < hover_dist && (mesh.rotation.y += 0.002) : mouse.x < 0.5 && mesh.rotation.y > -hover_dist && (mesh.rotation.y -= 0.002),
@@ -123,29 +115,39 @@ export default function inforWarpImg({infoData}: Type):JSX.Element{
                 timerx / 2 > i ? ((mesh.rotation.x += 3e-4), (mesh.rotation.y -= 3e-4)) : ((mesh.rotation.x -= 3e-4), (mesh.rotation.y += 3e-4));
                 i++;
             }
-            window.requestAnimationFrame(animationLoop);
 
-            mouseDown ? dragMove() : snapping ? snapBack() : hovering ? hover() : hoverMove()
-            mouseDown && ((prevMouse.y = mouse.y), (prevMouse.x = mouse.x))
+            window.requestAnimationFrame(animationLoop);
+            
+            snapping ? snapBack() : hovering ? hover() : hoverMove();
+            mouseDown && ((prevMouse.y = mouse.y), (prevMouse.x = mouse.x));
             /** End Warped tilt hover functionality **/
 
             /** controls mouse and hover effects **/
-                document.addEventListener("mousemove", onDocumentMouseMove, !1)
-                document.addEventListener("mousedown", onMouseDown, !1)
-                document.addEventListener("mouseup", onMouseUp, !1)
+                document.addEventListener("mousemove", onDocumentMouseMove, !1);
+                document.addEventListener("mousedown", onMouseDown, !1);
+                document.addEventListener("mouseup", onMouseUp, !1);
             /** End controls mouse and hover effects **/
             
             // Render
             renderer.render(scene, camera);
         }
         animationLoop()
-
+        return () => {
+            if(ref.current){
+                window.removeEventListener("resize", resizeRender);
+            ref.current.removeChild(renderer.domElement);
+            scene.remove(scene.children[0]);
+            }else{
+                return null;
+            }
+            
+        };
     },[])
 
     return(
         <>
-            <canvas className={`${styles.infoScene} infoScene`}>
-            </canvas>
+            <div ref={ref} className={`${styles.infoScene} infoScene`}>
+            </div>
         </>
     )
 }

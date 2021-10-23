@@ -1,6 +1,6 @@
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
 import Link from "next/link";
-import WarpedIMG from "./homeWarpedPlane";
+import WarpedIMG from "./homeWarpedPla";
 
 interface Type {
     homeProjects: any;
@@ -8,66 +8,26 @@ interface Type {
     slideNext: boolean;
     slidePrevious: boolean;
     count: number;
+    projects: any;
+    goPrevious?: any;
 }
 
-export default function carousel({ homeProjects, carouselX, slideNext, slidePrevious, count }:Type): JSX.Element{
+export default function carousel({ homeProjects, carouselX, slideNext, slidePrevious, count, projects, goPrevious }:Type): JSX.Element{
     {
         carouselX  < -200 ?  `${styles.sliderWrapper} ${styles.slidePrevious}` : carouselX < -100 ? `${styles.sliderWrapper} ${styles.slideNext}` : `${styles.sliderWrapper}`
     }
-    // className={
-    //     (slideNext) ? 
-    //     `${styles[homeProjects[i].imageClassName]} ${styles.slideNext}` : 
-    //     (slidePrevious) ?
-    //     `${styles[homeProjects[i].imageClassName]} ${styles.slidePrevious}` :
-    //     `${styles[homeProjects[i].imageClassName]}`
-    // }
-    // src={"https://kidstudio.co/content/2-home" + `${homeProjects[i].imgSrc}`}
-    // alt={"Video Project screenshot"}
-
-    {/* <img
-            className={
-                (slideNext) ? 
-                `${styles[homeProjects[i].imageClassName]} ${styles.slideNext}` : 
-                (slidePrevious) ?
-                `${styles[homeProjects[i].imageClassName]} ${styles.slidePrevious}` :
-                `${styles[homeProjects[i].imageClassName]}`
-            }
-            src={"https://kidstudio.co/content/2-home" + `${homeProjects[i].imgSrc}`}
-            alt={"Video Project screenshot"}
-            height={200}
-            width={330}
-        /> */}
     return(
         <>
             <div className={styles.titles} style={{left: `${ -carouselX }%`}}>
-                {homeProjects && homeProjects.length > 0 ? homeProjects.map((item, i)=>(
+                {projects && projects.length > 0 ? projects.map((item, i)=>(
                         <div className={styles.titleWrapper} key={i}>
-                        <Link href={ process.env.NEXT_PUBLIC_APP_DOMAIN + "/work" + homeProjects[i].path }>
-                            <h2 className={`${styles[homeProjects[i].titleClassName]}`}>{ homeProjects[i].videoTitle}</h2>
-                        </Link>
-                    </div>
+                            <Link href={ projects[i].fields.slug }>
+                                <h2 className={styles.videoTitle}>{ projects[i].fields.title}</h2>
+                            </Link>
+                        </div>
                 )) : ""}
             </div>
-            <div className={styles.slider} style={{left: `${ -carouselX }%`}}>
-                {homeProjects.map((p,i)=>
-                    (
-                        <div className={`${styles.sliderWrapper}`} key={i}>
-                            <div className={`${styles.carousel}`}>
-                                <div className={
-                                    (slideNext) ? 
-                                    `${styles[homeProjects[i].imageClassName]} ${styles.slideNext}` : 
-                                    (slidePrevious) ?
-                                    `${styles[homeProjects[i].imageClassName]} ${styles.slidePrevious}` :
-                                    `${styles[homeProjects[i].imageClassName]}`
-                                }>
-                                    <WarpedIMG count={count} slideNext={slidePrevious} slidePrevious={slidePrevious} homeProjects={homeProjects} carouselX={carouselX} />
-                                </div>
-                                {/* <WarpedIMG count={count} slideNext={slidePrevious} slidePrevious={slidePrevious} homeProjects={homeProjects} carouselX={carouselX} /> */}
-                            </div>
-                        </div>
-                    )
-                )}
-            </div>
+            <WarpedIMG count={count} slideNext={slideNext} slidePrevious={slidePrevious} carouselX={carouselX} projects={projects} goPrevious={goPrevious} />
         </>
     )
 }
