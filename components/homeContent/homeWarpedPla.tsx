@@ -168,10 +168,10 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                 (hovering = !1), (mouse.x = a.clientX / window.innerWidth), (mouse.y = a.clientY / window.innerHeight);
             }
 
-            function dragMove() {
-                (distMouse.x = prevMouse.x - mouse.x), (distMouse.y = prevMouse.y - mouse.y);
-                for (var a = 0; a < planes.length; a++) (planes[a].rotation.y -= 2 * distMouse.x), (planes[a].rotation.x -= 2 * distMouse.y);
-            }
+            // function dragMove() {
+            //     (distMouse.x = prevMouse.x - mouse.x), (distMouse.y = prevMouse.y - mouse.y);
+            //     for (var a = 0; a < planes.length; a++) (planes[a].rotation.y -= 2 * distMouse.x), (planes[a].rotation.x -= 2 * distMouse.y);
+            // }
 
             const hoverMove = () => {
                 for (var a = 0; a < planes.length; a++)
