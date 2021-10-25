@@ -12,10 +12,9 @@ interface Type{
     carouselX : number;
     slideNext: boolean;
     slidePrevious: boolean;
-    goPrevious: any;
 }
 
-export default function warpedImage({ count, projects, carouselX, slideNext, slidePrevious, goPrevious }:Type):JSX.Element{
+export default function warpedImage({ count, projects, carouselX, slideNext, slidePrevious  }:Type):JSX.Element{
 
     const src1 = projects[0]?.fields.featuredProjectImage.fields ? projects[0].fields.featuredProjectImage.fields.file.url : null;
     const src2 = projects[1]?.fields.featuredProjectImage.fields ? projects[1].fields.featuredProjectImage.fields.file.url : null;
@@ -36,11 +35,10 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
     // slideNext && camera.position.x < 200 ? slide.play() : '';
 
     useEffect(()=>{
+        init();
+    },[]);
 
-        if (!ref.current) {
-            return
-        }
-        
+    let init = () =>{
         let hover_dist = 0.3;
         let mouse = { x: 0, y: 0 };
         let snapback = { x: 0, y: 0 };
@@ -89,7 +87,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
             width: window.innerWidth,
             height: window.innerHeight
         }
-    
+
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1e4);
 
 
@@ -110,9 +108,9 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         }
 
         for (
-               let loopityLoop = 0;
-               loopityLoop < 3;
-               loopityLoop++
+            let loopityLoop = 0;
+            loopityLoop < 3;
+            loopityLoop++
         ){
         
         let planes = [
@@ -218,6 +216,9 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
 
                 const next = () =>{
                     // slide.play();
+                    // count? console.log(count) : "no";
+                    console.log("count");
+                    console.log(count)
                 }
                 const previous = ()=>{
                 }
@@ -253,20 +254,23 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
             through the cubes before we proceed with this clean up code
         */}
 
-        if(planes.length - 1 === loopityLoop) {
-            return () => {
-                if( ref.current){
-                    window.removeEventListener("resize", resizeRender);
-                    ref.current.removeChild(renderer.domElement);
-                    scene.remove(scene.children[0]);
-                }else{
-                    return null;
-                }
-                
-            };
+            if(planes.length - 1 === loopityLoop) {
+                return () => {
+                    if( ref.current){
+                        window.removeEventListener("resize", resizeRender);
+                        ref.current.removeChild(renderer.domElement);
+                        scene.remove(scene.children[0]);
+                    }else{
+                        return null;
+                    }
+                    
+                };
+            }
         }
-        }
-    },[])
+    }
+    
+
+
     
     return(
 

@@ -27,7 +27,7 @@ export default function carousel({ homeProjects, carouselX, slideNext, slidePrev
                         </div>
                 )) : ""}
             </div>
-            <WarpedIMG count={count} slideNext={slideNext} slidePrevious={slidePrevious} carouselX={carouselX} projects={projects} goPrevious={goPrevious} />
+            <WarpedIMG count={count} slideNext={slideNext} slidePrevious={slidePrevious} carouselX={carouselX} projects={projects} />
         </>
     )
 }
