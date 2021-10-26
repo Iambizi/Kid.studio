@@ -195,6 +195,10 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
             // dRightScroll && (transitionFrames >= transitionCounter ? ((camera.position.x -= 200), transitionCounter++) : ((transitionCounter = 0), (dRightScroll = !1)));
             // mouseDown && ((prevMouse.y = mouse.y), (prevMouse.x = mouse.x));
 
+            document.addEventListener("mousemove", onDocumentMouseMove, !1);
+            document.addEventListener("mousedown", onMouseDown, !1);
+            document.addEventListener("mouseup", onMouseUp, !1);
+
             snapping ? snapBack() : hovering ? hover() : hoverMove();
             mouseDown && ((prevMouse.y = mouse.y), (prevMouse.x = mouse.x));
 
@@ -210,6 +214,24 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                 // const tl = gsap.timeline();
                 // const slide = tl.to(camera.position, { duration: .9, x: 100 });
                 
+                
+                // const slideReachedEnd = tl.fromTo(camera.position,{duration: .9, x: 200 },{duration: .9, x: 0});
+
+                // const slideBackToStart = tl.fromTo(camera.position,{duration: .9, x: 0 },{duration: .9, x: 200});
+
+                // YOOO Reverse works, your conditions are just a little wrong right now //
+                
+                // console.log(slide.reverse());
+                // slidePrevious ? gsap.from(camera.position, { duration: .5, delay: .02, x: -10 }) : '';
+                // camera.position.x < 10 ? gsap.to(camera.position, { duration: .5, delay: .02, x: 20 }) : '';
+                            
+            /** End controls mouse and hover effects **/
+
+            // Render
+            renderer.render(scene, camera);
+        }
+        animationLoop();
+
 
                 const nextButton = document.getElementById("next");
                 const previousButton = document.getElementById("previous");
@@ -222,32 +244,9 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                 }
                 const previous = ()=>{
                 }
-                
-                // const slideReachedEnd = tl.fromTo(camera.position,{duration: .9, x: 200 },{duration: .9, x: 0});
 
-                // const slideBackToStart = tl.fromTo(camera.position,{duration: .9, x: 0 },{duration: .9, x: 200});
-
-                // YOOO Reverse works, your conditions are just a little wrong right now //
-                
-                // console.log(slide.reverse());
-                // slidePrevious ? gsap.from(camera.position, { duration: .5, delay: .02, x: -10 }) : '';
-                // camera.position.x < 10 ? gsap.to(camera.position, { duration: .5, delay: .02, x: 20 }) : '';
-                            
-                document.addEventListener("mousemove", onDocumentMouseMove, !1);
-                document.addEventListener("mousedown", onMouseDown, !1);
-                document.addEventListener("mouseup", onMouseUp, !1);
-
-                nextButton ? nextButton.addEventListener("mouseup", next, !1 ) : null; 
-                previousButton ? previousButton.addEventListener("mouseup", previous, !1 ): null;
-
-                
-
-            /** End controls mouse and hover effects **/
-
-            // Render
-            renderer.render(scene, camera);
-        }
-        animationLoop();
+        nextButton ? nextButton.addEventListener("mouseup", next, !1 ) : null; 
+        previousButton ? previousButton.addEventListener("mouseup", previous, !1 ): null;
 
         {/* 
             In order to avoid having the 'return' statement stop the planes from looping we need to check that we're done looping 

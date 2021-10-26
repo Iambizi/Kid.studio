@@ -1,5 +1,4 @@
 module.exports = {
-    // config for using fs and path in getStaticProps to read backend files
     experimental: {
         optimizeCss: true,
     },
