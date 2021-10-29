@@ -17,7 +17,7 @@ export default function carousel({ homeProjects, carouselX, slideNext, slidePrev
         carouselX  < -200 ?  `${styles.sliderWrapper} ${styles.slidePrevious}` : carouselX < -100 ? `${styles.sliderWrapper} ${styles.slideNext}` : `${styles.sliderWrapper}`
     }
     return(
-        <>
+        <div>
             <div className={styles.titles} style={{left: `${ -carouselX }%`}}>
                 {projects && projects.length > 0 ? projects.map((item, i)=>(
                         <div className={styles.titleWrapper} key={i}>
@@ -28,6 +28,6 @@ export default function carousel({ homeProjects, carouselX, slideNext, slidePrev
                 )) : ""}
             </div>
             <WarpedIMG count={count} slideNext={slideNext} slidePrevious={slidePrevious} carouselX={carouselX} projects={projects} />
-        </>
+        </div>
     )
 }
