@@ -82,20 +82,24 @@
     from {
         transform : translateX(1000%);
         -webkit-transform : translateX(1000%);
+        -ms-transform : translateX(1000%);
     }
     to {
         transform : translateX(0%);
         -webkit-transform : translateX(0%);
+        -ms-transform : translateX(0%);
     }
 }
 @keyframes slidePrevious {
     from {
         transform : translateX(-1000%);
         -webkit-transform : translateX(-1000%);
+        -ms-transform : translateX(-1000%);
     }
     to {
         transform : translateX(0%);
         -webkit-transform : translateX(0%);
+        -ms-transform : translateX(0%);
     }
 }
 .slider {
@@ -117,10 +121,12 @@
                 &.slideNext{
                     animation: slideNext 0.9s none;
                     -webkit-animation: slideNext 0.9s none;
+                    -ms-animation: slideNext 0.9s none;
                 }
                 &.slidePrevious{
                     animation: slidePrevious 0.9s none;
                     -webkit-animation: slidePrevious 0.9s none;
+                    -ms-animation: slidePrevious 0.9s none;
                 }
             }
         }
