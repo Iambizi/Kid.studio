@@ -10,7 +10,7 @@ function MyApp({ Component, pageProps}) {
 
   return(
     <PageTransition timeout={700} classNames="page-transition">
-      <Component {...pageProps} key={router.route} />
+        <Component {...pageProps} key={router.route} />
     </PageTransition>  
   )
   

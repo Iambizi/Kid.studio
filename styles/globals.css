@@ -39,6 +39,7 @@ a {
 
 body{
   overflow: hidden;
+  font-family: "Andale Mono";
 }
 body.needsScroll{
   overflow-Y: auto;
