@@ -36,10 +36,12 @@ a {
   font-weight: 500;
   font-display: swap;
 }
+body, html{
+  font-family: "Andale Mono";
 
+}
 body{
   overflow: hidden;
-  font-family: "Andale Mono";
 }
 body.needsScroll{
   overflow-Y: auto;
