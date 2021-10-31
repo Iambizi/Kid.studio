@@ -103,9 +103,10 @@
         }
         .stills{
             margin-bottom: 10%;
-            height: 50%;
+            height: 30%;
+            width: 100%;
             @media screen and (min-width: $l){
-                width: 45%;
+                width: 30%;
                 height: 100%;
                 margin-bottom: 5%;
             }

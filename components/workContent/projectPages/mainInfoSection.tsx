@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import styles from "../../../styles/scss/projectPages/_projectPages.module.scss";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Loader from "../../common/loader";
 
 interface Type{
@@ -46,18 +46,18 @@ console.log(videoCover);
     }
 
 
-    // const titleScroll = () => {
-    //     const pageY = window.pageYOffset;        
-    //     const screenWidth = window.innerWidth;
-    //     const title = document.querySelector(".title") as HTMLElement;
+    const titleScroll = () => {
+        const pageY = window.pageYOffset;        
+        const screenWidth = window.innerWidth;
+        const title = document.querySelector(".title") as HTMLElement;
 
-    //     if(screenWidth >= 1200){
-    //         title.style.transform = `translateY(-${pageY}px)`;
-    //     }
-    // }
-    // useEffect(()=>{
-    //     window.addEventListener('scroll', titleScroll);
-    // },[])
+        if(screenWidth >= 1200){
+            title.style.transform = `translateY(-${pageY}px)`;
+        }
+    }
+    useEffect(()=>{
+        window.addEventListener('scroll', titleScroll);
+    },[])
     if(!videoCover){
         return(
             <Loader />
