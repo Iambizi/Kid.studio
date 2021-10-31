@@ -37,20 +37,20 @@ export default function projectPages( { projectPage }: Type):JSX.Element{
 
     useEffect(()=>{
 
-        const bg = document.body;
+        // const bg = document.body;
         
-        bg.classList.add("needsScroll");
-        console.log('scrolly');
+        // bg.classList.add("needsScroll");
+        // console.log('scrolly');
     
-        const removePageScroll = () =>{
-              bg.classList.remove("needsScroll");
-              console.log('no scrolly');
-        }
+        // const removePageScroll = () =>{
+        //       bg.classList.remove("needsScroll");
+        //       console.log('no scrolly');
+        // }
     
-        router.events.on('beforeHistoryChange', removePageScroll);
-        return () => {
-          router.events.off('beforeHistoryChange', removePageScroll);
-        };
+        // router.events.on('beforeHistoryChange', removePageScroll);
+        // return () => {
+        //   router.events.off('beforeHistoryChange', removePageScroll);
+        // };
 
     },[]);
 
