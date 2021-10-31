@@ -1,9 +1,9 @@
 @import "../variables";
 
 .projectPageSection, .projectStillsSection{
-    margin: 130px 10% 0px 10%;
+    margin: 200px 10% 0px 10%;
     @media screen and (min-width:$l){
-        margin: 130px 5% 0px 5%;
+        margin: 200px 5% 0px 5%;
     }
     .projectDetailsWrapper{
         .projectTitle{

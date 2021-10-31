@@ -6,10 +6,18 @@
     font-size: 0.6250em;
     margin-top: 25px;
 
+    &.fixed{
+        position: fixed;
+        top: 0px;
+        right: 0px;
+        left: 0px;
+    }
+
     position: fixed;
     top: 0px;
     right: 0px;
     left: 0px;
+    z-index: 1000;
 
     @media screen and (min-width:$m){
         margin-top: 32px;
