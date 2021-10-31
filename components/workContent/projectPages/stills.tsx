@@ -28,7 +28,7 @@ export default function stills( { projectStills }: Type ):JSX.Element{
     },[]);
     return(
         <>
-            <section className={styles.projectPageSection}>
+            <section className={styles.projectStillsSection}>
                 <div className={styles.projectStills}>
                     {projectStills.map((item, i)=>(
                         // <Image
