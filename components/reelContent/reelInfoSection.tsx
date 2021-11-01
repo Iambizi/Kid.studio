@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import styles from "../../styles/scss/projectPages/_projectPages.module.scss";
 import React, { useState, useEffect } from "react";
+import { isMobile } from 'react-device-detect';
 
 interface Type {
     reelTitle: string;
@@ -49,7 +50,7 @@ export default function reelInfoSection( { reelTitle, reelDetails, videoCover, p
         const screenWidth = window.innerWidth;
         const title = document.querySelector(".reelTitle") as HTMLElement;
 
-        if( screenWidth >= 1200 && title ){
+        if( !isMobile && title && pageY > 50 ){
             title.style.transform = `translateY(-${pageY}px)`;
         }
     }
@@ -62,7 +63,7 @@ export default function reelInfoSection( { reelTitle, reelDetails, videoCover, p
         <>
             <section className={styles.projectPageSection}>
                 <div className={styles.projectDetailsWrapper}>
-                    <h3 className={`${styles.projectTitle} reelTitle`}>
+                    <h3 className={`${styles.projectTitle} reelTitle title`}>
                         {reelTitle}
                     </h3>
                     <div className={styles.projectCredsWrapper}>
