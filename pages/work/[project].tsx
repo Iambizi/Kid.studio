@@ -5,7 +5,7 @@ import Layout from '../../components/layout';
 import Meta  from '../../components/common/meta';
 import MainInfo from '../../components/workContent/projectPages/mainInfoSection';
 import Stills from '../../components/workContent/projectPages/stills';
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from 'next/router';
 import styles from '../../styles/scss/common/_footer.module.scss';
 import { connectClient } from '../../components/common/utils/createClient';
@@ -18,6 +18,7 @@ interface Type{
 
 export default function projectPages( { projectPage }: Type):JSX.Element{
     const router = useRouter();
+    const [notFixed, setNotFixed] = useState(false);
 
     async function fetcher(url){
         const res = await fetch(url);
@@ -45,6 +46,7 @@ export default function projectPages( { projectPage }: Type):JSX.Element{
         const removePageScroll = () =>{
               bg.classList.remove("needsScroll");
               console.log('no scrolly');
+              setNotFixed(true);
         }
     
         router.events.on('beforeHistoryChange', removePageScroll);
