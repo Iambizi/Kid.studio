@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import styles from "../../styles/scss/projectPages/_projectPages.module.scss";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { isMobile } from 'react-device-detect';
 
 interface Type {
@@ -45,25 +45,26 @@ export default function reelInfoSection( { reelTitle, reelDetails, videoCover, p
           
     }
 
-    const titleScroll = () => {
-        const pageY = window.pageYOffset;        
-        const screenWidth = window.innerWidth;
-        const title = document.querySelector(".reelTitle") as HTMLElement;
+    const ref = useRef<HTMLElement | any>(null!);
 
-        if( !isMobile && title && pageY > 50 ){
-            title.style.transform = `translateY(-${pageY}px)`;
-        }
-    }
-    useEffect(()=>{
-        window.addEventListener('scroll', titleScroll);
-
-    },[])
+    // const titleScroll = () => {
+    //     const pageY = window.pageYOffset;        
+        
+    //     if(!isMobile && ref){
+    //         ref.current.style.transform = `translateY(-${pageY}px)`;
+    //     }else{
+    //    return null
+    //}
+    // }
+    // useEffect(()=>{
+    //     window.addEventListener('scroll', titleScroll);
+    // },[])
 
     return(
         <>
             <section className={styles.projectPageSection}>
                 <div className={styles.projectDetailsWrapper}>
-                    <h3 className={`${styles.projectTitle} reelTitle title`}>
+                    <h3 ref={ref} className={`${styles.projectTitle} reelTitle title`}>
                         {reelTitle}
                     </h3>
                     <div className={styles.projectCredsWrapper}>

@@ -1,8 +1,9 @@
 import Image from 'next/image';
 import styles from "../../../styles/scss/projectPages/_projectPages.module.scss";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Loader from "../../common/loader";
 import { isMobile } from 'react-device-detect';
+import { useRouter } from 'next/router';
 
 interface Type{
     title: any;
@@ -15,8 +16,8 @@ interface Type{
 export default function mainInfoSection( { title, details, videoCover, playButton, projectVideo }: Type ):JSX.Element{
     // hook for handling z-index state
     const [toggleIndex, setToggleIndex] = useState(false);
+    const router = useRouter();
     
-console.log(videoCover);
     const handleIndex = () => {
         // console.log(video);
 
@@ -46,19 +47,20 @@ console.log(videoCover);
           
     }
 
+    const ref = useRef<HTMLElement | any>(null!);
 
-    const titleScroll = () => {
-        const pageY = window.pageYOffset;        
-        const screenWidth = window.innerWidth;
-        const title = document.querySelector(".title") as HTMLElement;
-
-        if(!isMobile && title){
-            title.style.transform = `translateY(-${pageY}px)`;
-        }
-    }
-    useEffect(()=>{
-        window.addEventListener('scroll', titleScroll);
-    },[])
+    // const titleScroll = () => {
+    //     const pageY = window.pageYOffset;        
+        
+    //     if(!isMobile && ref){
+    //         ref.current.style.transform = `translateY(-${pageY}px)`;
+    //     }else{
+    //         return null
+    //     }
+    // }
+    // useEffect(()=>{
+    //     window.addEventListener('scroll', titleScroll);
+    // },[])
     if(!videoCover){
         return(
             <Loader />
@@ -68,7 +70,7 @@ console.log(videoCover);
         <>
             <section className={styles.projectPageSection}>
                 <div className={styles.projectDetailsWrapper}>
-                    <h3 className={`${styles.projectTitle} title`}>
+                    <h3 className={`${styles.projectTitle} title`} ref={ref}>
                         {title}
                     </h3>
                     <div className={styles.projectCredsWrapper}>
