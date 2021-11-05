@@ -48,18 +48,25 @@ export default function mainInfoSection( { title, details, videoCover, playButto
     }
 
     const ref = useRef<HTMLElement | any>(null!);
+    // const titleP = document.querySelector(".title") as HTMLElement;
 
     // const titleScroll = () => {
-    //     const pageY = window.pageYOffset;        
+    //     let pageY = window.pageYOffset;
+    //     let transY = 0;
+    //     let diff = 0;
+    //     let para = 0!;
+    //     let lastScrollTop = 0;
+
+    //     if(diff= pageY - transY){
+    //         transY += 2 * diff
+    //     }
         
     //     if(!isMobile && ref){
-    //         ref.current.style.transform = `translateY(-${pageY}px)`;
-    //     }else{
-    //         return null
+    //         ref.current.style.transform = `translateY(-${pageY * -0.1}px)`;
     //     }
     // }
     // useEffect(()=>{
-    //     window.addEventListener('scroll', titleScroll);
+    //         window.addEventListener('scroll', titleScroll);
     // },[])
     if(!videoCover){
         return(
