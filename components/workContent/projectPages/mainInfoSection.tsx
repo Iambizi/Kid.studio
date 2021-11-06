@@ -49,25 +49,27 @@ export default function mainInfoSection( { title, details, videoCover, playButto
 
     const ref = useRef<HTMLElement | any>(null!);
     // const titleP = document.querySelector(".title") as HTMLElement;
-
-    // const titleScroll = () => {
-    //     let pageY = window.pageYOffset;
-    //     let transY = 0;
-    //     let diff = 0;
-    //     let para = 0!;
-    //     let lastScrollTop = 0;
-
-    //     if(diff= pageY - transY){
-    //         transY += 2 * diff
-    //     }
+    const titleScroll = () => {
         
-    //     if(!isMobile && ref){
-    //         ref.current.style.transform = `translateY(-${pageY * -0.1}px)`;
-    //     }
-    // }
-    // useEffect(()=>{
-    //         window.addEventListener('scroll', titleScroll);
-    // },[])
+        let pageY = window.pageYOffset;
+        let transY = 0;
+        let diff = 0;
+        let para = 0!;
+        let lastScrollTop = 0;
+        if(!isMobile && ref){
+            setTimeout(()=>{
+                if(diff= pageY - transY){
+                    transY += 2 * diff
+                }
+                
+                    ref.current.style.transform = `translateY(${pageY * -0.1}px)`;
+                
+            } , 300);
+        }
+    }
+    useEffect(()=>{
+            window.addEventListener('scroll', titleScroll);
+    },[])
     if(!videoCover){
         return(
             <Loader />
