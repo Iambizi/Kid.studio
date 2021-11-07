@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import styles from "../../styles/scss/projectPages/_projectPages.module.scss";
 import { shuffle } from "../common/utils/shuffle";
+import { isMobile } from 'react-device-detect';
 
 
 import React, { useEffect } from "react";
@@ -19,7 +20,7 @@ export default function stills( { reelStills }: Type ):JSX.Element{
         ];
         shuffle(position);
 
-        if(screenWidth >= 1200){
+        if(!isMobile){
             const stills = Array.from(document.getElementsByClassName("stills") as HTMLCollectionOf<HTMLElement>);
 
             for(let i = 0; i < stills.length; i++) {

@@ -56,7 +56,7 @@ export default function mainInfoSection( { title, details, videoCover, playButto
         let diff = 0;
         let para = 0!;
         let lastScrollTop = 0;
-        if(!isMobile && ref){
+        if(!isMobile && ref.current){
             setTimeout(()=>{
                 if(diff= pageY - transY){
                     transY += 2 * diff
@@ -65,11 +65,13 @@ export default function mainInfoSection( { title, details, videoCover, playButto
                     ref.current.style.transform = `translateY(${pageY * -0.1}px)`;
                 
             } , 300);
+        }else{
+            return null;
         }
     }
     useEffect(()=>{
             window.addEventListener('scroll', titleScroll);
-    },[])
+    },[]);
     if(!videoCover){
         return(
             <Loader />

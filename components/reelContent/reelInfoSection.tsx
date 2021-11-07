@@ -2,7 +2,6 @@ import Image from 'next/image';
 import styles from "../../styles/scss/projectPages/_projectPages.module.scss";
 import React, { useState, useEffect, useRef } from "react";
 import { isMobile } from 'react-device-detect';
-
 interface Type {
     reelTitle: string;
     reelDetails: string;
@@ -46,19 +45,28 @@ export default function reelInfoSection( { reelTitle, reelDetails, videoCover, p
     }
 
     const ref = useRef<HTMLElement | any>(null!);
-
-    // const titleScroll = () => {
-    //     const pageY = window.pageYOffset;        
+    const titleScroll = () => {
         
-    //     if(!isMobile && ref){
-    //         ref.current.style.transform = `translateY(-${pageY}px)`;
-    //     }else{
-    //    return null
-    //}
-    // }
-    // useEffect(()=>{
-    //     window.addEventListener('scroll', titleScroll);
-    // },[])
+        let pageY = window.pageYOffset;
+        let transY = 0;
+        let diff = 0;
+
+        if(!isMobile && ref.current){
+            setTimeout(()=>{
+                if(diff= pageY - transY){
+                    transY += 2 * diff
+                }
+                
+                    ref.current.style.transform = `translateY(${pageY * -0.1}px)`;
+                
+            } , 300);
+        }else{
+            return null;
+        }
+    }
+    useEffect(()=>{
+            window.addEventListener('scroll', titleScroll);
+    },[])
 
     return(
         <>
