@@ -103,7 +103,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
             return(
                 <mesh {...props} ref={ref}>
                     <planeGeometry args={[width, height]} />
-                    <meshBasicMaterial  color={"firebrick"} />
+                    <meshBasicMaterial  map={texture1} />
                 </mesh>
 
             )
