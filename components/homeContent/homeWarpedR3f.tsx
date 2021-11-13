@@ -1,9 +1,11 @@
 import React, { useRef } from 'react';
 import * as THREE from 'three';
-import styles from "../../styles/scss/homePage/_carousel.module.scss";
 import { Canvas, useFrame, useLoader } from '@react-three/fiber';
+// import { TextureLoader } from "three/src/loaders/TextureLoader.js";
+import styles from "../../styles/scss/homePage/_carousel.module.scss";
+
 import Link from "next/link";
-import { TextureLoader } from 'three';
+
 import { isMobile } from 'react-device-detect';
 import { useTexture } from "@react-three/drei";
 import { Plane } from "@react-three/drei";
@@ -27,6 +29,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         
         const ref = useRef<HTMLElement | any>(null!);
         const current = ref?.current;
+        // const texture = useLoader(TextureLoader, src1);
 
         let hover_dist = 0.3;
         let mouse = { x: 0, y: 0 };
@@ -40,6 +43,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         let mouseDown = !1;
 
         const loader = new THREE.TextureLoader();
+        
 
         const texture1 = loader.load(`${src1}`);
         const texture2 = loader.load(`${src2}`);
