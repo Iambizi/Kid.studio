@@ -253,7 +253,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
             through the cubes before we proceed with this clean up code
         */}
 
-            if(planes.length - 1 === loopityLoop) {
+            if(planes.length - 1 === loopityLoop ) {
                 return () => {
                     if( ref.current){
                         window.removeEventListener("resize", resizeRender);
