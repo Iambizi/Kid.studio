@@ -260,6 +260,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                         ref.current.removeChild(renderer.domElement);
                         scene.remove(scene.children[0]);
                     }else{
+                        scene.remove(scene.children[0]);
                         return null;
                     }
                     
