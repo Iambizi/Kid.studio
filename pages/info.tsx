@@ -3,10 +3,9 @@ import { GetStaticProps} from 'next';
 import Meta  from '../components/common/meta';
 import React from "react";
 import InfoBox from '../components/infoContent/infoBox';
-import InfoWarpImg from '../components/infoContent/infoWarpedPlane';
+import InfoWarpImg from '../components/infoContent/infoWarpedPla';
 import { connectClient } from '../components/common/utils/createClient';
 import useSWR, { SWRConfig } from 'swr';
-import Loader from "../components/common/loader";
 
 
 interface Type{
