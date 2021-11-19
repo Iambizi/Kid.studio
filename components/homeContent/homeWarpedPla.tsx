@@ -239,7 +239,6 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                 const next = () =>{
                     // slide.play();
                     // count? console.log(count) : "no";
-                    console.log("count");
                     console.log(count)
                 }
                 const previous = ()=>{
