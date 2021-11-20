@@ -19,7 +19,6 @@ export default function reelInfoSection( { reelTitle, reelDetails, videoCover, p
         // console.log(video);
 
         // setToggleIndex(true);
-        // console.log("yooo");
 
         // function addClass(){
         //     video.classList.add(`${styles.toggleIndex}`)
