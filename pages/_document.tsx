@@ -12,6 +12,7 @@ class Document extends NextDocument {
                 </Head>
                 <body>
                     <Main />
+                    
                     <NextScript />
                 </body>
             </Html>
