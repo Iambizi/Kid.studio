@@ -1,5 +1,6 @@
 import React from 'react';
 import NextDocument, { Head, Html, Main, NextScript } from 'next/document';
+import Script from 'next/script';
 
 class Document extends NextDocument {
     render(): JSX.Element {
@@ -13,6 +14,7 @@ class Document extends NextDocument {
                 <body>
                     <Main />
                     <NextScript />
+                    <Script />
                 </body>
             </Html>
         );
