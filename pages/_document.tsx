@@ -12,9 +12,9 @@ class Document extends NextDocument {
                     <link rel="preload" href="/fonts/andalemo.ttf" as="font" type="font/woff2" crossOrigin="" />
                 </Head>
                 <body>
+                    <Script>0</Script>
                     <Main />
                     <NextScript />
-                    <Script>0</Script>
                 </body>
             </Html>
         );
