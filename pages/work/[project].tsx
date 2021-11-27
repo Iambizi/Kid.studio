@@ -61,7 +61,7 @@ export default function projectPages( { projectPage }: Type):JSX.Element{
     return(
         <>
             <Head>
-                <Script></Script>
+                <Script>0</Script>
             </Head>
             <Meta page={title} />
             <Layout specificStyles={`${styles.projectPages}`}>
