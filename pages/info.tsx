@@ -1,10 +1,11 @@
 import Layout from '../components/layout';
 import { GetStaticProps} from 'next';
 import Meta  from '../components/common/meta';
-import React from "react";
+import React, { useEffect, useState } from "react";
 import InfoBox from '../components/infoContent/infoBox';
 import InfoWarpImg from '../components/infoContent/infoWarpedPlane';
 import { connectClient } from '../components/common/utils/createClient';
+import { useRouter } from 'next/router';
 import useSWR, { SWRConfig } from 'swr';
 
 
@@ -16,6 +17,8 @@ interface Type{
 export default function info({ infoPageData, fallback }:Type):JSX.Element{
 // removes needsScroll class set in project pages from vertical scroll
 // projectPage useEffect hook needs refactoring to avoid calling it again here.
+const router = useRouter();
+    const [notFixed, setNotFixed] = useState(false);
 
 
 async function fetcher(url){
@@ -48,6 +51,25 @@ const src = infoImage ? data?.includes.Asset[0].fields.file.url : null;
 // console.log(infoImage);
 
 // console.log(baseUrlAssetsFields);
+useEffect(()=>{
+
+    const bg = document.body;
+    
+    bg.classList.add("needsScroll");
+    console.log('scrolly');
+
+    const removePageScroll = () =>{
+          bg.classList.remove("needsScroll");
+          console.log('no scrolly');
+          setNotFixed(true);
+    }
+
+    router.events.on('beforeHistoryChange', removePageScroll);
+    return () => {
+      router.events.off('beforeHistoryChange', removePageScroll);
+    };
+
+},[]);
 
     return(
         <>
