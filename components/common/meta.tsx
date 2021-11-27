@@ -9,7 +9,7 @@ export default function meta({page}: Types): JSX.Element{
         <>
             <Head>
                 <title>Kid. Studio | {page}</title>
-                <Script>0</Script>
+                {/* <Script>0</Script> */}
             </Head>
         </>
     );
