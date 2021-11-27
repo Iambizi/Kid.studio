@@ -9,7 +9,7 @@ export default function flash():JSX.Element{
 
     const flash = () => {
         const flashObj = document.getElementById("flash");
-        setInterval(() => {
+        const intervalID = setInterval(() => {
     
             const rando = getRandoNum(1,9);
             const imgLink = `https://kidstudio.co/assets/images/flash/${rando}.png`;
@@ -23,6 +23,9 @@ export default function flash():JSX.Element{
             }, 100);
     
         }, 15000);
+        return () => {
+            clearInterval(intervalID);
+          };
     }
     
     useEffect(() =>{
