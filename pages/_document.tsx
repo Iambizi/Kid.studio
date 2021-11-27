@@ -1,5 +1,6 @@
 import React from 'react';
 import NextDocument, { Head, Html, Main, NextScript } from 'next/document';
+import Script from 'next/script'
 
 class Document extends NextDocument {
     render(): JSX.Element {
@@ -11,6 +12,7 @@ class Document extends NextDocument {
                     <link rel="preload" href="/fonts/andalemo.ttf" as="font" type="font/woff2" crossOrigin="" />
                 </Head>
                 <body>
+                    <Script />
                     <Main />
                     <NextScript />
                 </body>
