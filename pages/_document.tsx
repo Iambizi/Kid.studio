@@ -13,7 +13,7 @@ class Document extends NextDocument {
                     <link rel="stylesheet preload prefetch" href="/fonts/andalemo.ttf" as="style" crossOrigin="anonymous" />
                 </Head>
                 <body>
-                    <Script></Script>
+                    <Script>0</Script>
                     <Main />
                     <NextScript />
                 </body>
