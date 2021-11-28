@@ -26,12 +26,6 @@ export default function home({homeProjects, projects}: Type):JSX.Element {
     const baseUrl = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master/entries?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}`;
     const { data } = useSWR(baseUrl, fetcher, { initialData: projects });  
 
-    useEffect(()=>{
-      const bg = document.body;
-      
-      bg.classList.remove("needsScroll");
-
-  },[]);
     
   return (
     <>

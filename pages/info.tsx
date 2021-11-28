@@ -53,13 +53,6 @@ const src = infoImage ? data?.includes.Asset[0].fields.file.url : null;
 // console.log(baseUrlAssetsFields);
 
 
-useEffect(()=>{
-    const bg = document.body;
-    
-    bg.classList.remove("needsScroll");
-
-},[]);
-
     return(
         <>
             <Meta page={"Info"} />
