@@ -51,23 +51,12 @@ const src = infoImage ? data?.includes.Asset[0].fields.file.url : null;
 // console.log(infoImage);
 
 // console.log(baseUrlAssetsFields);
-useEffect(()=>{
 
+
+useEffect(()=>{
     const bg = document.body;
     
-    bg.classList.add("needsScroll");
-    console.log('scrolly');
-
-    const removePageScroll = () =>{
-          bg.classList.remove("needsScroll");
-          console.log('no scrolly');
-          setNotFixed(true);
-    }
-
-    router.events.on('beforeHistoryChange', removePageScroll);
-    return () => {
-      router.events.off('beforeHistoryChange', removePageScroll);
-    };
+    bg.classList.remove("needsScroll");
 
 },[]);
 
