@@ -24,6 +24,7 @@ function MyApp({ Component, pageProps}) {
     tempFix();
   };
 
+  router.events.on('beforeHistoryChange', routeChange ); 
  router.events.on("routeChangeComplete", routeChange );
  router.events.on("routeChangeStart", routeChange );
 
