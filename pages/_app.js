@@ -25,8 +25,8 @@ function MyApp({ Component, pageProps}) {
   };
 
   router.events.on('beforeHistoryChange', routeChange ); 
- router.events.on("routeChangeComplete", routeChange );
- router.events.on("routeChangeStart", routeChange );
+  router.events.on("routeChangeComplete", routeChange );
+  router.events.on("routeChangeStart", routeChange );
 
 },[]);
 
