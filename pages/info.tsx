@@ -7,6 +7,8 @@ import InfoWarpImg from '../components/infoContent/infoWarpedPlane';
 import { connectClient } from '../components/common/utils/createClient';
 import { useRouter } from 'next/router';
 import useSWR, { SWRConfig } from 'swr';
+import Head from 'next/head';
+import Script from 'next/script';
 
 
 interface Type{
@@ -18,7 +20,7 @@ export default function info({ infoPageData, fallback }:Type):JSX.Element{
 // removes needsScroll class set in project pages from vertical scroll
 // projectPage useEffect hook needs refactoring to avoid calling it again here.
 const router = useRouter();
-    const [notFixed, setNotFixed] = useState(false);
+const [notFixed, setNotFixed] = useState(false);
 
 
 async function fetcher(url){
@@ -51,9 +53,31 @@ const src = infoImage ? data?.includes.Asset[0].fields.file.url : null;
 // console.log(infoImage);
 
 // console.log(baseUrlAssetsFields);
+useEffect(()=>{
+
+    const bg = document.body;
+    
+    bg.classList.add("needsScroll");
+    console.log('scrolly');
+
+    const removePageScroll = () =>{
+          bg.classList.remove("needsScroll");
+          console.log('no scrolly');
+          setNotFixed(true);
+    }
+
+    router.events.on('beforeHistoryChange', removePageScroll);
+    return () => {
+      router.events.off('beforeHistoryChange', removePageScroll);
+    };
+
+},[]);
 
     return(
         <>
+                    <Head>
+                <Script>0</Script>
+            </Head>
             <Meta page={"Info"} />
             <Layout>
                 <InfoBox aboutUs={aboutUs} />
