@@ -45,24 +45,24 @@ export default function projectPages( { projectPage }: Type):JSX.Element{
         bg.classList.add("needsScroll");
         console.log('scrolly');
     
-        const removePageScroll = () =>{
-              bg.classList.remove("needsScroll");
-              console.log('no scrolly');
-              setNotFixed(true);
-        }
+        // const removePageScroll = () =>{
+        //       bg.classList.remove("needsScroll");
+        //       console.log('no scrolly');
+        //       setNotFixed(true);
+        // }
     
-        router.events.on('beforeHistoryChange', removePageScroll);
-        return () => {
-          router.events.off('beforeHistoryChange', removePageScroll);
-        };
+        // router.events.on('beforeHistoryChange', removePageScroll);
+        // return () => {
+        //   router.events.off('beforeHistoryChange', removePageScroll);
+        // };
 
     },[]);
 
     return(
         <>
-            <Head>
+            {/* <Head>
                 <Script>0</Script>
-            </Head>
+            </Head> */}
             <Meta page={title} />
             <Layout specificStyles={`${styles.projectPages}`}>
                 <MainInfo title={title} details={details} videoCover={videoCover} playButton={playButton} projectVideo={projectVideo}/>
