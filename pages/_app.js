@@ -3,7 +3,7 @@ import '../styles/scss/_globals.scss'
 import '../styles/scss/_index.scss'
 import { useRouter } from "next/router";
 import { PageTransition } from 'next-page-transitions';
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 function MyApp({ Component, pageProps}) {
   const router = useRouter();
@@ -23,7 +23,7 @@ function MyApp({ Component, pageProps}) {
     };
     tempFix();
   };
-  
+
   router.push(router.pathname);
   router.events.on('beforeHistoryChange', routeChange ); 
   router.events.on("routeChangeComplete", routeChange );
