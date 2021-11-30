@@ -23,7 +23,8 @@ function MyApp({ Component, pageProps}) {
     };
     tempFix();
   };
-
+  
+  router.push(router.pathname);
   router.events.on('beforeHistoryChange', routeChange ); 
   router.events.on("routeChangeComplete", routeChange );
   router.events.on("routeChangeStart", routeChange );
