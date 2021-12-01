@@ -10,8 +10,6 @@ import { useRouter } from 'next/router';
 import styles from '../../styles/scss/common/_footer.module.scss';
 import { connectClient } from '../../components/common/utils/createClient';
 import useSWR from 'swr';
-import Head from 'next/head';
-import Script from 'next/script';
 
 interface Type{
     projectsPageData: any;
@@ -60,9 +58,6 @@ export default function projectPages( { projectPage }: Type):JSX.Element{
 
     return(
         <>
-            <Head>
-                <Script>0</Script>
-            </Head>
             <Meta page={title} />
             <Layout specificStyles={`${styles.projectPages}`}>
                 <MainInfo title={title} details={details} videoCover={videoCover} playButton={playButton} projectVideo={projectVideo}/>
