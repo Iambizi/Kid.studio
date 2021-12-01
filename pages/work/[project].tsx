@@ -44,7 +44,7 @@ export default function projectPages( { projectPage }: Type):JSX.Element{
         
         bg.classList.add("needsScroll");
         console.log('scrolly');
-    
+
         const removePageScroll = () =>{
               bg.classList.remove("needsScroll");
               console.log('no scrolly');
