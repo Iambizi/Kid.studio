@@ -1,7 +1,4 @@
 module.exports = {
-    // experimental: {
-    //     optimizeCss: true,
-    // },
     images: {
         domains: ['images.ctfassets.net'],
         deviceSizes: [ 320, 375, 425, 768, 1024, 1200, 1400, 1600 ]
