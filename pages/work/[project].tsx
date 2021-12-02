@@ -43,10 +43,17 @@ export default function projectPages( { projectPage }: Type):JSX.Element{
         bg.classList.add("needsScroll");
         console.log('scrolly');
 
+        const containsClass = bg.classList.contains("needsScroll");
+
         const removePageScroll = () =>{
-              bg.classList.remove("needsScroll");
-              console.log('no scrolly');
-              setNotFixed(true);
+            if(!containsClass){
+                bg.classList.remove("needsScroll");
+                console.log('no scrolly');
+                setNotFixed(true);
+            } else {
+                return false;
+            }
+              
         }
     
         router.events.on('beforeHistoryChange', removePageScroll);
