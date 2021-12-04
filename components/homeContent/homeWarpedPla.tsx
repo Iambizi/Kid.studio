@@ -282,8 +282,8 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         // In order for line 131 to work we need to renderer.Element to return an actual DOM Element.
         //Canvas won't work because it's just a container for graphics.
         <>
-            <p className={styles.nextButton} id={"next"} onClick={goNext}>NEXT</p>
-            <p className={styles.previousButton} id={"previous"} onClick={goPrevious}>PREVIOUS</p>
+            <p ref={homePlaneRef} className={styles.nextButton} id={"next"} onClick={goNext}>NEXT</p>
+            <p ref={homePlaneRef} className={styles.previousButton} id={"previous"} onClick={goPrevious}>PREVIOUS</p>
             <div ref={homePlaneRef} className={`${styles.homeScene} homeScene`}>
             </div>
         </>
