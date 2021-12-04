@@ -55,8 +55,6 @@ export default function projectPages( { projectPage }: Type):JSX.Element{
             }
               
         }
-        // router.push(projectPage.projectSlug);
-        console.log(router.asPath);
         router.events.on('beforeHistoryChange', removePageScroll);
         return () => {
           router.events.off('beforeHistoryChange', removePageScroll);
