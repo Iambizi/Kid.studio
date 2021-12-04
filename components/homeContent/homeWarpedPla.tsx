@@ -12,9 +12,11 @@ interface Type{
     carouselX : number;
     slideNext: boolean;
     slidePrevious: boolean;
+    goPrevious: any;
+    goNext: any;
 }
 
-export default function warpedImage({ count, projects, carouselX, slideNext, slidePrevious  }:Type):JSX.Element{
+export default function warpedImage({ count, projects, carouselX, slideNext, slidePrevious, goPrevious, goNext  }:Type):JSX.Element{
 
     const src1 = projects[0]?.fields.featuredProjectImage.fields ? projects[0].fields.featuredProjectImage.fields.file.url : null;
     const src2 = projects[1]?.fields.featuredProjectImage.fields ? projects[1].fields.featuredProjectImage.fields.file.url : null;
@@ -22,7 +24,8 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
 
     
     
-    const ref = useRef<HTMLElement | any>(null!);
+    const homePlaneRef = useRef<HTMLElement | any>(null!);
+    const homePlaneControls = useRef<HTMLElement | any>(null!);
 
 
     // slideNext ? console.log("click farwud") : null;
@@ -81,7 +84,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
             alpha: !0
         });
 
-        ref.current.appendChild(renderer.domElement);
+        homePlaneRef.current.appendChild(renderer.domElement);
         
         const sizes = {
             width: window.innerWidth,
@@ -138,7 +141,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         
         renderer.setSize(window.innerWidth, window.innerHeight);
 
-        ref.current.appendChild( renderer.domElement );
+        homePlaneRef.current.appendChild( renderer.domElement );
 
         //pixel ratio: corresponds to how many physical pixels you have on the screen for one pixel unit on the software part.
         // Device pixel ratio: allows us to adjust the pixel ratio of our scene to pixel ratio of our device
@@ -239,10 +242,13 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                 const next = () =>{
                     // slide.play();
                     // count? console.log(count) : "no";
-                    console.log(count)
+                    console.log(count);
+                    // goNext();
                 }
                 const previous = ()=>{
+                    // goPrevious();
                 }
+                homePlaneControls.current = {next, previous}        
 
         nextButton ? nextButton.addEventListener("mouseup", next, !1 ) : null; 
         previousButton ? previousButton.addEventListener("mouseup", previous, !1 ): null;
@@ -254,9 +260,9 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
 
             if(planes.length - 1 === loopityLoop ) {
                 return () => {
-                    if( ref.current){
+                    if( homePlaneRef.current){
                         window.removeEventListener("resize", resizeRender);
-                        ref.current.removeChild(renderer.domElement);
+                        homePlaneRef.current.removeChild(renderer.domElement);
                         scene.remove(scene.children[0]);
                     }else{
                         scene.remove(scene.children[0]);
@@ -276,7 +282,9 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         // In order for line 131 to work we need to renderer.Element to return an actual DOM Element.
         //Canvas won't work because it's just a container for graphics.
         <>
-            <div ref={ref} className={`${styles.homeScene} homeScene`}>
+            <p className={styles.nextButton} id={"next"} onClick={goNext}>NEXT</p>
+            <p className={styles.previousButton} id={"previous"} onClick={goPrevious}>PREVIOUS</p>
+            <div ref={homePlaneRef} className={`${styles.homeScene} homeScene`}>
             </div>
         </>
     )

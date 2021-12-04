@@ -41,14 +41,12 @@ export default function projectPages( { projectPage }: Type):JSX.Element{
         const bg = document.body;
         
         bg.classList.add("needsScroll");
-        console.log('scrolly');
 
         const containsClass = bg.classList.contains("needsScroll");
 
         const removePageScroll = () =>{
             if(!containsClass){
                 bg.classList.remove("needsScroll");
-                console.log('no scrolly');
                 setNotFixed(true);
             } else {
                 return false;
