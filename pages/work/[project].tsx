@@ -45,6 +45,9 @@ export default function projectPages( { projectPage }: Type):JSX.Element{
 
         const containsClass = bg.classList.contains("needsScroll");
 
+        if(!containsClass){
+            
+        }
         const removePageScroll = () =>{
             if(!containsClass){
                 bg.classList.remove("needsScroll");

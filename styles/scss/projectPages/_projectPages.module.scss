@@ -110,10 +110,15 @@
             margin-bottom: 10%;
             height: 30%;
             width: 100%;
-            @media screen and (min-width: $l){
-                width: 30%;
+            @media screen and (min-width: $m){
+                width: 35%;
                 height: 100%;
                 margin-bottom: 5%;
+            }
+            @media screen and (min-width: $l){
+                // width: 35%;
+                // height: 100%;
+                // margin-bottom: 5%;
             }
         }
     }
