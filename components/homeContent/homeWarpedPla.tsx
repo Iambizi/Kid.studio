@@ -234,24 +234,20 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
             renderer.render(scene, camera);
         }
         animationLoop();
-
-
-                const nextButton = document.getElementById("next");
-                const previousButton = document.getElementById("previous");
+                // const nextButton = document.getElementById("next");
+                // const previousButton = document.getElementById("previous");
 
                 const next = () =>{
-                    // slide.play();
-                    // count? console.log(count) : "no";
-                    console.log(count);
-                    // goNext();
+                    goNext;
                 }
                 const previous = ()=>{
-                    // goPrevious();
+                    goPrevious;
                 }
-                homePlaneControls.current = {next, previous}        
 
-        nextButton ? nextButton.addEventListener("mouseup", next, !1 ) : null; 
-        previousButton ? previousButton.addEventListener("mouseup", previous, !1 ): null;
+                homePlaneControls.current = { next, previous }        
+
+        // nextButton ? nextButton.addEventListener("mouseup", next, !1 ) : null; 
+        // previousButton ? previousButton.addEventListener("mouseup", previous, !1 ): null;
 
         {/* 
             In order to avoid having the 'return' statement stop the planes from looping we need to check that we're done looping 
@@ -282,8 +278,8 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         // In order for line 131 to work we need to renderer.Element to return an actual DOM Element.
         //Canvas won't work because it's just a container for graphics.
         <>
-            <p ref={homePlaneRef} className={styles.nextButton} id={"next"} onClick={goNext}>NEXT</p>
-            <p ref={homePlaneRef} className={styles.previousButton} id={"previous"} onClick={goPrevious}>PREVIOUS</p>
+            <p className={styles.nextButton} onClick={goNext}>NEXT</p>
+            <p className={styles.previousButton} onClick={goPrevious}>PREVIOUS</p>
             <div ref={homePlaneRef} className={`${styles.homeScene} homeScene`}>
             </div>
         </>
