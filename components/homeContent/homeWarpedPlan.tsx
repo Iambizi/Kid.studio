@@ -12,9 +12,11 @@ interface Type{
     carouselX : number;
     slideNext: boolean;
     slidePrevious: boolean;
+    goNext: any;
+    goPrevious: any;
 }
 
-export default function warpedImage({ count, projects, carouselX, slideNext, slidePrevious }:Type):JSX.Element{
+export default function warpedImage({ count, projects, carouselX, slideNext, slidePrevious, goNext, goPrevious }:Type):JSX.Element{
 
     const src1 = projects[0]?.fields.featuredProjectImage.fields ? projects[0].fields.featuredProjectImage.fields.file.url : null;
     const src2 = projects[1]?.fields.featuredProjectImage.fields ? projects[1].fields.featuredProjectImage.fields.file.url : null;
@@ -22,7 +24,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
     
     console.log(count);
 
-
+    const homePlaneRef = useRef<HTMLElement | any>(null!);
     useEffect(()=>{
         const screenWidth = window.innerWidth;
         
@@ -72,7 +74,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
 
         const canvas = document.querySelector('.homeScene');
         const renderer = new THREE.WebGLRenderer({
-            canvas: canvas,
+            div: canvas,
             antialias: true,
             alpha: !0
         });
@@ -229,8 +231,10 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         // In order for line 131 to work we need to renderer.Element to return an actual DOM Element.
         //Canvas won't work because it's just a container for graphics.
         <>
-            <canvas className={`${styles.homeScene} homeScene`}>
-            </canvas>
+            <p className={styles.nextButton} onClick={goNext}>NEXT</p>
+            <p className={styles.previousButton} onClick={goPrevious}>PREVIOUS</p>
+            <div ref={homePlaneRef} className={`${styles.homeScene} homeScene`}>
+            </div>
         </>
     )
 }
