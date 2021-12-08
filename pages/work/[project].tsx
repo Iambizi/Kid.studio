@@ -91,7 +91,7 @@ export const getStaticProps: GetStaticProps = async (context)=>{
     }
 }
 
-export const getStaticPaths: GetStaticPaths = async (context) =>{
+export const getStaticPaths: GetStaticPaths = async () =>{
     const res: any = await connectClient.getEntries({ content_type: 'projectPage' });
     
     const paths = res.items.map((item) => ({
