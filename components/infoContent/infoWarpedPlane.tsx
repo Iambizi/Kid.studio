@@ -133,22 +133,18 @@ export default function inforWarpImg({src}: Type):JSX.Element{
         }
         animationLoop()
         return () => {
-            // if(infoRef.current){
-            //     window.removeEventListener("resize", resizeRender);
-            //     infoRef.current.removeChild(renderer.domElement);
-            //     scene.remove(scene.children[0]);
-            //     geometry.dispose();
-            //     console.log("Info canvas!!");
-            // }else{
-            //     console.log("No  more Info canvas!!");
-            //     scene.remove(scene.children[0]);
-            //     return null;
-            // }
-            window.removeEventListener("resize", resizeRender);
-            infoRef.current.removeChild(renderer.domElement);
-            scene.remove(scene.children[0]);
-            geometry.dispose();
-            console.log("Info canvas!!");
+            if(infoRef.current){
+                console.log("Info canvas!!");
+                window.removeEventListener("resize", resizeRender);
+                infoRef.current.removeChild(renderer.domElement);
+                scene.remove(scene.children[0]);
+                geometry.dispose();
+            }else{
+                console.log("No  more Info canvas!!");
+                scene.remove(scene.children[0]);
+                geometry.dispose();
+                return null;
+            }
         };
     },[])
 
