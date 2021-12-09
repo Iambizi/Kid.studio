@@ -4,7 +4,7 @@ import { GetStaticProps } from 'next';
 import Layout from '../components/layout';
 import Meta  from '../components/common/meta';
 import Content from '../components/homeContent/content';
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { connectClient } from '../components/common/utils/createClient';
 import useSWR from 'swr';
 
@@ -26,11 +26,6 @@ export default function home({homeProjects, projects}: Type):JSX.Element {
     const baseUrl = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master/entries?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}`;
     const { data } = useSWR(baseUrl, fetcher, { initialData: projects });
     
-    useEffect(()=>{
-      const bg = document.body;
-      const containsClass = bg.classList.contains("needsScroll");
-      console.log(containsClass);
-    })
 
   return (
     <>

@@ -21,7 +21,6 @@ export default function navigation( { bgImg }:Type ):JSX.Element{
     const setFixedNav = () =>{
         if(router.pathname.match(workPath) || router.pathname.match(infoPath) || router.pathname.match(homePath) ){
             setNotFixed(true);
-            console.log("not fixed");
         }
     }
 
