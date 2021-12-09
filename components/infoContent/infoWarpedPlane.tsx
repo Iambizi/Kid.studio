@@ -8,7 +8,7 @@ interface Type{
 }
 export default function inforWarpImg({src}: Type):JSX.Element{
 
-    const ref = useRef<HTMLElement | any>(null!);
+    const infoRef = useRef<HTMLElement | any>(null!);
     
     useEffect(()=>{
 
@@ -78,7 +78,7 @@ export default function inforWarpImg({src}: Type):JSX.Element{
         
         renderer.setSize(sizes.width, sizes.height);
 
-        ref.current.appendChild( renderer.domElement );
+        infoRef.current.appendChild( renderer.domElement );
         //pixel ratio: corresponds to how many physical pixels you have on the screen for one pixel unit on the software part.
 
         // Device pixel ratio: allows us to adjust the pixel ratio of our scene to pixel ratio of our device
@@ -133,11 +133,13 @@ export default function inforWarpImg({src}: Type):JSX.Element{
         }
         animationLoop()
         return () => {
-            if(ref.current){
+            if(infoRef.current){
                 window.removeEventListener("resize", resizeRender);
-            ref.current.removeChild(renderer.domElement);
-            scene.remove(scene.children[0]);
+                infoRef.current.removeChild(renderer.domElement);
+                scene.remove(scene.children[0]);
+                geometry.dispose();
             }else{
+                scene.remove(scene.children[0]);
                 return null;
             }
             
@@ -146,7 +148,7 @@ export default function inforWarpImg({src}: Type):JSX.Element{
 
     return(
         <>
-            <div ref={ref} className={`${styles.infoScene} infoScene`}>
+            <div ref={infoRef} className={`${styles.infoScene} infoScene`}>
             </div>
         </>
     )
