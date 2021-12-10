@@ -2,6 +2,8 @@ import styles from '../../styles/scss/info/_info.module.scss';
 import * as THREE from 'three';
 import React, { useEffect, useRef } from "react";
 import { isMobile } from 'react-device-detect';
+import { useRouter } from 'next/router';
+
 
 interface Type{
     src: string;
@@ -9,6 +11,8 @@ interface Type{
 export default function inforWarpImg({src}: Type):JSX.Element{
 
     const infoRef = useRef<HTMLElement | any>(null!);
+    const infoPath = /\/info$/gm;
+    const router = useRouter();
     
     useEffect(()=>{
 
@@ -132,20 +136,20 @@ export default function inforWarpImg({src}: Type):JSX.Element{
             renderer.render(scene, camera);
         }
         animationLoop()
-        return () => {
-            if(infoRef.current){
+        const cleanUp = () => {
+            if(infoRef.current && !router.pathname.match(infoPath)){
                 console.log("Info canvas!!");
                 window.removeEventListener("resize", resizeRender);
                 infoRef.current.removeChild(renderer.domElement);
                 scene.remove(scene.children[0]);
                 geometry.dispose();
-            }else{
-                console.log("No  more Info canvas!!");
-                scene.remove(scene.children[0]);
-                geometry.dispose();
-                return null;
             }
-        };
+        }
+            cleanUp();
+            router.events.on('beforeHistoryChange', cleanUp);
+            return () => {
+              router.events.off('beforeHistoryChange', cleanUp);
+            };
     },[])
 
     return(
