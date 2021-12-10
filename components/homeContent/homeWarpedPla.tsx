@@ -261,7 +261,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                         homePlaneRef.current.removeChild(renderer.domElement);
                         scene.remove(scene.children[0]);
                         group.dispose();
-                        console.log("Home canvas!!");
+                        console.log("Home canvas!");
                     }else{
                         console.log("No more Home canvas!!");
                         scene.remove(scene.children[0]);
