@@ -5,6 +5,7 @@ import * as THREE from 'three';
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
 import { isMobile } from 'react-device-detect';
 import gsap from 'gsap';
+import { useRouter } from 'next/router';
 
 interface Type{
     count: number;
@@ -26,7 +27,9 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
     
     const homePlaneRef = useRef<HTMLElement | any>(null!);
     const homePlaneControls = useRef<HTMLElement | any>(null!);
-
+    const router = useRouter();
+    const homePath = /\/$/gm;
+    
 
     // slideNext ? console.log("click farwud") : null;
     // slideNext && carouselX <= 100 ? "'nother click farwud" : "back to 1st";
@@ -147,7 +150,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         // Device pixel ratio: allows us to adjust the pixel ratio of our scene to pixel ratio of our device
 
         // Hide this if you want to achieve exact textured look as OG site
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio),2);
+        // renderer.setPixelRatio(Math.min(window.devicePixelRatio),2);
 
         // Animations loop function
         const animationLoop = () =>
@@ -176,12 +179,12 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
 
             const hoverMove = () => {
                 for (var a = 0; a < planes.length; a++)
-                mouse.x > 0.5 ? planes[a].rotation.y < hover_dist && (planes[a].rotation.y += 0.003) : mouse.x < 0.5 && planes[a].rotation.y > -hover_dist && (planes[a].rotation.y -= 0.003),
-                    mouse.y > 0.5 ? planes[a].rotation.x < hover_dist && (planes[a].rotation.x += 0.003) : mouse.y < 0.5 && planes[a].rotation.x > -hover_dist && (planes[a].rotation.x -= 0.003);
+                mouse.x > 0.5 ? planes[a].rotation.y < hover_dist && (planes[a].rotation.y += 0.002) : mouse.x < 0.5 && planes[a].rotation.y > -hover_dist && (planes[a].rotation.y -= 0.002),
+                    mouse.y > 0.5 ? planes[a].rotation.x < hover_dist && (planes[a].rotation.x += 0.002) : mouse.y < 0.5 && planes[a].rotation.x > -hover_dist && (planes[a].rotation.x -= 0.002);
             (planes[0].rotation.y > hover_dist || planes[0].rotation.y < -hover_dist) && (planes[0].rotation.x > hover_dist || planes[0].rotation.x < -hover_dist) && (hovering = !0);
             }
             const snapBack = () => {
-                planes[0].rotation.x < 0.003 && planes[0].rotation.x > -0.003 && planes[0].rotation.y < 0.003 && planes[0].rotation.y > -0.003 && (snapping = !1);
+                planes[0].rotation.x < 0.002 && planes[0].rotation.x > -0.002 && planes[0].rotation.y < 0.002 && planes[0].rotation.y > -0.002 && (snapping = !1);
                 for (var a = 0; a < planes.length; a++) (planes[a].rotation.x -= snapback.x), (planes[a].rotation.y -= snapback.y);
             }
             const hover = () => {
@@ -254,22 +257,38 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
             through the cubes before we proceed with this clean up code
         */}
 
-            if(planes.length - 1 === loopityLoop ) {
-                return () => {
-                    if( homePlaneRef.current){
-                        window.removeEventListener("resize", resizeRender);
-                        homePlaneRef.current.removeChild(renderer.domElement);
-                        scene.remove(scene.children[0]);
-                        group.dispose();
-                        console.log("Home canvas!");
-                    }else{
-                        console.log("No more Home canvas!!");
-                        scene.remove(scene.children[0]);
-                        return null;
-                    }
+            // if(planes.length - 1 === loopityLoop ) {
+            //     return () => {
+            //         if( homePlaneRef.current){
+            //             window.removeEventListener("resize", resizeRender);
+            //             homePlaneRef.current.removeChild(renderer.domElement);
+            //             scene.remove(scene.children[0]);
+            //             group.dispose();
+            //             console.log("Home canvas!");
+            //         }else{
+            //             console.log("No more Home canvas!!");
+            //             scene.remove(scene.children[0]);
+            //             return null;
+            //         }
                     
-                };
+            //     };
+            // }
+            console.log(group.children[0].geometry);
+            const cleanUp = () => {
+                if(homePlaneRef.current && !router.pathname.match(homePath)){
+                    window.removeEventListener("resize", resizeRender);
+                    homePlaneRef.current.removeChild(renderer.domElement);
+                    scene.remove(scene.children[0]);
+                    group.planeGeometry.dispose();
+                    console.log("Info canvas!!");
+                    console.log(group.planes);
+                }
             }
+                cleanUp();
+                router.events.on('beforeHistoryChange', cleanUp);
+                return () => {
+                  router.events.off('beforeHistoryChange', cleanUp);
+                };
         }
     }
     

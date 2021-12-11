@@ -138,7 +138,6 @@ export default function inforWarpImg({src}: Type):JSX.Element{
         animationLoop()
         const cleanUp = () => {
             if(infoRef.current && !router.pathname.match(infoPath)){
-                console.log("Info canvas!!");
                 window.removeEventListener("resize", resizeRender);
                 infoRef.current.removeChild(renderer.domElement);
                 scene.remove(scene.children[0]);

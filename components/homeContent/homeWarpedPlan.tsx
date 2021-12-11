@@ -70,8 +70,6 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
             height: window.innerHeight
         }
 
-        
-
         const canvas = document.querySelector('.homeScene');
         const renderer = new THREE.WebGLRenderer({
             div: canvas,
@@ -122,6 +120,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         ]
 
         group.add(cubes[looptyLoop]);
+        
         
 
         camera.position.z = screenWidth >= 1200 ? 3 : 8;
