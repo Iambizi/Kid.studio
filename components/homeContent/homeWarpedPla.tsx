@@ -76,9 +76,13 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         texture1.minFilter = THREE.LinearFilter;
         texture2.minFilter = THREE.LinearFilter;
         texture3.minFilter = THREE.LinearFilter;
+
         
         const width = 5.4;
         const height = 2.9;
+
+        const geometry = new THREE.PlaneGeometry(width * scale, height * scale);
+
 
         const canvas = document.querySelector('.homeScene');
         const renderer = new THREE.WebGLRenderer({
@@ -121,16 +125,16 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         
         let planes = [
             new THREE.Mesh(
-                new THREE.PlaneGeometry(width * scale, height * scale),
+                geometry,
                 new THREE.MeshBasicMaterial({ map: texture1 })
             ),
             new THREE.Mesh(
-                new THREE.PlaneGeometry(width * scale, height * scale),
+                geometry,
                 new THREE.MeshBasicMaterial({ map: texture2 })
             )
             ,
             new THREE.Mesh(
-                new THREE.PlaneGeometry(width * scale, height * scale),
+                geometry,
                 new THREE.MeshBasicMaterial({ map: texture3 })
             ),
         ]
@@ -273,13 +277,13 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                     
             //     };
             // }
-            console.log(group.children[0].geometry);
+            console.log(group.children[loopityLoop]);
             const cleanUp = () => {
                 if(homePlaneRef.current && !router.pathname.match(homePath)){
                     window.removeEventListener("resize", resizeRender);
                     homePlaneRef.current.removeChild(renderer.domElement);
                     scene.remove(scene.children[0]);
-                    group.planeGeometry.dispose();
+                    geometry.dispose();
                     console.log("Info canvas!!");
                     console.log(group.planes);
                 }
