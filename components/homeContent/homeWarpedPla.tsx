@@ -48,6 +48,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         // slidingAnimations();
     },[]);
 
+    const group = new THREE.Group();
     let init = () =>{
         let hover_dist = 0.3;
         let mouse = { x: 0, y: 0 };
@@ -69,7 +70,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
 
         const scene = new THREE.Scene();
 
-        const group = new THREE.Group();
+        // const group = new THREE.Group();
         
         const loader = new THREE.TextureLoader();
 
@@ -158,7 +159,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         // Device pixel ratio: allows us to adjust the pixel ratio of our scene to pixel ratio of our device
 
         // Hide this if you want to achieve exact textured look as OG site
-        // renderer.setPixelRatio(Math.min(window.devicePixelRatio),2);
+        isMobile ? renderer.setPixelRatio(Math.min(window.devicePixelRatio),2) : null;
 
         // Animations loop function
         const animationLoop = () =>
@@ -221,7 +222,6 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
 
             /** controls mouse and hover effects **/
                 scene.add(group);
-
                 (planes[1].position.x = 100);
                 (planes[2].position.x = 200);
                 // camera.position.x = carouselX;
@@ -245,41 +245,13 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
             renderer.render(scene, camera);
         }
         animationLoop();
-                // const nextButton = document.getElementById("next");
-                // const previousButton = document.getElementById("previous");      
 
-        // nextButton ? nextButton.addEventListener("mouseup", next, !1 ) : null; 
-        // previousButton ? previousButton.addEventListener("mouseup", previous, !1 ): null;
-
-        {/* 
-            In order to avoid having the 'return' statement stop the planes from looping we need to check that we're done looping 
-            through the cubes before we proceed with this clean up code
-        */}
-
-            // if(planes.length - 1 === loopityLoop ) {
-            //     return () => {
-            //         if( homePlaneRef.current){
-            //             window.removeEventListener("resize", resizeRender);
-            //             homePlaneRef.current.removeChild(renderer.domElement);
-            //             scene.remove(scene.children[0]);
-            //             group.dispose();
-            //             console.log("Home canvas!");
-            //         }else{
-            //             console.log("No more Home canvas!!");
-            //             scene.remove(scene.children[0]);
-            //             return null;
-            //         }
-                    
-            //     };
-            // }
-            
             const cleanUp = () => {
                 if(homePlaneRef.current && !router.pathname.match(homePath)){
                     window.removeEventListener("resize", resizeRender);
                     homePlaneRef.current.removeChild(renderer.domElement);
                     scene.remove(scene.children[0]);
                     geometry.dispose();
-                    console.log("Info canvas!!");
                 }
             }
                 cleanUp();
@@ -291,11 +263,16 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
     }
     
     // Tying click functions to useRef hook to create a controls reference
+    group.position.x = carouselX;
     const next = () =>{
         goNext();
+        console.log(count);
+        console.log(group);
     }
     const previous = ()=>{
         goPrevious();
+        console.log(count);
+        console.log(group);
     }
     homePlaneControls.current = { next, previous }
 
@@ -307,8 +284,6 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         {router.pathname.match(homePath)? <>
             <p className={styles.nextButton} onClick={homePlaneControls.current.next}>NEXT</p>
             <p className={styles.previousButton} onClick={homePlaneControls.current.previous}>PREVIOUS</p></> : <></> }
-            {/* <p className={styles.nextButton} onClick={goNext}>NEXT</p>
-            <p className={styles.previousButton} onClick={goPrevious}>PREVIOUS</p> */}
             <div ref={homePlaneRef} className={`${styles.homeScene} homeScene`}>
             </div>
         </>
