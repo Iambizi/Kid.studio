@@ -13,11 +13,11 @@ interface Type{
     carouselX : number;
     slideNext: boolean;
     slidePrevious: boolean;
-    goPrevious: any;
     goNext: any;
+    goPrevious: any;
 }
 
-export default function warpedImage({ count, projects, carouselX, slideNext, slidePrevious, goPrevious, goNext  }:Type):JSX.Element{
+export default function warpedImage({ count, projects, carouselX, slideNext, slidePrevious, goNext, goPrevious  }:Type):JSX.Element{
 
     const src1 = projects[0]?.fields.featuredProjectImage.fields ? projects[0].fields.featuredProjectImage.fields.file.url : null;
     const src2 = projects[1]?.fields.featuredProjectImage.fields ? projects[1].fields.featuredProjectImage.fields.file.url : null;
@@ -40,8 +40,12 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
     // const slide = tl.to(camera.position, { duration: .9, x: carouselX });
     // slideNext && camera.position.x < 200 ? slide.play() : '';
 
+   
+
+
     useEffect(()=>{
         init();
+        // slidingAnimations();
     },[]);
 
     let init = () =>{
@@ -199,10 +203,10 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
             window.requestAnimationFrame(animationLoop);
 
             // mouseDown ? dragMove() : snapping ? snapBack() : hovering ? hover() : hoverMove();
-            // leftScroll && (transitionFrames >= transitionCounter ? ((camera.position.x += 100), transitionCounter++) : ((transitionCounter = 0), (leftScroll = !1)));
-            // dLeftScroll && (transitionFrames >= transitionCounter ? ((camera.position.x += 200), transitionCounter++) : ((transitionCounter = 0), (dLeftScroll = !1)));
-            // rightScroll && (transitionFrames >= transitionCounter ? ((camera.position.x -= 100), transitionCounter++) : ((transitionCounter = 0), (rightScroll = !1)));
-            // dRightScroll && (transitionFrames >= transitionCounter ? ((camera.position.x -= 200), transitionCounter++) : ((transitionCounter = 0), (dRightScroll = !1)));
+            // leftScroll && (transitionFrames >= transitionCounter ? ((camera.position.x += 62.5), transitionCounter++) : ((transitionCounter = 0), (leftScroll = !1)));
+            // dLeftScroll && (transitionFrames >= transitionCounter ? ((camera.position.x += 125), transitionCounter++) : ((transitionCounter = 0), (dLeftScroll = !1)));
+            // rightScroll && (transitionFrames >= transitionCounter ? ((camera.position.x -= 62.5), transitionCounter++) : ((transitionCounter = 0), (rightScroll = !1)));
+            // dRightScroll && (transitionFrames >= transitionCounter ? ((camera.position.x -= 125), transitionCounter++) : ((transitionCounter = 0), (dRightScroll = !1)));
             // mouseDown && ((prevMouse.y = mouse.y), (prevMouse.x = mouse.x));
 
             document.addEventListener("mousemove", onDocumentMouseMove, !1);
@@ -242,16 +246,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         }
         animationLoop();
                 // const nextButton = document.getElementById("next");
-                // const previousButton = document.getElementById("previous");
-
-                const next = () =>{
-                    goNext;
-                }
-                const previous = ()=>{
-                    goPrevious;
-                }
-
-                homePlaneControls.current = { next, previous }        
+                // const previousButton = document.getElementById("previous");      
 
         // nextButton ? nextButton.addEventListener("mouseup", next, !1 ) : null; 
         // previousButton ? previousButton.addEventListener("mouseup", previous, !1 ): null;
@@ -277,7 +272,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                     
             //     };
             // }
-            console.log(group.children[loopityLoop]);
+            
             const cleanUp = () => {
                 if(homePlaneRef.current && !router.pathname.match(homePath)){
                     window.removeEventListener("resize", resizeRender);
@@ -285,7 +280,6 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                     scene.remove(scene.children[0]);
                     geometry.dispose();
                     console.log("Info canvas!!");
-                    console.log(group.planes);
                 }
             }
                 cleanUp();
@@ -296,16 +290,25 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         }
     }
     
+    // Tying click functions to useRef hook to create a controls reference
+    const next = () =>{
+        goNext();
+    }
+    const previous = ()=>{
+        goPrevious();
+    }
+    homePlaneControls.current = { next, previous }
 
-
-    
     return(
 
         // In order for line 131 to work we need to renderer.Element to return an actual DOM Element.
         //Canvas won't work because it's just a container for graphics.
         <>
-            <p className={styles.nextButton} onClick={goNext}>NEXT</p>
-            <p className={styles.previousButton} onClick={goPrevious}>PREVIOUS</p>
+        {router.pathname.match(homePath)? <>
+            <p className={styles.nextButton} onClick={homePlaneControls.current.next}>NEXT</p>
+            <p className={styles.previousButton} onClick={homePlaneControls.current.previous}>PREVIOUS</p></> : <></> }
+            {/* <p className={styles.nextButton} onClick={goNext}>NEXT</p>
+            <p className={styles.previousButton} onClick={goPrevious}>PREVIOUS</p> */}
             <div ref={homePlaneRef} className={`${styles.homeScene} homeScene`}>
             </div>
         </>

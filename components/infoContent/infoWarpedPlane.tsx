@@ -136,7 +136,7 @@ export default function inforWarpImg({src}: Type):JSX.Element{
             renderer.render(scene, camera);
         }
         animationLoop()
-        const cleanUp = () => {
+        const cleanUpInfoPlane = () => {
             if(infoRef.current && !router.pathname.match(infoPath)){
                 window.removeEventListener("resize", resizeRender);
                 infoRef.current.removeChild(renderer.domElement);
@@ -144,10 +144,10 @@ export default function inforWarpImg({src}: Type):JSX.Element{
                 geometry.dispose();
             }
         }
-            cleanUp();
-            router.events.on('beforeHistoryChange', cleanUp);
+            cleanUpInfoPlane();
+            router.events.on('beforeHistoryChange', cleanUpInfoPlane);
             return () => {
-              router.events.off('beforeHistoryChange', cleanUp);
+              router.events.off('beforeHistoryChange', cleanUpInfoPlane);
             };
     },[])
 
