@@ -245,6 +245,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
             renderer.render(scene, camera);
         }
         animationLoop();
+        console.log(planes[0])
 
             const cleanUp = () => {
                 if(homePlaneRef.current && !router.pathname.match(homePath)){

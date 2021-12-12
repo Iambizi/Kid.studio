@@ -5,6 +5,7 @@ import * as THREE from 'three';
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
 import Link from "next/link";
 import { isMobile } from 'react-device-detect';
+import { useRouter } from 'next/router';
 
 interface Type{
     count: number;
@@ -25,6 +26,12 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
     console.log(count);
 
     const homePlaneRef = useRef<HTMLElement | any>(null!);
+    const homePlaneControls = useRef<HTMLElement | any>(null!);
+    const router = useRouter();
+    const homePath = /\/$/gm;
+
+    const group = new THREE.Group();
+
     useEffect(()=>{
         const screenWidth = window.innerWidth;
         
@@ -50,7 +57,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
 
         const scene = new THREE.Scene();
 
-        const group = new THREE.Group();
+        // const group = new THREE.Group();
         
         const loader = new THREE.TextureLoader();
 
@@ -128,6 +135,9 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         renderer.setClearColor( 0x000000, 0 );
         
         renderer.setSize(window.innerWidth, window.innerHeight);
+
+        homePlaneRef.current.appendChild( renderer.domElement );
+
 
         //pixel ratio: corresponds to how many physical pixels you have on the screen for one pixel unit on the software part.
         // Device pixel ratio: allows us to adjust the pixel ratio of our scene to pixel ratio of our device
@@ -224,14 +234,24 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         animationLoop();
             
         }
-    },[count])
+    },[count, carouselX])
+
+    const next = () =>{
+        goNext();
+        console.log(count);
+    }
+    const previous = ()=>{
+        goPrevious();
+        console.log(count);
+    }
+    homePlaneControls.current = { next, previous }
     return(
 
         // In order for line 131 to work we need to renderer.Element to return an actual DOM Element.
         //Canvas won't work because it's just a container for graphics.
         <>
-            <p className={styles.nextButton} onClick={goNext}>NEXT</p>
-            <p className={styles.previousButton} onClick={goPrevious}>PREVIOUS</p>
+            <p className={styles.nextButton} onClick={homePlaneControls.current.next}>NEXT</p>
+            <p className={styles.previousButton} onClick={homePlaneControls.current.previous}>PREVIOUS</p>
             <div ref={homePlaneRef} className={`${styles.homeScene} homeScene`}>
             </div>
         </>
