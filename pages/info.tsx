@@ -4,6 +4,7 @@ import Meta  from '../components/common/meta';
 import React, { useEffect, useState } from "react";
 import InfoBox from '../components/infoContent/infoBox';
 import InfoWarpImg from '../components/infoContent/infoWarpedPlane';
+// import InfoWarpImg from '../components/common/commonWarpedPlane';
 import { connectClient } from '../components/common/utils/createClient';
 import { useRouter } from 'next/router';
 import useSWR, { SWRConfig } from 'swr';

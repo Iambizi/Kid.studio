@@ -8,28 +8,30 @@ import gsap from 'gsap';
 import { useRouter } from 'next/router';
 
 interface Type{
-    count: number;
-    projects: any;
-    carouselX : number;
-    slideNext: boolean;
-    slidePrevious: boolean;
-    goNext: any;
-    goPrevious: any;
+    count?: number;
+    projects?: any;
+    carouselX?: number;
+    slideNext?: boolean;
+    slidePrevious?: boolean;
+    goNext?: any;
+    goPrevious?: any;
+    infoSrcTexture?: string;
 }
 
-export default function warpedImage({ count, projects, carouselX, slideNext, slidePrevious, goNext, goPrevious  }:Type):JSX.Element{
+export default function CommonWarpedImage({ count, projects, carouselX, slideNext, slidePrevious, goNext, goPrevious, infoSrcTexture  }:Type):JSX.Element{
 
-    const src1 = projects[0]?.fields.featuredProjectImage.fields ? projects[0].fields.featuredProjectImage.fields.file.url : null;
-    const src2 = projects[1]?.fields.featuredProjectImage.fields ? projects[1].fields.featuredProjectImage.fields.file.url : null;
-    const src3 = projects[2]?.fields.featuredProjectImage.fields ? projects[2].fields.featuredProjectImage.fields.file.url : null;
-
-    
-    
     const homePlaneRef = useRef<HTMLElement | any>(null!);
     const homePlaneControls = useRef<HTMLElement | any>(null!);
     const router = useRouter();
     const homePath = /\/$/gm;
-    
+    const infoPath = /\/info$/gm;
+    const isHomePage = router.pathname.match(homePath);
+    const isInfoPage = router.pathname.match(infoPath);
+
+    const src1 = isHomePage && projects[0]?.fields.featuredProjectImage.fields ? projects[0].fields.featuredProjectImage.fields.file.url : null;
+    const src2 = isHomePage && projects[1]?.fields.featuredProjectImage.fields ? projects[1].fields.featuredProjectImage.fields.file.url : null;
+    const src3 = isHomePage && projects[2]?.fields.featuredProjectImage.fields ? projects[2].fields.featuredProjectImage.fields.file.url : null;
+
 
     // slideNext ? console.log("click farwud") : null;
     // slideNext && carouselX <= 100 ? "'nother click farwud" : "back to 1st";
@@ -40,12 +42,8 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
     // const slide = tl.to(camera.position, { duration: .9, x: carouselX });
     // slideNext && camera.position.x < 200 ? slide.play() : '';
 
-   
-
-
     useEffect(()=>{
         init();
-        // slidingAnimations();
     },[]);
 
     const group = new THREE.Group();
@@ -69,11 +67,10 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         let distMouse = { x: 0, y: 0 };
 
         const scene = new THREE.Scene();
-
-        // const group = new THREE.Group();
         
         const loader = new THREE.TextureLoader();
 
+        const infoTexture = loader.load(`${infoSrcTexture}`);
         const texture1 = loader.load(`${src1}`);
         const texture2 = loader.load(`${src2}`);
         const texture3 = loader.load(`${src3}`);
@@ -87,6 +84,9 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         const height = 2.9;
 
         const geometry = new THREE.PlaneGeometry(width * scale, height * scale);
+        const material = new THREE.MeshBasicMaterial({ map: infoTexture });
+
+        const mesh = new THREE.Mesh( geometry, material );
 
 
         const canvas = document.querySelector('.homeScene');
@@ -128,6 +128,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
             loopityLoop++
         ){
         
+        // Home plane mesh
         let planes = [
             new THREE.Mesh(
                 geometry,
@@ -144,7 +145,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
             ),
         ]
 
-        group.add(planes[loopityLoop]);
+        router.pathname.match(homePath) ? group.add(planes[loopityLoop]) : scene.add(mesh) ;
         
 
         camera.position.z = isMobile ? 8 : 3;
@@ -159,8 +160,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         // Device pixel ratio: allows us to adjust the pixel ratio of our scene to pixel ratio of our device
 
         // Hide this if you want to achieve exact textured look as OG site
-        isMobile ? renderer.setPixelRatio(Math.min(window.devicePixelRatio),2) : null;
-        // renderer.setPixelRatio(Math.min(window.devicePixelRatio),2)
+        isMobile || router.pathname.match(infoPath) ? renderer.setPixelRatio(Math.min(window.devicePixelRatio),2) : null;
 
         // Animations loop function
         const animationLoop = () =>
@@ -176,7 +176,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                 e.stopImmediatePropagation();
             }
             const onMouseUp = () => {
-                (mouseDown = !1), (snapping = !0), (snapback.x = planes[0].rotation.x / 60), (snapback.y = planes[0].rotation.y / 60);
+                (mouseDown = !1), (snapping = !0), (snapback.x = isHomePage? planes[0].x / 60 : mesh.rotation.x / 60), (snapback.y = isHomePage? planes[0].rotation.y / 60 : mesh.rotation.y / 60);
             }
             const onDocumentMouseMove = (a)=> {
                 (hovering = !1), (mouse.x = a.clientX / window.innerWidth), (mouse.y = a.clientY / window.innerHeight);
@@ -246,22 +246,20 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
             renderer.render(scene, camera);
         }
         animationLoop();
-
         }
-
-        const cleanUp = () => {
-            if(homePlaneRef.current && !router.pathname.match(homePath)){
-                window.removeEventListener("resize", resizeRender);
-                homePlaneRef.current.removeChild(renderer.domElement);
-                scene.remove(scene.children[0]);
-                geometry.dispose();
-            }
-        }
-            cleanUp();
-            router.events.on('beforeHistoryChange', cleanUp);
-            return () => {
-              router.events.off('beforeHistoryChange', cleanUp);
-            };
+        // const cleanUp = () => {
+        //     if(homePlaneRef.current){
+        //         window.removeEventListener("resize", resizeRender);
+        //         homePlaneRef.current.removeChild(renderer.domElement);
+        //         scene.remove(scene.children[0]);
+        //         geometry.dispose();
+        //     }
+        // }
+        //     cleanUp();
+        //     router.events.on('beforeHistoryChange', cleanUp);
+        //     return () => {
+        //       router.events.off('beforeHistoryChange', cleanUp);
+        //     };
 
     }
     

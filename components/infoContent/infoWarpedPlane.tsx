@@ -62,6 +62,8 @@ export default function inforWarpImg({src}: Type):JSX.Element{
             alpha: true
         })
 
+        infoRef.current.appendChild( renderer.domElement );
+
         function resizeRender(){
             window.addEventListener('resize', () =>
             {

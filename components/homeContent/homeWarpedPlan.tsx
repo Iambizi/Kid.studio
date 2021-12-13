@@ -128,8 +128,6 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
 
         group.add(cubes[looptyLoop]);
         
-        
-
         camera.position.z = screenWidth >= 1200 ? 3 : 8;
         
         renderer.setClearColor( 0x000000, 0 );
@@ -232,17 +230,14 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
             renderer.render(scene, camera);
         }
         animationLoop();
-            
         }
     },[count, carouselX])
 
     const next = () =>{
         goNext();
-        console.log(count);
     }
     const previous = ()=>{
         goPrevious();
-        console.log(count);
     }
     homePlaneControls.current = { next, previous }
     return(
