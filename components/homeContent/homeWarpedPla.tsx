@@ -23,8 +23,6 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
     const src2 = projects[1]?.fields.featuredProjectImage.fields ? projects[1].fields.featuredProjectImage.fields.file.url : null;
     const src3 = projects[2]?.fields.featuredProjectImage.fields ? projects[2].fields.featuredProjectImage.fields.file.url : null;
 
-    
-    
     const homePlaneRef = useRef<HTMLElement | any>(null!);
     const homePlaneControls = useRef<HTMLElement | any>(null!);
     const router = useRouter();
@@ -48,7 +46,10 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         // slidingAnimations();
     },[]);
 
+    {/* The following variables need to be accessed outside of the init function*/}
     const group = new THREE.Group();
+    // const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1e4);
+
     let init = () =>{
         let hover_dist = 0.3;
         let mouse = { x: 0, y: 0 };
@@ -266,7 +267,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
     }
     
     // Tying click functions to useRef hook to create a controls reference
-    group.position.x = carouselX;
+    // camera.position.x = carouselX;
     const next = () =>{
         goNext();
         console.log(count);
