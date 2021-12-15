@@ -38,12 +38,24 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
     // const slide = tl.to(camera.position, { duration: .9, x: carouselX });
     // slideNext && camera.position.x < 200 ? slide.play() : '';
 
-   
+    // useEffect(()=>{
+    //     const [width, setWidth]   = useState(window.innerWidth);
+    //     const [height, setHeight] = useState(window.innerHeight);
+    //     const updateDimensions = () => {
+    //         setWidth(window.innerWidth);
+    //         setHeight(window.innerHeight);
+    //     };
+    // },[]);
+    
+    // const camera = new THREE.PerspectiveCamera(75, width / height, 1, 1e4);
+
+    // console.log(camera.position);
 
 
     useEffect(()=>{
         init();
         // slidingAnimations();
+        // updateDimensions();
     },[]);
 
     {/* The following variables need to be accessed outside of the init function*/}
