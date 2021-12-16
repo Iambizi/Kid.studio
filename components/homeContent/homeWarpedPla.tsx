@@ -38,24 +38,13 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
     // const slide = tl.to(camera.position, { duration: .9, x: carouselX });
     // slideNext && camera.position.x < 200 ? slide.play() : '';
 
-    // useEffect(()=>{
-    //     const [width, setWidth]   = useState(window.innerWidth);
-    //     const [height, setHeight] = useState(window.innerHeight);
-    //     const updateDimensions = () => {
-    //         setWidth(window.innerWidth);
-    //         setHeight(window.innerHeight);
-    //     };
-    // },[]);
-    
-    // const camera = new THREE.PerspectiveCamera(75, width / height, 1, 1e4);
 
-    // console.log(camera.position);
-
+    // const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1e4);
 
     useEffect(()=>{
         init();
         // slidingAnimations();
-        // updateDimensions();
+        console.log(carouselX);
     },[]);
 
     {/* The following variables need to be accessed outside of the init function*/}
@@ -282,13 +271,9 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
     // camera.position.x = carouselX;
     const next = () =>{
         goNext();
-        console.log(count);
-        console.log(group);
     }
     const previous = ()=>{
         goPrevious();
-        console.log(count);
-        console.log(group);
     }
     homePlaneControls.current = { next, previous }
 
