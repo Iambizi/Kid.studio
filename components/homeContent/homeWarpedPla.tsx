@@ -28,7 +28,6 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
     const router = useRouter();
     const homePath = /\/$/gm;
     
-
     // slideNext ? console.log("click farwud") : null;
     // slideNext && carouselX <= 100 ? "'nother click farwud" : "back to 1st";
     // slidePrevious ? console.log("click Previas") : null;
@@ -44,7 +43,6 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
     useEffect(()=>{
         init();
         // slidingAnimations();
-        console.log(carouselX);
     },[]);
 
     {/* The following variables need to be accessed outside of the init function*/}
@@ -52,6 +50,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
     // const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1e4);
 
     let init = () =>{
+
         let hover_dist = 0.3;
         let mouse = { x: 0, y: 0 };
         let snapback = { x: 0, y: 0 };
@@ -150,7 +149,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         
 
         camera.position.z = isMobile ? 8 : 3;
-        
+         
         renderer.setClearColor( 0x000000, 0 );
         
         renderer.setSize(window.innerWidth, window.innerHeight);
@@ -161,8 +160,8 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         // Device pixel ratio: allows us to adjust the pixel ratio of our scene to pixel ratio of our device
 
         // Hide this if you want to achieve exact textured look as OG site
-        isMobile ? renderer.setPixelRatio(Math.min(window.devicePixelRatio),2) : null;
-        // renderer.setPixelRatio(Math.min(window.devicePixelRatio),2)
+        // isMobile ? renderer.setPixelRatio(Math.min(window.devicePixelRatio),2) : null;
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio),2);
 
         // Animations loop function
         const animationLoop = () =>
@@ -227,7 +226,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                 scene.add(group);
                 (planes[1].position.x = 100);
                 (planes[2].position.x = 200);
-                // camera.position.x = carouselX;
+                camera.position.x = carouselX;
                 // const tl = gsap.timeline();
                 // const slide = tl.to(camera.position, { duration: .9, x: 100 });
                 
@@ -250,6 +249,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         animationLoop();
 
         }
+        
 
         const cleanUp = () => {
             if(homePlaneRef.current && !router.pathname.match(homePath)){

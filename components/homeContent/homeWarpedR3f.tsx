@@ -3,6 +3,7 @@ import * as THREE from 'three';
 import { Canvas, useFrame, useLoader } from '@react-three/fiber';
 // import { TextureLoader } from "three/src/loaders/TextureLoader.js";
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
+import { useRouter } from 'next/router';
 
 import Link from "next/link";
 
@@ -17,13 +18,20 @@ interface Type{
     carouselX : number;
     slideNext: boolean;
     slidePrevious: boolean;
+    goNext: any;
+    goPrevious: any;
 }
 
-export default function warpedImage({ count, projects, carouselX, slideNext, slidePrevious }:Type):JSX.Element{
+export default function warpedImage({ count, projects, carouselX, slideNext, slidePrevious, goNext, goPrevious }:Type):JSX.Element{
 
     const src1 = projects[0]?.fields.featuredProjectImage.fields ? projects[0].fields.featuredProjectImage.fields.file.url : null;
     const src2 = projects[1]?.fields.featuredProjectImage.fields ? projects[1].fields.featuredProjectImage.fields.file.url : null;
     const src3 = projects[2]?.fields.featuredProjectImage.fields ? projects[2].fields.featuredProjectImage.fields.file.url : null;
+
+    const homePlaneRef = useRef<HTMLElement | any>(null!);
+    const homePlaneControls = useRef<HTMLElement | any>(null!);
+    const router = useRouter();
+    const homePath = /\/$/gm;
 
     const Planee = (props: any) =>{
         
@@ -113,9 +121,19 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
             )
     }
 
+    const next = () =>{
+        goNext();
+    }
+    const previous = ()=>{
+        goPrevious();
+    }
+    homePlaneControls.current = { next, previous }
+
     return(
         <>
             <div className={`${styles.homeScene} homeScene`}>
+            <p className={styles.nextButton} onClick={homePlaneControls.current.next}>NEXT</p>
+            <p className={styles.previousButton} onClick={homePlaneControls.current.previous}>PREVIOUS</p>
                 <Canvas dpr={[1, 2]}>
                    { isMobile ? <Planee position={[0, .1, 0]} /> : <Planee position={[0, 0, 0]} /> }
                    { isMobile ? <Planee position={[20, .1, 0]} /> : <Planee position={[20, 0, 0]} /> }
