@@ -27,6 +27,8 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
     const homePlaneControls = useRef<HTMLElement | any>(null!);
     const router = useRouter();
     const homePath = /\/$/gm;
+
+    console.log(homePlaneRef);
     
     // slideNext ? console.log("click farwud") : null;
     // slideNext && carouselX <= 100 ? "'nother click farwud" : "back to 1st";
