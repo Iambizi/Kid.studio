@@ -33,6 +33,9 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
     const router = useRouter();
     const homePath = /\/$/gm;
 
+    const [ mouseUp, setMouseUp ] = useState(false);
+    const [ mouseDown, setMouseDown ] = useState(false);
+
     const Planee = (props: any) =>{
         
         const homePlaneRef = useRef<HTMLElement | any>(null!);
@@ -75,15 +78,22 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
             width: window.innerWidth,
             height: window.innerHeight
         }
+
+        const mesh = document.getElementById("mesh");
+        console.log(mesh.style);
             
         useFrame((state, delta) => {
 
             if(homePlaneRef.current && homePlaneRef.current !== undefined){
                 const onMouseDown = (e) => {
+                    setMouseDown(true);
                     (mouseDown = !0), (prevMouse.x = mouse.x), (prevMouse.y = mouse.y);
                     e.stopImmediatePropagation();
+                    homePlaneRef.current = e;
                 }
-                const onMouseUp = () => {
+                const onMouseUp = (e) => {
+                    setMouseUp(true);
+                    homePlaneRef.current = e;
                     (mouseDown = !1), (snapping = !0), (snapback.x = homePlaneRef.current.rotation.x / 60), (snapback.y = homePlaneRef.current.rotation.y / 60);
                 }
                 const onDocumentMouseMove = (e)=> {
@@ -111,20 +121,27 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                 // hovering ? hover() : hoverMove();
                 mouseDown ? dragMove() : snapping ? snapBack() : hovering ? hover() : hoverMove();
                 document.addEventListener("mousemove", onDocumentMouseMove, !1);
-                document.addEventListener("mousedown", onMouseDown, !1);
-                document.addEventListener("mouseup", onMouseUp, !1);
+                // document.addEventListener("mousedown", onMouseDown, !1);
+                // document.addEventListener("mouseup", onMouseUp, !1);
 
                 // homePlaneRef.current = { onMouseDown, onMouseUp};
-
             }
 
             // mouseDown ? dragMove() : snapping ? snapBack() : hovering ? hover() : hoverMove();
             // mouseDown && ((prevMouse.y = mouse.y), (prevMouse.x = mouse.x));
-            })
+            });
+
+            const clickUp = (e)=>{
+                setMouseUp(true);
+            }
+        
+            const clickDown = (e)=>{
+                setMouseDown(true);
+            }
 
             return(
                 <>
-                    <mesh {...props} ref={homePlaneRef}>
+                    <mesh {...props} ref={homePlaneRef} onMouseDown={clickDown} onMouseUp={clickUp}>
                         <planeGeometry args={[width, height]} />
                         <meshBasicMaterial  map={texture1} />
                     </mesh>
@@ -139,7 +156,6 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         goPrevious();
     }
     homePlaneControls.current = { next, previous }
-    
 
     console.log(homePlaneRef);
     // console.log(homePlaneControls);
@@ -154,7 +170,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                    { isMobile ? <Planee position={[20, .1, 0]} /> : <Planee position={[20, 0, 0]} /> }
                    { isMobile ? <Planee position={[30, .1, 0]} /> : <Planee position={[30, 0, 0]} /> }
                 </Canvas> */}
-                 <Canvas dpr={[1, 2]}>
+                 <Canvas id={"mesh"} dpr={[1, 2]}>
                     <Planee position={[0, 0, 0]} /> 
                     <Planee position={[100, 0, 0]} />
                     <Planee position={[200, 0, 0]} /> 
