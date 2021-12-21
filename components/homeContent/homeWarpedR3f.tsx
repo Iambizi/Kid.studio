@@ -39,7 +39,6 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
     const Planee = (props: any) =>{
         
         const homePlaneRef = useRef<HTMLElement | any>(null!);
-        const texture = new THREE.Texture();
 
         let hover_dist = 0.3;
         let mouse = { x: 0, y: 0 };
@@ -58,14 +57,6 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         const texture2 = loader.load(`${src2}`);
         const texture3 = loader.load(`${src3}`);
 
-        const textures = ()=>{
-            for(
-                let loopityLoop = 0;
-                loopityLoop < 3;
-                loopityLoop++){
-                    return `texture${loopityLoop}`
-            }
-        }
         
         texture1.minFilter = THREE.LinearFilter;
         texture2.minFilter = THREE.LinearFilter;
@@ -74,14 +65,6 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         const width = isMobile ? 3.1 : 9;
         const height = isMobile ? 1.7 : 5;
 
-        const sizes = {
-            width: window.innerWidth,
-            height: window.innerHeight
-        }
-
-        const mesh = document.getElementById("mesh");
-        console.log(mesh.style);
-            
         useFrame((state, delta) => {
 
             if(homePlaneRef.current && homePlaneRef.current !== undefined){
@@ -118,30 +101,17 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                     i++;
                 }
 
-                // hovering ? hover() : hoverMove();
-                mouseDown ? dragMove() : snapping ? snapBack() : hovering ? hover() : hoverMove();
+                snapping ? snapBack() : hovering ? hover() : hoverMove();
                 document.addEventListener("mousemove", onDocumentMouseMove, !1);
-                // document.addEventListener("mousedown", onMouseDown, !1);
-                // document.addEventListener("mouseup", onMouseUp, !1);
+                document.addEventListener("mousedown", onMouseDown, !1);
+                document.addEventListener("mouseup", onMouseUp, !1);
 
-                // homePlaneRef.current = { onMouseDown, onMouseUp};
             }
-
-            // mouseDown ? dragMove() : snapping ? snapBack() : hovering ? hover() : hoverMove();
-            // mouseDown && ((prevMouse.y = mouse.y), (prevMouse.x = mouse.x));
             });
-
-            const clickUp = (e)=>{
-                setMouseUp(true);
-            }
-        
-            const clickDown = (e)=>{
-                setMouseDown(true);
-            }
 
             return(
                 <>
-                    <mesh {...props} ref={homePlaneRef} onMouseDown={clickDown} onMouseUp={clickUp}>
+                    <mesh {...props} ref={homePlaneRef}>
                         <planeGeometry args={[width, height]} />
                         <meshBasicMaterial  map={texture1} />
                     </mesh>
@@ -158,24 +128,23 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
     homePlaneControls.current = { next, previous }
 
     console.log(homePlaneRef);
-    // console.log(homePlaneControls);
+    console.log(carouselX);
 
     return(
         <>
             <div className={`${styles.homeScene} homeScene`}>
             <p className={styles.nextButton} onClick={homePlaneControls.current.next}>NEXT</p>
             <p className={styles.previousButton} onClick={homePlaneControls.current.previous}>PREVIOUS</p>
-                {/* <Canvas ref={homePlaneRef} dpr={[1, 2]}>
-                   { isMobile ? <Planee position={[0, .1, 0]} /> : <Planee position={[0, 0, 0]} /> }
-                   { isMobile ? <Planee position={[20, .1, 0]} /> : <Planee position={[20, 0, 0]} /> }
-                   { isMobile ? <Planee position={[30, .1, 0]} /> : <Planee position={[30, 0, 0]} /> }
+                {/* <Canvas camera={{ position: [0, 0, carouselX] }} ref={homePlaneRef} dpr={[1, 2]}>
+                   <Planee position={[0, 0, 0]} />
+                   <Planee position={[20, 0, 0]} />
+                   <Planee position={[30, 0, 0]} />
                 </Canvas> */}
-                 <Canvas id={"mesh"} dpr={[1, 2]}>
+                 <Canvas  id={"mesh"}>
                     <Planee position={[0, 0, 0]} /> 
                     <Planee position={[100, 0, 0]} />
                     <Planee position={[200, 0, 0]} /> 
                 </Canvas>
-
             </div>
         </>
     )
