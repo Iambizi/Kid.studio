@@ -4,12 +4,7 @@ import { Canvas, useFrame, useLoader, useThree } from '@react-three/fiber';
 // import { TextureLoader } from "three/src/loaders/TextureLoader.js";
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
 import { useRouter } from 'next/router';
-
-import Link from "next/link";
-
 import { isMobile } from 'react-device-detect';
-import { useTexture } from "@react-three/drei";
-import { Plane } from "@react-three/drei";
 
 
 interface Type{
