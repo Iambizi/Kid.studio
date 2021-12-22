@@ -23,7 +23,6 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
     const src2 = projects[1]?.fields.featuredProjectImage.fields ? projects[1].fields.featuredProjectImage.fields.file.url : null;
     const src3 = projects[2]?.fields.featuredProjectImage.fields ? projects[2].fields.featuredProjectImage.fields.file.url : null;
 
-    const homePlaneRef = useRef<HTMLElement | any>(null!);
     const homePlaneControls = useRef<HTMLElement | any>(null!);
     const router = useRouter();
     const homePath = /\/$/gm;
@@ -98,8 +97,8 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
 
                 snapping ? snapBack() : hovering ? hover() : hoverMove();
                 document.addEventListener("mousemove", onDocumentMouseMove, !1);
-                document.addEventListener("mousedown", onMouseDown, !1);
-                document.addEventListener("mouseup", onMouseUp, !1);
+                // document.addEventListener("mousedown", onMouseDown, !1);
+                // document.addEventListener("mouseup", onMouseUp, !1);
 
             }
             });
@@ -122,7 +121,6 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
     }
     homePlaneControls.current = { next, previous }
 
-    console.log(homePlaneRef);
     console.log(carouselX);
 
     return(
@@ -135,7 +133,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                    <Planee position={[20, 0, 0]} />
                    <Planee position={[30, 0, 0]} />
                 </Canvas> */}
-                 <Canvas  id={"mesh"}>
+                 <Canvas  id={"mesh"} camera={{ position: [0, 0, 5]}}>
                     <Planee position={[0, 0, 0]} /> 
                     <Planee position={[100, 0, 0]} />
                     <Planee position={[200, 0, 0]} /> 
