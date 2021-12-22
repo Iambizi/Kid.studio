@@ -85,7 +85,7 @@ export default function warpedImage({ src }:Type):JSX.Element{
         <>
             <div className={`${styles.homeScene} homeScene`}>
                 <Canvas dpr={[1, 2]}>
-                   { isMobile ? <Planee position={[0, .1, 0]} /> : <Planee position={[0, 0, 0]} /> }
+                   { isMobile ? <Planee position={[0, -.2, 0]} /> : <Planee position={[0, 0, 0]} /> }
                 </Canvas>
             </div>
         </>
