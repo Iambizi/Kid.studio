@@ -121,8 +121,6 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
     }
     homePlaneControls.current = { next, previous }
 
-    console.log(carouselX);
-
     return(
         <>
             <div className={`${styles.homeScene} homeScene`}>
