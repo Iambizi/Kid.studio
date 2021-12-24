@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import * as THREE from 'three';
-import { Canvas, useFrame, useLoader } from '@react-three/fiber';
+import { Canvas, useFrame } from '@react-three/fiber';
 // import { TextureLoader } from "three/src/loaders/TextureLoader.js";
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
 import { isMobile } from 'react-device-detect';
