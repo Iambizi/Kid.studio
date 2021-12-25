@@ -101,7 +101,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                 // Update camera
                 camera.aspect = sizes.width / sizes.height;
                 camera.updateProjectionMatrix();
-            })
+            });
         }
 
         for (
