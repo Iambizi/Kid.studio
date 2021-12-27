@@ -44,14 +44,14 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
 
         const loader = new THREE.TextureLoader();
 
-        // const texture1 = loader.load(`${src1}`);
-        // const texture2 = loader.load(`${src2}`);
-        // const texture3 = loader.load(`${src3}`);
+        const texture1 = loader.load(`${src1}`);
+        const texture2 = loader.load(`${src2}`);
+        const texture3 = loader.load(`${src3}`);
 
         
-        // texture1.minFilter = THREE.LinearFilter;
-        // texture2.minFilter = THREE.LinearFilter;
-        // texture3.minFilter = THREE.LinearFilter;
+        texture1.minFilter = THREE.LinearFilter;
+        texture2.minFilter = THREE.LinearFilter;
+        texture3.minFilter = THREE.LinearFilter;
 
         const width = isMobile ? 3.1 : 9;
         const height = isMobile ? 1.7 : 5;
@@ -107,7 +107,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                 <>
                     <mesh {...props} ref={homePlaneRef}>
                         <planeGeometry args={[width, height]} />
-                        <meshBasicMaterial color={'#043927'} />
+                        <meshBasicMaterial map={texture1} />
                     </mesh>
                 </>
             )
