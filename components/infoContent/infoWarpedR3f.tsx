@@ -12,7 +12,7 @@ interface Type{
 
 export default function warpedImage({ src }:Type):JSX.Element{
 
-    const Planee = (props: any) =>{
+    const InfoPlane = (props: any) =>{
         
         const infoPlaneRef = useRef<HTMLElement | any>(null!);
 
@@ -88,7 +88,7 @@ export default function warpedImage({ src }:Type):JSX.Element{
         <>
             <div className={`${styles.homeScene} homeScene`}>
                 <Canvas dpr={[1, 2]}>
-                   { isMobile ? <Planee position={[0, -.7, 0]} /> : <Planee position={[0, 0, 0]} /> }
+                   { isMobile ? <InfoPlane position={[0, -.7, 0]} /> : <InfoPlane position={[0, 0, 0]} /> }
                 </Canvas>
             </div>
         </>
