@@ -170,8 +170,8 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
             const hoverMove = () => {
                 for (var a = 0; a < cubes.length; a++)
                 mouse.x > 0.5 ? cubes[a].rotation.y < hover_dist && (cubes[a].rotation.y += 0.002) : mouse.x < 0.5 && cubes[a].rotation.y > -hover_dist && (cubes[a].rotation.y -= 0.002),
-                    mouse.y > 0.5 ? cubes[a].rotation.x < hover_dist && (cubes[a].rotation.x += 0.002) : mouse.y < 0.5 && cubes[a].rotation.x > -hover_dist && (cubes[a].rotation.x -= 0.002);
-            (cubes[0].rotation.y > hover_dist || cubes[0].rotation.y < -hover_dist) && (cubes[0].rotation.x > hover_dist || cubes[0].rotation.x < -hover_dist) && (hovering = !0);
+                mouse.y > 0.5 ? cubes[a].rotation.x < hover_dist && (cubes[a].rotation.x += 0.002) : mouse.y < 0.5 && cubes[a].rotation.x > -hover_dist && (cubes[a].rotation.x -= 0.002);
+                (cubes[0].rotation.y > hover_dist || cubes[0].rotation.y < -hover_dist) && (cubes[0].rotation.x > hover_dist || cubes[0].rotation.x < -hover_dist) && (hovering = !0);
             }
             const snapBack = () => {
                 cubes[0].rotation.x < 0.002 && cubes[0].rotation.x > -0.002 && cubes[0].rotation.y < 0.002 && cubes[0].rotation.y > -0.002 && (snapping = !1);
@@ -231,7 +231,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         }
         animationLoop();
         }
-    },[count, carouselX])
+    },[count])
 
     const next = () =>{
         goNext();

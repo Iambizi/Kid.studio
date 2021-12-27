@@ -19,13 +19,16 @@ interface Type{
 
 export default function warpedImage({ count, projects, carouselX, slideNext, slidePrevious, goNext, goPrevious }:Type):JSX.Element{
 
-    // const src1 = projects[0]?.fields.featuredProjectImage.fields ? projects[0].fields.featuredProjectImage.fields.file.url : null;
-    // const src2 = projects[1]?.fields.featuredProjectImage.fields ? projects[1].fields.featuredProjectImage.fields.file.url : null;
-    // const src3 = projects[2]?.fields.featuredProjectImage.fields ? projects[2].fields.featuredProjectImage.fields.file.url : null;
+    const src1 = projects[0]?.fields.featuredProjectImage.fields ? projects[0].fields.featuredProjectImage.fields.file.url : null;
+    const src2 = projects[1]?.fields.featuredProjectImage.fields ? projects[1].fields.featuredProjectImage.fields.file.url : null;
+    const src3 = projects[2]?.fields.featuredProjectImage.fields ? projects[2].fields.featuredProjectImage.fields.file.url : null;
 
     const homePlaneControls = useRef<HTMLElement | any>(null!);
     const router = useRouter();
     const homePath = /\/$/gm;
+
+    const [ mouseUp, setMouseUp ] = useState(false);
+    const [ mouseDown, setMouseDown ] = useState(false);
 
     const Planee = (props: any) =>{
         
@@ -42,7 +45,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         let snapping = !1;
         let mouseDown = !1;
 
-        // const loader = new THREE.TextureLoader();
+        const loader = new THREE.TextureLoader();
 
         // const texture1 = loader.load(`${src1}`);
         // const texture2 = loader.load(`${src2}`);
@@ -60,18 +63,13 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
 
             if(homePlaneRef.current && homePlaneRef.current !== undefined){
                 const onMouseDown = (e) => {
-                    mouseDown = !0; 
-                    prevMouse.x = mouse.x; 
-                    prevMouse.y = mouse.y;
-                    e.stopImmediatePropagation();
                     homePlaneRef.current = e;
+                    (mouseDown = !0), (prevMouse.x = mouse.x), (prevMouse.y = mouse.y);
+                    e.stopImmediatePropagation();
                 }
                 const onMouseUp = (e) => {
                     homePlaneRef.current = e;
-                    mouseDown = !1;
-                    snapping = !0; 
-                    snapback.x = homePlaneRef.current.rotation.x / 60; 
-                    snapback.y = homePlaneRef.current.rotation.y / 60;
+                    (mouseDown = !1), (snapping = !0), (snapback.x = homePlaneRef.current.rotation.x / 60), (snapback.y = homePlaneRef.current.rotation.y / 60);
                 }
                 const onDocumentMouseMove = (e)=> {
                     hovering = !1;
@@ -79,15 +77,13 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                     mouse.y = e.clientY / window.innerHeight;
                 }
                 const dragMove = () => {
-                    distMouse.x = prevMouse.x - mouse.x; 
-                    distMouse.y = prevMouse.y - mouse.y;
-                    homePlaneRef.current.rotation.y -= 2 * distMouse.x; 
-                    homePlaneRef.current.rotation.x -= 2 * distMouse.y;
+                    (distMouse.x = prevMouse.x - mouse.x), (distMouse.y = prevMouse.y - mouse.y);
+                    (homePlaneRef.current.rotation.y -= 2 * distMouse.x), (homePlaneRef.current.rotation.x -= 2 * distMouse.y);
                 }
                 const hoverMove = () => {
-                    mouse.x > 0.5 ? homePlaneRef.current.rotation.y < hover_dist && (homePlaneRef.current.rotation.y += 0.002) : mouse.x < 0.5 && homePlaneRef.current.rotation.y > -hover_dist && (homePlaneRef.current.rotation.y -= 0.002);
-                    mouse.y > 0.5 ? homePlaneRef.current.rotation.x < hover_dist && (homePlaneRef.current.rotation.x += 0.002) : mouse.y < 0.5 && homePlaneRef.current.rotation.x > -hover_dist && (homePlaneRef.current.rotation.x -= 0.002);
-                    homePlaneRef.current.rotation.y > hover_dist || homePlaneRef.current.rotation.y < -hover_dist && homePlaneRef.current.rotation.x > hover_dist || homePlaneRef.current.rotation.x < -hover_dist && (hovering = !0);
+                        mouse.x > 0.5 ? homePlaneRef.current.rotation.y < hover_dist && (homePlaneRef.current.rotation.y += 0.002) : mouse.x < 0.5 && homePlaneRef.current.rotation.y > -hover_dist && (homePlaneRef.current.rotation.y -= 0.002),
+                        mouse.y > 0.5 ? homePlaneRef.current.rotation.x < hover_dist && (homePlaneRef.current.rotation.x += 0.002) : mouse.y < 0.5 && homePlaneRef.current.rotation.x > -hover_dist && (homePlaneRef.current.rotation.x -= 0.002);
+                    (homePlaneRef.current.rotation.y > hover_dist || homePlaneRef.current.rotation.y < -hover_dist) && (homePlaneRef.current.rotation.x > hover_dist || homePlaneRef.current.rotation.x < -hover_dist) && (hovering = !0);
                 }
                 const snapBack = () => {
                     homePlaneRef.current.rotation.x < 0.002 && homePlaneRef.current.rotation.x > -0.002 && homePlaneRef.current.rotation.y < 0.002 && homePlaneRef.current.rotation.y > -0.002 && (snapping = !1);
@@ -95,8 +91,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                 }
                 const hover = () => {
                     i == timerx && (i = 0);
-                    timerx / 2 > i ? ((homePlaneRef.current.rotation.x += 3e-4), 
-                    homePlaneRef.current.rotation.y -= 3e-4) : ((homePlaneRef.current.rotation.x -= 3e-4), (homePlaneRef.current.rotation.y += 3e-4));
+                    timerx / 2 > i ? ((homePlaneRef.current.rotation.x += 3e-4), (homePlaneRef.current.rotation.y -= 3e-4)) : ((homePlaneRef.current.rotation.x -= 3e-4), (homePlaneRef.current.rotation.y += 3e-4));
                     i++;
                 }
 
@@ -104,6 +99,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                 document.addEventListener("mousemove", onDocumentMouseMove, !1);
                 // document.addEventListener("mousedown", onMouseDown, !1);
                 // document.addEventListener("mouseup", onMouseUp, !1);
+
             }
             });
 
@@ -137,8 +133,8 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                 </Canvas> */}
                  <Canvas  id={"mesh"} camera={{ position: [0, 0, 5]}}>
                     <Planee position={[0, 0, 0]} /> 
-                    {/* <Planee position={[100, 0, 0]} />
-                    <Planee position={[200, 0, 0]} />  */}
+                    <Planee position={[100, 0, 0]} />
+                    <Planee position={[200, 0, 0]} /> 
                 </Canvas>
             </div>
         </>

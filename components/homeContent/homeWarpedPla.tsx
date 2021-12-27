@@ -27,8 +27,6 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
     const homePlaneControls = useRef<HTMLElement | any>(null!);
     const router = useRouter();
     const homePath = /\/$/gm;
-
-    console.log(homePlaneRef);
     
     // slideNext ? console.log("click farwud") : null;
     // slideNext && carouselX <= 100 ? "'nother click farwud" : "back to 1st";
@@ -163,7 +161,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
 
         // Hide this if you want to achieve exact textured look as OG site
         // isMobile ? renderer.setPixelRatio(Math.min(window.devicePixelRatio),2) : null;
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio),2);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio),2)
 
         // Animations loop function
         const animationLoop = () =>
