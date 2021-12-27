@@ -39,7 +39,7 @@ export default function warpedImage({ src }:Type):JSX.Element{
         });
 
             const init = ()=>{
-                if(infoPlaneRef && infoPlaneRef!== null && infoPlaneRef!== undefined && infoPlaneRef.current && infoPlaneRef.current!== null && infoPlaneRef.current!== undefined  ){
+                if(infoPlaneRef && infoPlaneRef.current !== undefined  ){
                     
                     const onMouseDown = (e) => {
                         (mouseDown = !0), (prevMouse.x = mouse.x), (prevMouse.y = mouse.y);
