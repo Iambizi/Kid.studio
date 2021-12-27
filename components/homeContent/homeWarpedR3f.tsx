@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import * as THREE from 'three';
-import { Canvas, useFrame, useLoader, useThree } from '@react-three/fiber';
+import { Canvas, useFrame } from '@react-three/fiber';
 // import { TextureLoader } from "three/src/loaders/TextureLoader.js";
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
 import { useRouter } from 'next/router';
@@ -27,10 +27,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
     const router = useRouter();
     const homePath = /\/$/gm;
 
-    const [ mouseUp, setMouseUp ] = useState(false);
-    const [ mouseDown, setMouseDown ] = useState(false);
-
-    const Planee = (props: any) =>{
+    const HomePlane = (props: any) =>{
         
         const homePlaneRef = useRef<HTMLElement | any>(null!);
 
@@ -60,48 +57,51 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         const height = isMobile ? 1.7 : 5;
 
         useFrame((state, delta) => {
-
-            if(homePlaneRef.current && homePlaneRef.current !== undefined){
-                const onMouseDown = (e) => {
-                    homePlaneRef.current = e;
-                    (mouseDown = !0), (prevMouse.x = mouse.x), (prevMouse.y = mouse.y);
-                    e.stopImmediatePropagation();
-                }
-                const onMouseUp = (e) => {
-                    homePlaneRef.current = e;
-                    (mouseDown = !1), (snapping = !0), (snapback.x = homePlaneRef.current.rotation.x / 60), (snapback.y = homePlaneRef.current.rotation.y / 60);
-                }
-                const onDocumentMouseMove = (e)=> {
-                    hovering = !1;
-                    mouse.x = e.clientX / window.innerWidth; 
-                    mouse.y = e.clientY / window.innerHeight;
-                }
-                const dragMove = () => {
-                    (distMouse.x = prevMouse.x - mouse.x), (distMouse.y = prevMouse.y - mouse.y);
-                    (homePlaneRef.current.rotation.y -= 2 * distMouse.x), (homePlaneRef.current.rotation.x -= 2 * distMouse.y);
-                }
-                const hoverMove = () => {
-                        mouse.x > 0.5 ? homePlaneRef.current.rotation.y < hover_dist && (homePlaneRef.current.rotation.y += 0.002) : mouse.x < 0.5 && homePlaneRef.current.rotation.y > -hover_dist && (homePlaneRef.current.rotation.y -= 0.002),
-                        mouse.y > 0.5 ? homePlaneRef.current.rotation.x < hover_dist && (homePlaneRef.current.rotation.x += 0.002) : mouse.y < 0.5 && homePlaneRef.current.rotation.x > -hover_dist && (homePlaneRef.current.rotation.x -= 0.002);
-                    (homePlaneRef.current.rotation.y > hover_dist || homePlaneRef.current.rotation.y < -hover_dist) && (homePlaneRef.current.rotation.x > hover_dist || homePlaneRef.current.rotation.x < -hover_dist) && (hovering = !0);
-                }
-                const snapBack = () => {
-                    homePlaneRef.current.rotation.x < 0.002 && homePlaneRef.current.rotation.x > -0.002 && homePlaneRef.current.rotation.y < 0.002 && homePlaneRef.current.rotation.y > -0.002 && (snapping = !1);
-                    (homePlaneRef.current.rotation.x -= snapback.x), (homePlaneRef.current.rotation.y -= snapback.y);
-                }
-                const hover = () => {
-                    i == timerx && (i = 0);
-                    timerx / 2 > i ? ((homePlaneRef.current.rotation.x += 3e-4), (homePlaneRef.current.rotation.y -= 3e-4)) : ((homePlaneRef.current.rotation.x -= 3e-4), (homePlaneRef.current.rotation.y += 3e-4));
-                    i++;
-                }
-
-                snapping ? snapBack() : hovering ? hover() : hoverMove();
-                document.addEventListener("mousemove", onDocumentMouseMove, !1);
-                // document.addEventListener("mousedown", onMouseDown, !1);
-                // document.addEventListener("mouseup", onMouseUp, !1);
-
-            }
+                init()
             });
+
+            const init = ()=>{
+                if(homePlaneRef.current && homePlaneRef.current !== undefined){
+                    const onMouseDown = (e) => {
+                        homePlaneRef.current = e;
+                        (mouseDown = !0), (prevMouse.x = mouse.x), (prevMouse.y = mouse.y);
+                        e.stopImmediatePropagation();
+                    }
+                    const onMouseUp = (e) => {
+                        homePlaneRef.current = e;
+                        (mouseDown = !1), (snapping = !0), (snapback.x = homePlaneRef.current.rotation.x / 60), (snapback.y = homePlaneRef.current.rotation.y / 60);
+                    }
+                    const onDocumentMouseMove = (e)=> {
+                        hovering = !1;
+                        mouse.x = e.clientX / window.innerWidth; 
+                        mouse.y = e.clientY / window.innerHeight;
+                    }
+                    const dragMove = () => {
+                        (distMouse.x = prevMouse.x - mouse.x), (distMouse.y = prevMouse.y - mouse.y);
+                        (homePlaneRef.current.rotation.y -= 2 * distMouse.x), (homePlaneRef.current.rotation.x -= 2 * distMouse.y);
+                    }
+                    const hoverMove = () => {
+                            mouse.x > 0.5 ? homePlaneRef.current.rotation.y < hover_dist && (homePlaneRef.current.rotation.y += 0.002) : mouse.x < 0.5 && homePlaneRef.current.rotation.y > -hover_dist && (homePlaneRef.current.rotation.y -= 0.002),
+                            mouse.y > 0.5 ? homePlaneRef.current.rotation.x < hover_dist && (homePlaneRef.current.rotation.x += 0.002) : mouse.y < 0.5 && homePlaneRef.current.rotation.x > -hover_dist && (homePlaneRef.current.rotation.x -= 0.002);
+                        (homePlaneRef.current.rotation.y > hover_dist || homePlaneRef.current.rotation.y < -hover_dist) && (homePlaneRef.current.rotation.x > hover_dist || homePlaneRef.current.rotation.x < -hover_dist) && (hovering = !0);
+                    }
+                    const snapBack = () => {
+                        homePlaneRef.current.rotation.x < 0.002 && homePlaneRef.current.rotation.x > -0.002 && homePlaneRef.current.rotation.y < 0.002 && homePlaneRef.current.rotation.y > -0.002 && (snapping = !1);
+                        (homePlaneRef.current.rotation.x -= snapback.x), (homePlaneRef.current.rotation.y -= snapback.y);
+                    }
+                    const hover = () => {
+                        i == timerx && (i = 0);
+                        timerx / 2 > i ? ((homePlaneRef.current.rotation.x += 3e-4), (homePlaneRef.current.rotation.y -= 3e-4)) : ((homePlaneRef.current.rotation.x -= 3e-4), (homePlaneRef.current.rotation.y += 3e-4));
+                        i++;
+                    }
+    
+                    snapping ? snapBack() : hovering ? hover() : hoverMove();
+                    document.addEventListener("mousemove", onDocumentMouseMove, !1);
+                    // document.addEventListener("mousedown", onMouseDown, !1);
+                    // document.addEventListener("mouseup", onMouseUp, !1);
+    
+                }
+            }
 
             return(
                 <>
@@ -127,14 +127,14 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
             <p className={styles.nextButton} onClick={homePlaneControls.current.next}>NEXT</p>
             <p className={styles.previousButton} onClick={homePlaneControls.current.previous}>PREVIOUS</p>
                 {/* <Canvas camera={{ position: [0, 0, carouselX] }} ref={homePlaneRef} dpr={[1, 2]}>
-                   <Planee position={[0, 0, 0]} />
-                   <Planee position={[20, 0, 0]} />
-                   <Planee position={[30, 0, 0]} />
+                   <HomePlane position={[0, 0, 0]} />
+                   <HomePlane position={[20, 0, 0]} />
+                   <HomePlane position={[30, 0, 0]} />
                 </Canvas> */}
-                 <Canvas  id={"mesh"} camera={{ position: [0, 0, 5]}}>
-                    <Planee position={[0, 0, 0]} /> 
-                    <Planee position={[100, 0, 0]} />
-                    <Planee position={[200, 0, 0]} /> 
+                 <Canvas id={"mesh"} camera={{ position: [0, 0, 5]}}>
+                    <HomePlane position={[0, 0, 0]} /> 
+                    <HomePlane position={[100, 0, 0]} />
+                    <HomePlane position={[200, 0, 0]} /> 
                 </Canvas>
             </div>
         </>

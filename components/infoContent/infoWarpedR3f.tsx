@@ -35,6 +35,10 @@ export default function warpedImage({ src }:Type):JSX.Element{
         const height = isMobile ? 1.7 : 5;
             
         useFrame((state, delta) => {
+            init();
+        });
+
+            const init = ()=>{
                 if(infoPlaneRef && infoPlaneRef!== null && infoPlaneRef!== undefined && infoPlaneRef.current && infoPlaneRef.current!== null && infoPlaneRef.current!== undefined  ){
                     
                     const onMouseDown = (e) => {
@@ -70,8 +74,7 @@ export default function warpedImage({ src }:Type):JSX.Element{
                     // document.addEventListener("mousedown", onMouseDown, !1);
                     // document.addEventListener("mouseup", onMouseUp, !1);
                 }
-            
-            });
+            }
 
             return(
                 <mesh {...props} ref={infoPlaneRef}>
