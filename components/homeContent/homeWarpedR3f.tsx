@@ -60,7 +60,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                 init()
             });
 
-            const init = ()=>{
+            const init = () => {
                 if(homePlaneRef && homePlaneRef.current !== undefined){
                     const onMouseDown = (e) => {
                         homePlaneRef.current = e;
@@ -124,14 +124,9 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
     return(
         <>
             <div className={`${styles.homeScene} homeScene`}>
-            <p className={styles.nextButton} onClick={homePlaneControls.current.next}>NEXT</p>
-            <p className={styles.previousButton} onClick={homePlaneControls.current.previous}>PREVIOUS</p>
-                {/* <Canvas camera={{ position: [0, 0, carouselX] }} ref={homePlaneRef} dpr={[1, 2]}>
-                   <HomePlane position={[0, 0, 0]} />
-                   <HomePlane position={[20, 0, 0]} />
-                   <HomePlane position={[30, 0, 0]} />
-                </Canvas> */}
-                 <Canvas id={"mesh"} camera={{ position: [0, 0, 5]}}>
+                <p className={styles.nextButton} onClick={homePlaneControls.current.next}>NEXT</p>
+                <p className={styles.previousButton} onClick={homePlaneControls.current.previous}>PREVIOUS</p>
+                <Canvas id={"mesh"} camera={{ position: [0, 0, 5]}}>
                     <HomePlane position={[0, 0, 0]} /> 
                     <HomePlane position={[100, 0, 0]} />
                     <HomePlane position={[200, 0, 0]} /> 
