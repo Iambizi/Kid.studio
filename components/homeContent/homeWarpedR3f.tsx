@@ -61,7 +61,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
             });
 
             const init = ()=>{
-                if(homePlaneRef.current && homePlaneRef.current !== undefined){
+                if(homePlaneRef && homePlaneRef.current !== undefined){
                     const onMouseDown = (e) => {
                         homePlaneRef.current = e;
                         (mouseDown = !0), (prevMouse.x = mouse.x), (prevMouse.y = mouse.y);
