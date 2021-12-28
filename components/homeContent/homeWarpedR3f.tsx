@@ -48,7 +48,6 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         const texture2 = loader.load(`${src2}`);
         const texture3 = loader.load(`${src3}`);
 
-        
         texture1.minFilter = THREE.LinearFilter;
         texture2.minFilter = THREE.LinearFilter;
         texture3.minFilter = THREE.LinearFilter;
