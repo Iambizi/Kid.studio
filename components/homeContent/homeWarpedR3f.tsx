@@ -29,7 +29,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
 
     const HomePlane = (props: any) =>{
         
-        const homePlaneRef = useRef<HTMLElement | any>(null!);
+        const homePlaneRef = useRef<THREE.Mesh>();
 
         let hover_dist = 0.3;
         let mouse = { x: 0, y: 0 };
@@ -56,7 +56,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         const width = isMobile ? 3.1 : 9;
         const height = isMobile ? 1.7 : 5;
 
-        useFrame((state, delta) => {
+        useFrame((state) => {
                 init()
             });
 
@@ -97,8 +97,8 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
     
                     snapping ? snapBack() : hovering ? hover() : hoverMove();
                     document.addEventListener("mousemove", onDocumentMouseMove, !1);
-                    // document.addEventListener("mousedown", onMouseDown, !1);
-                    // document.addEventListener("mouseup", onMouseUp, !1);
+                    document.addEventListener("mousedown", onMouseDown, !1);
+                    document.addEventListener("mouseup", onMouseUp, !1);
     
                 }
             }
