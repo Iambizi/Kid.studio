@@ -23,16 +23,20 @@ export default function content({ homeProjects, projects }: Type):JSX.Element{
 
     // handles next button functionality and logic for state used in carousel
     const goNext = () => {
-        count > 1 ? setCount(0) : setCount(count + 1);
-        carouselX  < 200 ? setCarouselX(carouselX + 100) : setCarouselX(0);
+        const addCount = count + 1;
+        const addCarouselX = carouselX + 100;
+        count > 1 ? setCount(0) : setCount(addCount);
+        carouselX  < 200 ? setCarouselX(addCarouselX) : setCarouselX(0);
         setSlideNext(true);
         setTimeout(() => setSlideNext(false), 1000);
     }
     
     // handles previous button functionality and logic for state used in carousel
     const goPrevious = () => {
-        count < 1 ? setCount(2) : setCount(count - 1);
-        carouselX  < 100 ? setCarouselX(200) : setCarouselX(carouselX  - 100);
+        const minusCount = (count - 1);
+        const minusCarouselX = (carouselX  - 100);
+        count < 1 ? setCount(2) : setCount(minusCount);
+        carouselX  < 100 ? setCarouselX(200) : setCarouselX(minusCarouselX);
         setSlidePrevious(true);
         setTimeout(() => setSlidePrevious(false), 1000);
     }
