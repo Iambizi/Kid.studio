@@ -73,7 +73,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                     const onMouseUp = (e) => {
                         // homePlaneRef.current = e;
                         // (mouseDown = !1), (snapping = !0), (snapback.x = homePlaneRef.current.rotation.x / 60), (snapback.y = homePlaneRef.current.rotation.y / 60);
-                        setTimeout(() => snapping = false, 320);
+                        setTimeout(() => snapping = false, 420);
                     }
                     const onDocumentMouseMove = (e)=> {
                         hovering = !1;
