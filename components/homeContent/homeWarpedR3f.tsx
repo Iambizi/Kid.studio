@@ -62,13 +62,15 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
             const init = () => {
                 if(homePlaneRef && homePlaneRef.current !== undefined){
                     const onMouseDown = (e) => {
-                        homePlaneRef.current = e;
-                        (mouseDown = !0), (prevMouse.x = mouse.x), (prevMouse.y = mouse.y);
-                        e.stopImmediatePropagation();
+                        // homePlaneRef.current = e;
+                        // (mouseDown = !0), (prevMouse.x = mouse.x), (prevMouse.y = mouse.y);
+                        snapping = true;
+                        // e.stopImmediatePropagation();
                     }
                     const onMouseUp = (e) => {
-                        homePlaneRef.current = e;
-                        (mouseDown = !1), (snapping = !0), (snapback.x = homePlaneRef.current.rotation.x / 60), (snapback.y = homePlaneRef.current.rotation.y / 60);
+                        // homePlaneRef.current = e;
+                        // (mouseDown = !1), (snapping = !0), (snapback.x = homePlaneRef.current.rotation.x / 60), (snapback.y = homePlaneRef.current.rotation.y / 60);
+                        snapping = false;
                     }
                     const onDocumentMouseMove = (e)=> {
                         hovering = !1;
@@ -85,8 +87,14 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                         (homePlaneRef.current.rotation.y > hover_dist || homePlaneRef.current.rotation.y < -hover_dist) && (homePlaneRef.current.rotation.x > hover_dist || homePlaneRef.current.rotation.x < -hover_dist) && (hovering = !0);
                     }
                     const snapBack = () => {
-                        homePlaneRef.current.rotation.x < 0.002 && homePlaneRef.current.rotation.x > -0.002 && homePlaneRef.current.rotation.y < 0.002 && homePlaneRef.current.rotation.y > -0.002 && (snapping = !1);
-                        (homePlaneRef.current.rotation.x -= snapback.x), (homePlaneRef.current.rotation.y -= snapback.y);
+                        // homePlaneRef.current.rotation.x < 0.002 && homePlaneRef.current.rotation.x > -0.002 && homePlaneRef.current.rotation.y < 0.002 && homePlaneRef.current.rotation.y > -0.002 && (snapping = !1);
+                        // (homePlaneRef.current.rotation.x -= snapback.x), (homePlaneRef.current.rotation.y -= snapback.y);
+
+                        let speed = 0.001
+                        if (homePlaneRef.current.rotation.x < 0) homePlaneRef.current.rotation.x += speed
+                        if (homePlaneRef.current.rotation.x > 0) homePlaneRef.current.rotation.x -= speed
+                        if (homePlaneRef.current.rotation.y < 0) homePlaneRef.current.rotation.y += speed
+                        if (homePlaneRef.current.rotation.y > 0) homePlaneRef.current.rotation.y -= speed
                     }
                     const hover = () => {
                         i == timerx && (i = 0);
@@ -96,8 +104,8 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
     
                     snapping ? snapBack() : hovering ? hover() : hoverMove();
                     document.addEventListener("mousemove", onDocumentMouseMove, !1);
-                    // document.addEventListener("mousedown", onMouseDown, !1);
-                    // document.addEventListener("mouseup", onMouseUp, !1);
+                    document.addEventListener("mousedown", onMouseDown, !1);
+                    document.addEventListener("mouseup", onMouseUp, !1);
     
                 }
             }
