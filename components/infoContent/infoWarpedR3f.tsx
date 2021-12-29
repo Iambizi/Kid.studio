@@ -39,14 +39,16 @@ export default function warpedImage({ src }:Type):JSX.Element{
         });
 
             const init = ()=>{
-                if(infoPlaneRef && infoPlaneRef.current !== undefined  ){
+                if( infoPlaneRef && infoPlaneRef.current !== undefined  ){
                     
                     const onMouseDown = (e) => {
-                        (mouseDown = !0), (prevMouse.x = mouse.x), (prevMouse.y = mouse.y);
-                        e.stopImmediatePropagation();
+                        // (mouseDown = !0), (prevMouse.x = mouse.x), (prevMouse.y = mouse.y);
+                        // e.stopImmediatePropagation();
+                        snapping = true;
                     }
                     const onMouseUp = () => {
-                        (mouseDown = !1), (snapping = !0), (snapback.x = infoPlaneRef.current.rotation.x / 60), (snapback.y = infoPlaneRef.current.rotation.y / 60);
+                        // (mouseDown = !1), (snapping = !0), (snapback.x = infoPlaneRef.current.rotation.x / 60), (snapback.y = infoPlaneRef.current.rotation.y / 60);
+                        setTimeout(() => snapping = false, 320);
                     }
                     const onDocumentMouseMove = (e)=> {
                         (hovering = !1), (mouse.x = e.clientX / window.innerWidth), (mouse.y = e.clientY / window.innerHeight);
@@ -61,8 +63,13 @@ export default function warpedImage({ src }:Type):JSX.Element{
                         (infoPlaneRef.current.rotation.y > hover_dist || infoPlaneRef.current.rotation.y < -hover_dist) && (infoPlaneRef.current.rotation.x > hover_dist || infoPlaneRef.current.rotation.x < -hover_dist) && (hovering = !0);
                     }
                     const snapBack = () => {
-                        infoPlaneRef.current.rotation.x < 0.002 && infoPlaneRef.current.rotation.x > -0.002 && infoPlaneRef.current.rotation.y < 0.002 && infoPlaneRef.current.rotation.y > -0.002 && (snapping = !1);
-                        (infoPlaneRef.current.rotation.x -= snapback.x), (infoPlaneRef.current.rotation.y -= snapback.y);
+                        // infoPlaneRef.current.rotation.x < 0.002 && infoPlaneRef.current.rotation.x > -0.002 && infoPlaneRef.current.rotation.y < 0.002 && infoPlaneRef.current.rotation.y > -0.002 && (snapping = !1);
+                        // (infoPlaneRef.current.rotation.x -= snapback.x), (infoPlaneRef.current.rotation.y -= snapback.y);
+                        let speed = 0.007;
+                        if (infoPlaneRef.current.rotation.x < 0) infoPlaneRef.current.rotation.x += speed;
+                        if (infoPlaneRef.current.rotation.x > 0) infoPlaneRef.current.rotation.x -= speed;
+                        if (infoPlaneRef.current.rotation.y < 0) infoPlaneRef.current.rotation.y += speed;
+                        if (infoPlaneRef.current.rotation.y > 0) infoPlaneRef.current.rotation.y -= speed;
                     }
                     const hover = () => {
                         i == timerx && (i = 0);
@@ -71,8 +78,8 @@ export default function warpedImage({ src }:Type):JSX.Element{
                     }
                     snapping ? snapBack() : hovering ? hover() : hoverMove();                
                     document.addEventListener("mousemove", onDocumentMouseMove, !1);
-                    // document.addEventListener("mousedown", onMouseDown, !1);
-                    // document.addEventListener("mouseup", onMouseUp, !1);
+                    document.addEventListener("mousedown", onMouseDown, !1);
+                    document.addEventListener("mouseup", onMouseUp, !1);
                 }
             }
 

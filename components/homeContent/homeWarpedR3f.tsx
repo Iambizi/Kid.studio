@@ -27,6 +27,8 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
     const router = useRouter();
     const homePath = /\/$/gm;
 
+    const [snapDone , setSnapDone] = useState(false);
+
     const HomePlane = (props: any) =>{
         
         const homePlaneRef = useRef<THREE.Mesh>();
@@ -66,11 +68,12 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                         // (mouseDown = !0), (prevMouse.x = mouse.x), (prevMouse.y = mouse.y);
                         snapping = true;
                         // e.stopImmediatePropagation();
+                        
                     }
                     const onMouseUp = (e) => {
                         // homePlaneRef.current = e;
                         // (mouseDown = !1), (snapping = !0), (snapback.x = homePlaneRef.current.rotation.x / 60), (snapback.y = homePlaneRef.current.rotation.y / 60);
-                        snapping = false;
+                        setTimeout(() => snapping = false, 320);
                     }
                     const onDocumentMouseMove = (e)=> {
                         hovering = !1;
@@ -90,7 +93,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                         // homePlaneRef.current.rotation.x < 0.002 && homePlaneRef.current.rotation.x > -0.002 && homePlaneRef.current.rotation.y < 0.002 && homePlaneRef.current.rotation.y > -0.002 && (snapping = !1);
                         // (homePlaneRef.current.rotation.x -= snapback.x), (homePlaneRef.current.rotation.y -= snapback.y);
 
-                        let speed = 0.001
+                        let speed = 0.007
                         if (homePlaneRef.current.rotation.x < 0) homePlaneRef.current.rotation.x += speed
                         if (homePlaneRef.current.rotation.x > 0) homePlaneRef.current.rotation.x -= speed
                         if (homePlaneRef.current.rotation.y < 0) homePlaneRef.current.rotation.y += speed
