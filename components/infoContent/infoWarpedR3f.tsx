@@ -48,7 +48,7 @@ export default function warpedImage({ src }:Type):JSX.Element{
                     }
                     const onMouseUp = () => {
                         // (mouseDown = !1), (snapping = !0), (snapback.x = infoPlaneRef.current.rotation.x / 60), (snapback.y = infoPlaneRef.current.rotation.y / 60);
-                        setTimeout(() => snapping = false, 420);
+                        setTimeout(() => snapping = false, 550);
                     }
                     const onDocumentMouseMove = (e)=> {
                         (hovering = !1), (mouse.x = e.clientX / window.innerWidth), (mouse.y = e.clientY / window.innerHeight);
