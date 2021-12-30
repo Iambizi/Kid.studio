@@ -56,6 +56,10 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         
 
         useFrame((state) => {
+            animations(state);
+        });
+
+        const animations = (state) => {
             if(homePlaneRef && homePlaneRef.current !== undefined){
                 const onMouseDown = (e) => {
                     snapping = true;                    
@@ -92,7 +96,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                 document.addEventListener("mouseup", onMouseUp, false);
 
             }
-            });
+        }
 
             return(
                 <>
