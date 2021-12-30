@@ -23,9 +23,9 @@ export default function warpedImage({ src }:Type):JSX.Element{
         let distMouse = { x: 0, y: 0 };
         let i = 0;
         let timerx = 500;
-        let hovering = !1;
-        let snapping = !1;
-        let mouseDown = !1;
+        let hovering = false;
+        let snapping = false;
+        let mouseDown = false;
 
         const loader = new THREE.TextureLoader();
         
@@ -35,53 +35,47 @@ export default function warpedImage({ src }:Type):JSX.Element{
         const height = isMobile ? 1.7 : 5;
             
         useFrame((state, delta) => {
-            init();
-        });
-
-            const init = ()=>{
-                if( infoPlaneRef && infoPlaneRef.current !== undefined  ){
+            if( infoPlaneRef && infoPlaneRef.current !== undefined  ){
                     
-                    const onMouseDown = (e) => {
-                        // (mouseDown = !0), (prevMouse.x = mouse.x), (prevMouse.y = mouse.y);
-                        // e.stopImmediatePropagation();
-                        snapping = true;
-                    }
-                    const onMouseUp = () => {
-                        // (mouseDown = !1), (snapping = !0), (snapback.x = infoPlaneRef.current.rotation.x / 60), (snapback.y = infoPlaneRef.current.rotation.y / 60);
-                        setTimeout(() => snapping = false, 950);
-                    }
-                    const onDocumentMouseMove = (e)=> {
-                        (hovering = !1), (mouse.x = e.clientX / window.innerWidth), (mouse.y = e.clientY / window.innerHeight);
-                    }
-                    const dragMove = () => {
-                        (distMouse.x = prevMouse.x - mouse.x), (distMouse.y = prevMouse.y - mouse.y);
-                        (infoPlaneRef.current.rotation.y -= 2 * distMouse.x), (infoPlaneRef.current.rotation.x -= 2 * distMouse.y);
-                    }
-                    const hoverMove = () => {
-                            mouse.x > 0.5 ? infoPlaneRef.current.rotation.y < hover_dist && (infoPlaneRef.current.rotation.y += 0.002) : mouse.x < 0.5 && infoPlaneRef.current.rotation.y > -hover_dist && (infoPlaneRef.current.rotation.y -= 0.002),
-                            mouse.y > 0.5 ? infoPlaneRef.current.rotation.x < hover_dist && (infoPlaneRef.current.rotation.x += 0.002) : mouse.y < 0.5 && infoPlaneRef.current.rotation.x > -hover_dist && (infoPlaneRef.current.rotation.x -= 0.002);
-                        (infoPlaneRef.current.rotation.y > hover_dist || infoPlaneRef.current.rotation.y < -hover_dist) && (infoPlaneRef.current.rotation.x > hover_dist || infoPlaneRef.current.rotation.x < -hover_dist) && (hovering = !0);
-                    }
-                    const snapBack = () => {
-                        // infoPlaneRef.current.rotation.x < 0.002 && infoPlaneRef.current.rotation.x > -0.002 && infoPlaneRef.current.rotation.y < 0.002 && infoPlaneRef.current.rotation.y > -0.002 && (snapping = !1);
-                        // (infoPlaneRef.current.rotation.x -= snapback.x), (infoPlaneRef.current.rotation.y -= snapback.y);
-                        let speed = 0.005;
-                        if (infoPlaneRef.current.rotation.x < 0) infoPlaneRef.current.rotation.x += speed;
-                        if (infoPlaneRef.current.rotation.x > 0) infoPlaneRef.current.rotation.x -= speed;
-                        if (infoPlaneRef.current.rotation.y < 0) infoPlaneRef.current.rotation.y += speed;
-                        if (infoPlaneRef.current.rotation.y > 0) infoPlaneRef.current.rotation.y -= speed;
-                    }
-                    const hover = () => {
-                        i == timerx && (i = 0);
-                        timerx / 2 > i ? ((infoPlaneRef.current.rotation.x += 3e-4), (infoPlaneRef.current.rotation.y -= 3e-4)) : ((infoPlaneRef.current.rotation.x -= 3e-4), (infoPlaneRef.current.rotation.y += 3e-4));
-                        i++;
-                    }
-                    snapping ? snapBack() : hovering ? hover() : hoverMove();                
-                    document.addEventListener("mousemove", onDocumentMouseMove, !1);
-                    document.addEventListener("mousedown", onMouseDown, !1);
-                    document.addEventListener("mouseup", onMouseUp, !1);
+                const onMouseDown = (e) => {
+                    // (mouseDown = true), (prevMouse.x = state.mouse.x), (prevMouse.y = state.mouse.y);
+                    // e.stopImmediatePropagation();
+                    snapping = true;
                 }
+                const onMouseUp = () => {
+                    // (mouseDown = false), (snapping = true), (snapback.x = infoPlaneRef.current.rotation.x / 60), (snapback.y = infoPlaneRef.current.rotation.y / 60);
+                    setTimeout(() => snapping = false, 950);
+                }
+                const onDocumentMouseMove = (e)=> {
+                    (hovering = false), (state.mouse.x = e.clientX / window.innerWidth), (state.mouse.y = e.clientY / window.innerHeight);
+                }
+                const dragMove = () => {
+                    (distMouse.x = prevMouse.x - state.mouse.x), (distMouse.y = prevMouse.y - state.mouse.y);
+                    (infoPlaneRef.current.rotation.y -= 2 * distMouse.x), (infoPlaneRef.current.rotation.x -= 2 * distMouse.y);
+                }
+                const hoverMove = () => {
+                        state.mouse.x > 0.5 ? infoPlaneRef.current.rotation.y < hover_dist && (infoPlaneRef.current.rotation.y += 0.002) : state.mouse.x < 0.5 && infoPlaneRef.current.rotation.y > -hover_dist && (infoPlaneRef.current.rotation.y -= 0.002),
+                        state.mouse.y > 0.5 ? infoPlaneRef.current.rotation.x < hover_dist && (infoPlaneRef.current.rotation.x += 0.002) : state.mouse.y < 0.5 && infoPlaneRef.current.rotation.x > -hover_dist && (infoPlaneRef.current.rotation.x -= 0.002);
+                    (infoPlaneRef.current.rotation.y > hover_dist || infoPlaneRef.current.rotation.y < -hover_dist) && (infoPlaneRef.current.rotation.x > hover_dist || infoPlaneRef.current.rotation.x < -hover_dist) && (hovering = true);
+                }
+                const snapBack = () => {
+                    let speed = 0.005;
+                    if (infoPlaneRef.current.rotation.x < 0) infoPlaneRef.current.rotation.x += speed;
+                    if (infoPlaneRef.current.rotation.x > 0) infoPlaneRef.current.rotation.x -= speed;
+                    if (infoPlaneRef.current.rotation.y < 0) infoPlaneRef.current.rotation.y += speed;
+                    if (infoPlaneRef.current.rotation.y > 0) infoPlaneRef.current.rotation.y -= speed;
+                }
+                const hover = () => {
+                    i == timerx && (i = 0);
+                    timerx / 2 > i ? ((infoPlaneRef.current.rotation.x += 3e-4), (infoPlaneRef.current.rotation.y -= 3e-4)) : ((infoPlaneRef.current.rotation.x -= 3e-4), (infoPlaneRef.current.rotation.y += 3e-4));
+                    i++;
+                }
+                snapping ? snapBack() : hovering ? hover() : hoverMove();                
+                document.addEventListener("mousemove", onDocumentMouseMove, false);
+                document.addEventListener("mousedown", onMouseDown, false);
+                document.addEventListener("mouseup", onMouseUp, false);
             }
+        });
 
             return(
                 <mesh {...props} ref={infoPlaneRef}>
