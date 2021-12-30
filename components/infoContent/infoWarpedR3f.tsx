@@ -48,7 +48,7 @@ export default function warpedImage({ src }:Type):JSX.Element{
                     }
                     const onMouseUp = () => {
                         // (mouseDown = !1), (snapping = !0), (snapback.x = infoPlaneRef.current.rotation.x / 60), (snapback.y = infoPlaneRef.current.rotation.y / 60);
-                        setTimeout(() => snapping = false, 550);
+                        setTimeout(() => snapping = false, 950);
                     }
                     const onDocumentMouseMove = (e)=> {
                         (hovering = !1), (mouse.x = e.clientX / window.innerWidth), (mouse.y = e.clientY / window.innerHeight);
@@ -65,7 +65,7 @@ export default function warpedImage({ src }:Type):JSX.Element{
                     const snapBack = () => {
                         // infoPlaneRef.current.rotation.x < 0.002 && infoPlaneRef.current.rotation.x > -0.002 && infoPlaneRef.current.rotation.y < 0.002 && infoPlaneRef.current.rotation.y > -0.002 && (snapping = !1);
                         // (infoPlaneRef.current.rotation.x -= snapback.x), (infoPlaneRef.current.rotation.y -= snapback.y);
-                        let speed = 0.007;
+                        let speed = 0.005;
                         if (infoPlaneRef.current.rotation.x < 0) infoPlaneRef.current.rotation.x += speed;
                         if (infoPlaneRef.current.rotation.x > 0) infoPlaneRef.current.rotation.x -= speed;
                         if (infoPlaneRef.current.rotation.y < 0) infoPlaneRef.current.rotation.y += speed;
