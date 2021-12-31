@@ -36,7 +36,6 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         let timerx = 500;
         let hovering = false;
         let snapping = false;
-        let mouseDown = false;
 
         const loader = new THREE.TextureLoader();
 
@@ -60,7 +59,6 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         const animateMesh = (state) => {
             if(homePlaneRef && homePlaneRef.current !== undefined){
                 const onMouseDown = (e) => {
-                    mouseDown = true;
                     snapping = true;                    
                 }
                 const onMouseUp = (e) => {
