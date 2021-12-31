@@ -36,6 +36,7 @@ export default function warpedImage({ src }:Type):JSX.Element{
         });
 
         const animateMesh = (state)=> {
+            
             if( infoPlaneRef && infoPlaneRef.current !== undefined  ){
                     
                 const onMouseDown = (e) => {
