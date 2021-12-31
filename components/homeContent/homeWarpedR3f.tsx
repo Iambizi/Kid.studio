@@ -27,8 +27,6 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
     const router = useRouter();
     const homePath = /\/$/gm;
 
-    const [snapDone , setSnapDone] = useState(false);
-
     const HomePlane = (props: any) =>{
         
         const homePlaneRef = useRef<THREE.Mesh>();
@@ -62,6 +60,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         const animations = (state) => {
             if(homePlaneRef && homePlaneRef.current !== undefined){
                 const onMouseDown = (e) => {
+                    mouseDown = true;
                     snapping = true;                    
                 }
                 const onMouseUp = (e) => {

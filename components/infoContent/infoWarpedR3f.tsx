@@ -17,15 +17,12 @@ export default function warpedImage({ src }:Type):JSX.Element{
         const infoPlaneRef = useRef<THREE.Mesh>();
 
         let hover_dist = 0.3;
-        let mouse = { x: 0, y: 0 };
-        let snapback = { x: 0, y: 0 };
         let prevMouse = { x: 0, y: 0 };
         let distMouse = { x: 0, y: 0 };
         let i = 0;
         let timerx = 500;
         let hovering = false;
         let snapping = false;
-        let mouseDown = false;
 
         const loader = new THREE.TextureLoader();
         
@@ -35,15 +32,16 @@ export default function warpedImage({ src }:Type):JSX.Element{
         const height = isMobile ? 1.7 : 5;
             
         useFrame((state, delta) => {
+            animations(state);
+        });
+
+        const animations = (state)=> {
             if( infoPlaneRef && infoPlaneRef.current !== undefined  ){
                     
                 const onMouseDown = (e) => {
-                    // (mouseDown = true), (prevMouse.x = state.mouse.x), (prevMouse.y = state.mouse.y);
-                    // e.stopImmediatePropagation();
                     snapping = true;
                 }
                 const onMouseUp = () => {
-                    // (mouseDown = false), (snapping = true), (snapback.x = infoPlaneRef.current.rotation.x / 60), (snapback.y = infoPlaneRef.current.rotation.y / 60);
                     setTimeout(() => snapping = false, 950);
                 }
                 const onDocumentMouseMove = (e)=> {
@@ -75,7 +73,7 @@ export default function warpedImage({ src }:Type):JSX.Element{
                 document.addEventListener("mousedown", onMouseDown, false);
                 document.addEventListener("mouseup", onMouseUp, false);
             }
-        });
+        }
 
             return(
                 <mesh {...props} ref={infoPlaneRef}>
