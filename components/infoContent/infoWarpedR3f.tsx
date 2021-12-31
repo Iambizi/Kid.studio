@@ -32,10 +32,10 @@ export default function warpedImage({ src }:Type):JSX.Element{
         const height = isMobile ? 1.7 : 5;
             
         useFrame((state, delta) => {
-            animations(state);
+            animateMesh(state);
         });
 
-        const animations = (state)=> {
+        const animateMesh = (state)=> {
             if( infoPlaneRef && infoPlaneRef.current !== undefined  ){
                     
                 const onMouseDown = (e) => {

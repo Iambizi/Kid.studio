@@ -54,10 +54,10 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         
 
         useFrame((state) => {
-            animations(state);
+            animateMesh(state);
         });
 
-        const animations = (state) => {
+        const animateMesh = (state) => {
             if(homePlaneRef && homePlaneRef.current !== undefined){
                 const onMouseDown = (e) => {
                     mouseDown = true;
