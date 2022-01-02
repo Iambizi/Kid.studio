@@ -97,7 +97,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
 
             return(
                 <>
-                    <mesh {...props} ref={homePlaneRef}>
+                    <mesh onPointerMissed={() => console.log('move outside')} onPointerMove={(e) => console.log('move')} {...props} ref={homePlaneRef}>
                         <planeGeometry args={[width, height]} />
                         <meshBasicMaterial map={texture1} />
                     </mesh>
