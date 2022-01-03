@@ -50,8 +50,6 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         const width = isMobile ? 3.1 : 9;
         const height = isMobile ? 1.7 : 5;
 
-        
-
         useFrame((state) => {
             animateMesh(state);
         });
@@ -97,7 +95,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
 
             return(
                 <>
-                    <mesh onPointerMissed={() => console.log('move outside')} onPointerMove={(e) => console.log('move')} {...props} ref={homePlaneRef}>
+                    <mesh onPointerMissed={() => console.log('move outside')}  {...props} ref={homePlaneRef}>
                         <planeGeometry args={[width, height]} />
                         <meshBasicMaterial map={texture1} />
                     </mesh>
@@ -118,7 +116,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
             <div className={`${styles.homeScene} homeScene`}>
                 <p className={styles.nextButton} onClick={homePlaneControls.current.next}>NEXT</p>
                 <p className={styles.previousButton} onClick={homePlaneControls.current.previous}>PREVIOUS</p>
-                <Canvas id={"mesh"} camera={{ position: [0, 0, 5]}}>
+                <Canvas onPointerMove={(e) => console.log('move')} id={"mesh"} camera={{ position: [0, 0, 5]}}>
                     <HomePlane position={[0, 0, 0]} /> 
                     <HomePlane position={[100, 0, 0]} />
                     <HomePlane position={[200, 0, 0]} /> 
