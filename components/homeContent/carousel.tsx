@@ -1,7 +1,7 @@
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
 import Link from "next/link";
 // import WarpedIMG from "./homeWarpedPla";
-import WarpedIMG from "./homeWarpedR3f";
+import WarpedIMG from "./homeWarpedR3f2";
 // import WarpedIMG from "../common/commonWarpedPlane";
 
 interface Type {

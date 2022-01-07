@@ -37,6 +37,13 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         let timerx = 500;
         let hovering = false;
         let snapping = false;
+        let mouse = { x: 0, y: 0 };
+
+        let onDocumentMouseMove;
+        let onMouseDown;
+        let onMouseUp;
+
+
 
         const loader = new THREE.TextureLoader();
 
@@ -58,18 +65,39 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
 
         const animateMesh = (state) => {
             if(homePlaneRef && homePlaneRef.current !== undefined){
+                // const onMouseDown = (e) => {
+                //     snapping = true;                    
+                // }
+                // const onMouseUp = (e) => {
+                //     setTimeout(() => snapping = false, 950);
+                // }
+                // const onDocumentMouseMove = (e)=> {
+                //     hovering = false;
+                //     state.mouse.x = e.clientX / window.innerWidth; 
+                //     state.mouse.y = e.clientY / window.innerHeight;
+                // }
+                (()=>{
+                    // globoF = ()=>{
+                    //     console.log("yooo");
+                    // }
+                    onDocumentMouseMove = (e) => {
+                        hovering = false;
+                        mouse.x = e.clientX / window.innerWidth; 
+                        mouse.y = e.clientY / window.innerHeight;
+                        console.log("mousemooooove");
+                    };
+                    onMouseDown = (e) => {
+                        snapping = true;
+                        console.log("mouseDown");                    
+                    };
+                    onMouseUp = (e) => {
+                        setTimeout(() => snapping = false, 950);
+                        console.log("mouseUp");
+                    }
+                })();
 
-                const onMouseDown = (e) => {
-                    snapping = true;                    
-                }
-                const onMouseUp = (e) => {
-                    setTimeout(() => snapping = false, 950);
-                }
-                const onDocumentMouseMove = (e)=> {
-                    hovering = false;
-                    state.mouse.x = e.clientX / window.innerWidth; 
-                    state.mouse.y = e.clientY / window.innerHeight;
-                }
+                
+
                 const hoverMove = () => {
                     state.mouse.x > 0.5 ? homePlaneRef.current.rotation.y < hover_dist && (homePlaneRef.current.rotation.y += 0.002) : state.mouse.x < 0.5 && homePlaneRef.current.rotation.y > -hover_dist && (homePlaneRef.current.rotation.y -= 0.002),
                     state.mouse.y > 0.5 ? homePlaneRef.current.rotation.x < hover_dist && (homePlaneRef.current.rotation.x += 0.002) : state.mouse.y < 0.5 && homePlaneRef.current.rotation.x > -hover_dist && (homePlaneRef.current.rotation.x -= 0.002);
@@ -89,11 +117,17 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                 }
 
                 snapping ? snapBack() : hovering ? hover() : hoverMove();
-                document.addEventListener("mousemove", onDocumentMouseMove, false);
-                document.addEventListener("mousedown", onMouseDown, false);
-                document.addEventListener("mouseup", onMouseUp, false);
+                // document.addEventListener("mousemove", onDocumentMouseMove, false);
+                // document.addEventListener("mousedown", onMouseDown, false);
+                // document.addEventListener("mouseup", onMouseUp, false);
             }
         }
+
+        useEffect(()=>{
+            document.addEventListener("mousemove", onDocumentMouseMove, false);
+            document.addEventListener("mousedown", onMouseDown, false);
+            document.addEventListener("mouseup", onMouseUp, false);
+        },[]);
 
         return(
             <>
