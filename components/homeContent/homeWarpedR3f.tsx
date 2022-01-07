@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import * as THREE from 'three';
 import { Canvas, useFrame, useLoader } from '@react-three/fiber';
 import { useTexture } from "@react-three/drei";
@@ -88,16 +88,14 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                 }
 
                 snapping ? snapBack() : hovering ? hover() : hoverMove();
-                document.addEventListener("mousemove", onDocumentMouseMove, false);
-                document.addEventListener("mousedown", onMouseDown, false);
-                document.addEventListener("mouseup", onMouseUp, false);
+                
 
             }
         }
 
             return(
                 <>
-                    <mesh onPointerMissed={() => console.log('move outside')} onPointerMove={(e) => console.log('move')} {...props} ref={homePlaneRef}>
+                    <mesh onPointerMissed={() => console.log('move outside')} onPointerMove={(e) => console.log('move')} ref={homePlaneRef}>
                         <planeGeometry args={[width, height]} />
                         <meshBasicMaterial map={texture1} />
                     </mesh>
