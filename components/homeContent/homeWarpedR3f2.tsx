@@ -76,14 +76,14 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                 //     state.mouse.x = e.clientX / window.innerWidth; 
                 //     state.mouse.y = e.clientY / window.innerHeight;
                 // }
-                (()=>{
+                ((state)=>{
                     // globoF = ()=>{
                     //     console.log("yooo");
                     // }
                     onDocumentMouseMove = (e) => {
                         hovering = false;
-                        mouse.x = e.clientX / window.innerWidth; 
-                        mouse.y = e.clientY / window.innerHeight;
+                        state.mouse.x = e.clientX / window.innerWidth; 
+                        state.mouse.y = e.clientY / window.innerHeight;
                         console.log("mousemooooove");
                     };
                     onMouseDown = (e) => {
@@ -117,7 +117,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                 }
 
                 snapping ? snapBack() : hovering ? hover() : hoverMove();
-                // document.addEventListener("mousemove", onDocumentMouseMove, false);
+                document.addEventListener("mousemove", onDocumentMouseMove, false);
                 // document.addEventListener("mousedown", onMouseDown, false);
                 // document.addEventListener("mouseup", onMouseUp, false);
             }
@@ -125,8 +125,14 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
 
         useEffect(()=>{
             document.addEventListener("mousemove", onDocumentMouseMove, false);
-            document.addEventListener("mousedown", onMouseDown, false);
-            document.addEventListener("mouseup", onMouseUp, false);
+            // document.addEventListener("mousedown", onMouseDown, false);
+            // document.addEventListener("mouseup", onMouseUp, false);
+
+            // return () => {
+            //     document.removeEventListener("mousemove", onDocumentMouseMove, false);
+            //     document.removeEventListener("mousedown", onMouseDown, false);
+            //     document.removeEventListener("mouseup", onMouseUp, false); 
+            // }
         },[]);
 
         return(
