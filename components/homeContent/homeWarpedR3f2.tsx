@@ -77,15 +77,13 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                 //     state.mouse.y = e.clientY / window.innerHeight;
                 // }
                 ((state)=>{
-                    // globoF = ()=>{
-                    //     console.log("yooo");
-                    // }
                     onDocumentMouseMove = (e) => {
                         hovering = false;
                         mouse.x = e.clientX / window.innerWidth; 
                         mouse.y = e.clientY / window.innerHeight;
                         console.log("mousemooooove");
                     };
+                    
                     onMouseDown = (e) => {
                         snapping = true;
                         console.log("mouseDown");                    
