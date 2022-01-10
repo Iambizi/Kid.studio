@@ -114,7 +114,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                 }
 
                 snapping ? snapBack() : hovering ? hover() : hoverMove();
-                document.addEventListener("mousemove", onDocumentMouseMove, false);
+                // document.addEventListener("mousemove", onDocumentMouseMove, false);
                 // document.addEventListener("mousedown", onMouseDown, false);
                 // document.addEventListener("mouseup", onMouseUp, false);
             }
@@ -122,8 +122,8 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
 
         useEffect(()=>{
             document.addEventListener("mousemove", onDocumentMouseMove, false);
-            // document.addEventListener("mousedown", onMouseDown, false);
-            // document.addEventListener("mouseup", onMouseUp, false);
+            document.addEventListener("mousedown", onMouseDown, false);
+            document.addEventListener("mouseup", onMouseUp, false);
 
             // return () => {
             //     document.removeEventListener("mousemove", onDocumentMouseMove, false);
