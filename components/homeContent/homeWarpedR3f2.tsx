@@ -83,7 +83,6 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                         mouse.y = e.clientY / window.innerHeight;
                         console.log("mousemooooove");
                     };
-                    
                     onMouseDown = (e) => {
                         snapping = true;
                         console.log("mouseDown");                    
