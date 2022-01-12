@@ -68,7 +68,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                 // const onMouseDown = (e) => {
                 //     snapping = true;                    
                 // }
-                
+
                 // const onMouseUp = (e) => {
                 //     setTimeout(() => snapping = false, 950);
                 // }
@@ -77,6 +77,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                 //     state.mouse.x = e.clientX / window.innerWidth; 
                 //     state.mouse.y = e.clientY / window.innerHeight;
                 // }
+                
                 ((state)=>{
                     onDocumentMouseMove = (e) => {
                         hovering = false;
