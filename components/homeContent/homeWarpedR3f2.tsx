@@ -8,6 +8,7 @@ import { useRouter } from 'next/router';
 import { isMobile } from 'react-device-detect';
 
 
+
 interface Type{
     count: number;
     projects: any;
@@ -48,7 +49,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         const loader = new THREE.TextureLoader();
 
         const texture1 = loader.load(`${src1}`);
-        // const texture1 = useTexture(`${src1}`);
+        // const texture1 = useLoader(TextureLoader,`${src1}`);
         const texture2 = loader.load(`${src2}`);
         const texture3 = loader.load(`${src3}`);
 
@@ -77,7 +78,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                 //     state.mouse.x = e.clientX / window.innerWidth; 
                 //     state.mouse.y = e.clientY / window.innerHeight;
                 // }
-                
+
                 ((state)=>{
                     onDocumentMouseMove = (e) => {
                         hovering = false;
