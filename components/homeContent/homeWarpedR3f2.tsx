@@ -77,6 +77,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                 //     state.mouse.x = e.clientX / window.innerWidth; 
                 //     state.mouse.y = e.clientY / window.innerHeight;
                 // }
+                
 
                 ((state)=>{
                     onDocumentMouseMove = (e) => {
