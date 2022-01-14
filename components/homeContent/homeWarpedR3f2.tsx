@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import * as THREE from 'three';
-import { Canvas, useFrame, useLoader } from '@react-three/fiber';
 import { useTexture } from "@react-three/drei";
+import { Canvas, useFrame, useLoader } from '@react-three/fiber';
 import { TextureLoader } from "three/src/loaders/TextureLoader.js";
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
 import { useRouter } from 'next/router';
@@ -44,12 +44,11 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         let onMouseDown;
         let onMouseUp;
 
-
-
         const loader = new THREE.TextureLoader();
 
         const texture1 = loader.load(`${src1}`);
         // const texture1 = useLoader(TextureLoader,`${src1}`);
+        // const [texture1, texture2, texture3] = useTexture([`${src1}`, `${src2}`, `${src3}`]);
         const texture2 = loader.load(`${src2}`);
         const texture3 = loader.load(`${src3}`);
 
@@ -145,10 +144,10 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         )
     }
 
-    const next = () =>{
+    const next = () => {
         goNext();
     }
-    const previous = ()=>{
+    const previous = () => {
         goPrevious();
     }
     homePlaneControls.current = { next, previous }
