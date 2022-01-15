@@ -1,8 +1,7 @@
-import React, { useRef, useEffect } from 'react';
+import React, { Suspense, useRef, useEffect } from 'react';
 import * as THREE from 'three';
 import { useTexture } from "@react-three/drei";
 import { Canvas, useFrame, useLoader } from '@react-three/fiber';
-import { TextureLoader } from "three/src/loaders/TextureLoader.js";
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
 import { useRouter } from 'next/router';
 import { isMobile } from 'react-device-detect';
@@ -46,11 +45,11 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
 
         const loader = new THREE.TextureLoader();
 
-        const texture1 = loader.load(`${src1}`);
+        // const texture1 = loader.load(`${src1}`);
         // const texture1 = useLoader(TextureLoader,`${src1}`);
-        // const [texture1, texture2, texture3] = useTexture([`${src1}`, `${src2}`, `${src3}`]);
-        const texture2 = loader.load(`${src2}`);
-        const texture3 = loader.load(`${src3}`);
+        const [texture1, texture2, texture3] = useTexture([`${src1}`, `${src2}`, `${src3}`]);
+        // const texture2 = loader.load(`${src2}`);
+        // const texture3 = loader.load(`${src3}`);
 
         texture1.minFilter = THREE.LinearFilter;
         texture2.minFilter = THREE.LinearFilter;
@@ -77,7 +76,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                 //     state.mouse.x = e.clientX / window.innerWidth; 
                 //     state.mouse.y = e.clientY / window.innerHeight;
                 // }
-                
+
 
                 ((state)=>{
                     onDocumentMouseMove = (e) => {
@@ -159,9 +158,11 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                 <p className={styles.nextButton} onClick={homePlaneControls.current.next}>NEXT</p>
                 <p className={styles.previousButton} onClick={homePlaneControls.current.previous}>PREVIOUS</p>
                 <Canvas onPointerMove={(e) => console.log('mov')} id={"mesh"} camera={{ position: [0, 0, 5]}}>
-                    <HomePlane position={[0, 0, 0]} /> 
-                    <HomePlane position={[100, 0, 0]} />
-                    <HomePlane position={[200, 0, 0]} /> 
+                    <Suspense fallback={null}>
+                        <HomePlane position={[0, 0, 0]} /> 
+                        <HomePlane position={[10, 0, 0]} />
+                        <HomePlane position={[20, 0, 0]} /> 
+                    </Suspense>
                 </Canvas>
             </div>
         </>
