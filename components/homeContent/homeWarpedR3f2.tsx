@@ -1,7 +1,7 @@
 import React, { Suspense, useRef, useEffect } from 'react';
 import * as THREE from 'three';
 import { useTexture } from "@react-three/drei";
-import { Canvas, useFrame, useLoader } from '@react-three/fiber';
+import { Canvas, useFrame } from '@react-three/fiber';
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
 import { useRouter } from 'next/router';
 import { isMobile } from 'react-device-detect';
@@ -47,13 +47,23 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
 
         // const texture1 = loader.load(`${src1}`);
         // const texture1 = useLoader(TextureLoader,`${src1}`);
-        const [texture1, texture2, texture3] = useTexture([`${src1}`, `${src2}`, `${src3}`]);
+        const [ texture1, texture2, texture3 ] = useTexture([`${src1}`, `${src2}`, `${src3}`]);
         // const texture2 = loader.load(`${src2}`);
         // const texture3 = loader.load(`${src3}`);
+
+        const textures = useTexture({
+            map: `${src1}`,
+            map2: `${src2}`,
+            map3: `${src3}`
+          });
 
         texture1.minFilter = THREE.LinearFilter;
         texture2.minFilter = THREE.LinearFilter;
         texture3.minFilter = THREE.LinearFilter;
+
+        textures.map.minFilter = THREE.LinearFilter;
+        textures.map2.minFilter = THREE.LinearFilter;
+        textures.map3.minFilter = THREE.LinearFilter;
 
         const width = isMobile ? 3.1 : 9;
         const height = isMobile ? 1.7 : 5;
@@ -94,8 +104,6 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                         console.log("mouseUp");
                     }
                 })();
-
-                
 
                 const hoverMove = () => {
                     state.mouse.x > 0.5 ? homePlaneRef.current.rotation.y < hover_dist && (homePlaneRef.current.rotation.y += 0.002) : state.mouse.x < 0.5 && homePlaneRef.current.rotation.y > -hover_dist && (homePlaneRef.current.rotation.y -= 0.002),
