@@ -43,27 +43,15 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         let onMouseDown;
         let onMouseUp;
 
-        const loader = new THREE.TextureLoader();
-
-        // const texture1 = loader.load(`${src1}`);
-        // const texture1 = useLoader(TextureLoader,`${src1}`);
         const [ texture1, texture2, texture3 ] = useTexture([`${src1}`, `${src2}`, `${src3}`]);
-        // const texture2 = loader.load(`${src2}`);
-        // const texture3 = loader.load(`${src3}`);
 
-        const textures = useTexture({
-            map: `${src1}`,
-            map2: `${src2}`,
-            map3: `${src3}`
-          });
+        const textures = useTexture([`${src1}`, `${src2}`,`${src3}`]);
+
+        console.log(textures[1]);
 
         texture1.minFilter = THREE.LinearFilter;
         texture2.minFilter = THREE.LinearFilter;
         texture3.minFilter = THREE.LinearFilter;
-
-        textures.map.minFilter = THREE.LinearFilter;
-        textures.map2.minFilter = THREE.LinearFilter;
-        textures.map3.minFilter = THREE.LinearFilter;
 
         const width = isMobile ? 3.1 : 9;
         const height = isMobile ? 1.7 : 5;
@@ -146,7 +134,10 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
             <>
                 <mesh onPointerMissed={() => console.log('move outside')} onPointerMove={(e) => console.log('move')} {...props} ref={homePlaneRef}>
                     <planeGeometry args={[width, height]} />
-                    <meshBasicMaterial map={texture1} />
+                    {/* {textures.map((texture, i:number)=>(
+                        <meshBasicMaterial key={texture.uuid} map={texture} />
+                    ))} */}
+                        <meshBasicMaterial map={texture1} />
                 </mesh>
             </>
         )
