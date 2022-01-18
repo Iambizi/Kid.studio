@@ -45,13 +45,13 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
 
         const [ texture1, texture2, texture3 ] = useTexture([`${src1}`, `${src2}`, `${src3}`]);
 
-        const textures = useTexture([`${src1}`, `${src2}`,`${src3}`]);
+        const textures = useTexture([src1, src2, src3]);
 
-        console.log(textures[1]);
+        console.log(textures);
 
-        texture1.minFilter = THREE.LinearFilter;
-        texture2.minFilter = THREE.LinearFilter;
-        texture3.minFilter = THREE.LinearFilter;
+        textures[0].minFilter = THREE.LinearFilter;
+        textures[1].minFilter = THREE.LinearFilter;
+        textures[2].minFilter = THREE.LinearFilter;
 
         const width = isMobile ? 3.1 : 9;
         const height = isMobile ? 1.7 : 5;
@@ -132,12 +132,12 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
 
         return(
             <>
-                <mesh onPointerMissed={() => console.log('move outside')} onPointerMove={(e) => console.log('move')} {...props} ref={homePlaneRef}>
+                <mesh {...props} ref={homePlaneRef}>
                     <planeGeometry args={[width, height]} />
-                    {/* {textures.map((texture, i:number)=>(
+                    {textures.map((texture)=>(
                         <meshBasicMaterial key={texture.uuid} map={texture} />
-                    ))} */}
-                        <meshBasicMaterial map={texture1} />
+                    ))}
+                        {/* <meshBasicMaterial map={textures} /> */}
                 </mesh>
             </>
         )
@@ -156,7 +156,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
             <div className={`${styles.homeScene} homeScene`}>
                 <p className={styles.nextButton} onClick={homePlaneControls.current.next}>NEXT</p>
                 <p className={styles.previousButton} onClick={homePlaneControls.current.previous}>PREVIOUS</p>
-                <Canvas onPointerMove={(e) => console.log('mov')} id={"mesh"} camera={{ position: [0, 0, 5]}}>
+                <Canvas id={"mesh"} camera={{ position: [0, 0, 5]}}>
                     <Suspense fallback={null}>
                         <HomePlane position={[0, 0, 0]} /> 
                         <HomePlane position={[10, 0, 0]} />
