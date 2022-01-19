@@ -43,8 +43,6 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         let onMouseDown;
         let onMouseUp;
 
-        const [ texture1, texture2, texture3 ] = useTexture([`${src1}`, `${src2}`, `${src3}`]);
-
         const textures = useTexture([src1, src2, src3]);
 
         console.log(textures);
