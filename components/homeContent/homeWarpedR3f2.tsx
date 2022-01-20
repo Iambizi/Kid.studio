@@ -141,6 +141,29 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         )
     }
 
+    // function Image({ img, index }) {
+    //     const ref = useRef()
+    //     const { contentMaxWidth: w, viewportWidth, offsetFactor } = useBlock()
+    //     useFrame(() => {
+    //       const scrollOffset = state.top.current / (viewportWidth * state.pages - viewportWidth) + 1 / state.pages / 2
+    //       const scale = 1 - (offsetFactor - scrollOffset) * (offsetFactor > scrollOffset ? 1 : -1)
+    //       ref.current.scale.setScalar(scale)
+    //     })
+    //     return (
+    //       <group ref={ref}>
+    //         <Plane map={img} args={[1, 1, 32, 32]} shift={100} aspect={1.5} scale={[w, w / 1.5, 1]} frustumCulled={false} />
+    //       </group>
+    //     )
+    //   }
+      
+    //   function Content() {
+    //     const textures = useTexture([src1, src2, src3]);
+
+    //     return textures.map((img, index) => (
+    //         <Image key={index} index={index} img={img} />
+    //     ))
+    //   }
+
     const next = () => {
         goNext();
     }
