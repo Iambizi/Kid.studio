@@ -141,6 +141,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         )
     }
 
+    
     // function Image({ img, index }) {
     //     const ref = useRef()
     //     const { contentMaxWidth: w, viewportWidth, offsetFactor } = useBlock()
