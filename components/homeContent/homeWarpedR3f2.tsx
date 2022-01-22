@@ -141,7 +141,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         )
     }
 
-    
+
     // function Image({ img, index }) {
     //     const ref = useRef()
     //     const { contentMaxWidth: w, viewportWidth, offsetFactor } = useBlock()
@@ -181,8 +181,8 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                 <Canvas id={"mesh"} camera={{ position: [0, 0, 5]}}>
                     <Suspense fallback={null}>
                         <HomePlane position={[0, 0, 0]} /> 
-                        <HomePlane position={[10, 0, 0]} />
-                        <HomePlane position={[20, 0, 0]} /> 
+                        <HomePlane position={[100, 0, 0]} />
+                        <HomePlane position={[200, 0, 0]} /> 
                     </Suspense>
                 </Canvas>
             </div>
