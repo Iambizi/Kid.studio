@@ -1,10 +1,12 @@
-import React, { Suspense, useRef, useEffect } from 'react';
+import React, { Suspense, useRef, forwardRef, useEffect } from 'react';
 import * as THREE from 'three';
 import { useTexture } from "@react-three/drei";
 import { Canvas, useFrame } from '@react-three/fiber';
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
 import { useRouter } from 'next/router';
 import { isMobile } from 'react-device-detect';
+import WarpedPlane from "./CustomPlaneR3F/WarpedPlane";
+import { Block } from "./CustomPlaneR3F/blocks";
 
 
 
@@ -43,9 +45,10 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         let onMouseDown;
         let onMouseUp;
 
-        const textures = useTexture([src1, src2, src3]);
+        const texturez = useTexture([src1, src2, src3]);
+        const textures = useTexture([`${src1}`, `${src2}`, `${src3}`]);
 
-        console.log(textures);
+        // console.log(textures);
 
         textures[0].minFilter = THREE.LinearFilter;
         textures[1].minFilter = THREE.LinearFilter;
@@ -132,8 +135,8 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
             <>
                 <mesh {...props} ref={homePlaneRef}>
                     <planeGeometry args={[width, height]} />
-                    {textures.map((texture)=>(
-                        <meshBasicMaterial key={texture.uuid} map={texture} />
+                    {textures.map((texture, i)=>(
+                        <meshBasicMaterial key={i} map={texture} />
                     ))}
                         {/* <meshBasicMaterial map={textures} /> */}
                 </mesh>
@@ -141,29 +144,44 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         )
     }
 
+    const Plane = (props: any) => {
+        const planeRef = useRef<THREE.Mesh>();
+        const width = isMobile ? 3.1 : 9;
+        const height = isMobile ? 1.7 : 5;
+        return(
+            <mesh {...props} ref={planeRef}>
+                <planeGeometry args={[width, height]} />
+            </mesh>
+        )
+    }
 
-    // function Image({ img, index }) {
-    //     const ref = useRef()
-    //     const { contentMaxWidth: w, viewportWidth, offsetFactor } = useBlock()
-    //     useFrame(() => {
-    //       const scrollOffset = state.top.current / (viewportWidth * state.pages - viewportWidth) + 1 / state.pages / 2
-    //       const scale = 1 - (offsetFactor - scrollOffset) * (offsetFactor > scrollOffset ? 1 : -1)
-    //       ref.current.scale.setScalar(scale)
-    //     })
-    //     return (
-    //       <group ref={ref}>
-    //         <Plane map={img} args={[1, 1, 32, 32]} shift={100} aspect={1.5} scale={[w, w / 1.5, 1]} frustumCulled={false} />
-    //       </group>
-    //     )
-    //   }
-      
-    //   function Content() {
-    //     const textures = useTexture([src1, src2, src3]);
+    const Image = ({ img })=> {
+        const ref = useRef<THREE.Mesh>();       
+        return (
+          <group ref={ref}>
+            <WarpedPlane map={img} position={[0, 0, 0]} /> 
+          </group>
+        )
+    }
+    
+    interface Type{
+        index: string;
+    }
 
-    //     return textures.map((img, index) => (
-    //         <Image key={index} index={index} img={img} />
-    //     ))
-    //   }
+    const Content:any = () => {
+        
+    const textures = useTexture([`${src1}`, `${src2}`, `${src3}`]);
+    const texturess = useTexture([src1, src2, src3]);
+    textures[0].minFilter = THREE.LinearFilter;
+    textures[1].minFilter = THREE.LinearFilter;
+    textures[2].minFilter = THREE.LinearFilter;
+    textures.map((texture)=>console.log(texture));
+    return texturess.map((img:string, index:number) => (
+        <Block key={index} factor={1} offset={index}>
+            <Image key={index} img={img} />
+        </Block>
+    ));
+    }
 
     const next = () => {
         goNext();
@@ -173,6 +191,8 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
     }
     homePlaneControls.current = { next, previous }
 
+    const texturess = [`${src1}`, `${src2}`, `${src3}`];
+
     return(
         <>
             <div className={`${styles.homeScene} homeScene`}>
@@ -180,9 +200,10 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                 <p className={styles.previousButton} onClick={homePlaneControls.current.previous}>PREVIOUS</p>
                 <Canvas id={"mesh"} camera={{ position: [0, 0, 5]}}>
                     <Suspense fallback={null}>
-                        <HomePlane position={[0, 0, 0]} /> 
-                        <HomePlane position={[100, 0, 0]} />
-                        <HomePlane position={[200, 0, 0]} /> 
+                        {/* <HomePlane position={[0, 0, 0]} /> 
+                        <HomePlane position={[10, 0, 0]} />
+                        <HomePlane position={[200, 0, 0]} />  */}
+                        <Content />
                     </Suspense>
                 </Canvas>
             </div>
