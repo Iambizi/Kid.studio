@@ -164,9 +164,6 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         )
     }
     
-    interface Type{
-        index: string;
-    }
 
     const Content:any = () => {
         

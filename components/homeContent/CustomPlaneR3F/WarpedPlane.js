@@ -3,7 +3,8 @@ import React, { forwardRef, useRef } from "react";
 import { isMobile } from 'react-device-detect';
 import "./CustomMaterial";
 
-export default forwardRef(({ shift = 100, args, map, ...props }, ref) => {
+
+export default forwardRef(({ args, map, ...props }, ref) => {
   const material = useRef();
   const width = isMobile ? 3.1 : 9;
   const height = isMobile ? 1.7 : 5;

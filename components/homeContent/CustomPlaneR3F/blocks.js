@@ -6,7 +6,7 @@ const offsetContext = createContext(0)
 
 function Block({ children, offset, factor, ...props }) {
 //   const { offset: parentOffset, sectionWidth } = useBlock()
-  const ref = useRef()
+  const ref = useRef();
 //   offset = offset !== undefined ? offset : parentOffset
 //   useFrame(() => {
 //     const curY = ref.current.position.x
