@@ -12,7 +12,7 @@ interface Type {
 }
 
 
-export default function work({ workData }:Type):JSX.Element{
+export default function Work({ workData }:Type):JSX.Element{
     const [bgImg, setbgImg] = useState(false);
 
     async function fetcher(url){

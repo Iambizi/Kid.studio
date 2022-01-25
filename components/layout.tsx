@@ -14,7 +14,7 @@ interface Type {
     specificStyles?: string;
 }
 
-export default function layout( { children, bgImg, setbgImg, specificStyles }:Type ):JSX.Element{
+export default function Layout( { children, bgImg, setbgImg, specificStyles }:Type ):JSX.Element{
 
     return(
         <>

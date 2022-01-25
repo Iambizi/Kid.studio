@@ -8,7 +8,7 @@ import { useRouter } from 'next/router';
 interface Type{
     src: string;
 }
-export default function inforWarpImg({src}: Type):JSX.Element{
+export default function InforWarpImg({src}: Type):JSX.Element{
 
     const infoRef = useRef<HTMLElement | any>(null!);
     const infoPath = /\/info$/gm;

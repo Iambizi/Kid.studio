@@ -10,7 +10,7 @@ interface Type {
     projectVideo: string;
 }
 
-export default function reelInfoSection( { reelTitle, reelDetails, videoCover, playButton, projectVideo }: Type ):JSX.Element{
+export default function ReelInfoSection( { reelTitle, reelDetails, videoCover, playButton, projectVideo }: Type ):JSX.Element{
     // hook for handling z-index state
     const [toggleIndex, setToggleIndex] = useState(false);
 

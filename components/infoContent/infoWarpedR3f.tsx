@@ -10,7 +10,7 @@ interface Type{
     src: string;
 }
 
-export default function warpedImage({ src }:Type):JSX.Element{
+export default function WarpedImage({ src }:Type):JSX.Element{
 
     const InfoPlane = (props: any) =>{
         

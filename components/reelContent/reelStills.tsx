@@ -10,7 +10,7 @@ interface Type{
     reelStills: any;
 }
 
-export default function stills( { reelStills }: Type ):JSX.Element{
+export default function Stills( { reelStills }: Type ):JSX.Element{
     useEffect(()=>{
         const screenWidth = window.innerWidth;
         

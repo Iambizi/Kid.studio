@@ -1,7 +1,7 @@
 // When Hamburger Menu opened, this handler function allows click outside the menu to close it.
 import { useEffect, useState } from 'react';
 
-export const checkLocation = () => {
+export const CheckLocation = () => {
     const [path, setPath] = useState(window.location.pathname);
     
     useEffect(() => {

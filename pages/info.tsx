@@ -15,7 +15,7 @@ interface Type{
     fallback: string;
 }
 
-export default function info({ infoPageData, fallback }:Type):JSX.Element{
+export default function Info({ infoPageData, fallback }:Type):JSX.Element{
 // removes needsScroll class set in project pages from vertical scroll
 // projectPage useEffect hook needs refactoring to avoid calling it again here.
 const router = useRouter();
