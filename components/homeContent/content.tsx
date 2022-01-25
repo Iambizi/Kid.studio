@@ -7,7 +7,7 @@ interface Type{
     projects: any;
 }
 
-export default function content({ homeProjects, projects }: Type):JSX.Element{
+export default function Content({ homeProjects, projects }: Type):JSX.Element{
     
     // State for counter
     const [count, setCount] = useState(0);

@@ -14,7 +14,7 @@ interface Type{
     goPrevious: any;
 }
 
-export default function warpedImage({ slideNext, slidePrevious, carouselX, count, projects }:Type):JSX.Element{
+export default function WarpedImage({ slideNext, slidePrevious, carouselX, count, projects }:Type):JSX.Element{
     const src = projects[count]?.fields.featuredProjectImage.fields ? projects[count].fields.featuredProjectImage.fields.file.url : null;
 
     const homePlaneRef = useRef<HTMLElement | any>(null!);

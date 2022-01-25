@@ -11,7 +11,7 @@ interface Type {
     projects: any;
 }
 
-export default function carousel({ homeProjects, carouselX, slideNext, slidePrevious, count, projects }:Type): JSX.Element{
+export default function Carousel({ homeProjects, carouselX, slideNext, slidePrevious, count, projects }:Type): JSX.Element{
     {
         carouselX  < -200 ?  `${styles.sliderWrapper} ${styles.slidePrevious}` : carouselX < -100 ? `${styles.sliderWrapper} ${styles.slideNext}` : `${styles.sliderWrapper}`
     }

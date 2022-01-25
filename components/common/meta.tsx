@@ -4,7 +4,7 @@ import Script from 'next/script';
 interface Types{
     page: string;
 }
-export default function meta({page}: Types): JSX.Element{
+export default function Meta({page}: Types): JSX.Element{
     return(
         <>
             <Head>

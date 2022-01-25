@@ -13,7 +13,7 @@ interface Type{
     projectVideo: any;
 }
 
-export default function mainInfoSection( { title, details, videoCover, playButton, projectVideo }: Type ):JSX.Element{
+export default function MainInfoSection( { title, details, videoCover, playButton, projectVideo }: Type ):JSX.Element{
     // hook for handling z-index state
     const [toggleIndex, setToggleIndex] = useState(false);
     const router = useRouter();

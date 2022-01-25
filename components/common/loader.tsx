@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import styles from "../../styles/scss/common/_loader.module.scss";
 import React from "react";
 
-export default function loader(){
+export default function Loader(){
     // const [ isLoading, setIsLoading ] = useState(false);
     // const router = useRouter();
 

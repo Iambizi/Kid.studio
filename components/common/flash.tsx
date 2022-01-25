@@ -1,9 +1,9 @@
 import styles from "../../styles/scss/common/_flash.module.scss";
 import React, { useState, useEffect } from "react";
-import { getRandoNum } from "../common/utils/getRandoNum";
+import { GetRandoNum } from "../common/utils/getRandoNum";
 
 
-export default function flash():JSX.Element{
+export default function Flash():JSX.Element{
 
     const [ flashed, setFlashed ] = useState(false);
 
@@ -11,7 +11,7 @@ export default function flash():JSX.Element{
         const flashObj = document.getElementById("flash");
         const intervalID = setInterval(() => {
     
-            const rando = getRandoNum(1,9);
+            const rando = GetRandoNum(1,9);
             const imgLink = `https://kidstudio.co/assets/images/flash/${rando}.png`;
             flashObj.style.backgroundImage = `url(${imgLink})`;
             flashObj.style.zIndex = "5656565656565656565656";
