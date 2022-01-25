@@ -159,7 +159,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         const ref = useRef<THREE.Mesh>();       
         return (
           <group ref={ref}>
-            <WarpedPlane map={img} position={[0, 0, 0]} /> 
+            {/* <WarpedPlane map={img} position={[0, 0, 0]} />  */}
           </group>
         )
     }
@@ -197,10 +197,10 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                 <p className={styles.previousButton} onClick={homePlaneControls.current.previous}>PREVIOUS</p>
                 <Canvas id={"mesh"} camera={{ position: [0, 0, 5]}}>
                     <Suspense fallback={null}>
-                        {/* <HomePlane position={[0, 0, 0]} /> 
-                        <HomePlane position={[10, 0, 0]} />
-                        <HomePlane position={[200, 0, 0]} />  */}
-                        <Content />
+                        <HomePlane position={[0, 0, 0]} /> 
+                        <HomePlane position={[100, 0, 0]} />
+                        <HomePlane position={[200, 0, 0]} /> 
+                        {/* <Content /> */}
                     </Suspense>
                 </Canvas>
             </div>

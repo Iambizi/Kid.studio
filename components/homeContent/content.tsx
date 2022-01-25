@@ -50,6 +50,19 @@ export default function content({ homeProjects, projects }: Type):JSX.Element{
                 <p className={styles.nextButton} id={"next"} onClick={goNext}>NEXT</p>
                 <p className={styles.previousButton} id={"previous"} onClick={goPrevious}>PREVIOUS</p>
                 <p className ={styles.counter}>{count + 1}&nbsp;/&nbsp;3</p>
+                <style jsx>{`
+        p {
+          color: blue;
+        }
+        div {
+          background: red;
+        }
+        @media (max-width: 600px) {
+          div {
+            background: blue;
+          }
+        }
+      `}</style>
             </section>
         </>
     )
