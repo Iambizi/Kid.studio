@@ -51,18 +51,86 @@ export default function Content({ homeProjects, projects }: Type):JSX.Element{
                 <p className={styles.previousButton} id={"previous"} onClick={goPrevious}>PREVIOUS</p>
                 <p className ={styles.counter}>{count + 1}&nbsp;/&nbsp;3</p>
                 {/* <style jsx>{`
-        p {
-          color: blue;
-        }
-        div {
-          background: red;
-        }
-        @media (max-width: 600px) {
-          div {
-            background: blue;
-          }
-        }
-      `}</style> */}
+                    @keyframes slideNext {
+                      from {
+                          transform : translateX(1000%);
+                          -webkit-transform : translateX(1000%);
+                          -ms-transform : translateX(1000%);
+                      }
+                      to {
+                          transform : translateX(0%);
+                          -webkit-transform : translateX(0%);
+                          -ms-transform : translateX(0%);
+                      }
+                  }
+                  @-webkit-keyframes slideNext {
+                      from {
+                          transform : translateX(1000%);
+                          -webkit-transform : translateX(1000%);
+                          -ms-transform : translateX(1000%);
+                      }
+                      to {
+                          transform : translateX(0%);
+                          -webkit-transform : translateX(0%);
+                          -ms-transform : translateX(0%);
+                      }
+                  }
+                  @keyframes slidePrevious {
+                      from {
+                          transform : translateX(-1000%);
+                          -webkit-transform : translateX(-1000%);
+                          -ms-transform : translateX(-1000%);
+                      }
+                      to {
+                          transform : translateX(0%);
+                          -webkit-transform : translateX(0%);
+                          -ms-transform : translateX(0%);
+                      }
+                  }
+                  @-webkit-keyframes slidePrevious {
+                      from {
+                          transform : translateX(-1000%);
+                          -webkit-transform : translateX(-1000%);
+                          -ms-transform : translateX(-1000%);
+                      }
+                      to {
+                          transform : translateX(0%);
+                          -webkit-transform : translateX(0%);
+                          -ms-transform : translateX(0%);
+                      }
+                  }
+                  .slider {
+                      margin: auto;
+                      display: flex;
+                      overflow-x: hidden;
+                      position: fixed;
+                      transition: 1.5s ease-in-out;
+                      .sliderWrapper{
+                          width: 100vw;
+                          .carousel{
+                              height: 100vh;
+                              width: 100vw;
+                              animation: none;
+                              .homeScene{
+                                  @include fullviewPort();
+                              }
+                              .carouselImage, .carouselImage1, .carouselImage2, .carouselImage3{
+                                      overflow-x: hidden;
+                                  &.slideNext{
+                                      animation: slideNext 0.9s none;
+                                      -webkit-animation: slideNext 0.9s none;
+                                      -ms-animation: slideNext 0.9s none;
+                                  }
+                                  &.slidePrevious{
+                                      animation: slidePrevious 0.9s none;
+                                      -webkit-animation: slidePrevious 0.9s none;
+                                      -ms-animation: slidePrevious 0.9s none;
+                                  }
+                              }
+                          }
+                      }
+                  }
+                `}</style> */}
             </section>
         </>
     )
