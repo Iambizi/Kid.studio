@@ -1,41 +1,38 @@
-import '../styles/globals.css'
-import '../styles/scss/_globals.scss'
-import '../styles/scss/_index.scss'
-import { useRouter } from "next/router";
+import '../styles/globals.css';
+import '../styles/scss/_globals.scss';
+import '../styles/scss/_index.scss';
+import { useRouter } from 'next/router';
 import { PageTransition } from 'next-page-transitions';
-import React, { useEffect} from "react";
+import React, { useEffect } from 'react';
 
-function MyApp({ Component, pageProps}) {
+function MyApp({ Component, pageProps }) {
   const router = useRouter();
- useEffect(()=>{
+  useEffect(() => {
+    const routeChange = () => {
+      // Temporary fix to avoid flash of unstyled content
+      // during route transitions. Keep an eye on this
+      // issue and remove this code when resolved:
+      // https://github.com/vercel/next.js/issues/17464
 
-  const routeChange = () => {
-    // Temporary fix to avoid flash of unstyled content
-    // during route transitions. Keep an eye on this
-    // issue and remove this code when resolved:
-    // https://github.com/vercel/next.js/issues/17464
-
-    const tempFix = () => {
-      const allStyleElems = document.querySelectorAll('style[media="x"]');
-      allStyleElems.forEach((elem) => {
-        elem.removeAttribute("media");
-      });
+      const tempFix = () => {
+        const allStyleElems = document.querySelectorAll('style[media="x"]');
+        allStyleElems.forEach((elem) => {
+          elem.removeAttribute('media');
+        });
+      };
+      tempFix();
     };
-    tempFix();
-  };
-  router.push(router.asPath);
-  router.events.on('beforeHistoryChange', routeChange ); 
-  router.events.on("routeChangeComplete", routeChange );
-  router.events.on("routeChangeStart", routeChange );
+    router.push(router.asPath);
+    router.events.on('beforeHistoryChange', routeChange);
+    router.events.on('routeChangeComplete', routeChange);
+    router.events.on('routeChangeStart', routeChange);
+  }, []);
 
-},[]);
-
-  return(
+  return (
     <PageTransition timeout={700} classNames="page-transition">
-        <Component {...pageProps} key={router.route} />
-    </PageTransition>  
-  )
-  
+      <Component {...pageProps} key={router.route} />
+    </PageTransition>
+  );
 }
 
-export default MyApp
+export default MyApp;
