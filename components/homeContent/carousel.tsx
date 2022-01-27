@@ -34,7 +34,6 @@ export default function Carousel({ homeProjects, carouselX, slideNext, slidePrev
                 )) : ""} */}
                 {projects.map((item, i) => (
                     <div className={styles.titleWrapper} key={i}>
-                        <div className={styles.videoTitle}></div>
                         <Link href={projects[i].fields.slug}>
                             <h2 className={styles.videoTitle}>{projects[i].fields.title}</h2>
                         </Link>
