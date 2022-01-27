@@ -37,8 +37,8 @@ export default function Carousel({ homeProjects, carouselX, slideNext, slidePrev
                         <Link href={projects[i].fields.slug}>
                             <h2 className={styles.videoTitle}>{projects[i].fields.title}</h2>
                         </Link>
-                        {/* <p>{`${-carouselX}%`}</p> */}
-                        <p>{item[i]}</p>
+                        <p>{`${-carouselX}%`}</p>
+                        <p>{projects[i].fields.title}</p>
                     </div>
                 ))}
             </div>
