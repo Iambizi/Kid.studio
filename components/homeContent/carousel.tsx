@@ -20,7 +20,7 @@ export default function Carousel({ homeProjects, carouselX, slideNext, slidePrev
         carouselX < -200 ? `${styles.sliderWrapper} ${styles.slidePrevious}` : carouselX < -100 ? `${styles.sliderWrapper} ${styles.slideNext}` : `${styles.sliderWrapper}`
     }
     return (
-        <div>
+        <>
             <div className={styles.titles} style={{ left: `${-carouselX}%` }}>
                 {/* {projects && projects.length > 0 ? projects.map((item, i) => (
                     <>
@@ -37,12 +37,12 @@ export default function Carousel({ homeProjects, carouselX, slideNext, slidePrev
                         <Link href={projects[i].fields.slug}>
                             <h2 className={styles.videoTitle}>{projects[i].fields.title}</h2>
                         </Link>
-                        <p>{`${-carouselX}%`}</p>
+                        {/* <p>{`${-carouselX}%`}</p> */}
                         <p>{item[i]}</p>
                     </div>
                 ))}
             </div>
             <WarpedIMG count={count} slideNext={slideNext} slidePrevious={slidePrevious} carouselX={carouselX} projects={projects} goNext={goNext} goPrevious={goPrevious} />
-        </div>
+        </>
     )
 }

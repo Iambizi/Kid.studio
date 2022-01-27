@@ -28,6 +28,7 @@ export default function Content({ homeProjects, projects }: Type): JSX.Element {
     count > 1 ? setCount(0) : setCount(addCount);
     carouselX < 200 ? setCarouselX(addCarouselX) : setCarouselX(0);
     setSlideNext(true);
+    // setTimeout(() => setSlideNext(false), 1000);
   }
 
   // handles previous button functionality and logic for state used in carousel
@@ -37,6 +38,7 @@ export default function Content({ homeProjects, projects }: Type): JSX.Element {
     count < 1 ? setCount(2) : setCount(minusCount);
     carouselX < 100 ? setCarouselX(200) : setCarouselX(minusCarouselX);
     setSlidePrevious(true);
+    // setTimeout(() => setSlidePrevious(false), 1000);
   }
 
   return (
