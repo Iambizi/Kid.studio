@@ -6,7 +6,7 @@ import WarpedIMG from "./homeWarpedR3f2";
 
 interface Type {
     homeProjects: any;
-    carouselX : number;
+    carouselX: number;
     slideNext: boolean;
     slidePrevious: boolean;
     count: number;
@@ -15,19 +15,22 @@ interface Type {
     goNext?: any;
 }
 
-export default function Carousel({ homeProjects, carouselX, slideNext, slidePrevious, count, projects, goPrevious, goNext }:Type): JSX.Element{
+export default function Carousel({ homeProjects, carouselX, slideNext, slidePrevious, count, projects, goPrevious, goNext }: Type): JSX.Element {
     {
-        carouselX  < -200 ?  `${styles.sliderWrapper} ${styles.slidePrevious}` : carouselX < -100 ? `${styles.sliderWrapper} ${styles.slideNext}` : `${styles.sliderWrapper}`
+        carouselX < -200 ? `${styles.sliderWrapper} ${styles.slidePrevious}` : carouselX < -100 ? `${styles.sliderWrapper} ${styles.slideNext}` : `${styles.sliderWrapper}`
     }
-    return(
+    return (
         <div>
-            <div className={styles.titles} style={{left: `${ -carouselX }%`}}>
-                {projects && projects.length > 0 ? projects.map((item, i)=>(
+            <div className={styles.titles} style={{ left: `${-carouselX}%` }}>
+                {projects && projects.length > 0 ? projects.map((item, i) => (
+                    <>
                         <div className={styles.titleWrapper} key={i}>
-                            <Link href={ projects[i].fields.slug }>
-                                <h2 className={styles.videoTitle}>{ projects[i].fields.title}</h2>
+                            <Link href={projects[i].fields.slug}>
+                                <h2 className={styles.videoTitle}>{projects[i].fields.title}</h2>
                             </Link>
+                            <p>{`${-carouselX}%`}</p>
                         </div>
+                    </>
                 )) : ""}
             </div>
             <WarpedIMG count={count} slideNext={slideNext} slidePrevious={slidePrevious} carouselX={carouselX} projects={projects} goNext={goNext} goPrevious={goPrevious} />
