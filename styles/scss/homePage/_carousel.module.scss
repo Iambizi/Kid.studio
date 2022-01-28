@@ -51,7 +51,19 @@
             z-index: 565656;
             margin-left: 15vw;
             width: 100%;
-            @media screen and (min-width:$xs1){
+            // @media (min-width:$iphonePlus) and (min-height:667px){
+            //     // top: 28%;
+            //     margin-top: -8%;
+            // }
+            @media screen and (min-width:$xxs){
+                // top: 28%;
+                margin-top: -9%;
+                @media (min-height:882px){
+                    // top: 28%;
+                    margin-top: -11%;
+                }
+            }
+            @media screen and (min-width:$iphonePlus){
                 // top: 28%;
                 margin-top: -9%;
             }
