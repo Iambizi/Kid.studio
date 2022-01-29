@@ -82,15 +82,15 @@ export default function WarpedImage({ count, projects, carouselX, slideNext, sli
                         hovering = false;
                         mouse.x = e.clientX / window.innerWidth; 
                         mouse.y = e.clientY / window.innerHeight;
-                        console.log("mousemooooove");
+                        // console.log("mousemooooove");
                     };
                     onMouseDown = (e) => {
                         snapping = true;
-                        console.log("mouseDown");                    
+                        // console.log("mouseDown");                    
                     };
                     onMouseUp = (e) => {
                         setTimeout(() => snapping = false, 950);
-                        console.log("mouseUp");
+                        // console.log("mouseUp");
                     }
                 })();
 

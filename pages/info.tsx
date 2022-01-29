@@ -1,6 +1,6 @@
 import Layout from '../components/layout';
-import { GetStaticProps} from 'next';
-import Meta  from '../components/common/meta';
+import { GetStaticProps } from 'next';
+import Meta from '../components/common/meta';
 import React, { useEffect, useState } from "react";
 import InfoBox from '../components/infoContent/infoBox';
 import InfoWarpImg from '../components/infoContent/infoWarpedR3f';
@@ -10,51 +10,56 @@ import { useRouter } from 'next/router';
 import useSWR, { SWRConfig } from 'swr';
 
 
-interface Type{
+interface Type {
     infoPageData: any;
     fallback: string;
 }
 
-export default function Info({ infoPageData, fallback }:Type):JSX.Element{
-// removes needsScroll class set in project pages from vertical scroll
-// projectPage useEffect hook needs refactoring to avoid calling it again here.
-const router = useRouter();
-const [notFixed, setNotFixed] = useState(false);
+export default function Info({ infoPageData, fallback }: Type): JSX.Element {
+    // removes needsScroll class set in project pages from vertical scroll
+    // projectPage useEffect hook needs refactoring to avoid calling it again here.
+    const router = useRouter();
+    const [notFixed, setNotFixed] = useState(false);
 
 
-async function fetcher(url){
-    const res = await fetch(url);
-    return res.json();
-}
+    async function fetcher(url) {
+        const res = await fetch(url);
+        return res.json();
+    }
 
-//use swr cache revalidation magic
+    //use swr cache revalidation magic
 
-const singleEntry = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master/entries/?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}&content_type=infoPage&select=fields`;
-const singleEntry1 = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master/entries/?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}&links_to_asset={}`;
+    const singleEntry = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master/entries/?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}&content_type=infoPage&select=fields`;
+    const singleEntry1 = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master/entries/?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}&links_to_asset={}`;
 
-const { data } = useSWR( singleEntry, fetcher);
-
-
+    const { data } = useSWR(singleEntry, fetcher);
 
 
-const aboutUs0 = infoPageData.aboutUs?.content[0].content[0].value;
-const aboutUs = data?.items[0].fields.aboutUs.content[0].content[0].value;
-
-// const aboutUs = data?.fields.aboutUs.content[0].content[0].value;
-const infoImage =  infoPageData.infoImage?.fields.file.url;
-const infoImage0 = data?.includes.Asset[0].fields.file.url;
-
-const src = infoImage ? data?.includes.Asset[0].fields.file.url : null;
-
-// console.log(data?.items[0].fields.aboutUs.content[0].content[0].value);
 
 
-// console.log(infoImage);
+    const aboutUs0 = infoPageData.aboutUs?.content[0].content[0].value;
+    const aboutUs = data?.items[0].fields.aboutUs.content[0].content[0].value;
 
-// console.log(baseUrlAssetsFields);
+    // const aboutUs = data?.fields.aboutUs.content[0].content[0].value;
+    const infoImage = infoPageData.infoImage?.fields.file.url;
+    const infoImage0 = data?.includes.Asset[0].fields.file.url;
+
+    const src = infoImage ? data?.includes.Asset[0].fields.file.url : null;
+
+    // console.log(data?.items[0].fields.aboutUs.content[0].content[0].value);
 
 
-    return(
+    // console.log(infoImage);
+
+    // console.log(baseUrlAssetsFields);
+
+
+    useEffect(() => {
+        const bg = document.body;
+        bg.classList.remove("needsScroll");
+    });
+
+    return (
         <>
             <Meta page={"Info"} />
             <Layout>
@@ -65,8 +70,8 @@ const src = infoImage ? data?.includes.Asset[0].fields.file.url : null;
     )
 }
 
-export const getStaticProps: GetStaticProps = async ()=>{
-    
+export const getStaticProps: GetStaticProps = async () => {
+
     const res = await connectClient.getEntries({ content_type: 'infoPage' });
     // const fetcher = url => fetch(url).then(r => r.json())
 
@@ -81,10 +86,10 @@ export const getStaticProps: GetStaticProps = async ()=>{
             infoImage: res.includes.Asset[0],
             aboutUs: res.items[0].fields,
             infoPageData: res.items[0].fields,
-            fallback:{
+            fallback: {
                 infoImage: res.includes.Asset[0],
                 aboutUs: res.items[0].fields,
-            infoPageData: res.items[0].fields
+                infoPageData: res.items[0].fields
             }
         }
     }

@@ -5,7 +5,6 @@ import React, {useEffect} from "react";
 import styles from '../../styles/scss/common/_footer.module.scss';
 import ReelInfo from '../../components/reelContent/reelInfoSection';
 import ReelStills from '../../components/reelContent/reelStills';
-import { useRouter } from 'next/router';
 import { connectClient } from '../../components/common/utils/createClient';
 import useSWR from 'swr';
 
@@ -13,8 +12,7 @@ interface Type{
     reelData: any;
 }
 
-export default function reels({ reelData }: Type):JSX.Element{
-    const router = useRouter();
+export default function Reels({ reelData }: Type):JSX.Element{
 
     async function fetcher(url){
         const res = await fetch(url);
@@ -33,20 +31,8 @@ export default function reels({ reelData }: Type):JSX.Element{
     const reelStills = reelData.videoStills;
 
     useEffect(()=>{
-
         const bg = document.body;
-        
         bg.classList.add("needsScroll");
-    
-        const removePageScroll = () =>{
-              bg.classList.remove("needsScroll");
-        }
-    
-        router.events.on('beforeHistoryChange', removePageScroll);
-        return () => {
-          router.events.off('beforeHistoryChange', removePageScroll);
-        };
-
     },[]);
 
     
