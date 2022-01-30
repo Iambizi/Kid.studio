@@ -3,9 +3,8 @@ import styles from "../../../styles/scss/projectPages/_projectPages.module.scss"
 import React, { useState, useEffect, useRef } from "react";
 import Loader from "../../common/loader";
 import { isMobile } from 'react-device-detect';
-import { useRouter } from 'next/router';
 
-interface Type{
+interface Type {
     title: any;
     details: any;
     videoCover: any;
@@ -13,11 +12,11 @@ interface Type{
     projectVideo: any;
 }
 
-export default function MainInfoSection( { title, details, videoCover, playButton, projectVideo }: Type ):JSX.Element{
+export default function MainInfoSection({ title, details, videoCover, playButton, projectVideo }: Type): JSX.Element {
     // hook for handling z-index state
-    const [toggleIndex, setToggleIndex] = useState(false);
-    const router = useRouter();
-    
+    const [ toggleIndex, setToggleIndex ] = useState(false);
+    const [ overLayClick, setOverLayClick ] = useState(false);
+
     const handleIndex = () => {
         // console.log(video);
 
@@ -30,54 +29,38 @@ export default function MainInfoSection( { title, details, videoCover, playButto
         // function removeClass(){
         //     video.classList.remove(`${styles.toggleIndex}`)
         // }
-        
+
         // video.addEventListener("mouseenter", addClass, false);
         // video.addEventListener("mouseout", removeClass, false);
     }
 
-    const overlayPlay = ()=>{
-
-        const overlay = document.getElementsByClassName('overlay');
-
-        for(let i = 0; i < overlay.length; i++) {
-            ((index)=> {
-              overlay[index].classList.add(`${styles.hideOverlay}`)
-            })(i);
-          }
-          
-    }
-
     const ref = useRef<HTMLElement | any>(null!);
     // const titleP = document.querySelector(".title") as HTMLElement;
+
+    //functionality for offset page scroll
     const titleScroll = () => {
-        
+
         let pageY = window.pageYOffset;
         let transY = 0;
         let diff = 0;
         let para = 0!;
         let lastScrollTop = 0;
-        if(!isMobile && ref.current){
-            setTimeout(()=>{
-                if(diff= pageY - transY){
+        if (!isMobile && ref.current) {
+            setTimeout(() => {
+                if (diff = pageY - transY) {
                     transY += 2 * diff
                 }
-                
-                    ref.current.style.transform = `translateY(${pageY * -0.1}px)`;
-                
-            } , 300);
-        }else{
+                ref.current.style.transform = `translateY(${pageY * -0.1}px)`;
+
+            }, 300);
+        } else {
             return null;
         }
     }
-    useEffect(()=>{
-            window.addEventListener('scroll', titleScroll);
-    },[]);
-    if(!videoCover){
-        return(
-            <Loader />
-        )
-    }
-    return(
+    useEffect(() => {
+        window.addEventListener('scroll', titleScroll);
+    }, []);
+    return (
         <>
             <section className={styles.projectPageSection}>
                 <div className={styles.projectDetailsWrapper}>
@@ -90,24 +73,24 @@ export default function MainInfoSection( { title, details, videoCover, playButto
                         </p>
                     </div>
                 </div>
-                <div className={ toggleIndex ? `${styles.projectVideo} ${styles.toggleIndex} video` : `${styles.projectVideo} video`}>
-                    <div onClick={ overlayPlay } className={`${styles.videoOverlay} overlay`} style={{backgroundImage: `url(${videoCover.fields.file.url})`}}>
-                        <div  className={`${styles.videoOverlay} overlay`} style={{backgroundImage: `url(${playButton})`}}>
+                <div className={toggleIndex ? `${styles.projectVideo} ${styles.toggleIndex} video` : `${styles.projectVideo} video`}>
+                    <div onClick={()=>{setOverLayClick(true)}} className={overLayClick ? `${styles.videoOverlay} ${styles.hideOverlay} overlay` : `${styles.videoOverlay} overlay` } style={{ backgroundImage: `url(${videoCover.fields.file.url})` }}>
+                        <div className={overLayClick ? `${styles.videoOverlay} ${styles.hideOverlay} overlay` : `${styles.videoOverlay} overlay`} style={{ backgroundImage: `url(${playButton})` }}>
                             <Image
-                            className={styles.videoCover}
-                            src={ `https:${videoCover.fields.file.url}` }
-                            alt="Main video/image still"
-                            width={videoCover.fields.file.details.image.width}
-                            height={videoCover.fields.file.details.image.height}
-                        />
-                        {/* <img 
+                                className={styles.videoCover}
+                                src={`https:${videoCover.fields.file.url}`}
+                                alt="Main video/image still"
+                                width={videoCover.fields.file.details.image.width}
+                                height={videoCover.fields.file.details.image.height}
+                            />
+                            {/* <img 
                             className={styles.videoCover}
                             src={ `${videoCover}` }
                             alt="Main video/image still" 
                             /> */}
-                        </div>  
+                        </div>
                     </div>
-                    <iframe onMouseMove={ handleIndex } onClick={ handleIndex } className={styles.video} id="vimeo1aolzk8" src={`${projectVideo}`} frameBorder="0" allowFullScreen></iframe>
+                    <iframe className={styles.video} id="vimeo1aolzk8" src={`${projectVideo}`} frameBorder="0" allowFullScreen></iframe>
                 </div>
             </section>
         </>

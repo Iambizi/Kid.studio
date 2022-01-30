@@ -13,6 +13,7 @@ interface Type {
 export default function ReelInfoSection( { reelTitle, reelDetails, videoCover, playButton, projectVideo }: Type ):JSX.Element{
     // hook for handling z-index state
     const [toggleIndex, setToggleIndex] = useState(false);
+    const [ overLayClick, setOverLayClick ] = useState(false);
 
     const handleIndex = () => {
         // const video = document.querySelector("video");
@@ -29,18 +30,6 @@ export default function ReelInfoSection( { reelTitle, reelDetails, videoCover, p
         
         // video.addEventListener("mouseenter", addClass, false);
         // video.addEventListener("mouseout", removeClass, false);
-    }
-
-    const overlayPlay = ()=>{
-
-        const overlay = document.getElementsByClassName('overlay');
-
-        for(let i = 0; i < overlay.length; i++) {
-            ((index)=> {
-              overlay[index].classList.add(`${styles.hideOverlay}`)
-            })(i);
-          }
-          
     }
 
     const ref = useRef<HTMLElement | any>(null!);
@@ -81,8 +70,8 @@ export default function ReelInfoSection( { reelTitle, reelDetails, videoCover, p
                     </div>
                 </div>
                 <div className={ toggleIndex ? `${styles.projectVideo} ${styles.toggleIndex} video` : `${styles.projectVideo} video`}>
-                    <div onClick={ overlayPlay } className={`${styles.videoOverlay} overlay`} style={{backgroundImage: `url(${videoCover?.fields.file.url})`}}>
-                        <div className={`${styles.videoOverlay} overlay`} style={{backgroundImage: `url(${playButton})`}}>
+                    <div onClick={()=>{setOverLayClick(true)}} className={overLayClick ? `${styles.videoOverlay} ${styles.hideOverlay} overlay` : `${styles.videoOverlay} overlay` } style={{backgroundImage: `url(${videoCover?.fields.file.url})`}}>
+                        <div className={overLayClick ? `${styles.videoOverlay} ${styles.hideOverlay} overlay` : `${styles.videoOverlay} overlay`} style={{backgroundImage: `url(${playButton})`}}>
                             <Image
                             className={styles.videoCover}
                             src={ `https:${videoCover?.fields.file.url}` }
@@ -97,7 +86,7 @@ export default function ReelInfoSection( { reelTitle, reelDetails, videoCover, p
                             /> */}
                         </div>  
                     </div>
-                    <iframe onMouseMove={ handleIndex } onClick={ handleIndex } className={styles.video} id="vimeo1aolzk8" src={`${projectVideo}`} frameBorder="0" allowFullScreen></iframe>
+                    <iframe className={styles.video} id="vimeo1aolzk8" src={`${projectVideo}`} frameBorder="0" allowFullScreen></iframe>
                 </div>
             </section>
         </>
