@@ -42,7 +42,7 @@ export default function MainInfoSection({ title, details, videoCover, playButton
     const ref = useRef<HTMLElement | any>(null!);
     // const titleP = document.querySelector(".title") as HTMLElement;
 
-    //functionality for offset page scroll
+    // functionality for offset page scroll
     const titleScroll = () => {
 
         let pageY = window.pageYOffset;
