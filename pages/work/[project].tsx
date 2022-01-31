@@ -30,7 +30,7 @@ export default function ProjectPages({ projectPage }: Type): JSX.Element {
     const details = projectPage.projectCreds.content[0].content[0].value;
     const videoCover = projectPage.videoCover;
     const playButton = projectPage.playButton ? projectPage.playButton?.fields.file.url : null;
-    const projectVideo = projectPage.projectVideo;
+    const projectVideo = projectPage ? projectPage.projectVideo : null;
     const projectStills = projectPage.videoStills;
 
     useEffect(() => {

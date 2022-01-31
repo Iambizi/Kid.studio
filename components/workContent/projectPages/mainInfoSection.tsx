@@ -14,8 +14,8 @@ interface Type {
 
 export default function MainInfoSection({ title, details, videoCover, playButton, projectVideo }: Type): JSX.Element {
     // hook for handling z-index state
-    const [ toggleIndex, setToggleIndex ] = useState(false);
-    const [ overLayClick, setOverLayClick ] = useState(false);
+    const [toggleIndex, setToggleIndex] = useState(false);
+    const [overLayClick, setOverLayClick] = useState(false);
 
     const handleIndex = () => {
         // console.log(video);
@@ -32,6 +32,11 @@ export default function MainInfoSection({ title, details, videoCover, playButton
 
         // video.addEventListener("mouseenter", addClass, false);
         // video.addEventListener("mouseout", removeClass, false);
+    }
+
+    const overlayPlay = () => {
+        setOverLayClick(true);
+        { projectVideo ? setOverLayClick(true) : setOverLayClick(false) }
     }
 
     const ref = useRef<HTMLElement | any>(null!);
@@ -74,7 +79,7 @@ export default function MainInfoSection({ title, details, videoCover, playButton
                     </div>
                 </div>
                 <div className={toggleIndex ? `${styles.projectVideo} ${styles.toggleIndex} video` : `${styles.projectVideo} video`}>
-                    <div onClick={()=>{setOverLayClick(true)}} className={overLayClick ? `${styles.videoOverlay} ${styles.hideOverlay} overlay` : `${styles.videoOverlay} overlay` } style={{ backgroundImage: `url(${videoCover.fields.file.url})` }}>
+                    <div onClick={overlayPlay} className={overLayClick ? `${styles.videoOverlay} ${styles.hideOverlay} overlay` : `${styles.videoOverlay} overlay`} style={{ backgroundImage: `url(${videoCover.fields.file.url})` }}>
                         <div className={overLayClick ? `${styles.videoOverlay} ${styles.hideOverlay} overlay` : `${styles.videoOverlay} overlay`} style={{ backgroundImage: `url(${playButton})` }}>
                             <Image
                                 className={styles.videoCover}
