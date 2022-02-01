@@ -33,6 +33,10 @@ export default function Flash(): JSX.Element {
         if (componentMounted.current) {
             flash();
         }
+        return () => {
+            // This code runs when component is unmounted
+            componentMounted.current = false; // (4) set it to false when we leave the page
+        };
     }, []);
 
 
