@@ -80,7 +80,9 @@ export default function MainInfoSection({ title, details, videoCover, playButton
                 </div>
                 <div className={toggleIndex ? `${styles.projectVideo} ${styles.toggleIndex} video` : `${styles.projectVideo} video`}>
                     <div onClick={overlayPlay} className={overLayClick ? `${styles.videoOverlay} ${styles.hideOverlay} overlay` : `${styles.videoOverlay} overlay`} style={{ backgroundImage: `url(${videoCover.fields.file.url})` }}>
-                        <div className={overLayClick ? `${styles.videoOverlay} ${styles.hideOverlay} overlay` : `${styles.videoOverlay} overlay`} style={{ backgroundImage: `url(${playButton})` }}>
+                    <div className={overLayClick ? `${styles.videoOverlay} ${styles.hideOverlay} overlay` : `${styles.videoOverlay} overlay`} style={{ backgroundImage: `url(${playButton})` }}>
+                        {/* <div onClick={overlayPlay} className={overLayClick ? `${styles.videoOverlay} ${styles.hideOverlay} overlay` : `${styles.videoOverlay} overlay`}>
+                        <div className={overLayClick ? `${styles.videoOverlay} ${styles.hideOverlay} overlay` : `${styles.videoOverlay} overlay`}> */}
                             <Image
                                 className={styles.videoCover}
                                 src={`https:${videoCover.fields.file.url}`}
