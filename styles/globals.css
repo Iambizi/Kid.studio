@@ -41,9 +41,11 @@ body, html{
 }
 body{
   overflow: hidden;
+  position: fixed;
 }
 body.needsScroll{
   overflow-Y: auto;
+  position: initial;
 }
 canvas{
   margin: 0 auto;
