@@ -19,7 +19,8 @@ export default function Home({ homeProjects, projects }: Type): JSX.Element {
 
   useEffect(()=>{
     const bg = document.body;
-    bg.classList.remove("needsScroll");
+    // bg.classList.remove("needsScroll");
+    bg.classList.add("noScroll");
   });
 
   async function fetcher(url) {
