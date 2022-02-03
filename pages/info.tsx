@@ -56,8 +56,8 @@ export default function Info({ infoPageData, fallback }: Type): JSX.Element {
 
     useEffect(() => {
         const bg = document.body;
-        // bg.classList.remove("needsScroll");
-        bg.classList.add("noScroll");
+        bg.classList.remove("needsScroll");
+        // bg.classList.add("noScroll");
     });
 
     return (

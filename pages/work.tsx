@@ -22,10 +22,10 @@ export default function Work({ workData }:Type):JSX.Element{
     }
 
     useEffect(()=>{
-        const bg = document.body;
+        // const bg = document.body;
         // bg.classList.remove("needsScroll");
-        bg.classList.add("noScroll");
-        isMobile ? bg.classList.remove("noScroll"): bg.classList.add("noScroll");
+        // bg.classList.add("noScroll");
+        // isMobile ? bg.classList.remove("noScroll"): bg.classList.add("noScroll");
     },[])
 
     //use swr cache revalidation magic

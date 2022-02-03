@@ -35,8 +35,8 @@ export default function ProjectPages({ projectPage }: Type): JSX.Element {
 
     useEffect(() => {
         const bg = document.body;
-        // bg.classList.add("needsScroll");
-        bg.classList.remove("noScroll");
+        bg.classList.add("needsScroll");
+        // bg.classList.remove("noScroll");
     }, []);
 
     return (
