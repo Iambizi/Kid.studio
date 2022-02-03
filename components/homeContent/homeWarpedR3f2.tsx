@@ -146,8 +146,10 @@ export default function WarpedImage({ count, projects, carouselX, slideNext, sli
 
     const Plane = (props: any) => {
         const planeRef = useRef<THREE.Mesh>();
-        const width = isMobile ? 3.1 : 9;
-        const height = isMobile ? 1.7 : 5;
+        // const width = isMobile ? 3.1 : 9;
+        // const height = isMobile ? 1.7 : 5;
+        const width = isMobile ? 4 : 9;
+        const height = isMobile ? 3 : 5;
         return(
             <mesh {...props} ref={planeRef}>
                 <planeGeometry args={[width, height]} />
@@ -190,12 +192,14 @@ export default function WarpedImage({ count, projects, carouselX, slideNext, sli
 
     const texturess = [`${src1}`, `${src2}`, `${src3}`];
 
+    const cameraView = isMobile? 5.2 : 5;
+
     return(
         <>
             <div className={`${styles.homeScene} homeScene`}>
                 <p className={styles.nextButton} onClick={homePlaneControls.current.next}>NEXT</p>
                 <p className={styles.previousButton} onClick={homePlaneControls.current.previous}>PREVIOUS</p>
-                <Canvas id={"mesh"} camera={{ position: [0, 0, 5]}}>
+                <Canvas id={"mesh"} camera={{ position: [0, 0, cameraView]}}>
                     <Suspense fallback={null}>
                         <HomePlane position={[0, 0, 0]} /> 
                         <HomePlane position={[100, 0, 0]} />
