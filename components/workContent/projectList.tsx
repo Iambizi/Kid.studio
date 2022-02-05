@@ -35,6 +35,7 @@ export default function work( { bgImg, setbgImg, projectList }:Type ){
               link[index].addEventListener("mousemove", ()=> {
                 bg.style.backgroundPosition = `${e.pageX}px ${e.pageY}px`;
                 bg.style.zIndex = "420";
+                // bg.style.backgroundRepeat = "repeat-y";
                })
             })(i);
           }
@@ -57,11 +58,6 @@ export default function work( { bgImg, setbgImg, projectList }:Type ){
             ((index)=> {
               link[index].addEventListener("click", removeStyles, false);
             })(i);
-          }
-
-        // Ensures bg does not remain styled once we click to projectPages  
-          if(comparison){
-            removeStyles();
           }
     }
 
