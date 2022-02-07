@@ -1,7 +1,7 @@
 import React, { Suspense, useRef, forwardRef, useEffect } from 'react';
 import * as THREE from 'three';
 import { useTexture } from "@react-three/drei";
-import { Canvas, useFrame } from '@react-three/fiber';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
 import { useRouter } from 'next/router';
 import { isMobile } from 'react-device-detect';
@@ -156,9 +156,14 @@ export default function WarpedImage({ count, projects, carouselX, slideNext, sli
     }
 
     const Image = ({ img }) => {
-        const ref = useRef<THREE.Mesh>();
+        const { viewport } = useThree();
+        const group = useRef<THREE.Mesh>();
+        useFrame((state, delta) => {
+            group.current.position.y = THREE.MathUtils.damp(group.current.position.x, viewport.width * carouselX, 4, delta)
+            // Or: group.current.position.lerp(vec.set(0, viewport.height * scroll.current, 0), 0.1)
+          })
         return (
-            <group ref={ref}>
+            <group ref={group}>
                 {/* <WarpedPlane map={img} position={[0, 0, 0]} />  */}
             </group>
         )
