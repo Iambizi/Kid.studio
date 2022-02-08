@@ -76,7 +76,6 @@ export default function WarpedImage({ count, projects, carouselX, slideNext, sli
                 //     state.mouse.y = e.clientY / window.innerHeight;
                 // }
 
-
                 ((state) => {
                     onDocumentMouseMove = (e) => {
                         hovering = false;
@@ -161,14 +160,28 @@ export default function WarpedImage({ count, projects, carouselX, slideNext, sli
         useFrame((state, delta) => {
             group.current.position.y = THREE.MathUtils.damp(group.current.position.x, viewport.width * carouselX, 4, delta)
             // Or: group.current.position.lerp(vec.set(0, viewport.height * scroll.current, 0), 0.1)
-          })
+        })
         return (
             <group ref={group}>
                 {/* <WarpedPlane map={img} position={[0, 0, 0]} />  */}
             </group>
-        )
+        );
     }
 
+    const ScrollContainer = ({ children }) => {
+        const { viewport } = useThree();
+        const item = useRef<THREE.Mesh>();
+        useFrame((state, delta) => {
+            // group.current.position.y = THREE.MathUtils.damp(group.current.position.x, viewport.width * carouselX, 4, delta)
+            // Or: group.current.position.lerp(vec.set(0, viewport.height * scroll.current, 0), 0.1)
+            state.camera.position.x = carouselX;
+        })
+        return (
+            <group ref={item}>
+                {children}
+            </group>
+        );
+    }
 
     const Content: any = () => {
 
@@ -202,9 +215,14 @@ export default function WarpedImage({ count, projects, carouselX, slideNext, sli
                 <p className={styles.previousButton} onClick={homePlaneControls.current.previous}>PREVIOUS</p>
                 <Canvas id={"mesh"} camera={{ position: [0, 0, 5] }}>
                     <Suspense fallback={null}>
-                        <HomePlane position={[0, 0, 0]} />
-                        <HomePlane position={[100, 0, 0]} />
-                        <HomePlane position={[200, 0, 0]} />
+                        <ScrollContainer>
+                            <HomePlane position={[0, 0, 0]} />
+                            <HomePlane position={[100, 0, 0]} />
+                            <HomePlane position={[200, 0, 0]} />
+                        </ScrollContainer>
+                        {/* <HomePlane position={[0, 0, 0]} />
+                            <HomePlane position={[100, 0, 0]} />
+                            <HomePlane position={[200, 0, 0]} /> */}
                         {/* <Content /> */}
                     </Suspense>
                 </Canvas>
