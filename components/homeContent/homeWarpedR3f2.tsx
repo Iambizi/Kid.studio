@@ -169,7 +169,6 @@ export default function WarpedImage({ count, projects, carouselX, slideNext, sli
     }
 
     const ScrollContainer = ({ children }) => {
-        const { viewport } = useThree();
         const item = useRef<THREE.Mesh>();
         useFrame((state, delta) => {
             // group.current.position.y = THREE.MathUtils.damp(group.current.position.x, viewport.width * carouselX, 4, delta)
