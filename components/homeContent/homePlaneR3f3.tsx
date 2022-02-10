@@ -1,12 +1,7 @@
-import React, { Suspense, useRef, forwardRef, useEffect } from 'react';
+import React, { Suspense, useRef } from 'react';
 import * as THREE from 'three';
-import { useTexture } from "@react-three/drei";
-import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import { Canvas, useFrame } from '@react-three/fiber';
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
-import { useRouter } from 'next/router';
-import { isMobile } from 'react-device-detect';
-import WarpedPlane from "./CustomPlaneR3F/WarpedPlane";
-import { Block } from "./CustomPlaneR3F/blocks";
 import HomePlane1 from "./r3fPlanes/homePlane1";
 import HomePlane2 from "./r3fPlanes/homePlane2";
 import HomePlane3 from "./r3fPlanes/homePlane3";

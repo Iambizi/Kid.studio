@@ -31,8 +31,7 @@ export default function HomePlane1({ projects}: Type): JSX.Element {
         let onMouseDown;
         let onMouseUp;
 
-        const texturez = useTexture([src1, src2, src3]);
-        const textures = useTexture([`${src1}`, `${src2}`, `${src3}`]);
+        const textures = useTexture([src1, src2, src3]);
 
         textures[0].minFilter = THREE.LinearFilter;
         textures[1].minFilter = THREE.LinearFilter;
