@@ -8,22 +8,18 @@ import HomePlane3 from "./r3fPlanes/homePlane3";
 
 
 interface Type {
-    count: number;
     projects: any;
     carouselX: number;
-    slideNext: boolean;
-    slidePrevious: boolean;
     goNext: any;
     goPrevious: any;
 }
 
-export default function WarpedImage({ count, projects, carouselX, slideNext, slidePrevious, goNext, goPrevious }: Type): JSX.Element {
+export default function WarpedImage({ projects, carouselX, goNext, goPrevious }: Type): JSX.Element {
 
     const homePlaneControls = useRef<HTMLElement | any>(null!);
 
-    const ScrollContainer = ({ children }) => {
+    const SliderContainer = ({ children }) => {
         const items = useRef<THREE.Mesh>();
-        const vec = new THREE.Vector3();
         useFrame((state, delta) => {
             state.camera.position.x = THREE.MathUtils.damp(state.camera.position.x, carouselX, 7, delta);
         })
@@ -49,11 +45,11 @@ export default function WarpedImage({ count, projects, carouselX, slideNext, sli
                 <p className={styles.previousButton} onClick={homePlaneControls.current.previous}>PREVIOUS</p>
                 <Canvas id={"mesh"} camera={{ position: [0, 0, 5] }}>
                     <Suspense fallback={null}>
-                        <ScrollContainer>
+                        <SliderContainer>
                             <HomePlane1 projects={projects} />
                             <HomePlane2 projects={projects} />
                             <HomePlane3 projects={projects} />
-                        </ScrollContainer>
+                        </SliderContainer>
                     </Suspense>
                 </Canvas>
             </div>
