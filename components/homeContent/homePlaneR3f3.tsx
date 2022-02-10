@@ -25,9 +25,7 @@ export default function WarpedImage({ count, projects, carouselX, slideNext, sli
         const items = useRef<THREE.Mesh>();
         const vec = new THREE.Vector3();
         useFrame((state, delta) => {
-            // group.current.position.y = THREE.MathUtils.damp(group.current.position.x, viewport.width * carouselX, 4, delta)
-            // state.camera.position.lerp(vec.set(2, 0, 0), 0.1);
-            state.camera.position.x = carouselX;
+            state.camera.position.x = THREE.MathUtils.damp(state.camera.position.x, carouselX, 7, delta);
         })
         return (
             <group ref={items}>
