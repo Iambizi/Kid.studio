@@ -3,18 +3,22 @@ import * as THREE from 'three';
 import { useTexture } from "@react-three/drei";
 import { useFrame } from '@react-three/fiber';
 import { isMobile } from 'react-device-detect';
+import { useRouter } from "next/router";
 
 
 
 interface Type {
     projects: any;
+    snapping: boolean;
 }
 
-export default function HomePlane1({ projects}: Type): JSX.Element {
+export default function HomePlane1({ projects, snapping }: Type): JSX.Element {
 
     const src1 = projects[0]?.fields.featuredProjectImage.fields ? projects[0].fields.featuredProjectImage.fields.file.url : null;
     const src2 = projects[1]?.fields.featuredProjectImage.fields ? projects[1].fields.featuredProjectImage.fields.file.url : null;
     const src3 = projects[2]?.fields.featuredProjectImage.fields ? projects[2].fields.featuredProjectImage.fields.file.url : null;
+
+    const router = useRouter();
 
     const HomePlane = (props: any) => {
 
@@ -24,7 +28,7 @@ export default function HomePlane1({ projects}: Type): JSX.Element {
         let i = 0;
         let timerx = 500;
         let hovering = false;
-        let snapping = false;
+        // let snapping = false;
         let mouse = { x: 0, y: 0 };
 
         let onDocumentMouseMove;
@@ -45,7 +49,6 @@ export default function HomePlane1({ projects}: Type): JSX.Element {
         });
 
         const animateMesh = (state) => {
-            if (homePlaneRef && homePlaneRef.current !== undefined) {
                 // const onMouseDown = (e) => {
                 //     snapping = true;                    
                 // }
@@ -76,9 +79,15 @@ export default function HomePlane1({ projects}: Type): JSX.Element {
                     }
                 })();
 
+                // const hoverMove = () => {
+                //     state.mouse.x > 0.5 ? homePlaneRef.current.rotation.y < hover_dist && (homePlaneRef.current.rotation.y += 0.002) : state.mouse.x < 0.5 && homePlaneRef.current.rotation.y > -hover_dist && (homePlaneRef.current.rotation.y -= 0.002),
+                //         state.mouse.y > 0.5 ? homePlaneRef.current.rotation.x < hover_dist && (homePlaneRef.current.rotation.x += 0.002) : state.mouse.y < 0.5 && homePlaneRef.current.rotation.x > -hover_dist && (homePlaneRef.current.rotation.x -= 0.002);
+                //     (homePlaneRef.current.rotation.y > hover_dist || homePlaneRef.current.rotation.y < -hover_dist) && (homePlaneRef.current.rotation.x > hover_dist || homePlaneRef.current.rotation.x < -hover_dist) && (hovering = true);
+                // }
+
                 const hoverMove = () => {
-                    state.mouse.x > 0.5 ? homePlaneRef.current.rotation.y < hover_dist && (homePlaneRef.current.rotation.y += 0.002) : state.mouse.x < 0.5 && homePlaneRef.current.rotation.y > -hover_dist && (homePlaneRef.current.rotation.y -= 0.002),
-                        state.mouse.y > 0.5 ? homePlaneRef.current.rotation.x < hover_dist && (homePlaneRef.current.rotation.x += 0.002) : state.mouse.y < 0.5 && homePlaneRef.current.rotation.x > -hover_dist && (homePlaneRef.current.rotation.x -= 0.002);
+                    mouse.x > 0.5 ? homePlaneRef.current.rotation.y < hover_dist && (homePlaneRef.current.rotation.y += 0.002) : mouse.x < 0.5 && homePlaneRef.current.rotation.y > -hover_dist && (homePlaneRef.current.rotation.y -= 0.002),
+                        mouse.y > 0.5 ? homePlaneRef.current.rotation.x < hover_dist && (homePlaneRef.current.rotation.x += 0.002) : mouse.y < 0.5 && homePlaneRef.current.rotation.x > -hover_dist && (homePlaneRef.current.rotation.x -= 0.002);
                     (homePlaneRef.current.rotation.y > hover_dist || homePlaneRef.current.rotation.y < -hover_dist) && (homePlaneRef.current.rotation.x > hover_dist || homePlaneRef.current.rotation.x < -hover_dist) && (hovering = true);
                 }
                 const snapBack = () => {
@@ -98,19 +107,35 @@ export default function HomePlane1({ projects}: Type): JSX.Element {
                 // document.addEventListener("mousemove", onDocumentMouseMove, false);
                 // document.addEventListener("mousedown", onMouseDown, false);
                 // document.addEventListener("mouseup", onMouseUp, false);
-            }
         }
 
         useEffect(() => {
+
+            const onDocumentMouseMove = (e)=> {
+                    hovering = false;
+                    mouse.x = e.clientX / window.innerWidth; 
+                    mouse.y = e.clientY / window.innerHeight;
+                }
+
             document.addEventListener("mousemove", onDocumentMouseMove, false);
             document.addEventListener("mousedown", onMouseDown, false);
             document.addEventListener("mouseup", onMouseUp, false);
 
-            // return () => {
+            // const removeEvents = () => {
             //     document.removeEventListener("mousemove", onDocumentMouseMove, false);
             //     document.removeEventListener("mousedown", onMouseDown, false);
-            //     document.removeEventListener("mouseup", onMouseUp, false); 
+            //     document.removeEventListener("mouseup", onMouseUp, false);
             // }
+
+            return () => {
+                document.removeEventListener("mousemove", onDocumentMouseMove, false);
+                document.removeEventListener("mousedown", onMouseDown, false);
+                document.removeEventListener("mouseup", onMouseUp, false); 
+            };
+            // router.events.on('beforeHistoryChange', removeEvents);
+            // return () => {
+            //     router.events.off('beforeHistoryChange', removeEvents);
+            // };
         }, []);
 
         return (

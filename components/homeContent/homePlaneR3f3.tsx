@@ -16,7 +16,14 @@ interface Type {
 
 export default function WarpedImage({ projects, carouselX, goNext, goPrevious }: Type): JSX.Element {
 
+    const homePlaneRef = useRef<THREE.Mesh>();
     const homePlaneControls = useRef<HTMLElement | any>(null!);
+    let hover_dist = 0.3;
+    let i = 0;
+    let timerx = 500;
+    let hovering = false;
+    let snapping = false;
+    let mouse = { x: 0, y: 0 };
 
     const SliderContainer = ({ children }) => {
         const items = useRef<THREE.Mesh>();
@@ -43,12 +50,13 @@ export default function WarpedImage({ projects, carouselX, goNext, goPrevious }:
             <div className={`${styles.homeScene} homeScene`}>
                 <p className={styles.nextButton} onClick={homePlaneControls.current.next}>NEXT</p>
                 <p className={styles.previousButton} onClick={homePlaneControls.current.previous}>PREVIOUS</p>
-                <Canvas id={"mesh"} camera={{ position: [0, 0, 5] }}>
+                {/* <Canvas dpr={[1, 2]} onPointerMissed={() => console.log(snapping)} id={"mesh"} camera={{ position: [0, 0, 5] }}> */}
+                <Canvas onPointerMissed={() => console.log(snapping)} id={"mesh"} camera={{ position: [0, 0, 5] }}>
                     <Suspense fallback={null}>
                         <SliderContainer>
-                            <HomePlane1 projects={projects} />
-                            <HomePlane2 projects={projects} />
-                            <HomePlane3 projects={projects} />
+                            <HomePlane1 projects={projects} snapping={snapping} />
+                            <HomePlane2 projects={projects} snapping={snapping} />
+                            <HomePlane3 projects={projects} snapping={snapping} />
                         </SliderContainer>
                     </Suspense>
                 </Canvas>
