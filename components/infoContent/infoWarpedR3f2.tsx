@@ -38,19 +38,6 @@ export default function WarpedImage({ src }:Type):JSX.Element{
 
         const animateMesh = (state)=> {
                     
-                // const onMouseDown = (e) => {
-                //     snapping = true;
-                // }
-                // const onMouseUp = () => {
-                //     setTimeout(() => snapping = false, 950);
-                // }
-                // const onDocumentMouseMove = (e)=> {
-                //     (hovering = false), (state.mouse.x = e.clientX / window.innerWidth), (state.mouse.y = e.clientY / window.innerHeight);
-                // }
-                // const dragMove = () => {
-                //     (distMouse.x = prevMouse.x - state.mouse.x), (distMouse.y = prevMouse.y - state.mouse.y);
-                //     (infoPlaneRef.current.rotation.y -= 2 * distMouse.x), (infoPlaneRef.current.rotation.x -= 2 * distMouse.y);
-                // }
                 const hoverMove = () => {
                         mouse.x > 0.5 ? infoPlaneRef.current.rotation.y < hover_dist && (infoPlaneRef.current.rotation.y += 0.002) : mouse.x < 0.5 && infoPlaneRef.current.rotation.y > -hover_dist && (infoPlaneRef.current.rotation.y -= 0.002),
                         mouse.y > 0.5 ? infoPlaneRef.current.rotation.x < hover_dist && (infoPlaneRef.current.rotation.x += 0.002) : mouse.y < 0.5 && infoPlaneRef.current.rotation.x > -hover_dist && (infoPlaneRef.current.rotation.x -= 0.002);
