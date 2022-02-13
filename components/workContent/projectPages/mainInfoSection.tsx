@@ -18,7 +18,6 @@ export default function MainInfoSection({ title, details, videoCover, playButton
     const [overLayClick, setOverLayClick] = useState(false);
 
     const handleIndex = () => {
-        // console.log(video);
 
         // setToggleIndex(true);
 
