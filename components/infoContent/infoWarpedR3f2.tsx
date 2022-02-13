@@ -17,8 +17,6 @@ export default function WarpedImage({ src }:Type):JSX.Element{
         const infoPlaneRef = useRef<THREE.Mesh>();
 
         let hover_dist = 0.3;
-        let prevMouse = { x: 0, y: 0 };
-        let distMouse = { x: 0, y: 0 };
         let i = 0;
         let timerx = 500;
         let hovering = false;
