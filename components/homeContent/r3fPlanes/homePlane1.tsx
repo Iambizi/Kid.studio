@@ -65,9 +65,9 @@ export default function HomePlane1({ projects, snapping }: Type): JSX.Element {
         }
 
         useEffect(() => {
+
             const onMouseDown = (e) => {
                 snapping = true;
-                console.log("plane1 mouse click");
             }
 
             const onMouseUp = (e) => {
@@ -78,7 +78,7 @@ export default function HomePlane1({ projects, snapping }: Type): JSX.Element {
                 mouse.x = e.clientX / window.innerWidth;
                 mouse.y = e.clientY / window.innerHeight;
             }
-            
+
             document.addEventListener("mousemove", onDocumentMouseMove, false);
             document.addEventListener("mousedown", onMouseDown, false);
             document.addEventListener("mouseup", onMouseUp, false);

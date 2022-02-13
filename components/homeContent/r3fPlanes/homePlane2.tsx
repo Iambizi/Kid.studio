@@ -77,7 +77,6 @@ export default function HomePlane1({ projects, snapping }: Type): JSX.Element {
 
             const onMouseDown = (e) => {
                 snapping = true;
-                console.log("plane1 mouse click");
             }
 
             const onMouseUp = (e) => {

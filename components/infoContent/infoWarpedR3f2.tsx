@@ -57,8 +57,10 @@ export default function WarpedImage({ src }:Type):JSX.Element{
         }
 
         useEffect(()=>{
+
             const onMouseDown = (e) => {
                 snapping = true;
+                e.stopImmediatePropagation();
             }
 
             const onMouseUp = (e) => {

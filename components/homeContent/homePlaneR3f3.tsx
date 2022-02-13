@@ -16,7 +16,6 @@ interface Type {
 
 export default function WarpedImage({ projects, carouselX, goNext, goPrevious }: Type): JSX.Element {
 
-    const homePlaneRef = useRef<THREE.Mesh>();
     const homePlaneControls = useRef<HTMLElement | any>(null!);
     let hover_dist = 0.3;
     let i = 0;
@@ -51,7 +50,7 @@ export default function WarpedImage({ projects, carouselX, goNext, goPrevious }:
                 <p className={styles.nextButton} onClick={homePlaneControls.current.next}>NEXT</p>
                 <p className={styles.previousButton} onClick={homePlaneControls.current.previous}>PREVIOUS</p>
                 {/* <Canvas dpr={[1, 2]} onPointerMissed={() => console.log(snapping)} id={"mesh"} camera={{ position: [0, 0, 5] }}> */}
-                <Canvas onPointerMissed={() => console.log(snapping)} id={"mesh"} camera={{ position: [0, 0, 5] }}>
+                <Canvas id={"mesh"} >
                     <Suspense fallback={null}>
                         <SliderContainer>
                             <HomePlane1 projects={projects} snapping={snapping} />
