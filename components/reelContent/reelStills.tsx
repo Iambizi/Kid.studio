@@ -30,7 +30,7 @@ export default function Stills( { reelStills }: Type ):JSX.Element{
     },[]);
     return(
         <>
-            <section className={styles.projectPageSection}>
+            <section className={styles.projectStillsSection}>
                 <div className={styles.projectStills}>
                     {reelStills.map((item, i)=>(
                         //     <Image
