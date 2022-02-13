@@ -21,7 +21,6 @@ export default function MainInfoSection({ title, details, videoCover, playButton
         // console.log(video);
 
         // setToggleIndex(true);
-        // console.log("yooo");
 
         // function addClass(){
         //     video.classList.add(`${styles.toggleIndex}`)
