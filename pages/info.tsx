@@ -47,14 +47,6 @@ export default function Info({ infoPageData, fallback }: Type): JSX.Element {
 
     const src = infoImage ? data?.includes.Asset[0].fields.file.url : null;
 
-    // console.log(data?.items[0].fields.aboutUs.content[0].content[0].value);
-
-
-    // console.log(infoImage);
-
-    // console.log(baseUrlAssetsFields);
-
-
     useEffect(() => {
         const bg = document.body;
         bg.classList.remove("needsScroll");
