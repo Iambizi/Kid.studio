@@ -29,10 +29,6 @@ export default function HomePlane1({ projects, snapping }: Type): JSX.Element {
         let snapping = false;
         let mouse = { x: 0, y: 0 };
 
-        let onDocumentMouseMove;
-        let onMouseDown;
-        let onMouseUp;
-
         const textures = useTexture([src1, src2, src3]);
 
         textures[0].minFilter = THREE.LinearFilter;
@@ -47,44 +43,6 @@ export default function HomePlane1({ projects, snapping }: Type): JSX.Element {
         });
 
         const animateMesh = (state) => {
-            // if (homePlaneRef && homePlaneRef.current !== undefined) {
-            
-
-            const onMouseDown = (e) => {
-                snapping = true;
-            }
-
-            const onMouseUp = (e) => {
-                setTimeout(() => snapping = false, 950);
-            }
-            // const onDocumentMouseMove = (e) => {
-            //     hovering = false;
-            //     state.mouse.x = e.clientX / window.innerWidth;
-            //     state.mouse.y = e.clientY / window.innerHeight;
-            // }
-
-            // ((state) => {
-            //     onDocumentMouseMove = (e) => {
-            //         hovering = false;
-            //         state.mouse.x = e.clientX / window.innerWidth;
-            //         state.mouse.y = e.clientY / window.innerHeight;
-            //         // console.log("mousemooooove");
-            //     };
-            //     onMouseDown = (e) => {
-            //         snapping = true;
-            //         // console.log("mouseDown");                    
-            //     };
-            //     onMouseUp = (e) => {
-            //         setTimeout(() => snapping = false, 950);
-            //         // console.log("mouseUp");
-            //     }
-            // })();
-
-            // const hoverMove = () => {
-            //     state.mouse.x > 0.5 ? homePlaneRef.current.rotation.y < hover_dist && (homePlaneRef.current.rotation.y += 0.002) : state.mouse.x < 0.5 && homePlaneRef.current.rotation.y > -hover_dist && (homePlaneRef.current.rotation.y -= 0.002),
-            //         state.mouse.y > 0.5 ? homePlaneRef.current.rotation.x < hover_dist && (homePlaneRef.current.rotation.x += 0.002) : state.mouse.y < 0.5 && homePlaneRef.current.rotation.x > -hover_dist && (homePlaneRef.current.rotation.x -= 0.002);
-            //     (homePlaneRef.current.rotation.y > hover_dist || homePlaneRef.current.rotation.y < -hover_dist) && (homePlaneRef.current.rotation.x > hover_dist || homePlaneRef.current.rotation.x < -hover_dist) && (hovering = true);
-            // }
 
             const hoverMove = () => {
                 mouse.x > 0.5 ? homePlaneRef.current.rotation.y < hover_dist && (homePlaneRef.current.rotation.y += 0.002) : mouse.x < 0.5 && homePlaneRef.current.rotation.y > -hover_dist && (homePlaneRef.current.rotation.y -= 0.002),
@@ -103,14 +61,10 @@ export default function HomePlane1({ projects, snapping }: Type): JSX.Element {
                 timerx / 2 > i ? ((homePlaneRef.current.rotation.x += 3e-4), (homePlaneRef.current.rotation.y -= 3e-4)) : ((homePlaneRef.current.rotation.x -= 3e-4), (homePlaneRef.current.rotation.y += 3e-4));
                 i++;
             }
-
-            // hovering ? hover() : null;
-            // hoverMove();
             snapping ? snapBack() : hovering ? hover() : hoverMove();
         }
 
         useEffect(() => {
-
             const onMouseDown = (e) => {
                 snapping = true;
                 console.log("plane1 mouse click");
@@ -124,27 +78,16 @@ export default function HomePlane1({ projects, snapping }: Type): JSX.Element {
                 mouse.x = e.clientX / window.innerWidth;
                 mouse.y = e.clientY / window.innerHeight;
             }
-
-
+            
             document.addEventListener("mousemove", onDocumentMouseMove, false);
             document.addEventListener("mousedown", onMouseDown, false);
             document.addEventListener("mouseup", onMouseUp, false);
-
-            // const removeEvents = () => {
-            //     document.removeEventListener("mousemove", onDocumentMouseMove, false);
-            //     document.removeEventListener("mousedown", onMouseDown, false);
-            //     document.removeEventListener("mouseup", onMouseUp, false);
-            // }
 
             return () => {
                 document.removeEventListener("mousemove", onDocumentMouseMove, false);
                 document.removeEventListener("mousedown", onMouseDown, false);
                 document.removeEventListener("mouseup", onMouseUp, false); 
             };
-            // router.events.on('beforeHistoryChange', removeEvents);
-            // return () => {
-            //     router.events.off('beforeHistoryChange', removeEvents);
-            // };
         }, []);
 
         return (
