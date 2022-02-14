@@ -6,7 +6,6 @@ import Meta from '../components/common/meta';
 import Content from '../components/homeContent/content';
 import React, { useEffect } from "react";
 import { connectClient } from '../components/common/utils/createClient';
-import useSWR from 'swr';
 
 interface Type {
   homeProjects: any;
@@ -27,11 +26,6 @@ export default function Home({ homeProjects, projects }: Type): JSX.Element {
     const res = await fetch(url);
     return res.json();
   }
-
-  //use swr cache revalidation magic
-  const baseUrl = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master/entries?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}`;
-  const { data } = useSWR(baseUrl, fetcher, { initialData: projects });
-
 
   return (
     <>

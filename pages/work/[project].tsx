@@ -1,6 +1,4 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
-import fs from 'fs'
-import path from 'path'
 import Layout from '../../components/layout';
 import Meta from '../../components/common/meta';
 import MainInfo from '../../components/workContent/projectPages/mainInfoSection';
@@ -8,7 +6,6 @@ import Stills from '../../components/workContent/projectPages/stills';
 import React, { useEffect } from "react";
 import styles from '../../styles/scss/common/_footer.module.scss';
 import { connectClient } from '../../components/common/utils/createClient';
-import useSWR from 'swr';
 
 interface Type {
     projectsPageData: any;
@@ -16,15 +13,6 @@ interface Type {
 }
 
 export default function ProjectPages({ projectPage }: Type): JSX.Element {
-
-    async function fetcher(url) {
-        const res = await fetch(url);
-        return res.json();
-    }
-
-    //use swr cache revalidation magic
-    const baseUrl = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master/entries?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}`;
-    const { data } = useSWR(baseUrl, fetcher, { initialData: projectPage });
 
     const title = projectPage.projectTitle;
     const details = projectPage.projectCreds.content[0].content[0].value;
@@ -36,11 +24,9 @@ export default function ProjectPages({ projectPage }: Type): JSX.Element {
     useEffect(() => {
         const bg = document.body;
         bg.classList.add("needsScroll");
-        // bg.classList.remove("noScroll");
-        const removeStyles = () => {
-            bg.removeAttribute("style");
-        }
-        removeStyles();
+        
+        bg.removeAttribute("style");
+        
     }, []);
 
     return (
