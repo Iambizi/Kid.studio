@@ -6,17 +6,17 @@ import { useRouter } from 'next/router';
 import { isMobile } from 'react-device-detect';
 
 
-interface Type{
+interface Type {
     count: number;
     projects: any;
-    carouselX : number;
+    carouselX: number;
     slideNext: boolean;
     slidePrevious: boolean;
     goNext: any;
     goPrevious: any;
 }
 
-export default function warpedImage({ count, projects, carouselX, slideNext, slidePrevious, goNext, goPrevious }:Type):JSX.Element{
+export default function warpedImage({ count, projects, carouselX, slideNext, slidePrevious, goNext, goPrevious }: Type): JSX.Element {
 
     const src1 = projects[0]?.fields.featuredProjectImage.fields ? projects[0].fields.featuredProjectImage.fields.file.url : null;
     const src2 = projects[1]?.fields.featuredProjectImage.fields ? projects[1].fields.featuredProjectImage.fields.file.url : null;
@@ -26,8 +26,8 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
     const router = useRouter();
     const homePath = /\/$/gm;
 
-    const HomePlane = (props: any) =>{
-        
+    const HomePlane = (props: any) => {
+
         const homePlaneRef = useRef<THREE.Mesh>();
 
         let hover_dist = 0.3;
@@ -55,22 +55,22 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         });
 
         const animateMesh = (state) => {
-            if(homePlaneRef && homePlaneRef.current !== undefined){
+            if (homePlaneRef && homePlaneRef.current !== undefined) {
 
                 const onMouseDown = (e) => {
-                    snapping = true;                    
+                    snapping = true;
                 }
                 const onMouseUp = (e) => {
                     setTimeout(() => snapping = false, 950);
                 }
-                const onDocumentMouseMove = (e)=> {
+                const onDocumentMouseMove = (e) => {
                     hovering = false;
-                    state.mouse.x = e.clientX / window.innerWidth; 
+                    state.mouse.x = e.clientX / window.innerWidth;
                     state.mouse.y = e.clientY / window.innerHeight;
                 }
                 const hoverMove = () => {
                     state.mouse.x > 0.5 ? homePlaneRef.current.rotation.y < hover_dist && (homePlaneRef.current.rotation.y += 0.002) : state.mouse.x < 0.5 && homePlaneRef.current.rotation.y > -hover_dist && (homePlaneRef.current.rotation.y -= 0.002),
-                    state.mouse.y > 0.5 ? homePlaneRef.current.rotation.x < hover_dist && (homePlaneRef.current.rotation.x += 0.002) : state.mouse.y < 0.5 && homePlaneRef.current.rotation.x > -hover_dist && (homePlaneRef.current.rotation.x -= 0.002);
+                        state.mouse.y > 0.5 ? homePlaneRef.current.rotation.x < hover_dist && (homePlaneRef.current.rotation.x += 0.002) : state.mouse.y < 0.5 && homePlaneRef.current.rotation.x > -hover_dist && (homePlaneRef.current.rotation.x -= 0.002);
                     (homePlaneRef.current.rotation.y > hover_dist || homePlaneRef.current.rotation.y < -hover_dist) && (homePlaneRef.current.rotation.x > hover_dist || homePlaneRef.current.rotation.x < -hover_dist) && (hovering = true);
                 }
                 const snapBack = () => {
@@ -93,7 +93,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
             }
         }
 
-        return(
+        return (
             <>
                 <mesh onPointerMissed={() => console.log('move outside')} onPointerMove={(e) => console.log('move')} {...props} ref={homePlaneRef}>
                     <planeGeometry args={[width, height]} />
@@ -103,23 +103,23 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
         )
     }
 
-    const next = () =>{
+    const next = () => {
         goNext();
     }
-    const previous = ()=>{
+    const previous = () => {
         goPrevious();
     }
     homePlaneControls.current = { next, previous }
 
-    return(
+    return (
         <>
-            <div className={`${styles.homeScene} homeScene`}>
+            <div className={`${styles.homeScene}`}>
                 <p className={styles.nextButton} onClick={homePlaneControls.current.next}>NEXT</p>
                 <p className={styles.previousButton} onClick={homePlaneControls.current.previous}>PREVIOUS</p>
-                <Canvas onPointerMove={(e) => console.log('mov')} id={"mesh"} camera={{ position: [0, 0, 5]}}>
-                    <HomePlane position={[0, 0, 0]} /> 
+                <Canvas id={"mesh"} camera={{ position: [0, 0, 5] }}>
+                    <HomePlane position={[0, 0, 0]} />
                     <HomePlane position={[100, 0, 0]} />
-                    <HomePlane position={[200, 0, 0]} /> 
+                    <HomePlane position={[200, 0, 0]} />
                 </Canvas>
             </div>
         </>
