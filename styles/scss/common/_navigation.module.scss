@@ -42,7 +42,6 @@
         text-align: center;
         letter-spacing: 0.1em;
         padding: 0 11px;
-        // padding: 2px 10px;
         z-index: 565656;
         margin: 12px 0px 0px 0px;
         @media screen and (min-width:$m){
@@ -58,7 +57,6 @@
             }
             &:hover{
                 color: #f0f0f0;
-                // padding: 2px 10px;
                 background-color: #000;
             }
             &.hoverColor{
