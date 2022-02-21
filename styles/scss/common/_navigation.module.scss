@@ -55,10 +55,16 @@
             @media screen and (min-width:$m){
                 margin: 20px 22px;
             }
-            &:hover{
-                color: #f0f0f0;
-                background-color: #000;
-            }
+            // &:hover{
+            //     color: #f0f0f0;
+            //     background-color: #000;
+            // }
+            @media (hover: hover) and (pointer: fine) {
+                &:hover { 
+                    color: #f0f0f0;
+                    background-color: #000; 
+                }
+              }
             &.hoverColor{
                 color: #f0f0f0;
             }
