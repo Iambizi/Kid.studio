@@ -45,7 +45,7 @@ export default function Content({ homeProjects, projects }: Type): JSX.Element {
     <>
       <section className={styles.noScroll}>
         <article className={styles.homeContentSection}>
-          <Carousel homeProjects={homeProjects} count={count} carouselX={carouselX} slideNext={slideNext} slidePrevious={slidePrevious} projects={projects} goNext={goNext} goPrevious={goPrevious} />
+          <Carousel carouselX={carouselX} projects={projects} goNext={goNext} goPrevious={goPrevious} />
         </article>
         {/* <p className={styles.nextButton} id={"next"} onClick={goNext}>NEXT</p>
         <p className={styles.previousButton} id={"previous"} onClick={goPrevious}>PREVIOUS</p> */}
