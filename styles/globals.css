@@ -41,11 +41,11 @@ body, html{
 }
 body{
   overflow: hidden;
-  /* position: fixed; */
+  position: fixed;
 }
 body.needsScroll{
   overflow-Y: auto;
-  /* position: static; */
+  position: static;
 }
 /* body.noScroll{
   height: 100vh;
