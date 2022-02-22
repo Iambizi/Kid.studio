@@ -1,22 +1,19 @@
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
 import Link from "next/link";
 // import WarpedIMG from "./homeWarpedPla";
+// import WarpedIMG from "./homeWarpedPla2";
 // import WarpedIMG from "./homeWarpedR3f2";
 import WarpedIMG from "./homePlaneR3f3";
 // import WarpedIMG from "../common/commonWarpedPlane";
 
 interface Type {
-    homeProjects: any;
     carouselX: number;
-    slideNext: boolean;
-    slidePrevious: boolean;
-    count: number;
     projects: any;
     goPrevious?: any;
     goNext?: any;
 }
 
-export default function Carousel({ homeProjects, carouselX, slideNext, slidePrevious, count, projects, goPrevious, goNext }: Type): JSX.Element {
+export default function Carousel({ carouselX, projects, goPrevious, goNext }: Type): JSX.Element {
     {
         carouselX < -200 ? `${styles.sliderWrapper} ${styles.slidePrevious}` : carouselX < -100 ? `${styles.sliderWrapper} ${styles.slideNext}` : `${styles.sliderWrapper}`
     }

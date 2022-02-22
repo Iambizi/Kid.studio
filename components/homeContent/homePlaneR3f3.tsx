@@ -50,7 +50,7 @@ export default function WarpedImage({ projects, carouselX, goNext, goPrevious }:
                 <p className={styles.nextButton} onClick={homePlaneControls.current.next}>NEXT</p>
                 <p className={styles.previousButton} onClick={homePlaneControls.current.previous}>PREVIOUS</p>
                 {/* <Canvas dpr={[1, 2]} onPointerMissed={() => console.log(snapping)} id={"mesh"} camera={{ position: [0, 0, 5] }}> */}
-                <Canvas id={"mesh"}>
+                <Canvas dpr={[1, 2]} id={"mesh"} className={`${styles.homeScene} homeScene`}>
                     <Suspense fallback={null}>
                         <SliderContainer>
                             <HomePlane1 projects={projects} snapping={snapping} />
