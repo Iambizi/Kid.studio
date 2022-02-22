@@ -22,10 +22,6 @@ export default function Home({ homeProjects, projects }: Type): JSX.Element {
     // bg.classList.add("noScroll");
   });
 
-  async function fetcher(url) {
-    const res = await fetch(url);
-    return res.json();
-  }
 
   return (
     <>
