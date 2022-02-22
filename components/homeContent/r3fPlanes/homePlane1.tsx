@@ -3,7 +3,6 @@ import * as THREE from 'three';
 import { useTexture } from "@react-three/drei";
 import { useFrame } from '@react-three/fiber';
 import { isMobile } from 'react-device-detect';
-import { useRouter } from "next/router";
 
 
 interface Type {
@@ -17,7 +16,6 @@ export default function HomePlane1({ projects, snapping }: Type): JSX.Element {
     const src2 = projects[1]?.fields.featuredProjectImage.fields ? projects[1].fields.featuredProjectImage.fields.file.url : null;
     const src3 = projects[2]?.fields.featuredProjectImage.fields ? projects[2].fields.featuredProjectImage.fields.file.url : null;
 
-    const router = useRouter();
     const HomePlane = (props: any) => {
 
         const homePlaneRef = useRef<THREE.Mesh>();
