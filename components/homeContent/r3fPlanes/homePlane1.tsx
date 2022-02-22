@@ -38,7 +38,7 @@ export default function HomePlane1({ projects, snapping }: Type): JSX.Element {
         const width = isMobile ? 3.1 : 9;
         const height = isMobile ? 1.7 : 5;
 
-        useFrame((state, delta) => {
+        useFrame((state) => {
             animateMesh(state);
         });
 
