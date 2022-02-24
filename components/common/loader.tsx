@@ -1,8 +1,7 @@
-import { useRouter } from 'next/router';
 import styles from "../../styles/scss/common/_loader.module.scss";
 import React from "react";
 
-export default function Loader(){
+export default function Loader() {
     // const [ isLoading, setIsLoading ] = useState(false);
     // const router = useRouter();
 
@@ -17,9 +16,13 @@ export default function Loader(){
     //         router.events.off("routeChangeComplete", updateLoadingStatus);
     //       };
     //     }, [isLoading]);
-    
-    return(
+
+    return (
         <>
+            {/* <div className={styles.loaderBackground}>
+                <div className={styles.loader}>
+                </div>
+            </div> */}
             <div className={styles.loader}>
             </div>
         </>

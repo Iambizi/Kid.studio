@@ -5,6 +5,9 @@ import styles from "../../styles/scss/homePage/_carousel.module.scss";
 import HomePlane1 from "./r3fPlanes/homePlane1";
 import HomePlane2 from "./r3fPlanes/homePlane2";
 import HomePlane3 from "./r3fPlanes/homePlane3";
+import Loader from "../common/loader";
+import {Html} from "@react-three/drei";
+// import { Html, useProgress, useGLTFLoader } from "drei";
 
 
 interface Type {
@@ -44,8 +47,10 @@ export default function WarpedImage({ projects, carouselX, goNext, goPrevious }:
     }
     homePlaneControls.current = { next, previous }
 
+
     return (
         <>
+        <Loader/>
             <div className={`${styles.homeScene} homeScene`}>
                 <p className={styles.nextButton} onClick={homePlaneControls.current.next}>NEXT</p>
                 <p className={styles.previousButton} onClick={homePlaneControls.current.previous}>PREVIOUS</p>
