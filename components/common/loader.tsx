@@ -8,9 +8,11 @@ export default function Loader() {
             <Html
                 prepend
                 center>
-                <div className={styles.loaderBackground}>
+                {/* <div className={styles.loaderBackground}>
                     <div className={styles.loader}>
                     </div>
+                </div> */}
+                <div className={styles.loader}>
                 </div>
             </Html>
         </>
