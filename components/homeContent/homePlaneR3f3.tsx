@@ -42,7 +42,7 @@ export default function WarpedImage({ projects, carouselX, goNext, goPrevious }:
         <>
             <div className={`${styles.homeScene} homeScene`}>
                 {/* <Canvas dpr={[1, 2]} onPointerMissed={() => console.log(snapping)} id={"mesh"} camera={{ position: [0, 0, 5] }}> */}
-                <Canvas dpr={[1, 2]} className={`${styles.homeScene} homeScene`}>
+                <Canvas dpr={[1, 2]}>
                     <Suspense fallback={<Loader/>}>
                         <SliderContainer>
                             <HomePlane1 projects={projects} snapping={snapping} />
