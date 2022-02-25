@@ -5,7 +5,7 @@ import styles from "../../styles/scss/homePage/_carousel.module.scss";
 import HomePlane1 from "./r3fPlanes/homePlane1";
 import HomePlane2 from "./r3fPlanes/homePlane2";
 import HomePlane3 from "./r3fPlanes/homePlane3";
-import Loader from "../common/loader";
+import Loader from "../common/loaderR3F";
 
 
 

@@ -1,7 +1,7 @@
 import Navigation from "../components/common/header/navigation";
 import Footer from "../components/common/footer";
 import Flash from "../components/common/flash";
-import Loader from "../components/common/loader";
+import Loader from "./common/loaderR3F";
 import React, { useState, useEffect } from "react";
 import { useRouter } from 'next/router';
 import Head from "next/head";

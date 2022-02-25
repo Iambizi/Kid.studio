@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import styles from "../../../styles/scss/projectPages/_projectPages.module.scss";
 import React, { useState, useEffect, useRef } from "react";
-import Loader from "../../common/loader";
+import Loader from "../../common/loaderR3F";
 import { isMobile } from 'react-device-detect';
 
 interface Type {
