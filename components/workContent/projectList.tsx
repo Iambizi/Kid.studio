@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styles from "../../styles/scss/workPage/_work.module.scss";
 import React, { useState, useEffect } from "react";
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
 
 interface Type{
     bgImg: boolean;

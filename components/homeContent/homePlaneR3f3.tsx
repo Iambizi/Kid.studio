@@ -6,8 +6,7 @@ import HomePlane1 from "./r3fPlanes/homePlane1";
 import HomePlane2 from "./r3fPlanes/homePlane2";
 import HomePlane3 from "./r3fPlanes/homePlane3";
 import Loader from "../common/loader";
-import {Html} from "@react-three/drei";
-// import { Html, useProgress, useGLTFLoader } from "drei";
+
 
 
 interface Type {
@@ -41,11 +40,10 @@ export default function WarpedImage({ projects, carouselX, goNext, goPrevious }:
 
     return (
         <>
-        <Loader/>
             <div className={`${styles.homeScene} homeScene`}>
                 {/* <Canvas dpr={[1, 2]} onPointerMissed={() => console.log(snapping)} id={"mesh"} camera={{ position: [0, 0, 5] }}> */}
                 <Canvas dpr={[1, 2]} className={`${styles.homeScene} homeScene`}>
-                    <Suspense fallback={null}>
+                    <Suspense fallback={<Loader/>}>
                         <SliderContainer>
                             <HomePlane1 projects={projects} snapping={snapping} />
                             <HomePlane2 projects={projects} snapping={snapping} />
