@@ -1,8 +1,9 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, Suspense } from 'react';
 import * as THREE from 'three';
 import { Canvas, useFrame } from '@react-three/fiber';
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
 import { isMobile } from 'react-device-detect';
+import Loader from "../common/loader";
 
 
 interface Type {
@@ -94,8 +95,10 @@ export default function WarpedImage({ src }: Type): JSX.Element {
         <>
             <div className={`${styles.homeScene} homeScene`}>
                 <Canvas dpr={[1, 2]}>
+                    <Suspense fallback={<Loader/>}>
                     {isMobile ? <InfoPlane position={[0, -.7, 0]} /> : <InfoPlane position={[0, 0, 0]} />}
                     {/* <InfoPlane position={[0, 0, 0]} /> */}
+                    </Suspense>
                 </Canvas>
             </div>
         </>
