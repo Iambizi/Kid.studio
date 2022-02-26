@@ -6,6 +6,7 @@ import HomePlane1 from "./r3fPlanes/homePlane1";
 import HomePlane2 from "./r3fPlanes/homePlane2";
 import HomePlane3 from "./r3fPlanes/homePlane3";
 import Loader from "../common/loaderR3F";
+import { isMobile } from 'react-device-detect';
 
 
 
@@ -42,7 +43,7 @@ export default function WarpedImage({ projects, carouselX, goNext, goPrevious }:
         <>
             <div className={`${styles.homeScene} homeScene`}>
                 {/* <Canvas dpr={[1, 2]} onPointerMissed={() => console.log(snapping)} id={"mesh"} camera={{ position: [0, 0, 5] }}> */}
-                <Canvas dpr={[1, 2]}>
+                <Canvas dpr={isMobile? [1,2] : [0,1]}>
                     <Suspense fallback={<Loader/>}>
                         <SliderContainer>
                             <HomePlane1 projects={projects} snapping={snapping} />
