@@ -16,6 +16,8 @@ export default function HomePlane1({ projects, snapping }: Type): JSX.Element {
     const src2 = projects[1]?.fields.featuredProjectImage.fields ? projects[1].fields.featuredProjectImage.fields.file.url : null;
     const src3 = projects[2]?.fields.featuredProjectImage.fields ? projects[2].fields.featuredProjectImage.fields.file.url : null;
 
+    let mouse = { x: 0, y: 0 };
+
     const HomePlane = (props: any) => {
 
         const homePlaneRef = useRef<THREE.Mesh>();
@@ -25,7 +27,6 @@ export default function HomePlane1({ projects, snapping }: Type): JSX.Element {
         let timerx = 500;
         let hovering = false;
         let snapping = false;
-        let mouse = { x: 0, y: 0 };
 
         const textures = useTexture([src1, src2, src3]);
 
@@ -36,17 +37,23 @@ export default function HomePlane1({ projects, snapping }: Type): JSX.Element {
         const width = isMobile ? 3.1 : 9;
         const height = isMobile ? 1.7 : 5;
 
-        useFrame((state) => {
-            animateMesh(state);
-        });
+        // useFrame((state) => {
+        //     animateMesh(state);
+        // });
 
         const animateMesh = (state) => {
 
+            // const hoverMove = () => {
+            //     mouse.x > 0.5 ? homePlaneRef.current.rotation.y < hover_dist && (homePlaneRef.current.rotation.y += 0.002) : mouse.x < 0.5 && homePlaneRef.current.rotation.y > -hover_dist && (homePlaneRef.current.rotation.y -= 0.002),
+            //         mouse.y > 0.5 ? homePlaneRef.current.rotation.x < hover_dist && (homePlaneRef.current.rotation.x += 0.002) : mouse.y < 0.5 && homePlaneRef.current.rotation.x > -hover_dist && (homePlaneRef.current.rotation.x -= 0.002);
+            //     (homePlaneRef.current.rotation.y > hover_dist || homePlaneRef.current.rotation.y < -hover_dist) && (homePlaneRef.current.rotation.x > hover_dist || homePlaneRef.current.rotation.x < -hover_dist) && (hovering = true);
+            // }
             const hoverMove = () => {
                 mouse.x > 0.5 ? homePlaneRef.current.rotation.y < hover_dist && (homePlaneRef.current.rotation.y += 0.002) : mouse.x < 0.5 && homePlaneRef.current.rotation.y > -hover_dist && (homePlaneRef.current.rotation.y -= 0.002),
                     mouse.y > 0.5 ? homePlaneRef.current.rotation.x < hover_dist && (homePlaneRef.current.rotation.x += 0.002) : mouse.y < 0.5 && homePlaneRef.current.rotation.x > -hover_dist && (homePlaneRef.current.rotation.x -= 0.002);
                 (homePlaneRef.current.rotation.y > hover_dist || homePlaneRef.current.rotation.y < -hover_dist) && (homePlaneRef.current.rotation.x > hover_dist || homePlaneRef.current.rotation.x < -hover_dist) && (hovering = true);
             }
+
             const snapBack = () => {
                 let speed = 0.005
                 if (homePlaneRef.current.rotation.x < 0) homePlaneRef.current.rotation.x += speed;
@@ -59,8 +66,12 @@ export default function HomePlane1({ projects, snapping }: Type): JSX.Element {
                 timerx / 2 > i ? ((homePlaneRef.current.rotation.x += 3e-4), (homePlaneRef.current.rotation.y -= 3e-4)) : ((homePlaneRef.current.rotation.x -= 3e-4), (homePlaneRef.current.rotation.y += 3e-4));
                 i++;
             }
+            
             snapping ? snapBack() : hovering ? hover() : hoverMove();
         }
+        useFrame((state) => {
+            animateMesh(state);
+        });
 
         useEffect(() => {
 
