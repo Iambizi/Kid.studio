@@ -51,13 +51,6 @@ export default function work( { bgImg, setbgImg, projectList }:Type ){
               link[index].addEventListener("mouseout", removeStyles, false);
             })(i);
           }
-
-        // on click event: removes all styles
-          for(let i = 0; i < link.length; i++) {
-            ((index)=> {
-              link[index].addEventListener("click", removeStyles, false);
-            })(i);
-          }
     }
 
       // removes needsScroll class set in project pages from vertical scroll
