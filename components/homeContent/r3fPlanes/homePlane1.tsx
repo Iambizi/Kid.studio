@@ -37,9 +37,9 @@ export default function HomePlane1({ projects, snapping }: Type): JSX.Element {
         const width = isMobile ? 3.1 : 9;
         const height = isMobile ? 1.7 : 5;
 
-        // useFrame((state) => {
-        //     animateMesh(state);
-        // });
+        useFrame((state) => {
+            animateMesh(state);
+        });
 
         const animateMesh = (state) => {
 
@@ -50,7 +50,7 @@ export default function HomePlane1({ projects, snapping }: Type): JSX.Element {
             }
 
             const snapBack = () => {
-                let speed = 0.005
+                let speed = 0.005;
                 if (homePlaneRef.current.rotation.x < 0) homePlaneRef.current.rotation.x += speed;
                 if (homePlaneRef.current.rotation.x > 0) homePlaneRef.current.rotation.x -= speed;
                 if (homePlaneRef.current.rotation.y < 0) homePlaneRef.current.rotation.y += speed;
@@ -64,9 +64,7 @@ export default function HomePlane1({ projects, snapping }: Type): JSX.Element {
             
             snapping ? snapBack() : hovering ? hover() : hoverMove();
         }
-        useFrame((state) => {
-            animateMesh(state);
-        });
+        
 
         useEffect(() => {
 

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import styles from "../../styles/scss/workPage/_work.module.scss";
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useRouter } from 'next/router';
 
 interface Type{
@@ -11,7 +11,6 @@ interface Type{
 
 export default function work( { bgImg, setbgImg, projectList }:Type ){
   
-  const [ notFullScreen, setNotFullScreen ] = useState(false);
   const router = useRouter();
 
     // rewrote okHover plugin mouse over functionality
@@ -66,18 +65,12 @@ export default function work( { bgImg, setbgImg, projectList }:Type ){
   useEffect(()=>{
     const bg = document.body;
     bg.classList.remove("needsScroll");
-
-      if (window.screenTop && window.screenY) {
-        setNotFullScreen(true);
-      }else if( !window.screenTop && !window.screenY){
-        setNotFullScreen(false);
-      }
-    },[notFullScreen]);
+    },[]);
 
     return(
         <>
             <section className={styles.projectListSection}>
-                <div className={ notFullScreen ?  `${styles.projectLinks} ${styles.notFullScreenAdjust}` : `${styles.projectLinks}` }>
+                <div className={`${styles.projectLinks}`}>
                     {projectList?.map((item, i)=>(
                         <Link href={ item.fields.projectLink } key={i}>
                             <a data-okimage={ item.fields.hoverImage.fields.file.url } className={ bgImg ? `${styles.projectLink} ${styles.hoverColor } Link`: `${styles.projectLink} Link` } onMouseMove={handleMouseOver}>{item.fields.projectName}</a>

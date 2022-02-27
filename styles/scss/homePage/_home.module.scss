@@ -7,21 +7,7 @@
     top: 0;
     left: 0;
 }
-.homeScene{
-    // @include fullviewPort();
-    height: 100vh;
-    width: 100vw;
-    position:fixed;
-    padding:0;
-    margin:0;
-    top:0;
-    left:0;
-    // width: 100%;
-    // height: 100%;    
-    // position: fixed;
-    // top: 0;
-    // left: 0;
-}
+
 .noScroll{
     @include fullviewPort();
     overflow: hidden;
