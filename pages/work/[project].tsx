@@ -26,7 +26,6 @@ export default function ProjectPages({ projectPage }: Type): JSX.Element {
         bg.classList.add("needsScroll");
         
         bg.removeAttribute("style");
-        
     }, []);
 
     return (
