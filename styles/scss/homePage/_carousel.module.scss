@@ -12,15 +12,11 @@
     height: 100vh;
     width: 100vw;
     position: fixed;
-    padding:0;
-    margin:0;
-    top:0;
-    left:0;
-    // width: 100%;
-    // height: 100%;    
-    // position: fixed;
-    // top: 0;
-    // left: 0;
+    padding: 0;
+    margin: 0;
+    top: 0;
+    left: 0;
+
     @media screen and (max-width:$s){
         height: 100vh;
         width: 100vw;
