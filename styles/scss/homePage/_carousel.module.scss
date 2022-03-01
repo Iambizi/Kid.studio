@@ -17,6 +17,7 @@
     top: 0;
     left: 0;
     min-height: -webkit-fill-available;
+    height: -webkit-fill-available;
 
     @media screen and (max-width:$s){
         height: 100vh;
