@@ -29,6 +29,9 @@
     .previousButton{
         margin: 0;
         left: 0px;
+        @media screen and (max-width:$m){
+            left: -2%;
+        }
         transform: rotate(270deg);
         &:hover{
             cursor: url(https://kidstudio.co/assets/css/../images/left.png) 25 15, auto;
@@ -37,6 +40,9 @@
     .nextButton{
         top: 48%;
         right: 25px;
+        @media screen and (max-width:$m){
+            right: 2%;
+        }
         transform: rotate(90deg);
         &:hover{
             cursor: url(https://kidstudio.co/assets/css/../images/right.png) 25 15, auto;
