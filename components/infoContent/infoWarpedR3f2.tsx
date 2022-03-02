@@ -27,8 +27,8 @@ export default function WarpedImage({ src }: Type): JSX.Element {
 
         const texture1 = loader.load(`${src}`);
 
-        const width = isMobile ? 3.1 : 9;
-        const height = isMobile ? 1.7 : 5;
+        const width = isMobile ? 3.25 : 9;
+        const height = isMobile ? 1.75 : 5;
 
         useFrame((state, delta) => {
             animateMesh(state);
