@@ -37,8 +37,8 @@ export default function HomePlane1({ projects, snapping }: Type): JSX.Element {
         textures[1].minFilter = THREE.LinearFilter;
         textures[2].minFilter = THREE.LinearFilter;
 
-        const width = isMobile ? 3.1 : 9;
-        const height = isMobile ? 1.7 : 5;
+        const width = isMobile ? 3.25 : 9;
+        const height = isMobile ? 1.75 : 5;
 
         useFrame((state) => {
             animateMesh(state);
