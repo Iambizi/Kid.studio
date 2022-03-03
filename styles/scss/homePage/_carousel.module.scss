@@ -20,12 +20,9 @@
     right: 0;
     max-width: 100%;
     div{
-        padding: 0;
-        margin: 0;
-        border: 2px solid red;
-        canvas{
-            border: 2px solid green;
-        }
+        padding: 0 !important;
+        margin: 0 !important;
+        display: block !important;
     }
 }
 .titles{
