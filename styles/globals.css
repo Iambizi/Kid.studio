@@ -51,7 +51,7 @@ body.needsScroll{
 canvas{
   margin: 0 !important;
   overflow-y: hidden !important;
-  position: fixed !important;
+  /* position: fixed !important; */
   padding: 0 !important;
   display: block !important;
 }
