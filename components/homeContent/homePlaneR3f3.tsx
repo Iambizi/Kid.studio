@@ -11,7 +11,7 @@ import { isMobile } from 'react-device-detect';
 
 
 interface Type {
-    projects: any;
+    projects?: any;
     carouselX: number;
     goNext: any;
     goPrevious: any;
