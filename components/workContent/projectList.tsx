@@ -1,6 +1,7 @@
 import Link from "next/link";
 import styles from "../../styles/scss/workPage/_work.module.scss";
 import React, { useEffect } from "react";
+import { isMobile } from 'react-device-detect';
 
 interface Type {
   bgImg: boolean;
@@ -59,6 +60,7 @@ export default function work({ bgImg, setbgImg, projectList }: Type) {
   useEffect(() => {
     const bg = document.body;
     bg.classList.remove("needsScroll");
+    isMobile ? bg.classList.add("needsScroll") : bg.classList.remove("needsScroll");
   }, []);
 
   return (
