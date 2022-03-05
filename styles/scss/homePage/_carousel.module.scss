@@ -1,24 +1,18 @@
 @import "../variables";
 
 @mixin fullviewPort(){
-    height: 100vh;
-    width: 100vw;
-    position: fixed;
-    top: 0;
-    left: 0;
-}
-.homeScene{
-    // @include fullviewPort();
     height: 100%;
     width: 100%;
     position: fixed;
+    top: 0;
+    left: 0;
     padding: 0;
     margin: 0;
     top: 0;
     left: 0;
-    bottom: 0;
-    right: 0;
-    max-width: 100%;
+}
+.homeScene{
+    @include fullviewPort();
 }
 .titles{
     display: flex;
