@@ -59,7 +59,7 @@ export default function work({ bgImg, setbgImg, projectList }: Type) {
   // projectPage useEffect hook needs refactoring to avoid calling it again here.
   useEffect(() => {
     const bg = document.body;
-    bg.classList.remove("needsScroll");
+    // bg.classList.remove("needsScroll");
     isMobile ? bg.classList.add("needsScroll") : bg.classList.remove("needsScroll");
   }, []);
 
