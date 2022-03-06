@@ -108,7 +108,7 @@ export default function HomePlane1({ projects, snapping }: Type): JSX.Element {
 
     return (
         <>
-            <HomePlane position={[100, 0, 0]} />
+            <HomePlane position={[100, 0, .1]} />
         </>
     )
 }
