@@ -42,7 +42,7 @@ export default function WarpedImage({ projects, carouselX, goNext, goPrevious }:
 
     return (
         <>
-            <div className={`${styles.homeScene} homeScene`}>
+            <div className={`${styles.homeScene}`}>
                 <Canvas dpr={isMobile? [1,2] : [0,1]}>
                     <Suspense fallback={<Loader/>}>
                         <SliderContainer>
