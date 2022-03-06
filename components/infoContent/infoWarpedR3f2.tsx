@@ -96,7 +96,7 @@ export default function WarpedImage({ src }: Type): JSX.Element {
             <div className={`${styles.homeScene} homeScene`}>
                 <Canvas dpr={[1, 2]}>
                     <Suspense fallback={<Loader/>}>
-                    {isMobile ? <InfoPlane position={[0, -.7, 0]} /> : <InfoPlane position={[0, 0, 0]} />}
+                    {isMobile ? <InfoPlane position={[0, -.7, .1]} /> : <InfoPlane position={[0, 0, .1]} />}
                     {/* <InfoPlane position={[0, 0, 0]} /> */}
                     </Suspense>
                 </Canvas>
