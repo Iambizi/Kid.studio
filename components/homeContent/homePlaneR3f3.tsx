@@ -31,7 +31,6 @@ export default function WarpedImage({ projects, carouselX, goNext, goPrevious }:
         const items = useRef<THREE.Mesh>();
         useFrame((state, delta) => {
             state.camera.position.x = THREE.MathUtils.damp(state.camera.position.x, carouselX, 7, delta);
-            // state.camera.lookAt(0, 0, 0);
         })
         return (
             <group ref={items}>
