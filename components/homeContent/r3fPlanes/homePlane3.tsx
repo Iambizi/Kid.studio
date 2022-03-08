@@ -8,9 +8,17 @@ import { isMobile } from 'react-device-detect';
 interface Type {
     projects: any;
     snapping: boolean;
+    hover_dist: number;
+    i: number;
+    timerx: number;
+    hovering: boolean;
+    mouse: {
+        x:number,
+        y: number
+    };
 }
 
-export default function HomePlane1({ projects, snapping }: Type): JSX.Element {
+export default function HomePlane1({ projects, snapping, hover_dist, i, timerx, hovering, mouse }: Type): JSX.Element {
 
     const src1 = projects[0]?.fields.featuredProjectImage.fields ? projects[0].fields.featuredProjectImage.fields.file.url : null;
     const src2 = projects[1]?.fields.featuredProjectImage.fields ? projects[1].fields.featuredProjectImage.fields.file.url : null;
@@ -19,17 +27,6 @@ export default function HomePlane1({ projects, snapping }: Type): JSX.Element {
     const HomePlane = (props: any) => {
 
         const homePlaneRef = useRef<THREE.Mesh>();
-
-        let hover_dist = 0.3;
-        let i = 0;
-        let timerx = 500;
-        let hovering = false;
-        // let snapping = false;
-        let mouse = { x: 0, y: 0 };
-
-        let onDocumentMouseMove;
-        let onMouseDown;
-        let onMouseUp;
 
         const textures = useTexture([src1, src2, src3]);
 

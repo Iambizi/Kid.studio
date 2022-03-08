@@ -18,6 +18,11 @@ interface Type {
 export default function WarpedImage({ projects, carouselX }: Type): JSX.Element {
     
     let snapping = false;
+    let hover_dist = 0.3;
+    let i = 0;
+    let timerx = 500;
+    let hovering = false;
+    let mouse = { x: 0, y: 0 };
 
     const SliderContainer = ({  children }) => {
         const items = useRef<THREE.Mesh>();
@@ -37,9 +42,9 @@ export default function WarpedImage({ projects, carouselX }: Type): JSX.Element 
                 <Canvas dpr={isMobile? [1,2] : [0,1]}>
                     <Suspense fallback={<Loader/>}>
                         <SliderContainer>
-                            <HomePlane1 projects={projects} snapping={snapping} />
-                            <HomePlane2 projects={projects} snapping={snapping} />
-                            <HomePlane3 projects={projects} snapping={snapping} />
+                            <HomePlane1 projects={projects} snapping={snapping} hover_dist={hover_dist} i={i} timerx={timerx} hovering={hovering} mouse={mouse} />
+                            <HomePlane2 projects={projects} snapping={snapping} hover_dist={hover_dist} i={i} timerx={timerx} hovering={hovering} mouse={mouse} />
+                            <HomePlane3 projects={projects} snapping={snapping} hover_dist={hover_dist} i={i} timerx={timerx} hovering={hovering} mouse={mouse} />
                         </SliderContainer>
                     </Suspense>
                 </Canvas>
