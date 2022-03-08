@@ -63,7 +63,6 @@ export default function HomePlane1({ projects, snapping, hover_dist, i, timerx, 
             }
 
             snapping ? snapBack() : hovering ? hover(state) : hoverMove();
-        
         }
         
 
