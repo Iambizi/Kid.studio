@@ -13,11 +13,9 @@ import { isMobile } from 'react-device-detect';
 interface Type {
     projects?: any;
     carouselX: number;
-    goNext: any;
-    goPrevious: any;
 }
 
-export default function WarpedImage({ projects, carouselX, goNext, goPrevious }: Type): JSX.Element {
+export default function WarpedImage({ projects, carouselX }: Type): JSX.Element {
     
     let snapping = false;
 

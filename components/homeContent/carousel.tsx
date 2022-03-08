@@ -22,7 +22,7 @@ export default function Carousel({ carouselX, projects, goPrevious, goNext }: Ty
                     </div>
                 ))}
             </div>
-            <WarpedIMG carouselX={carouselX} projects={projects} goNext={goNext} goPrevious={goPrevious} />
+            <WarpedIMG carouselX={carouselX} projects={projects} />
         </>
     )
 }
