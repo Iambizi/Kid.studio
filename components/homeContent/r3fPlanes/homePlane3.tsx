@@ -46,25 +46,25 @@ export default function HomePlane1({ projects, snapping }: Type): JSX.Element {
 
         const animateMesh = (state) => {
 
-                const hoverMove = () => {
-                    mouse.x > 0.5 ? homePlaneRef.current.rotation.y < hover_dist && (homePlaneRef.current.rotation.y += 0.002) : mouse.x < 0.5 && homePlaneRef.current.rotation.y > -hover_dist && (homePlaneRef.current.rotation.y -= 0.002),
-                        mouse.y > 0.5 ? homePlaneRef.current.rotation.x < hover_dist && (homePlaneRef.current.rotation.x += 0.002) : mouse.y < 0.5 && homePlaneRef.current.rotation.x > -hover_dist && (homePlaneRef.current.rotation.x -= 0.002);
-                    (homePlaneRef.current.rotation.y > hover_dist || homePlaneRef.current.rotation.y < -hover_dist) && (homePlaneRef.current.rotation.x > hover_dist || homePlaneRef.current.rotation.x < -hover_dist) && (hovering = true);
-                }
-                const snapBack = () => {
-                    let speed = 0.005
-                    if (homePlaneRef.current.rotation.x < 0) homePlaneRef.current.rotation.x += speed;
-                    if (homePlaneRef.current.rotation.x > 0) homePlaneRef.current.rotation.x -= speed;
-                    if (homePlaneRef.current.rotation.y < 0) homePlaneRef.current.rotation.y += speed;
-                    if (homePlaneRef.current.rotation.y > 0) homePlaneRef.current.rotation.y -= speed;
-                }
-                const hover = () => {
-                    i == timerx && (i = 0);
-                    timerx / 2 > i ? ((homePlaneRef.current.rotation.x += 3e-4), (homePlaneRef.current.rotation.y -= 3e-4)) : ((homePlaneRef.current.rotation.x -= 3e-4), (homePlaneRef.current.rotation.y += 3e-4));
-                    i++;
-                }
+            const hoverMove = () => {
+                mouse.x > 0.5 ? homePlaneRef.current.rotation.y < hover_dist && (homePlaneRef.current.rotation.y += 0.002) : mouse.x < 0.5 && homePlaneRef.current.rotation.y > -hover_dist && (homePlaneRef.current.rotation.y -= 0.002),
+                    mouse.y > 0.5 ? homePlaneRef.current.rotation.x < hover_dist && (homePlaneRef.current.rotation.x += 0.002) : mouse.y < 0.5 && homePlaneRef.current.rotation.x > -hover_dist && (homePlaneRef.current.rotation.x -= 0.002);
+                (homePlaneRef.current.rotation.y > hover_dist || homePlaneRef.current.rotation.y < -hover_dist) && (homePlaneRef.current.rotation.x > hover_dist || homePlaneRef.current.rotation.x < -hover_dist) && (hovering = true);
+            }
+            const snapBack = () => {
+                let speed = 0.005
+                if (homePlaneRef.current.rotation.x < 0) homePlaneRef.current.rotation.x += speed;
+                if (homePlaneRef.current.rotation.x > 0) homePlaneRef.current.rotation.x -= speed;
+                if (homePlaneRef.current.rotation.y < 0) homePlaneRef.current.rotation.y += speed;
+                if (homePlaneRef.current.rotation.y > 0) homePlaneRef.current.rotation.y -= speed;
+            }
+            const hover = () => {
+                i == timerx && (i = 0);
+                timerx / 2 > i ? ((homePlaneRef.current.rotation.x += 3e-4), (homePlaneRef.current.rotation.y -= 3e-4)) : ((homePlaneRef.current.rotation.x -= 3e-4), (homePlaneRef.current.rotation.y += 3e-4));
+                i++;
+            }
 
-                snapping ? snapBack() : hovering ? hover() : hoverMove();
+            snapping ? snapBack() : hovering ? hover() : hoverMove();
         }
 
         useEffect(() => {
@@ -81,7 +81,7 @@ export default function HomePlane1({ projects, snapping }: Type): JSX.Element {
                 mouse.x = e.clientX / window.innerWidth;
                 mouse.y = e.clientY / window.innerHeight;
             }
-            
+
             document.addEventListener("mousemove", onDocumentMouseMove, false);
             document.addEventListener("mousedown", onMouseDown, false);
             document.addEventListener("mouseup", onMouseUp, false);
@@ -89,7 +89,7 @@ export default function HomePlane1({ projects, snapping }: Type): JSX.Element {
             return () => {
                 document.removeEventListener("mousemove", onDocumentMouseMove, false);
                 document.removeEventListener("mousedown", onMouseDown, false);
-                document.removeEventListener("mouseup", onMouseUp, false); 
+                document.removeEventListener("mouseup", onMouseUp, false);
             };
 
         }, []);
@@ -97,7 +97,7 @@ export default function HomePlane1({ projects, snapping }: Type): JSX.Element {
         return (
             <>
                 <mesh {...props} ref={homePlaneRef}>
-                    <planeGeometry args={[width, height]} />
+                    <planeBufferGeometry args={[width, height]} />
                     <meshBasicMaterial map={textures[2]} />
                 </mesh>
             </>

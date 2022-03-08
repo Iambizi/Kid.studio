@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useMemo } from 'react';
 import * as THREE from 'three';
 import { useTexture } from "@react-three/drei";
 import { useFrame } from '@react-three/fiber';
@@ -95,7 +95,7 @@ export default function HomePlane1({ projects, snapping }: Type): JSX.Element {
         return (
             <>
                 <mesh {...props} ref={homePlaneRef}>
-                    <planeGeometry args={[width, height]} />
+                    <planeBufferGeometry args={[width, height]} />
                     <meshBasicMaterial map={textures[0]} />
                 </mesh>
             </>
