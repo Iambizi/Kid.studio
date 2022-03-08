@@ -26,7 +26,6 @@ export default function HomePlane1({ projects, snapping }: Type): JSX.Element {
         let i = 0;
         let timerx = 500;
         let hovering = false;
-        let snapping = false;
 
         const textures = useTexture([src1, src2, src3]);
 
@@ -56,13 +55,14 @@ export default function HomePlane1({ projects, snapping }: Type): JSX.Element {
                 if (homePlaneRef.current.rotation.y < 0) homePlaneRef.current.rotation.y += speed;
                 if (homePlaneRef.current.rotation.y > 0) homePlaneRef.current.rotation.y -= speed;
             }
-            const hover = () => {
+            const hover = (state) => {
                 i == timerx && (i = 0);
                 timerx / 2 > i ? ((homePlaneRef.current.rotation.x += 3e-4), (homePlaneRef.current.rotation.y -= 3e-4)) : ((homePlaneRef.current.rotation.x -= 3e-4), (homePlaneRef.current.rotation.y += 3e-4));
                 i++;
             }
-            
-            snapping ? snapBack() : hovering ? hover() : hoverMove();
+
+            snapping ? snapBack() : hovering ? hover(state) : hoverMove();
+        
         }
         
 
