@@ -68,6 +68,10 @@
                 margin-top: -1%;
             }
             
+            @media (min-height:742px){
+                margin-top: -1%;
+            }
+
             @media (min-height:800px){
                 margin-top: 1.5%;
             }
@@ -76,14 +80,20 @@
             }
         }
         @media screen and (min-width:$xl){
-            margin-top: 3.2%;
+            // margin-top: 3.2%;
             font-size: 1em;
             @media (orientation: landscape) {
                 // margin-top: 2%;
                 // margin-top: 4.5%;
             }
+            @media (min-height:740px){
+                margin-top: 1%;
+            }
             @media (min-height:1000px){
                 margin-top: 5%;
+            }
+            @media (min-height:1080px){
+                margin-top: 7%;
             }
         }
         .projectLink{

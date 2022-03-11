@@ -85,12 +85,16 @@ export default function HomePlane1({ projects, snapping, hover_dist, i, timerx, 
             document.addEventListener("mousedown", onMouseDown, false);
             document.addEventListener("mouseup", onMouseUp, false);
 
+            
+
             return () => {
                 document.removeEventListener("mousemove", onDocumentMouseMove, false);
                 document.removeEventListener("mousedown", onMouseDown, false);
                 document.removeEventListener("mouseup", onMouseUp, false); 
             };
         }, []);
+        const geom = useMemo(() => new THREE.PlaneBufferGeometry(), [])
+            const mat = useMemo(() => new THREE.MeshBasicMaterial(), [])
 
         return (
             <>
