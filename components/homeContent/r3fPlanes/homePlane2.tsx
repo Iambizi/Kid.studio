@@ -37,10 +37,6 @@ export default function HomePlane1({ projects, snapping, hover_dist, i, timerx, 
         const width = isMobile ? 3.26 : 9;
         const height = isMobile ? 1.76 : 5;
 
-        useFrame((state) => {
-            animateMesh(state);
-        });
-
         const animateMesh = (state) => {
 
             const hoverMove = () => {
@@ -58,7 +54,7 @@ export default function HomePlane1({ projects, snapping, hover_dist, i, timerx, 
             }
 
             const hover = () => {
-                i == timerx && (i = 0);
+                i === timerx && (i = 0);
                 timerx / 2 > i ? ((homePlaneRef.current.rotation.x += 3e-4), (homePlaneRef.current.rotation.y -= 3e-4)) : ((homePlaneRef.current.rotation.x -= 3e-4), (homePlaneRef.current.rotation.y += 3e-4));
                 i++;
             }
@@ -92,6 +88,10 @@ export default function HomePlane1({ projects, snapping, hover_dist, i, timerx, 
             };
 
         }, []);
+
+        useFrame((state) => {
+            animateMesh(state);
+        });
 
         return (
             <>

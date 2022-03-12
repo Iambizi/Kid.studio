@@ -37,10 +37,6 @@ export default function HomePlane1({ projects, snapping, hover_dist, i, timerx, 
         const width = isMobile ? 3.26 : 9;
         const height = isMobile ? 1.76 : 5;
 
-        useFrame((state) => {
-            animateMesh(state);
-        });
-
         const animateMesh = (state) => {
 
             const hoverMove = () => {
@@ -57,15 +53,14 @@ export default function HomePlane1({ projects, snapping, hover_dist, i, timerx, 
                 if (homePlaneRef.current.rotation.y > 0) homePlaneRef.current.rotation.y -= speed;
             }
             const hover = (state) => {
-                i == timerx && (i = 0);
+                i === timerx && (i = 0);
                 timerx / 2 > i ? ((homePlaneRef.current.rotation.x += 3e-4), (homePlaneRef.current.rotation.y -= 3e-4)) : ((homePlaneRef.current.rotation.x -= 3e-4), (homePlaneRef.current.rotation.y += 3e-4));
                 i++;
             }
 
             snapping ? snapBack() : hovering ? hover(state) : hoverMove();
         }
-        
-
+       
         useEffect(() => {
 
             const onMouseDown = (e) => {
@@ -96,6 +91,9 @@ export default function HomePlane1({ projects, snapping, hover_dist, i, timerx, 
         // const geom = useMemo(() => new THREE.PlaneBufferGeometry(), [])
         //     const mat = useMemo(() => new THREE.MeshBasicMaterial(), [])
 
+        useFrame((state) => {
+            animateMesh(state);
+        }); 
         return (
             <>
                 <mesh {...props} ref={homePlaneRef}>
