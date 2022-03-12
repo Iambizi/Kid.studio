@@ -17,11 +17,11 @@ interface Type {
 
 export default function WarpedImage({ projects, carouselX }: Type): JSX.Element {
     
+    let hovering = false;
     let snapping = false;
     let hover_dist = 0.3;
     let i = 0;
     let timerx = 500;
-    let hovering = false;
     let mouse = { x: 0, y: 0 };
 
     const SliderContainer = ({  children }) => {
