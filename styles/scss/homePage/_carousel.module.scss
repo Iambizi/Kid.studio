@@ -97,11 +97,17 @@
                     height: 1%;
                     top: 36%;
                     width: 11%;
-                    @media (min-height:700px){
+                    @media (min-height:600px){
                         top: 34%;
                         height: 1.45%;
 
-                    }
+                    }                    
+                }
+                @media screen and (min-width:$l1){
+                    height: 1%;
+                    top: 36%;
+                    width: 11%;
+                    
                 }
                 @media screen and (min-width: 1440px){
                     height: 1.3%;
