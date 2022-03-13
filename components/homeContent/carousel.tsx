@@ -1,6 +1,6 @@
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
 import Link from "next/link";
-import WarpedIMG from "./homePlaneR3f3";
+import {WarpedImage} from "./homePlaneR3f3";
 
 interface Type {
     carouselX: number;
@@ -22,7 +22,7 @@ export default function Carousel({ carouselX, projects, goPrevious, goNext }: Ty
                     </div>
                 ))}
             </div>
-            <WarpedIMG carouselX={carouselX} projects={projects} />
+            <WarpedImage carouselX={carouselX} projects={projects} />
         </>
     )
 }
