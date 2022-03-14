@@ -8,13 +8,15 @@ import HomePlane3 from "./r3fPlanes/homePlane17";
 import Loader from "../common/loaderR3F";
 import { isMobile } from 'react-device-detect';
 
+
+
 interface Type {
     projects?: any;
     carouselX: number;
 }
 
 export const WarpedImage = ({ projects, carouselX }: Type): JSX.Element => {
-    
+
     let hovering = false;
     let snapping = false;
     let hover_dist = 0.3;
@@ -22,29 +24,21 @@ export const WarpedImage = ({ projects, carouselX }: Type): JSX.Element => {
     let timerx = 500;
     let mouse = { x: 0, y: 0 };
 
-    const SliderContainer = ({  children }) => {
-        const items = useRef<THREE.Mesh>();
-        useFrame((state, delta) => {
-            state.camera.position.x = THREE.MathUtils.damp(state.camera.position.x, carouselX, 7, delta);
-        })
-        return (
-            <group ref={items}>
-                {children}
-            </group>
-        );
-    }
-
+    const items = useRef<THREE.Mesh>();
+    // useFrame((state, delta) => {
+    //     state.camera.position.x = THREE.MathUtils.damp(state.camera.position.x, carouselX, 7, delta);
+    // })
     return (
         <>
             <div className={`${styles.homeScene}`}>
-                <Canvas dpr={isMobile? [1,2] : [0,1]}>
-                    <Suspense fallback={<Loader/>}>
-                        <SliderContainer>
-                            <HomePlane1 projects={projects} snapping={snapping} hover_dist={hover_dist} i={i} timerx={timerx} hovering={hovering} mouse={mouse}  />
-                            <HomePlane2 projects={projects} snapping={snapping} hover_dist={hover_dist} i={i} timerx={timerx} hovering={hovering} mouse={mouse}  />
+                <Canvas dpr={isMobile ? [1, 2] : [0, 1]}>
+                    <group ref={items}>
+                        <Suspense fallback={<Loader />}>
+                            <HomePlane1 projects={projects} snapping={snapping} hover_dist={hover_dist} i={i} timerx={timerx} hovering={hovering} mouse={mouse} />
+                            <HomePlane2 projects={projects} snapping={snapping} hover_dist={hover_dist} i={i} timerx={timerx} hovering={hovering} mouse={mouse} />
                             <HomePlane3 projects={projects} snapping={snapping} hover_dist={hover_dist} i={i} timerx={timerx} hovering={hovering} mouse={mouse} />
-                        </SliderContainer>
-                    </Suspense>
+                        </Suspense>
+                    </group>
                 </Canvas>
             </div>
         </>
