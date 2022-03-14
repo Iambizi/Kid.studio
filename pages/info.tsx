@@ -7,6 +7,7 @@ import InfoBox from '../components/infoContent/infoBox';
 import InfoWarpImg from '../components/infoContent/infoWarpedR3f2';
 // import InfoWarpImg from '../components/common/commonWarpedPlane';
 import { connectClient } from '../components/common/utils/createClient';
+import {InfoPlaneCanvas} from '../components/infoContent/infoCanvas';
 
 
 interface Type {
@@ -30,7 +31,7 @@ export default function Info({ infoPageData, fallback }: Type): JSX.Element {
             <Meta page={"Info"} />
             <Layout>
                 <InfoBox aboutUs={aboutUs} />
-                <InfoWarpImg src={infoImage} />
+                <InfoPlaneCanvas src={infoImage} />
             </Layout>
         </>
     )
