@@ -1,7 +1,7 @@
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
 import Link from "next/link";
-import {WarpedImage} from "./homePlaneR3f3";
-
+// import {WarpedImage} from "./homePlaneR3f3";
+import {WarpedImage} from "./homePlaneCanvas";
 interface Type {
     carouselX: number;
     projects: any;
