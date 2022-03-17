@@ -34,9 +34,10 @@ export default function HomePlane1 ( { projects, snapping, hover_dist, i, timerx
 
     const width = isMobile ? 3.26 : 9;
     const height = isMobile ? 1.76 : 5;
+
+    console.log(snapping, hover_dist, i, timerx, hovering, mouse);
     
-    const animateMesh = ({state, mouse}) => {
-        console.log(mouse.x / window.innerWidth);
+    const animateMesh = (state) => {
 
         const hoverMove = () => {
             mouse.x > 0.5 ? homePlaneRef.current.rotation.y < hover_dist && (homePlaneRef.current.rotation.y += 0.002) : mouse.x < 0.5 && homePlaneRef.current.rotation.y > -hover_dist && (homePlaneRef.current.rotation.y -= 0.002),
@@ -51,13 +52,13 @@ export default function HomePlane1 ( { projects, snapping, hover_dist, i, timerx
             if (homePlaneRef.current.rotation.y < 0) homePlaneRef.current.rotation.y += speed;
             if (homePlaneRef.current.rotation.y > 0) homePlaneRef.current.rotation.y -= speed;
         }
-        const hover = (state) => {
+        const hover = () => {
             i === timerx && (i = 0);
             timerx / 2 > i ? ((homePlaneRef.current.rotation.x += 3e-4), (homePlaneRef.current.rotation.y -= 3e-4)) : ((homePlaneRef.current.rotation.x -= 3e-4), (homePlaneRef.current.rotation.y += 3e-4));
             i++;
         }
         
-        snapping ? snapBack() : hovering ? hover(state) : hoverMove();
+        snapping ? snapBack() : hovering ? hover() : hoverMove();
     }
 
     useFrame((state) => {
@@ -78,7 +79,7 @@ export default function HomePlane1 ( { projects, snapping, hover_dist, i, timerx
             hovering = false;
             mouse.x = e.clientX / window.innerWidth;
             mouse.y = e.clientY / window.innerHeight;
-            console.log(e.clientX);
+            console.log("mouse moviiing");
         }
 
         document.addEventListener("mousemove", onDocumentMouseMove, false);
