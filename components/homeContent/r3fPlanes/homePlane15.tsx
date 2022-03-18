@@ -23,6 +23,7 @@ export default function HomePlane1 ( { projects, snapping, hover_dist, i, timerx
     const src1 = projects[0]?.fields.featuredProjectImage.fields ? projects[0].fields.featuredProjectImage.fields.file.url : null;
     const src2 = projects[1]?.fields.featuredProjectImage.fields ? projects[1].fields.featuredProjectImage.fields.file.url : null;
     const src3 = projects[2]?.fields.featuredProjectImage.fields ? projects[2].fields.featuredProjectImage.fields.file.url : null;
+    
 
     const homePlaneRef = useRef<THREE.Mesh>();
 
@@ -62,17 +63,19 @@ export default function HomePlane1 ( { projects, snapping, hover_dist, i, timerx
     }
 
     useFrame((state) => {
-        animateMesh({state, mouse});
+        animateMesh(state);
     });
     
     useEffect(() => {
 
         const onMouseDown = (e) => {
             snapping = true;
+            console.log("mouse DOWNNN" + snapping);
         }
 
         const onMouseUp = (e) => {
             setTimeout(() => snapping = false, 950);
+            console.log("mouse UPPP" + snapping);
         }
 
         const onDocumentMouseMove = (e) => {
@@ -93,11 +96,26 @@ export default function HomePlane1 ( { projects, snapping, hover_dist, i, timerx
         };
     }, []);
 
+    const onMouseDown = (e) => {
+        snapping = true;
+        console.log("mouse DOWNNN" + snapping);
+    }
 
+    const onMouseUp = (e) => {
+        setTimeout(() => snapping = false, 950);
+        console.log("mouse UPPP" + snapping);
+    }
+
+    const onDocumentMouseMove = (e) => {
+        hovering = false;
+        mouse.x = e.clientX / window.innerWidth;
+        mouse.y = e.clientY / window.innerHeight;
+        console.log("mouse moviiing");
+    }
 
     return (
         <>
-            <mesh  ref={homePlaneRef} position={[0,0,.1]} onPointerMove={(e) => console.log('move')}>
+            <mesh  ref={homePlaneRef} position={[0,0,.1]} onPointerUp={onMouseUp} onPointerDown={onMouseDown} onPointerMove={onDocumentMouseMove}>
                 <planeBufferGeometry args={[width, height]} />
                 <meshBasicMaterial map={textures[0]} />
             </mesh>
