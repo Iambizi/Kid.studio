@@ -66,51 +66,48 @@ export default function HomePlane1 ( { projects, snapping, hover_dist, i, timerx
         animateMesh(state);
     });
     
-    useEffect(() => {
+    // useEffect(() => {
 
-        const onMouseDown = (e) => {
-            snapping = true;
-            console.log("mouse DOWNNN" + snapping);
-        }
+    //     const onMouseDown = (e) => {
+    //         snapping = true;
+    //         console.log("mouse DOWNNN" + snapping);
+    //     }
 
-        const onMouseUp = (e) => {
-            setTimeout(() => snapping = false, 950);
-            console.log("mouse UPPP" + snapping);
-        }
+    //     const onMouseUp = (e) => {
+    //         setTimeout(() => snapping = false, 950);
+    //         console.log("mouse UPPP" + snapping);
+    //     }
 
-        const onDocumentMouseMove = (e) => {
-            hovering = false;
-            mouse.x = e.clientX / window.innerWidth;
-            mouse.y = e.clientY / window.innerHeight;
-            console.log("mouse moviiing");
-        }
+    //     const onDocumentMouseMove = (e) => {
+    //         hovering = false;
+    //         mouse.x = e.clientX / window.innerWidth;
+    //         mouse.y = e.clientY / window.innerHeight;
+    //         console.log("mouse moviiing");
+    //     }
 
-        document.addEventListener("mousemove", onDocumentMouseMove, false);
-        document.addEventListener("mousedown", onMouseDown, false);
-        document.addEventListener("mouseup", onMouseUp, false);
+    //     document.addEventListener("mousemove", onDocumentMouseMove, false);
+    //     document.addEventListener("mousedown", onMouseDown, false);
+    //     document.addEventListener("mouseup", onMouseUp, false);
 
-        return () => {
-            document.removeEventListener("mousemove", onDocumentMouseMove, false);
-            document.removeEventListener("mousedown", onMouseDown, false);
-            document.removeEventListener("mouseup", onMouseUp, false); 
-        };
-    }, []);
+    //     return () => {
+    //         document.removeEventListener("mousemove", onDocumentMouseMove, false);
+    //         document.removeEventListener("mousedown", onMouseDown, false);
+    //         document.removeEventListener("mouseup", onMouseUp, false); 
+    //     };
+    // }, []);
 
     const onMouseDown = (e) => {
         snapping = true;
-        console.log("mouse DOWNNN" + snapping);
     }
 
     const onMouseUp = (e) => {
         setTimeout(() => snapping = false, 950);
-        console.log("mouse UPPP" + snapping);
     }
 
     const onDocumentMouseMove = (e) => {
         hovering = false;
         mouse.x = e.clientX / window.innerWidth;
         mouse.y = e.clientY / window.innerHeight;
-        console.log("mouse moviiing");
     }
 
     return (

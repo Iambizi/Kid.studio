@@ -59,31 +59,45 @@ export default function HomePlane2 ({ projects, snapping, hover_dist, i, timerx,
         snapping ? snapBack() : hovering ? hover(state) : hoverMove();
     }
     
-    useEffect(() => {
+    // useEffect(() => {
 
-        const onMouseDown = (e) => {
-            snapping = true;
-        }
+    //     const onMouseDown = (e) => {
+    //         snapping = true;
+    //     }
 
-        const onMouseUp = (e) => {
-            setTimeout(() => snapping = false, 950);
-        }
-        const onDocumentMouseMove = (e) => {
-            hovering = false;
-            mouse.x = e.clientX / window.innerWidth;
-            mouse.y = e.clientY / window.innerHeight;
-        }
+    //     const onMouseUp = (e) => {
+    //         setTimeout(() => snapping = false, 950);
+    //     }
+    //     const onDocumentMouseMove = (e) => {
+    //         hovering = false;
+    //         mouse.x = e.clientX / window.innerWidth;
+    //         mouse.y = e.clientY / window.innerHeight;
+    //     }
 
-        document.addEventListener("mousemove", onDocumentMouseMove, false);
-        document.addEventListener("mousedown", onMouseDown, false);
-        document.addEventListener("mouseup", onMouseUp, false);
+    //     document.addEventListener("mousemove", onDocumentMouseMove, false);
+    //     document.addEventListener("mousedown", onMouseDown, false);
+    //     document.addEventListener("mouseup", onMouseUp, false);
 
-        return () => {
-            document.removeEventListener("mousemove", onDocumentMouseMove, false);
-            document.removeEventListener("mousedown", onMouseDown, false);
-            document.removeEventListener("mouseup", onMouseUp, false); 
-        };
-    }, []);
+    //     return () => {
+    //         document.removeEventListener("mousemove", onDocumentMouseMove, false);
+    //         document.removeEventListener("mousedown", onMouseDown, false);
+    //         document.removeEventListener("mouseup", onMouseUp, false); 
+    //     };
+    // }, []);
+
+    const onMouseDown = (e) => {
+        snapping = true;
+    }
+
+    const onMouseUp = (e) => {
+        setTimeout(() => snapping = false, 950);
+    }
+
+    const onDocumentMouseMove = (e) => {
+        hovering = false;
+        mouse.x = e.clientX / window.innerWidth;
+        mouse.y = e.clientY / window.innerHeight;
+    }
 
     useFrame((state) => {
         animateMesh(state);
@@ -91,7 +105,7 @@ export default function HomePlane2 ({ projects, snapping, hover_dist, i, timerx,
 
     return (
         <>
-            <mesh ref={homePlaneRef} position={[100,0,.1]}>
+            <mesh ref={homePlaneRef} position={[100,0,.1]} onPointerUp={onMouseUp} onPointerDown={onMouseDown} onPointerMove={onDocumentMouseMove}>
                 <planeBufferGeometry args={[width, height]} />
                 <meshBasicMaterial map={textures[1]} />
             </mesh>
