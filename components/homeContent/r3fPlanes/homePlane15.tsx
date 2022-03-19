@@ -35,8 +35,6 @@ export default function HomePlane1 ( { projects, snapping, hover_dist, i, timerx
 
     const width = isMobile ? 3.26 : 9;
     const height = isMobile ? 1.76 : 5;
-
-    console.log(snapping, hover_dist, i, timerx, hovering, mouse);
     
     const animateMesh = (state) => {
 
@@ -65,39 +63,12 @@ export default function HomePlane1 ( { projects, snapping, hover_dist, i, timerx
     useFrame((state) => {
         animateMesh(state);
     });
+
     
-    // useEffect(() => {
-
-    //     const onMouseDown = (e) => {
-    //         snapping = true;
-    //         console.log("mouse DOWNNN" + snapping);
-    //     }
-
-    //     const onMouseUp = (e) => {
-    //         setTimeout(() => snapping = false, 950);
-    //         console.log("mouse UPPP" + snapping);
-    //     }
-
-    //     const onDocumentMouseMove = (e) => {
-    //         hovering = false;
-    //         mouse.x = e.clientX / window.innerWidth;
-    //         mouse.y = e.clientY / window.innerHeight;
-    //         console.log("mouse moviiing");
-    //     }
-
-    //     document.addEventListener("mousemove", onDocumentMouseMove, false);
-    //     document.addEventListener("mousedown", onMouseDown, false);
-    //     document.addEventListener("mouseup", onMouseUp, false);
-
-    //     return () => {
-    //         document.removeEventListener("mousemove", onDocumentMouseMove, false);
-    //         document.removeEventListener("mousedown", onMouseDown, false);
-    //         document.removeEventListener("mouseup", onMouseUp, false); 
-    //     };
-    // }, []);
-
     const onMouseDown = (e) => {
         snapping = true;
+        
+        console.log("dowwwwwwwwn");
     }
 
     const onMouseUp = (e) => {
@@ -113,6 +84,7 @@ export default function HomePlane1 ( { projects, snapping, hover_dist, i, timerx
     return (
         <>
             <mesh  ref={homePlaneRef} position={[0,0,.1]} onPointerUp={onMouseUp} onPointerDown={onMouseDown} onPointerMove={onDocumentMouseMove}>
+            {/* <mesh  ref={homePlaneRef} position={[0,0,.1]} onPointerDown={()=>console.log(snapping + "pointer Doooown mesh")} onPointerMove={()=>console.log(hovering + "pointer mooove mesh")}> */}
                 <planeBufferGeometry args={[width, height]} />
                 <meshBasicMaterial map={textures[0]} />
             </mesh>

@@ -8,7 +8,6 @@ interface Type {
     src: string;
 }
 
-
 export const InfoPlane = ({ src }: Type): JSX.Element => {
 
     const infoPlaneRef = useRef<THREE.Mesh>();
@@ -26,8 +25,6 @@ export const InfoPlane = ({ src }: Type): JSX.Element => {
 
     const width = isMobile ? 3.26 : 9;
     const height = isMobile ? 1.76 : 5;
-
-
 
     const animateMesh = (state) => {
 
