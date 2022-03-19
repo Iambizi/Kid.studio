@@ -18,7 +18,7 @@ interface Type {
     };
 }
 
-export default function HomePlane3 ({ projects, snapping, hover_dist, i, timerx, hovering, mouse }: Type): JSX.Element {
+export const HomePlane3 = ({ projects, snapping, hover_dist, i, timerx, hovering, mouse }: Type): JSX.Element => {
 
     const src1 = projects[0]?.fields.featuredProjectImage.fields ? projects[0].fields.featuredProjectImage.fields.file.url : null;
     const src2 = projects[1]?.fields.featuredProjectImage.fields ? projects[1].fields.featuredProjectImage.fields.file.url : null;
@@ -50,62 +50,68 @@ export default function HomePlane3 ({ projects, snapping, hover_dist, i, timerx,
             if (homePlaneRef.current.rotation.y < 0) homePlaneRef.current.rotation.y += speed;
             if (homePlaneRef.current.rotation.y > 0) homePlaneRef.current.rotation.y -= speed;
         }
-        const hover = (state) => {
+        const hover = () => {
             i === timerx && (i = 0);
             timerx / 2 > i ? ((homePlaneRef.current.rotation.x += 3e-4), (homePlaneRef.current.rotation.y -= 3e-4)) : ((homePlaneRef.current.rotation.x -= 3e-4), (homePlaneRef.current.rotation.y += 3e-4));
             i++;
         }
-
-        snapping ? snapBack() : hovering ? hover(state) : hoverMove();
+        
+        snapping ? snapBack() : hovering ? hover() : hoverMove();
     }
+
+
+    useFrame((state) => {
+        animateMesh(state);
+    });
     
-    // useEffect(() => {
+    useEffect(() => {
 
-    //     const onMouseDown = (e) => {
-    //         snapping = true;
-    //     }
+        const onMouseDown = (e) => {
+            snapping = true;
+        }
 
-    //     const onMouseUp = (e) => {
-    //         setTimeout(() => snapping = false, 950);
-    //     }
-    //     const onDocumentMouseMove = (e) => {
-    //         hovering = false;
-    //         mouse.x = e.clientX / window.innerWidth;
-    //         mouse.y = e.clientY / window.innerHeight;
-    //     }
+        const onMouseUp = (e) => {
+            setTimeout(() => snapping = false, 950);
+        }
+        const onDocumentMouseMove = (e) => {
+            hovering = false;
+            mouse.x = e.clientX / window.innerWidth;
+            mouse.y = e.clientY / window.innerHeight;
+        }
 
-    //     document.addEventListener("mousemove", onDocumentMouseMove, false);
-    //     document.addEventListener("mousedown", onMouseDown, false);
-    //     document.addEventListener("mouseup", onMouseUp, false);
+        document.addEventListener("mousemove", onDocumentMouseMove, false);
+        document.addEventListener("mousedown", onMouseDown, false);
+        document.addEventListener("mouseup", onMouseUp, false);
 
-    //     return () => {
-    //         document.removeEventListener("mousemove", onDocumentMouseMove, false);
-    //         document.removeEventListener("mousedown", onMouseDown, false);
-    //         document.removeEventListener("mouseup", onMouseUp, false); 
-    //     };
-    // }, []);
+        return () => {
+            document.removeEventListener("mousemove", onDocumentMouseMove, false);
+            document.removeEventListener("mousedown", onMouseDown, false);
+            document.removeEventListener("mouseup", onMouseUp, false); 
+        };
+    }, []);
 
     useFrame((state) => {
         animateMesh(state);
     });
 
-    const onMouseDown = (e) => {
-        snapping = true;
-    }
+    // const onMouseDown = (e) => {
+    //     snapping = true;
+    // }
 
-    const onMouseUp = (e) => {
-        setTimeout(() => snapping = false, 950);
-    }
+    // const onMouseUp = (e) => {
+    //     setTimeout(() => snapping = false, 950);
+    // }
 
-    const onDocumentMouseMove = (e) => {
-        hovering = false;
-        mouse.x = e.clientX / window.innerWidth;
-        mouse.y = e.clientY / window.innerHeight;
-    }
+    // const onDocumentMouseMove = (e) => {
+    //     hovering = false;
+    //     mouse.x = e.clientX / window.innerWidth;
+    //     mouse.y = e.clientY / window.innerHeight;
+    // }
 
     return (
         <>
-            <mesh ref={homePlaneRef} position={[200,0,.1]} onPointerUp={onMouseUp} onPointerDown={onMouseDown} onPointerMove={onDocumentMouseMove}>
+            {/* <mesh ref={homePlaneRef} position={[200,0,.1]} onPointerUp={onMouseUp} onPointerDown={onMouseDown} onPointerMove={onDocumentMouseMove}> */}
+            <mesh ref={homePlaneRef} position={[200,0,.1]}>
                 <planeBufferGeometry args={[width, height]} />
                 <meshBasicMaterial map={textures[2]} />
             </mesh>

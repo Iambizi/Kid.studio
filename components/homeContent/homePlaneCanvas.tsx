@@ -2,9 +2,9 @@ import React, { Suspense, useRef, useEffect } from 'react';
 import * as THREE from 'three';
 import { Canvas, useFrame } from '@react-three/fiber';
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
-import HomePlane1 from "./r3fPlanes/homePlane15";
-import HomePlane2 from "./r3fPlanes/homePlane16";
-import HomePlane3 from "./r3fPlanes/homePlane17";
+import { HomePlane1 } from "./r3fPlanes/homePlane15";
+import { HomePlane2 } from "./r3fPlanes/homePlane16";
+import { HomePlane3 } from "./r3fPlanes/homePlane17";
 import Loader from "../common/loaderR3F";
 import { isMobile } from 'react-device-detect';
 
@@ -14,12 +14,7 @@ interface Type {
     projects?: any;
     carouselX: number;
 }
-let hovering = false;
-let snapping = false;
-let hover_dist = 0.3;
-let i = 0;
-let timerx = 500;
-let mouse = { x: 0, y: 0 };
+
 
 const SliderContainer = ({ children, carouselX }) => {
 
@@ -37,38 +32,46 @@ const SliderContainer = ({ children, carouselX }) => {
 }
 
 export const WarpedImage = ({ projects, carouselX }: Type): JSX.Element => {
+
     const container = useRef<THREE.Mesh>();
 
-    useEffect(() => {
+    let hovering = false;
+    let snapping = false;
+    let hover_dist = 0.3;
+    let i = 0;
+    let timerx = 500;
+    let mouse = { x: 0, y: 0 };
+
+    // useEffect(() => {
             
-        const onPointerDown = (e) => {
-            snapping = true;
-            console.log(snapping + "pointer doooown canvas");
-        }
+    //     const onPointerDown = (e) => {
+    //         snapping = true;
+    //         console.log(snapping + "pointer doooown canvas");
+    //     }
     
-        const onPointerUp = (e) => {
-            setTimeout(() => snapping = false, 950);
-            console.log( snapping + "pointer uuuuup canvas");
-        }
+    //     const onPointerUp = (e) => {
+    //         setTimeout(() => snapping = false, 950);
+    //         console.log( snapping + "pointer uuuuup canvas");
+    //     }
     
-        const onPointerMove = (e) => {
-            hovering = false;
-            mouse.x = e.clientX / window.innerWidth;
-            mouse.y = e.clientY / window.innerHeight;
-            console.log(hovering + "pointer moooove canvas");
-        }
+    //     const onPointerMove = (e) => {
+    //         hovering = false;
+    //         mouse.x = e.clientX / window.innerWidth;
+    //         mouse.y = e.clientY / window.innerHeight;
+    //         console.log(mouse, hovering + "pointer moooove canvas");
+    //     }
         
-        container.current?.addEventListener('pointerup', onPointerUp);
-        container.current?.addEventListener('pointerdown', onPointerDown);
-        container.current?.addEventListener('pointermove', onPointerMove);
+    //     container.current?.addEventListener('pointerup', onPointerUp);
+    //     container.current?.addEventListener('pointerdown', onPointerDown);
+    //     container.current?.addEventListener('pointermove', onPointerMove);
 
-        return () => {
-            container.current?.removeEventListener('pointerup', onPointerUp);
-            container.current?.removeEventListener('pointerdown', onPointerDown);
-            container.current?.removeEventListener('pointermove', onPointerMove) ;               
-        }
+    //     return () => {
+    //         container.current?.removeEventListener('pointerup', onPointerUp);
+    //         container.current?.removeEventListener('pointerdown', onPointerDown);
+    //         container.current?.removeEventListener('pointermove', onPointerMove) ;               
+    //     }
 
-    }, []);
+    // }, []);
 
     return (
         <>
