@@ -20,12 +20,12 @@ interface Type {
 
 export const  HomePlane3 = ( { projects, snapping, hover_dist, i, timerx, hovering, mouse }: Type): JSX.Element => {
 
-    const src1 = projects[2]?.fields.featuredProjectImage.fields ? projects[0].fields.featuredProjectImage.fields.file.url : null;
+    const src3 = projects[2]?.fields.featuredProjectImage.fields ? projects[2].fields.featuredProjectImage.fields.file.url : null;
     
 
     const homePlaneRef = useRef<THREE.Mesh>();
 
-    const textures = useTexture(src1);
+    const textures = useTexture(src3);
 
     textures.minFilter = THREE.LinearFilter;
 
