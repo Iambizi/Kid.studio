@@ -58,14 +58,14 @@ export const WarpedImage = ({ projects, carouselX }: Type): JSX.Element => {
             console.log(hovering + "pointer moooove canvas");
         }
         
-        container.current.addEventListener('pointerup', onPointerUp);
-        container.current.addEventListener('pointerdown', onPointerDown);
-        container.current.addEventListener('pointermove', onPointerMove);
+        container.current?.addEventListener('pointerup', onPointerUp);
+        container.current?.addEventListener('pointerdown', onPointerDown);
+        container.current?.addEventListener('pointermove', onPointerMove);
 
         return () => {
-            container.current.removeEventListener('pointerup', onPointerUp);
-            container.current.removeEventListener('pointerdown', onPointerDown);
-            container.current.removeEventListener('pointermove', onPointerMove) ;               
+            container.current?.removeEventListener('pointerup', onPointerUp);
+            container.current?.removeEventListener('pointerdown', onPointerDown);
+            container.current?.removeEventListener('pointermove', onPointerMove) ;               
         }
 
     }, []);
