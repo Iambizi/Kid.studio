@@ -1,4 +1,4 @@
-import React, { Suspense, useRef, useEffect } from 'react';
+import React, { Suspense, useRef } from 'react';
 import * as THREE from 'three';
 import { Canvas, useFrame } from '@react-three/fiber';
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
@@ -41,37 +41,6 @@ export const WarpedImage = ({ projects, carouselX }: Type): JSX.Element => {
     let i = 0;
     let timerx = 500;
     let mouse = { x: 0, y: 0 };
-
-    // useEffect(() => {
-            
-    //     const onPointerDown = (e) => {
-    //         snapping = true;
-    //         console.log(snapping + "pointer doooown canvas");
-    //     }
-    
-    //     const onPointerUp = (e) => {
-    //         setTimeout(() => snapping = false, 950);
-    //         console.log( snapping + "pointer uuuuup canvas");
-    //     }
-    
-    //     const onPointerMove = (e) => {
-    //         hovering = false;
-    //         mouse.x = e.clientX / window.innerWidth;
-    //         mouse.y = e.clientY / window.innerHeight;
-    //         console.log(mouse, hovering + "pointer moooove canvas");
-    //     }
-        
-    //     container.current?.addEventListener('pointerup', onPointerUp);
-    //     container.current?.addEventListener('pointerdown', onPointerDown);
-    //     container.current?.addEventListener('pointermove', onPointerMove);
-
-    //     return () => {
-    //         container.current?.removeEventListener('pointerup', onPointerUp);
-    //         container.current?.removeEventListener('pointerdown', onPointerDown);
-    //         container.current?.removeEventListener('pointermove', onPointerMove) ;               
-    //     }
-
-    // }, []);
 
     return (
         <>

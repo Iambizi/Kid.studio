@@ -21,17 +21,13 @@ interface Type {
 export const  HomePlane1 = ( { projects, snapping, hover_dist, i, timerx, hovering, mouse }: Type): JSX.Element => {
 
     const src1 = projects[0]?.fields.featuredProjectImage.fields ? projects[0].fields.featuredProjectImage.fields.file.url : null;
-    const src2 = projects[1]?.fields.featuredProjectImage.fields ? projects[1].fields.featuredProjectImage.fields.file.url : null;
-    const src3 = projects[2]?.fields.featuredProjectImage.fields ? projects[2].fields.featuredProjectImage.fields.file.url : null;
     
 
     const homePlaneRef = useRef<THREE.Mesh>();
 
-    const textures = useTexture([src1, src2, src3]);
+    const textures = useTexture(src1);
 
-    textures[0].minFilter = THREE.LinearFilter;
-    textures[1].minFilter = THREE.LinearFilter;
-    textures[2].minFilter = THREE.LinearFilter;
+    textures.minFilter = THREE.LinearFilter;
 
     const width = isMobile ? 3.26 : 9;
     const height = isMobile ? 1.76 : 5;
@@ -93,34 +89,11 @@ export const  HomePlane1 = ( { projects, snapping, hover_dist, i, timerx, hoveri
         };
     })
 
-    
-    // const onMouseDown = (e) => {
-    //     snapping = true;
-        
-    //     console.log(snapping + "pointer Doooown mesh")
-    // }
-
-    // const onMouseUp = (e) => {
-    //     setTimeout(() => snapping = false, 950);
-    //     console.log(snapping + "pointer uuuup mesh")
-    // }
-
-    // const onDocumentMouseMove = (e) => {
-    //     hovering = false;
-    //     mouse.x = e.clientX / window.innerWidth;
-    //     mouse.y = e.clientY / window.innerHeight;
-    //     console.log(mouse, hovering + "pointer moooove mesh");
-    // }
-
-
-
     return (
         <>
-            {/* <mesh  ref={homePlaneRef} position={[0,0,.1]} onPointerUp={onMouseUp} onPointerDown={onMouseDown} onPointerMove={onDocumentMouseMove}> */}
-            {/* <mesh  ref={homePlaneRef} position={[0,0,.1]} onPointerDown={()=>console.log(snapping + "pointer Doooown mesh")} onPointerMove={()=>console.log(hovering + "pointer mooove mesh")}> */}
             <mesh  ref={homePlaneRef} position={[0,0,.1]}>
                 <planeBufferGeometry args={[width, height]} />
-                <meshBasicMaterial map={textures[0]} />
+                <meshBasicMaterial map={textures} />
             </mesh>
         </>
     )

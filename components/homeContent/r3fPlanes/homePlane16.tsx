@@ -18,23 +18,20 @@ interface Type {
     };
 }
 
-export const HomePlane2 = ({ projects, snapping, hover_dist, i, timerx, hovering, mouse }: Type): JSX.Element => {
+export const  HomePlane2 = ( { projects, snapping, hover_dist, i, timerx, hovering, mouse }: Type): JSX.Element => {
 
-    const src1 = projects[0]?.fields.featuredProjectImage.fields ? projects[0].fields.featuredProjectImage.fields.file.url : null;
     const src2 = projects[1]?.fields.featuredProjectImage.fields ? projects[1].fields.featuredProjectImage.fields.file.url : null;
-    const src3 = projects[2]?.fields.featuredProjectImage.fields ? projects[2].fields.featuredProjectImage.fields.file.url : null;
+    
 
     const homePlaneRef = useRef<THREE.Mesh>();
 
-    const textures = useTexture([src1, src2, src3]);
+    const textures = useTexture(src2);
 
-    textures[0].minFilter = THREE.LinearFilter;
-    textures[1].minFilter = THREE.LinearFilter;
-    textures[2].minFilter = THREE.LinearFilter;
+    textures.minFilter = THREE.LinearFilter;
 
     const width = isMobile ? 3.26 : 9;
     const height = isMobile ? 1.76 : 5;
-
+    
     const animateMesh = (state) => {
 
         const hoverMove = () => {
@@ -59,15 +56,16 @@ export const HomePlane2 = ({ projects, snapping, hover_dist, i, timerx, hovering
         snapping ? snapBack() : hovering ? hover() : hoverMove();
     }
 
-
     useFrame((state) => {
         animateMesh(state);
     });
-    
+
+
     useEffect(() => {
 
         const onMouseDown = (e) => {
             snapping = true;
+            e.stopImmediatePropagation();
         }
 
         const onMouseUp = (e) => {
@@ -77,6 +75,7 @@ export const HomePlane2 = ({ projects, snapping, hover_dist, i, timerx, hovering
             hovering = false;
             mouse.x = e.clientX / window.innerWidth;
             mouse.y = e.clientY / window.innerHeight;
+            console.log("mouse moviiing");
         }
 
         document.addEventListener("mousemove", onDocumentMouseMove, false);
@@ -86,30 +85,16 @@ export const HomePlane2 = ({ projects, snapping, hover_dist, i, timerx, hovering
         return () => {
             document.removeEventListener("mousemove", onDocumentMouseMove, false);
             document.removeEventListener("mousedown", onMouseDown, false);
-            document.removeEventListener("mouseup", onMouseUp, false); 
+            document.removeEventListener("mouseup", onMouseUp, false);
         };
-    }, []);
+    })
 
-    // const onMouseDown = (e) => {
-    //     snapping = true;
-    // }
-
-    // const onMouseUp = (e) => {
-    //     setTimeout(() => snapping = false, 950);
-    // }
-
-    // const onDocumentMouseMove = (e) => {
-    //     hovering = false;
-    //     mouse.x = e.clientX / window.innerWidth;
-    //     mouse.y = e.clientY / window.innerHeight;
-    // }
 
     return (
         <>
-            {/* <mesh ref={homePlaneRef} position={[100,0,.1]} onPointerUp={onMouseUp} onPointerDown={onMouseDown} onPointerMove={onDocumentMouseMove}> */}
-            <mesh ref={homePlaneRef} position={[100,0,.1]}>
+            <mesh  ref={homePlaneRef} position={[100,0,.1]}>
                 <planeBufferGeometry args={[width, height]} />
-                <meshBasicMaterial map={textures[1]} />
+                <meshBasicMaterial map={textures} />
             </mesh>
         </>
     )
