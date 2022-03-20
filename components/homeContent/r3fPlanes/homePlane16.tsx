@@ -74,6 +74,7 @@ export const  HomePlane2 = ( { projects, ...props }: Type): JSX.Element => {
             snapback.x = homePlaneRef2.current.rotation.x / 60; 
             snapback.y = homePlaneRef2.current.rotation.y / 60;
         }
+
         const onDocumentMouseMove = (e) => {
             hovering = false;
             mouse.x = e.clientX / window.innerWidth;
@@ -90,7 +91,6 @@ export const  HomePlane2 = ( { projects, ...props }: Type): JSX.Element => {
             document.removeEventListener("mouseup", onMouseUp, false);
         };
     })
-
 
     return (
         <>

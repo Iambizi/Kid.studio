@@ -79,7 +79,6 @@ export const  HomePlane1 = ( { projects, ...props}: Type): JSX.Element => {
             hovering = false;
             mouse.x = e.clientX / window.innerWidth;
             mouse.y = e.clientY / window.innerHeight;
-            console.log("mouse moviiing plane1");
         }
 
         document.addEventListener("mousemove", onDocumentMouseMove, false);

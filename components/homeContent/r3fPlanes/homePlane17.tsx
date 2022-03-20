@@ -9,10 +9,10 @@ interface Type {
     projects: any;
 }
 
-export const  HomePlane3 = ( { projects, ...props }: Type): JSX.Element => {
+export const HomePlane3 = ({ projects, ...props }: Type): JSX.Element => {
 
     const src3 = projects[2]?.fields.featuredProjectImage.fields ? projects[2].fields.featuredProjectImage.fields.file.url : null;
-    
+
     let hovering = false;
 
     let snapping = false;
@@ -34,7 +34,7 @@ export const  HomePlane3 = ( { projects, ...props }: Type): JSX.Element => {
 
     const width = isMobile ? 3.26 : 9;
     const height = isMobile ? 1.76 : 5;
-    
+
     const animateMesh = (state) => {
 
         const hoverMove = () => {
@@ -45,7 +45,7 @@ export const  HomePlane3 = ( { projects, ...props }: Type): JSX.Element => {
 
         const snapBack = () => {
             homePlaneRef3.current.rotation.x < 0.002 && homePlaneRef3.current.rotation.x > -0.002 && homePlaneRef3.current.rotation.y < 0.002 && homePlaneRef3.current.rotation.y > -0.002 && (snapping = false);
-            homePlaneRef3.current.rotation.x -= snapback.x; 
+            homePlaneRef3.current.rotation.x -= snapback.x;
             homePlaneRef3.current.rotation.y -= snapback.y;
         }
         const hover = () => {
@@ -53,7 +53,7 @@ export const  HomePlane3 = ( { projects, ...props }: Type): JSX.Element => {
             timerx / 2 > i ? ((homePlaneRef3.current.rotation.x += 3e-4), (homePlaneRef3.current.rotation.y -= 3e-4)) : ((homePlaneRef3.current.rotation.x -= 3e-4), (homePlaneRef3.current.rotation.y += 3e-4));
             i++;
         }
-        
+
         snapping ? snapBack() : hovering ? hover() : hoverMove();
     }
 
@@ -65,22 +65,22 @@ export const  HomePlane3 = ( { projects, ...props }: Type): JSX.Element => {
     useEffect(() => {
 
         const onMouseDown = (e) => {
-            mouseDown = true; 
-            prevMouse.x = mouse.x; 
+            mouseDown = true;
+            prevMouse.x = mouse.x;
             prevMouse.y = mouse.y;
         }
 
         const onMouseUp = (e) => {
-            mouseDown = false; 
-            snapping = true; 
-            snapback.x = homePlaneRef3.current.rotation.x / 60; 
+            mouseDown = false;
+            snapping = true;
+            snapback.x = homePlaneRef3.current.rotation.x / 60;
             snapback.y = homePlaneRef3.current.rotation.y / 60;
         }
+        
         const onDocumentMouseMove = (e) => {
             hovering = false;
             mouse.x = e.clientX / window.innerWidth;
             mouse.y = e.clientY / window.innerHeight;
-            console.log("mouse moviiing plane 3");
         }
 
         document.addEventListener("mousemove", onDocumentMouseMove, false);
