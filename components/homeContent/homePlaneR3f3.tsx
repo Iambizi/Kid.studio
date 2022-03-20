@@ -40,9 +40,9 @@ export const WarpedImage = ({ projects, carouselX }: Type): JSX.Element => {
                 <Canvas dpr={isMobile? [1,2] : [0,1]}>
                     <Suspense fallback={<Loader/>}>
                         <SliderContainer>
-                            <HomePlane1 projects={projects} snapping={snapping} hover_dist={hover_dist} i={i} timerx={timerx} hovering={hovering} mouse={mouse}  />
-                            <HomePlane2 projects={projects} snapping={snapping} hover_dist={hover_dist} i={i} timerx={timerx} hovering={hovering} mouse={mouse}  />
-                            <HomePlane3 projects={projects} snapping={snapping} hover_dist={hover_dist} i={i} timerx={timerx} hovering={hovering} mouse={mouse} />
+                            <HomePlane1 projects={projects} />
+                            <HomePlane2 projects={projects} />
+                            <HomePlane3 projects={projects} />
                         </SliderContainer>
                     </Suspense>
                 </Canvas>

@@ -6,16 +6,6 @@ import { isMobile } from 'react-device-detect';
 
 interface Type {
     projects: any;
-//     snapping: boolean;
-//     hover_dist: number;
-//     i: number;
-//     timerx: number;
-//     hovering: boolean;
-//     mouse: {
-//         x:number,
-//         y: number
-//     };
-    ref?: any;
 }
 
 export const  HomePlane2 = ( { projects, ...props }: Type): JSX.Element => {
@@ -51,14 +41,6 @@ export const  HomePlane2 = ( { projects, ...props }: Type): JSX.Element => {
             (homePlaneRef2.current.rotation.y > hover_dist || homePlaneRef2.current.rotation.y < -hover_dist) && (homePlaneRef2.current.rotation.x > hover_dist || homePlaneRef2.current.rotation.x < -hover_dist) && (hovering = true);
         }
 
-        // const snapBack = () => {
-        //     let speed = 0.005;
-        //     if (homePlaneRef2.current.rotation.x < 0) homePlaneRef2.current.rotation.x += speed;
-        //     if (homePlaneRef2.current.rotation.x > 0) homePlaneRef2.current.rotation.x -= speed;
-        //     if (homePlaneRef2.current.rotation.y < 0) homePlaneRef2.current.rotation.y += speed;
-        //     if (homePlaneRef2.current.rotation.y > 0) homePlaneRef2.current.rotation.y -= speed;
-        // }
-
         const snapBack = () => {
             homePlaneRef2.current.rotation.x < 0.002 && homePlaneRef2.current.rotation.x > -0.002 && homePlaneRef2.current.rotation.y < 0.002 && homePlaneRef2.current.rotation.y > -0.002 && (snapping = false);
             homePlaneRef2.current.rotation.x -= snapback.x; 
@@ -81,19 +63,12 @@ export const  HomePlane2 = ( { projects, ...props }: Type): JSX.Element => {
     useEffect(() => {
 
         const onMouseDown = (e) => {
-            // snapping = true;
-            // e.stopImmediatePropagation();
-            // console.log(snapping + " mouse down plane 2");
-
             mouseDown = true; 
             prevMouse.x = mouse.x; 
             prevMouse.y = mouse.y;
         }
 
         const onMouseUp = (e) => {
-            // setTimeout(() => snapping = false, 950);
-            // console.log("mouse up plane 2");
-
             mouseDown = false; 
             snapping = true; 
             snapback.x = homePlaneRef2.current.rotation.x / 60; 
@@ -103,7 +78,6 @@ export const  HomePlane2 = ( { projects, ...props }: Type): JSX.Element => {
             hovering = false;
             mouse.x = e.clientX / window.innerWidth;
             mouse.y = e.clientY / window.innerHeight;
-            console.log("mouse moviiing plane 2");
         }
 
         document.addEventListener("mousemove", onDocumentMouseMove, false);

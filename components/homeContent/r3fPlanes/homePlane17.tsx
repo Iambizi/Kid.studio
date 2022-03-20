@@ -7,16 +7,6 @@ import { isMobile } from 'react-device-detect';
 
 interface Type {
     projects: any;
-    // snapping: boolean;
-    // hover_dist: number;
-    // i: number;
-    // timerx: number;
-    // hovering: boolean;
-    // mouse: {
-    //     x:number,
-    //     y: number
-    // };
-    ref?: any;
 }
 
 export const  HomePlane3 = ( { projects, ...props }: Type): JSX.Element => {
@@ -54,12 +44,6 @@ export const  HomePlane3 = ( { projects, ...props }: Type): JSX.Element => {
         }
 
         const snapBack = () => {
-            // let speed = 0.005;
-            // if (homePlaneRef3.current.rotation.x < 0) homePlaneRef3.current.rotation.x += speed;
-            // if (homePlaneRef3.current.rotation.x > 0) homePlaneRef3.current.rotation.x -= speed;
-            // if (homePlaneRef3.current.rotation.y < 0) homePlaneRef3.current.rotation.y += speed;
-            // if (homePlaneRef3.current.rotation.y > 0) homePlaneRef3.current.rotation.y -= speed;
-
             homePlaneRef3.current.rotation.x < 0.002 && homePlaneRef3.current.rotation.x > -0.002 && homePlaneRef3.current.rotation.y < 0.002 && homePlaneRef3.current.rotation.y > -0.002 && (snapping = false);
             homePlaneRef3.current.rotation.x -= snapback.x; 
             homePlaneRef3.current.rotation.y -= snapback.y;
@@ -81,19 +65,12 @@ export const  HomePlane3 = ( { projects, ...props }: Type): JSX.Element => {
     useEffect(() => {
 
         const onMouseDown = (e) => {
-            // snapping = true;
-            // e.stopImmediatePropagation();
-            // console.log(snapping + " mouse down plane 3");
-
             mouseDown = true; 
             prevMouse.x = mouse.x; 
             prevMouse.y = mouse.y;
         }
 
         const onMouseUp = (e) => {
-            // setTimeout(() => snapping = false, 950);
-            // console.log("mouse up plane 3");
-
             mouseDown = false; 
             snapping = true; 
             snapback.x = homePlaneRef3.current.rotation.x / 60; 

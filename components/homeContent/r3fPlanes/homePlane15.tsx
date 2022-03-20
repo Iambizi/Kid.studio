@@ -7,16 +7,6 @@ import { isMobile } from 'react-device-detect';
 
 interface Type {
     projects: any;
-    // snapping: boolean;
-    // hover_dist: number;
-    // i: number;
-    // timerx: number;
-    // hovering: boolean;
-    // mouse: {
-    //     x:number,
-    //     y: number
-    // };
-    ref?: any;
 }
 
 export const  HomePlane1 = ( { projects, ...props}: Type): JSX.Element => {
@@ -29,7 +19,6 @@ export const  HomePlane1 = ( { projects, ...props}: Type): JSX.Element => {
     let mouseDown = false
     let prevMouse = { x: 0, y: 0 };
     let snapback = { x: 0, y: 0 };
-
     let hover_dist = 0.3;
     let i = 0;
     let timerx = 500;
@@ -53,11 +42,6 @@ export const  HomePlane1 = ( { projects, ...props}: Type): JSX.Element => {
         }
 
         const snapBack = () => {
-            // let speed = 0.005;
-            // if (homePlaneRef1.current.rotation.x < 0) homePlaneRef1.current.rotation.x += speed;
-            // if (homePlaneRef1.current.rotation.x > 0) homePlaneRef1.current.rotation.x -= speed;
-            // if (homePlaneRef1.current.rotation.y < 0) homePlaneRef1.current.rotation.y += speed;
-            // if (homePlaneRef1.current.rotation.y > 0) homePlaneRef1.current.rotation.y -= speed;
             homePlaneRef1.current.rotation.x < 0.002 && homePlaneRef1.current.rotation.x > -0.002 && homePlaneRef1.current.rotation.y < 0.002 && homePlaneRef1.current.rotation.y > -0.002 && (snapping = false);
             homePlaneRef1.current.rotation.x -= snapback.x; 
             homePlaneRef1.current.rotation.y -= snapback.y;
@@ -78,34 +62,19 @@ export const  HomePlane1 = ( { projects, ...props}: Type): JSX.Element => {
 
     useEffect(() => {
 
-        // const onMouseDown = (e) => {
-        //     (mouseDown = !0), (prevMouse.x = mouse.x), (prevMouse.y = mouse.y);
-        //     e.stopImmediatePropagation();
-        // }
-        // const onMouseUp = () => {
-        //     (mouseDown = !1), (snapping = !0), (snapback.x = homePlaneRef1.current.rotation.x / 60), (snapback.y = homePlaneRef1.current.rotation.y / 60);
-        // }
-
         const onMouseDown = (e) => {
-            // snapping = true;
-            // e.stopImmediatePropagation();
-            // console.log(snapping + " mouse down plane 1");
-
             mouseDown = true; 
             prevMouse.x = mouse.x; 
             prevMouse.y = mouse.y;
         }
 
         const onMouseUp = (e) => {
-            // setTimeout(() => snapping = false, 950);
-            // console.log("mouse up plane 1");
-
             mouseDown = false; 
             snapping = true; 
             snapback.x = homePlaneRef1.current.rotation.x / 60; 
             snapback.y = homePlaneRef1.current.rotation.y / 60;
         }
-        
+
         const onDocumentMouseMove = (e) => {
             hovering = false;
             mouse.x = e.clientX / window.innerWidth;
