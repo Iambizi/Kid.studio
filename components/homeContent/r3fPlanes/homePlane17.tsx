@@ -14,12 +14,10 @@ export const HomePlane3 = ({ projects, ...props }: Type): JSX.Element => {
     const src3 = projects[2]?.fields.featuredProjectImage.fields ? projects[2].fields.featuredProjectImage.fields.file.url : null;
 
     let hovering = false;
-
     let snapping = false;
-    let mouseDown = false
+    let mouseDown = false;
     let prevMouse = { x: 0, y: 0 };
     let snapback = { x: 0, y: 0 };
-
     let hover_dist = 0.3;
     let i = 0;
     let timerx = 500;
@@ -76,7 +74,7 @@ export const HomePlane3 = ({ projects, ...props }: Type): JSX.Element => {
             snapback.x = homePlaneRef3.current.rotation.x / 60;
             snapback.y = homePlaneRef3.current.rotation.y / 60;
         }
-        
+
         const onDocumentMouseMove = (e) => {
             hovering = false;
             mouse.x = e.clientX / window.innerWidth;

@@ -14,9 +14,8 @@ export const  HomePlane1 = ( { projects, ...props}: Type): JSX.Element => {
     const src1 = projects[0]?.fields.featuredProjectImage.fields ? projects[0].fields.featuredProjectImage.fields.file.url : null;
     
     let hovering = false;
-
     let snapping = false;
-    let mouseDown = false
+    let mouseDown = false;
     let prevMouse = { x: 0, y: 0 };
     let snapback = { x: 0, y: 0 };
     let hover_dist = 0.3;

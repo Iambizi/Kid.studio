@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import * as THREE from 'three';
 import { useFrame } from '@react-three/fiber';
 import { isMobile } from 'react-device-detect';
+import { useTexture } from "@react-three/drei";
 
 
 interface Type {
@@ -12,16 +13,17 @@ export const InfoPlane = ({ src }: Type): JSX.Element => {
 
     const infoPlaneRef = useRef<THREE.Mesh>();
 
+    let hovering = false;
+    let snapping = false;
+    let mouseDown = false;
+    let prevMouse = { x: 0, y: 0 };
+    let snapback = { x: 0, y: 0 };
     let hover_dist = 0.3;
     let i = 0;
     let timerx = 500;
-    let hovering = false;
-    let snapping = false;
     let mouse = { x: 0, y: 0 };
 
-    const loader = new THREE.TextureLoader();
-
-    const texture1 = loader.load(`${src}`);
+    const texture = useTexture(`${src}`);
 
     const width = isMobile ? 3.26 : 9;
     const height = isMobile ? 1.76 : 5;
@@ -34,11 +36,9 @@ export const InfoPlane = ({ src }: Type): JSX.Element => {
             (infoPlaneRef.current.rotation.y > hover_dist || infoPlaneRef.current.rotation.y < -hover_dist) && (infoPlaneRef.current.rotation.x > hover_dist || infoPlaneRef.current.rotation.x < -hover_dist) && (hovering = true);
         }
         const snapBack = () => {
-            let speed = 0.005;
-            if (infoPlaneRef.current.rotation.x < 0) infoPlaneRef.current.rotation.x += speed;
-            if (infoPlaneRef.current.rotation.x > 0) infoPlaneRef.current.rotation.x -= speed;
-            if (infoPlaneRef.current.rotation.y < 0) infoPlaneRef.current.rotation.y += speed;
-            if (infoPlaneRef.current.rotation.y > 0) infoPlaneRef.current.rotation.y -= speed;
+            infoPlaneRef.current.rotation.x < 0.002 && infoPlaneRef.current.rotation.x > -0.002 && infoPlaneRef.current.rotation.y < 0.002 && infoPlaneRef.current.rotation.y > -0.002 && (snapping = false);
+            infoPlaneRef.current.rotation.x -= snapback.x;
+            infoPlaneRef.current.rotation.y -= snapback.y;
         }
         const hover = () => {
             i == timerx && (i = 0);
@@ -55,18 +55,22 @@ export const InfoPlane = ({ src }: Type): JSX.Element => {
     useEffect(() => {
 
         const onMouseDown = (e) => {
-            snapping = true;
-            e.stopImmediatePropagation();
+            mouseDown = true; 
+            prevMouse.x = mouse.x; 
+            prevMouse.y = mouse.y;
         }
 
         const onMouseUp = (e) => {
-            setTimeout(() => snapping = false, 950);
+            mouseDown = false; 
+            snapping = true; 
+            snapback.x = infoPlaneRef.current.rotation.x / 60; 
+            snapback.y = infoPlaneRef.current.rotation.y / 60;
         }
+
         const onDocumentMouseMove = (e) => {
             hovering = false;
             mouse.x = e.clientX / window.innerWidth;
             mouse.y = e.clientY / window.innerHeight;
-            console.log("mouse moviiing");
         }
 
         document.addEventListener("mousemove", onDocumentMouseMove, false);
@@ -83,7 +87,7 @@ export const InfoPlane = ({ src }: Type): JSX.Element => {
     return (
         <mesh ref={infoPlaneRef} position={isMobile ? [0, -.7, .1] : [0, 0, .1]}>
             <planeGeometry args={[width, height]} />
-            <meshBasicMaterial map={texture1} />
+            <meshBasicMaterial map={texture} />
         </mesh>
     )
 }
