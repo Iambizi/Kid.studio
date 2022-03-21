@@ -55,7 +55,8 @@ export const InfoPlane = ({ src }: Type): JSX.Element => {
     useEffect(() => {
 
         const onMouseDown = (e) => {
-            mouseDown = true; 
+            mouseDown = true;
+            hovering = true;  
             prevMouse.x = mouse.x; 
             prevMouse.y = mouse.y;
         }

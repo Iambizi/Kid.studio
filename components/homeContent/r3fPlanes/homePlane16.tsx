@@ -61,7 +61,8 @@ export const  HomePlane2 = ( { projects, ...props }: Type): JSX.Element => {
     useEffect(() => {
 
         const onMouseDown = (e) => {
-            mouseDown = true; 
+            mouseDown = true;
+            hovering = true;   
             prevMouse.x = mouse.x; 
             prevMouse.y = mouse.y;
         }
