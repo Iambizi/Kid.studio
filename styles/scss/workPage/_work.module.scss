@@ -89,11 +89,19 @@
             @media (min-height:740px){
                 margin-top: 1%;
             }
+            @media (min-height:800px){
+                margin-top: 3%;
+            }
             @media (min-height:1000px){
                 margin-top: 5%;
             }
             @media (min-height:1080px){
                 margin-top: 7%;
+            }
+        }
+        @media screen and (min-width:$xl2){
+            @media (min-height:900px){
+                margin-top: 4.5%;
             }
         }
         .projectLink{
