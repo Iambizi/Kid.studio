@@ -24,6 +24,7 @@ export default function Info({ infoPageData, fallback }: Type): JSX.Element {
         const bg = document.body;
         bg.classList.remove("needsScroll");
         // bg.classList.add("noScroll");
+        bg.removeAttribute("style");
     });
 
     return (

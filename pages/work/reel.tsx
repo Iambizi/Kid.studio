@@ -24,6 +24,7 @@ export default function Reels({ reelData }: Type):JSX.Element{
         const bg = document.body;
         bg.classList.add("needsScroll");
         // bg.classList.remove("noScroll");
+        bg.removeAttribute("style");
     },[]);
 
     
