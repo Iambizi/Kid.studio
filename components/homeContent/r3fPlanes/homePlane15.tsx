@@ -55,7 +55,7 @@ export const  HomePlane1 = ( { projects, ...props}: Type): JSX.Element => {
     }
 
     useFrame((state) => {
-        animateMesh(state);
+        animateMesh(state);        
     });
 
 
@@ -63,7 +63,7 @@ export const  HomePlane1 = ( { projects, ...props}: Type): JSX.Element => {
 
         const onMouseDown = (e) => {
             mouseDown = true;
-            hovering = true;  
+            hovering = true;
             prevMouse.x = mouse.x; 
             prevMouse.y = mouse.y;
         }
