@@ -74,7 +74,6 @@ export const  HomePlanez = ( { projects, position, projectIndex, ...props}: Type
             mouseDown = true;
             prevMouse.x = mouse.x; 
             prevMouse.y = mouse.y;
-            e.stopImmediatePropagation();
         }
 
         const onMouseUp = (e) => {
@@ -82,7 +81,6 @@ export const  HomePlanez = ( { projects, position, projectIndex, ...props}: Type
             snapping = true; 
             snapback.x = homePlaneRef.current.rotation.x / 60; 
             snapback.y = homePlaneRef.current.rotation.y / 60;
-            e.stopImmediatePropagation();
         }
 
         const onDocumentMouseMove = (e) => {
