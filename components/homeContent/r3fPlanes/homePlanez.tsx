@@ -43,7 +43,6 @@ export const  HomePlanez = ( { projects, position, projectIndex, ...props}: Type
             (homePlaneRef.current.rotation.y > hover_dist || homePlaneRef.current.rotation.y < -hover_dist) && (homePlaneRef.current.rotation.x > hover_dist || homePlaneRef.current.rotation.x < -hover_dist) && (hovering = true);
         }
 
-        
         const hover = () => {
             i === timerx && (i = 0);
             timerx / 2 > i ? ((homePlaneRef.current.rotation.x += 3e-4), (homePlaneRef.current.rotation.y -= 3e-4)) : ((homePlaneRef.current.rotation.x -= 3e-4), (homePlaneRef.current.rotation.y += 3e-4));
@@ -59,11 +58,10 @@ export const  HomePlanez = ( { projects, position, projectIndex, ...props}: Type
         const dragMove = () => {
             distMouse.x = prevMouse.x - mouse.x;
             distMouse.y = prevMouse.y - mouse.y;
-            homePlaneRef.current.rotation.y -= 2 * distMouse.x; 
-            homePlaneRef.current.rotation.x -= 2 * distMouse.y;
         }
 
         mouseDown ? dragMove() : snapping ? snapBack() : hovering ? hover() : hoverMove();
+        mouseDown && ((prevMouse.y = mouse.y), (prevMouse.x = mouse.x))
     }
 
     useFrame((state) => {
@@ -75,10 +73,9 @@ export const  HomePlanez = ( { projects, position, projectIndex, ...props}: Type
 
         const onMouseDown = (e) => {
             mouseDown = true;
-            hovering = true;
             prevMouse.x = mouse.x; 
             prevMouse.y = mouse.y;
-            console.log("im cliiiiiicked down");
+            e.stopImmediatePropagation();
         }
 
         const onMouseUp = (e) => {
@@ -86,7 +83,7 @@ export const  HomePlanez = ( { projects, position, projectIndex, ...props}: Type
             snapping = true; 
             snapback.x = homePlaneRef.current.rotation.x / 60; 
             snapback.y = homePlaneRef.current.rotation.y / 60;
-            console.log("im cliiiiiicked up");
+            e.stopImmediatePropagation();
         }
 
         const onDocumentMouseMove = (e) => {
