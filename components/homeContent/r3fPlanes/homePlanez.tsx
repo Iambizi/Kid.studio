@@ -70,13 +70,13 @@ export const  HomePlanez = ( { projects, position, projectIndex, ...props}: Type
 
     useEffect(() => {
 
-        const onMouseDown = (e) => {
+        const onMouseDown = () => {
             mouseDown = true;
             prevMouse.x = mouse.x; 
             prevMouse.y = mouse.y;
         }
 
-        const onMouseUp = (e) => {
+        const onMouseUp = () => {
             mouseDown = false; 
             snapping = true; 
             snapback.x = homePlaneRef.current.rotation.x / 60; 
