@@ -61,7 +61,6 @@ export const  HomePlanez = ( { projects, position, projectIndex, ...props}: Type
         }
 
         mouseDown ? dragMove() : snapping ? snapBack() : hovering ? hover() : hoverMove();
-        mouseDown && ((prevMouse.y = mouse.y), (prevMouse.x = mouse.x))
     }
 
     useFrame((state) => {
