@@ -15,7 +15,7 @@ a {
   box-sizing: border-box;
 } */
 
-@font-face {
+/* @font-face {
   font-family: "Andale Mono";
   src: url("/fonts/andalemo.ttf");
   font-style: normal;
@@ -28,7 +28,7 @@ a {
   font-style: medium;
   font-weight: 500;
   font-display: swap;
-}
+} */
 body, html{
   font-family: "Andale Mono";
 }

@@ -42,18 +42,20 @@ export const  HomePlanez = ( { projects, position, projectIndex, ...props}: Type
             (homePlaneRef1.current.rotation.y > hover_dist || homePlaneRef1.current.rotation.y < -hover_dist) && (homePlaneRef1.current.rotation.x > hover_dist || homePlaneRef1.current.rotation.x < -hover_dist) && (hovering = true);
         }
 
-        const snapBack = () => {
-            homePlaneRef1.current.rotation.x < 0.002 && homePlaneRef1.current.rotation.x > -0.002 && homePlaneRef1.current.rotation.y < 0.002 && homePlaneRef1.current.rotation.y > -0.002 && (snapping = false);
-            homePlaneRef1.current.rotation.x -= snapback.x; 
-            homePlaneRef1.current.rotation.y -= snapback.y;
-        }
+        
         const hover = () => {
             i === timerx && (i = 0);
             timerx / 2 > i ? ((homePlaneRef1.current.rotation.x += 3e-4), (homePlaneRef1.current.rotation.y -= 3e-4)) : ((homePlaneRef1.current.rotation.x -= 3e-4), (homePlaneRef1.current.rotation.y += 3e-4));
             i++;
         }
         
-        snapping ? snapBack() : hovering ? hover() : hoverMove();
+        const snapBack = () => {
+            homePlaneRef1.current.rotation.x < 0.002 && homePlaneRef1.current.rotation.x > -0.002 && homePlaneRef1.current.rotation.y < 0.002 && homePlaneRef1.current.rotation.y > -0.002 && (snapping = false);
+            homePlaneRef1.current.rotation.x -= snapback.x; 
+            homePlaneRef1.current.rotation.y -= snapback.y;
+        }
+        
+        snapping ? snapBack() :hovering ? hover() : hoverMove();
     }
 
     useFrame((state) => {
@@ -68,6 +70,7 @@ export const  HomePlanez = ( { projects, position, projectIndex, ...props}: Type
             hovering = true;
             prevMouse.x = mouse.x; 
             prevMouse.y = mouse.y;
+            console.log("im cliiiiiicked down");
         }
 
         const onMouseUp = (e) => {
@@ -75,6 +78,7 @@ export const  HomePlanez = ( { projects, position, projectIndex, ...props}: Type
             snapping = true; 
             snapback.x = homePlaneRef1.current.rotation.x / 60; 
             snapback.y = homePlaneRef1.current.rotation.y / 60;
+            console.log("im cliiiiiicked up");
         }
 
         const onDocumentMouseMove = (e) => {
@@ -92,6 +96,7 @@ export const  HomePlanez = ( { projects, position, projectIndex, ...props}: Type
             document.removeEventListener("mousedown", onMouseDown, false);
             document.removeEventListener("mouseup", onMouseUp, false);
         };
+
     })
 
     return (
