@@ -72,8 +72,10 @@ export const  HomePlanez = ( { projects, position, projectIndex, ...props}: Type
 
         const onMouseDown = () => {
             mouseDown = true;
+            snapping = true; 
             prevMouse.x = mouse.x; 
             prevMouse.y = mouse.y;
+            console.log(snapping);
         }
 
         const onMouseUp = () => {
