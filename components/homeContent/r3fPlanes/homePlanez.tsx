@@ -55,12 +55,13 @@ export const  HomePlanez = ( { projects, position, projectIndex, ...props}: Type
             homePlaneRef.current.rotation.y -= snapback.y;
         }
 
-        const dragMove = () => {
+        const stophover = () => {    
             distMouse.x = prevMouse.x - mouse.x;
             distMouse.y = prevMouse.y - mouse.y;
         }
 
-        mouseDown ? dragMove() : snapping ? snapBack() : hovering ? hover() : hoverMove();
+        mouseDown ? hover() : snapping ? snapBack() : hovering ? hover() : hoverMove();
+
     }
 
     useFrame((state) => {
@@ -72,14 +73,12 @@ export const  HomePlanez = ( { projects, position, projectIndex, ...props}: Type
 
         const onMouseDown = () => {
             mouseDown = true;
-            snapping = true; 
             prevMouse.x = mouse.x; 
             prevMouse.y = mouse.y;
-            console.log(snapping);
         }
 
         const onMouseUp = () => {
-            mouseDown = false; 
+            mouseDown = false;
             snapping = true; 
             snapback.x = homePlaneRef.current.rotation.x / 60; 
             snapback.y = homePlaneRef.current.rotation.y / 60;
