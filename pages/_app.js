@@ -1,6 +1,5 @@
 import '../styles/globals.css';
 import '../styles/scss/_globals.scss';
-import '../styles/scss/_index.scss';
 import { useRouter } from 'next/router';
 import { PageTransition } from 'next-page-transitions';
 import React, { useEffect } from 'react';

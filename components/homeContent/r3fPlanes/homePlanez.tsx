@@ -100,7 +100,7 @@ export const  HomePlanez = ( { projects, position, projectIndex, ...props}: Type
             document.removeEventListener("mouseup", onMouseUp, false);
         };
 
-    })
+    });
 
     return (
         <>
