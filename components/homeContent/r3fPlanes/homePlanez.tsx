@@ -32,7 +32,7 @@ export const  HomePlanez = ( { projects, position, projectIndex, ...props}: Type
 
     textures.minFilter = THREE.LinearFilter;
 
-    const width = isMobile ? 3.26 : 9;
+    const width = isMobile ? 3.26 : 8.7;
     const height = isMobile ? 1.76 : 5;
     
     const animateMesh = (state) => {
