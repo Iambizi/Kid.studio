@@ -14,6 +14,8 @@ import { isMobile } from 'react-device-detect';
 interface Type {
     projects?: any;
     carouselX: number;
+    slidePrevious: boolean;
+    slideNext: boolean;
 }
 
 
@@ -32,7 +34,7 @@ const SliderContainer = ({ children, carouselX }) => {
     );
 }
 
-export const WarpedImage = ({ projects, carouselX }: Type): JSX.Element => {
+export const WarpedImage = ({ projects, carouselX, slideNext, slidePrevious }: Type): JSX.Element => {
 
     return (
         <>
@@ -40,9 +42,9 @@ export const WarpedImage = ({ projects, carouselX }: Type): JSX.Element => {
                 <Canvas dpr={isMobile ? [1, 2] : [0, 1]}>
                         <Suspense fallback={<Loader />}>
                             <SliderContainer carouselX={carouselX}>
-                                <HomePlanez projects={projects} position={0} projectIndex={0} />
-                                <HomePlanez projects={projects} position={100} projectIndex={1} />
-                                <HomePlanez projects={projects} position={200} projectIndex={2} />
+                                <HomePlanez projects={projects} position={0} projectIndex={0} slideNext={slideNext} slidePrevious={slidePrevious} />
+                                <HomePlanez projects={projects} position={100} projectIndex={1} slideNext={slideNext} slidePrevious={slidePrevious} />
+                                <HomePlanez projects={projects} position={200} projectIndex={2} slideNext={slideNext} slidePrevious={slidePrevious} />
                             </SliderContainer>
                         </Suspense>
                     </Canvas>

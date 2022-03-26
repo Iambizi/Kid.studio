@@ -7,9 +7,11 @@ interface Type {
     projects: any;
     goPrevious?: any;
     goNext?: any;
+    slideNext: boolean;
+    slidePrevious: boolean;
 }
 
-export default function Carousel({ carouselX, projects, goPrevious, goNext }: Type): JSX.Element {
+export default function Carousel({ carouselX, projects, goPrevious, goNext, slideNext, slidePrevious }: Type): JSX.Element {
 
     return (
         <>
@@ -22,7 +24,7 @@ export default function Carousel({ carouselX, projects, goPrevious, goNext }: Ty
                     </div>
                 ))}
             </div>
-            <WarpedImage carouselX={carouselX} projects={projects} />
+            <WarpedImage carouselX={carouselX} projects={projects} slideNext={slideNext} slidePrevious={slidePrevious} />
         </>
     )
 }

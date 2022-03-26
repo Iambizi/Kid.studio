@@ -28,7 +28,7 @@ export default function Content({ homeProjects, projects }: Type): JSX.Element {
     count > 1 ? setCount(0) : setCount(addCount);
     carouselX < 200 ? setCarouselX(addCarouselX) : setCarouselX(0);
     setSlideNext(true);
-    // setTimeout(() => setSlideNext(false), 1000);
+    setTimeout(() => setSlideNext(false), 1000);
   }
 
   // handles previous button functionality and logic for state used in carousel
@@ -38,14 +38,14 @@ export default function Content({ homeProjects, projects }: Type): JSX.Element {
     count < 1 ? setCount(2) : setCount(minusCount);
     carouselX < 100 ? setCarouselX(200) : setCarouselX(minusCarouselX);
     setSlidePrevious(true);
-    // setTimeout(() => setSlidePrevious(false), 1000);
+    setTimeout(() => setSlidePrevious(false), 1000);
   }
 
   return (
     <>
       <section className={styles.noScroll}>
         <article className={styles.homeContentSection}>
-          <Carousel carouselX={carouselX} projects={projects} goNext={goNext} goPrevious={goPrevious} />
+          <Carousel carouselX={carouselX} projects={projects} goNext={goNext} goPrevious={goPrevious} slideNext={slideNext} slidePrevious={slidePrevious} />
         </article>
         <p className={styles.nextButton} id={"next"} onClick={goNext}>NEXT</p>
         <p className={styles.previousButton} id={"previous"} onClick={goPrevious}>PREVIOUS</p>

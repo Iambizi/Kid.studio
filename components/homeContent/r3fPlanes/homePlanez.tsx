@@ -9,9 +9,11 @@ interface Type {
     projects: any;
     position: number;
     projectIndex: number;
+    slideNext: boolean;
+    slidePrevious: boolean;
 }
 
-export const  HomePlanez = ( { projects, position, projectIndex, ...props}: Type): JSX.Element => {
+export const  HomePlanez = ( { projects, position, projectIndex, slideNext, slidePrevious, ...props}: Type): JSX.Element => {
 
     const src = projects[projectIndex]?.fields.featuredProjectImage.fields ? projects[projectIndex].fields.featuredProjectImage.fields.file.url : null;
     
@@ -35,7 +37,7 @@ export const  HomePlanez = ( { projects, position, projectIndex, ...props}: Type
     const width = isMobile ? 3.26 : 8.7;
     const height = isMobile ? 1.76 : 5;
     
-    const animateMesh = (state) => {
+    const animateMesh = (state, delta) => {
 
         const hoverMove = () => {
             mouse.x > 0.5 ? homePlaneRef.current.rotation.y < hover_dist && (homePlaneRef.current.rotation.y += 0.002) : mouse.x < 0.5 && homePlaneRef.current.rotation.y > -hover_dist && (homePlaneRef.current.rotation.y -= 0.002),
@@ -56,18 +58,22 @@ export const  HomePlanez = ( { projects, position, projectIndex, ...props}: Type
         }
 
         const stophover = () => {    
-            distMouse.x = prevMouse.x - mouse.x;
-            distMouse.y = prevMouse.y - mouse.y;
+            // distMouse.x = prevMouse.x - mouse.x;
+            // distMouse.y = prevMouse.y - mouse.y;
         }
 
-        mouseDown ? hover() : snapping ? snapBack() : hovering ? hover() : hoverMove();
+        const slideSnapBack = () => {
+            homePlaneRef.current.rotation.x = THREE.MathUtils.damp(homePlaneRef.current.rotation.x, 0, 7, delta); 
+            homePlaneRef.current.rotation.y = THREE.MathUtils.damp(homePlaneRef.current.rotation.y, 0, 7, delta);
+        }
 
+        slideNext || slidePrevious ? slideSnapBack() : null;
+        mouseDown ? hover() : snapping ? snapBack() : hovering ? hover() : hoverMove();
     }
 
-    useFrame((state) => {
-        animateMesh(state);        
+    useFrame((state, delta) => {
+        animateMesh(state, delta);        
     });
-
 
     useEffect(() => {
 
@@ -89,7 +95,7 @@ export const  HomePlanez = ( { projects, position, projectIndex, ...props}: Type
             mouse.x = e.clientX / window.innerWidth;
             mouse.y = e.clientY / window.innerHeight;
         }
-
+        
         document.addEventListener("mousemove", onDocumentMouseMove, false);
         document.addEventListener("mousedown", onMouseDown, false);
         document.addEventListener("mouseup", onMouseUp, false);
