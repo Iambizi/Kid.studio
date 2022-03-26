@@ -20,60 +20,47 @@
     .titleWrapper{
         width: 100vw;
             .videoTitle{
-            flex-direction: row;
-            font-size: 1em;
-            font-family: 'Helvetica', Helvetica;
-            font-weight: 600;
-            margin-top: -12%;
-            z-index: 565656;
-            margin-left: 15vw;
-            width: 100%;
-            // @media (min-width:$iphonePlus) and (min-height:667px){
-            //     // top: 28%;
-            //     margin-top: -8%;
-            // }
+                flex-direction: row;
+                font-size: 1em;
+                font-family: 'Helvetica', Helvetica;
+                font-weight: 600;
+                margin-top: -12%;
+                z-index: 565656;
+                margin-left: 15vw;
+                width: 100%;
             @media screen and (min-width:$xxs){
-                // top: 28%;
                 margin-top: -9%;
                 @media (min-height:882px){
-                    // top: 28%;
                     margin-top: -11%;
                 }
             }
             @media screen and (min-width:$iphonePlus){
-                // top: 28%;
                 margin-top: -9%;
             }
             @media screen and (min-width:$xs){
-                // top: 28%;
                 margin-top: -7%;
             }
             @media screen and (min-width:$s){
-                // top: 28%;
                 font-size: 2.5em;
                 margin-top: -7.5%;
             }
             @media screen and (min-width:$m1){
                 top: 30%;
                 margin-top: -5.5%;
-                // position: fixed;
-                // top: 30%;
             }
             @media screen and (min-width:$m){
                 top: 30%;
                 font-size: 4em;
                 margin-top: -0.4%;
-                // position: fixed;
-                // top: 30%;
             }
             &::before{
-                content: "";
-                width: 10%;
-                height: 0.3%;
-                position: fixed;
-                left: 15%;
-                top: 30.5%;
-                background-color: #000;
+                    content: "";
+                    width: 10%;
+                    height: 0.3%;
+                    position: fixed;
+                    left: 15%;
+                    top: 30.5%;
+                    background-color: #000;
                 @media screen and (min-width:$xxs){
                     width: 9.5%;
                     top: 30.5%;
@@ -98,7 +85,6 @@
                     @media (min-height:600px){
                         top: 34%;
                         height: 1.45%;
-
                     }                    
                 }
                 @media screen and (min-width:$l1){
