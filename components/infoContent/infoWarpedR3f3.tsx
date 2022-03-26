@@ -25,7 +25,7 @@ export const InfoPlane = ({ src }: Type): JSX.Element => {
 
     const texture = useTexture(`${src}`);
 
-    const width = isMobile ? 3.26 : 9;
+    const width = isMobile ? 3.26 : 8.7;
     const height = isMobile ? 1.76 : 5;
 
     const animateMesh = (state) => {
