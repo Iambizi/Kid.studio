@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import styles from "../../../styles/scss/projectPages/_projectPages.module.scss";
+import styles from "../../../styles/scss/projectPages/_projectPages3.module.scss";
 import React, { useState, useEffect, useRef } from "react";
 import Loader from "../../common/loaderR3F";
 import { isMobile } from 'react-device-detect';
@@ -91,15 +91,11 @@ export default function MainInfoSection({ title, details, videoCover, playButton
                                 width={videoCover.fields.file.details.image.width}
                                 height={videoCover.fields.file.details.image.height}
                             />
-                            {/* <img 
-                            className={styles.videoCover}
-                            src={ `${videoCover}` }
-                            alt="Main video/image still" 
-                            /> */}
                         </div>
                     </div>
                     {/* <iframe className={styles.video} id="vimeo1aolzk8" src={`${projectVideo}`} frameBorder="0" allowFullScreen></iframe> */}
                     <ReactPlayer controls={true}  className={styles.video} url={`${projectVideo}`} />
+                    
                 </div>
             </section>
         </>

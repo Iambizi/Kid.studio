@@ -1,0 +1,127 @@
+@import "../variables";
+
+.projectPageSection, .projectStillsSection{
+    margin: 160px 10% 0px 10%;
+    @media screen and (min-width:$l){
+        margin: 330px 5% 0px 5%;
+    }
+    .projectDetailsWrapper{
+        .projectTitle{
+            font-size: 28px;
+            font-weight: bold;
+            font-family: "Helvetica-Neue-Bold", "Helvetica Neue Bold", "HelveticaNeueBold", Helvetica-Neue, HelveticaNeue, "Helvetica", Helvetica, "Arial", Arial, sans-serif;
+            text-align: left;
+            line-height: 1;
+            @media screen and (min-width:$l){
+                //page y Scroll styles
+                text-align: center;
+                font-size: 4.7em;
+                margin-top: 6%;
+                position: fixed;
+                top: 180px;
+                width: 75%;
+                left: 50%;
+                margin: 0 0 0 -37.5%;
+                z-index: 10000000000;
+            }
+            @media screen and (min-width:1440px){
+                font-size: 5.6em;
+            }
+        }
+        .projectCredsWrapper{
+            margin-bottom: 9%;
+            .projectCreds{
+                white-space: pre-wrap;
+                font-family: "Avenir", Avenir, sans-serif;
+                font-size: 0.8em;
+                line-height: 1.5em;
+                word-break: initial;
+                z-index: 100;
+                background-color: #f0f0f0;
+                @media screen and (min-width: $l){
+                    position: absolute;
+                    left: 51%;
+                    top: 350px;
+                    padding: 30px;
+                    margin-left: 0px;
+                    width: 350px;
+                    z-index: 56565656;
+                }
+                @media screen and (min-width: $xl){
+                    left: 49%;
+                    top: 350px;
+                }
+            }
+        }
+    }
+    .projectVideo{
+        display: block;
+        position: relative;
+        z-index: 5656;
+        // &.toggleIndex{
+        //     z-index: 5656565656;
+        // }
+        margin-bottom: 10%;
+        .videoOverlay{
+            position: relative;
+            // display: block;
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            z-index: 5656565656;
+            width: 100%;
+            height: 100%;
+            @media screen and (min-width: $l){
+                max-width: 560px;
+                max-height: 470px;
+            }
+
+            &.hideOverlay{
+                display: contents; 
+            }
+            .videoCover{
+                visibility: hidden;
+            }
+        }
+        .video{
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            // top: -6%;
+            top: 0;
+            left: 0;
+            max-width: 560px;
+            max-height: 450px;
+        }
+    }
+    .projectStills{
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 5%;
+        @media screen and (min-width: $l){
+            margin-top: 20%;
+        }
+        .stills{
+            margin-bottom: 10%;
+            height: 30%;
+            width: 100%;
+            @media screen and (min-width: $m){
+                width: 35%;
+                height: 100%;
+                margin-bottom: 5%;
+            }
+            @media screen and (min-width: $l){
+                width: 35%;
+            }
+            @media screen and (min-width: $l1){
+                width: 40%;
+            }
+        }
+    }
+}
+
+.projectStillsSection{
+    margin: 30px 10% 0px 10%;
+}
