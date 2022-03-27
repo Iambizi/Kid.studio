@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import styles from "../../styles/scss/projectPages/_projectPages.module.scss";
-import React, { useState, useEffect } from "react";
-
+import React, { useState, useEffect, useRef } from "react";
+import { isMobile } from 'react-device-detect';
 interface Type {
     reelTitle: string;
     reelDetails: string;
@@ -10,16 +10,16 @@ interface Type {
     projectVideo: string;
 }
 
-export default function reelInfoSection( { reelTitle, reelDetails, videoCover, playButton, projectVideo }: Type ):JSX.Element{
+export default function ReelInfoSection( { reelTitle, reelDetails, videoCover, playButton, projectVideo }: Type ):JSX.Element{
     // hook for handling z-index state
     const [toggleIndex, setToggleIndex] = useState(false);
+    const [ overLayClick, setOverLayClick ] = useState(false);
 
     const handleIndex = () => {
         // const video = document.querySelector("video");
         // console.log(video);
 
         // setToggleIndex(true);
-        // console.log("yooo");
 
         // function addClass(){
         //     video.classList.add(`${styles.toggleIndex}`)
@@ -32,37 +32,35 @@ export default function reelInfoSection( { reelTitle, reelDetails, videoCover, p
         // video.addEventListener("mouseout", removeClass, false);
     }
 
-    const overlayPlay = ()=>{
-
-        const overlay = document.getElementsByClassName('overlay');
-
-        for(let i = 0; i < overlay.length; i++) {
-            ((index)=> {
-              overlay[index].classList.add(`${styles.hideOverlay}`)
-            })(i);
-          }
-          
-    }
-
+    const ref = useRef<HTMLElement | any>(null!);
     const titleScroll = () => {
-        const pageY = window.pageYOffset;        
-        const screenWidth = window.innerWidth;
-        const title = document.querySelector(".reelTitle") as HTMLElement;
+        
+        let pageY = window.pageYOffset;
+        let transY = 0;
+        let diff = 0;
 
-        if( screenWidth >= 1200 && title ){
-            title.style.transform = `translateY(-${pageY}px)`;
+        if(!isMobile && ref.current){
+            setTimeout(()=>{
+                if(diff= pageY - transY){
+                    transY += 2 * diff
+                }
+                
+                    ref.current.style.transform = `translateY(${pageY * -0.1}px)`;
+                
+            } , 300);
+        }else{
+            return null;
         }
     }
     useEffect(()=>{
-        window.addEventListener('scroll', titleScroll);
-
+            window.addEventListener('scroll', titleScroll);
     },[])
 
     return(
         <>
             <section className={styles.projectPageSection}>
                 <div className={styles.projectDetailsWrapper}>
-                    <h3 className={`${styles.projectTitle} reelTitle`}>
+                    <h3 ref={ref} className={`${styles.projectTitle} reelTitle title`}>
                         {reelTitle}
                     </h3>
                     <div className={styles.projectCredsWrapper}>
@@ -72,8 +70,8 @@ export default function reelInfoSection( { reelTitle, reelDetails, videoCover, p
                     </div>
                 </div>
                 <div className={ toggleIndex ? `${styles.projectVideo} ${styles.toggleIndex} video` : `${styles.projectVideo} video`}>
-                    <div onClick={ overlayPlay } className={`${styles.videoOverlay} overlay`} style={{backgroundImage: `url(${videoCover?.fields.file.url})`}}>
-                        <div className={`${styles.videoOverlay} overlay`} style={{backgroundImage: `url(${playButton})`}}>
+                    <div onClick={()=>{setOverLayClick(true)}} className={overLayClick ? `${styles.videoOverlay} ${styles.hideOverlay} overlay` : `${styles.videoOverlay} overlay` } style={{backgroundImage: `url(${videoCover?.fields.file.url})`}}>
+                        <div className={overLayClick ? `${styles.videoOverlay} ${styles.hideOverlay} overlay` : `${styles.videoOverlay} overlay`} style={{backgroundImage: `url(${playButton})`}}>
                             <Image
                             className={styles.videoCover}
                             src={ `https:${videoCover?.fields.file.url}` }
@@ -88,7 +86,7 @@ export default function reelInfoSection( { reelTitle, reelDetails, videoCover, p
                             /> */}
                         </div>  
                     </div>
-                    <iframe onMouseMove={ handleIndex } onClick={ handleIndex } className={styles.video} id="vimeo1aolzk8" src={`${projectVideo}`} frameBorder="0" allowFullScreen></iframe>
+                    <iframe className={styles.video} id="vimeo1aolzk8" src={`${projectVideo}`} frameBorder="0" allowFullScreen></iframe>
                 </div>
             </section>
         </>

@@ -2,13 +2,17 @@ import styles from '../../styles/scss/info/_info.module.scss';
 import * as THREE from 'three';
 import React, { useEffect, useRef } from "react";
 import { isMobile } from 'react-device-detect';
+import { useRouter } from 'next/router';
+
 
 interface Type{
     src: string;
 }
-export default function inforWarpImg({src}: Type):JSX.Element{
+export default function InforWarpImg({src}: Type):JSX.Element{
 
-    const ref = useRef<HTMLElement | any>(null!);
+    const infoRef = useRef<HTMLElement | any>(null!);
+    const infoPath = /\/info$/gm;
+    const router = useRouter();
     
     useEffect(()=>{
 
@@ -38,7 +42,7 @@ export default function inforWarpImg({src}: Type):JSX.Element{
         const mesh = new THREE.Mesh( geometry, material );
         scene.add( mesh );
 
-        isMobile ? mesh.position.y = -.375: null;
+        isMobile ? mesh.position.y = -.385: null;
 
         const sizes = {
             width: window.innerWidth,
@@ -57,6 +61,8 @@ export default function inforWarpImg({src}: Type):JSX.Element{
             antialias: true,
             alpha: true
         })
+
+        infoRef.current.appendChild( renderer.domElement );
 
         function resizeRender(){
             window.addEventListener('resize', () =>
@@ -78,7 +84,7 @@ export default function inforWarpImg({src}: Type):JSX.Element{
         
         renderer.setSize(sizes.width, sizes.height);
 
-        ref.current.appendChild( renderer.domElement );
+        infoRef.current.appendChild( renderer.domElement );
         //pixel ratio: corresponds to how many physical pixels you have on the screen for one pixel unit on the software part.
 
         // Device pixel ratio: allows us to adjust the pixel ratio of our scene to pixel ratio of our device
@@ -132,21 +138,24 @@ export default function inforWarpImg({src}: Type):JSX.Element{
             renderer.render(scene, camera);
         }
         animationLoop()
-        return () => {
-            if(ref.current){
+        const cleanUpInfoPlane = () => {
+            if(infoRef.current && !router.pathname.match(infoPath)){
                 window.removeEventListener("resize", resizeRender);
-            ref.current.removeChild(renderer.domElement);
-            scene.remove(scene.children[0]);
-            }else{
-                return null;
+                infoRef.current.removeChild(renderer.domElement);
+                scene.remove(scene.children[0]);
+                geometry.dispose();
             }
-            
-        };
+        }
+            cleanUpInfoPlane();
+            router.events.on('beforeHistoryChange', cleanUpInfoPlane);
+            return () => {
+              router.events.off('beforeHistoryChange', cleanUpInfoPlane);
+            };
     },[])
 
     return(
         <>
-            <div ref={ref} className={`${styles.infoScene} infoScene`}>
+            <div ref={infoRef} className={`${styles.infoScene} infoScene`}>
             </div>
         </>
     )

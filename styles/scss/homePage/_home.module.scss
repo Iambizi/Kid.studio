@@ -3,12 +3,11 @@
     height: 100vh;
     width: 100vw;
     position: fixed;
+    overflow-y: hidden;
     top: 0;
     left: 0;
 }
-.homeScene{
-    @include fullviewPort();
-}
+
 .noScroll{
     @include fullviewPort();
     overflow: hidden;
@@ -16,8 +15,6 @@
     .homeContentSection{
         position: fixed;
         top: 37%;
-        flex-direction: column;
-        justify-content: center;
     }
     .previousButton,.nextButton{
         font-size: 0.625em;
@@ -32,14 +29,24 @@
     .previousButton{
         margin: 0;
         left: 0px;
+        @media screen and (max-width:$m){
+            left: -2%;
+        }
         transform: rotate(270deg);
-        cursor: url(https://kidstudio.co/assets/css/../images/left.png) 25 15, auto;
+        &:hover{
+            cursor: url(https://kidstudio.co/assets/css/../images/left.png) 25 15, auto;
+        }
     }
     .nextButton{
-        top: 50%;
+        top: 48%;
         right: 25px;
+        @media screen and (max-width:$m){
+            right: 2%;
+        }
         transform: rotate(90deg);
-        cursor: url(https://kidstudio.co/assets/css/../images/right.png) 25 15, auto;
+        &:hover{
+            cursor: url(https://kidstudio.co/assets/css/../images/right.png) 25 15, auto;
+        }
     }
     
     .counter{

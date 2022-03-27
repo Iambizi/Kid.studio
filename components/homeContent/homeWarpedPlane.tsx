@@ -1,8 +1,8 @@
-
-
-import React, {useEffect} from 'react';
+import React, {useEffect, useRef} from 'react';
 import * as THREE from 'three';
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
+import { useRouter } from 'next/router';
+
 
 interface Type{
     carouselX : number;
@@ -10,10 +10,18 @@ interface Type{
     slidePrevious: boolean;
     count: number;
     projects: any;
+    goNext: any;
+    goPrevious: any;
 }
 
-export default function warpedImage({ slideNext, slidePrevious, carouselX, count, projects }:Type):JSX.Element{
+export default function WarpedImage({ slideNext, slidePrevious, carouselX, count, projects }:Type):JSX.Element{
     const src = projects[count]?.fields.featuredProjectImage.fields ? projects[count].fields.featuredProjectImage.fields.file.url : null;
+
+    const homePlaneRef = useRef<HTMLElement | any>(null!);
+    const homePlaneControls = useRef<HTMLElement | any>(null!);
+    const router = useRouter();
+    const homePath = /\/$/gm;
+
     useEffect(()=>{
         const screenWidth = window.innerWidth;
         let scaling = 1;

@@ -5,25 +5,13 @@ import React, {useEffect} from "react";
 import styles from '../../styles/scss/common/_footer.module.scss';
 import ReelInfo from '../../components/reelContent/reelInfoSection';
 import ReelStills from '../../components/reelContent/reelStills';
-import { useRouter } from 'next/router';
 import { connectClient } from '../../components/common/utils/createClient';
-import useSWR from 'swr';
 
 interface Type{
     reelData: any;
 }
 
-export default function reels({ reelData }: Type):JSX.Element{
-    const router = useRouter();
-
-    async function fetcher(url){
-        const res = await fetch(url);
-        return res.json();
-    }
-
-    //use swr cache revalidation magic
-    const reelEntryID = "4AcYGCG0p8FOFAj0bsaLYm";
-    const singleEntry = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master/entries/?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}&content_type=reelPage&select=fields`;
+export default function Reels({ reelData }: Type):JSX.Element{
 
     const title = reelData.pageTitle;
     const details = reelData.details?.content[0].content[0].value;
@@ -33,22 +21,10 @@ export default function reels({ reelData }: Type):JSX.Element{
     const reelStills = reelData.videoStills;
 
     useEffect(()=>{
-
         const bg = document.body;
-        
         bg.classList.add("needsScroll");
-        console.log('scrolly');
-    
-        const removePageScroll = () =>{
-              bg.classList.remove("needsScroll");
-              console.log('no scrolly');
-        }
-    
-        router.events.on('beforeHistoryChange', removePageScroll);
-        return () => {
-          router.events.off('beforeHistoryChange', removePageScroll);
-        };
-
+        // bg.classList.remove("noScroll");
+        bg.removeAttribute("style");
     },[]);
 
     

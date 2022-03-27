@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import styles from "../../styles/scss/projectPages/_projectPages.module.scss";
-import { shuffle } from "../common/utils/shuffle";
+import { Shuffle } from "../common/utils/shuffle";
+import { isMobile } from 'react-device-detect';
 
 
 import React, { useEffect } from "react";
@@ -9,7 +10,7 @@ interface Type{
     reelStills: any;
 }
 
-export default function stills( { reelStills }: Type ):JSX.Element{
+export default function Stills( { reelStills }: Type ):JSX.Element{
     useEffect(()=>{
         const screenWidth = window.innerWidth;
         
@@ -17,9 +18,9 @@ export default function stills( { reelStills }: Type ):JSX.Element{
             30, 50, 30, 10, 30, 10, 50, 30, 10, 30,
             10, 30, 30, 50, 30, 30, 10, 30, 50, 10, 30  
         ];
-        shuffle(position);
+        Shuffle(position);
 
-        if(screenWidth >= 1200){
+        if(!isMobile){
             const stills = Array.from(document.getElementsByClassName("stills") as HTMLCollectionOf<HTMLElement>);
 
             for(let i = 0; i < stills.length; i++) {
@@ -29,7 +30,7 @@ export default function stills( { reelStills }: Type ):JSX.Element{
     },[]);
     return(
         <>
-            <section className={styles.projectPageSection}>
+            <section className={styles.projectStillsSection}>
                 <div className={styles.projectStills}>
                     {reelStills.map((item, i)=>(
                         //     <Image

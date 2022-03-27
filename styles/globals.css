@@ -29,20 +29,28 @@ a {
   font-weight: 500;
   font-display: swap;
 }
-@font-face {
+body, html{
   font-family: "Andale Mono";
-  src: url("/fonts/AndaleMono.ttf");
-  font-style: medium;
-  font-weight: 500;
-  font-display: swap;
 }
-
 body{
   overflow: hidden;
+  position: fixed;
 }
 body.needsScroll{
   overflow-Y: auto;
+  position: static;
 }
+/* body.noScroll{
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+} */
 canvas{
-  margin: 0 auto;
+  margin: 0 !important;
+  overflow-y: hidden !important;
+  padding: 0 !important;
+  display: block !important;
 }

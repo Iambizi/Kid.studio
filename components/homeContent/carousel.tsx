@@ -1,33 +1,30 @@
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
 import Link from "next/link";
-import WarpedIMG from "./homeWarpedPla";
-
+// import {WarpedImage} from "./homePlaneR3f3";
+import {WarpedImage} from "./homePlaneCanvas";
 interface Type {
-    homeProjects: any;
-    carouselX : number;
-    slideNext: boolean;
-    slidePrevious: boolean;
-    count: number;
+    carouselX: number;
     projects: any;
     goPrevious?: any;
+    goNext?: any;
+    slideNext: boolean;
+    slidePrevious: boolean;
 }
 
-export default function carousel({ homeProjects, carouselX, slideNext, slidePrevious, count, projects, goPrevious }:Type): JSX.Element{
-    {
-        carouselX  < -200 ?  `${styles.sliderWrapper} ${styles.slidePrevious}` : carouselX < -100 ? `${styles.sliderWrapper} ${styles.slideNext}` : `${styles.sliderWrapper}`
-    }
-    return(
+export default function Carousel({ carouselX, projects, goPrevious, goNext, slideNext, slidePrevious }: Type): JSX.Element {
+
+    return (
         <>
-            <div className={styles.titles} style={{left: `${ -carouselX }%`}}>
-                {projects && projects.length > 0 ? projects.map((item, i)=>(
-                        <div className={styles.titleWrapper} key={i}>
-                            <Link href={ projects[i].fields.slug }>
-                                <h2 className={styles.videoTitle}>{ projects[i].fields.title}</h2>
-                            </Link>
-                        </div>
-                )) : ""}
+            <div className={styles.titles} style={{ left: `${-carouselX}%` }}>
+                {projects.map((item, i) => (
+                    <div className={styles.titleWrapper} key={i}>
+                        <Link href={projects[i].fields.slug}>
+                            <h2 className={styles.videoTitle}>{projects[i].fields.title}</h2>
+                        </Link>
+                    </div>
+                ))}
             </div>
-            <WarpedIMG count={count} slideNext={slideNext} slidePrevious={slidePrevious} carouselX={carouselX} projects={projects} goPrevious={goPrevious} />
+            <WarpedImage carouselX={carouselX} projects={projects} slideNext={slideNext} slidePrevious={slidePrevious} />
         </>
     )
 }

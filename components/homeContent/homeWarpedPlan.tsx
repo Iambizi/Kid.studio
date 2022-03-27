@@ -5,6 +5,7 @@ import * as THREE from 'three';
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
 import Link from "next/link";
 import { isMobile } from 'react-device-detect';
+import { useRouter } from 'next/router';
 
 interface Type{
     count: number;
@@ -12,9 +13,11 @@ interface Type{
     carouselX : number;
     slideNext: boolean;
     slidePrevious: boolean;
+    goNext: any;
+    goPrevious: any;
 }
 
-export default function warpedImage({ count, projects, carouselX, slideNext, slidePrevious }:Type):JSX.Element{
+export default function WarpedImage({ count, projects, carouselX, slideNext, slidePrevious, goNext, goPrevious }:Type):JSX.Element{
 
     const src1 = projects[0]?.fields.featuredProjectImage.fields ? projects[0].fields.featuredProjectImage.fields.file.url : null;
     const src2 = projects[1]?.fields.featuredProjectImage.fields ? projects[1].fields.featuredProjectImage.fields.file.url : null;
@@ -22,6 +25,12 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
     
     console.log(count);
 
+    const homePlaneRef = useRef<HTMLElement | any>(null!);
+    const homePlaneControls = useRef<HTMLElement | any>(null!);
+    const router = useRouter();
+    const homePath = /\/$/gm;
+
+    const group = new THREE.Group();
 
     useEffect(()=>{
         const screenWidth = window.innerWidth;
@@ -48,7 +57,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
 
         const scene = new THREE.Scene();
 
-        const group = new THREE.Group();
+        // const group = new THREE.Group();
         
         const loader = new THREE.TextureLoader();
 
@@ -68,11 +77,9 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
             height: window.innerHeight
         }
 
-        
-
         const canvas = document.querySelector('.homeScene');
         const renderer = new THREE.WebGLRenderer({
-            canvas: canvas,
+            div: canvas,
             antialias: true,
             alpha: !0
         });
@@ -94,7 +101,7 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
                 // Update camera
                 camera.aspect = sizes.width / sizes.height;
                 camera.updateProjectionMatrix();
-            })
+            });
         }
 
         for (
@@ -121,12 +128,14 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
 
         group.add(cubes[looptyLoop]);
         
-
         camera.position.z = screenWidth >= 1200 ? 3 : 8;
         
         renderer.setClearColor( 0x000000, 0 );
         
         renderer.setSize(window.innerWidth, window.innerHeight);
+
+        homePlaneRef.current.appendChild( renderer.domElement );
+
 
         //pixel ratio: corresponds to how many physical pixels you have on the screen for one pixel unit on the software part.
         // Device pixel ratio: allows us to adjust the pixel ratio of our scene to pixel ratio of our device
@@ -161,8 +170,8 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
             const hoverMove = () => {
                 for (var a = 0; a < cubes.length; a++)
                 mouse.x > 0.5 ? cubes[a].rotation.y < hover_dist && (cubes[a].rotation.y += 0.002) : mouse.x < 0.5 && cubes[a].rotation.y > -hover_dist && (cubes[a].rotation.y -= 0.002),
-                    mouse.y > 0.5 ? cubes[a].rotation.x < hover_dist && (cubes[a].rotation.x += 0.002) : mouse.y < 0.5 && cubes[a].rotation.x > -hover_dist && (cubes[a].rotation.x -= 0.002);
-            (cubes[0].rotation.y > hover_dist || cubes[0].rotation.y < -hover_dist) && (cubes[0].rotation.x > hover_dist || cubes[0].rotation.x < -hover_dist) && (hovering = !0);
+                mouse.y > 0.5 ? cubes[a].rotation.x < hover_dist && (cubes[a].rotation.x += 0.002) : mouse.y < 0.5 && cubes[a].rotation.x > -hover_dist && (cubes[a].rotation.x -= 0.002);
+                (cubes[0].rotation.y > hover_dist || cubes[0].rotation.y < -hover_dist) && (cubes[0].rotation.x > hover_dist || cubes[0].rotation.x < -hover_dist) && (hovering = !0);
             }
             const snapBack = () => {
                 cubes[0].rotation.x < 0.002 && cubes[0].rotation.x > -0.002 && cubes[0].rotation.y < 0.002 && cubes[0].rotation.y > -0.002 && (snapping = !1);
@@ -221,16 +230,25 @@ export default function warpedImage({ count, projects, carouselX, slideNext, sli
             renderer.render(scene, camera);
         }
         animationLoop();
-            
         }
     },[count])
+
+    const next = () =>{
+        goNext();
+    }
+    const previous = ()=>{
+        goPrevious();
+    }
+    homePlaneControls.current = { next, previous }
     return(
 
         // In order for line 131 to work we need to renderer.Element to return an actual DOM Element.
         //Canvas won't work because it's just a container for graphics.
         <>
-            <canvas className={`${styles.homeScene} homeScene`}>
-            </canvas>
+            <p className={styles.nextButton} onClick={homePlaneControls.current.next}>NEXT</p>
+            <p className={styles.previousButton} onClick={homePlaneControls.current.previous}>PREVIOUS</p>
+            <div ref={homePlaneRef} className={`${styles.homeScene} homeScene`}>
+            </div>
         </>
     )
 }

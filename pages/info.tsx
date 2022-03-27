@@ -1,72 +1,48 @@
 import Layout from '../components/layout';
-import { GetStaticProps} from 'next';
-import Meta  from '../components/common/meta';
-import React from "react";
+import { GetStaticProps } from 'next';
+import Meta from '../components/common/meta';
+import React, { useEffect } from "react";
 import InfoBox from '../components/infoContent/infoBox';
-import InfoWarpImg from '../components/infoContent/infoWarpedPla';
+
+// import InfoWarpImg from '../components/infoContent/infoWarpedR3f';
+import InfoWarpImg from '../components/infoContent/infoWarpedR3f2';
+// import InfoWarpImg from '../components/common/commonWarpedPlane';
 import { connectClient } from '../components/common/utils/createClient';
-import useSWR, { SWRConfig } from 'swr';
-import Loader from "../components/common/loader";
+import {InfoPlaneCanvas} from '../components/infoContent/infoCanvas';
 
 
-interface Type{
+interface Type {
     infoPageData: any;
     fallback: string;
 }
 
-export default function info({ infoPageData, fallback }:Type):JSX.Element{
-// removes needsScroll class set in project pages from vertical scroll
-// projectPage useEffect hook needs refactoring to avoid calling it again here.
+export default function Info({ infoPageData, fallback }: Type): JSX.Element {
 
+    const aboutUs = infoPageData.aboutUs?.content[0].content[0].value;
+    const infoImage = infoPageData.infoImage?.fields.file.url;
 
-async function fetcher(url){
-    const res = await fetch(url);
-    return res.json();
-}
+    useEffect(() => {
+        const bg = document.body;
+        bg.classList.remove("needsScroll");
+        // bg.classList.add("noScroll");
+        bg.removeAttribute("style");
+    });
 
-//use swr cache revalidation magic
-
-const singleEntry = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master/entries/?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}&content_type=infoPage&select=fields`;
-const singleEntry1 = `https://cdn.contentful.com/spaces/${process.env.NEXT_PUBLIC_CONTENTFUL_ID}/environments/master/entries/?access_token=${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESSKEY}&links_to_asset={}`;
-
-const { data } = useSWR( singleEntry, fetcher);
-
-
-
-
-const aboutUs0 = infoPageData.aboutUs?.content[0].content[0].value;
-const aboutUs = data?.items[0].fields.aboutUs.content[0].content[0].value;
-
-// const aboutUs = data?.fields.aboutUs.content[0].content[0].value;
-const infoImage =  infoPageData.infoImage?.fields.file.url;
-const infoImage0 = data?.includes.Asset[0].fields.file.url;
-
-const src = infoImage ? data?.includes.Asset[0].fields.file.url : null;
-
-// console.log(data?.items[0].fields.aboutUs.content[0].content[0].value);
-
-
-// console.log(infoImage);
-
-// console.log(baseUrlAssetsFields);
-
-    return(
+    return (
         <>
             <Meta page={"Info"} />
             <Layout>
                 <InfoBox aboutUs={aboutUs} />
-                <InfoWarpImg src={infoImage} />
+                <InfoPlaneCanvas src={infoImage} />
             </Layout>
         </>
     )
 }
 
-export const getStaticProps: GetStaticProps = async ()=>{
-    
-    const res = await connectClient.getEntries({ content_type: 'infoPage' });
-    // const fetcher = url => fetch(url).then(r => r.json())
+export const getStaticProps: GetStaticProps = async () => {
 
-    // const res = await fetcher(connectClient.getEntries({ content_type: 'infoPage' }))
+    const res = await connectClient.getEntries({ content_type: 'infoPage' });
+
     if (!res) {
         return {
             notFound: true
@@ -77,10 +53,10 @@ export const getStaticProps: GetStaticProps = async ()=>{
             infoImage: res.includes.Asset[0],
             aboutUs: res.items[0].fields,
             infoPageData: res.items[0].fields,
-            fallback:{
+            fallback: {
                 infoImage: res.includes.Asset[0],
                 aboutUs: res.items[0].fields,
-            infoPageData: res.items[0].fields
+                infoPageData: res.items[0].fields
             }
         }
     }
