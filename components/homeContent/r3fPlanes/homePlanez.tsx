@@ -57,11 +57,6 @@ export const  HomePlanez = ( { projects, position, projectIndex, slideNext, slid
             homePlaneRef.current.rotation.y -= snapback.y;
         }
 
-        const stophover = () => {    
-            // distMouse.x = prevMouse.x - mouse.x;
-            // distMouse.y = prevMouse.y - mouse.y;
-        }
-
         const slideSnapBack = () => {
             homePlaneRef.current.rotation.x = THREE.MathUtils.damp(homePlaneRef.current.rotation.x, 0, 7, delta); 
             homePlaneRef.current.rotation.y = THREE.MathUtils.damp(homePlaneRef.current.rotation.y, 0, 7, delta);
@@ -95,7 +90,7 @@ export const  HomePlanez = ( { projects, position, projectIndex, slideNext, slid
             mouse.x = e.clientX / window.innerWidth;
             mouse.y = e.clientY / window.innerHeight;
         }
-        
+
         document.addEventListener("mousemove", onDocumentMouseMove, false);
         document.addEventListener("mousedown", onMouseDown, false);
         document.addEventListener("mouseup", onMouseUp, false);
