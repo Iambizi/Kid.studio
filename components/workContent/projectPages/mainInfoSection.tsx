@@ -1,8 +1,11 @@
 import Image from 'next/image';
 import styles from "../../../styles/scss/projectPages/_projectPages.module.scss";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, Suspense } from "react";
 import Loader from "../../common/loaderR3F";
 import { isMobile } from 'react-device-detect';
+import { RegularLoader } from "../../common/loaderRegular";
+import ReactPlayer from 'react-player'
+
 
 interface Type {
     title: any;
@@ -76,27 +79,29 @@ export default function MainInfoSection({ title, details, videoCover, playButton
                         </p>
                     </div>
                 </div>
-                <div className={toggleIndex ? `${styles.projectVideo} ${styles.toggleIndex} video` : `${styles.projectVideo} video`}>
-                    <div onClick={overlayPlay} className={overLayClick ? `${styles.videoOverlay} ${styles.hideOverlay} overlay` : `${styles.videoOverlay} overlay`} style={{ backgroundImage: `url(${videoCover.fields.file.url})` }}>
-                    <div className={overLayClick ? `${styles.videoOverlay} ${styles.hideOverlay} overlay` : `${styles.videoOverlay} overlay`} style={{ backgroundImage: `url(${playButton})` }}>
-                        {/* <div onClick={overlayPlay} className={overLayClick ? `${styles.videoOverlay} ${styles.hideOverlay} overlay` : `${styles.videoOverlay} overlay`}>
-                        <div className={overLayClick ? `${styles.videoOverlay} ${styles.hideOverlay} overlay` : `${styles.videoOverlay} overlay`}> */}
-                            <Image
+                    <div className={toggleIndex ? `${styles.projectVideo} ${styles.toggleIndex} video` : `${styles.projectVideo} video`}>
+                        <div onClick={overlayPlay} className={overLayClick ? `${styles.videoOverlay} ${styles.hideOverlay} overlay` : `${styles.videoOverlay} overlay`} style={{ backgroundImage: `url(${videoCover.fields.file.url})` }}>
+                            <div className={overLayClick ? `${styles.videoOverlay} ${styles.hideOverlay} overlay` : `${styles.videoOverlay} overlay`} style={{ backgroundImage: `url(${playButton})` }}>
+                            {/* <div onClick={overlayPlay} className={overLayClick ? `${styles.videoOverlay} ${styles.hideOverlay} overlay` : `${styles.videoOverlay} overlay`}>
+                            <div className={overLayClick ? `${styles.videoOverlay} ${styles.hideOverlay} overlay` : `${styles.videoOverlay} overlay`}> */}
+                                <Image
+                                    className={styles.videoCover}
+                                    src={`https:${videoCover.fields.file.url}`}
+                                    alt="Main video/image still"
+                                    width={videoCover.fields.file.details.image.width}
+                                    height={videoCover.fields.file.details.image.height}
+                                />
+                                {/* <img 
                                 className={styles.videoCover}
-                                src={`https:${videoCover.fields.file.url}`}
-                                alt="Main video/image still"
-                                width={videoCover.fields.file.details.image.width}
-                                height={videoCover.fields.file.details.image.height}
-                            />
-                            {/* <img 
-                            className={styles.videoCover}
-                            src={ `${videoCover}` }
-                            alt="Main video/image still" 
-                            /> */}
+                                src={ `${videoCover}` }
+                                alt="Main video/image still" 
+                                /> */}
+                            </div>
                         </div>
+                        <ReactPlayer url={`${projectVideo}`} />
+
+                        {/* <iframe className={styles.video} id="vimeo1aolzk8" src={`${projectVideo}`} frameBorder="0" allowFullScreen></iframe> */}
                     </div>
-                    <iframe className={styles.video} id="vimeo1aolzk8" src={`${projectVideo}`} frameBorder="0" allowFullScreen></iframe>
-                </div>
             </section>
         </>
     )
