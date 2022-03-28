@@ -2,6 +2,9 @@ import Image from 'next/image';
 import styles from "../../styles/scss/projectPages/_projectPages.module.scss";
 import React, { useState, useEffect, useRef } from "react";
 import { isMobile } from 'react-device-detect';
+import ReactPlayer from 'react-player';
+import { RegularLoader } from '../common/loaderRegular';
+
 interface Type {
     reelTitle: string;
     reelDetails: string;
@@ -86,7 +89,8 @@ export default function ReelInfoSection( { reelTitle, reelDetails, videoCover, p
                             /> */}
                         </div>  
                     </div>
-                    <iframe className={styles.video} id="vimeo1aolzk8" src={`${projectVideo}`} frameBorder="0" allowFullScreen></iframe>
+                    {/* <iframe className={styles.video} id="vimeo1aolzk8" src={`${projectVideo}`} frameBorder="0" allowFullScreen></iframe> */}
+                    <ReactPlayer controls={true} fallback={<RegularLoader/>} className={styles.video} url={`${projectVideo}`} />
                 </div>
             </section>
         </>

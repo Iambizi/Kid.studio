@@ -94,8 +94,7 @@ export default function MainInfoSection({ title, details, videoCover, playButton
                         </div>
                     </div>
                     {/* <iframe className={styles.video} id="vimeo1aolzk8" src={`${projectVideo}`} frameBorder="0" allowFullScreen></iframe> */}
-                    <ReactPlayer controls={true}  className={styles.video} url={`${projectVideo}`} />
-                    
+                    <ReactPlayer controls={true} fallback={<RegularLoader/>}  className={styles.video} url={`${projectVideo}`} />
                 </div>
             </section>
         </>
