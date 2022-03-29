@@ -24,7 +24,6 @@ export const  HomePlanez = ( { projects, position, projectIndex, slideNext, slid
     let i = 0;
     let timerx = 500;
     let mouse = { x: 0, y: 0 };
-    let distMouse = { x: 0, y: 0 };
     let prevMouse = { x: 0, y: 0 };
     let snapback = { x: 0, y: 0 };
 
