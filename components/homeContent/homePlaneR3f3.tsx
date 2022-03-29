@@ -5,7 +5,7 @@ import styles from "../../styles/scss/homePage/_carousel.module.scss";
 import {HomePlane1} from "./r3fPlanes/homePlane15";
 import {HomePlane2} from "./r3fPlanes/homePlane16";
 import {HomePlane3} from "./r3fPlanes/homePlane17";
-import Loader from "../common/loaderR3F";
+import Loader from "../common/R3FLoader";
 import { isMobile } from 'react-device-detect';
 
 interface Type {

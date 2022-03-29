@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
-import Loader from "../common/loaderR3F";
+import Loader from "../common/R3FLoader";
 import {InfoPlane} from "./infoWarpedR3f3";
 
 interface Type {
@@ -13,7 +13,7 @@ export const InfoPlaneCanvas = ({ src }: Type): JSX.Element  => {
     return (
         <>
             <div className={`${styles.homeScene}`}>
-                <Canvas dpr={[1, 2]}>
+                <Canvas dpr={[0, 1]}>
                     <Suspense fallback={<Loader/>}>
                         <InfoPlane src={src} />
                     </Suspense>

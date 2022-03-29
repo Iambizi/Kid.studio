@@ -3,7 +3,7 @@ import * as THREE from 'three';
 import { Canvas, useFrame } from '@react-three/fiber';
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
 import { HomePlanez } from "./r3fPlanes/homePlanez"
-import Loader from "../common/loaderR3F";
+import Loader from "../common/R3FLoader";
 import { isMobile } from 'react-device-detect';
 
 

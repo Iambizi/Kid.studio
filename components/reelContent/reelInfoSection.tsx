@@ -3,7 +3,7 @@ import styles from "../../styles/scss/projectPages/_projectPages.module.scss";
 import React, { useState, useEffect, useRef } from "react";
 import { isMobile } from 'react-device-detect';
 import ReactPlayer from 'react-player';
-import { RegularLoader } from '../common/loaderRegular';
+import { RegularLoader } from '../common/RegularLoader';
 
 interface Type {
     reelTitle: string;
