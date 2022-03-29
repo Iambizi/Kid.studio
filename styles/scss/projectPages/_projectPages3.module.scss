@@ -92,6 +92,18 @@
             left: 0%;
             max-width: 560px;
             max-height: 450px;
+            @media screen and (max-width: $m1){
+                top: -2%;
+            }
+            @media screen and (max-width: $xs){
+                top: -42%;
+            }
+            @media screen and (max-width: $xxs){
+                top: -55%;
+            }
+            @media screen and (max-width: $xxxs){
+                top: -72%;
+            }
         }
     }
     .projectStills{
