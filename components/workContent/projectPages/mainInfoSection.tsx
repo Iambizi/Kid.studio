@@ -20,6 +20,7 @@ export default function MainInfoSection({ title, details, videoCover, playButton
     const [toggleIndex, setToggleIndex] = useState(false);
     const [overLayClick, setOverLayClick] = useState(false);
 
+
     const handleIndex = () => {
 
         // setToggleIndex(true);
