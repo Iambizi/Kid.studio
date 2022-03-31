@@ -15,9 +15,9 @@ interface Type {
 
 export default function ProjectPages({ projectPage }: Type): JSX.Element {
 
-    const title = projectPage.projectTitle;
-    const details = projectPage.projectCreds.content[0].content[0].value;
-    const videoCover = projectPage.videoCover;
+    const title = projectPage?.projectTitle;
+    const details = projectPage?.projectCreds.content[0].content[0].value;
+    const videoCover = projectPage?.videoCover;
     const playButton = projectPage.playButton ? projectPage.playButton?.fields.file.url : null;
     const projectVideo = projectPage ? projectPage.projectVideo : null;
     const projectStills = projectPage.videoStills;
@@ -40,6 +40,21 @@ export default function ProjectPages({ projectPage }: Type): JSX.Element {
     )
 }
 
+export const getStaticPaths: GetStaticPaths = async () => {
+    const res: any = await connectClient.getEntries({ content_type: 'projectPage' });
+
+    const paths = res.items.map((item) => ({
+        params: { project: item.fields.projectSlug },
+    }));
+
+    console.log(paths);
+
+    return {
+        paths,
+        fallback: "blocking"
+    };
+}
+
 export const getStaticProps: GetStaticProps = async (context) => {
 
     const { params } = context;
@@ -52,6 +67,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
     const projectPage = res.items.map((item, i) => res.items[i]).find((item, i) => res.items[i].fields.projectSlug.includes(projectPath));
 
+    console.log(projectPath);
+    console.log(projectPage.fields.projectSlug);
     return {
         props: {
             projects: res.items,
@@ -60,15 +77,3 @@ export const getStaticProps: GetStaticProps = async (context) => {
     }
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-    const res: any = await connectClient.getEntries({ content_type: 'projectPage' });
-
-    const paths = res.items.map((item) => ({
-        params: { project: item.fields.projectSlug },
-    }))
-
-    return {
-        paths,
-        fallback: 'blocking'
-    };
-}
