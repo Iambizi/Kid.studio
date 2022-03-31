@@ -67,8 +67,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
     const projectPage = res.items.map((item, i) => res.items[i]).find((item, i) => res.items[i].fields.projectSlug.includes(projectPath));
 
-    console.log(projectPath);
-    console.log(projectPage.fields.projectSlug);
+    // console.log(projectPath);
+    // console.log(projectPage.fields.projectSlug);
     return {
         props: {
             projects: res.items,
