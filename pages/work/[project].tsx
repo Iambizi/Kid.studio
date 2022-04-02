@@ -48,10 +48,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
     }));
 
     console.log(paths);
+    console.log(paths[0].params.project);
 
     return {
         paths,
-        fallback: "blocking"
+        fallback: "blocking",
+        // fallback: false
     };
 }
 
