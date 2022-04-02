@@ -13,12 +13,12 @@ interface Type{
 
 export default function Reels({ reelData }: Type):JSX.Element{
 
-    const title = reelData.pageTitle;
-    const details = reelData.details?.content[0].content[0].value;
-    const videoCover = reelData.videoCover;
-    const playButton = reelData.playButton?.fields.file.url;
-    const projectVideo = reelData.projectVideo;
-    const reelStills = reelData.videoStills;
+    const title = reelData?.pageTitle;
+    const details = reelData?.details?.content[0].content[0].value;
+    const videoCover = reelData?.videoCover;
+    const playButton = reelData?.playButton?.fields.file.url;
+    const projectVideo = reelData?.projectVideo;
+    const reelStills = reelData?.videoStills;
 
     useEffect(()=>{
         const bg = document.body;
