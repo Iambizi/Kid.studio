@@ -9,18 +9,18 @@ import styles from '../../styles/scss/common/_footer.module.scss';
 import { connectClient } from '../../components/common/utils/createClient';
 
 interface Type {
-    projectsPageData: any;
-    projectPage: any;
+    // projectsPageData: any;
+    projectPageData: any;
 }
 
-export default function ProjectPages({ projectPage }: Type): JSX.Element {
+export default function ProjectPages({ projectPageData }: Type): JSX.Element {
 
-    const title = projectPage?.projectTitle;
-    const details = projectPage?.projectCreds.content[0].content[0].value;
-    const videoCover = projectPage?.videoCover;
-    const playButton = projectPage.playButton ? projectPage.playButton?.fields.file.url : null;
-    const projectVideo = projectPage ? projectPage.projectVideo : null;
-    const projectStills = projectPage.videoStills;
+    const title = projectPageData?.projectTitle;
+    const details = projectPageData?.projectCreds.content[0].content[0].value;
+    const videoCover = projectPageData?.videoCover;
+    const playButton = projectPageData?.playButton ? projectPageData.playButton?.fields.file.url : null;
+    const projectVideo = projectPageData ? projectPageData.projectVideo : null;
+    const projectStills = projectPageData?.videoStills;
 
     useEffect(() => {
         const bg = document.body;
@@ -43,12 +43,18 @@ export default function ProjectPages({ projectPage }: Type): JSX.Element {
 export const getStaticPaths: GetStaticPaths = async () => {
     const res: any = await connectClient.getEntries({ content_type: 'projectPage' });
 
-    const paths = res.items.map((item) => ({
-        params: { project: item.fields.projectSlug },
-    }));
+    // const paths = res.items.map((item) => ({
+    //     params: { project: item.fields.projectSlug },
+    // }));
+
+    const paths = res.items.map((item)=>{
+        return{
+            params: { project: item.fields.projectSlug },
+        }
+    });
 
     console.log(paths);
-    console.log(paths[0].params.project);
+    // console.log(paths[0].params.project);
 
     return {
         paths,
@@ -67,14 +73,17 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
     const res: any = await connectClient.getEntries({ content_type: 'projectPage' });
 
-    const projectPage = res.items.map((item, i) => res.items[i]).find((item, i) => res.items[i].fields.projectSlug.includes(projectPath));
+    const projectPageData = res.items.map((item, i) => res.items[i]).find((item, i) => res.items[i].fields.projectSlug.includes(projectPath));
+    // const projectPageData = res.items.map((item, i) => item[i]);
 
-    // console.log(projectPath);
-    // console.log(projectPage.fields.projectSlug);
+    console.log(projectPath);
+    // console.log(projectPageData);
+    // console.log(projectPageData.fields.projectSlug);
+
     return {
         props: {
             projects: res.items,
-            projectPage: projectPage.fields
+            projectPageData: projectPageData.fields
         }
     }
 }
