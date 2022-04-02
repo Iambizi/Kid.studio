@@ -43,6 +43,12 @@ export const getStaticProps: GetStaticProps = async ()=>{
     
     const res = await connectClient.getEntries({ content_type: 'reelPage' });
     const reelData = res.items[0].fields;
+
+    if (!res) {
+        return {
+          notFound: true,
+        }
+      }
     
     return {
         props: {

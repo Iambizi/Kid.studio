@@ -46,7 +46,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
     // const paths = res.items.map((item) => ({
     //     params: { project: item.fields.projectSlug },
     // }));
-
     const paths = res.items.map((item)=>{
         return{
             params: { project: item.fields.projectSlug },
@@ -75,6 +74,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
     const projectPageData = res.items.map((item, i) => res.items[i]).find((item, i) => res.items[i].fields.projectSlug.includes(projectPath));
     // const projectPageData = res.items.map((item, i) => item[i]);
+
+    if (!res) {
+        return {
+          notFound: true,
+        }
+      }
 
     console.log(projectPath);
     // console.log(projectPageData);
