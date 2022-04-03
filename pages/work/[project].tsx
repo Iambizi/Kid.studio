@@ -43,22 +43,13 @@ export default function ProjectPages({ projectPageData }: Type): JSX.Element {
 export const getStaticPaths: GetStaticPaths = async () => {
     const res: any = await connectClient.getEntries({ content_type: 'projectPage' });
 
-    // const paths = res.items.map((item) => ({
-    //     params: { project: item.fields.projectSlug },
-    // }));
-    const paths = res.items.map((item)=>{
-        return{
-            params: { project: item.fields.projectSlug },
-        }
-    });
-
-    console.log(paths);
-    // console.log(paths[0].params.project);
+    const paths = res.items.map((item) => ({
+        params: { project: item.fields.projectSlug },
+    }));
 
     return {
         paths,
         fallback: "blocking",
-        // fallback: false
     };
 }
 
@@ -73,17 +64,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
     const res: any = await connectClient.getEntries({ content_type: 'projectPage' });
 
     const projectPageData = res.items.map((item, i) => res.items[i]).find((item, i) => res.items[i].fields.projectSlug.includes(projectPath));
-    // const projectPageData = res.items.map((item, i) => item[i]);
 
     if (!res) {
         return {
           notFound: true,
         }
       }
-
-    console.log(projectPath);
-    // console.log(projectPageData);
-    // console.log(projectPageData.fields.projectSlug);
 
     return {
         props: {
