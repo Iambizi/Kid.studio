@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Loader from "../../common/R3FLoader";
 import { isMobile } from 'react-device-detect';
 import ReactPlayer from 'react-player';
-import { RegularLoader } from "../../common/RegularLoader";
+import RegularLoader  from "../../common/RegularLoader";
 
 interface Type {
     title: any;
