@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import styles from "../../../styles/scss/projectPages/_projectPages3.module.scss";
 import React, { useState, useEffect, useRef } from "react";
-import Loader from "../../common/R3FLoader";
 import { isMobile } from 'react-device-detect';
 import ReactPlayer from 'react-player';
 import RegularLoader  from "../../common/RegularLoader";
@@ -16,7 +15,6 @@ interface Type {
 
 export default function MainInfoSection({ title, details, videoCover, playButton, projectVideo }: Type): JSX.Element {
     // hook for handling z-index state
-    const [toggleIndex, setToggleIndex] = useState(false);
     const [overLayClick, setOverLayClick] = useState(false);
 
     const handleIndex = () => {
@@ -78,7 +76,7 @@ export default function MainInfoSection({ title, details, videoCover, playButton
                         </p>
                     </div>
                 </div>
-                <div className={toggleIndex ? `${styles.projectVideo} ${styles.toggleIndex} video` : `${styles.projectVideo} video`}>
+                <div className={`${styles.projectVideo} video`}>
                     <div onClick={overlayPlay} className={overLayClick ? `${styles.videoOverlay} ${styles.hideOverlay} overlay` : `${styles.videoOverlay} overlay`} style={{ backgroundImage: `url(${videoCover.fields.file.url})` }}>
                     <div className={overLayClick ? `${styles.videoOverlay} ${styles.hideOverlay} overlay` : `${styles.videoOverlay} overlay`} style={{ backgroundImage: `url(${playButton})` }}>
                         {/* <div onClick={overlayPlay} className={overLayClick ? `${styles.videoOverlay} ${styles.hideOverlay} overlay` : `${styles.videoOverlay} overlay`}>
