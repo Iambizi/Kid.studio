@@ -8,11 +8,10 @@ import React, { useEffect } from "react";
 import { connectClient } from '../components/common/utils/createClient';
 
 interface Type {
-  homeProjects: any;
   projects: string;
 }
 
-const Home = ({ homeProjects, projects }: Type): JSX.Element => {
+const Home = ({ projects }: Type): JSX.Element => {
   // removes needsScroll class set in project pages from vertical scroll
   // projectPage useEffect hook needs refactoring to avoid calling it again here.
 
@@ -28,7 +27,7 @@ const Home = ({ homeProjects, projects }: Type): JSX.Element => {
     <>
       <Meta page={"Home"} />
       <Layout>
-        <Content homeProjects={homeProjects} projects={projects} />
+        <Content projects={projects} />
       </Layout>
     </>
   )

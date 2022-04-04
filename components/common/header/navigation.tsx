@@ -9,7 +9,7 @@ interface Type {
     bgImg?: boolean;
 }
 
-export default function Navigation( { bgImg }:Type ):JSX.Element{
+const Navigation = ( { bgImg }:Type ):JSX.Element => {
     const router = useRouter();
 
     //Handles logic for removal of fixed positioning along pages
@@ -50,4 +50,6 @@ export default function Navigation( { bgImg }:Type ):JSX.Element{
             </header>
         </>
     );
-}
+};
+
+export default Navigation;

@@ -1,8 +1,7 @@
+import React, { useEffect } from "react";
 import styles from "../../../styles/scss/projectPages/_projectPages.module.scss";
 import {Shuffle} from "../../common/utils/shuffle";
 import { isMobile } from 'react-device-detect';
-
-import React, { useEffect } from "react";
 
 interface Type{
     projectStills: any;

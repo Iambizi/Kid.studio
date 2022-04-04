@@ -3,8 +3,6 @@ import styles from "../../../styles/scss/projectPages/_projectPages.module.scss"
 import React, { useState, useEffect, useRef } from "react";
 import { isMobile } from 'react-device-detect';
 
-
-
 interface Type {
     title: any;
     details: any;
@@ -14,8 +12,7 @@ interface Type {
 }
 
 const MainInfoSection = ({ title, details, videoCover, playButton, projectVideo }: Type): JSX.Element => {
-    // hook for handling z-index state
-    const [toggleIndex, setToggleIndex] = useState(false);
+    
     const [overLayClick, setOverLayClick] = useState(false);
 
     const overlayPlay = () => {
@@ -62,7 +59,7 @@ const MainInfoSection = ({ title, details, videoCover, playButton, projectVideo 
                         </p>
                     </div>
                 </div>
-                <div className={toggleIndex ? `${styles.projectVideo} ${styles.toggleIndex} video` : `${styles.projectVideo} video`}>
+                <div className={`${styles.projectVideo} video`}>
                     <div onClick={overlayPlay} className={overLayClick ? `${styles.videoOverlay} ${styles.hideOverlay} overlay` : `${styles.videoOverlay} overlay`} style={{ backgroundImage: `url(${videoCover.fields.file.url})` }}>
                     <div className={overLayClick ? `${styles.videoOverlay} ${styles.hideOverlay} overlay` : `${styles.videoOverlay} overlay`} style={{ backgroundImage: `url(${playButton})` }}>
                             <Image
@@ -72,11 +69,6 @@ const MainInfoSection = ({ title, details, videoCover, playButton, projectVideo 
                                 width={videoCover.fields.file.details.image.width}
                                 height={videoCover.fields.file.details.image.height}
                             />
-                            {/* <img 
-                            className={styles.videoCover}
-                            src={ `${videoCover}` }
-                            alt="Main video/image still" 
-                            /> */}
                         </div>
                     </div>
                     <iframe className={styles.video} id="vimeo1aolzk8" src={`${projectVideo}`} frameBorder="0" allowFullScreen></iframe>

@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { GetRandoNum } from "../common/utils/getRandoNum";
 
 
-export default function Flash(): JSX.Element {
+const Flash = (): JSX.Element => {
 
     const [flashed, setFlashed] = useState(false);
     const componentMounted = useRef(true);
@@ -46,4 +46,6 @@ export default function Flash(): JSX.Element {
             <div className={flashed ? `${styles.flash}` : `${styles.flash} ${styles.hideFlash}`} id="flash"></div>
         </>
     )
-}
+};
+
+export default Flash;

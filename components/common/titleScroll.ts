@@ -1,7 +1,7 @@
 import { useRef, useEffect } from "react";
 import { isMobile } from 'react-device-detect';
 
-export const ShiftScroll = () => {
+const ShiftScroll = () => {
     const ref = useRef<HTMLElement | any>(null!);
         
     const ShiftedScroll = () => {
@@ -20,11 +20,12 @@ export const ShiftScroll = () => {
         }else{
             return null;
         }
-        console.log('im here and im shifting');
     }
+    
     useEffect(()=>{
         window.addEventListener('scroll', ShiftedScroll);
     },[]);
-    console.log('im here');
-}
+};
+
+export default ShiftScroll;
 

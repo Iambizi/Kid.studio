@@ -2,7 +2,7 @@ import styles from "../../styles/scss/common/_loader.module.scss";
 import React from "react";
 import { Html } from '@react-three/drei'
 
-export default function Loader() {
+const Loader = (): JSX.Element => {
     return (
         <>
             <Html
@@ -13,4 +13,6 @@ export default function Loader() {
             </Html>
         </>
     )
-}
+};
+
+export default Loader;

@@ -2,14 +2,14 @@ import React, { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
 import Loader from "../common/R3FLoader";
-import {InfoPlane} from "./infoWarpedR3f3";
+import InfoPlane from "./infoWarpedPlane";
 import { isMobile } from 'react-device-detect';
 
 interface Type {
     src: string;
 }
 
-export const InfoPlaneCanvas = ({ src }: Type): JSX.Element  => {
+const InfoPlaneCanvas = ({ src }: Type): JSX.Element  => {
 
     return (
         <>
@@ -23,3 +23,5 @@ export const InfoPlaneCanvas = ({ src }: Type): JSX.Element  => {
         </>
     )
 }
+
+export default InfoPlaneCanvas;

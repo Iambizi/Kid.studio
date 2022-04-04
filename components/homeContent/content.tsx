@@ -3,11 +3,10 @@ import Carousel from "./carousel";
 import React, { useState } from "react";
 
 interface Type {
-  homeProjects: any;
   projects: any;
 }
 
-export default function Content({ homeProjects, projects }: Type): JSX.Element {
+const Content = ({ projects }: Type): JSX.Element => {
 
   // State for counter
   const [count, setCount] = useState(0);
@@ -53,4 +52,6 @@ export default function Content({ homeProjects, projects }: Type): JSX.Element {
       </section>
     </>
   )
-}
+};
+
+export default Content;

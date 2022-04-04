@@ -1,7 +1,7 @@
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
 import Link from "next/link";
-// import {WarpedImage} from "./homePlaneR3f3";
-import {WarpedImage} from "./homePlaneCanvas";
+import HomePlaneCanvas from "./homePlaneCanvas";
+
 interface Type {
     carouselX: number;
     projects: any;
@@ -11,7 +11,7 @@ interface Type {
     slidePrevious: boolean;
 }
 
-export default function Carousel({ carouselX, projects, goPrevious, goNext, slideNext, slidePrevious }: Type): JSX.Element {
+const Carousel = ({ carouselX, projects, slideNext, slidePrevious }: Type): JSX.Element => {
 
     return (
         <>
@@ -24,7 +24,9 @@ export default function Carousel({ carouselX, projects, goPrevious, goNext, slid
                     </div>
                 ))}
             </div>
-            <WarpedImage carouselX={carouselX} projects={projects} slideNext={slideNext} slidePrevious={slidePrevious} />
+            <HomePlaneCanvas carouselX={carouselX} projects={projects} slideNext={slideNext} slidePrevious={slidePrevious} />
         </>
     )
-}
+};
+
+export default Carousel;

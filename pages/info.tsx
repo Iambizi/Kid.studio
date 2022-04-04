@@ -4,7 +4,7 @@ import Meta from '../components/common/meta';
 import React, { useEffect } from "react";
 import InfoBox from '../components/infoContent/infoBox';
 import { connectClient } from '../components/common/utils/createClient';
-import {InfoPlaneCanvas} from '../components/infoContent/infoCanvas';
+import InfoPlaneCanvas from '../components/infoContent/infoCanvas';
 
 
 interface Type {
@@ -46,6 +46,7 @@ export const getStaticProps: GetStaticProps = async () => {
             notFound: true
         };
     }
+    
     return {
         props: {
             infoImage: res.includes.Asset[0],

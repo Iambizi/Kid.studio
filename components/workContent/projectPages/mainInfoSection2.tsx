@@ -6,7 +6,6 @@ import { isMobile } from 'react-device-detect';
 import ReactPlayer from 'react-player';
 import { RegularLoader } from "../../common/RegularLoader";
 
-
 interface Type {
     title: any;
     details: any;

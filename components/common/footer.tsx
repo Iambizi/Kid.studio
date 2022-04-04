@@ -7,7 +7,7 @@ interface Type {
     specificStyles?: string; 
 }
 
-export default function Footer({ bgImg, specificStyles }:Type):JSX.Element{
+const Footer = ({ bgImg, specificStyles }:Type):JSX.Element =>{
     return(
         <>
             <footer className={`${styles.footer} ${specificStyles}`}>
@@ -24,3 +24,5 @@ export default function Footer({ bgImg, specificStyles }:Type):JSX.Element{
         </>
     )
 }
+
+export default Footer;

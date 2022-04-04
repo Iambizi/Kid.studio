@@ -13,7 +13,7 @@ interface Type {
     slidePrevious: boolean;
 }
 
-export const  HomePlanez = ( { projects, position, projectIndex, slideNext, slidePrevious, ...props}: Type): JSX.Element => {
+const HomePlanes = ( { projects, position, projectIndex, slideNext, slidePrevious, ...props}: Type): JSX.Element => {
 
     const src = projects[projectIndex]?.fields.featuredProjectImage.fields ? projects[projectIndex].fields.featuredProjectImage.fields.file.url : null;
     
@@ -112,3 +112,4 @@ export const  HomePlanez = ( { projects, position, projectIndex, slideNext, slid
     )
 }
 
+export default HomePlanes;
