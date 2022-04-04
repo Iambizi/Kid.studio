@@ -1,7 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Layout from '../../components/layout';
 import Meta from '../../components/common/meta';
-// import MainInfo from '../../components/workContent/projectPages/mainInfoSection2';
 import MainInfo from '../../components/workContent/projectPages/mainInfoSection';
 import Stills from '../../components/workContent/projectPages/stills';
 import React, { useEffect } from "react";
@@ -9,11 +8,10 @@ import styles from '../../styles/scss/common/_footer.module.scss';
 import { connectClient } from '../../components/common/utils/createClient';
 
 interface Type {
-    // projectsPageData: any;
     projectPageData: any;
 }
 
-export default function ProjectPages({ projectPageData }: Type): JSX.Element {
+const ProjectPages = ({ projectPageData }: Type): JSX.Element => {
 
     const title = projectPageData?.projectTitle;
     const details = projectPageData?.projectCreds.content[0].content[0].value;
@@ -39,6 +37,8 @@ export default function ProjectPages({ projectPageData }: Type): JSX.Element {
         </>
     )
 }
+
+export default ProjectPages;
 
 export const getStaticPaths: GetStaticPaths = async () => {
     const res: any = await connectClient.getEntries({ content_type: 'projectPage' });

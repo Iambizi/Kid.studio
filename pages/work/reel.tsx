@@ -11,7 +11,7 @@ interface Type{
     reelData: any;
 }
 
-export default function Reels({ reelData }: Type):JSX.Element{
+ const Reels = ({ reelData }: Type):JSX.Element =>{
 
     const title = reelData?.pageTitle;
     const details = reelData?.details?.content[0].content[0].value;
@@ -38,6 +38,8 @@ export default function Reels({ reelData }: Type):JSX.Element{
         </>
     )
 }
+
+export default Reels;
 
 export const getStaticProps: GetStaticProps = async ()=>{
     

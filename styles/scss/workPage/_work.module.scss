@@ -14,9 +14,6 @@
         align-items: center;
         text-transform: uppercase;
 
-        &.notFullScreenAdjust{
-            margin-top: 1%;
-        }
         @media (orientation: landscape) {
             margin-top: 6%;
             font-size: .8em;
@@ -66,7 +63,7 @@
         @media screen and (min-width:$l1){
 
             @media (min-height:720px){
-                margin-top: -1%;
+                margin-top: -1.75%;
             }
             
             @media (min-height:742px){
