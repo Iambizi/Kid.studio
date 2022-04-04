@@ -2,7 +2,7 @@ import Layout from '../components/layout';
 import Meta from '../components/common/meta';
 import styles from '../styles/scss/common/_error.module.scss';
 
-export default function Custom404() {
+const Custom404 = ()=> {
     return (
         <>
             <Meta page={"404"} />
@@ -17,3 +17,5 @@ export default function Custom404() {
         </>
     )
 }
+
+export default Custom404;

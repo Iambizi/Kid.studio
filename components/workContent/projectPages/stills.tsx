@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import styles from "../../../styles/scss/projectPages/_projectPages.module.scss";
 import {Shuffle} from "../../common/utils/shuffle";
 import { isMobile } from 'react-device-detect';
@@ -9,10 +8,9 @@ interface Type{
     projectStills: any;
 }
 
-export default function stills( { projectStills }: Type ):JSX.Element{
+const Stills = ( { projectStills }: Type ):JSX.Element => {
 
     useEffect(()=>{
-        const screenWidth = window.innerWidth;
         
         const position = [
             30, 50, 30, 10, 30, 10, 50, 30, 10, 30,
@@ -27,19 +25,12 @@ export default function stills( { projectStills }: Type ):JSX.Element{
             }
         }
     },[]);
+
     return(
         <>
             <section className={styles.projectStillsSection}>
                 <div className={styles.projectStills}>
                     {projectStills.map((item, i)=>(
-                        // <Image
-                        //     className={`${styles.stills} stills`}
-                        //     src={`https:${projectStills[i].fields.file.url}`}
-                        //     alt="Project image stills"
-                        //     width={projectStills[i].fields.file.details.image.width}
-                        //     height={projectStills[i].fields.file.details.image.height}
-                        //     key={i}
-                        // />
                         <img className={`${styles.stills} stills`}
                         src={`${projectStills[i].fields.file.url}`}
                         alt="Project image stills"
@@ -50,3 +41,5 @@ export default function stills( { projectStills }: Type ):JSX.Element{
     </>
     )
 }
+
+export default Stills;

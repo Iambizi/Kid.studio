@@ -1,10 +1,8 @@
 import Image from 'next/image';
 import styles from "../../../styles/scss/projectPages/_projectPages.module.scss";
 import React, { useState, useEffect, useRef } from "react";
-import Loader from "../../common/R3FLoader";
 import { isMobile } from 'react-device-detect';
-import ReactPlayer from 'react-player';
-import { RegularLoader } from "../../common/RegularLoader";
+
 
 
 interface Type {
@@ -15,26 +13,10 @@ interface Type {
     projectVideo: any;
 }
 
-export default function MainInfoSection({ title, details, videoCover, playButton, projectVideo }: Type): JSX.Element {
+const MainInfoSection = ({ title, details, videoCover, playButton, projectVideo }: Type): JSX.Element => {
     // hook for handling z-index state
     const [toggleIndex, setToggleIndex] = useState(false);
     const [overLayClick, setOverLayClick] = useState(false);
-
-
-    const handleIndex = () => {
-
-        // setToggleIndex(true);
-
-        // function addClass(){
-        //     video.classList.add(`${styles.toggleIndex}`)
-        // }
-        // function removeClass(){
-        //     video.classList.remove(`${styles.toggleIndex}`)
-        // }
-
-        // video.addEventListener("mouseenter", addClass, false);
-        // video.addEventListener("mouseout", removeClass, false);
-    }
 
     const overlayPlay = () => {
         setOverLayClick(true);
@@ -42,7 +24,6 @@ export default function MainInfoSection({ title, details, videoCover, playButton
     }
 
     const ref = useRef<HTMLElement | any>(null!);
-    // const titleP = document.querySelector(".title") as HTMLElement;
 
     // functionality for offset page scroll
     const titleScroll = () => {
@@ -50,8 +31,7 @@ export default function MainInfoSection({ title, details, videoCover, playButton
         let pageY = window.pageYOffset;
         let transY = 0;
         let diff = 0;
-        let para = 0!;
-        let lastScrollTop = 0;
+        
         if (!isMobile && ref.current) {
             setTimeout(() => {
                 if (diff = pageY - transY) {
@@ -64,9 +44,11 @@ export default function MainInfoSection({ title, details, videoCover, playButton
             return null;
         }
     }
+
     useEffect(() => {
         window.addEventListener('scroll', titleScroll);
     }, []);
+
     return (
         <>
             <section className={styles.projectPageSection}>
@@ -83,8 +65,6 @@ export default function MainInfoSection({ title, details, videoCover, playButton
                 <div className={toggleIndex ? `${styles.projectVideo} ${styles.toggleIndex} video` : `${styles.projectVideo} video`}>
                     <div onClick={overlayPlay} className={overLayClick ? `${styles.videoOverlay} ${styles.hideOverlay} overlay` : `${styles.videoOverlay} overlay`} style={{ backgroundImage: `url(${videoCover.fields.file.url})` }}>
                     <div className={overLayClick ? `${styles.videoOverlay} ${styles.hideOverlay} overlay` : `${styles.videoOverlay} overlay`} style={{ backgroundImage: `url(${playButton})` }}>
-                        {/* <div onClick={overlayPlay} className={overLayClick ? `${styles.videoOverlay} ${styles.hideOverlay} overlay` : `${styles.videoOverlay} overlay`}>
-                        <div className={overLayClick ? `${styles.videoOverlay} ${styles.hideOverlay} overlay` : `${styles.videoOverlay} overlay`}> */}
                             <Image
                                 className={styles.videoCover}
                                 src={`https:${videoCover.fields.file.url}`}
@@ -100,9 +80,10 @@ export default function MainInfoSection({ title, details, videoCover, playButton
                         </div>
                     </div>
                     <iframe className={styles.video} id="vimeo1aolzk8" src={`${projectVideo}`} frameBorder="0" allowFullScreen></iframe>
-                    {/* <ReactPlayer controls={true}  className={styles.video} url={`${projectVideo}`} /> */}
                 </div>
             </section>
         </>
     )
 }
+
+export default MainInfoSection;

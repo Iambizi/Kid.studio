@@ -12,7 +12,7 @@ interface Type {
   projects: string;
 }
 
-export default function Home({ homeProjects, projects }: Type): JSX.Element {
+const Home = ({ homeProjects, projects }: Type): JSX.Element => {
   // removes needsScroll class set in project pages from vertical scroll
   // projectPage useEffect hook needs refactoring to avoid calling it again here.
 
@@ -33,6 +33,8 @@ export default function Home({ homeProjects, projects }: Type): JSX.Element {
     </>
   )
 }
+
+export default Home;
 
 export const getStaticProps: GetStaticProps = async () => {
 

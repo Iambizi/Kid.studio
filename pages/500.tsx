@@ -2,7 +2,7 @@ import Layout from '../components/layout';
 import Meta from '../components/common/meta';
 import styles from '../styles/scss/common/_error.module.scss';
 
-export default function Custom500() {
+const Custom500 = (): JSX.Element => {
     return (
         <>
             <Meta page={"500"} />
@@ -17,3 +17,4 @@ export default function Custom500() {
         </>
     )
 }
+export default Custom500;

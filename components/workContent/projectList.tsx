@@ -9,7 +9,7 @@ interface Type {
   projectList: any;
 }
 
-export default function work({ bgImg, setbgImg, projectList }: Type) {
+const ProjectList = ({ bgImg, setbgImg, projectList }: Type): JSX.Element => {
 
   // rewrote okHover plugin mouse over functionality
   const handleMouseOver = (e) => {
@@ -76,3 +76,5 @@ export default function work({ bgImg, setbgImg, projectList }: Type) {
     </>
   )
 }
+
+export default ProjectList;

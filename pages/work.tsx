@@ -11,7 +11,7 @@ interface Type {
 }
 
 
-export default function Work({ workData }:Type):JSX.Element{
+const Work = ({ workData }:Type):JSX.Element =>{
     const [bgImg, setbgImg] = useState(false);
 
      return(
@@ -23,6 +23,8 @@ export default function Work({ workData }:Type):JSX.Element{
          </>
      )
 }
+
+export default Work;
 
 export const getStaticProps: GetStaticProps = async ()=>{
     

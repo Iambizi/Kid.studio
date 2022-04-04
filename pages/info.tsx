@@ -3,9 +3,6 @@ import { GetStaticProps } from 'next';
 import Meta from '../components/common/meta';
 import React, { useEffect } from "react";
 import InfoBox from '../components/infoContent/infoBox';
-// import InfoWarpImg from '../components/infoContent/infoWarpedR3f';
-import InfoWarpImg from '../components/infoContent/infoWarpedR3f2';
-// import InfoWarpImg from '../components/common/commonWarpedPlane';
 import { connectClient } from '../components/common/utils/createClient';
 import {InfoPlaneCanvas} from '../components/infoContent/infoCanvas';
 
@@ -15,7 +12,7 @@ interface Type {
     fallback: string;
 }
 
-export default function Info({ infoPageData, fallback }: Type): JSX.Element {
+const Info = ({ infoPageData }: Type): JSX.Element => {
 
     const aboutUs = infoPageData.aboutUs?.content[0].content[0].value;
     const infoImage = infoPageData.infoImage?.fields.file.url;
@@ -37,6 +34,8 @@ export default function Info({ infoPageData, fallback }: Type): JSX.Element {
         </>
     )
 }
+
+export default Info;
 
 export const getStaticProps: GetStaticProps = async () => {
 
