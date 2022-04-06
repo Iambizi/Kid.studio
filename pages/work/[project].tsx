@@ -1,8 +1,8 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Layout from '../../components/layout';
 import Meta from '../../components/common/meta';
-import MainInfo from '../../components/workContent/projectPages/mainInfoSection';
-import Stills from '../../components/workContent/projectPages/stills';
+import MainInfoSection from '../../components/workContent/project-Reel-Pages/mainInfo';
+import Stills from '../../components/workContent/project-Reel-Pages/stills';
 import React, { useEffect } from "react";
 import styles from '../../styles/scss/common/_footer.module.scss';
 import { connectClient } from '../../components/common/utils/createClient';
@@ -31,8 +31,8 @@ const ProjectPages = ({ projectPageData }: Type): JSX.Element => {
         <>
             <Meta page={title} />
             <Layout specificStyles={`${styles.projectPages}`}>
-                <MainInfo title={title} details={details} videoCover={videoCover} playButton={playButton} projectVideo={projectVideo} />
-                <Stills projectStills={projectStills} />
+                <MainInfoSection title={title} details={details} videoCover={videoCover} playButton={playButton} projectVideo={projectVideo} />
+                <Stills Stills={projectStills} />
             </Layout>
         </>
     )
