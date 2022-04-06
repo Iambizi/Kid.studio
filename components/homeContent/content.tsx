@@ -3,10 +3,10 @@ import Carousel from "./carousel";
 import React, { useState } from "react";
 
 interface Type {
-  projects: any;
+  homeProjects: any;
 }
 
-const Content = ({ projects }: Type): JSX.Element => {
+const Content = ({ homeProjects }: Type): JSX.Element => {
 
   // State for counter
   const [count, setCount] = useState(0);
@@ -44,7 +44,7 @@ const Content = ({ projects }: Type): JSX.Element => {
     <>
       <section className={styles.noScroll}>
         <article className={styles.homeContentSection}>
-          <Carousel carouselX={carouselX} projects={projects} goNext={goNext} goPrevious={goPrevious} slideNext={slideNext} slidePrevious={slidePrevious} />
+          <Carousel carouselX={carouselX} homeProjects={homeProjects} goNext={goNext} goPrevious={goPrevious} slideNext={slideNext} slidePrevious={slidePrevious} />
         </article>
         <p className={styles.nextButton} id={"next"} onClick={goNext}>NEXT</p>
         <p className={styles.previousButton} id={"previous"} onClick={goPrevious}>PREVIOUS</p>

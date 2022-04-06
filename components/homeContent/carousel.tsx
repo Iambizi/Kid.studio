@@ -4,27 +4,27 @@ import HomePlaneCanvas from "./homePlaneCanvas";
 
 interface Type {
     carouselX: number;
-    projects: any;
+    homeProjects: any;
     goPrevious?: any;
     goNext?: any;
     slideNext: boolean;
     slidePrevious: boolean;
 }
 
-const Carousel = ({ carouselX, projects, slideNext, slidePrevious }: Type): JSX.Element => {
+const Carousel = ({ carouselX, homeProjects, slideNext, slidePrevious }: Type): JSX.Element => {
 
     return (
         <>
             <div className={styles.titles} style={{ left: `${-carouselX}%` }}>
-                {projects.map((item, i) => (
+                {homeProjects.map((item, i) => (
                     <div className={styles.titleWrapper} key={i}>
-                        <Link href={projects[i].fields.slug}>
-                            <h2 className={styles.videoTitle}>{projects[i].fields.title}</h2>
+                        <Link href={homeProjects[i].fields.slug}>
+                            <h2 className={styles.videoTitle}>{homeProjects[i].fields.title}</h2>
                         </Link>
                     </div>
                 ))}
             </div>
-            <HomePlaneCanvas carouselX={carouselX} projects={projects} slideNext={slideNext} slidePrevious={slidePrevious} />
+            <HomePlaneCanvas carouselX={carouselX} projects={homeProjects} slideNext={slideNext} slidePrevious={slidePrevious} />
         </>
     )
 };
