@@ -3,8 +3,8 @@ import Layout from '../../components/layout';
 import Meta  from '../../components/common/meta';
 import React, {useEffect} from "react";
 import styles from '../../styles/scss/common/_footer.module.scss';
-import MainInfoSection from '../../components/workContent/projects-reel-Pages/mainInfo';
-import Stills from '../../components/workContent/projects-reel-Pages/stills';
+import MainInfoSection from '../../components/workContent/project-Reel-Pages/mainInfo';
+import Stills from '../../components/workContent/project-Reel-Pages/stills';
 import { connectClient } from '../../components/common/utils/createClient';
 
 interface Type{
