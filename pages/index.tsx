@@ -37,6 +37,10 @@ export const getStaticProps: GetStaticProps = async () => {
 
   const res = await connectClient.getEntries({ content_type: 'homePage' });
 
+  // const comRes = await connectClient.getEntries({ content_type: 'commonAssets' });
+
+  // console.log(comRes);
+
   if (!res) {
     return {
       notFound: true
