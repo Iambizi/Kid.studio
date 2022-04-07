@@ -1,15 +1,18 @@
 import styles from "../../styles/scss/common/_loader.module.scss";
 import React from "react";
-import { Html } from '@react-three/drei'
+import { Html } from '@react-three/drei';
 
-const Loader = (): JSX.Element => {
+interface Type{
+    loaderLink: string;
+}
+
+const Loader: React.FC<Type> = ({loaderLink}): JSX.Element => {
     return (
         <>
             <Html
                 prepend
                 center>
-                <div className={styles.loader}>
-                </div>
+                <img className={styles.loader} src={`https:${loaderLink}`} alt="loader"/>
             </Html>
         </>
     )

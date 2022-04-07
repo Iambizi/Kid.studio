@@ -2,16 +2,17 @@ import styles from "../../styles/scss/homePage/_carousel.module.scss";
 import Link from "next/link";
 import HomePlaneCanvas from "./homePlaneCanvas";
 
-interface Type {
+interface Types {
     carouselX: number;
     homeProjects: any;
     goPrevious?: any;
     goNext?: any;
     slideNext: boolean;
     slidePrevious: boolean;
+    loaderLink: string;
 }
 
-const Carousel = ({ carouselX, homeProjects, slideNext, slidePrevious }: Type): JSX.Element => {
+const Carousel:React.FC<Types> = ({ carouselX, homeProjects, slideNext, slidePrevious, loaderLink }): JSX.Element => {
 
     return (
         <>
@@ -24,7 +25,7 @@ const Carousel = ({ carouselX, homeProjects, slideNext, slidePrevious }: Type): 
                     </div>
                 ))}
             </div>
-            <HomePlaneCanvas carouselX={carouselX} projects={homeProjects} slideNext={slideNext} slidePrevious={slidePrevious} />
+            <HomePlaneCanvas carouselX={carouselX} projects={homeProjects} slideNext={slideNext} slidePrevious={slidePrevious} loaderLink={loaderLink} />
         </>
     )
 };

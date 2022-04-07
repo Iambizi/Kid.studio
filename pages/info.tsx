@@ -7,13 +7,14 @@ import { connectClient } from '../components/common/utils/createClient';
 import InfoPlaneCanvas from '../components/infoContent/infoCanvas';
 
 
-interface Type {
+interface Types {
     infoPageData: any;
     commonAssets: any;
 }
 
-const Info = ({ infoPageData, commonAssets }: Type): JSX.Element => {
+const Info = ({ infoPageData, commonAssets }: Types): JSX.Element => {
 
+    const loaderLink = commonAssets.loader.fields.file.url;
     const aboutUs = infoPageData.aboutUs?.content[0].content[0].value;
     const infoImage = infoPageData.infoImage?.fields.file.url;
 
@@ -29,7 +30,7 @@ const Info = ({ infoPageData, commonAssets }: Type): JSX.Element => {
             <Meta page={"Info"} />
             <Layout commonAssets={commonAssets}>
                 <InfoBox aboutUs={aboutUs} />
-                <InfoPlaneCanvas src={infoImage} />
+                <InfoPlaneCanvas src={infoImage} loaderLink={loaderLink} />
             </Layout>
         </>
     )
@@ -47,18 +48,13 @@ export const getStaticProps: GetStaticProps = async () => {
             notFound: true
         };
     }
-    
+
     return {
         props: {
             commonAssets: commonRes.items[0].fields,
             infoImage: res.includes.Asset[0],
             aboutUs: res.items[0].fields,
             infoPageData: res.items[0].fields,
-            // fallback: {
-            //     infoImage: res.includes.Asset[0],
-            //     aboutUs: res.items[0].fields,
-            //     infoPageData: res.items[0].fields
-            // }
         }
     }
 }

@@ -2,11 +2,12 @@ import styles from "../../styles/scss/homePage/_home.module.scss";
 import Carousel from "./carousel";
 import React, { useState } from "react";
 
-interface Type {
+interface Types {
   homeProjects: any;
+  loaderLink: string;
 }
 
-const Content = ({ homeProjects }: Type): JSX.Element => {
+const Content:React.FC<Types> = ({ homeProjects, loaderLink }): JSX.Element => {
 
   // State for counter
   const [count, setCount] = useState(0);
@@ -44,7 +45,7 @@ const Content = ({ homeProjects }: Type): JSX.Element => {
     <>
       <section className={styles.noScroll}>
         <article className={styles.homeContentSection}>
-          <Carousel carouselX={carouselX} homeProjects={homeProjects} goNext={goNext} goPrevious={goPrevious} slideNext={slideNext} slidePrevious={slidePrevious} />
+          <Carousel carouselX={carouselX} loaderLink={loaderLink} homeProjects={homeProjects} goNext={goNext} goPrevious={goPrevious} slideNext={slideNext} slidePrevious={slidePrevious} />
         </article>
         <p className={styles.nextButton} id={"next"} onClick={goNext}>NEXT</p>
         <p className={styles.previousButton} id={"previous"} onClick={goPrevious}>PREVIOUS</p>

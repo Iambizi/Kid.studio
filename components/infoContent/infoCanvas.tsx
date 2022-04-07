@@ -5,17 +5,18 @@ import Loader from "../common/R3FLoader";
 import InfoPlane from "./infoWarpedPlane";
 import { isMobile } from 'react-device-detect';
 
-interface Type {
+interface Types {
     src: string;
+    loaderLink: string;
 }
 
-const InfoPlaneCanvas = ({ src }: Type): JSX.Element  => {
+const InfoPlaneCanvas: React.FC<Types> = ({ src, loaderLink }): JSX.Element => {
 
     return (
         <>
             <div className={`${styles.homeScene}`}>
                 <Canvas dpr={isMobile ? [1, 2] : [0, 1]}>
-                    <Suspense fallback={<Loader/>}>
+                    <Suspense fallback={<Loader loaderLink={loaderLink} />}>
                         <InfoPlane src={src} />
                     </Suspense>
                 </Canvas>

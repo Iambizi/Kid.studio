@@ -5,12 +5,12 @@ import Content from '../components/homeContent/content';
 import React, { useEffect } from "react";
 import { connectClient } from '../components/common/utils/createClient';
 
-interface Type {
+interface Types {
   homeProjects: string;
   commonAssets: any;
 }
 
-const Home = ({ homeProjects, commonAssets }: Type): JSX.Element => {
+const Home: React.FC<Types> = ({ homeProjects, commonAssets }): JSX.Element => {
   // removes needsScroll class set in project pages from vertical scroll
   // projectPage useEffect hook needs refactoring to avoid calling it again here.
 
@@ -21,12 +21,13 @@ const Home = ({ homeProjects, commonAssets }: Type): JSX.Element => {
     bg.removeAttribute("style");
   });
 
+  const loaderLink = commonAssets.loader.fields.file.url;
 
   return (
     <>
       <Meta page={"Home"} />
       <Layout commonAssets={commonAssets}>
-        <Content homeProjects={homeProjects} />
+        <Content homeProjects={homeProjects} loaderLink={loaderLink} />
       </Layout>
     </>
   )

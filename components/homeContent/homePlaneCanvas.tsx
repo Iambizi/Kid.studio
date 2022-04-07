@@ -6,15 +6,20 @@ import HomePlanes from "./r3fPlanes/homePlanes"
 import Loader from "../common/R3FLoader";
 import { isMobile } from 'react-device-detect';
 
-interface Type {
+interface CanvasTypes {
     projects?: any;
     carouselX: number;
     slidePrevious: boolean;
     slideNext: boolean;
+    loaderLink: string;
+}
+
+interface SLiderType {
+    carouselX: number;
 }
 
 
-const SliderContainer = ({ children, carouselX }) => {
+const SliderContainer:React.FC<SLiderType> = ({ children, carouselX }) => {
 
     const items = useRef<THREE.Mesh>();
 
@@ -29,13 +34,13 @@ const SliderContainer = ({ children, carouselX }) => {
     );
 }
 
-export const HomePlaneCanvas = ({ projects, carouselX, slideNext, slidePrevious }: Type): JSX.Element => {
+export const HomePlaneCanvas:React.FC<CanvasTypes> = ({ projects, carouselX, slideNext, slidePrevious, loaderLink }): JSX.Element => {
 
     return (
         <>
             <div className={`${styles.homeScene}`}>
                 <Canvas dpr={isMobile ? [1, 2] : [0, 1]}>
-                        <Suspense fallback={<Loader />}>
+                        <Suspense fallback={<Loader loaderLink={loaderLink} />}>
                             <SliderContainer carouselX={carouselX}>
                                 <HomePlanes projects={projects} position={0} projectIndex={0} slideNext={slideNext} slidePrevious={slidePrevious} />
                                 <HomePlanes projects={projects} position={100} projectIndex={1} slideNext={slideNext} slidePrevious={slidePrevious} />

@@ -2,17 +2,29 @@ import styles from "../../styles/scss/common/_flash.module.scss";
 import React, { useState, useEffect, useRef } from "react";
 import { GetRandoNum } from "../common/utils/getRandoNum";
 
-
-const Flash = (): JSX.Element => {
+interface Type{
+    FlashImages: any;
+}
+const Flash: React.FC<Type> = ({FlashImages}): JSX.Element => {
 
     const [flashed, setFlashed] = useState(false);
     const componentMounted = useRef(true);
+
+    // console.log(FlashImages[8].fields.file.url);
+    // const linkz = FlashImages.map((item , i)=>{ 
+    //     item[i] 
+    // });
+    // console.log(linkz);
+
+    // const imgLinkz = `https:${''}`;
+            
 
     const flash = () => {
         const flashObj = document.getElementById("flash");
         const intervalID = setInterval(() => {
 
             const rando = GetRandoNum(1, 9);
+            
             const imgLink = `https://kidstudio.co/assets/images/flash/${rando}.png`;
             flashObj.style.backgroundImage = `url(${imgLink})`;
             flashObj.style.zIndex = "5656565656565656565656";
@@ -27,7 +39,7 @@ const Flash = (): JSX.Element => {
         return () => {
             clearInterval(intervalID);
         };
-    }
+    };
 
     useEffect(() => {
         if (componentMounted.current) {
