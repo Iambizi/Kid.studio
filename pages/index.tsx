@@ -7,9 +7,10 @@ import { connectClient } from '../components/common/utils/createClient';
 
 interface Type {
   homeProjects: string;
+  commonAssets: any;
 }
 
-const Home = ({ homeProjects }: Type): JSX.Element => {
+const Home = ({ homeProjects, commonAssets }: Type): JSX.Element => {
   // removes needsScroll class set in project pages from vertical scroll
   // projectPage useEffect hook needs refactoring to avoid calling it again here.
 
@@ -24,7 +25,7 @@ const Home = ({ homeProjects }: Type): JSX.Element => {
   return (
     <>
       <Meta page={"Home"} />
-      <Layout>
+      <Layout commonAssets={commonAssets}>
         <Content homeProjects={homeProjects} />
       </Layout>
     </>
@@ -37,9 +38,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   const res = await connectClient.getEntries({ content_type: 'homePage' });
 
-  // const comRes = await connectClient.getEntries({ content_type: 'commonAssets' });
-
-  // console.log(comRes);
+  const commonRes = await connectClient.getEntries({ content_type: 'commonAssets' });
 
   if (!res) {
     return {
@@ -48,7 +47,8 @@ export const getStaticProps: GetStaticProps = async () => {
   }
   return {
     props: {
-      homeProjects: res.items
+      homeProjects: res.items,
+      commonAssets: commonRes.items[0].fields
     },
     revalidate: 300
   }

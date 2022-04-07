@@ -9,10 +9,10 @@ import InfoPlaneCanvas from '../components/infoContent/infoCanvas';
 
 interface Type {
     infoPageData: any;
-    fallback: string;
+    commonAssets: any;
 }
 
-const Info = ({ infoPageData }: Type): JSX.Element => {
+const Info = ({ infoPageData, commonAssets }: Type): JSX.Element => {
 
     const aboutUs = infoPageData.aboutUs?.content[0].content[0].value;
     const infoImage = infoPageData.infoImage?.fields.file.url;
@@ -27,7 +27,7 @@ const Info = ({ infoPageData }: Type): JSX.Element => {
     return (
         <>
             <Meta page={"Info"} />
-            <Layout>
+            <Layout commonAssets={commonAssets}>
                 <InfoBox aboutUs={aboutUs} />
                 <InfoPlaneCanvas src={infoImage} />
             </Layout>
@@ -40,6 +40,7 @@ export default Info;
 export const getStaticProps: GetStaticProps = async () => {
 
     const res = await connectClient.getEntries({ content_type: 'infoPage' });
+    const commonRes = await connectClient.getEntries({ content_type: 'commonAssets' });
 
     if (!res) {
         return {
@@ -49,14 +50,15 @@ export const getStaticProps: GetStaticProps = async () => {
     
     return {
         props: {
+            commonAssets: commonRes.items[0].fields,
             infoImage: res.includes.Asset[0],
             aboutUs: res.items[0].fields,
             infoPageData: res.items[0].fields,
-            fallback: {
-                infoImage: res.includes.Asset[0],
-                aboutUs: res.items[0].fields,
-                infoPageData: res.items[0].fields
-            }
+            // fallback: {
+            //     infoImage: res.includes.Asset[0],
+            //     aboutUs: res.items[0].fields,
+            //     infoPageData: res.items[0].fields
+            // }
         }
     }
 }

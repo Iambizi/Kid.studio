@@ -9,9 +9,10 @@ import { connectClient } from '../../components/common/utils/createClient';
 
 interface Type {
     projectPageData: any;
+    commonAssets: any;
 }
 
-const ProjectPages = ({ projectPageData }: Type): JSX.Element => {
+const ProjectPages = ({ projectPageData, commonAssets }: Type): JSX.Element => {
 
     const title = projectPageData?.projectTitle;
     const details = projectPageData?.projectCreds.content[0].content[0].value;
@@ -30,7 +31,7 @@ const ProjectPages = ({ projectPageData }: Type): JSX.Element => {
     return (
         <>
             <Meta page={title} />
-            <Layout specificStyles={`${styles.projectPages}`}>
+            <Layout commonAssets={commonAssets} specificStyles={`${styles.projectPages}`}>
                 <MainInfoSection title={title} details={details} videoCover={videoCover} playButton={playButton} projectVideo={projectVideo} />
                 <Stills Stills={projectStills} />
             </Layout>
@@ -65,6 +66,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
     const projectPageData = res.items.map((item, i) => res.items[i]).find((item, i) => res.items[i].fields.projectSlug.includes(projectPath));
 
+    const commonRes = await connectClient.getEntries({ content_type: 'commonAssets' });
+
+
     if (!res) {
         return {
           notFound: true,
@@ -74,7 +78,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
     return {
         props: {
             projects: res.items,
-            projectPageData: projectPageData.fields
+            projectPageData: projectPageData.fields,
+            commonAssets: commonRes.items[0].fields
         }
     }
 }

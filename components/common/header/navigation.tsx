@@ -7,9 +7,11 @@ import { useRouter } from 'next/router';
 
 interface Type {
     bgImg?: boolean;
+    LogoBlack: string;
+    LogoWhite: string;
 }
 
-const Navigation = ( { bgImg }:Type ):JSX.Element => {
+const Navigation = ( { bgImg, LogoBlack, LogoWhite }:Type ):JSX.Element => {
     const router = useRouter();
 
     //Handles logic for removal of fixed positioning along pages
@@ -37,7 +39,7 @@ const Navigation = ( { bgImg }:Type ):JSX.Element => {
         <>
             <header>
                 <nav className={notFixed ? `${styles.navigation}`: `${styles.navigation} ${styles.fixed}`}>
-                    <Logo bgImg={bgImg} />
+                    <Logo LogoBlack={LogoBlack} LogoWhite={LogoWhite} bgImg={bgImg} />
                         <ul className={styles.navLinks}>
                             <Link href={"/work"}>
                                 <a className={ bgImg ? `${styles.navLink} ${styles.hoverColor}` : `${styles.navLink}` }>WORK</a>

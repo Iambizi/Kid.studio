@@ -8,13 +8,18 @@ interface Type {
     bgImg?: boolean;
     setbgImg?: any;
     specificStyles?: string;
+    commonAssets: any;
 }
 
-export default function Layout( { children, bgImg, specificStyles }:Type ):JSX.Element{
+export default function Layout( { children, bgImg, specificStyles, commonAssets }:Type ):JSX.Element{
+
+    const LogoBlack = commonAssets.siteLogos[0].fields.file.url;
+    const LogoWhite = commonAssets.siteLogos[1].fields.file.url;
+    const FlashImages = '';
 
     return(
         <>
-            <Navigation bgImg={bgImg} />
+            <Navigation LogoBlack={LogoBlack} LogoWhite={LogoWhite} bgImg={bgImg} />
             <Flash />
                 { children }
             <Footer bgImg={bgImg} specificStyles={specificStyles} />

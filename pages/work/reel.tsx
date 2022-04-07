@@ -9,9 +9,10 @@ import { connectClient } from '../../components/common/utils/createClient';
 
 interface Type{
     reelData: any;
+    commonAssets: any;
 }
 
- const Reels = ({ reelData }: Type):JSX.Element =>{
+ const Reels = ({ reelData, commonAssets }: Type):JSX.Element =>{
 
     const reelTitle = reelData?.pageTitle;
     const reelDetails = reelData?.details?.content[0].content[0].value;
@@ -31,7 +32,7 @@ interface Type{
     return(
         <>
             <Meta page={reelTitle} />
-            <Layout specificStyles={`${styles.projectPages}`}>
+            <Layout commonAssets={commonAssets} specificStyles={`${styles.projectPages}`}>
                 <MainInfoSection title={reelTitle} details={reelDetails} videoCover={videoCover} playButton={playButton} projectVideo={projectVideo} />
                 <Stills Stills={reelStills} />
             </Layout>
@@ -46,6 +47,8 @@ export const getStaticProps: GetStaticProps = async ()=>{
     const res = await connectClient.getEntries({ content_type: 'reelPage' });
     const reelData = res.items[0].fields;
 
+    const commonRes = await connectClient.getEntries({ content_type: 'commonAssets' });
+
     if (!res) {
         return {
           notFound: true,
@@ -54,7 +57,8 @@ export const getStaticProps: GetStaticProps = async ()=>{
     
     return {
         props: {
-            reelData: reelData
+            reelData: reelData,
+            commonAssets: commonRes.items[0].fields
         }
     }
 }
