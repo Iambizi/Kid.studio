@@ -1,15 +1,20 @@
+import { GetStaticProps } from 'next';
 import Layout from '../components/layout';
 import Meta from '../components/common/meta';
 import styles from '../styles/scss/common/_error.module.scss';
+import { connectClient } from '../components/common/utils/createClient';
 
-const Custom500 = (): JSX.Element => {
+interface Type{
+    commonAssets: any;
+}
+const Custom500 = ({ commonAssets }: Type): JSX.Element=> {
     return (
         <>
-            <Meta page={"500"} />
-            <Layout>
+            <Meta page={"404"} />
+            <Layout commonAssets={commonAssets}>
                 <>
                     <div className={styles.error}>
-                        <h1>500 NAH B.</h1>
+                        <h1>404 NAH B.</h1>
                         <img src="http://media.giphy.com/media/Kavm9lxU8Ljc4/giphy.gif" />
                     </div>
                 </>
@@ -17,4 +22,22 @@ const Custom500 = (): JSX.Element => {
         </>
     )
 }
+
 export default Custom500;
+
+export const getStaticProps: GetStaticProps = async () => {
+  
+    const commonRes = await connectClient.getEntries({ content_type: 'commonAssets' });
+  
+    if (!commonRes) {
+      return {
+        notFound: true
+      };
+    }
+    return {
+      props: {
+        commonAssets: commonRes.items[0].fields
+      },
+      revalidate: 300
+    }
+  }
