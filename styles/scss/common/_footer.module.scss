@@ -11,20 +11,19 @@
 
     @media screen and (max-width:$xs){
         &.workPageFooter{
-            // display: none;
-            margin-top: 5vh;
+            display: none;
         }
     }
     @media screen and (min-width:$m){
         font-size: 0.8em;
     }
     @media screen and (max-width:$l){
-        &.projectPages, .workPageFooter{
-            position: static;
-        }
-        // &.projectPages{
+        // &.projectPages, .workPageFooter{
         //     position: static;
         // }
+        &.projectPages{
+            position: static;
+        }
     }
     .footerLinks{
         margin: 28px 0;
