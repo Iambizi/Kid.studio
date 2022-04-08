@@ -5,6 +5,7 @@ import Meta  from '../components/common/meta';
 import ProjectList from '../components/workContent/projectList';
 import { connectClient } from '../components/common/utils/createClient';
 import styles from '../styles/scss/common/_footer.module.scss';
+import { isMobile } from 'react-device-detect';
 
 interface Type {
     workData: any;
@@ -17,8 +18,9 @@ const Work = ({ workData, commonAssets }:Type):JSX.Element =>{
 
     useEffect(() => {
         const bg = document.body;
+        // isMobile ? bg.classList.add("needsScroll") : bg.classList.remove("needsScroll");
         // bg.classList.remove("needsScroll");
-        bg.classList.add("needsScroll");
+        // bg.classList.add("needsScroll");
       }, []);
 
      return(
