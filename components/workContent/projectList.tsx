@@ -57,11 +57,11 @@ const ProjectList = ({ bgImg, setbgImg, projectList }: Type): JSX.Element => {
 
   // removes needsScroll class set in project pages from vertical scroll
   // projectPage useEffect hook needs refactoring to avoid calling it again here.
-  useEffect(() => {
-    const bg = document.body;
+  // useEffect(() => {
+    // const bg = document.body;
     // bg.classList.remove("needsScroll");
-    bg.classList.add("needsScroll");
-  }, []);
+    // bg.classList.add("needsScroll");
+  // }, []);
 
   return (
     <>

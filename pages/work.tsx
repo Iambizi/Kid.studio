@@ -1,5 +1,5 @@
 import { GetStaticProps } from 'next';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Layout from '../components/layout';
 import Meta  from '../components/common/meta';
 import ProjectList from '../components/workContent/projectList';
@@ -14,6 +14,12 @@ interface Type {
 
 const Work = ({ workData, commonAssets }:Type):JSX.Element =>{
     const [bgImg, setbgImg] = useState(false);
+
+    useEffect(() => {
+        const bg = document.body;
+        // bg.classList.remove("needsScroll");
+        bg.classList.add("needsScroll");
+      }, []);
 
      return(
          <>
