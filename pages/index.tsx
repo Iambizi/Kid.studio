@@ -16,7 +16,8 @@ const Home: React.FC<Types> = ({ homeProjects, commonAssets }): JSX.Element => {
 
   useEffect(()=>{
     const bg = document.body;
-    window.scrollTo(0,0);
+    // window.scrollTo(0,0);
+    window.pageYOffset = 0;
     bg.classList.remove("needsScroll");
     // bg.classList.add("noScroll");
     bg.removeAttribute("style");
