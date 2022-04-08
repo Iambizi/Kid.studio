@@ -18,7 +18,7 @@
         font-size: 0.8em;
     }
     @media screen and (max-width:$l){
-        &.projectPages{
+        &.projectPages, .workPageFooter{
             position: static;
         }
     }

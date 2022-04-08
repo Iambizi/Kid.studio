@@ -60,6 +60,7 @@ const ProjectList = ({ bgImg, setbgImg, projectList }: Type): JSX.Element => {
   useEffect(() => {
     const bg = document.body;
     // bg.classList.remove("needsScroll");
+    bg.classList.add("needsScroll");
   }, []);
 
   return (
