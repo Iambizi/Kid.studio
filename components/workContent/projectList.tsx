@@ -59,7 +59,7 @@ const ProjectList = ({ bgImg, setbgImg, projectList }: Type): JSX.Element => {
   // projectPage useEffect hook needs refactoring to avoid calling it again here.
   useEffect(() => {
     const bg = document.body;
-    bg.classList.remove("needsScroll");
+    // bg.classList.remove("needsScroll");
   }, []);
 
   return (
