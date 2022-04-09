@@ -13,7 +13,8 @@ module.exports = {
         headers: [
           {
             key: 'cache-control',
-            value: 'public, max-age=86400, stale-while-rev',
+            // value: 'public, max-age=86400, stale-while-rev',
+            value: 'public, max-age=31536000, immutable',
           },
         ],
       },
