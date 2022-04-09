@@ -40,14 +40,14 @@ const Navigation = ( { bgImg, LogoBlack, LogoWhite }:Type ):JSX.Element => {
             <header>
                 <nav className={notFixed ? `${styles.navigation}`: `${styles.navigation} ${styles.fixed}`}>
                     <Logo LogoBlack={LogoBlack} LogoWhite={LogoWhite} bgImg={bgImg} />
-                        <ul className={styles.navLinks}>
+                        <div className={styles.navLinks}>
                             <Link href={"/work"}>
                                 <a className={ bgImg ? `${styles.navLink} ${styles.hoverColor}` : `${styles.navLink}` }>WORK</a>
                             </Link>
                             <Link href={"/info"}>
                                 <a className={ bgImg ? `${styles.navLink} ${styles.hoverColor}` : `${styles.navLink}` }>INFO</a>
                             </Link>
-                        </ul>
+                        </div>
                 </nav>
             </header>
         </>

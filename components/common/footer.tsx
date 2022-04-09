@@ -11,7 +11,7 @@ const Footer = ({ bgImg, specificStyles }:Type):JSX.Element =>{
     return(
         <>
             <footer className={`${styles.footer} ${specificStyles}`}>
-                <ul className={ bgImg ? `${styles.footerLinks} ${styles.hoverColor}` : `${styles.footerLinks}` }>
+                <div className={ bgImg ? `${styles.footerLinks} ${styles.hoverColor}` : `${styles.footerLinks}` }>
                     <a className={styles.footerLink} href={"http://instagram.com/kidstudio_"}>INSTAGRAM</a>
                     /
                     <Link href={"/work/reel"}>
@@ -19,7 +19,7 @@ const Footer = ({ bgImg, specificStyles }:Type):JSX.Element =>{
                     </Link>
                     /
                     <a className={styles.footerLink} href={"mailto:email@kidstudio.co"}>EMAIL@KIDSTUDIO.CO</a>
-                </ul>
+                </div>
             </footer>
         </>
     )
