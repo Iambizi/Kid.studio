@@ -3,7 +3,8 @@
 html, body{
     background-color: #F0F0F0;
     font-family: "Andale Mono";
-    cursor: url("https://kidstudio.co/assets/css/../images/cursor.png") 25 15, auto;
+    cursor: url(https://images.ctfassets.net/kllhmdk2nlsw/70C4X1KQpoHqDdWkgoyfTP/7f7e6c69b9d0abbdfe1e77db89714a39/cursor.png) 25 15, auto;
+
 }
 
 body{
@@ -13,10 +14,10 @@ body{
     margin: 0;
 }
 
-a {
+a, .videoTitle {
     color: inherit;
     text-decoration: none;
-    cursor: url("https://kidstudio.co/assets/images/hover.png") 25 15, auto;
+    cursor: url(https://images.ctfassets.net/kllhmdk2nlsw/4DYjDIVo8imG0Jb9UHI0qC/605550500021bbe1cf995977c272553c/hover.png) 25 15, auto;
   }
 
   .page-transition-enter {

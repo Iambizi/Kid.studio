@@ -20,7 +20,7 @@ const Carousel:React.FC<Types> = ({ carouselX, homeProjects, slideNext, slidePre
                 {homeProjects.map((item, i) => (
                     <div className={styles.titleWrapper} key={i}>
                         <Link href={homeProjects[i].fields.slug}>
-                            <h2 className={styles.videoTitle}>{homeProjects[i].fields.title}</h2>
+                            <h2 className={`${styles.videoTitle} videoTitle`}>{homeProjects[i].fields.title}</h2>
                         </Link>
                     </div>
                 ))}
