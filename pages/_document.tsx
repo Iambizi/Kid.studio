@@ -6,8 +6,8 @@ class Document extends NextDocument {
         return (
             <Html lang="en">
                 <Head>
-                    {/* <link rel="icon" href="/favicon.ico" />
-                    <link rel="stylesheet preload prefetch" href="/fonts/andalemo.ttf" as="style" crossOrigin="anonymous" /> */}
+                    <meta name="description" content="Creative studio — branding, design and film." />
+                    <meta name="keywords" content="Kid,Studio,Design,Film,Toronto,Creative"></meta>
                 </Head>
                 <body>
                     <Main />
