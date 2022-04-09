@@ -7,7 +7,6 @@ interface Type{
 }
 
 const Loader: React.FC<Type> = ({loaderLink}): JSX.Element => {
-    console.log(loaderLink);
     return (
         <>
             <Html

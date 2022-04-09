@@ -14,8 +14,6 @@ const Home: React.FC<Types> = ({ homeProjects, commonAssets }): JSX.Element => {
   // removes needsScroll class set in project pages from vertical scroll
   // projectPage useEffect hook needs refactoring to avoid calling it again here.
 
-  console.log(commonAssets);
-
   useEffect(()=>{
     const bg = document.body;
     // window.scrollTo(0,0);
