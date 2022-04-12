@@ -54,6 +54,10 @@
         }
         @media screen and (min-width:$l1){
 
+            @media (min-height:670px){
+                margin-top: -4%;
+            }
+
             @media (min-height:720px){
                 margin-top: -1.75%;
             }
