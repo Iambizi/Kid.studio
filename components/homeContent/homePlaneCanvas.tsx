@@ -2,7 +2,7 @@ import React, { Suspense, useRef } from 'react';
 import * as THREE from 'three';
 import { Canvas, useFrame } from '@react-three/fiber';
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
-import HomePlanes from "./r3fPlanes/homePlanes"
+import HomePlanes from "./r3fPlanes/planes"
 import Loader from "../common/R3FLoader";
 import { isMobile } from 'react-device-detect';
 

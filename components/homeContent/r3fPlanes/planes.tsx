@@ -9,8 +9,8 @@ interface Type {
     projects?: any;
     position?: number;
     projectIndex?: number;
-    slideNext: boolean;
-    slidePrevious: boolean;
+    slideNext?: boolean;
+    slidePrevious?: boolean;
 }
 
 const HomePlanes = ( { projects, position, projectIndex, slideNext, slidePrevious, ...props}: Type): JSX.Element => {
