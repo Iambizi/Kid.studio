@@ -6,9 +6,9 @@ import { isMobile } from 'react-device-detect';
 
 
 interface Type {
-    projects: any;
-    position: number;
-    projectIndex: number;
+    projects?: any;
+    position?: number;
+    projectIndex?: number;
     slideNext: boolean;
     slidePrevious: boolean;
 }
