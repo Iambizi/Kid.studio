@@ -3,6 +3,7 @@ import * as THREE from 'three';
 import { useFrame } from '@react-three/fiber';
 import { isMobile } from 'react-device-detect';
 import { useTexture } from "@react-three/drei";
+import InfoPlanes from "../homeContent/r3fPlanes/planes";
 
 
 interface Type {
