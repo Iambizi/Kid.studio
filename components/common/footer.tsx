@@ -7,7 +7,7 @@ interface Type {
     specificStyles?: string; 
 }
 
-const Footer = ({ bgImg, specificStyles }:Type):JSX.Element =>{
+const Footer: React.FC<Type> = ({ bgImg, specificStyles }):JSX.Element =>{
     return(
         <>
             <footer className={`${styles.footer} ${specificStyles}`}>

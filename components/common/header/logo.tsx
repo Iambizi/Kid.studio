@@ -7,7 +7,7 @@ interface Type {
     LogoWhite: string;
 }
 
-const Logo = ( { bgImg, LogoBlack, LogoWhite }: Type ): JSX.Element => {
+const Logo: React.FC<Type> = ({ bgImg, LogoBlack, LogoWhite }): JSX.Element => {
     return(
         <>
             <div className={styles.logo}>

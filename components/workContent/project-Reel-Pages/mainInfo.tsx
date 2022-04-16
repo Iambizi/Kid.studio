@@ -11,7 +11,7 @@ interface Type {
     projectVideo: any;
 }
 
-const MainInfoSection = ({ title, details, videoCover, playButton, projectVideo }: Type): JSX.Element => {
+const MainInfoSection: React.FC<Type> = ({ title, details, videoCover, playButton, projectVideo }): JSX.Element => {
     
     const [overLayClick, setOverLayClick] = useState(false);
 

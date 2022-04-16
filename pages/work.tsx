@@ -13,7 +13,7 @@ interface Type {
 }
 
 
-const Work = ({ workData, commonAssets }:Type):JSX.Element =>{
+const Work: React.FC<Type> = ({ workData, commonAssets }):JSX.Element =>{
     const [bgImg, setbgImg] = useState(false);
 
     useEffect(() => {

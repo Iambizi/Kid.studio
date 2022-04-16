@@ -7,7 +7,7 @@ import { connectClient } from '../components/common/utils/createClient';
 interface Type{
     commonAssets: any;
 }
-const Custom500 = ({ commonAssets }: Type): JSX.Element=> {
+const Custom500: React.FC<Type> = ({ commonAssets }): JSX.Element=> {
     return (
         <>
             <Meta page={"404"} />

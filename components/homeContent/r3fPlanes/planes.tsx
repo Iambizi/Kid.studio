@@ -13,7 +13,7 @@ interface Type {
     slidePrevious?: boolean;
 }
 
-const HomePlanes = ( { projects, position, projectIndex, slideNext, slidePrevious, ...props}: Type): JSX.Element => {
+const HomePlanes: React.FC<Type> = ( { projects, position, projectIndex, slideNext, slidePrevious, ...props}): JSX.Element => {
 
     const src = projects[projectIndex]?.fields.featuredProjectImage.fields ? projects[projectIndex].fields.featuredProjectImage.fields.file.url : null;
     

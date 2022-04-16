@@ -1,10 +1,10 @@
 import Head from 'next/head';
 
-interface Types{
+interface Type{
     page: string;
 }
 
-const Meta = ({page}: Types): JSX.Element =>{
+const Meta: React.FC<Type> = ({page}): JSX.Element =>{
     return(
         <>
             <Head>

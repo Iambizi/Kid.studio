@@ -11,7 +11,7 @@ interface Types {
     commonAssets: any;
 }
 
-const Layout:React.FC<Types> = ( { children, bgImg, specificStyles, commonAssets } ):JSX.Element =>{
+const Layout:React.FC<Types> = ({ children, bgImg, specificStyles, commonAssets }):JSX.Element =>{
 
     const LogoBlack = commonAssets.siteLogos[0].fields.file.url;
     const LogoWhite = commonAssets.siteLogos[1].fields.file.url;

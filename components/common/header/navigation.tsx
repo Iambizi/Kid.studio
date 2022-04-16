@@ -11,7 +11,7 @@ interface Type {
     LogoWhite: string;
 }
 
-const Navigation = ( { bgImg, LogoBlack, LogoWhite }:Type ):JSX.Element => {
+const Navigation: React.FC<Type> = ({ bgImg, LogoBlack, LogoWhite }):JSX.Element => {
     const router = useRouter();
 
     //Handles logic for removal of fixed positioning along pages

@@ -9,7 +9,7 @@ interface Type{
     Stills: any;
 }
 
-const Stills = ( { Stills }: Type ):JSX.Element =>{
+const Stills: React.FC<Type> = ({ Stills }):JSX.Element =>{
 
     useEffect(()=>{
         

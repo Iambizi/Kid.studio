@@ -9,7 +9,7 @@ interface Type {
   projectList: any;
 }
 
-const ProjectList = ({ bgImg, setbgImg, projectList }: Type): JSX.Element => {
+const ProjectList: React.FC<Type> = ({ bgImg, setbgImg, projectList }): JSX.Element => {
 
   // rewrote okHover plugin mouse over functionality
   const handleMouseOver = (e) => {

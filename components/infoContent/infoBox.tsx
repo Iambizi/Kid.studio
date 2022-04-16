@@ -4,7 +4,7 @@ interface Type{
     aboutUs: any;
 }
 
- const InfoBox = ({aboutUs}:Type):JSX.Element =>{
+ const InfoBox: React.FC<Type> = ({aboutUs}):JSX.Element =>{
     return(
         <>
             <div className={styles.infoContainer}>

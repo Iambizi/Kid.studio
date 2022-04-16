@@ -6,13 +6,12 @@ import InfoBox from '../components/infoContent/infoBox';
 import { connectClient } from '../components/common/utils/createClient';
 import InfoPlaneCanvas from '../components/infoContent/infoCanvas';
 
-
 interface Types {
     infoPageData: any;
     commonAssets: any;
 }
 
-const Info = ({ infoPageData, commonAssets }: Types): JSX.Element => {
+const Info: React.FC<Types> = ({ infoPageData, commonAssets }): JSX.Element => {
 
     const loaderLink = commonAssets.loader.fields.file.url;
     const aboutUs = infoPageData.aboutUs?.content[0].content[0].value;
