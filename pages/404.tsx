@@ -27,17 +27,17 @@ export default Custom404;
 
 export const getStaticProps: GetStaticProps = async () => {
   
-    const commonRes = await connectClient.getEntries({ content_type: 'commonAssets' });
+  const commonRes = await connectClient.getEntries({ content_type: 'commonAssets' });
   
-    if (!commonRes) {
-      return {
-        notFound: true
-      };
-    }
+  if (!commonRes) {
     return {
-      props: {
-        commonAssets: commonRes.items[0].fields
-      },
-      revalidate: 300
-    }
+      notFound: true
+    };
   }
+  return {
+    props: {
+      commonAssets: commonRes.items[0].fields
+    },
+    revalidate: 300
+  }
+}
