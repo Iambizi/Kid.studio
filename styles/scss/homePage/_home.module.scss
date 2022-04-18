@@ -23,13 +23,22 @@
         z-index: 565656;
         position: fixed;
         top: 49%;
-        @media screen and (min-width:$m){
-            font-size: 0.9em;
+        @media screen and (min-width:$s){
+            font-size: .9em;
         }
+        // @media screen and (min-width:$ipadAir){
+        //     font-size: 1em;
+        // }
+        // @media screen and (min-width:$m){
+        //     font-size: .9em;
+        // }
     }
     .previousButton{
         margin: 0;
         left: 0px;
+        @media screen and (max-width:$ipadAir){
+            left: -7%;
+        }
         @media screen and (max-width:$m){
             left: -2%;
         }
@@ -41,6 +50,9 @@
     .nextButton{
         top: 48%;
         right: 25px;
+        @media screen and (max-width:$ipadAir){
+            right: 7%;
+        }
         @media screen and (max-width:$m){
             right: 2%;
         }
