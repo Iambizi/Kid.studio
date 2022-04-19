@@ -82,6 +82,9 @@
                     top: 30%;
                     width: 12%;
                 }
+                @media screen and (min-width:950px){
+                    top: 28%;
+                }
                 @media screen and (min-width: 1024px){
                     height: .55%;
                     top: 29.5%;
