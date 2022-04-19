@@ -96,18 +96,9 @@
         .projectLink{
             padding: 2px 6px;
             margin-bottom: 10px;
-            // @media screen and (min-width:$xs){
-            //     margin-bottom: 6px;
-            // }
             @media screen and (max-width:$xs){
                 margin-bottom: 6.75px;
             }
-
-            // padding: 2px 6px;
-            // margin-bottom: 6px;
-            // @media screen and (min-width:$xxs){
-            //     margin-bottom: 10px;
-            // }
             &:hover{
                 color: #fff;
                 background-color: #000;
