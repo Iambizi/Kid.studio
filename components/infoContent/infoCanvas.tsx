@@ -18,7 +18,7 @@ const InfoPlaneCanvas: React.FC<Types> = ({ src, loaderLink }): JSX.Element => {
             <div className={`${styles.homeScene}`}>
                 <Canvas dpr={isMobile ? [1, 2] : [0, 1]}>
                     <Suspense fallback={<Loader loaderLink={loaderLink} />}>
-                    {/* <InfoPlane projects={src} position={0} projectIndex={0}/> */}
+                    {/* <InfoPlane projects={src} position={0} projectIndex={0}/>  */}
                         <InfoPlane src={src} />
                     </Suspense>
                 </Canvas>
