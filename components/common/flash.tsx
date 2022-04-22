@@ -15,7 +15,6 @@ const Flash: React.FC<Type> = ({FlashImages}): JSX.Element => {
     //     item[i] 
     // });
     // console.log(linkz);
-
     // const imgLinkz = `https:${''}`;
             
 
