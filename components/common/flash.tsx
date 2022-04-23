@@ -10,23 +10,12 @@ const Flash: React.FC<Type> = ({ FlashImages }): JSX.Element => {
     const [flashed, setFlashed] = useState(false);
     const componentMounted = useRef(true);
 
-    // const linkz = FlashImages.map((item, i) => {
-    //     return FlashImages[i].fields.file.url;
-    //     // console.log(FlashImages[i].fields.file.url);
-    // });
-    // // console.log(linkz);
-    // const imgLinkz = `https:${linkz}`;
-
-    // console.log(imgLinkz);
-
-
     const flash = () => {
         const flashObj = document.getElementById("flash");
         const intervalID = setInterval(() => {
 
-            const rando = GetRandoNum(1, 9);
-
-            const imgLink = `https://kidstudio.co/assets/images/flash/${rando}.png`;
+            const randomNumber = GetRandoNum(0, 8);
+            const imgLink = `https:${FlashImages[randomNumber].fields.file.url}`;
             flashObj.style.backgroundImage = `url(${imgLink})`;
             flashObj.style.zIndex = "5656565656565656565656";
 
@@ -51,8 +40,6 @@ const Flash: React.FC<Type> = ({ FlashImages }): JSX.Element => {
             componentMounted.current = false; // (4) set it to false when we leave the page
         };
     }, []);
-
-
 
     return (
         <>
