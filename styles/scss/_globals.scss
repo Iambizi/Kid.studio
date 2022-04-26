@@ -20,17 +20,20 @@ a, .videoTitle {
     cursor: url(https://images.ctfassets.net/kllhmdk2nlsw/4DYjDIVo8imG0Jb9UHI0qC/605550500021bbe1cf995977c272553c/hover.png) 25 15, auto;
   }
 
+  // This is where you can control the page transition animation fade-in and fade-out times
   .page-transition-enter {
     opacity: 0;
+    transition: opacity 600ms;
   }
   .page-transition-enter-active {
     opacity: 1;
-    transition: opacity 300ms;
+    transition: opacity 600ms;
   }
   .page-transition-exit {
     opacity: 1;
+    transition: opacity 600ms;
   }
   .page-transition-exit-active {
     opacity: 0;
-    transition: opacity 300ms;
+    transition: opacity 600ms;
   }
