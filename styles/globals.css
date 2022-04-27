@@ -1,13 +1,13 @@
 @font-face {
   font-family: "Andale Mono";
-  src: url("/fonts/andalemo.ttf");
+  src: url("/fonts/andalemo.ttf") format('trutype');
   font-style: normal;
   font-weight: 400;
   font-display: swap;
 }
 @font-face {
   font-family: "Andale Mono";
-  src: url("/fonts/andaleMono.ttf");
+  src: url("/fonts/andaleMono.ttf") format('trutype');
   font-style: medium;
   font-weight: 500;
   font-display: swap;
