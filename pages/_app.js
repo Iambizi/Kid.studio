@@ -33,7 +33,7 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <meta name="viewport" content="width=device-width,initial-scale=1" />
       </Head>
-      <PageTransition timeout={700} classNames="page-transition">
+      <PageTransition timeout={900} classNames="page-transition">
         <Component {...pageProps} key={router.route} />
       </PageTransition>
     </>
