@@ -20,7 +20,6 @@ const Info: React.FC<Types> = ({ infoPageData, commonAssets }): JSX.Element => {
     useEffect(() => {
         const bg = document.body;
         bg.classList.remove("needsScroll");
-        // bg.classList.add("noScroll");
         bg.removeAttribute("style");
     });
 
