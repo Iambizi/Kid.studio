@@ -12,6 +12,7 @@ const Flash: React.FC<Type> = ({ FlashImages }): JSX.Element => {
 
     const flash = () => {
         const flashObj = document.getElementById("flash");
+        
         const intervalID = setInterval(() => {
 
             const randomNumber = GetRandoNum(0, 8);
