@@ -19,7 +19,7 @@ interface SLiderType {
 }
 
 
-const SliderContainer:React.FC<SLiderType> = ({ children, carouselX }) => {
+const SliderContainer: React.FC<SLiderType> = ({ children, carouselX }) => {
 
     const items = useRef<THREE.Mesh>();
 
@@ -34,20 +34,20 @@ const SliderContainer:React.FC<SLiderType> = ({ children, carouselX }) => {
     );
 }
 
-export const HomePlaneCanvas:React.FC<CanvasTypes> = ({ projects, carouselX, slideNext, slidePrevious, loaderLink }): JSX.Element => {
+export const HomePlaneCanvas: React.FC<CanvasTypes> = ({ projects, carouselX, slideNext, slidePrevious, loaderLink }): JSX.Element => {
 
     return (
         <>
             <div className={`${styles.homeScene}`}>
                 <Canvas dpr={isMobile ? [1, 2] : [0, 1]}>
-                        <Suspense fallback={<Loader loaderLink={loaderLink} />}>
-                            <SliderContainer carouselX={carouselX}>
-                                <HomePlanes projects={projects} position={0} projectIndex={0} slideNext={slideNext} slidePrevious={slidePrevious} />
-                                <HomePlanes projects={projects} position={100} projectIndex={1} slideNext={slideNext} slidePrevious={slidePrevious} />
-                                <HomePlanes projects={projects} position={200} projectIndex={2} slideNext={slideNext} slidePrevious={slidePrevious} />
-                            </SliderContainer>
-                        </Suspense>
-                    </Canvas>
+                    <Suspense fallback={<Loader loaderLink={loaderLink} />}>
+                        <SliderContainer carouselX={carouselX}>
+                            <HomePlanes projects={projects} position={0} projectIndex={0} slideNext={slideNext} slidePrevious={slidePrevious} />
+                            <HomePlanes projects={projects} position={100} projectIndex={1} slideNext={slideNext} slidePrevious={slidePrevious} />
+                            <HomePlanes projects={projects} position={200} projectIndex={2} slideNext={slideNext} slidePrevious={slidePrevious} />
+                        </SliderContainer>
+                    </Suspense>
+                </Canvas>
             </div>
         </>
     )
