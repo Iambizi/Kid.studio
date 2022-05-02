@@ -17,6 +17,7 @@
     position: fixed;
     transition: .55s linear;
     z-index: 5656565656;
+    
     .titleWrapper{
         width: 100vw;
             .videoTitle{
@@ -28,6 +29,7 @@
                 z-index: 565656;
                 margin-left: 15vw;
                 width: 100%;
+                width: fit-content;
             @media screen and (min-width:$xxxs){
                 margin-top: -9%;
                 @media (min-height:882px){
