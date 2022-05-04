@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Logo from './logo';
 import { useEffect, useState } from "react";
 import { useRouter } from 'next/router';
+import { isMobile } from 'react-device-detect';
 
 
 interface Type {
@@ -42,10 +43,10 @@ const Navigation: React.FC<Type> = ({ bgImg, LogoBlack, LogoWhite }):JSX.Element
                     <Logo LogoBlack={LogoBlack} LogoWhite={LogoWhite} bgImg={bgImg} />
                         <div className={styles.navLinks}>
                             <Link href={"/work"}>
-                                <a className={ bgImg ? `${styles.navLink} ${styles.hoverColor}` : `${styles.navLink}` }>WORK</a>
+                                <a className={ bgImg && !isMobile ? `${styles.navLink} ${styles.hoverColor}` : `${styles.navLink}` }>WORK</a>
                             </Link>
                             <Link href={"/info"}>
-                                <a className={ bgImg ? `${styles.navLink} ${styles.hoverColor}` : `${styles.navLink}` }>INFO</a>
+                                <a className={ bgImg && !isMobile ? `${styles.navLink} ${styles.hoverColor}` : `${styles.navLink}` }>INFO</a>
                             </Link>
                         </div>
                 </nav>
