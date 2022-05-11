@@ -1,7 +1,6 @@
 import Link from "next/link";
 import styles from "../../styles/scss/workPage/_work.module.scss";
-import React, { useEffect } from "react";
-import { isMobile } from 'react-device-detect';
+import React from "react";
 
 interface Type {
   bgImg: boolean;
@@ -54,14 +53,6 @@ const ProjectList: React.FC<Type> = ({ bgImg, setbgImg, projectList }): JSX.Elem
       })(i);
     }
   }
-
-  // removes needsScroll class set in project pages from vertical scroll
-  // projectPage useEffect hook needs refactoring to avoid calling it again here.
-  // useEffect(() => {
-    // const bg = document.body;
-    // bg.classList.remove("needsScroll");
-    // bg.classList.add("needsScroll");
-  // }, []);
 
   return (
     <>

@@ -16,7 +16,7 @@ const ShiftScroll = () => {
                 }
                     ref.current.style.transform = `translateY(${pageY * -0.1}px)`;
                 
-            } , 300);
+            } , 170);
         }else{
             return null;
         }
