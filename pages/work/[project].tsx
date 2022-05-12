@@ -12,7 +12,7 @@ interface Type {
     commonAssets: any;
 }
 
-const ProjectPages = ({ projectPageData, commonAssets }: Type): JSX.Element => {
+const ProjectPages: React.FC<Type> = ({ projectPageData, commonAssets }): JSX.Element => {
 
     const title = projectPageData?.projectTitle;
     const details = projectPageData?.projectCreds.content[0].content[0].value;
@@ -24,7 +24,6 @@ const ProjectPages = ({ projectPageData, commonAssets }: Type): JSX.Element => {
     useEffect(() => {
         const bg = document.body;
         bg.classList.add("needsScroll");
-        
         bg.removeAttribute("style");
     }, []);
 

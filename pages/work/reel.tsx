@@ -12,7 +12,7 @@ interface Type{
     commonAssets: any;
 }
 
- const Reels = ({ reelData, commonAssets }: Type):JSX.Element =>{
+ const Reels: React.FC<Type> = ({ reelData, commonAssets }):JSX.Element =>{
 
     const reelTitle = reelData?.pageTitle;
     const reelDetails = reelData?.details?.content[0].content[0].value;
@@ -24,7 +24,6 @@ interface Type{
     useEffect(()=>{
         const bg = document.body;
         bg.classList.add("needsScroll");
-        // bg.classList.remove("noScroll");
         bg.removeAttribute("style");
     },[]);
 
