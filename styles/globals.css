@@ -39,14 +39,7 @@ body.needsScroll{
   overflow-Y: auto;
   position: static;
 }
-/* body.noScroll{
-  height: 100vh;
-  width: 100vw;
-  position: fixed;
-  top: 0;
-  left: 0;
-  overflow: hidden;
-} */
+
 canvas{
   margin: 0 !important;
   overflow-y: hidden !important;
