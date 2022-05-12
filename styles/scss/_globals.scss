@@ -23,17 +23,17 @@ a, .videoTitle {
   // This is where you can control the page transition animation fade-in and fade-out times
   .page-transition-enter {
     opacity: 0;
-    transition: opacity 600ms;
+    transition: opacity 700ms;
   }
   .page-transition-enter-active {
     opacity: 1;
-    transition: opacity 800ms;
+    transition: opacity 700ms;
   }
   .page-transition-exit {
     opacity: 1;
-    transition: opacity 600ms;
+    transition: opacity 700ms;
   }
   .page-transition-exit-active {
     opacity: 0;
-    transition: opacity 600ms;
+    transition: opacity 700ms;
   }
