@@ -15,6 +15,7 @@
     "@types/next": "^9.0.0",
     "@types/react": "^17.0.4",
     "@zeit/next-typescript": "^1.1.1",
+    "browserslist": "^4.6.3",
     "contentful": "^8.4.2",
     "create-r3f-app": "^1.4.2",
     "critters": "0.0.14",
