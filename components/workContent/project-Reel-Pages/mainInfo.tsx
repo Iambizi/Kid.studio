@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import styles from "../../../styles/scss/projectPages/_projectPages.module.scss";
-import React, { useState, useEffect, useRef, Suspense } from "react";
-import Loader from "../../common/loaderR3F";
+import React, { useState, useEffect, useRef } from "react";
 import { isMobile } from 'react-device-detect';
 import { RegularLoader } from "../../common/loaderRegular";
 import ReactPlayer from 'react-player'
@@ -15,25 +14,9 @@ interface Type {
     projectVideo: any;
 }
 
-export default function MainInfoSection({ title, details, videoCover, playButton, projectVideo }: Type): JSX.Element {
-    // hook for handling z-index state
-    const [toggleIndex, setToggleIndex] = useState(false);
+const MainInfoSection: React.FC<Type> = ({ title, details, videoCover, playButton, projectVideo }): JSX.Element => {
+    
     const [overLayClick, setOverLayClick] = useState(false);
-
-    const handleIndex = () => {
-
-        // setToggleIndex(true);
-
-        // function addClass(){
-        //     video.classList.add(`${styles.toggleIndex}`)
-        // }
-        // function removeClass(){
-        //     video.classList.remove(`${styles.toggleIndex}`)
-        // }
-
-        // video.addEventListener("mouseenter", addClass, false);
-        // video.addEventListener("mouseout", removeClass, false);
-    }
 
     const overlayPlay = () => {
         setOverLayClick(true);
@@ -41,7 +24,6 @@ export default function MainInfoSection({ title, details, videoCover, playButton
     }
 
     const ref = useRef<HTMLElement | any>(null!);
-    // const titleP = document.querySelector(".title") as HTMLElement;
 
     // functionality for offset page scroll
     const titleScroll = () => {
@@ -49,8 +31,7 @@ export default function MainInfoSection({ title, details, videoCover, playButton
         let pageY = window.pageYOffset;
         let transY = 0;
         let diff = 0;
-        let para = 0!;
-        let lastScrollTop = 0;
+        
         if (!isMobile && ref.current) {
             setTimeout(() => {
                 if (diff = pageY - transY) {
@@ -63,9 +44,11 @@ export default function MainInfoSection({ title, details, videoCover, playButton
             return null;
         }
     }
+
     useEffect(() => {
         window.addEventListener('scroll', titleScroll);
     }, []);
+
     return (
         <>
             <section className={styles.projectPageSection}>
@@ -79,6 +62,7 @@ export default function MainInfoSection({ title, details, videoCover, playButton
                         </p>
                     </div>
                 </div>
+<<<<<<< HEAD:components/workContent/projectPages/mainInfoSection.tsx
                     <div className={toggleIndex ? `${styles.projectVideo} ${styles.toggleIndex} video` : `${styles.projectVideo} video`}>
                         <div onClick={overlayPlay} className={overLayClick ? `${styles.videoOverlay} ${styles.hideOverlay} overlay` : `${styles.videoOverlay} overlay`} style={{ backgroundImage: `url(${videoCover.fields.file.url})` }}>
                             <div className={overLayClick ? `${styles.videoOverlay} ${styles.hideOverlay} overlay` : `${styles.videoOverlay} overlay`} style={{ backgroundImage: `url(${playButton})` }}>
@@ -97,6 +81,18 @@ export default function MainInfoSection({ title, details, videoCover, playButton
                                 alt="Main video/image still" 
                                 /> */}
                             </div>
+=======
+                <div className={`${styles.projectVideo} video`}>
+                    <div onClick={overlayPlay} className={overLayClick ? `${styles.videoOverlay} ${styles.hideOverlay} overlay` : `${styles.videoOverlay} overlay`} style={{ backgroundImage: `url(${videoCover.fields.file.url})` }}>
+                    <div className={overLayClick ? `${styles.videoOverlay} ${styles.hideOverlay} overlay` : `${styles.videoOverlay} overlay`} style={{ backgroundImage: `url(${playButton})` }}>
+                            <Image
+                                className={styles.videoCover}
+                                src={`https:${videoCover.fields.file.url}`}
+                                alt="Main video/image still"
+                                width={videoCover.fields.file.details.image.width}
+                                height={videoCover.fields.file.details.image.height}
+                            />
+>>>>>>> c301b36169fe1258fdba1111f47a7efb2ce8a342:components/workContent/project-Reel-Pages/mainInfo.tsx
                         </div>
                         {/* <ReactPlayer url={`${projectVideo}`} /> */}
                         <iframe className={styles.video} id="vimeo1aolzk8" src={`${projectVideo}`} frameBorder="0" allowFullScreen></iframe>
@@ -105,3 +101,5 @@ export default function MainInfoSection({ title, details, videoCover, playButton
         </>
     )
 }
+
+export default MainInfoSection;

@@ -1,30 +1,33 @@
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
 import Link from "next/link";
-// import {WarpedImage} from "./homePlaneR3f3";
-import {WarpedImage} from "./homePlaneCanvas";
-interface Type {
+import HomePlaneCanvas from "./homePlaneCanvas";
+
+interface Types {
     carouselX: number;
-    projects: any;
+    homeProjects: any;
     goPrevious?: any;
     goNext?: any;
     slideNext: boolean;
     slidePrevious: boolean;
+    loaderLink: string;
 }
 
-export default function Carousel({ carouselX, projects, goPrevious, goNext, slideNext, slidePrevious }: Type): JSX.Element {
+const Carousel:React.FC<Types> = ({ carouselX, homeProjects, slideNext, slidePrevious, loaderLink }): JSX.Element => {
 
     return (
         <>
             <div className={styles.titles} style={{ left: `${-carouselX}%` }}>
-                {projects.map((item, i) => (
+                {homeProjects.map((item, i) => (
                     <div className={styles.titleWrapper} key={i}>
-                        <Link href={projects[i].fields.slug}>
-                            <h2 className={styles.videoTitle}>{projects[i].fields.title}</h2>
+                        <Link href={homeProjects[i].fields.slug}>
+                            <h2 className={`${styles.videoTitle} videoTitle`}>{homeProjects[i].fields.title}</h2>
                         </Link>
                     </div>
                 ))}
             </div>
-            <WarpedImage carouselX={carouselX} projects={projects} slideNext={slideNext} slidePrevious={slidePrevious} />
+            <HomePlaneCanvas carouselX={carouselX} projects={homeProjects} slideNext={slideNext} slidePrevious={slidePrevious} loaderLink={loaderLink} />
         </>
     )
-}
+};
+
+export default Carousel;

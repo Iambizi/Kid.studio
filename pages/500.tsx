@@ -7,7 +7,7 @@ import { connectClient } from '../components/common/utils/createClient';
 interface Type{
     commonAssets: any;
 }
-const Custom404: React.FC<Type> = ({ commonAssets }): JSX.Element=> {
+const Custom500: React.FC<Type> = ({ commonAssets }): JSX.Element=> {
     return (
         <>
             <Meta page={"404"} />
@@ -23,7 +23,7 @@ const Custom404: React.FC<Type> = ({ commonAssets }): JSX.Element=> {
     )
 }
 
-export default Custom404;
+export default Custom500;
 
 export const getStaticProps: GetStaticProps = async () => {
   

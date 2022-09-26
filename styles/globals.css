@@ -1,20 +1,3 @@
-/* html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
-} */
-
 @font-face {
   font-family: "Andale Mono";
   src: url("/fonts/andalemo.ttf");
@@ -29,25 +12,34 @@ a {
   font-weight: 500;
   font-display: swap;
 }
-body, html{
-  font-family: "Andale Mono";
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
+
 body{
   overflow: hidden;
   position: fixed;
 }
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body.needsScroll{
   overflow-Y: auto;
   position: static;
 }
-/* body.noScroll{
-  height: 100vh;
-  width: 100vw;
-  position: fixed;
-  top: 0;
-  left: 0;
-  overflow: hidden;
-} */
+
 canvas{
   margin: 0 !important;
   overflow-y: hidden !important;

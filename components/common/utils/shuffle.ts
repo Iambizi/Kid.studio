@@ -1,7 +1,7 @@
 // Fisher-Yates (aka Knuth) Shuffle
 // function that shuffles values in positions array
 
-export const Shuffle = (arr) =>{
+export const Shuffle = (arr): JSX.Element =>{
     let currentIndex = arr.length,  randomIndex;
         // While there remain elements to shuffle...
         while (0 !== currentIndex) {

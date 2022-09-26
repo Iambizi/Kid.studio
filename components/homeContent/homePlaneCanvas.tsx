@@ -2,24 +2,24 @@ import React, { Suspense, useRef } from 'react';
 import * as THREE from 'three';
 import { Canvas, useFrame } from '@react-three/fiber';
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
-import { HomePlane1 } from "./r3fPlanes/homePlane15";
-import { HomePlane2 } from "./r3fPlanes/homePlane16";
-import { HomePlane3 } from "./r3fPlanes/homePlane17";
-import { HomePlanez } from "./r3fPlanes/homePlanez"
-import Loader from "../common/loaderR3F";
+import HomePlanes from "./r3fPlanes/planes"
+import Loader from "../common/R3FLoader";
 import { isMobile } from 'react-device-detect';
 
-
-
-interface Type {
+interface CanvasTypes {
     projects?: any;
     carouselX: number;
     slidePrevious: boolean;
     slideNext: boolean;
+    loaderLink: string;
+}
+
+interface SLiderType {
+    carouselX: number;
 }
 
 
-const SliderContainer = ({ children, carouselX }) => {
+const SliderContainer: React.FC<SLiderType> = ({ children, carouselX }) => {
 
     const items = useRef<THREE.Mesh>();
 
@@ -34,21 +34,23 @@ const SliderContainer = ({ children, carouselX }) => {
     );
 }
 
-export const WarpedImage = ({ projects, carouselX, slideNext, slidePrevious }: Type): JSX.Element => {
+export const HomePlaneCanvas: React.FC<CanvasTypes> = ({ projects, carouselX, slideNext, slidePrevious, loaderLink }): JSX.Element => {
 
     return (
         <>
             <div className={`${styles.homeScene}`}>
                 <Canvas dpr={isMobile ? [1, 2] : [0, 1]}>
-                        <Suspense fallback={<Loader />}>
-                            <SliderContainer carouselX={carouselX}>
-                                <HomePlanez projects={projects} position={0} projectIndex={0} slideNext={slideNext} slidePrevious={slidePrevious} />
-                                <HomePlanez projects={projects} position={100} projectIndex={1} slideNext={slideNext} slidePrevious={slidePrevious} />
-                                <HomePlanez projects={projects} position={200} projectIndex={2} slideNext={slideNext} slidePrevious={slidePrevious} />
-                            </SliderContainer>
-                        </Suspense>
-                    </Canvas>
+                    <Suspense fallback={<Loader loaderLink={loaderLink} />}>
+                        <SliderContainer carouselX={carouselX}>
+                            <HomePlanes projects={projects} position={0} projectIndex={0} slideNext={slideNext} slidePrevious={slidePrevious} />
+                            <HomePlanes projects={projects} position={100} projectIndex={1} slideNext={slideNext} slidePrevious={slidePrevious} />
+                            <HomePlanes projects={projects} position={200} projectIndex={2} slideNext={slideNext} slidePrevious={slidePrevious} />
+                        </SliderContainer>
+                    </Suspense>
+                </Canvas>
             </div>
         </>
     )
-}
+};
+
+export default HomePlaneCanvas;

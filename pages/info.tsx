@@ -3,61 +3,56 @@ import { GetStaticProps } from 'next';
 import Meta from '../components/common/meta';
 import React, { useEffect } from "react";
 import InfoBox from '../components/infoContent/infoBox';
-
-// import InfoWarpImg from '../components/infoContent/infoWarpedR3f';
-import InfoWarpImg from '../components/infoContent/infoWarpedR3f2';
-// import InfoWarpImg from '../components/common/commonWarpedPlane';
 import { connectClient } from '../components/common/utils/createClient';
-import {InfoPlaneCanvas} from '../components/infoContent/infoCanvas';
+import InfoPlaneCanvas from '../components/infoContent/infoCanvas';
 
-
-interface Type {
+interface Types {
     infoPageData: any;
-    fallback: string;
+    commonAssets: any;
 }
 
-export default function Info({ infoPageData, fallback }: Type): JSX.Element {
+const Info: React.FC<Types> = ({ infoPageData, commonAssets }): JSX.Element => {
 
+    const loaderLink = commonAssets.loader.fields.file.url;
     const aboutUs = infoPageData.aboutUs?.content[0].content[0].value;
     const infoImage = infoPageData.infoImage?.fields.file.url;
 
     useEffect(() => {
         const bg = document.body;
         bg.classList.remove("needsScroll");
-        // bg.classList.add("noScroll");
         bg.removeAttribute("style");
     });
 
     return (
         <>
             <Meta page={"Info"} />
-            <Layout>
+            <Layout commonAssets={commonAssets}>
                 <InfoBox aboutUs={aboutUs} />
-                <InfoPlaneCanvas src={infoImage} />
+                <InfoPlaneCanvas src={infoImage} loaderLink={loaderLink} />
             </Layout>
         </>
     )
 }
 
+export default Info;
+
 export const getStaticProps: GetStaticProps = async () => {
 
     const res = await connectClient.getEntries({ content_type: 'infoPage' });
+    const commonRes = await connectClient.getEntries({ content_type: 'commonAssets' });
 
     if (!res) {
         return {
             notFound: true
         };
     }
+
     return {
         props: {
+            commonAssets: commonRes.items[0].fields,
             infoImage: res.includes.Asset[0],
             aboutUs: res.items[0].fields,
             infoPageData: res.items[0].fields,
-            fallback: {
-                infoImage: res.includes.Asset[0],
-                aboutUs: res.items[0].fields,
-                infoPageData: res.items[0].fields
-            }
         }
     }
 }

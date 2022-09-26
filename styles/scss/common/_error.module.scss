@@ -1,15 +1,9 @@
 @import "../_variables.scss";
 .error{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    text-align: center;
-    margin: 15% auto; 
-    @media screen and (min-width:$s){
-        margin: 10% auto; 
-    }
+    position: fixed;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
     h1{
         font-family: 'Helvetica', Helvetica, Arial;
         text-align: center;

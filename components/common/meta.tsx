@@ -1,16 +1,17 @@
 import Head from 'next/head';
-import Script from 'next/script';
 
-interface Types{
+interface Type{
     page: string;
 }
-export default function Meta({page}: Types): JSX.Element{
+
+const Meta: React.FC<Type> = ({page}): JSX.Element =>{
     return(
         <>
             <Head>
                 <title>Kid. Studio | {page}</title>
-                {/* <Script>0</Script> */}
             </Head>
         </>
     );
 }
+
+export default Meta;

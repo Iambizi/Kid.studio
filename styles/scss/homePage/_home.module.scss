@@ -1,4 +1,5 @@
 @import "../variables";
+
 @mixin fullviewPort(){
     height: 100vh;
     width: 100vw;
@@ -22,30 +23,36 @@
         z-index: 565656;
         position: fixed;
         top: 49%;
-        @media screen and (min-width:$m){
-            font-size: 0.9em;
+        @media screen and (min-width:$s){
+            font-size: .9em;
         }
     }
     .previousButton{
         margin: 0;
         left: 0px;
+        @media screen and (max-width:$ipadAir){
+            left: -7%;
+        }
         @media screen and (max-width:$m){
             left: -2%;
         }
         transform: rotate(270deg);
         &:hover{
-            cursor: url(https://kidstudio.co/assets/css/../images/left.png) 25 15, auto;
+            cursor: url(https://images.ctfassets.net/kllhmdk2nlsw/2rkHINt7RmkcuxbZnGKRul/974bf5a5398ceede237a503aff54b987/left.png) 25 15, auto;
         }
     }
     .nextButton{
         top: 48%;
         right: 25px;
+        @media screen and (max-width:$ipadAir){
+            right: 7%;
+        }
         @media screen and (max-width:$m){
             right: 2%;
         }
         transform: rotate(90deg);
         &:hover{
-            cursor: url(https://kidstudio.co/assets/css/../images/right.png) 25 15, auto;
+            cursor: url(//images.ctfassets.net/kllhmdk2nlsw/5JFT3m5W787jd197yKIKts/28f2b0a2c3584b6d16f6f0325ab49347/right.png) 25 15, auto;
         }
     }
     

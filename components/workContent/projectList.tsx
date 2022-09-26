@@ -1,7 +1,6 @@
 import Link from "next/link";
 import styles from "../../styles/scss/workPage/_work.module.scss";
-import React, { useEffect } from "react";
-import { isMobile } from 'react-device-detect';
+import React from "react";
 
 interface Type {
   bgImg: boolean;
@@ -9,7 +8,7 @@ interface Type {
   projectList: any;
 }
 
-export default function work({ bgImg, setbgImg, projectList }: Type) {
+const ProjectList: React.FC<Type> = ({ bgImg, setbgImg, projectList }): JSX.Element => {
 
   // rewrote okHover plugin mouse over functionality
   const handleMouseOver = (e) => {
@@ -55,13 +54,6 @@ export default function work({ bgImg, setbgImg, projectList }: Type) {
     }
   }
 
-  // removes needsScroll class set in project pages from vertical scroll
-  // projectPage useEffect hook needs refactoring to avoid calling it again here.
-  useEffect(() => {
-    const bg = document.body;
-    bg.classList.remove("needsScroll");
-  }, []);
-
   return (
     <>
       <section className={styles.projectListSection}>
@@ -76,3 +68,5 @@ export default function work({ bgImg, setbgImg, projectList }: Type) {
     </>
   )
 }
+
+export default ProjectList;

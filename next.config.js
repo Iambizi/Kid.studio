@@ -14,7 +14,8 @@ module.exports = {
         headers: [
           {
             key: 'cache-control',
-            value: 'public, max-age=86400, stale-while-rev',
+            // value: 'public, max-age=86400, stale-while-rev',
+            value: 'public, max-age=31536000, immutable',
           },
         ],
       },
@@ -25,15 +26,7 @@ module.exports = {
       {
         source: '/index',
         destination: '/',
-      },
-      {
-        source: '/:project',
-        destination: '/work/:project',
-      },
-      {
-        source: '/content/:slug*',
-        destination: 'https://kidstudio.co/:slug*',
-      },
+      }
     ];
     return rewrite_url;
   },

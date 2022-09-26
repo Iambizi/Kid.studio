@@ -6,14 +6,14 @@ import { isMobile } from 'react-device-detect';
 
 
 interface Type {
-    projects: any;
-    position: number;
-    projectIndex: number;
-    slideNext: boolean;
-    slidePrevious: boolean;
+    projects?: any;
+    position?: number;
+    projectIndex?: number;
+    slideNext?: boolean;
+    slidePrevious?: boolean;
 }
 
-export const  HomePlanez = ( { projects, position, projectIndex, slideNext, slidePrevious, ...props}: Type): JSX.Element => {
+const HomePlanes: React.FC<Type> = ({ projects, position, projectIndex, slideNext, slidePrevious, ...props}): JSX.Element => {
 
     const src = projects[projectIndex]?.fields.featuredProjectImage.fields ? projects[projectIndex].fields.featuredProjectImage.fields.file.url : null;
     
@@ -24,7 +24,6 @@ export const  HomePlanez = ( { projects, position, projectIndex, slideNext, slid
     let i = 0;
     let timerx = 500;
     let mouse = { x: 0, y: 0 };
-    let distMouse = { x: 0, y: 0 };
     let prevMouse = { x: 0, y: 0 };
     let snapback = { x: 0, y: 0 };
 
@@ -113,3 +112,4 @@ export const  HomePlanez = ( { projects, position, projectIndex, slideNext, slid
     )
 }
 
+export default HomePlanes;

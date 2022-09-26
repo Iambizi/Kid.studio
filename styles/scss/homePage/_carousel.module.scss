@@ -17,6 +17,7 @@
     position: fixed;
     transition: .55s linear;
     z-index: 5656565656;
+    
     .titleWrapper{
         width: 100vw;
             .videoTitle{
@@ -27,8 +28,8 @@
                 margin-top: -12%;
                 z-index: 565656;
                 margin-left: 15vw;
-                width: 100%;
-            @media screen and (min-width:$xxs){
+                width: fit-content;
+            @media screen and (min-width:$xxxs){
                 margin-top: -9%;
                 @media (min-height:882px){
                     margin-top: -11%;
@@ -40,13 +41,22 @@
             @media screen and (min-width:$xs){
                 margin-top: -7%;
             }
+            @media screen and (min-width:$surfaceDuo){
+                margin-top: -6%;
+            }
             @media screen and (min-width:$s){
                 font-size: 2.5em;
-                margin-top: -7.5%;
+                margin-top: -6.5%;
+            }
+            @media screen and (min-width:$ipadAir){
+                margin-top: -8.5%;
             }
             @media screen and (min-width:$m1){
                 top: 30%;
                 margin-top: -5.5%;
+                @media (min-height:600px){
+                    margin-top: -4%;
+                }
             }
             @media screen and (min-width:$m){
                 top: 30%;
@@ -73,10 +83,16 @@
                     top: 30%;
                     width: 12%;
                 }
+                @media screen and (min-width:950px){
+                    top: 28%;
+                }
                 @media screen and (min-width: 1024px){
                     height: .55%;
                     top: 29.5%;
                     width: 9.4%;
+                    @media (min-height:600px){
+                        height: .8%;
+                    }
                 }
                 @media screen and (min-width:$l){
                     height: 1%;

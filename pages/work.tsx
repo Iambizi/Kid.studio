@@ -8,25 +8,29 @@ import styles from '../styles/scss/common/_footer.module.scss';
 
 interface Type {
     workData: any;
+    commonAssets: any;
 }
 
 
-export default function Work({ workData }:Type):JSX.Element{
+const Work: React.FC<Type> = ({ workData, commonAssets }):JSX.Element =>{
     const [bgImg, setbgImg] = useState(false);
 
      return(
          <>
             <Meta page={"Work"} />
-            <Layout bgImg={bgImg} setbgImg={setbgImg} specificStyles={styles.workPageFooter}>
+            <Layout commonAssets={commonAssets} bgImg={bgImg} setbgImg={setbgImg} specificStyles={styles.workPageFooter}>
                 <ProjectList bgImg={bgImg} setbgImg={setbgImg} projectList={workData}  />
             </Layout>
          </>
      )
 }
 
+export default Work;
+
 export const getStaticProps: GetStaticProps = async ()=>{
     
     const res = await connectClient.getEntries({ content_type: 'workPage' });
+    const commonRes = await connectClient.getEntries({ content_type: 'commonAssets' });
     
     if (!res) {
         return {
@@ -35,6 +39,7 @@ export const getStaticProps: GetStaticProps = async ()=>{
     }
     return {
         props: {
+            commonAssets: commonRes.items[0].fields,
             workData: res.items
         },
         revalidate: 300

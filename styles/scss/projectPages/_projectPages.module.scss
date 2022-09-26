@@ -58,13 +58,9 @@
         display: block;
         position: relative;
         z-index: 5656;
-        // &.toggleIndex{
-        //     z-index: 5656565656;
-        // }
         margin-bottom: 10%;
         .videoOverlay{
             position: relative;
-            // display: block;
             background-size: cover;
             background-position: center center;
             background-repeat: no-repeat;
@@ -75,7 +71,6 @@
                 max-width: 560px;
                 max-height: 470px;
             }
-
             &.hideOverlay{
                 display: contents; 
             }
@@ -87,7 +82,7 @@
             position: absolute;
             height: 100%;
             width: 100%;
-            top: 0;
+            top: 0%;
             left: 0;
             max-width: 560px;
             max-height: 450px;

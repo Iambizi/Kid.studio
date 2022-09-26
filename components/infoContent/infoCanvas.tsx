@@ -1,20 +1,24 @@
-import React, { Suspense } from 'react';
-import { Canvas } from '@react-three/fiber';
+import React, { Suspense } from "react";
+import { Canvas } from "@react-three/fiber";
 import styles from "../../styles/scss/homePage/_carousel.module.scss";
-import Loader from "../common/loaderR3F";
-import {InfoPlane} from "./infoWarpedR3f3";
+import Loader from "../common/R3FLoader";
+import InfoPlane from "./infoWarpedPlane";
+import { isMobile } from "react-device-detect";
+// import InfoPlane from "../homeContent/r3fPlanes/planes";
 
-interface Type {
+interface Types {
     src: string;
+    loaderLink: string;
 }
 
-export const InfoPlaneCanvas = ({ src }: Type): JSX.Element  => {
+const InfoPlaneCanvas: React.FC<Types> = ({ src, loaderLink }): JSX.Element => {
 
     return (
         <>
             <div className={`${styles.homeScene}`}>
-                <Canvas dpr={[1, 2]}>
-                    <Suspense fallback={<Loader/>}>
+                <Canvas dpr={isMobile ? [1, 2] : [0, 1]}>
+                    <Suspense fallback={<Loader loaderLink={loaderLink} />}>
+                    {/* <InfoPlane projects={src} position={0} projectIndex={0}/>  */}
                         <InfoPlane src={src} />
                     </Suspense>
                 </Canvas>
@@ -22,3 +26,5 @@ export const InfoPlaneCanvas = ({ src }: Type): JSX.Element  => {
         </>
     )
 }
+
+export default InfoPlaneCanvas;

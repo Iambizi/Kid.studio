@@ -1,5 +1,3 @@
-import fs from 'fs';
-import path from 'path';
 import { GetStaticProps } from 'next';
 import Layout from '../components/layout';
 import Meta from '../components/common/meta';
@@ -7,51 +5,51 @@ import Content from '../components/homeContent/content';
 import React, { useEffect } from "react";
 import { connectClient } from '../components/common/utils/createClient';
 
-interface Type {
-  homeProjects: any;
-  projects: any;
+interface Types {
+  homeProjects: string;
+  commonAssets: any;
 }
 
-export default function Home({ homeProjects, projects }: Type): JSX.Element {
+const Home: React.FC<Types> = ({ homeProjects, commonAssets }): JSX.Element => {
   // removes needsScroll class set in project pages from vertical scroll
   // projectPage useEffect hook needs refactoring to avoid calling it again here.
 
-  useEffect(()=>{
+  useEffect(() => {
     const bg = document.body;
     bg.classList.remove("needsScroll");
-    // bg.classList.add("noScroll");
     bg.removeAttribute("style");
   });
 
+  const loaderLink = commonAssets.loader.fields.file.url;
 
   return (
     <>
       <Meta page={"Home"} />
-      <Layout>
-        <Content homeProjects={homeProjects} projects={projects} />
+      <Layout commonAssets={commonAssets}>
+        <Content homeProjects={homeProjects} loaderLink={loaderLink} />
       </Layout>
     </>
   )
 }
 
+export default Home;
+
 export const getStaticProps: GetStaticProps = async () => {
 
   const res = await connectClient.getEntries({ content_type: 'homePage' });
 
-  const fileToRead = path.join(process.cwd(), './backEndDummyData/homeProjects.json');
-  const data = JSON.parse(await fs.readFileSync(fileToRead).toString());
-  // const project = data.projects.find(project => project.path === projectPath)
-  const HomeProjects = data.homeProjects.map((item: any, i: number) => (data.homeProjects[i]))
-  // console.log(data.projects[0].path)
+  const commonRes = await connectClient.getEntries({ content_type: 'commonAssets' });
+
   if (!res) {
     return {
       notFound: true
     };
   }
+
   return {
     props: {
-      homeProjects: HomeProjects,
-      projects: res.items
+      homeProjects: res.items,
+      commonAssets: commonRes.items[0].fields
     },
     revalidate: 300
   }
