@@ -2,8 +2,6 @@ import Image from 'next/image';
 import styles from "../../../styles/scss/projectPages/_projectPages.module.scss";
 import React, { useState, useEffect, useRef } from "react";
 import { isMobile } from 'react-device-detect';
-import { RegularLoader } from "../../common/loaderRegular";
-import ReactPlayer from 'react-player'
 
 
 interface Type {
@@ -62,26 +60,6 @@ const MainInfoSection: React.FC<Type> = ({ title, details, videoCover, playButto
                         </p>
                     </div>
                 </div>
-<<<<<<< HEAD:components/workContent/projectPages/mainInfoSection.tsx
-                    <div className={toggleIndex ? `${styles.projectVideo} ${styles.toggleIndex} video` : `${styles.projectVideo} video`}>
-                        <div onClick={overlayPlay} className={overLayClick ? `${styles.videoOverlay} ${styles.hideOverlay} overlay` : `${styles.videoOverlay} overlay`} style={{ backgroundImage: `url(${videoCover.fields.file.url})` }}>
-                            <div className={overLayClick ? `${styles.videoOverlay} ${styles.hideOverlay} overlay` : `${styles.videoOverlay} overlay`} style={{ backgroundImage: `url(${playButton})` }}>
-                            {/* <div onClick={overlayPlay} className={overLayClick ? `${styles.videoOverlay} ${styles.hideOverlay} overlay` : `${styles.videoOverlay} overlay`}>
-                            <div className={overLayClick ? `${styles.videoOverlay} ${styles.hideOverlay} overlay` : `${styles.videoOverlay} overlay`}> */}
-                                <Image
-                                    className={styles.videoCover}
-                                    src={`https:${videoCover.fields.file.url}`}
-                                    alt="Main video/image still"
-                                    width={videoCover.fields.file.details.image.width}
-                                    height={videoCover.fields.file.details.image.height}
-                                />
-                                {/* <img 
-                                className={styles.videoCover}
-                                src={ `${videoCover}` }
-                                alt="Main video/image still" 
-                                /> */}
-                            </div>
-=======
                 <div className={`${styles.projectVideo} video`}>
                     <div onClick={overlayPlay} className={overLayClick ? `${styles.videoOverlay} ${styles.hideOverlay} overlay` : `${styles.videoOverlay} overlay`} style={{ backgroundImage: `url(${videoCover.fields.file.url})` }}>
                     <div className={overLayClick ? `${styles.videoOverlay} ${styles.hideOverlay} overlay` : `${styles.videoOverlay} overlay`} style={{ backgroundImage: `url(${playButton})` }}>
@@ -92,11 +70,11 @@ const MainInfoSection: React.FC<Type> = ({ title, details, videoCover, playButto
                                 width={videoCover.fields.file.details.image.width}
                                 height={videoCover.fields.file.details.image.height}
                             />
->>>>>>> c301b36169fe1258fdba1111f47a7efb2ce8a342:components/workContent/project-Reel-Pages/mainInfo.tsx
                         </div>
                         {/* <ReactPlayer url={`${projectVideo}`} /> */}
                         <iframe className={styles.video} id="vimeo1aolzk8" src={`${projectVideo}`} frameBorder="0" allowFullScreen></iframe>
                     </div>
+                </div>
             </section>
         </>
     )
