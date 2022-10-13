@@ -26,8 +26,6 @@ const Home: React.FC<Types> = ({ homeProjects, commonAssets, homePageData }): JS
 
   const loaderLink = commonAssets.loader.fields.file.url;
 
-  console.log(homePageData);
-
   return (
     <>
       <Meta page={"Home"} />
