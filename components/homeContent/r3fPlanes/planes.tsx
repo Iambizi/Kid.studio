@@ -3,6 +3,7 @@ import * as THREE from 'three';
 import { useTexture } from "@react-three/drei";
 import { useFrame } from '@react-three/fiber';
 import { isMobile } from 'react-device-detect';
+import { homePageTypes } from '../../../propTypes/homePageTypes';
 
 
 interface Type {
@@ -16,7 +17,7 @@ interface Type {
 const HomePlanes: React.FC<Type> = ({ projects, position, projectIndex, slideNext, slidePrevious, ...props}): JSX.Element => {
 
     const src = projects[projectIndex]?.fields.featuredProjectImage.fields ? projects[projectIndex].fields.featuredProjectImage.fields.file.url : null;
-    
+
     let hovering = false;
     let snapping = false;
     let mouseDown = false;

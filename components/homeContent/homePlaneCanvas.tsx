@@ -5,6 +5,7 @@ import styles from "../../styles/scss/homePage/_carousel.module.scss";
 import HomePlanes from "./r3fPlanes/planes"
 import Loader from "../common/R3FLoader";
 import { isMobile } from 'react-device-detect';
+import { homePageTypes } from '../../propTypes/homePageTypes';
 
 interface CanvasTypes {
     projects?: any;
@@ -12,6 +13,7 @@ interface CanvasTypes {
     slidePrevious: boolean;
     slideNext: boolean;
     loaderLink: string;
+    homePageData: homePageTypes;
 }
 
 interface SLiderType {
@@ -34,7 +36,7 @@ const SliderContainer: React.FC<SLiderType> = ({ children, carouselX }) => {
     );
 }
 
-export const HomePlaneCanvas: React.FC<CanvasTypes> = ({ projects, carouselX, slideNext, slidePrevious, loaderLink }): JSX.Element => {
+export const HomePlaneCanvas: React.FC<CanvasTypes> = ({ projects, carouselX, slideNext, slidePrevious, loaderLink, homePageData }): JSX.Element => {
 
     return (
         <>

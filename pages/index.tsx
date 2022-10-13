@@ -4,14 +4,14 @@ import Meta from '../components/common/meta';
 import Content from '../components/homeContent/content';
 import React, { useEffect } from "react";
 import { connectClient } from '../components/common/utils/createClient';
-import { gql } from "@apollo/client";
-import client from "../pages/api/apollo-client";
+import apolloClient from "../pages/api/apollo-client";
 import { homePageQuery, commonAssetsQuery } from "../pages/api/queries";
+import { homePageTypes } from "../propTypes/homePageTypes";
 
 interface Types {
   homeProjects: string;
   commonAssets: any;
-  homePageData: any;
+  homePageData: homePageTypes;
 }
 
 const Home: React.FC<Types> = ({ homeProjects, commonAssets, homePageData }): JSX.Element => {
@@ -30,7 +30,7 @@ const Home: React.FC<Types> = ({ homeProjects, commonAssets, homePageData }): JS
     <>
       <Meta page={"Home"} />
       <Layout commonAssets={commonAssets}>
-        <Content homeProjects={homeProjects} loaderLink={loaderLink} />
+        <Content homeProjects={homeProjects} homePageData={homePageData} loaderLink={loaderLink} />
       </Layout>
     </>
   )
@@ -44,7 +44,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   const commonRes = await connectClient.getEntries({ content_type: 'commonAssets' });
 
-  const { data } = await client.query({
+  const { data } = await apolloClient.query({
     query: homePageQuery
   });
 
@@ -58,7 +58,7 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       homeProjects: res.items,
       commonAssets: commonRes.items[0].fields,
-      homePageData: data
+      homePageData: data.homePageCollection.items
     },
     revalidate: 300
   }
