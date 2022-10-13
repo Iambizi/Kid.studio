@@ -5,7 +5,7 @@ import Content from '../components/homeContent/content';
 import React, { useEffect } from "react";
 import { connectClient } from '../components/common/utils/createClient';
 import { gql } from "@apollo/client";
-import client from "./api/apollo-client";
+import client from "../pages/api/apollo-client";
 import { homePageQuery, commonAssetsQuery } from "../pages/api/queries";
 
 interface Types {
