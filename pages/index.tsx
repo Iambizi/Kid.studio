@@ -14,7 +14,7 @@ interface Types {
   homePageData: any;
 }
 
-const Home: React.FC<Types> = ({ homeProjects, commonAssets }): JSX.Element => {
+const Home: React.FC<Types> = ({ homeProjects, commonAssets, homePageData }): JSX.Element => {
   // removes needsScroll class set in project pages from vertical scroll
   // projectPage useEffect hook needs refactoring to avoid calling it again here.
 
@@ -25,6 +25,8 @@ const Home: React.FC<Types> = ({ homeProjects, commonAssets }): JSX.Element => {
   });
 
   const loaderLink = commonAssets.loader.fields.file.url;
+
+  console.log(homePageData);
 
   return (
     <>
@@ -44,11 +46,9 @@ export const getStaticProps: GetStaticProps = async () => {
 
   const commonRes = await connectClient.getEntries({ content_type: 'commonAssets' });
 
-  // const { data } = await client.query({
-  //   query: gql`
-  //     ${homePageQuery}
-  //   `,
-  // });
+  const { data } = await client.query({
+    query: homePageQuery
+  });
 
   if (!res) {
     return {
@@ -60,7 +60,7 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       homeProjects: res.items,
       commonAssets: commonRes.items[0].fields,
-      // homePageData: data
+      homePageData: data
     },
     revalidate: 300
   }

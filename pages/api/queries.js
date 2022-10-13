@@ -1,4 +1,6 @@
-export const homePageQuery = `
+import { gql } from "@apollo/client";
+
+export const homePageQuery = gql `
 query {
     homePageCollection{
       items{
@@ -11,7 +13,7 @@ query {
     }
   }`;
 
-  export const commonAssetsQuery = `
+  export const commonAssetsQuery = gql `
   query {
     commonAssetsCollection{
       items{
