@@ -5,15 +5,16 @@ import Content from '../components/homeContent/content';
 import React, { useEffect } from "react";
 import { connectClient } from '../components/common/utils/createClient';
 import apolloClient from "../pages/api/apollo-client";
-import { homePageQuery, commonAssetsQuery } from "../pages/api/queries";
+import { homePageQuery } from "../pages/api/queries";
 import { homePageTypes } from "../components/propTypes/homePageTypes";
 
 interface Types {
   commonAssets: any;
   homePageData: homePageTypes;
+  loaderLink: string;
 }
 
-const Home: React.FC<Types> = ({ commonAssets, homePageData }): JSX.Element => {
+const Home: React.FC<Types> = ({ commonAssets, homePageData, loaderLink }): JSX.Element => {
   // removes needsScroll class set in project pages from vertical scroll
   // projectPage useEffect hook needs refactoring to avoid calling it again here.
 
@@ -23,7 +24,7 @@ const Home: React.FC<Types> = ({ commonAssets, homePageData }): JSX.Element => {
     bg.removeAttribute("style");
   });
 
-  const loaderLink = commonAssets.loader.fields.file.url;
+  // const loaderLink = commonAssets.loader.fields.file.url;
 
   return (
     <>
@@ -54,6 +55,7 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       commonAssets: commonRes.items[0].fields,
+      loaderLink: data.commonAssetsCollection.items[0].loader.url,
       homePageData: data.homePageCollection.items
     },
     revalidate: 300

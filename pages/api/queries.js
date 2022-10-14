@@ -11,15 +11,11 @@ query {
         }
       }
     }
-  }`;
-
-  export const commonAssetsQuery = gql `
-  query {
     commonAssetsCollection{
-      items{
-        loader{
-          url
+        items{
+          loader{
+            url
+          }
         }
       }
-    }
   }`;

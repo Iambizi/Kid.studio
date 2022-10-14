@@ -12,7 +12,7 @@ const Loader: React.FC<Type> = ({loaderLink}): JSX.Element => {
             <Html
                 prepend
                 center>
-                <img className={styles.loader} src={`https:${loaderLink}`} alt="loader"/>
+                <img className={styles.loader} src={`${loaderLink}`} alt="loader"/>
             </Html>
         </>
     )
