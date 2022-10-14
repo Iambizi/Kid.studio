@@ -6,15 +6,14 @@ import React, { useEffect } from "react";
 import { connectClient } from '../components/common/utils/createClient';
 import apolloClient from "../pages/api/apollo-client";
 import { homePageQuery, commonAssetsQuery } from "../pages/api/queries";
-import { homePageTypes } from "../propTypes/homePageTypes";
+import { homePageTypes } from "../components/propTypes/homePageTypes";
 
 interface Types {
-  homeProjects: string;
   commonAssets: any;
   homePageData: homePageTypes;
 }
 
-const Home: React.FC<Types> = ({ homeProjects, commonAssets, homePageData }): JSX.Element => {
+const Home: React.FC<Types> = ({ commonAssets, homePageData }): JSX.Element => {
   // removes needsScroll class set in project pages from vertical scroll
   // projectPage useEffect hook needs refactoring to avoid calling it again here.
 
@@ -30,7 +29,7 @@ const Home: React.FC<Types> = ({ homeProjects, commonAssets, homePageData }): JS
     <>
       <Meta page={"Home"} />
       <Layout commonAssets={commonAssets}>
-        <Content homeProjects={homeProjects} homePageData={homePageData} loaderLink={loaderLink} />
+        <Content homePageData={homePageData} loaderLink={loaderLink} />
       </Layout>
     </>
   )
@@ -40,15 +39,13 @@ export default Home;
 
 export const getStaticProps: GetStaticProps = async () => {
 
-  const res = await connectClient.getEntries({ content_type: 'homePage' });
-
   const commonRes = await connectClient.getEntries({ content_type: 'commonAssets' });
 
   const { data } = await apolloClient.query({
     query: homePageQuery
   });
 
-  if (!res) {
+  if (!data) {
     return {
       notFound: true
     };
@@ -56,7 +53,6 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: {
-      homeProjects: res.items,
       commonAssets: commonRes.items[0].fields,
       homePageData: data.homePageCollection.items
     },

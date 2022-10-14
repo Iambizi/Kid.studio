@@ -3,20 +3,22 @@ import * as THREE from 'three';
 import { useTexture } from "@react-three/drei";
 import { useFrame } from '@react-three/fiber';
 import { isMobile } from 'react-device-detect';
-import { homePageTypes } from '../../../propTypes/homePageTypes';
+import { homePageTypes } from '../../propTypes/homePageTypes';
 
 
 interface Type {
-    projects?: any;
     position?: number;
     projectIndex?: number;
     slideNext?: boolean;
     slidePrevious?: boolean;
+    homePageData: homePageTypes;
 }
 
-const HomePlanes: React.FC<Type> = ({ projects, position, projectIndex, slideNext, slidePrevious, ...props}): JSX.Element => {
+const HomePlanes: React.FC<Type> = ({ homePageData, position, projectIndex, slideNext, slidePrevious, ...props}): JSX.Element => {
 
-    const src = projects[projectIndex]?.fields.featuredProjectImage.fields ? projects[projectIndex].fields.featuredProjectImage.fields.file.url : null;
+    // const src = projects[projectIndex]?.fields.featuredProjectImage.fields ? projects[projectIndex].fields.featuredProjectImage.fields.file.url : null;
+
+    const src = homePageData[projectIndex]?.featuredProjectImage.url;
 
     let hovering = false;
     let snapping = false;
