@@ -1,13 +1,14 @@
 import { gql } from '@apollo/client';
 
 const commonAssetsCollection = `
-commonAssetsCollection {
-      items {
-        loader {
-          url
+    commonAssetsCollection {
+        items {
+            loader {
+            url
+            }
         }
-      }
-    }`;
+        }
+    `;
 
 export const homePageQuery = gql`
   query {

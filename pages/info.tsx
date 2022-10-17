@@ -11,14 +11,14 @@ import { infoPageTypes } from "../components/props/propTypes";
 
 interface Types {
     commonAssets: any;
-    infoData: infoPageTypes;
+    infoPageData: infoPageTypes;
     loaderLink: string;
 }
 
-const Info: React.FC<Types> = ({ commonAssets, infoData, loaderLink }): JSX.Element => {
+const Info: React.FC<Types> = ({ commonAssets, infoPageData, loaderLink }): JSX.Element => {
 
-    const aboutUs = infoData?.aboutUs.json.content[0].content[0].value;
-    const infoImage = infoData?.infoImage.url;
+    const aboutUs = infoPageData?.aboutUs.json.content[0].content[0].value;
+    const infoImage = infoPageData?.infoImage.url;
 
     useEffect(() => {
         const bg = document.body;
@@ -57,7 +57,7 @@ export const getStaticProps: GetStaticProps = async () => {
         props: {
             commonAssets: commonRes.items[0].fields,
             loaderLink: data.commonAssetsCollection.items[0].loader.url,
-            infoData: data.infoPageCollection.items[0],
+            infoPageData: data.infoPageCollection.items[0],
         }
     }
 }

@@ -10,20 +10,19 @@ import { workPageQuery } from "../pages/api/queries";
 import { workPageTypes } from "../components/props/propTypes";
 
 interface Type {
-    workData: any;
     commonAssets: any;
-    workPageData: any;
+    workPageData: workPageTypes;
 }
 
 
-const Work: React.FC<Type> = ({ workData, commonAssets }):JSX.Element =>{
+const Work: React.FC<Type> = ({ commonAssets, workPageData }):JSX.Element =>{
     const [bgImg, setbgImg] = useState(false);
 
      return(
          <>
             <Meta page={"Work"} />
             <Layout commonAssets={commonAssets} bgImg={bgImg} setbgImg={setbgImg} specificStyles={styles.workPageFooter}>
-                <ProjectList bgImg={bgImg} setbgImg={setbgImg} projectList={workData}  />
+                <ProjectList bgImg={bgImg} setbgImg={setbgImg} workPageData={workPageData}  />
             </Layout>
          </>
      )
@@ -48,9 +47,7 @@ export const getStaticProps: GetStaticProps = async ()=>{
     return {
         props: {
             commonAssets: commonRes.items[0].fields,
-            workData: res.items,
-            workPageData: data.items
-
+            workPageData: data.workPageCollection.items
         },
         revalidate: 300
     }

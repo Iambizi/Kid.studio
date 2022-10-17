@@ -21,6 +21,10 @@ export type infoPageTypes = {
   };
 };
 
-export type workPageTypes = {
-  
-}
+export type workPageTypes = [{
+  hoverImage: {
+    url: string;
+  }
+  projectName: string;
+  projectLink: string;
+}];

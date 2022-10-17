@@ -1,14 +1,16 @@
 import Link from "next/link";
 import styles from "../../styles/scss/workPage/_work.module.scss";
 import React from "react";
+import { workPageTypes } from "../../components/props/propTypes";
+
 
 interface Type {
   bgImg: boolean;
   setbgImg: any;
-  projectList: any;
+  workPageData: workPageTypes;
 }
 
-const ProjectList: React.FC<Type> = ({ bgImg, setbgImg, projectList }): JSX.Element => {
+const ProjectList: React.FC<Type> = ({ bgImg, setbgImg, workPageData }): JSX.Element => {
 
   // rewrote okHover plugin mouse over functionality
   const handleMouseOver = (e) => {
@@ -58,9 +60,9 @@ const ProjectList: React.FC<Type> = ({ bgImg, setbgImg, projectList }): JSX.Elem
     <>
       <section className={styles.projectListSection}>
         <div className={`${styles.projectLinks}`}>
-          {projectList?.map((item, i) => (
-            <Link href={item.fields.projectLink} key={i}>
-              <a data-okimage={item.fields.hoverImage.fields.file.url} className={bgImg ? `${styles.projectLink} ${styles.hoverColor} Link` : `${styles.projectLink} Link`} onMouseMove={handleMouseOver}>{item.fields.projectName}</a>
+          {workPageData?.map((item, i) => (
+            <Link href={workPageData[i].projectLink} key={i}>
+              <a data-okimage={workPageData[i].hoverImage.url} className={bgImg ? `${styles.projectLink} ${styles.hoverColor} Link` : `${styles.projectLink} Link`} onMouseMove={handleMouseOver}>{workPageData[i].projectName}</a>
             </Link>
           ))}
         </div>
