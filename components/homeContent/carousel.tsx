@@ -1,7 +1,7 @@
 import styles from '../../styles/scss/homePage/_carousel.module.scss';
 import Link from 'next/link';
 import HomePlaneCanvas from './homePlaneCanvas';
-import { homePageTypes } from '../propTypes/homePageTypes';
+import { homePageTypes } from '../props/propTypes';
 
 interface Types {
   carouselX: number;

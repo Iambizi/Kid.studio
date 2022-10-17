@@ -1,5 +1,14 @@
 import { gql } from '@apollo/client';
 
+const commonAssetsCollection = `
+commonAssetsCollection {
+      items {
+        loader {
+          url
+        }
+      }
+    }`;
+
 export const homePageQuery = gql`
   query {
     homePageCollection {
@@ -11,21 +20,22 @@ export const homePageQuery = gql`
         }
       }
     }
-    commonAssetsCollection {
-      items {
-        loader {
-          url
-        }
-      }
-    }
+    ${commonAssetsCollection}
   }
 `;
 
-
-
-
-// export const commonAssetsQuery = gql`
-//     query{
-
-//     }
-//   `;
+export const infoPageQuery = gql`
+  query {
+    infoPageCollection {
+      items {
+        infoImage {
+          url
+        }
+        aboutUs {
+          json
+        }
+      }
+    }
+    ${commonAssetsCollection}
+  }
+`;

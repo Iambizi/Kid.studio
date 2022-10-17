@@ -6,7 +6,7 @@ import React, { useEffect } from "react";
 import { connectClient } from '../components/common/utils/createClient';
 import apolloClient from "../pages/api/apollo-client";
 import { homePageQuery } from "../pages/api/queries";
-import { homePageTypes } from "../components/propTypes/homePageTypes";
+import { homePageTypes } from "../components/props/propTypes";
 
 interface Types {
   commonAssets: any;

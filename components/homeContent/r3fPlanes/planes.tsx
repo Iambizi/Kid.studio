@@ -3,7 +3,7 @@ import * as THREE from 'three';
 import { useTexture } from "@react-three/drei";
 import { useFrame } from '@react-three/fiber';
 import { isMobile } from 'react-device-detect';
-import { homePageTypes } from '../../propTypes/homePageTypes';
+import { homePageTypes } from '../../props/propTypes';
 
 
 interface Type {

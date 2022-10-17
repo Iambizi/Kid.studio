@@ -1,7 +1,7 @@
 import styles from "../../styles/scss/homePage/_home.module.scss";
 import Carousel from "./carousel";
 import React, { useState } from "react";
-import {homePageTypes} from "../propTypes/homePageTypes";
+import {homePageTypes} from "../props/propTypes";
 
 interface Types {
   loaderLink: string;

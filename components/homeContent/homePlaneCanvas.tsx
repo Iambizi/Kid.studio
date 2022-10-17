@@ -5,7 +5,7 @@ import styles from "../../styles/scss/homePage/_carousel.module.scss";
 import HomePlanes from "./r3fPlanes/planes"
 import Loader from "../common/R3FLoader";
 import { isMobile } from 'react-device-detect';
-import { homePageTypes } from '../propTypes/homePageTypes';
+import { homePageTypes } from '../props/propTypes';
 
 interface CanvasTypes {
     carouselX: number;
