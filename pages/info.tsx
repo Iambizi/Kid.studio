@@ -5,17 +5,20 @@ import React, { useEffect } from "react";
 import InfoBox from '../components/infoContent/infoBox';
 import { connectClient } from '../components/common/utils/createClient';
 import InfoPlaneCanvas from '../components/infoContent/infoCanvas';
+import apolloClient from "../pages/api/apollo-client";
+import { infoPageQuery } from "../pages/api/queries";
+import { infoPageTypes } from "../components/props/propTypes";
 
 interface Types {
-    infoPageData: any;
     commonAssets: any;
+    infoData: infoPageTypes;
+    loaderLink: string;
 }
 
-const Info: React.FC<Types> = ({ infoPageData, commonAssets }): JSX.Element => {
+const Info: React.FC<Types> = ({ commonAssets, infoData, loaderLink }): JSX.Element => {
 
-    const loaderLink = commonAssets.loader.fields.file.url;
-    const aboutUs = infoPageData.aboutUs?.content[0].content[0].value;
-    const infoImage = infoPageData.infoImage?.fields.file.url;
+    const aboutUs = infoData?.aboutUs.json.content[0].content[0].value;
+    const infoImage = infoData?.infoImage.url;
 
     useEffect(() => {
         const bg = document.body;
@@ -41,6 +44,10 @@ export const getStaticProps: GetStaticProps = async () => {
     const res = await connectClient.getEntries({ content_type: 'infoPage' });
     const commonRes = await connectClient.getEntries({ content_type: 'commonAssets' });
 
+    const { data } = await apolloClient.query({
+        query: infoPageQuery
+      });
+
     if (!res) {
         return {
             notFound: true
@@ -53,6 +60,8 @@ export const getStaticProps: GetStaticProps = async () => {
             infoImage: res.includes.Asset[0],
             aboutUs: res.items[0].fields,
             infoPageData: res.items[0].fields,
+            loaderLink: data.commonAssetsCollection.items[0].loader.url,
+            infoData: data.infoPageCollection.items[0],
         }
     }
 }
