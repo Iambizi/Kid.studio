@@ -24,6 +24,20 @@ export const homePageQuery = gql`
   }
 `;
 
+export const workPageQuery = gql`
+  query {
+    workPageCollection {
+      items {
+        projectName
+        projectLink
+        hoverImage {
+          url
+        }
+      }
+    }
+  }
+`;
+
 export const infoPageQuery = gql`
   query {
     infoPageCollection {

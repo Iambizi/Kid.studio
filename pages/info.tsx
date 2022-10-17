@@ -41,14 +41,13 @@ export default Info;
 
 export const getStaticProps: GetStaticProps = async () => {
 
-    const res = await connectClient.getEntries({ content_type: 'infoPage' });
     const commonRes = await connectClient.getEntries({ content_type: 'commonAssets' });
 
     const { data } = await apolloClient.query({
         query: infoPageQuery
-      });
+    });
 
-    if (!res) {
+    if (!data) {
         return {
             notFound: true
         };
@@ -57,9 +56,6 @@ export const getStaticProps: GetStaticProps = async () => {
     return {
         props: {
             commonAssets: commonRes.items[0].fields,
-            infoImage: res.includes.Asset[0],
-            aboutUs: res.items[0].fields,
-            infoPageData: res.items[0].fields,
             loaderLink: data.commonAssetsCollection.items[0].loader.url,
             infoData: data.infoPageCollection.items[0],
         }

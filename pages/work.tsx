@@ -5,10 +5,14 @@ import Meta  from '../components/common/meta';
 import ProjectList from '../components/workContent/projectList';
 import { connectClient } from '../components/common/utils/createClient';
 import styles from '../styles/scss/common/_footer.module.scss';
+import apolloClient from "../pages/api/apollo-client";
+import { workPageQuery } from "../pages/api/queries";
+import { workPageTypes } from "../components/props/propTypes";
 
 interface Type {
     workData: any;
     commonAssets: any;
+    workPageData: any;
 }
 
 
@@ -31,6 +35,10 @@ export const getStaticProps: GetStaticProps = async ()=>{
     
     const res = await connectClient.getEntries({ content_type: 'workPage' });
     const commonRes = await connectClient.getEntries({ content_type: 'commonAssets' });
+
+    const { data } = await apolloClient.query({
+        query: workPageQuery
+    });
     
     if (!res) {
         return {
@@ -40,7 +48,9 @@ export const getStaticProps: GetStaticProps = async ()=>{
     return {
         props: {
             commonAssets: commonRes.items[0].fields,
-            workData: res.items
+            workData: res.items,
+            workPageData: data.items
+
         },
         revalidate: 300
     }

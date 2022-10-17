@@ -20,3 +20,7 @@ export type infoPageTypes = {
     url: string;
   };
 };
+
+export type workPageTypes = {
+  
+}
