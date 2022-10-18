@@ -28,3 +28,28 @@ export type workPageTypes = [{
   projectName: string;
   projectLink: string;
 }];
+
+export type projectPageTypes = {
+  projectTitle: string;
+  projectVideo: string;
+  projectCreds: {
+    json: {
+      content: [
+        {
+          content: [{ value: string }];
+        }
+      ];
+    };
+  };
+  videoCover: { url: string };
+  videoStillsCollection: {
+    items: [{
+      url: string;
+      width: number;
+      height: number;
+    }]
+  };
+  playButton: {
+    url: string
+  };
+};

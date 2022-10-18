@@ -2,6 +2,7 @@ import Image from 'next/image';
 import styles from "../../../styles/scss/projectPages/_projectPages.module.scss";
 import React, { useState, useEffect, useRef } from "react";
 import { isMobile } from 'react-device-detect';
+import { projectPageTypes } from '../../props/propTypes';
 
 interface Type {
     title: any;
@@ -9,6 +10,7 @@ interface Type {
     videoCover: any;
     playButton: any;
     projectVideo: any;
+    projectData: projectPageTypes
 }
 
 const MainInfoSection: React.FC<Type> = ({ title, details, videoCover, playButton, projectVideo }): JSX.Element => {
@@ -60,14 +62,14 @@ const MainInfoSection: React.FC<Type> = ({ title, details, videoCover, playButto
                     </div>
                 </div>
                 <div className={`${styles.projectVideo} video`}>
-                    <div onClick={overlayPlay} className={overLayClick ? `${styles.videoOverlay} ${styles.hideOverlay} overlay` : `${styles.videoOverlay} overlay`} style={{ backgroundImage: `url(${videoCover.fields.file.url})` }}>
+                    <div onClick={overlayPlay} className={overLayClick ? `${styles.videoOverlay} ${styles.hideOverlay} overlay` : `${styles.videoOverlay} overlay`} style={{ backgroundImage: `url(${projectVideo.url})` }}>
                     <div className={overLayClick ? `${styles.videoOverlay} ${styles.hideOverlay} overlay` : `${styles.videoOverlay} overlay`} style={{ backgroundImage: `url(${playButton})` }}>
                             <Image
                                 className={styles.videoCover}
-                                src={`https:${videoCover.fields.file.url}`}
+                                src={projectVideo.url}
                                 alt="Main video/image still"
-                                width={videoCover.fields.file.details.image.width}
-                                height={videoCover.fields.file.details.image.height}
+                                width={projectVideo.width}
+                                height={projectVideo.height}
                             />
                         </div>
                     </div>

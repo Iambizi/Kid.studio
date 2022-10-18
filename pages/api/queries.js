@@ -54,3 +54,32 @@ export const infoPageQuery = gql`
     ${commonAssetsCollection}
   }
 `;
+
+export const projectPageQuery = gql`
+  query {
+    projectPageCollection {
+      items {
+        projectTitle
+        projectVideo
+        projectSlug
+        projectCreds {
+          json
+        }
+        videoCover {
+          url
+          width
+          height
+        }
+        playButton {
+          url
+        }
+        videoStillsCollection {
+          items {
+            url
+          }
+        }
+      }
+    }
+    ${commonAssetsCollection}
+  }
+`;
