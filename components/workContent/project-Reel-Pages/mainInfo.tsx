@@ -10,7 +10,6 @@ interface Type {
     videoCover: {url: string; height: number; width: number; };
     playButton: string;
     projectVideo: string;
-    projectData: projectPageTypes
 }
 
 const MainInfoSection: React.FC<Type> = ({ title, details, videoCover, playButton, projectVideo }): JSX.Element => {

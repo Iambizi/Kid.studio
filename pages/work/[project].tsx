@@ -34,7 +34,7 @@ const ProjectPages: React.FC<Type> = ({ commonAssets, projectData }): JSX.Elemen
         <>
             <Meta page={title} />
             <Layout commonAssets={commonAssets} specificStyles={`${styles.projectPages}`}>
-                <MainInfoSection title={title} details={details} videoCover={videoCover} playButton={playButton} projectVideo={projectVideo} projectData={projectData} />
+                <MainInfoSection title={title} details={details} videoCover={videoCover} playButton={playButton} projectVideo={projectVideo} />
                 <Stills stills={projectStills} />
             </Layout>
         </>
