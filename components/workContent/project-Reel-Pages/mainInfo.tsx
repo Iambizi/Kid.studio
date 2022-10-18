@@ -62,18 +62,18 @@ const MainInfoSection: React.FC<Type> = ({ title, details, videoCover, playButto
                     </div>
                 </div>
                 <div className={`${styles.projectVideo} video`}>
-                    <div onClick={overlayPlay} className={overLayClick ? `${styles.videoOverlay} ${styles.hideOverlay} overlay` : `${styles.videoOverlay} overlay`} style={{ backgroundImage: `url(${projectVideo.url})` }}>
+                    <div onClick={overlayPlay} className={overLayClick ? `${styles.videoOverlay} ${styles.hideOverlay} overlay` : `${styles.videoOverlay} overlay`} style={{ backgroundImage: `url(${videoCover?.url})` }}>
                     <div className={overLayClick ? `${styles.videoOverlay} ${styles.hideOverlay} overlay` : `${styles.videoOverlay} overlay`} style={{ backgroundImage: `url(${playButton})` }}>
                             <Image
                                 className={styles.videoCover}
-                                src={projectVideo.url}
+                                src={videoCover?.url}
                                 alt="Main video/image still"
-                                width={projectVideo.width}
-                                height={projectVideo.height}
+                                width={videoCover?.width}
+                                height={videoCover?.height}
                             />
                         </div>
                     </div>
-                    <iframe className={styles.video} id="vimeo1aolzk8" src={`${projectVideo}`} frameBorder="0" allowFullScreen></iframe>
+                    <iframe className={styles.video} id="vimeo1aolzk8" src={projectVideo} frameBorder="0" allowFullScreen></iframe>
                 </div>
             </section>
         </>

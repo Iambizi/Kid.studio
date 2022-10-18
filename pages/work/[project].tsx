@@ -11,25 +11,18 @@ import { projectPageQuery } from "../../pages/api/queries";
 import { projectPageTypes } from "../../components/props/propTypes";
 
 interface Type {
-    projectPageData: any;
     commonAssets: any;
     projectData: projectPageTypes;
 }
 
-const ProjectPages: React.FC<Type> = ({ projectPageData, commonAssets, projectData }): JSX.Element => {
-
+const ProjectPages: React.FC<Type> = ({ commonAssets, projectData }): JSX.Element => {
 
     const title = projectData?.projectTitle;
     const details = projectData.projectCreds.json.content[0].content[0].value;
-    const videoCover = projectPageData?.videoCover;
-    const playButton = projectPageData?.playButton ? projectPageData.playButton?.fields.file.url : null;
+    const videoCover = projectData?.videoCover;
+    const playButton = projectData?.playButton.url;
     const projectVideo = projectData?.projectVideo;
-    const projectStills = projectPageData?.videoStills;
-
-    console.log(projectData);
-    console.log(projectData?.videoCover.url);
-    // console.log(projectData?.projectTitle);
-    // console.log(projectData.projectCreds.json.content[0].content[0].value)
+    const projectStills = projectData?.videoStillsCollection.items;
 
     useEffect(() => {
         const bg = document.body;
@@ -42,7 +35,7 @@ const ProjectPages: React.FC<Type> = ({ projectPageData, commonAssets, projectDa
             <Meta page={title} />
             <Layout commonAssets={commonAssets} specificStyles={`${styles.projectPages}`}>
                 <MainInfoSection title={title} details={details} videoCover={videoCover} playButton={playButton} projectVideo={projectVideo} projectData={projectData} />
-                <Stills Stills={projectStills} />
+                <Stills stills={projectStills} />
             </Layout>
         </>
     )
@@ -51,10 +44,13 @@ const ProjectPages: React.FC<Type> = ({ projectPageData, commonAssets, projectDa
 export default ProjectPages;
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    const res: any = await connectClient.getEntries({ content_type: 'projectPage' });
 
-    const paths = res.items.map((item) => ({
-        params: { project: item.fields.projectSlug },
+    const { data } = await apolloClient.query({
+        query: projectPageQuery
+    });
+
+    const paths = data.projectPageCollection.items.map((item) => ({
+        params: { project: item.projectSlug },
     }));
 
     return {
@@ -96,7 +92,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
     return {
         props: {
             projects: res.items,
-            projectPageData: projectPageData.fields,
             commonAssets: commonRes.items[0].fields,
             // projectData: data.projectPageCollection.items
             projectData: projectData

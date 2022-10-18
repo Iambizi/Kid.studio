@@ -41,12 +41,14 @@ export type projectPageTypes = {
       ];
     };
   };
-  videoCover: { url: string };
+  videoCover: { 
+    url: string;
+    width: number;
+    height: number; 
+  };
   videoStillsCollection: {
     items: [{
       url: string;
-      width: number;
-      height: number;
     }]
   };
   playButton: {

@@ -1,22 +1,20 @@
 import styles from "../../../styles/scss/projectPages/_projectPages.module.scss";
 import { Shuffle } from "../../common/utils/shuffle";
 import { isMobile } from 'react-device-detect';
-
-
 import React, { useEffect } from "react";
 
 interface Type{
-    Stills: any;
+    stills: [{url: string}];
 }
 
-const Stills: React.FC<Type> = ({ Stills }):JSX.Element =>{
+const Stills: React.FC<Type> = ({ stills }):JSX.Element =>{
 
     useEffect(()=>{
-        
         const position = [
             30, 50, 30, 10, 30, 10, 50, 30, 10, 30,
             10, 30, 30, 50, 30, 30, 10, 30, 50, 10, 30  
         ];
+
         Shuffle(position);
 
         if(!isMobile){
@@ -26,20 +24,17 @@ const Stills: React.FC<Type> = ({ Stills }):JSX.Element =>{
                 stills[i].style.marginLeft = `${position[i]}%`;
             }
         }
-
     },[]);
 
     return(
         <>
             <section className={styles.projectStillsSection}>
                 <div className={styles.projectStills}>
-                    {Stills.map((item, i)=>(
-
+                    {stills.map((item, i)=>(
                         <img className={`${styles.stills} stills`}
-                        src={`${Stills[i].fields.file.url}`}
+                        src={stills[i].url}
                         alt="Project image stills"
                         key={i} />
-
                     ))}
                 </div>
             </section>
