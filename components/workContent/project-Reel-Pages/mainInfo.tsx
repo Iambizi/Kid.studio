@@ -5,11 +5,11 @@ import { isMobile } from 'react-device-detect';
 import { projectPageTypes } from '../../props/propTypes';
 
 interface Type {
-    title: any;
-    details: any;
-    videoCover: any;
-    playButton: any;
-    projectVideo: any;
+    title: string;
+    details: string;
+    videoCover: {url: string; height: number; width: number; };
+    playButton: string;
+    projectVideo: string;
     projectData: projectPageTypes
 }
 
