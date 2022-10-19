@@ -80,6 +80,32 @@ export const projectPageQuery = gql`
         }
       }
     }
-    ${commonAssetsCollection}
+  }
+`;
+
+export const reelPageQuery = gql`
+  query {
+    reelPageCollection {
+      items {
+        pageTitle
+        projectVideo
+        details{
+          json
+        }
+        videoCover {
+          url
+          width
+          height
+        }
+        playButton {
+          url
+        }
+        videoStillsCollection {
+          items {
+            url
+          }
+        }
+      }
+    }
   }
 `;

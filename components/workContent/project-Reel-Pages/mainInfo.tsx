@@ -2,7 +2,6 @@ import Image from 'next/image';
 import styles from "../../../styles/scss/projectPages/_projectPages.module.scss";
 import React, { useState, useEffect, useRef } from "react";
 import { isMobile } from 'react-device-detect';
-import { projectPageTypes } from '../../props/propTypes';
 
 interface Type {
     title: string;

@@ -6,20 +6,23 @@ import styles from '../../styles/scss/common/_footer.module.scss';
 import MainInfoSection from '../../components/workContent/project-Reel-Pages/mainInfo';
 import Stills from '../../components/workContent/project-Reel-Pages/stills';
 import { connectClient } from '../../components/common/utils/createClient';
+import apolloClient from "../../pages/api/apollo-client";
+import { reelPageQuery } from "../../pages/api/queries";
+import { reelPageTypes } from "../../components/props/propTypes";
 
 interface Type{
-    reelData: any;
     commonAssets: any;
+    reelData: reelPageTypes;
 }
 
  const Reels: React.FC<Type> = ({ reelData, commonAssets }):JSX.Element =>{
 
-    const reelTitle = reelData?.pageTitle;
-    const reelDetails = reelData?.details?.content[0].content[0].value;
+    const reelTitle = reelData?.reelTitle;
+    const reelDetails = reelData?.details.json.content[0].content[0].value;
     const videoCover = reelData?.videoCover;
-    const playButton = reelData?.playButton?.fields.file.url;
+    const playButton = reelData?.playButton.url;
     const projectVideo = reelData?.projectVideo;
-    const reelStills = reelData?.videoStills;
+    const reelStills = reelData?.videoStillsCollection.items;
 
     useEffect(()=>{
         const bg = document.body;
@@ -33,7 +36,7 @@ interface Type{
             <Meta page={reelTitle} />
             <Layout commonAssets={commonAssets} specificStyles={`${styles.projectPages}`}>
                 <MainInfoSection title={reelTitle} details={reelDetails} videoCover={videoCover} playButton={playButton} projectVideo={projectVideo} />
-                <Stills Stills={reelStills} />
+                <Stills stills={reelStills} />
             </Layout>
         </>
     )
@@ -43,12 +46,13 @@ export default Reels;
 
 export const getStaticProps: GetStaticProps = async ()=>{
     
-    const res = await connectClient.getEntries({ content_type: 'reelPage' });
-    const reelData = res.items[0].fields;
-
     const commonRes = await connectClient.getEntries({ content_type: 'commonAssets' });
 
-    if (!res) {
+    const { data } = await apolloClient.query({
+        query: reelPageQuery
+    });
+
+    if (!data) {
         return {
           notFound: true,
         }
@@ -56,7 +60,7 @@ export const getStaticProps: GetStaticProps = async ()=>{
     
     return {
         props: {
-            reelData: reelData,
+            reelData: data.reelPageCollection.items[0],
             commonAssets: commonRes.items[0].fields
         }
     }

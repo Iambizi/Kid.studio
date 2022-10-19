@@ -55,3 +55,30 @@ export type projectPageTypes = {
     url: string
   };
 };
+
+export type reelPageTypes = {
+  reelTitle: string;
+  projectVideo: string;
+  details: {
+    json: {
+      content: [
+        {
+          content: [{ value: string }];
+        }
+      ];
+    };
+  };
+  videoCover: { 
+    url: string;
+    width: number;
+    height: number; 
+  };
+  videoStillsCollection: {
+    items: [{
+      url: string;
+    }]
+  };
+  playButton: {
+    url: string
+  };
+};
