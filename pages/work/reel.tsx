@@ -17,7 +17,7 @@ interface Type{
 
  const Reels: React.FC<Type> = ({ reelData, commonAssets }):JSX.Element =>{
 
-    const reelTitle = reelData?.reelTitle;
+    const reelTitle = reelData?.pageTitle;
     const reelDetails = reelData?.details.json.content[0].content[0].value;
     const videoCover = reelData?.videoCover;
     const playButton = reelData?.playButton.url;

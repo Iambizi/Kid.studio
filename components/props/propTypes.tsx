@@ -57,7 +57,7 @@ export type projectPageTypes = {
 };
 
 export type reelPageTypes = {
-  reelTitle: string;
+  pageTitle: string;
   projectVideo: string;
   details: {
     json: {
