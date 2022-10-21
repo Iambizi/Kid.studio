@@ -82,3 +82,16 @@ export type reelPageTypes = {
     url: string
   };
 };
+
+export type commonPageTypes = {
+  sitesLogoCollection: {
+    items: [
+      {url: string;}
+    ]
+  }
+  flashAssetsCollection: {
+    items: [
+      {url: string;}
+    ]
+  }
+};

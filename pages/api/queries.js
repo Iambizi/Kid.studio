@@ -89,7 +89,7 @@ export const reelPageQuery = gql`
       items {
         pageTitle
         projectVideo
-        details{
+        details {
           json
         }
         videoCover {
@@ -101,6 +101,25 @@ export const reelPageQuery = gql`
           url
         }
         videoStillsCollection {
+          items {
+            url
+          }
+        }
+      }
+    }
+  }
+`;
+
+export const commonQuery = gql`
+  query {
+    commonAssetsCollection(limit: 10) {
+      items {
+        siteLogosCollection {
+          items {
+            url
+          }
+        }
+        flashAssetsCollection {
           items {
             url
           }

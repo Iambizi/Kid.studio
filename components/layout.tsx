@@ -1,7 +1,9 @@
+import React from "react";
 import Navigation from "../components/common/header/navigation";
 import Footer from "../components/common/footer";
 import Flash from "../components/common/flash";
-import React from "react";
+import apolloClient from "../pages/api/apollo-client";
+
 
 interface Types {
     children: React.ReactNode,
