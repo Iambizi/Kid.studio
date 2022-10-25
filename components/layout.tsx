@@ -33,7 +33,7 @@ const Layout:React.FC<Types> = ({ children, bgImg, specificStyles, commonAssets 
           });
         setCommonData(data.commonAssetsCollection.items[0].url);
         
-        console.log(commonData.siteLogosCollection);
+        // console.log(commonData.siteLogosCollection);
 
         // const LogoBlack = commonData.siteLogosCollection.items[0].url;
         // const LogoWhite = commonData.siteLogosCollection.items[1].url;
