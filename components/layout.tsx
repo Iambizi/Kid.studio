@@ -1,8 +1,10 @@
-import React, {useEffect} from "react";
+import React, { useEffect, useState } from "react";
 import Navigation from "../components/common/header/navigation";
 import Footer from "../components/common/footer";
 import Flash from "../components/common/flash";
-import {commonPageTypes} from "../components/props/propTypes";
+import apolloClient from '../pages/api/apollo-client';
+import { commonPageTypes } from "../components/props/propTypes";
+import { commonQuery } from '../pages/api/queries';
 
 interface Types {
     children: React.ReactNode,
@@ -10,35 +12,45 @@ interface Types {
     setbgImg?: any;
     specificStyles?: string;
     commonAssets: any;
-    // commonAssets: commonPageTypes;
 }
 
 const Layout:React.FC<Types> = ({ children, bgImg, specificStyles, commonAssets }):JSX.Element =>{
 
-    const LogoBlack = commonAssets.siteLogos[0].fields.file.url;
-    const LogoWhite = commonAssets.siteLogos[1].fields.file.url;
-    const FlashImages = commonAssets.flashAssets;
+    const [commonData, setCommonData] = useState<commonPageTypes>();
 
-    const fetchCommonAssest = async () => {
-         fetch('https://rickandmortyapi.com/graphql').then((res) => {
-            if (res.ok) {
-              console.log("success");
-              return res.json();
-            } else {
-              throw res;
-            }
-          })
-          .then((data) => {
-            console.log(data);
-          })
-          .catch((error) => {
-            console.log(error)
-          })
-    }
+    // const LogoBlack = commonData.siteLogosCollection.items[0].url;
+    // const LogoWhite = commonData.siteLogosCollection.items[0].url[1];
+    // const FlashImages = commonData.flashAssetsCollection;
 
     useEffect(()=>{
-        fetchCommonAssest();
+        fetchCommonAssets();
     },[]);
+
+    const fetchCommonAssets = async () => {
+        try {
+          const { data } = await apolloClient.query({
+            query: commonQuery,
+          });
+        setCommonData(data.commonAssetsCollection.items[0].url);
+        
+        console.log(commonData.siteLogosCollection);
+
+        // const LogoBlack = commonData.siteLogosCollection.items[0].url;
+        // const LogoWhite = commonData.siteLogosCollection.items[1].url;
+        // const FlashImages = commonData.flashAssetsCollection;
+        
+        } catch (error) {
+          console.log({error});
+        }
+      };
+
+      const LogoBlack = commonAssets.siteLogos[0].fields.file.url;
+      const LogoWhite = commonAssets.siteLogos[1].fields.file.url;
+      const FlashImages = commonAssets.flashAssets;
+
+      //  const LogoBlack = commonData.siteLogosCollection.items[0].url;
+      // const LogoWhite = commonData.siteLogosCollection.items[1].url;
+      // const FlashImages = commonData.flashAssetsCollection;
 
     return(
         <>

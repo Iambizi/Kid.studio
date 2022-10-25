@@ -84,7 +84,7 @@ export type reelPageTypes = {
 };
 
 export type commonPageTypes = {
-  sitesLogoCollection: {
+  siteLogosCollection: {
     items: [
       {url: string;}
     ]

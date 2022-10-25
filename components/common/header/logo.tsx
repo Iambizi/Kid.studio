@@ -13,7 +13,7 @@ const Logo: React.FC<Type> = ({ bgImg, LogoBlack, LogoWhite }): JSX.Element => {
             <div className={styles.logo}>
                 <Link href={"/"}>
                     <a>
-                        <img src={ bgImg ? `https:${LogoWhite}` : `https:${LogoBlack}` } alt="Kid Studio logo" width={85}
+                        <img src={ bgImg ? LogoWhite : LogoBlack } alt="Kid Studio logo" width={85}
                         height={46.3} />
                     </a>
                 </Link>
