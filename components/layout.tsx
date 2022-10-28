@@ -16,11 +16,15 @@ interface Types {
 
 const Layout:React.FC<Types> = ({ children, bgImg, specificStyles, commonAssets }):JSX.Element =>{
 
-    const [commonData, setCommonData] = useState<commonPageTypes>();
+    const [commonData, setCommonData] = useState<any>([]);
 
-    // const LogoBlack = commonData.siteLogosCollection.items[0].url;
-    // const LogoWhite = commonData.siteLogosCollection.items[0].url[1];
-    // const FlashImages = commonData.flashAssetsCollection;
+    // const LogoBlack = commonData.siteLogosCollection?.items[0].url;
+    // const LogoWhite = commonData.siteLogosCollection?.items[1].url;
+    // const FlashImages2 = commonData.flashAssetsCollection;
+
+    const LogoBlack = commonAssets.siteLogos[0].fields.file.url;
+    const LogoWhite = commonAssets.siteLogos[1].fields.file.url;
+    const FlashImages = commonAssets.flashAssets;
 
     useEffect(()=>{
         fetchCommonAssets();
@@ -31,26 +35,13 @@ const Layout:React.FC<Types> = ({ children, bgImg, specificStyles, commonAssets 
           const { data } = await apolloClient.query({
             query: commonQuery,
           });
-        setCommonData(data.commonAssetsCollection.items[0].url);
-        
-        // console.log(commonData.siteLogosCollection);
 
-        // const LogoBlack = commonData.siteLogosCollection.items[0].url;
-        // const LogoWhite = commonData.siteLogosCollection.items[1].url;
-        // const FlashImages = commonData.flashAssetsCollection;
+        setCommonData(data.commonAssetsCollection.items[0]);
         
         } catch (error) {
           console.log({error});
         }
       };
-
-      const LogoBlack = commonAssets.siteLogos[0].fields.file.url;
-      const LogoWhite = commonAssets.siteLogos[1].fields.file.url;
-      const FlashImages = commonAssets.flashAssets;
-
-      //  const LogoBlack = commonData.siteLogosCollection.items[0].url;
-      // const LogoWhite = commonData.siteLogosCollection.items[1].url;
-      // const FlashImages = commonData.flashAssetsCollection;
 
     return(
         <>

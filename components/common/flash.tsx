@@ -5,6 +5,7 @@ import { GetRandoNum } from "../common/utils/getRandoNum";
 interface Type {
     FlashImages: any;
 }
+
 const Flash: React.FC<Type> = ({ FlashImages }): JSX.Element => {
 
     const [flashed, setFlashed] = useState(false);
