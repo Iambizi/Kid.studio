@@ -6,7 +6,7 @@ import { connectClient } from './api/createClient';
 import { commonPageTypes } from '../components/props/propTypes';
 
 interface Type {
-  commonData: commonPageTypes;
+  commonData: any;
 }
 const Custom500: React.FC<Type> = ({ commonData }): JSX.Element => {
   return (
