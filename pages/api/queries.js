@@ -30,7 +30,7 @@ export const homePageQuery = gql`
         }
       }
     }
-    commonAssetsCollection(limit: 10){
+    commonAssetsCollection(limit: 20){
       items{
         ${commonR3fLoader}
         ${commonLogoAndFlashAssets}
@@ -70,7 +70,7 @@ export const infoPageQuery = gql`
         }
       }
     }
-    commonAssetsCollection(limit: 10){
+    commonAssetsCollection(limit: 20){
       items{
         ${commonR3fLoader}
         ${commonLogoAndFlashAssets}
@@ -81,7 +81,7 @@ export const infoPageQuery = gql`
 
 export const projectPageQuery = gql`
   query {
-    projectPageCollection(limit: 10) {
+    projectPageCollection(limit: 20) {
       items {
         projectTitle
         projectVideo
@@ -104,7 +104,7 @@ export const projectPageQuery = gql`
         }
       }
     }
-    commonAssetsCollection(limit: 10){
+    commonAssetsCollection(limit: 20){
       items{
         ${commonLogoAndFlashAssets}
       }
@@ -114,7 +114,7 @@ export const projectPageQuery = gql`
 
 export const reelPageQuery = gql`
   query {
-    reelPageCollection(limit: 10) {
+    reelPageCollection(limit: 20) {
       items {
         pageTitle
         projectVideo
@@ -136,7 +136,7 @@ export const reelPageQuery = gql`
         }
       }
     }
-    commonAssetsCollection(limit: 10){
+    commonAssetsCollection(limit: 20){
       items{
         ${commonLogoAndFlashAssets}
       }
@@ -146,7 +146,7 @@ export const reelPageQuery = gql`
 
 export const commonQuery = gql`
   query {
-    commonAssetsCollection(limit: 10) {
+    commonAssetsCollection(limit: 20) {
       items {
         siteLogosCollection {
           items {
