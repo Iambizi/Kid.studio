@@ -45,7 +45,7 @@ const ProjectPages: React.FC<Type> = ({
           playButton={playButton}
           projectVideo={projectVideo}
         />
-        <Stills stills={projectStills} />
+        {projectStills.length > 0 ? (<Stills stills={projectStills} />) : null}
       </Layout>
     </>
   );
