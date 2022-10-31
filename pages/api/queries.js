@@ -114,7 +114,7 @@ export const projectPageQuery = gql`
 
 export const reelPageQuery = gql`
   query {
-    reelPageCollection {
+    reelPageCollection(limit: 10) {
       items {
         pageTitle
         projectVideo

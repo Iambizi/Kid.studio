@@ -2,7 +2,8 @@ import { GetStaticProps } from 'next';
 import Layout from '../components/layout';
 import Meta from '../components/common/meta';
 import styles from '../styles/scss/common/_error.module.scss';
-import { connectClient } from './api/createClient';
+import apolloClient from '../pages/api/apollo-client';
+import { commonQuery } from '../pages/api/queries';
 import { commonPageTypes } from '../components/props/propTypes';
 
 interface Type {
@@ -28,19 +29,18 @@ const Custom404: React.FC<Type> = ({ commonData }): JSX.Element => {
 export default Custom404;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const commonRes = await connectClient.getEntries({
-    content_type: 'commonAssets',
+  const { data } = await apolloClient.query({
+    query: commonQuery,
   });
 
-  if (!commonRes) {
+  if (!data) {
     return {
       notFound: true,
     };
   }
   return {
     props: {
-      commonAssets: commonRes.items[0].fields,
-    },
-    revalidate: 300,
+      commonData: data.commonAssetsCollection.items[0]
+    }
   };
 };
