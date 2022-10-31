@@ -1,54 +1,62 @@
 import { GetStaticProps } from 'next';
 import React, { useState } from 'react';
 import Layout from '../components/layout';
-import Meta  from '../components/common/meta';
+import Meta from '../components/common/meta';
 import ProjectList from '../components/workContent/projectList';
-import { connectClient } from '../components/common/utils/createClient';
 import styles from '../styles/scss/common/_footer.module.scss';
-import apolloClient from "../pages/api/apollo-client";
-import { workPageQuery } from "../pages/api/queries";
-import { workPageTypes } from "../components/props/propTypes";
+import apolloClient from '../pages/api/apollo-client';
+import { workPageQuery } from '../pages/api/queries';
+import { workPageTypes, commonPageTypes } from '../components/props/propTypes';
 
 interface Type {
-    commonAssets: any;
-    workPageData: workPageTypes;
+  commonData: commonPageTypes;
+  workPageData: workPageTypes;
 }
 
+const Work: React.FC<Type> = ({
+  workPageData,
+  commonData,
+}): JSX.Element => {
+  const [bgImg, setbgImg] = useState(false);
 
-const Work: React.FC<Type> = ({ commonAssets, workPageData }):JSX.Element =>{
-    const [bgImg, setbgImg] = useState(false);
-
-     return(
-         <>
-            <Meta page={"Work"} />
-            <Layout commonAssets={commonAssets} bgImg={bgImg} setbgImg={setbgImg} specificStyles={styles.workPageFooter}>
-                <ProjectList bgImg={bgImg} setbgImg={setbgImg} workPageData={workPageData}  />
-            </Layout>
-         </>
-     )
-}
+  return (
+    <>
+      <Meta page={'Work'} />
+      <Layout
+        commonData={commonData}
+        bgImg={bgImg}
+        setbgImg={setbgImg}
+        specificStyles={styles.workPageFooter}
+      >
+        <ProjectList
+          bgImg={bgImg}
+          setbgImg={setbgImg}
+          workPageData={workPageData}
+        />
+      </Layout>
+    </>
+  );
+};
 
 export default Work;
 
-export const getStaticProps: GetStaticProps = async ()=>{
-    
-    const res = await connectClient.getEntries({ content_type: 'workPage' });
-    const commonRes = await connectClient.getEntries({ content_type: 'commonAssets' });
+export const getStaticProps: GetStaticProps = async () => {
 
-    const { data } = await apolloClient.query({
-        query: workPageQuery
-    });
-    
-    if (!res) {
-        return {
-            notFound: true
-        };
-    }
+
+  const { data } = await apolloClient.query({
+    query: workPageQuery,
+  });
+
+  if (!data) {
     return {
-        props: {
-            commonAssets: commonRes.items[0].fields,
-            workPageData: data.workPageCollection.items
-        },
-        revalidate: 300
-    }
-}
+      notFound: true,
+    };
+  }
+
+  return {
+    props: {
+      commonData: data.commonAssetsCollection.items[0],
+      workPageData: data.workPageCollection.items,
+    },
+  };
+};

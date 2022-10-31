@@ -17,7 +17,7 @@ const Flash: React.FC<Type> = ({ FlashImages }): JSX.Element => {
         const intervalID = setInterval(() => {
 
             const randomNumber = GetRandoNum(0, 8);
-            const imgLink = `https:${FlashImages[randomNumber].fields.file.url}`;
+            const imgLink = FlashImages[randomNumber].url;
             flashObj.style.backgroundImage = `url(${imgLink})`;
             flashObj.style.zIndex = "5656565656565656565656";
 

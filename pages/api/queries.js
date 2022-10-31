@@ -1,14 +1,23 @@
 import { gql } from '@apollo/client';
 
-const commonAssetsCollection = `
-    commonAssetsCollection {
-        items {
-            loader {
-            url
-            }
-        }
-        }
-    `;
+const commonR3fLoader = `
+    loader {
+      url
+    }
+`;
+
+const commonLogoAndFlashAssets = `
+    siteLogosCollection {
+      items {
+        url
+      }
+    }
+    flashAssetsCollection {
+      items {
+        url
+      }
+    }
+`;
 
 export const homePageQuery = gql`
   query {
@@ -21,7 +30,12 @@ export const homePageQuery = gql`
         }
       }
     }
-    ${commonAssetsCollection}
+    commonAssetsCollection(limit: 10){
+      items{
+        ${commonR3fLoader}
+        ${commonLogoAndFlashAssets}
+      }
+    }
   }
 `;
 
@@ -34,6 +48,11 @@ export const workPageQuery = gql`
         hoverImage {
           url
         }
+      }
+    }
+    commonAssetsCollection(limit: 10){
+      items{
+        ${commonLogoAndFlashAssets}
       }
     }
   }
@@ -51,13 +70,18 @@ export const infoPageQuery = gql`
         }
       }
     }
-    ${commonAssetsCollection}
+    commonAssetsCollection(limit: 10){
+      items{
+        ${commonR3fLoader}
+        ${commonLogoAndFlashAssets}
+      }
+    }
   }
 `;
 
 export const projectPageQuery = gql`
   query {
-    projectPageCollection {
+    projectPageCollection(limit: 10) {
       items {
         projectTitle
         projectVideo
@@ -78,6 +102,11 @@ export const projectPageQuery = gql`
             url
           }
         }
+      }
+    }
+    commonAssetsCollection(limit: 10){
+      items{
+        ${commonLogoAndFlashAssets}
       }
     }
   }
@@ -105,6 +134,11 @@ export const reelPageQuery = gql`
             url
           }
         }
+      }
+    }
+    commonAssetsCollection(limit: 10){
+      items{
+        ${commonLogoAndFlashAssets}
       }
     }
   }
