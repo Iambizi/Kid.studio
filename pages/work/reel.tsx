@@ -13,14 +13,12 @@ import {
 } from '../../components/props/propTypes';
 
 interface Type {
-  commonData: commonPageTypes;
+  //   commonData: commonPageTypes;
+  commonData: any;
   reelData: reelPageTypes;
 }
 
-const Reels: React.FC<Type> = ({
-  reelData,
-  commonData,
-}): JSX.Element => {
+const Reels: React.FC<Type> = ({ reelData, commonData }): JSX.Element => {
   const reelTitle = reelData?.pageTitle;
   const reelDetails = reelData?.details.json.content[0].content[0].value;
   const videoCover = reelData?.videoCover;
@@ -54,7 +52,6 @@ const Reels: React.FC<Type> = ({
 export default Reels;
 
 export const getStaticProps: GetStaticProps = async () => {
-
   const { data } = await apolloClient.query({
     query: reelPageQuery,
   });
@@ -68,7 +65,7 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       reelData: data.reelPageCollection.items[0],
-      commonData: data.commonAssetsCollection.items[0]
+      commonData: data.commonAssetsCollection.items[0],
     },
   };
 };
