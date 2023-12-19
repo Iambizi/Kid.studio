@@ -13,9 +13,7 @@
     "@apollo/client": "^3.7.0",
     "@react-three/drei": "^7.13.1",
     "@react-three/fiber": "^7.0.12",
-    "@types/next": "^9.0.0",
     "@types/react": "^18.0.0",
-    "@zeit/next-typescript": "^1.1.1",
     "browserslist": "^4.6.3",
     "contentful": "^10.6.14",
     "create-r3f-app": "^1.2.1",
@@ -32,6 +30,7 @@
     "three": "^0.128.0"
   },
   "devDependencies": {
+    "@types/node": "^20.10.5",
     "eslint": "^7.32.0",
     "eslint-config-next": "12.0.8",
     "eslint-config-prettier": "^8.3.0",
